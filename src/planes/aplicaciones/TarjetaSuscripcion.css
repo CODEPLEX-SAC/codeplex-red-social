@@ -1,0 +1,5 @@
+/* Solo lo que Tailwind no puede: color-mix dinámico en dark mode */
+:root.dark .tarjeta-suscripcion,
+[data-theme="dark"] .tarjeta-suscripcion {
+  border-top-color: color-mix(in srgb, var(--color-tema) 55%, var(--surface-color));
+}

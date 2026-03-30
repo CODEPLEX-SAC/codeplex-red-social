@@ -1,0 +1,77 @@
+/* Solo lo que Tailwind no puede hacer */
+
+/* ── Dropdown Mis Apps ── */
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mis-apps-dropdown { animation: dropdownFadeIn 0.15s ease; }
+
+/* Tablet/mobile: dropdown usa position:fixed para escapar del stacking context */
+@media (max-width: 1024px) {
+  .mis-apps-dropdown {
+    position: fixed;
+    top: var(--header-height, 83px);
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: calc(100vh - var(--header-height, 83px) - 16px);
+    overflow-y: auto;
+  }
+}
+
+/* ── Profile Slider animaciones ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.slider-overlay { animation: fadeIn 0.3s ease; }
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+.slider-cuenta { animation: slideInRight 0.3s ease; }
+
+/* ── Notification badge — ::after pseudo-element ── */
+.icon-btn.has-notification::after {
+  content: '';
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 9px; height: 9px;
+  background-color: #f97316;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* ── Toggle switch — sibling selector + ::before pseudo-element ── */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 52px; height: 28px;
+  flex-shrink: 0;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--border-color);
+  transition: 0.3s;
+  border-radius: 28px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px; width: 22px;
+  left: 3px; bottom: 3px;
+  background-color: var(--surface-color);
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.toggle-switch input:checked + .toggle-slider { background: linear-gradient(135deg, #7F0DF2, #588CE5); }
+.toggle-switch input:checked + .toggle-slider:before { transform: translateX(24px); }
+.toggle-slider:hover { background-color: var(--text-gray); }
+.toggle-switch input:checked + .toggle-slider:hover { background: linear-gradient(135deg, #6b0bd4, #4a76c9); }
+
