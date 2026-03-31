@@ -14,8 +14,9 @@ export interface PublicacionMock {
   time: string;
   text: string;
   hashtags: string[];
-  videoSrc: string;
-  videoPoster: string;
+  videoSrc?: string;
+  videoPoster?: string;
+  images?: string[];
   likeCount: number;
 }
 
@@ -41,6 +42,33 @@ export const MOCK_POST: PublicacionMock = {
   videoSrc: "https://www.pexels.com/es-es/download/video/3692634/",
   videoPoster: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800",
   likeCount: 124,
+};
+
+export const MOCK_POST_IMAGENES: PublicacionMock = {
+  avatarImg: 25,
+  author: "María López",
+  time: "Hace 3 horas",
+  text: "¡Increíble evento de networking contable del mes! Grandes conexiones y aprendizajes 🤝✨",
+  hashtags: ["#Networking", "#Contabilidad", "#Evento"],
+  images: [
+    "https://picsum.photos/seed/evt1/800/600",
+    "https://picsum.photos/seed/evt2/800/600",
+    "https://picsum.photos/seed/evt3/800/600",
+    "https://picsum.photos/seed/evt4/800/600",
+  ],
+  likeCount: 4991,
+};
+
+export const MOCK_POST_UNA_IMAGEN: PublicacionMock = {
+  avatarImg: 20,
+  author: "Juan Pérez",
+  time: "Hace 5 horas",
+  text: "Nuevo reporte de cierre de mes listo 📊 ¡Todo en orden!",
+  hashtags: ["#Reportes", "#Finanzas"],
+  images: [
+    "https://picsum.photos/seed/report1/1200/630",
+  ],
+  likeCount: 210,
 };
 
 export const MOCK_COMMENTS: ComentarioMock[] = [

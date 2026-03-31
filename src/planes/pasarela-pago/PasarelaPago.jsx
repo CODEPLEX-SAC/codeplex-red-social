@@ -90,7 +90,7 @@ const VIP_BENEFICIOS = [
 function PantallaExito({ data, onIrMisApps }) {
   return (
     <div className="flex items-center justify-center min-h-[60vh] p-[40px_20px]">
-      <div className="bg-surface border-[1.5px] border-line rounded-[18px] p-[40px_36px_36px] max-w-[480px] w-full text-center shadow-[0_4px_24px_rgba(0,0,0,0.07)] [animation:pp-exito-in_0.35s_cubic-bezier(0.34,1.4,0.64,1)]">
+      <div className="bg-surface border-[1.5px] border-line rounded-[var(--radius-lg)] p-[40px_36px_36px] max-w-[480px] w-full text-center shadow-[0_4px_24px_rgba(0,0,0,0.07)] [animation:pp-exito-in_0.35s_cubic-bezier(0.34,1.4,0.64,1)]">
         <div className="w-[72px] h-[72px] rounded-full bg-green-50 border-2 border-green-300 flex items-center justify-center mx-auto mb-5">
           <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
             <path d="M8 19L15 26L30 11" stroke="#22C55E" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -208,7 +208,7 @@ function PasarelaPago({ itemsCarrito = [], alQuitarDelCarrito, alVolver, alActiv
 
   /* ── Clases reutilizables ── */
   const inputCls = "border-[1.5px] border-line rounded-lg py-[10px] px-[13px] text-sm text-fg bg-surface outline-none transition-colors w-full box-border focus:border-brand placeholder:text-subtle";
-  const cardCls  = "bg-surface border-[1.5px] border-line rounded-[14px] px-6 py-[22px]";
+  const cardCls  = "bg-surface border-[1.5px] border-line rounded-[var(--radius-md)] px-6 py-[22px]";
   const labelCls = "text-[13px] font-medium text-fg";
 
   /* ── Carrito vacío ── */
@@ -357,7 +357,7 @@ function PasarelaPago({ itemsCarrito = [], alQuitarDelCarrito, alVolver, alActiv
           </div>
 
           {/* SUPER VIP — Upsell */}
-          <div className={`bg-[#0f172a] border-2 rounded-[14px] p-[22px] text-white transition-all ${vipSeleccionado ? "border-violet-700 shadow-[0_0_0_1px_#7C3AED,0_4px_24px_rgba(124,58,237,0.25)] -translate-y-px" : "border-[#1e293b]"}`}>
+          <div className={`bg-[#0f172a] border-2 rounded-[var(--radius-md)] p-[22px] text-white transition-all ${vipSeleccionado ? "border-violet-700 shadow-[0_0_0_1px_#7C3AED,0_4px_24px_rgba(124,58,237,0.25)] -translate-y-px" : "border-[#1e293b]"}`}>
             <div className="mb-[18px]">
               <div className="inline-block bg-white/20 text-white text-[10px] font-bold tracking-[1px] py-[3px] px-2.5 rounded-full mb-2.5">SERVICIO ADICIONAL</div>
               <div className="flex items-center gap-2 mb-1.5">
@@ -457,7 +457,7 @@ function PasarelaPago({ itemsCarrito = [], alQuitarDelCarrito, alVolver, alActiv
 
         {/* ══ COLUMNA DERECHA: Resumen ══ */}
         <div className="pp-resumen-col sticky top-[84px] max-h-[calc(100vh-84px)] overflow-y-auto max-[1024px]:top-[124px] max-[1024px]:max-h-[calc(100vh-124px)] max-[860px]:static max-[860px]:order-2">
-          <div className="bg-surface border-[1.5px] border-line rounded-[14px] p-[22px] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+          <div className="bg-surface border-[1.5px] border-line rounded-[var(--radius-md)] p-[22px] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <div className="flex items-center justify-between gap-2 mb-4">
               <h3 className="text-base font-bold text-fg m-0">Resumen de Pedido</h3>
               {itemsCarrito.length > 0 && (

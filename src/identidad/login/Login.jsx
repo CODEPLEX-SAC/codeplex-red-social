@@ -200,7 +200,7 @@ function Login({ onLogin, onBackToDemo }) {
       }}
     >
       <div
-        className="relative z-[1] grid grid-cols-[420px_1fr] max-[860px]:grid-cols-1 w-[1000px] max-w-full h-[620px] max-[860px]:h-auto bg-surface rounded-[20px] overflow-hidden border border-line [animation:cardIn_0.8s_cubic-bezier(0.16,1,0.3,1)_both]"
+        className="relative z-[1] grid grid-cols-[420px_1fr] max-[860px]:grid-cols-1 w-[1000px] max-w-full h-[620px] max-[860px]:h-auto bg-surface rounded-[var(--radius-lg)] overflow-hidden border border-line [animation:cardIn_0.8s_cubic-bezier(0.16,1,0.3,1)_both]"
         style={{ boxShadow: "0 4px 6px rgba(15,30,60,0.04), 0 20px 60px rgba(15,30,60,0.10), 0 0 0 1px rgba(255,255,255,0.8)" }}
       >
 
@@ -209,7 +209,7 @@ function Login({ onLogin, onBackToDemo }) {
 
           {/* Logo */}
           <div className="flex items-center gap-2.5 mb-8 [animation:fadeUp_0.6s_0.2s_both]">
-            <div className="w-9 h-9 rounded-[9px] bg-[#0f1e3c] flex items-center justify-center shrink-0 shadow-[0_2px_8px_rgba(15,30,60,0.25)]">
+            <div className="w-9 h-9 rounded-[var(--radius-sm)] bg-[#0f1e3c] flex items-center justify-center shrink-0 shadow-[0_2px_8px_rgba(15,30,60,0.25)]">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                 <rect x="2" y="2" width="6" height="6" rx="1.5" fill="white" fillOpacity="0.9" />
                 <rect x="10" y="2" width="6" height="6" rx="1.5" fill="white" fillOpacity="0.55" />
@@ -232,7 +232,7 @@ function Login({ onLogin, onBackToDemo }) {
 
           {/* Google */}
           <button
-            className="flex items-center justify-center gap-[9px] w-full py-[10px] px-4 border-[1.5px] border-line rounded-[9px] bg-surface text-fg font-[Manrope,sans-serif] text-[13px] font-semibold cursor-pointer mb-2 transition-all outline-none [animation:fadeUp_0.5s_0.36s_both] hover:bg-field hover:border-brand hover:shadow-[0_2px_12px_rgba(127,13,242,0.15)] hover:-translate-y-px"
+            className="flex items-center justify-center gap-[9px] w-full py-[10px] px-4 border-[1.5px] border-line rounded-[var(--radius-sm)] bg-surface text-fg font-[Manrope,sans-serif] text-[13px] font-semibold cursor-pointer mb-2 transition-all outline-none [animation:fadeUp_0.5s_0.36s_both] hover:bg-field hover:border-brand hover:shadow-[0_2px_12px_rgba(127,13,242,0.15)] hover:-translate-y-px"
             type="button"
           >
             <svg width="16" height="16" viewBox="0 0 24 24">
@@ -265,7 +265,7 @@ function Login({ onLogin, onBackToDemo }) {
             ].map(({ href, label, icon }) => (
               <a
                 key={label}
-                className="flex items-center justify-center gap-1.5 py-[9px] px-1.5 border-[1.5px] border-line rounded-[9px] bg-surface font-[Manrope,sans-serif] text-xs font-semibold cursor-pointer text-fg no-underline whitespace-nowrap transition-all outline-none hover:-translate-y-px hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)] hover:bg-field hover:border-brand"
+                className="flex items-center justify-center gap-1.5 py-[9px] px-1.5 border-[1.5px] border-line rounded-[var(--radius-sm)] bg-surface font-[Manrope,sans-serif] text-xs font-semibold cursor-pointer text-fg no-underline whitespace-nowrap transition-all outline-none hover:-translate-y-px hover:shadow-[0_2px_10px_rgba(0,0,0,0.08)] hover:bg-field hover:border-brand"
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -278,7 +278,7 @@ function Login({ onLogin, onBackToDemo }) {
 
           {/* Demo */}
           <button
-            className="btn-demo-login flex items-center justify-center gap-2 w-full py-[10px] px-4 border-[1.5px] border-line rounded-[9px] bg-field text-brand font-[Manrope,sans-serif] text-[13px] font-bold cursor-pointer mb-1 transition-all [animation:fadeUp_0.5s_0.50s_both] hover:border-brand hover:-translate-y-px"
+            className="btn-demo-login flex items-center justify-center gap-2 w-full py-[10px] px-4 border-[1.5px] border-line rounded-[var(--radius-sm)] bg-field text-brand font-[Manrope,sans-serif] text-[13px] font-bold cursor-pointer mb-1 transition-all [animation:fadeUp_0.5s_0.50s_both] hover:border-brand hover:-translate-y-px"
             type="button"
             onClick={handleDemo}
           >
@@ -303,7 +303,7 @@ function Login({ onLogin, onBackToDemo }) {
                 Correo electrónico
               </label>
               <input
-                className="w-full py-[10px] px-3.5 bg-field border-[1.5px] border-line rounded-[9px] text-fg font-[Manrope,sans-serif] text-[13.5px] font-medium outline-none transition-all box-border placeholder:text-subtle placeholder:font-normal focus:border-brand focus:bg-surface focus:shadow-[0_0_0_3px_var(--focus-ring)]"
+                className="w-full py-[10px] px-3.5 bg-field border-[1.5px] border-line rounded-[var(--radius-sm)] text-fg font-[Manrope,sans-serif] text-[13.5px] font-medium outline-none transition-all box-border placeholder:text-subtle placeholder:font-normal focus:border-brand focus:bg-surface focus:shadow-[0_0_0_3px_var(--focus-ring)]"
                 type="email"
                 placeholder="@codeplex.pe"
                 value={email}
@@ -318,7 +318,7 @@ function Login({ onLogin, onBackToDemo }) {
               </label>
               <div className="relative">
                 <input
-                  className="w-full py-[10px] px-3.5 pr-[42px] bg-field border-[1.5px] border-line rounded-[9px] text-fg font-[Manrope,sans-serif] text-[13.5px] font-medium outline-none transition-all box-border placeholder:text-subtle placeholder:font-normal focus:border-brand focus:bg-surface focus:shadow-[0_0_0_3px_var(--focus-ring)]"
+                  className="w-full py-[10px] px-3.5 pr-[42px] bg-field border-[1.5px] border-line rounded-[var(--radius-sm)] text-fg font-[Manrope,sans-serif] text-[13.5px] font-medium outline-none transition-all box-border placeholder:text-subtle placeholder:font-normal focus:border-brand focus:bg-surface focus:shadow-[0_0_0_3px_var(--focus-ring)]"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••••"
                   value={password}
@@ -352,7 +352,7 @@ function Login({ onLogin, onBackToDemo }) {
                 onClick={() => setRemember(!remember)}
               >
                 <span
-                  className={`w-4 h-4 rounded-[4px] border-[1.5px] inline-block shrink-0 transition-all ${remember ? "bg-brand border-brand" : "border-line bg-surface"}`}
+                  className={`w-4 h-4 rounded-[var(--radius-xs)] border-[1.5px] inline-block shrink-0 transition-all ${remember ? "bg-brand border-brand" : "border-line bg-surface"}`}
                   style={remember ? {
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
                     backgroundRepeat: "no-repeat",
@@ -370,7 +370,7 @@ function Login({ onLogin, onBackToDemo }) {
             {/* Botón submit */}
             <button
               type="submit"
-              className={`btn-login-shimmer w-full py-3 border-0 rounded-[10px] text-white font-[Manrope,sans-serif] text-sm font-bold tracking-[0.1px] cursor-pointer flex items-center justify-center gap-2 transition-all min-h-[44px] [animation:fadeUp_0.6s_0.78s_cubic-bezier(0.34,1.56,0.64,1)_both] disabled:cursor-not-allowed not-disabled:hover:-translate-y-0.5 not-disabled:hover:shadow-[0_8px_24px_rgba(127,13,242,0.4)] active:not-disabled:translate-y-0
+              className={`btn-login-shimmer w-full py-3 border-0 rounded-[var(--radius-sm)] text-white font-[Manrope,sans-serif] text-sm font-bold tracking-[0.1px] cursor-pointer flex items-center justify-center gap-2 transition-all min-h-[44px] [animation:fadeUp_0.6s_0.78s_cubic-bezier(0.34,1.56,0.64,1)_both] disabled:cursor-not-allowed not-disabled:hover:-translate-y-0.5 not-disabled:hover:shadow-[0_8px_24px_rgba(127,13,242,0.4)] active:not-disabled:translate-y-0
                 ${success ? "!bg-[#065f46] !shadow-[0_4px_16px_rgba(5,150,105,0.4)]" : ""}`}
               style={{
                 background: success ? undefined : "var(--gradient-primary)",

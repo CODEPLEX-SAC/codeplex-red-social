@@ -26,8 +26,8 @@ function SidebarProfile() {
         alt={usuario.nombre}
         className="w-[70px] h-[70px] md:w-20 md:h-20 rounded-full mx-auto mb-4 border-[3px] border-[var(--primary-color)]"
       />
-      <h3 className="text-base font-semibold text-[var(--text-dark)] mb-[5px]">{usuario.nombre}</h3>
-      <p className="text-[14px] text-[var(--text-muted)]">{usuario.rol}</p>
+      <h3 className="text-base font-semibold text-fg mb-[5px]">{usuario.nombre}</h3>
+      <p className="text-[14px] text-muted">{usuario.rol}</p>
     </div>
   );
 }

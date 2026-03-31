@@ -40,7 +40,7 @@ function TarjetaCatalogo({
 
   return (
     <div
-      className="group relative overflow-hidden flex flex-col gap-[14px] p-5 rounded-[14px] bg-[var(--surface-color)] border border-[var(--border-color)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
+      className="group relative overflow-hidden flex flex-col gap-[14px] p-5 rounded-[var(--radius-md)] bg-[var(--surface-color)] border border-[var(--border-color)] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]"
       style={{ borderTopWidth: '3px', borderTopColor: cardColor }}
     >
       {/* Shimmer hover */}

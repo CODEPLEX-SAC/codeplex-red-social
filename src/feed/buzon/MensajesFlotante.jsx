@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { CONVERSACIONES_MOCK, SUGERIDOS_MOCK } from "./mensajes.data";
 import { useSesion } from "../../identidad/sesion/SesionContext";
-import "./MensajesFlotante.css";
 
 const TABS = [
   { id: "todos",    label: "Todos"     },
@@ -17,7 +16,7 @@ const tabClass = (activo) =>
       : "text-[var(--text-muted)] border-b-transparent font-medium hover:text-[var(--text-dark)]"
   }`;
 
-const popupBtnClass = "bg-transparent border-none text-white cursor-pointer p-1 rounded-[6px] flex items-center justify-center transition-[background] duration-200 hover:bg-[rgba(255,255,255,0.2)]";
+const popupBtnClass = "bg-transparent border-none text-white cursor-pointer p-1 rounded-[var(--radius-xs)] flex items-center justify-center transition-[background] duration-200 hover:bg-[rgba(255,255,255,0.2)]";
 
 /* ═══════════════════════════════════════════
    BOTÓN FLOTANTE
@@ -91,7 +90,7 @@ function SugeridoItem({ contacto }) {
           {contacto.enLinea ? "En Línea" : "Desconectado"}
         </span>
       </div>
-      <button className="px-[14px] py-[6px] bg-[var(--primary-color)] text-white border-none rounded-[20px] text-[12px] font-semibold cursor-pointer shrink-0 transition-[background] duration-200 hover:bg-[var(--secondary-color)]">
+      <button className="px-[14px] py-[6px] bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-lg)] text-[12px] font-semibold cursor-pointer shrink-0 transition-[background] duration-200 hover:bg-[var(--secondary-color)]">
         Mensaje
       </button>
     </div>
@@ -110,7 +109,7 @@ function PopupLista({ onCerrar, onAbrirChat, onExpandir }) {
   });
 
   return (
-    <div className="mensajes-popup w-[380px] h-[520px] bg-[var(--white-color)] rounded-[16px] shadow-[var(--shadow-lg)] border border-[var(--border-color)] flex flex-col overflow-hidden">
+    <div className="animate-mensajes-popup w-[380px] h-[520px] bg-[var(--white-color)] rounded-[var(--radius-md)] shadow-[var(--shadow-lg)] border border-[var(--border-color)] flex flex-col overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-[14px] min-h-[50px]" style={{ background: 'var(--gradient-primary)', color: 'white' }}>
         <div className="flex items-center gap-2 font-semibold text-[15px]">
@@ -188,7 +187,7 @@ function VistaChat({ conversacion, onVolver, onCerrar }) {
   };
 
   return (
-    <div className="mensajes-popup w-[380px] h-[520px] bg-[var(--white-color)] rounded-[16px] shadow-[var(--shadow-lg)] border border-[var(--border-color)] flex flex-col overflow-hidden">
+    <div className="animate-mensajes-popup w-[380px] h-[520px] bg-[var(--white-color)] rounded-[var(--radius-md)] shadow-[var(--shadow-lg)] border border-[var(--border-color)] flex flex-col overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-[14px] min-h-[50px]" style={{ background: 'var(--gradient-primary)', color: 'white' }}>
         <div className="flex items-center gap-2">
@@ -219,7 +218,7 @@ function VistaChat({ conversacion, onVolver, onCerrar }) {
               <img src={conversacion.avatar} alt="" className="w-7 h-7 rounded-full object-cover shrink-0" />
             )}
             <div
-              className={`mensajes-burbuja-contenido py-[10px] px-[14px] rounded-[18px] text-[13px] leading-[1.4] ${
+              className={`mensajes-burbuja-contenido py-[10px] px-[14px] rounded-[var(--radius-lg)] text-[13px] leading-[1.4] ${
                 msg.esPropio
                   ? "bg-[var(--primary-color)] text-white rounded-br-[4px]"
                   : "bg-[var(--surface-color)] text-[var(--text-dark)] rounded-bl-[4px]"
@@ -233,7 +232,7 @@ function VistaChat({ conversacion, onVolver, onCerrar }) {
         {escribiendo && (
           <div className="flex items-end gap-2 max-w-[80%] self-start">
             <img src={conversacion.avatar} alt="" className="w-7 h-7 rounded-full object-cover shrink-0" />
-            <div className="mensajes-burbuja-contenido mensajes-escribiendo py-3 px-4 rounded-[18px] bg-[var(--surface-color)] text-[var(--text-dark)] rounded-bl-[4px] flex items-center gap-1">
+            <div className="mensajes-burbuja-contenido mensajes-escribiendo py-3 px-4 rounded-[var(--radius-lg)] bg-[var(--surface-color)] text-[var(--text-dark)] rounded-bl-[4px] flex items-center gap-1">
               <span className="dot w-2 h-2 bg-[var(--primary-color)] rounded-full" />
               <span className="dot w-2 h-2 bg-[var(--primary-color)] rounded-full" />
               <span className="dot w-2 h-2 bg-[var(--primary-color)] rounded-full" />
@@ -250,7 +249,7 @@ function VistaChat({ conversacion, onVolver, onCerrar }) {
           value={mensaje}
           onChange={(e) => setMensaje(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 py-[10px] px-[14px] border border-[var(--border-color)] rounded-[24px] text-[13px] bg-[var(--input-bg)] text-[var(--input-text)] outline-none transition-[border-color] duration-200 focus:border-[var(--primary-color)] placeholder:text-[var(--text-muted)]"
+          className="flex-1 py-[10px] px-[14px] border border-[var(--border-color)] rounded-[var(--radius-xl)] text-[13px] bg-[var(--input-bg)] text-[var(--input-text)] outline-none transition-[border-color] duration-200 focus:border-[var(--primary-color)] placeholder:text-[var(--text-muted)]"
         />
         <button
           className="w-[38px] h-[38px] rounded-full border-none bg-[var(--primary-color)] text-white cursor-pointer flex items-center justify-center shrink-0 transition-[background] duration-200 hover:bg-[var(--secondary-color)] disabled:opacity-50 disabled:cursor-not-allowed"

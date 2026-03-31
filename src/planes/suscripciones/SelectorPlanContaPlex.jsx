@@ -14,11 +14,11 @@ function PopoverDetalleFeature({ nombreFeature, onCerrar }) {
  if (!info) return null;
  return (
  <div
- className="absolute inset-0 z-50 bg-black/[0.28] backdrop-blur-[3px] flex items-center justify-center rounded-[22px] [animation:modal-fade_0.18s_ease]"
+ className="absolute inset-0 z-50 bg-black/[0.28] backdrop-blur-[3px] flex items-center justify-center rounded-[var(--radius-xl)] [animation:modal-fade_0.18s_ease]"
  onClick={onCerrar}
  >
  <div
- className="bg-surface rounded-[18px] p-[24px_22px_22px] w-[300px] max-w-[88%] relative shadow-[0_12px_40px_rgba(0,0,0,0.16)] [animation:modal-pop-in_0.2s_cubic-bezier(0.34,1.56,0.64,1)]"
+ className="bg-surface rounded-[var(--radius-lg)] p-[24px_22px_22px] w-[300px] max-w-[88%] relative shadow-[0_12px_40px_rgba(0,0,0,0.16)] [animation:modal-pop-in_0.2s_cubic-bezier(0.34,1.56,0.64,1)]"
  onClick={(e) => e.stopPropagation()}
  >
  <button
@@ -104,7 +104,7 @@ function PlanCard({ plan, periodo, seleccionado, onSeleccionar, compact = false,
  return (
  <div
  className={[
- "bg-surface border-[1.5px] border-line rounded-[16px] p-[20px_16px_18px] flex flex-col gap-3 transition-[box-shadow,border-color] duration-[0.18s] relative hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]",
+ "bg-surface border-[1.5px] border-line rounded-[var(--radius-md)] p-[20px_16px_18px] flex flex-col gap-3 transition-[box-shadow,border-color] duration-[0.18s] relative hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)]",
  plan.dark ? "!bg-[#0D4471] !border-[#0D4471] !pt-[42px]" : "",
  plan.dark && seleccionado ? "!border-[rgba(255,255,255,0.55)] shadow-[0_4px_20px_rgba(0,0,0,0.22)]" : "",
  !plan.dark && seleccionado ? "!border-2 !border-[#0094C0] shadow-[0_4px_20px_rgba(0,148,192,0.18)]" : "",
@@ -128,7 +128,7 @@ function PlanCard({ plan, periodo, seleccionado, onSeleccionar, compact = false,
  </div>
 
  <div className="flex flex-wrap gap-[6px]">
- <span className={`text-[11px] font-semibold px-[10px] py-[3px] rounded-[20px] ${plan.dark ? "border-[1.5px] border-white/55 text-white bg-transparent" : "bg-[#0094C0] text-white border-none"}`}>
+ <span className={`text-[11px] font-semibold px-[10px] py-[3px] rounded-[var(--radius-lg)] ${plan.dark ? "border-[1.5px] border-white/55 text-white bg-transparent" : "bg-[#0094C0] text-white border-none"}`}>
  {plan.empresas}
  </span>
  </div>
@@ -158,7 +158,7 @@ function PlanCard({ plan, periodo, seleccionado, onSeleccionar, compact = false,
 
  <button
  className={[
- "w-full py-[10px] rounded-[10px] text-[13.5px] font-bold cursor-pointer transition-all duration-[0.18s] mt-auto outline-none focus:outline-none focus-visible:outline-none active:outline-none",
+ "w-full py-[10px] rounded-[var(--radius-sm)] text-[13.5px] font-bold cursor-pointer transition-all duration-[0.18s] mt-auto outline-none focus:outline-none focus-visible:outline-none active:outline-none",
  plan.dark
  ? seleccionado
  ? "bg-white/15 border-none text-white"
@@ -273,7 +273,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  className="fixed inset-0 z-[9999] bg-[rgba(8,30,55,0.55)] backdrop-blur-[6px] flex items-center justify-center p-4 [animation:modal-fade_0.22s_ease]"
  onClick={handleClickOverlay}
  >
- <div className="bg-surface rounded-[22px] w-full max-w-[820px] max-h-[90vh] overflow-hidden relative flex flex-col [animation:modal-slide_0.28s_cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+ <div className="bg-surface rounded-[var(--radius-xl)] w-full max-w-[820px] max-h-[90vh] overflow-hidden relative flex flex-col [animation:modal-slide_0.28s_cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
 
  {/* ── Cerrar ── */}
  <button
@@ -299,19 +299,19 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  <p className="text-[13.5px] text-muted m-0">Sistema contable integral · Comprobantes ilimitados</p>
  <div className="flex gap-2 flex-wrap justify-center mt-[2px]">
  {["1 mes gratis", "IGV incluido", "Actualizaciones"].map((b) => (
- <span key={b} className="border-[1.5px] border-[#BAE6FD] rounded-[20px] px-[14px] py-[4px] text-[12px] font-medium text-[#0369A1] bg-surface">{b}</span>
+ <span key={b} className="border-[1.5px] border-[#BAE6FD] rounded-[var(--radius-lg)] px-[14px] py-[4px] text-[12px] font-medium text-[#0369A1] bg-surface">{b}</span>
  ))}
  </div>
 
  {/* Tabs Independiente / Empresarial */}
- <div className="flex w-full bg-line rounded-[14px] p-[4px] gap-[4px] mt-[6px] mb-[2px] md:w-[70%]">
+ <div className="flex w-full bg-line rounded-[var(--radius-md)] p-[4px] gap-[4px] mt-[6px] mb-[2px] md:w-[70%]">
  {[
  { key: "independiente", nombre: "Independiente", sub: "Para Contadores y gestores" },
  { key: "empresarial", nombre: "Empresarial", sub: "Para empresas Propias" },
  ].map((tab) => (
  <button
  key={tab.key}
- className={`flex-1 border-none rounded-[10px] px-[20px] py-[10px] cursor-pointer flex flex-col items-center gap-[2px] transition-[background,box-shadow] duration-[0.18s] outline-none focus:outline-none ${tipoSeleccionado === tab.key ? "bg-[#0D4471] shadow-[0_2px_8px_rgba(13,68,113,0.3)]" : "bg-transparent"}`}
+ className={`flex-1 border-none rounded-[var(--radius-sm)] px-[20px] py-[10px] cursor-pointer flex flex-col items-center gap-[2px] transition-[background,box-shadow] duration-[0.18s] outline-none focus:outline-none ${tipoSeleccionado === tab.key ? "bg-[#0D4471] shadow-[0_2px_8px_rgba(13,68,113,0.3)]" : "bg-transparent"}`}
  onClick={() => { setTipoSeleccionado(tab.key); setPlanSeleccionado(null); }}
  >
  <span className={`text-[14px] font-bold transition-colors duration-[0.18s] ${tipoSeleccionado === tab.key ? "text-white" : "text-muted"}`}>{tab.nombre}</span>
@@ -388,7 +388,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  {/* ── Botón confirmar ── */}
  {planSeleccionado && (
  <button
- className="flex items-center justify-center gap-2 bg-[#0094C0] text-white border-none rounded-[10px] px-6 py-[13px] text-[14px] font-bold cursor-pointer w-full mt-[10px] transition-[background,transform] duration-[0.2s] hover:bg-[#0077A8] hover:-translate-y-px [animation:modal-fade_0.2s_ease]"
+ className="flex items-center justify-center gap-2 bg-[#0094C0] text-white border-none rounded-[var(--radius-sm)] px-6 py-[13px] text-[14px] font-bold cursor-pointer w-full mt-[10px] transition-[background,transform] duration-[0.2s] hover:bg-[#0077A8] hover:-translate-y-px [animation:modal-fade_0.2s_ease]"
  onClick={handleConfirmarPlan}
  >
  Continuar con Plan {nombrePlanDisplay}
@@ -399,7 +399,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  )}
 
  {/* Dimmed overlay when chat open */}
- {chatVisible && <div className="absolute inset-0 bg-black/[0.22] z-[2] rounded-[22px] pointer-events-auto" />}
+ {chatVisible && <div className="absolute inset-0 bg-black/[0.22] z-[2] rounded-[var(--radius-xl)] pointer-events-auto" />}
  </div>{/* /planes-wrap */}
 
  {/* Backdrop oscuro para cerrar chat en mobile */}
@@ -414,7 +414,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  PANEL CHAT
  ══════════════════════════════════════ */}
  {chatVisible && (
- <div className="absolute top-1/2 -translate-y-1/2 right-4 w-[360px] h-[86%] max-h-[520px] z-10 flex flex-col bg-surface rounded-[18px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] [animation:modal-chat-in_0.28s_cubic-bezier(0.34,1.3,0.64,1)] overflow-hidden max-[700px]:fixed max-[700px]:top-auto max-[700px]:bottom-4 max-[700px]:left-2 max-[700px]:right-2 max-[700px]:w-[calc(100%-16px)] max-[700px]:h-auto max-[700px]:max-h-[80vh] max-[700px]:translate-y-0 max-[700px]:rounded-[20px] max-[700px]:shadow-[0_-8px_40px_rgba(0,0,0,0.28)] max-[700px]:z-[10001] max-[700px]:[animation:modal-chat-mobile-in_0.3s_cubic-bezier(0.34,1.2,0.64,1)]">
+ <div className="absolute top-1/2 -translate-y-1/2 right-4 w-[360px] h-[86%] max-h-[520px] z-10 flex flex-col bg-surface rounded-[var(--radius-lg)] shadow-[0_8px_40px_rgba(0,0,0,0.18)] [animation:modal-chat-in_0.28s_cubic-bezier(0.34,1.3,0.64,1)] overflow-hidden max-[700px]:fixed max-[700px]:top-auto max-[700px]:bottom-4 max-[700px]:left-2 max-[700px]:right-2 max-[700px]:w-[calc(100%-16px)] max-[700px]:h-auto max-[700px]:max-h-[80vh] max-[700px]:translate-y-0 max-[700px]:rounded-[var(--radius-lg)] max-[700px]:shadow-[0_-8px_40px_rgba(0,0,0,0.28)] max-[700px]:z-[10001] max-[700px]:[animation:modal-chat-mobile-in_0.3s_cubic-bezier(0.34,1.2,0.64,1)]">
  {/* Header */}
  <div className="bg-[#0D4471] px-4 py-[14px] flex items-center justify-between gap-[10px] flex-shrink-0">
  <div className="flex items-center gap-[10px]">
@@ -460,7 +460,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  <span className="text-[11px] text-subtle">Toca para ver el catálogo completo de planes</span>
  </div>
  <button
- className="flex items-center gap-[3px] bg-none border-none text-[#0094C0] text-[12px] font-semibold cursor-pointer whitespace-nowrap px-[6px] py-[4px] rounded-[6px] transition-colors duration-150 hover:bg-[#DBEAFE] outline-none focus:outline-none"
+ className="flex items-center gap-[3px] bg-none border-none text-[#0094C0] text-[12px] font-semibold cursor-pointer whitespace-nowrap px-[6px] py-[4px] rounded-[var(--radius-xs)] transition-colors duration-150 hover:bg-[#DBEAFE] outline-none focus:outline-none"
  onClick={(e) => { e.stopPropagation(); abrirVisor(); }}
  >
  Ver&nbsp;
@@ -484,7 +484,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  </div>
  )}
  <div className={`max-w-[75%] flex flex-col gap-[3px] ${msg.tipo === "usuario" ? "items-end" : "items-start"}`}>
- <p className={`m-0 px-3 py-[9px] rounded-[14px] text-[12.5px] leading-[1.5] whitespace-pre-line ${msg.tipo === "bot" ? "bg-surface text-fg rounded-tl-[4px] shadow-[0_1px_3px_rgba(0,0,0,0.07)]" : "bg-[#0094C0] text-white rounded-tr-[4px]"}`}>{msg.texto}</p>
+ <p className={`m-0 px-3 py-[9px] rounded-[var(--radius-md)] text-[12.5px] leading-[1.5] whitespace-pre-line ${msg.tipo === "bot" ? "bg-surface text-fg rounded-tl-[4px] shadow-[0_1px_3px_rgba(0,0,0,0.07)]" : "bg-[#0094C0] text-white rounded-tr-[4px]"}`}>{msg.texto}</p>
  <span className="text-[10px] text-subtle">{msg.hora}</span>
  </div>
  </div>
@@ -497,7 +497,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  {CHATBOT_QUICK.map((q) => (
  <button
  key={q}
- className="text-[11px] font-medium px-[11px] py-[5px] rounded-[20px] border-[1.5px] border-[#BAE6FD] bg-base text-[#0369A1] cursor-pointer transition-all duration-150 whitespace-nowrap hover:bg-[#0094C0] hover:border-[#0094C0] hover:text-white outline-none focus:outline-none"
+ className="text-[11px] font-medium px-[11px] py-[5px] rounded-[var(--radius-lg)] border-[1.5px] border-[#BAE6FD] bg-base text-[#0369A1] cursor-pointer transition-all duration-150 whitespace-nowrap hover:bg-[#0094C0] hover:border-[#0094C0] hover:text-white outline-none focus:outline-none"
  onClick={() => handleEnviarChat(q)}
  >
  {q}
@@ -508,7 +508,7 @@ function SelectorPlanContaPlex({ estaAbierto, alCerrar, alProcederPago }) {
  {/* Input */}
  <div className="flex items-center gap-[6px] px-3 py-[10px] border-t border-line-light bg-surface flex-shrink-0">
  <input
- className="flex-1 border-[1.5px] border-line rounded-[20px] px-[14px] py-2 text-[12.5px] outline-none bg-base text-fg transition-[border-color] duration-[0.18s] focus:border-[#0094C0] placeholder:text-subtle"
+ className="flex-1 border-[1.5px] border-line rounded-[var(--radius-lg)] px-[14px] py-2 text-[12.5px] outline-none bg-base text-fg transition-[border-color] duration-[0.18s] focus:border-[#0094C0] placeholder:text-subtle"
  placeholder="Escribe tu pregunta..."
  value={inputChat}
  onChange={(e) => setInputChat(e.target.value)}

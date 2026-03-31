@@ -103,7 +103,7 @@ function TiendaAplicaciones({
       </div>
 
       {/* ── Pestañas ── */}
-      <div className="inline-flex bg-[var(--border-light)] rounded-[10px] p-1 mb-5 gap-1">
+      <div className="inline-flex bg-[var(--border-light)] rounded-[var(--radius-sm)] p-1 mb-5 gap-1">
         <button
           className={`px-[22px] py-[9px] rounded-lg border-none text-[14px] font-medium cursor-pointer whitespace-nowrap transition-all duration-200 ${
             pestanaActiva === "mis"
@@ -127,7 +127,7 @@ function TiendaAplicaciones({
       </div>
 
       {/* ── Buscador ── */}
-      <div className="flex items-center gap-[10px] border border-[var(--border-color)] rounded-[10px] px-4 py-[10px] bg-[var(--surface-color)] mb-5 transition-colors duration-200 focus-within:border-[var(--accent)]">
+      <div className="flex items-center gap-[10px] border border-[var(--border-color)] rounded-[var(--radius-sm)] px-4 py-[10px] bg-[var(--surface-color)] mb-5 transition-colors duration-200 focus-within:border-[var(--accent)]">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round">
           <circle cx="11" cy="11" r="8" />
           <path d="M21 21l-4.35-4.35" />
@@ -159,7 +159,7 @@ function TiendaAplicaciones({
           ))}
         </div>
         <select
-          className="py-[9px] pr-9 pl-[14px] rounded-[8px] border-[1.5px] border-[var(--border-color)] bg-[var(--surface-color)] text-[var(--text-primary)] text-[14px] font-medium cursor-pointer [appearance:none] [-webkit-appearance:none] bg-no-repeat [background-position:right_12px_center] outline-none focus:border-[var(--accent)]"
+          className="py-[9px] pr-9 pl-[14px] rounded-[var(--radius-sm)] border-[1.5px] border-[var(--border-color)] bg-[var(--surface-color)] text-[var(--text-primary)] text-[14px] font-medium cursor-pointer [appearance:none] [-webkit-appearance:none] bg-no-repeat [background-position:right_12px_center] outline-none focus:border-[var(--accent)]"
           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C%2Fsvg%3E")` }}
           value={ordenSeleccionado}
           onChange={(e) => setOrdenSeleccionado(e.target.value)}

@@ -1,16 +1,12 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "./custom.css";
 
 /* ── Dark mode: clase .dark en <html> (Tailwind) O data-theme="dark" (legado) ── */
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
 /* ══════════════════════════════════════════════════════════
-   @theme inline — registra las variables CSS del proyecto
-   como utilidades Tailwind semánticas.
-   "inline" mantiene las referencias var(--) dinámicas en
-   runtime, de modo que al cambiar :root.dark los colores
-   de las clases text-fg, bg-surface, etc. cambian solos.
-   Uso:  bg-surface  text-fg  border-line  bg-brand  etc.
+@theme inline define variables CSS como utilidades de Tailwind, manteniéndolas dinámicas para soportar temas (como dark mode).
 ══════════════════════════════════════════════════════════ */
 
 
@@ -42,6 +38,17 @@
   /* Estados */
   --color-danger:        var(--error-color);
   --color-danger-bg:     var(--error-bg);
+
+  /* ── Animaciones registradas como utilidades Tailwind (animate-*) ── */
+  --animate-slider-overlay:  fadeIn 0.3s ease;
+  --animate-slider-cuenta:   slideInRight 0.3s ease;
+  --animate-mensajes-popup:  mensajesSlideUp 0.25s ease-out;
+  --animate-item-entrada:    item-entrada 0.2s ease-out;
+  --animate-carrito-bar:     carrito-in 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+  --animate-modal-entrada:   modal-entrada 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+  --animate-vcat-fade:       vcat-fade-in 0.2s ease;
+  --animate-vcat-slide:      vcat-slide-in 0.25s cubic-bezier(0.34, 1.3, 0.64, 1);
+  --animate-vcat-spin:       vcat-spin 0.7s linear infinite;
 }
 
 /* ── Animación pantalla de éxito pasarela ── */
@@ -93,6 +100,79 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Header: dropdown + profile slider ── */
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Mensajes flotante + vista ── */
+@keyframes mensajesSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+@keyframes msjDotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Carrito + modal desinstalación ── */
+@keyframes item-entrada {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes carrito-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes modal-entrada {
+  from { opacity: 0; transform: scale(0.88) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Visor catálogo PDF ── */
+@keyframes vcat-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes vcat-slide-in {
+  from { opacity: 0; transform: scale(0.94) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes vcat-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Red social: reactions + menus ── */
+@keyframes popupIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.8); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+@keyframes popupInMobile {
+  from { opacity: 0; transform: translateX(-30%) translateY(10px) scale(0.8); }
+  to   { opacity: 1; transform: translateX(-30%) translateY(0) scale(1); }
+}
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes miniPopupIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px) scale(0.85); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
 
 /* Login — dot grid overlay */
 .login-page::before {
@@ -172,6 +252,13 @@
    VARIABLES GLOBALES - MODO CLARO (default)
 ═══════════════════════════════════════════════════════════ */
 :root {
+  /* ── Border radius — sistema global ── */
+  --radius-xs:  6px;   /* etiquetas, detalles mínimos     */
+  --radius-sm:  10px;  /* ícono-containers, badges        */
+  --radius-md:  15px;  /* cards del feed / dashboard      */
+  --radius-lg:  20px;  /* botones grandes, modales        */
+  --radius-xl:  24px;  /* panels y overlays               */
+
   /* Colores de marca */
   --primary-color: #7F0DF2;
   --secondary-color: #674BEA;

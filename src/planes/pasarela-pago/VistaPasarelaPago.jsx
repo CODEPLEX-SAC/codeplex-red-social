@@ -67,7 +67,7 @@ function formatFecha(date) {
 function PantallaExito({ data, onIrMisApps }) {
   return (
     <div className="md:flex md:items-center md:justify-center md:min-h-[60vh] md:p-[40px_20px]">
-      <div className="bg-surface border-[1.5px] border-line rounded-[18px] p-6 md:p-[40px_36px_36px] max-w-[480px] w-full text-center shadow-[0_4px_24px_rgba(0,0,0,0.07)] [animation:pp-exito-in_0.35s_cubic-bezier(0.34,1.4,0.64,1)]">
+      <div className="bg-surface border-[1.5px] border-line rounded-[var(--radius-lg)] p-6 md:p-[40px_36px_36px] max-w-[480px] w-full text-center shadow-[0_4px_24px_rgba(0,0,0,0.07)] [animation:pp-exito-in_0.35s_cubic-bezier(0.34,1.4,0.64,1)]">
         <div className="w-[72px] h-[72px] rounded-full bg-green-50 border-2 border-green-300 flex items-center justify-center mx-auto mb-5">
           <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
             <path d="M8 19L15 26L30 11" stroke="#22C55E" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -251,7 +251,7 @@ function VistaPasarelaPago({ planData, alVolver, alActivar }) {
 
   /* ── Clases reutilizables ── */
   const inputCls = "border-[1.5px] border-line rounded-lg py-[10px] px-[13px] text-sm text-fg bg-surface outline-none transition-colors w-full box-border focus:border-brand placeholder:text-subtle";
-  const cardCls  = "bg-surface border-[1.5px] border-line rounded-[14px] px-6 py-[22px]";
+  const cardCls  = "bg-surface border-[1.5px] border-line rounded-[var(--radius-md)] px-6 py-[22px]";
   const cardBloqueadoCls = `${cardCls} opacity-[0.42] pointer-events-none select-none [filter:grayscale(0.3)]`;
 
   return (
@@ -434,7 +434,7 @@ function VistaPasarelaPago({ planData, alVolver, alActivar }) {
 
         {/* ══ COLUMNA DERECHA: Resumen ══ */}
         <div className="pp-resumen-col sticky top-[84px] max-h-[calc(100vh-84px)] overflow-y-auto max-[1024px]:top-[124px] max-[1024px]:max-h-[calc(100vh-124px)] max-[860px]:static max-[860px]:order-2">
-          <div className="bg-surface border-[1.5px] border-line rounded-[14px] p-[22px] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+          <div className="bg-surface border-[1.5px] border-line rounded-[var(--radius-md)] p-[22px] shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
             <h3 className="text-base font-bold text-fg m-0 mb-4">Resumen de Pedido</h3>
 
             {/* App */}

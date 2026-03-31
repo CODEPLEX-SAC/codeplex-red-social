@@ -4,7 +4,7 @@ import Publicacion from "./Publicacion";
 
 function EmptyState({ icon, title, description }) {
   return (
-    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[15px] shadow-[0_2px_8px_rgba(0,0,0,0.05)] mb-5">
+    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] mb-5">
       <div style={{ textAlign: "center", padding: "60px 20px" }}>
         <div style={{ fontSize: "64px", marginBottom: "16px" }}>{icon}</div>
         <h3 style={{ color: "var(--text-dark)", marginBottom: "8px" }}>{title}</h3>

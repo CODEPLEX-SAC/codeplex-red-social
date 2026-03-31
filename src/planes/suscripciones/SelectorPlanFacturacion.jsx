@@ -67,11 +67,11 @@ function PopoverDetalleFeature({ nombreFeature, onCerrar }) {
 
  return (
  <div
- className="absolute inset-0 z-[60] bg-black/30 flex items-center justify-center p-5 rounded-[22px] [animation:modal-fade_0.18s_ease]"
+ className="absolute inset-0 z-[60] bg-black/30 flex items-center justify-center p-5 rounded-[var(--radius-xl)] [animation:modal-fade_0.18s_ease]"
  onClick={onCerrar}
  >
  <div
- className="bg-surface rounded-[14px] p-[22px_20px_18px] max-w-[300px] w-full relative shadow-[0_8px_36px_rgba(0,0,0,0.18)] [animation:modal-slide_0.22s_cubic-bezier(0.34,1.4,0.64,1)]"
+ className="bg-surface rounded-[var(--radius-md)] p-[22px_20px_18px] max-w-[300px] w-full relative shadow-[0_8px_36px_rgba(0,0,0,0.18)] [animation:modal-slide_0.22s_cubic-bezier(0.34,1.4,0.64,1)]"
  onClick={(e) => e.stopPropagation()}
  >
  <button
@@ -96,11 +96,11 @@ function PopoverDetalleFeature({ nombreFeature, onCerrar }) {
 function PanelPaquetes({ onCerrar }) {
  return (
  <div
- className="absolute inset-0 z-50 bg-black/35 flex items-center justify-center p-5 [animation:modal-fade_0.2s_ease] rounded-[22px]"
+ className="absolute inset-0 z-50 bg-black/35 flex items-center justify-center p-5 [animation:modal-fade_0.2s_ease] rounded-[var(--radius-xl)]"
  onClick={onCerrar}
  >
  <div
- className="bg-surface rounded-[18px] p-[28px_24px_24px] w-full max-w-[340px] max-h-[80%] overflow-y-auto relative shadow-[0_12px_50px_rgba(0,0,0,0.22)] [animation:modal-slide_0.24s_cubic-bezier(0.34,1.4,0.64,1)] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-line [&::-webkit-scrollbar-thumb]:rounded-[99px] max-[760px]:max-w-full"
+ className="bg-surface rounded-[var(--radius-lg)] p-[28px_24px_24px] w-full max-w-[340px] max-h-[80%] overflow-y-auto relative shadow-[0_12px_50px_rgba(0,0,0,0.22)] [animation:modal-slide_0.24s_cubic-bezier(0.34,1.4,0.64,1)] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-line [&::-webkit-scrollbar-thumb]:rounded-[99px] max-[760px]:max-w-full"
  onClick={(e) => e.stopPropagation()}
  >
  <button
@@ -121,7 +121,7 @@ function PanelPaquetes({ onCerrar }) {
  {PAQUETES_COMPROBANTES.map((p, i) => (
  <div
  key={i}
- className="flex items-center justify-between gap-[10px] border-[1.5px] border-line rounded-[10px] px-[14px] py-[10px] transition-[border-color] duration-150 hover:border-[#99F6E4]"
+ className="flex items-center justify-between gap-[10px] border-[1.5px] border-line rounded-[var(--radius-sm)] px-[14px] py-[10px] transition-[border-color] duration-150 hover:border-[#99F6E4]"
  >
  <div>
  <div className="text-[13px] font-semibold text-fg">{p.rango}</div>
@@ -132,7 +132,7 @@ function PanelPaquetes({ onCerrar }) {
  ))}
  </div>
 
- <div className="bg-[#134E4A] rounded-[12px] p-4 flex flex-col gap-3">
+ <div className="bg-[#134E4A] rounded-[var(--radius-md)] p-4 flex flex-col gap-3">
  <div className="text-[14px] font-bold text-white mb-[6px]">Base de datos privada</div>
  <ul className="list-none p-0 m-0 flex flex-col gap-[5px]">
  {[
@@ -233,7 +233,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  className="fixed inset-0 z-[9999] bg-[rgba(6,30,30,0.55)] backdrop-blur-[6px] flex items-center justify-center p-4 [animation:modal-fade_0.22s_ease]"
  onClick={handleClickOverlay}
  >
- <div className="bg-surface rounded-[22px] w-full max-w-[1100px] max-h-[90vh] overflow-hidden relative flex flex-col [animation:modal-slide_0.28s_cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_24px_80px_rgba(0,0,0,0.22)] max-[760px]:max-h-[92vh] max-[760px]:rounded-[20px]">
+ <div className="bg-surface rounded-[var(--radius-xl)] w-full max-w-[1100px] max-h-[90vh] overflow-hidden relative flex flex-col [animation:modal-slide_0.28s_cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_24px_80px_rgba(0,0,0,0.22)] max-[760px]:max-h-[92vh] max-[760px]:rounded-[var(--radius-lg)]">
 
  {/* Cerrar */}
  <button
@@ -251,7 +251,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
 
  {/* Volver */}
  <button
- className="inline-flex items-center gap-[6px] bg-none border-none text-[13px] font-semibold text-fg cursor-pointer px-2 py-[4px] rounded-[8px] mb-[6px] transition-colors duration-150 hover:bg-black/[0.06] outline-none focus:outline-none"
+ className="inline-flex items-center gap-[6px] bg-none border-none text-[13px] font-semibold text-fg cursor-pointer px-2 py-[4px] rounded-[var(--radius-sm)] mb-[6px] transition-colors duration-150 hover:bg-black/[0.06] outline-none focus:outline-none"
  onClick={handleClose}
  >
  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -272,15 +272,15 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
 
  <div className="flex gap-2 flex-wrap justify-center mt-[2px]">
  {["1 mes gratis", "IGV incluido", "Multiusuario", "Actualizaciones"].map((b) => (
- <span key={b} className="border-[1.5px] border-[#99F6E4] rounded-[20px] px-[14px] py-[4px] text-[12px] font-medium text-[#0F766E] bg-surface">{b}</span>
+ <span key={b} className="border-[1.5px] border-[#99F6E4] rounded-[var(--radius-lg)] px-[14px] py-[4px] text-[12px] font-medium text-[#0F766E] bg-surface">{b}</span>
  ))}
  </div>
 
- <div className="inline-flex bg-base rounded-[10px] p-[4px] gap-[4px] mt-[4px]">
+ <div className="inline-flex bg-base rounded-[var(--radius-sm)] p-[4px] gap-[4px] mt-[4px]">
  {["mensual", "anual"].map((p) => (
  <button
  key={p}
- className={`px-6 py-2 rounded-[8px] border-none text-[13.5px] font-semibold cursor-pointer transition-all duration-[0.18s] outline-none focus:outline-none ${periodoFacturacion === p ? "bg-[#134E4A] text-white shadow-[0_2px_8px_rgba(19,78,74,0.35)]" : "bg-transparent text-muted"}`}
+ className={`px-6 py-2 rounded-[var(--radius-sm)] border-none text-[13.5px] font-semibold cursor-pointer transition-all duration-[0.18s] outline-none focus:outline-none ${periodoFacturacion === p ? "bg-[#134E4A] text-white shadow-[0_2px_8px_rgba(19,78,74,0.35)]" : "bg-transparent text-muted"}`}
  onClick={() => setPeriodoFacturacion(p)}
  >
  {p === "mensual" ? "Mensual" : "Anual"}
@@ -307,7 +307,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  <div
  key={plan.key}
  className={[
- "flex-[0_0_220px] min-w-[220px] border-[1.5px] rounded-[16px] p-[20px_16px_18px] flex flex-col gap-3 transition-[box-shadow,border-color] duration-[0.18s] relative hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] max-[760px]:flex-[0_0_200px] max-[760px]:min-w-[200px]",
+ "flex-[0_0_220px] min-w-[220px] border-[1.5px] rounded-[var(--radius-md)] p-[20px_16px_18px] flex flex-col gap-3 transition-[box-shadow,border-color] duration-[0.18s] relative hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] max-[760px]:flex-[0_0_200px] max-[760px]:min-w-[200px]",
  plan.dark
  ? "bg-[#134E4A] border-[#134E4A] pt-[42px]"
  : "bg-surface border-line",
@@ -340,7 +340,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  </div>
 
  <div className="flex flex-wrap gap-[6px]">
- <span className={`text-[11px] font-semibold px-[10px] py-[3px] rounded-[20px] ${plan.dark ? "border-[1.5px] border-white/55 text-white bg-transparent" : "border-[1.5px] border-[#99F6E4] text-[#0F766E] bg-transparent"}`}>
+ <span className={`text-[11px] font-semibold px-[10px] py-[3px] rounded-[var(--radius-lg)] ${plan.dark ? "border-[1.5px] border-white/55 text-white bg-transparent" : "border-[1.5px] border-[#99F6E4] text-[#0F766E] bg-transparent"}`}>
  {plan.sede}
  </span>
  </div>
@@ -361,7 +361,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  {/* Ver paquetes */}
  <button
  className={[
- "flex items-center gap-[5px] px-[10px] py-[7px] rounded-[8px] text-[11.5px] font-semibold cursor-pointer text-left transition-[border-color,background,color] duration-[0.18s] w-full outline-none focus:outline-none",
+ "flex items-center gap-[5px] px-[10px] py-[7px] rounded-[var(--radius-sm)] text-[11.5px] font-semibold cursor-pointer text-left transition-[border-color,background,color] duration-[0.18s] w-full outline-none focus:outline-none",
  plan.dark
  ? "bg-white/[0.08] border-[1.5px] border-white/30 text-white/90 hover:bg-white/[0.14] hover:border-white/60"
  : "border-[1.5px] border-dashed border-[#99F6E4] bg-surface text-[#0D9488] hover:border-[#0D9488] hover:bg-[#CCFBF1] hover:text-[#0B7A6E]",
@@ -375,7 +375,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
 
  <button
  className={[
- "w-full py-[10px] rounded-[10px] text-[13.5px] font-bold cursor-pointer transition-all duration-[0.18s] mt-auto outline-none focus:outline-none focus-visible:outline-none active:outline-none",
+ "w-full py-[10px] rounded-[var(--radius-sm)] text-[13.5px] font-bold cursor-pointer transition-all duration-[0.18s] mt-auto outline-none focus:outline-none focus-visible:outline-none active:outline-none",
  plan.dark
  ? isSelected
  ? "bg-white/15 border-none text-white"
@@ -409,7 +409,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
 
  {planSeleccionado && (
  <button
- className="flex items-center justify-center gap-2 bg-[#0D9488] text-white border-none rounded-[10px] px-6 py-[13px] text-[14px] font-bold cursor-pointer w-full mt-[10px] transition-[background,transform] duration-[0.2s] hover:bg-[#0B7A6E] hover:-translate-y-px [animation:modal-fade_0.2s_ease]"
+ className="flex items-center justify-center gap-2 bg-[#0D9488] text-white border-none rounded-[var(--radius-sm)] px-6 py-[13px] text-[14px] font-bold cursor-pointer w-full mt-[10px] transition-[background,transform] duration-[0.2s] hover:bg-[#0B7A6E] hover:-translate-y-px [animation:modal-fade_0.2s_ease]"
  onClick={handleConfirmarPlan}
  >
  Continuar con {nombrePlanDisplay}
@@ -420,7 +420,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  )}
 
  {/* Dimmed overlay when chat open */}
- {chatVisible && <div className="absolute inset-0 bg-black/[0.22] z-[2] rounded-[22px] pointer-events-auto" />}
+ {chatVisible && <div className="absolute inset-0 bg-black/[0.22] z-[2] rounded-[var(--radius-xl)] pointer-events-auto" />}
  </div>{/* /planes-wrap */}
 
  {chatVisible && (
@@ -432,7 +432,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
 
  {/* Panel chat */}
  {chatVisible && (
- <div className="absolute top-1/2 -translate-y-1/2 right-4 w-[360px] h-[86%] max-h-[520px] z-10 flex flex-col bg-surface rounded-[18px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] [animation:modal-chat-in_0.28s_cubic-bezier(0.34,1.3,0.64,1)] overflow-hidden max-[760px]:fixed max-[760px]:top-auto max-[760px]:bottom-4 max-[760px]:left-2 max-[760px]:right-2 max-[760px]:w-[calc(100%-16px)] max-[760px]:h-auto max-[760px]:max-h-[80vh] max-[760px]:translate-y-0 max-[760px]:rounded-[20px] max-[760px]:shadow-[0_-8px_40px_rgba(0,0,0,0.28)] max-[760px]:z-[10001] max-[760px]:[animation:modal-chat-mobile-in_0.3s_cubic-bezier(0.34,1.2,0.64,1)]">
+ <div className="absolute top-1/2 -translate-y-1/2 right-4 w-[360px] h-[86%] max-h-[520px] z-10 flex flex-col bg-surface rounded-[var(--radius-lg)] shadow-[0_8px_40px_rgba(0,0,0,0.18)] [animation:modal-chat-in_0.28s_cubic-bezier(0.34,1.3,0.64,1)] overflow-hidden max-[760px]:fixed max-[760px]:top-auto max-[760px]:bottom-4 max-[760px]:left-2 max-[760px]:right-2 max-[760px]:w-[calc(100%-16px)] max-[760px]:h-auto max-[760px]:max-h-[80vh] max-[760px]:translate-y-0 max-[760px]:rounded-[var(--radius-lg)] max-[760px]:shadow-[0_-8px_40px_rgba(0,0,0,0.28)] max-[760px]:z-[10001] max-[760px]:[animation:modal-chat-mobile-in_0.3s_cubic-bezier(0.34,1.2,0.64,1)]">
  <div className="bg-[#134E4A] px-4 py-[14px] flex items-center justify-between gap-[10px] flex-shrink-0">
  <div className="flex items-center gap-[10px]">
  <div className="w-[38px] h-[38px] rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
@@ -472,7 +472,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  <span className="text-[11px] text-subtle">Toca para ver el catálogo completo de planes</span>
  </div>
  <button
- className="flex items-center gap-[3px] bg-none border-none text-[#0D9488] text-[12px] font-semibold cursor-pointer whitespace-nowrap px-[6px] py-[4px] rounded-[6px] transition-colors duration-150 hover:bg-[#CCFBF1] outline-none focus:outline-none"
+ className="flex items-center gap-[3px] bg-none border-none text-[#0D9488] text-[12px] font-semibold cursor-pointer whitespace-nowrap px-[6px] py-[4px] rounded-[var(--radius-xs)] transition-colors duration-150 hover:bg-[#CCFBF1] outline-none focus:outline-none"
  onClick={(e) => { e.stopPropagation(); setVisorPdf({
  url: "/catalogos/facturacion-electronica-2025.pdf",
  nombre: "Catálogo Facturación Electrónica 2025.pdf",
@@ -497,7 +497,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  </div>
  )}
  <div className={`max-w-[75%] flex flex-col gap-[3px] ${msg.tipo === "usuario" ? "items-end" : "items-start"}`}>
- <p className={`m-0 px-3 py-[9px] rounded-[14px] text-[12.5px] leading-[1.5] whitespace-pre-line ${msg.tipo === "bot" ? "bg-surface text-fg rounded-tl-[4px] shadow-[0_1px_3px_rgba(0,0,0,0.07)]" : "bg-[#0D9488] text-white rounded-tr-[4px]"}`}>{msg.texto}</p>
+ <p className={`m-0 px-3 py-[9px] rounded-[var(--radius-md)] text-[12.5px] leading-[1.5] whitespace-pre-line ${msg.tipo === "bot" ? "bg-surface text-fg rounded-tl-[4px] shadow-[0_1px_3px_rgba(0,0,0,0.07)]" : "bg-[#0D9488] text-white rounded-tr-[4px]"}`}>{msg.texto}</p>
  <span className="text-[10px] text-subtle">{msg.hora}</span>
  </div>
  </div>
@@ -509,7 +509,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
  {CHATBOT_PREGUNTAS_FACTURACION.map((q) => (
  <button
  key={q}
- className="text-[11px] font-medium px-[11px] py-[5px] rounded-[20px] border-[1.5px] border-[#99F6E4] bg-surface text-[#0F766E] cursor-pointer transition-all duration-150 whitespace-nowrap hover:bg-[#0D9488] hover:border-[#0D9488] hover:text-white outline-none focus:outline-none"
+ className="text-[11px] font-medium px-[11px] py-[5px] rounded-[var(--radius-lg)] border-[1.5px] border-[#99F6E4] bg-surface text-[#0F766E] cursor-pointer transition-all duration-150 whitespace-nowrap hover:bg-[#0D9488] hover:border-[#0D9488] hover:text-white outline-none focus:outline-none"
  onClick={() => handleEnviarChat(q)}
  >
  {q}
@@ -519,7 +519,7 @@ function SelectorPlanFacturacion({ estaAbierto, alCerrar, alProcederPago }) {
 
  <div className="flex items-center gap-[6px] px-3 py-[10px] border-t border-line-light bg-surface flex-shrink-0">
  <input
- className="flex-1 border-[1.5px] border-line rounded-[20px] px-[14px] py-2 text-[12.5px] outline-none bg-base text-fg transition-[border-color] duration-[0.18s] focus:border-[#0D9488] placeholder:text-subtle"
+ className="flex-1 border-[1.5px] border-line rounded-[var(--radius-lg)] px-[14px] py-2 text-[12.5px] outline-none bg-base text-fg transition-[border-color] duration-[0.18s] focus:border-[#0D9488] placeholder:text-subtle"
  placeholder="Escribe tu pregunta..."
  value={inputChat}
  onChange={(e) => setInputChat(e.target.value)}

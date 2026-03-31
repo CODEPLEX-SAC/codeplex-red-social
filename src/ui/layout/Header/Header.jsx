@@ -3,7 +3,6 @@ import Icon from "../../Icon/Icon";
 import ProfileSlider from "../../../identidad/cuenta/ProfileSlider";
 import { useTheme } from "../useTheme";
 import { useSesion } from "../../../identidad/sesion/SesionContext";
-import "./Header.css";
 import RegistroEmpresa from "../../../organizacion/empresas/RegistroEmpresa";
 import IconoAplicacion from "../../../planes/aplicaciones/IconoAplicacion";
 
@@ -18,6 +17,18 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
   const { darkMode, toggleDarkMode } = useTheme();
   const headerWrapperRef = useRef(null);
 
+  /* ── Publicar altura real del header en --header-height ── */
+  useEffect(() => {
+    const el = headerWrapperRef.current;
+    if (!el) return;
+    const update = () =>
+      document.documentElement.style.setProperty("--header-height", `${el.offsetHeight}px`);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   /* ── Cerrar dropdown al hacer clic fuera ── */
   useEffect(() => {
     if (!showMisApps) return;
@@ -27,14 +38,14 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
   }, [showMisApps]);
 
   const navBtnClass = (vista) =>
-    `border px-[18px] py-2 rounded-[8px] cursor-pointer text-[14px] font-medium font-[inherit] transition-all duration-200 whitespace-nowrap ${
+    `border px-[18px] py-2 rounded-[var(--radius-sm)] cursor-pointer text-[14px] font-medium font-[inherit] transition-all duration-200 whitespace-nowrap ${
       vistaActiva === vista
         ? "bg-gradient-to-br from-[var(--primary-color)] to-[var(--secondary-color)] border-transparent text-white shadow-[0_2px_8px_rgba(127,13,242,0.3)] hover:border-transparent hover:text-white hover:-translate-y-px hover:shadow-[0_4px_12px_rgba(127,13,242,0.4)]"
         : "bg-transparent border-[var(--border-color)] text-[var(--text-dark)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]"
     }`;
 
   const row2BtnClass = (vista) =>
-    `flex-1 h-9 px-[10px] rounded-[8px] text-[13px] font-medium cursor-pointer font-[inherit] flex items-center justify-center gap-[5px] transition-all duration-200 whitespace-nowrap ${
+    `flex-1 h-9 px-[10px] rounded-[var(--radius-sm)] text-[13px] font-medium cursor-pointer font-[inherit] flex items-center justify-center gap-[5px] transition-all duration-200 whitespace-nowrap ${
       vistaActiva === vista
         ? "bg-gradient-to-br from-[var(--primary-color)] to-[var(--secondary-color)] text-white border-transparent shadow-[0_2px_8px_rgba(127,13,242,0.25)] hover:text-white hover:border-transparent hover:shadow-[0_4px_12px_rgba(127,13,242,0.38)]"
         : "border border-[var(--border-color)] text-[var(--text-dark)] bg-transparent hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]"
@@ -60,7 +71,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
           {/* LEFT: hamburger + logo */}
           <div className="flex items-center gap-[10px] shrink-0">
             <button
-              className="flex lg:hidden items-center justify-center bg-transparent border-none cursor-pointer p-[6px] rounded-[6px] text-[var(--text-dark)] transition-[background] duration-200 hover:bg-[var(--background-color)]"
+              className="flex lg:hidden items-center justify-center bg-transparent border-none cursor-pointer p-[6px] rounded-[var(--radius-xs)] text-[var(--text-dark)] transition-[background] duration-200 hover:bg-[var(--background-color)]"
               onClick={alAlternarMenu}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -81,7 +92,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
           <div className="flex items-center flex-1 justify-center lg:flex-none lg:justify-start">
             <div className="relative" onClick={(e) => e.stopPropagation()}>
               <button
-                className={`flex items-center gap-[7px] bg-transparent border border-[var(--border-color)] cursor-pointer px-[10px] lg:px-4 py-2 rounded-[8px] text-[14px] font-medium text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:bg-[var(--hover-color)] hover:border-[var(--primary-color)] ${showMisApps ? "bg-[var(--background-color)]" : ""}`}
+                className={`flex items-center gap-[7px] bg-transparent border border-[var(--border-color)] cursor-pointer px-[10px] lg:px-4 py-2 rounded-[var(--radius-sm)] text-[14px] font-medium text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:bg-[var(--hover-color)] hover:border-[var(--primary-color)] ${showMisApps ? "bg-[var(--background-color)]" : ""}`}
                 onClick={() => setShowMisApps((v) => !v)}
               >
                 <span className="flex items-center shrink-0">
@@ -101,7 +112,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                 <span className="hidden lg:inline">Mis Aplicaciones</span>
                 <span className="inline lg:hidden">Mis Apps</span>
                 {misApps.length > 0 && (
-                  <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-[5px] bg-gradient-to-br from-[#7F0DF2] to-[#588CE5] text-white text-[10px] font-bold rounded-[9px] shrink-0">
+                  <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-[5px] bg-gradient-to-br from-[#7F0DF2] to-[#588CE5] text-white text-[10px] font-bold rounded-[var(--radius-sm)] shrink-0">
                     {misApps.length}
                   </span>
                 )}
@@ -116,12 +127,12 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
 
               {/* ── Dropdown ── */}
               {showMisApps && (
-                <div className="mis-apps-dropdown absolute top-[calc(100%+8px)] left-0 w-[290px] lg:w-[290px] bg-[var(--white-color)] border border-[var(--border-color)] rounded-[12px] shadow-[0_8px_24px_rgba(0,0,0,0.12)] z-[600] overflow-hidden">
+                <div className="mis-apps-dropdown absolute top-[calc(100%+8px)] left-0 w-[290px] lg:w-[290px] bg-[var(--white-color)] border border-[var(--border-color)] rounded-[var(--radius-md)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] z-[600] overflow-hidden">
 
                   <div className="px-4 pt-[14px] pb-[10px] text-[12px] font-bold text-[var(--text-gray)] uppercase tracking-[0.5px] border-b border-[var(--border-color)] flex items-center justify-between">
                     Mis Aplicaciones activas
                     <button
-                      className="bg-transparent border-none cursor-pointer p-[2px] flex items-center justify-center text-[var(--text-gray)] rounded-[4px] transition-[background,color] duration-150 shrink-0 hover:bg-[var(--background-color)] hover:text-[var(--text-dark)]"
+                      className="bg-transparent border-none cursor-pointer p-[2px] flex items-center justify-center text-[var(--text-gray)] rounded-[var(--radius-xs)] transition-[background,color] duration-150 shrink-0 hover:bg-[var(--background-color)] hover:text-[var(--text-dark)]"
                       onClick={() => setShowMisApps(false)}
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -135,7 +146,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                       Aún no tienes aplicaciones activas
                     </div>
                   ) : (
-                    <div className="py-[6px] max-h-[280px] overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[var(--border-color)] [&::-webkit-scrollbar-thumb]:rounded-[4px]">
+                    <div className="py-[6px] max-h-[280px] overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[var(--border-color)] [&::-webkit-scrollbar-thumb]:rounded-[var(--radius-xs)]">
                       {misApps.map((app) => {
                         const isActiva = appsActivas.some((a) => a.id === app.id);
                         return (
@@ -144,7 +155,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                             className={`w-full flex items-center gap-[10px] px-4 py-[10px] bg-transparent border-none cursor-pointer font-[inherit] text-left transition-[background] duration-150 hover:bg-[var(--background-color)] ${isActiva ? "bg-[rgba(127,13,242,0.04)]" : ""}`}
                             onClick={() => alAlternarAppActiva(app)}
                           >
-                            <span className="w-9 h-9 rounded-[9px] overflow-hidden shrink-0 flex items-center justify-center [&_svg]:!w-9 [&_svg]:!h-9">
+                            <span className="w-9 h-9 rounded-[var(--radius-sm)] overflow-hidden shrink-0 flex items-center justify-center [&_svg]:!w-9 [&_svg]:!h-9">
                               <IconoAplicacion tipo={app.icono} colorTema={app.colorTema} />
                             </span>
                             <span className="flex-1 flex flex-col gap-[2px] min-w-0">
@@ -153,7 +164,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                                 {app.publisher} · Plan {app.planDisplay || app.planSeleccionado}
                               </span>
                             </span>
-                            <span className={`w-[18px] h-[18px] rounded-[5px] border-2 shrink-0 flex items-center justify-center transition-all duration-150 ${isActiva ? "bg-[#7F0DF2] border-[#7F0DF2]" : "border-[var(--border-color)] bg-transparent"}`}>
+                            <span className={`w-[18px] h-[18px] rounded-[var(--radius-xs)] border-2 shrink-0 flex items-center justify-center transition-all duration-150 ${isActiva ? "bg-[#7F0DF2] border-[#7F0DF2]" : "border-[var(--border-color)] bg-transparent"}`}>
                               {isActiva && (
                                 <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                   <polyline points="2 6 5 9 10 3" />
@@ -168,10 +179,10 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
 
                   {/* Acciones */}
                   <div className="flex gap-2 px-4 py-[10px] border-t border-[var(--border-color)]">
-                    <button className="flex-1 py-[7px] px-[10px] rounded-[7px] text-[12px] font-semibold cursor-pointer font-[inherit] transition-all duration-150 bg-[var(--background-color)] border border-[var(--border-color)] text-[var(--text-dark)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={alSeleccionarTodasApps}>
+                    <button className="flex-1 py-[7px] px-[10px] rounded-[var(--radius-xs)] text-[12px] font-semibold cursor-pointer font-[inherit] transition-all duration-150 bg-[var(--background-color)] border border-[var(--border-color)] text-[var(--text-dark)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={alSeleccionarTodasApps}>
                       Seleccionar todas
                     </button>
-                    <button className="flex-1 py-[7px] px-[10px] rounded-[7px] text-[12px] font-semibold cursor-pointer font-[inherit] transition-all duration-150 bg-[var(--background-color)] border border-[var(--border-color)] text-[var(--text-dark)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={alDeseleccionarTodasApps}>
+                    <button className="flex-1 py-[7px] px-[10px] rounded-[var(--radius-xs)] text-[12px] font-semibold cursor-pointer font-[inherit] transition-all duration-150 bg-[var(--background-color)] border border-[var(--border-color)] text-[var(--text-dark)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={alDeseleccionarTodasApps}>
                       Deseleccionar
                     </button>
                   </div>
@@ -195,7 +206,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
 
           {/* DESKTOP NAV */}
           <div className="hidden lg:flex items-center gap-2 shrink-0">
-            <button className="bg-transparent border border-[var(--border-color)] px-4 py-2 rounded-[8px] cursor-pointer flex items-center gap-[6px] text-[14px] text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={() => setShowModalEmpresa(true)}>
+            <button className="bg-transparent border border-[var(--border-color)] px-4 py-2 rounded-[var(--radius-sm)] cursor-pointer flex items-center gap-[6px] text-[14px] text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={() => setShowModalEmpresa(true)}>
               <span>+</span>
               <span>Agregar Empresa</span>
             </button>
@@ -214,7 +225,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
             {itemsCarrito.length > 0 && (
               <button className="hidden md:flex relative items-center shrink-0 bg-transparent border-none cursor-pointer p-0" onClick={alVerCarrito} title="Ver carrito">
                 {/* Pill — desktop lg+ */}
-                <span className="hidden lg:flex items-center gap-[7px] bg-[var(--primary-color)] text-white py-[7px] pl-[10px] pr-[14px] rounded-[20px] text-[13px] font-semibold whitespace-nowrap transition-opacity duration-200 hover:opacity-[0.88]">
+                <span className="hidden lg:flex items-center gap-[7px] bg-[var(--primary-color)] text-white py-[7px] pl-[10px] pr-[14px] rounded-[var(--radius-lg)] text-[13px] font-semibold whitespace-nowrap transition-opacity duration-200 hover:opacity-[0.88]">
                   <span className="relative flex items-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
@@ -253,7 +264,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
 
             {modoExploracion ? (
               <button
-                className="bg-gradient-to-br from-[#7F0DF2] to-[#588CE5] text-white border-none px-[18px] py-[7px] rounded-[20px] text-[13px] font-bold cursor-pointer tracking-[0.02em] transition-[opacity,background] duration-150 hover:opacity-[0.88] [@media(max-width:767px)]:p-0 [@media(max-width:767px)]:rounded-full [@media(max-width:767px)]:w-[34px] [@media(max-width:767px)]:h-[34px] [@media(max-width:767px)]:bg-transparent [@media(max-width:767px)]:border-2 [@media(max-width:767px)]:border-[#7F0DF2] [@media(max-width:767px)]:text-[#7F0DF2] [@media(max-width:767px)]:flex [@media(max-width:767px)]:items-center [@media(max-width:767px)]:justify-center [@media(max-width:767px)]:hover:bg-[rgba(127,13,242,0.1)] [@media(max-width:767px)]:hover:opacity-100"
+                className="bg-gradient-to-br from-[#7F0DF2] to-[#588CE5] text-white border-none px-[18px] py-[7px] rounded-[var(--radius-lg)] text-[13px] font-bold cursor-pointer tracking-[0.02em] transition-[opacity,background] duration-150 hover:opacity-[0.88] [@media(max-width:767px)]:p-0 [@media(max-width:767px)]:rounded-full [@media(max-width:767px)]:w-[34px] [@media(max-width:767px)]:h-[34px] [@media(max-width:767px)]:bg-transparent [@media(max-width:767px)]:border-2 [@media(max-width:767px)]:border-[#7F0DF2] [@media(max-width:767px)]:text-[#7F0DF2] [@media(max-width:767px)]:flex [@media(max-width:767px)]:items-center [@media(max-width:767px)]:justify-center [@media(max-width:767px)]:hover:bg-[rgba(127,13,242,0.1)] [@media(max-width:767px)]:hover:opacity-100"
                 onClick={comenzarAutenticacion}
               >
                 <svg className="inline-block md:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

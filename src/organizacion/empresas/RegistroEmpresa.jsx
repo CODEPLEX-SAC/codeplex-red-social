@@ -5,7 +5,7 @@ import { useRegistroEmpresa } from "./useRegistroEmpresa";
 
 /* ── Clases reutilizables ── */
 const inputCls = (error) =>
-  `h-[38px] px-3 border-[1.5px] rounded-[9px] text-[13.5px] font-[inherit] transition-all outline-none w-full box-border
+  `h-[38px] px-3 border-[1.5px] rounded-[var(--radius-sm)] text-[13.5px] font-[inherit] transition-all outline-none w-full box-border
    border-field-border bg-field text-field-text
    focus:border-brand-alt focus:bg-panel focus:shadow-[0_0_0_3px_var(--focus-ring)]
    ${error ? "border-danger bg-danger-bg" : ""}`;
@@ -37,7 +37,7 @@ function RegistroEmpresa({ estaAbierto, alCerrar, alExito }) {
       onClick={handleOverlayClick}
     >
       <div
-        className="bg-panel rounded-[18px] w-full max-w-[600px] max-h-[92vh] flex flex-col overflow-hidden"
+        className="bg-panel rounded-[var(--radius-lg)] w-full max-w-[600px] max-h-[92vh] flex flex-col overflow-hidden"
         style={{
           boxShadow: "var(--shadow-lg), var(--shadow-md)",
           transform: estaAbierto ? "translateY(0) scale(1)" : "translateY(24px) scale(0.98)",
@@ -67,7 +67,7 @@ function RegistroEmpresa({ estaAbierto, alCerrar, alExito }) {
                 </div>
               </div>
               <button
-                className="w-8 h-8 rounded-[9px] bg-white/[0.12] border border-white/[0.18] text-white/75 cursor-pointer flex items-center justify-center transition-all shrink-0 hover:bg-white/[0.22] hover:text-white"
+                className="w-8 h-8 rounded-[var(--radius-sm)] bg-white/[0.12] border border-white/[0.18] text-white/75 cursor-pointer flex items-center justify-center transition-all shrink-0 hover:bg-white/[0.22] hover:text-white"
                 onClick={alCerrar}
                 aria-label="Cerrar"
               >
@@ -92,7 +92,7 @@ function RegistroEmpresa({ estaAbierto, alCerrar, alExito }) {
                   onChange={e => { set("ruc", e.target.value.replace(/\D/g, "")); clearErr("ruc"); }}
                 />
                 <button
-                  className="h-[38px] px-3.5 rounded-[9px] text-white text-[12.5px] font-semibold border-0 cursor-pointer whitespace-nowrap font-[inherit] transition-all shrink-0 hover:-translate-y-px"
+                  className="h-[38px] px-3.5 rounded-[var(--radius-sm)] text-white text-[12.5px] font-semibold border-0 cursor-pointer whitespace-nowrap font-[inherit] transition-all shrink-0 hover:-translate-y-px"
                   style={{ background: "linear-gradient(135deg, var(--secondary-color), #4a2fcf)", boxShadow: "var(--shadow-primary)" }}
                   onClick={() => { if (/^\d{11}$/.test(form.ruc)) alert("Validando con SUNAT..."); }}
                 >
@@ -265,14 +265,14 @@ function RegistroEmpresa({ estaAbierto, alCerrar, alExito }) {
         {/* FOOTER */}
         <div className="flex items-center justify-end px-6 py-3.5 border-t border-line-light bg-panel gap-2.5">
           <button
-            className="flex items-center gap-1.5 px-[18px] h-[38px] rounded-[9px] text-[13.5px] font-semibold cursor-pointer font-[inherit] transition-all bg-transparent text-muted border-[1.5px] border-field-border hover:border-brand-alt hover:text-brand-alt"
+            className="flex items-center gap-1.5 px-[18px] h-[38px] rounded-[var(--radius-sm)] text-[13.5px] font-semibold cursor-pointer font-[inherit] transition-all bg-transparent text-muted border-[1.5px] border-field-border hover:border-brand-alt hover:text-brand-alt"
             onClick={alCerrar}
           >
             <Icon name="cancelar" size={14} />
             Cancelar
           </button>
           <button
-            className="flex items-center gap-1.5 px-[18px] h-[38px] rounded-[9px] text-[13.5px] font-semibold cursor-pointer font-[inherit] transition-all text-white hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(103,75,234,0.4)]"
+            className="flex items-center gap-1.5 px-[18px] h-[38px] rounded-[var(--radius-sm)] text-[13.5px] font-semibold cursor-pointer font-[inherit] transition-all text-white hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(103,75,234,0.4)]"
             style={{ background: "linear-gradient(135deg, var(--secondary-color), #4a2fcf)", boxShadow: "var(--shadow-primary)" }}
             onClick={handleSubmit}
           >
@@ -312,7 +312,7 @@ function Field({ label, required, error, children }) {
 function ToggleSwitch({ on, baja, disabled, onChange }) {
   return (
     <button
-      className={`w-10 h-[22px] rounded-[11px] relative transition-colors duration-[250ms] shrink-0 cursor-pointer border-0 p-0
+      className={`w-10 h-[22px] rounded-[var(--radius-sm)] relative transition-colors duration-[250ms] shrink-0 cursor-pointer border-0 p-0
         ${on && baja ? "bg-danger" : on ? "bg-brand-alt" : "bg-line"}`}
       onClick={onChange}
       disabled={disabled}
@@ -345,7 +345,7 @@ function CustomSelect({ options, value, placeholder, onChange, error, compact })
       ref={ref}
     >
       <button
-        className={`w-full h-[38px] border-[1.5px] rounded-[9px] text-[13.5px] font-[inherit] cursor-pointer flex items-center justify-between transition-all text-left
+        className={`w-full h-[38px] border-[1.5px] rounded-[var(--radius-sm)] text-[13.5px] font-[inherit] cursor-pointer flex items-center justify-between transition-all text-left
           bg-field text-field-text
           hover:border-brand-alt hover:bg-panel
           focus:border-brand-alt focus:bg-panel focus:outline-none focus:shadow-[0_0_0_3px_var(--focus-ring)]
@@ -367,7 +367,7 @@ function CustomSelect({ options, value, placeholder, onChange, error, compact })
 
       {open && (
         <ul
-          className={`absolute top-[calc(100%+4px)] left-0 right-0 z-[200] bg-panel border-[1.5px] border-violet-700/15 rounded-[11px] list-none p-[5px] m-0 max-h-[180px] overflow-y-auto [animation:mce-slide-in-kf_0.14s_ease]
+          className={`absolute top-[calc(100%+4px)] left-0 right-0 z-[200] bg-panel border-[1.5px] border-violet-700/15 rounded-[var(--radius-sm)] list-none p-[5px] m-0 max-h-[180px] overflow-y-auto [animation:mce-slide-in-kf_0.14s_ease]
             ${compact ? "w-40" : ""}
           `}
           style={{ boxShadow: "var(--shadow-lg), var(--shadow-md)" }}
@@ -375,7 +375,7 @@ function CustomSelect({ options, value, placeholder, onChange, error, compact })
           {options.map(opt => (
             <li
               key={opt}
-              className={`px-[11px] py-2 rounded-[7px] text-[13px] text-fg cursor-pointer flex items-center justify-between transition-colors hover:bg-[var(--hover-color)]
+              className={`px-[11px] py-2 rounded-[var(--radius-xs)] text-[13px] text-fg cursor-pointer flex items-center justify-between transition-colors hover:bg-[var(--hover-color)]
                 ${value === opt ? "bg-[var(--hover-color)] text-brand-alt font-semibold" : ""}`}
               onClick={() => { onChange(opt); setOpen(false); }}
             >

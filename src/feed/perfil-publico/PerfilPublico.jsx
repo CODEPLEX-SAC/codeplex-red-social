@@ -31,16 +31,16 @@ const tabClass = (activo) =>
   }`;
 
 const estadoBadgeClass = (tipo) =>
-  `text-[11px] font-semibold px-2 py-[2px] rounded-[12px] w-fit ${
+  `text-[11px] font-semibold px-2 py-[2px] rounded-[var(--radius-md)] w-fit ${
     tipo === "optimo"
       ? "bg-[var(--success-bg)] text-[var(--success-color)]"
       : "bg-[var(--info-bg)] text-[var(--info-color)]"
   }`;
 
-const seccion = "bg-[var(--white-color)] rounded-[12px] p-5 border border-[var(--border-color)]";
+const seccion = "bg-[var(--white-color)] rounded-[var(--radius-md)] p-5 border border-[var(--border-color)]";
 const tituloSm = "text-[11px] font-bold text-[var(--text-muted)] tracking-[0.5px] m-0 mb-4";
 const tituloLg = "text-[16px] font-bold text-[var(--text-dark)] m-0 mb-4";
-const iconoBtn = "w-9 h-9 bg-[var(--primary-color)] rounded-[8px] flex items-center justify-center shrink-0";
+const iconoBtn = "w-9 h-9 bg-[var(--primary-color)] rounded-[var(--radius-sm)] flex items-center justify-center shrink-0";
 const barraWrap = "h-1 bg-[var(--border-color)] rounded-[2px] overflow-hidden mt-[6px]";
 const barraRelleno = "h-full bg-[var(--primary-color)] rounded-[2px]";
 
@@ -73,7 +73,7 @@ function TabRedSocial() {
 
       <div className={seccion}>
         <h4 className={tituloLg}>Publicaciones</h4>
-        <div className="border border-[var(--border-color)] rounded-[12px] p-4 mb-3 last:mb-0">
+        <div className="border border-[var(--border-color)] rounded-[var(--radius-md)] p-4 mb-3 last:mb-0">
           <div className="flex items-center gap-[10px] mb-[10px]">
             <img src={USUARIO_JUAN.avatar} alt="" className="w-9 h-9 rounded-full object-cover" />
             <div className="flex-1 flex flex-col gap-[2px]">
@@ -100,9 +100,9 @@ function TabRedSocial() {
           <Comentarios visible={showComments} />
         </div>
 
-        <div className="border border-[var(--border-color)] rounded-[12px] p-4">
+        <div className="border border-[var(--border-color)] rounded-[var(--radius-md)] p-4">
           <div className="flex items-center gap-[10px] mb-[10px]">
-            <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-bold px-[10px] py-[3px] rounded-[12px]">Respuesta correcta</span>
+            <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-bold px-[10px] py-[3px] rounded-[var(--radius-md)]">Respuesta correcta</span>
             <span className="text-[12px] text-[var(--text-muted)]">en Comunidad · Hace 1 hora</span>
           </div>
           <p className="text-[13px] text-[var(--text-dark)] leading-[1.5] m-0 mb-[10px] italic">
@@ -148,21 +148,21 @@ function TabResumen() {
                 <span className="text-[13px] font-semibold text-[var(--text-dark)]">{t.titulo}</span>
                 <span className="text-[12px] text-[var(--text-muted)]">{t.inst}</span>
               </div>
-              <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-semibold px-2 py-[2px] rounded-[12px] whitespace-nowrap shrink-0">Verificado</span>
+              <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-semibold px-2 py-[2px] rounded-[var(--radius-md)] whitespace-nowrap shrink-0">Verificado</span>
             </div>
           ))}
           <button className="bg-transparent border-none text-[var(--primary-color)] text-[13px] font-semibold cursor-pointer pt-[10px] flex items-center gap-[6px]">
             Ver más información detallada →
           </button>
         </div>
-        <div className="bg-[var(--white-color)] border border-[var(--border-color)] rounded-[12px] p-5 flex flex-col items-center text-center gap-2 [@media(max-width:900px)]:max-w-[320px]">
+        <div className="bg-[var(--white-color)] border border-[var(--border-color)] rounded-[var(--radius-md)] p-5 flex flex-col items-center text-center gap-2 [@media(max-width:900px)]:max-w-[320px]">
           <h4 className="text-[14px] font-bold text-[var(--text-dark)] m-0">Nivel de Maestría</h4>
           <div className="w-16 h-16 bg-gradient-to-br from-[#fef3c7] to-[#fde68a] rounded-full flex items-center justify-center border-[3px] border-[#f59e0b]">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#b45309" strokeWidth="1.5">
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
             </svg>
           </div>
-          <div className="bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[10px] font-bold px-[10px] py-[3px] rounded-[6px] tracking-[0.5px]">
+          <div className="bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[10px] font-bold px-[10px] py-[3px] rounded-[var(--radius-xs)] tracking-[0.5px]">
             LEVEL 5
           </div>
           <p className="text-[13px] font-bold text-[var(--text-dark)] m-0">Profesional de nivel PLATA</p>
@@ -202,7 +202,7 @@ function TabExperiencia() {
         <h4 className={tituloLg}>Experiencia Laboral (Portafolio)</h4>
         {trabajos.map((t, i) => (
           <div key={i} className="flex gap-[14px] py-[14px] border-b border-[var(--border-color)] last:border-b-0">
-            <div className="w-10 h-10 bg-[var(--primary-color)] rounded-[8px] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 bg-[var(--primary-color)] rounded-[var(--radius-sm)] flex items-center justify-center shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                 <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
               </svg>
@@ -239,7 +239,7 @@ function TabDocumentos({ nombre }) {
         <h4 className={tituloLg}>Documentos</h4>
         {DOCS_MOCK.map((doc, i) => (
           <div key={i} className="flex items-center gap-[14px] py-3 border-b border-[var(--border-color)] last:border-b-0">
-            <div className="w-11 h-11 rounded-[10px] bg-gradient-to-br from-[var(--primary-color)] to-[#7c3aed] flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 rounded-[var(--radius-sm)] bg-gradient-to-br from-[var(--primary-color)] to-[#7c3aed] flex items-center justify-center shrink-0">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
               </svg>
@@ -250,7 +250,7 @@ function TabDocumentos({ nombre }) {
             </div>
           </div>
         ))}
-        <div className="mt-4 px-4 py-3 border border-[var(--warning-border)] rounded-[10px] bg-[var(--warning-bg)] text-[13px] text-[var(--warning-color)] leading-[1.5]">
+        <div className="mt-4 px-4 py-3 border border-[var(--warning-border)] rounded-[var(--radius-sm)] bg-[var(--warning-bg)] text-[13px] text-[var(--warning-color)] leading-[1.5]">
           🔔 Para acceder a los documentos completos, <strong>{nombre}</strong> debe autorizar tu empresa. Podés solicitarlo a través del botón <strong>Contratar</strong>.
         </div>
       </div>
@@ -292,7 +292,7 @@ function TabMetricas() {
         </div>
         <div className="grid grid-cols-4 gap-3 [@media(max-width:900px)]:grid-cols-2">
           {metricasComportamiento.map((m, i) => (
-            <div key={i} className="bg-[var(--background-color)] border border-[var(--border-color)] rounded-[10px] p-[14px] flex flex-col gap-1">
+            <div key={i} className="bg-[var(--background-color)] border border-[var(--border-color)] rounded-[var(--radius-sm)] p-[14px] flex flex-col gap-1">
               <p className="text-[11px] text-[var(--text-muted)] m-0 leading-[1.3]">{m.label}</p>
               <p className="text-[22px] font-bold text-[var(--text-dark)] my-1">{m.valor}</p>
               <span className={estadoBadgeClass(m.estadoClass)}>
@@ -314,7 +314,7 @@ function TabMetricas() {
         </div>
         <div className="grid grid-cols-3 gap-3">
           {metricasProfesionales.map((m, i) => (
-            <div key={i} className="bg-[var(--background-color)] border border-[var(--border-color)] rounded-[10px] p-4">
+            <div key={i} className="bg-[var(--background-color)] border border-[var(--border-color)] rounded-[var(--radius-sm)] p-4">
               <h5 className="text-[13px] font-bold text-[var(--text-dark)] m-0 mb-3">{m.titulo}</h5>
               {m.items.map((it, j) => (
                 <div key={j} className="flex justify-between text-[12px] text-[var(--text-muted)] py-1 border-b border-[var(--border-color)] mb-1">
@@ -341,7 +341,7 @@ function DatosHeader({ nombre, especialidad }) {
     <>
       <div className="flex items-center gap-2 flex-wrap [@media(max-width:520px)]:justify-center" style={{ marginBottom: 4 }}>
         <h2 className="text-[20px] font-bold text-[var(--text-dark)] m-0">{nombre}</h2>
-        <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-semibold px-2 py-[2px] rounded-[12px] border border-[var(--success-border)]">Verificado</span>
+        <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-semibold px-2 py-[2px] rounded-[var(--radius-md)] border border-[var(--success-border)]">Verificado</span>
       </div>
       <p className="text-[13px] text-[var(--text-muted)] mt-1 mb-3">{especialidad}</p>
       <hr className="border-none border-t border-[var(--border-color)] my-[10px] mb-3" />
@@ -353,10 +353,10 @@ function DatosHeader({ nombre, especialidad }) {
 const TIPOS_CONTRATACION = ["Por proyecto", "Por hora", "Mensual", "Freelance"];
 
 function ModalContratar({ nombre, onCerrar }) {
-  const inputCls = "px-[14px] py-[10px] border border-[var(--border-color)] rounded-[8px] text-[14px] bg-[var(--white-color)] text-[var(--text-dark)] outline-none focus:border-[var(--primary-color)]";
+  const inputCls = "px-[14px] py-[10px] border border-[var(--border-color)] rounded-[var(--radius-sm)] text-[14px] bg-[var(--white-color)] text-[var(--text-dark)] outline-none focus:border-[var(--primary-color)]";
   return (
     <div className="fixed inset-0 bg-[rgba(0,0,0,0.45)] flex items-center justify-center z-[2000]" onClick={onCerrar}>
-      <div className="bg-[var(--white-color)] rounded-[16px] p-7 w-full max-w-[480px] flex flex-col gap-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.18)]" onClick={e => e.stopPropagation()}>
+      <div className="bg-[var(--white-color)] rounded-[var(--radius-md)] p-7 w-full max-w-[480px] flex flex-col gap-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.18)]" onClick={e => e.stopPropagation()}>
         <h3 className="text-[17px] font-bold text-[var(--text-dark)] m-0">Contratar a {nombre}</h3>
 
         <label className="flex flex-col gap-[6px] text-[13px] font-semibold text-[var(--text-dark)]">
@@ -385,7 +385,7 @@ function ModalContratar({ nombre, onCerrar }) {
 
         <label className="flex flex-col gap-[6px] text-[13px] font-semibold text-[var(--text-dark)]">
           Mensaje
-          <textarea className="px-[14px] py-[10px] border border-[var(--border-color)] rounded-[8px] text-[14px] bg-[var(--white-color)] text-[var(--text-dark)] outline-none resize-y font-[inherit] focus:border-[var(--primary-color)]" rows={4} />
+          <textarea className="px-[14px] py-[10px] border border-[var(--border-color)] rounded-[var(--radius-sm)] text-[14px] bg-[var(--white-color)] text-[var(--text-dark)] outline-none resize-y font-[inherit] focus:border-[var(--primary-color)]" rows={4} />
         </label>
 
         <label className="flex items-center gap-2 text-[13px] text-[var(--text-dark)] cursor-pointer">
@@ -393,8 +393,8 @@ function ModalContratar({ nombre, onCerrar }) {
         </label>
 
         <div className="flex justify-end gap-[10px] mt-1">
-          <button className="px-[22px] py-[10px] border border-[var(--border-color)] rounded-[8px] bg-transparent text-[14px] font-semibold text-[var(--text-dark)] cursor-pointer hover:bg-[var(--background-color)]" onClick={onCerrar}>Cancelar</button>
-          <button className="px-[22px] py-[10px] border-none rounded-[8px] bg-[var(--primary-color)] text-white text-[14px] font-semibold cursor-pointer hover:bg-[var(--secondary-color)]">Enviar Solicitud</button>
+          <button className="px-[22px] py-[10px] border border-[var(--border-color)] rounded-[var(--radius-sm)] bg-transparent text-[14px] font-semibold text-[var(--text-dark)] cursor-pointer hover:bg-[var(--background-color)]" onClick={onCerrar}>Cancelar</button>
+          <button className="px-[22px] py-[10px] border-none rounded-[var(--radius-sm)] bg-[var(--primary-color)] text-white text-[14px] font-semibold cursor-pointer hover:bg-[var(--secondary-color)]">Enviar Solicitud</button>
         </div>
       </div>
     </div>
@@ -411,9 +411,9 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
 
   const perfil = usuario || USUARIO_JUAN;
 
-  const btnAmigoCls = "py-[9px] px-[22px] bg-transparent text-[var(--primary-color)] border-[1.5px] border-[var(--primary-color)] rounded-[8px] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--primary-color)] hover:text-white [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:text-[13px] [@media(max-width:680px)]:flex-1 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:py-[10px]";
-  const btnMsjCls   = "py-[9px] px-[22px] bg-[var(--primary-color)] text-white border-none rounded-[8px] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:text-[13px] [@media(max-width:680px)]:flex-1 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:py-[10px]";
-  const redBtnCls   = "w-8 h-8 flex items-center justify-center border-[1.5px] border-[var(--border-color)] bg-[var(--white-color)] rounded-[8px] text-[var(--text-muted)] cursor-pointer transition-all duration-200 hover:border-[var(--color-red-social)] hover:text-[var(--color-red-social)] hover:bg-[rgba(53,5,99,0.05)]";
+  const btnAmigoCls = "py-[9px] px-[22px] bg-transparent text-[var(--primary-color)] border-[1.5px] border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--primary-color)] hover:text-white [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:text-[13px] [@media(max-width:680px)]:flex-1 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:py-[10px]";
+  const btnMsjCls   = "py-[9px] px-[22px] bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:text-[13px] [@media(max-width:680px)]:flex-1 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:py-[10px]";
+  const redBtnCls   = "w-8 h-8 flex items-center justify-center border-[1.5px] border-[var(--border-color)] bg-[var(--white-color)] rounded-[var(--radius-sm)] text-[var(--text-muted)] cursor-pointer transition-all duration-200 hover:border-[var(--color-red-social)] hover:text-[var(--color-red-social)] hover:bg-[rgba(53,5,99,0.05)]";
 
   return (
     <>
@@ -422,7 +422,7 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
         <div className="flex flex-col bg-[var(--background-color)] w-full">
 
           {/* ── Cabecera ── */}
-          <div className="bg-[var(--white-color)] rounded-[12px] border border-[var(--border-color)] shadow-[var(--shadow-sm)] shrink-0 min-w-0 overflow-hidden">
+          <div className="bg-[var(--white-color)] rounded-[var(--radius-md)] border border-[var(--border-color)] shadow-[var(--shadow-sm)] shrink-0 min-w-0 overflow-hidden">
             <button
               className="flex items-center gap-[6px] bg-transparent border-none text-[var(--text-dark)] cursor-pointer text-[13px] font-medium px-5 pt-3 pb-2 opacity-70 hover:opacity-100 transition-opacity duration-200"
               onClick={onVolver} title="Volver"
@@ -438,7 +438,7 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
               {/* Foto + golden badge */}
               <div className="flex flex-col items-center shrink-0 gap-2">
                 <img src={perfil.avatar} alt={perfil.nombre} className="w-[90px] h-[90px] rounded-full object-cover border-[3px] border-[var(--border-color)]" />
-                <div className="flex items-center gap-1 bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[9px] font-bold tracking-[0.3px] px-2 py-1 rounded-[6px] whitespace-nowrap">
+                <div className="flex items-center gap-1 bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[9px] font-bold tracking-[0.3px] px-2 py-1 rounded-[var(--radius-xs)] whitespace-nowrap">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
                   GOLDEN BOOK
                 </div>
@@ -495,13 +495,13 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                     </div>
                     <div className="flex flex-wrap gap-[6px] mt-[2px] [@media(max-width:520px)]:justify-center">
                       {["AUDITORIA","NIIF","TRIBUTACIÓN","EXCEL"].map(t => (
-                        <span key={t} className="bg-[var(--primary-color)] text-white text-[11px] font-semibold px-[10px] py-[3px] rounded-[4px] tracking-[0.3px]">{t}</span>
+                        <span key={t} className="bg-[var(--primary-color)] text-white text-[11px] font-semibold px-[10px] py-[3px] rounded-[var(--radius-xs)] tracking-[0.3px]">{t}</span>
                       ))}
                     </div>
                   </div>
                   {/* Botón contratar + redes */}
                   <div className="flex flex-col items-end gap-[14px] shrink-0 [@media(max-width:680px)]:col-span-full [@media(max-width:680px)]:flex-row [@media(max-width:680px)]:items-center [@media(max-width:680px)]:justify-between [@media(max-width:520px)]:col-auto [@media(max-width:520px)]:items-center [@media(max-width:520px)]:justify-center">
-                    <button className="py-[9px] px-5 bg-[var(--primary-color)] text-white border-none rounded-[8px] text-[13px] font-semibold cursor-pointer whitespace-nowrap shrink-0 transition-colors duration-200 hover:bg-[var(--secondary-color)]" onClick={() => setModalContratar(true)}>
+                    <button className="py-[9px] px-5 bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[13px] font-semibold cursor-pointer whitespace-nowrap shrink-0 transition-colors duration-200 hover:bg-[var(--secondary-color)]" onClick={() => setModalContratar(true)}>
                       Contratar
                     </button>
                     <div className="flex gap-2">

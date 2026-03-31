@@ -48,9 +48,9 @@ function UserItem({ img, name, percentage }) {
           {percentage}%
         </div>
         <div className="text-[11px] text-[var(--text-muted)] font-semibold tracking-[0.5px] mb-[6px] [@media(max-width:480px)]:text-[10px]">SKILLS</div>
-        <div className="w-full h-[6px] bg-[var(--border-color)] rounded-[10px] overflow-hidden [@media(max-width:480px)]:w-[60px]">
+        <div className="w-full h-[6px] bg-[var(--border-color)] rounded-[var(--radius-sm)] overflow-hidden [@media(max-width:480px)]:w-[60px]">
           <div
-            className="h-full rounded-[10px] transition-[width] duration-500"
+            className="h-full rounded-[var(--radius-sm)] transition-[width] duration-500"
             style={{
               width: `${percentage}%`,
               background: "linear-gradient(90deg, #7F0DF2, #674BEA, #588CE5)",
@@ -65,13 +65,13 @@ function UserItem({ img, name, percentage }) {
 
 function RankingUsuarios() {
   return (
-    <div className="bg-[var(--white-color)] p-[25px] rounded-[15px] shadow-[0_2px_8px_rgba(0,0,0,0.05)] [@media(max-width:480px)]:p-5">
+    <div className="bg-[var(--white-color)] p-[25px] rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] [@media(max-width:480px)]:p-5">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-[10px] text-[18px] font-bold text-[var(--text-dark)]">
           <Icon name="libro_ranking" size={30} />
           <span>Top Usuarios</span>
         </div>
-        <span className="flex items-center gap-[6px] bg-[var(--warning-bg)] text-[var(--warning-text)] px-3 py-[6px] rounded-[20px] text-[12px] font-semibold">
+        <span className="flex items-center gap-[6px] bg-[var(--warning-bg)] text-[var(--warning-text)] px-3 py-[6px] rounded-[var(--radius-lg)] text-[12px] font-semibold">
           <span>⭐</span>
           <span>Semanal</span>
         </span>
@@ -83,7 +83,7 @@ function RankingUsuarios() {
         ))}
       </div>
 
-      <button className="w-full py-3 bg-transparent border-2 border-[var(--primary-color)] rounded-[10px] text-[var(--primary-color)] font-semibold text-[14px] cursor-pointer transition-all duration-300 hover:bg-[var(--primary-color)] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(127,13,242,0.2)]">
+      <button className="w-full py-3 bg-transparent border-2 border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[var(--primary-color)] font-semibold text-[14px] cursor-pointer transition-all duration-300 hover:bg-[var(--primary-color)] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(127,13,242,0.2)]">
         Ver todos los usuarios
       </button>
     </div>

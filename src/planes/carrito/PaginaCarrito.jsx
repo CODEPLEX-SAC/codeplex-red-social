@@ -71,7 +71,7 @@ function PaginaCarrito({ itemsCarrito = [], totalCarrito = 0, alQuitarItem, alPr
               {itemsCarrito.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center gap-4 bg-panel border border-line rounded-[14px] px-5 py-4 transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.07)] max-[600px]:px-4 max-[600px]:py-3.5 max-[600px]:gap-3"
+                  className="flex items-center gap-4 bg-panel border border-line rounded-[var(--radius-md)] px-5 py-4 transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.07)] max-[600px]:px-4 max-[600px]:py-3.5 max-[600px]:gap-3"
                 >
                   <IconoApp app={item} />
                   <div className="flex-1 min-w-0">
@@ -120,12 +120,12 @@ function PaginaCarrito({ itemsCarrito = [], totalCarrito = 0, alQuitarItem, alPr
                 <span className="text-[22px] font-bold text-fg">S/{totalCarrito}/mes</span>
               </div>
 
-              <div className="bg-[#f0fdf4] border border-[#86efac] rounded-[10px] px-3.5 py-3 text-[13px] text-[#16a34a] mb-4 leading-[1.4]">
+              <div className="bg-[#f0fdf4] border border-[#86efac] rounded-[var(--radius-sm)] px-3.5 py-3 text-[13px] text-[#16a34a] mb-4 leading-[1.4]">
                 🎉 1 mes gratis activado — Hoy pagas <strong>S/0.00</strong>
               </div>
 
               <button
-                className="w-full bg-[#0F1B3D] text-white border-0 py-3.5 rounded-[10px] text-[15px] font-bold cursor-pointer font-[inherit] transition-opacity mb-3 hover:opacity-[0.88]"
+                className="w-full bg-[#0F1B3D] text-white border-0 py-3.5 rounded-[var(--radius-sm)] text-[15px] font-bold cursor-pointer font-[inherit] transition-opacity mb-3 hover:opacity-[0.88]"
                 onClick={alProcederPago}
               >
                 Proceder al Pago →

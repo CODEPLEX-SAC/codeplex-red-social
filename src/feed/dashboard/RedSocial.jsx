@@ -6,7 +6,6 @@ import TarjetaMonedero from "../../planes/monedero/TarjetaMonedero";
 import RankingUsuarios from "./RankingUsuarios";
 import MensajesFlotante from "../buzon/MensajesFlotante";
 import usePublicaciones from "../publicaciones/usePublicaciones";
-import "./Red-social.css";
 
 // RedSocial es el ORQUESTADOR — conecta creador ↔ feed via usePublicaciones
 function RedSocial({ alNavegar, alVerPerfil }) {

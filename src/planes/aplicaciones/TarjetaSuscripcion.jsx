@@ -1,5 +1,4 @@
 import React from "react";
-import "./TarjetaSuscripcion.css";
 import { useSesion } from "../../identidad/sesion/SesionContext";
 import IconoAplicacion from "./IconoAplicacion";
 
@@ -54,7 +53,7 @@ function TarjetaSuscripcion({ suscripcion, alMejorarPlan, alSolicitarDesinstalac
 
   return (
     <div
-      className="tarjeta-suscripcion flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-5 bg-[var(--surface-color)] border border-[var(--border-color)] rounded-[14px] p-[18px_20px] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-px hover:shadow-[var(--shadow-md)]"
+      className="tarjeta-suscripcion flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-5 bg-[var(--surface-color)] border border-[var(--border-color)] rounded-[var(--radius-md)] p-[18px_20px] shadow-[var(--shadow-sm)] transition-all duration-200 hover:-translate-y-px hover:shadow-[var(--shadow-md)]"
       style={{ '--color-tema': `var(--${suscripcion.colorTema})`, borderTopWidth: '3px', borderTopColor: `var(--${suscripcion.colorTema})` }}
     >
       {/* Ícono + nombre */}

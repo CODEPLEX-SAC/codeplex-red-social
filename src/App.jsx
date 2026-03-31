@@ -22,7 +22,6 @@ import PaginaCarrito from './planes/carrito/PaginaCarrito';
 import CarritoMobile from './planes/carrito/CarritoMobile';
 import VistaPlaceholder from './ui/placeholders/VistaPlaceholder';
 import PerfilPublico from './feed/perfil-publico/PerfilPublico';
-import './styles/App.css';
 
 /* ── Apps precargadas en modo exploración ──────────────────────────────────
    El usuario sin login ve todas las apps disponibles en "Mis Aplicaciones"
@@ -204,7 +203,7 @@ function AppContent() {
         alDeseleccionarTodasApps={handleDeselectAllApps}
       />
 
-      <div className="flex-1 min-w-0 ml-[280px] p-6 pt-[calc(var(--header-height,96px)_+_30px)] transition-[margin-left] duration-300 ease-in-out min-h-screen [@media(max-width:1024px)]:ml-0 [@media(max-width:1024px)]:px-8 [@media(max-width:768px)]:p-4 [@media(max-width:768px)]:pt-[calc(var(--header-height,120px)_+_30px)]">
+      <div className={`content-wrapper flex-1 min-w-0 ml-[280px] px-6 pb-6 transition-[margin-left] duration-300 ease-in-out min-h-screen [@media(max-width:1024px)]:ml-0 [@media(max-width:1024px)]:px-8 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:pb-4${modoExploracion ? " main-content--demo" : ""}`}>
         <main className="max-w-[1400px] mx-auto w-full">
           {renderVista()}
         </main>

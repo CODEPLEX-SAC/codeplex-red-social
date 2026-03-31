@@ -1,5 +1,4 @@
 import React from "react";
-import "./ConfirmacionDesinstalacion.css";
 
 /**
  * Presentación — Confirmación de desinstalación de una Aplicacion.
@@ -21,7 +20,7 @@ function ConfirmacionDesinstalacion({ aplicacion, alCancelar, alConfirmar }) {
       onClick={alCancelar}
     >
       <div
-        className="modal-entrada bg-[var(--surface-color)] rounded-[20px] p-[40px_32px_32px] max-w-[400px] w-full text-center shadow-[var(--shadow-lg)]"
+        className="animate-modal-entrada bg-[var(--surface-color)] rounded-[var(--radius-lg)] p-[40px_32px_32px] max-w-[400px] w-full text-center shadow-[var(--shadow-lg)]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Ícono */}
@@ -45,13 +44,13 @@ function ConfirmacionDesinstalacion({ aplicacion, alCancelar, alConfirmar }) {
         {/* Botones */}
         <div className="grid grid-cols-2 gap-3">
           <button
-            className="bg-[var(--surface-color)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-[10px] py-[13px] text-[15px] font-semibold cursor-pointer transition-all duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--background-color)]"
+            className="bg-[var(--surface-color)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-[var(--radius-sm)] py-[13px] text-[15px] font-semibold cursor-pointer transition-all duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--background-color)]"
             onClick={alCancelar}
           >
             Cancelar
           </button>
           <button
-            className="bg-[var(--error-color)] text-white border-none rounded-[10px] py-[13px] text-[15px] font-semibold cursor-pointer transition-all duration-200 hover:brightness-90 hover:-translate-y-px"
+            className="bg-[var(--error-color)] text-white border-none rounded-[var(--radius-sm)] py-[13px] text-[15px] font-semibold cursor-pointer transition-all duration-200 hover:brightness-90 hover:-translate-y-px"
             onClick={() => alConfirmar(aplicacion.id)}
           >
             Sí, desinstalar

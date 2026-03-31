@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./VisorCatalogoPDF.css";
 
 /* ═══════════════════════════════════════════
    Visor de Catálogo PDF — in-app
@@ -77,10 +76,10 @@ export default function VisorCatalogoPDF({
 
   return (
     <div
-      className="vcat-fade-in fixed inset-0 bg-[rgba(0,0,0,0.72)] z-[20000] flex items-end justify-center p-0 sm:items-center sm:p-4"
+      className="animate-vcat-fade fixed inset-0 bg-[rgba(0,0,0,0.72)] z-[20000] flex items-end justify-center p-0 sm:items-center sm:p-4"
       onClick={handleOverlay}
     >
-      <div className="vcat-slide-in bg-[#1a1f2e] rounded-[20px_20px_0_0] sm:rounded-[16px] overflow-hidden w-full sm:max-w-[960px] h-[96vh] sm:h-[90vh] sm:max-h-[860px] flex flex-col shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
+      <div className="animate-vcat-slide bg-[#1a1f2e] rounded-[20px_20px_0_0] sm:rounded-[var(--radius-md)] overflow-hidden w-full sm:max-w-[960px] h-[96vh] sm:h-[90vh] sm:max-h-[860px] flex flex-col shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
 
         {/* ── Header ── */}
         <div
@@ -88,7 +87,7 @@ export default function VisorCatalogoPDF({
           style={{ background: accentColor }}
         >
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 bg-[rgba(255,255,255,0.18)] rounded-[10px] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 bg-[rgba(255,255,255,0.18)] rounded-[var(--radius-sm)] flex items-center justify-center shrink-0">
               <IcoFileText />
             </div>
             <div className="flex flex-col min-w-0">
@@ -129,7 +128,7 @@ export default function VisorCatalogoPDF({
           {cargando && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-[14px] text-[rgba(255,255,255,0.6)] text-[14px] z-[2]">
               <div
-                className="vcat-spinner w-9 h-9 rounded-full border-[3px] border-[rgba(255,255,255,0.15)]"
+                className="animate-vcat-spin w-9 h-9 rounded-full border-[3px] border-[rgba(255,255,255,0.15)]"
                 style={{ borderTopColor: accentColor }}
               />
               <span>Cargando catálogo...</span>

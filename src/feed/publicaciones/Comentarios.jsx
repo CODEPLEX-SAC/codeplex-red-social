@@ -225,7 +225,7 @@ function Comment({ comment, currentUser, modoExploracion, comenzarAutenticacion,
                 {activeReaction ? activeReaction.label : "Me gusta"}
               </button>
               {reactionCount > 0 && (
-                <span className="text-[11px] font-bold" style={{ color: activeReaction?.color || "#7F0DF2" }}>
+                <span className="text-[11px] font-bold" style={{ color: activeReaction?.color || "var(--primary-color)" }}>
                   {reactionCount}
                 </span>
               )}

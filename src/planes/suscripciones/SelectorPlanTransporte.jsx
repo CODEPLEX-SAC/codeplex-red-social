@@ -59,8 +59,8 @@ function PopoverDetalleFeature({ nombreFeature, onCerrar }) {
  if (!info) return null;
 
  return (
- <div className="absolute inset-0 z-50 bg-black/[0.28] backdrop-blur-[3px] flex items-center justify-center rounded-[22px] [animation:modal-fade_0.18s_ease]" onClick={onCerrar}>
- <div className="bg-surface rounded-[18px] p-[24px_22px_22px] w-[300px] max-w-[88%] relative shadow-[0_12px_40px_rgba(0,0,0,0.16)] [animation:modal-pop-in_0.2s_cubic-bezier(0.34,1.56,0.64,1)]" onClick={(e) => e.stopPropagation()}>
+ <div className="absolute inset-0 z-50 bg-black/[0.28] backdrop-blur-[3px] flex items-center justify-center rounded-[var(--radius-xl)] [animation:modal-fade_0.18s_ease]" onClick={onCerrar}>
+ <div className="bg-surface rounded-[var(--radius-lg)] p-[24px_22px_22px] w-[300px] max-w-[88%] relative shadow-[0_12px_40px_rgba(0,0,0,0.16)] [animation:modal-pop-in_0.2s_cubic-bezier(0.34,1.56,0.64,1)]" onClick={(e) => e.stopPropagation()}>
  <button className="absolute top-3 right-3 w-6 h-6 rounded-full bg-base border-0 cursor-pointer flex items-center justify-center transition-colors hover:bg-line" onClick={onCerrar}>
  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
  <path d="M2 2L8 8M8 2L2 8" stroke="#6B7280" strokeWidth="1.8" strokeLinecap="round" />
@@ -151,7 +151,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
  ═══════════════════════════════════════ */
  return (
  <div className="fixed inset-0 z-[9999] bg-[rgba(10,20,55,0.55)] backdrop-blur-[6px] flex items-center justify-center p-4 [animation:modal-fade_0.22s_ease]" onClick={handleClickOverlay}>
- <div className="bg-surface rounded-[22px] w-full max-w-[760px] max-h-[90vh] overflow-hidden relative flex flex-col [animation:modal-slide_0.28s_cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
+ <div className="bg-surface rounded-[var(--radius-xl)] w-full max-w-[760px] max-h-[90vh] overflow-hidden relative flex flex-col [animation:modal-slide_0.28s_cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_24px_80px_rgba(0,0,0,0.22)]">
 
  {/* Cerrar */}
  <button className="absolute top-3.5 right-3.5 z-10 w-[30px] h-[30px] rounded-full border-0 cursor-pointer flex items-center justify-center transition-all hover:scale-110 outline-none bg-[#1D4ED8] hover:bg-[#1E3A8A]" onClick={handleClose}>
@@ -187,7 +187,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
  <span className="border-[1.5px] border-[#BFDBFE] rounded-full px-3.5 py-1 text-xs font-medium bg-surface text-[#1D4ED8]">Usuarios ilimitados</span>
  </div>
 
- <div className="inline-flex bg-base rounded-[10px] p-1 gap-1 mt-1">
+ <div className="inline-flex bg-base rounded-[var(--radius-sm)] p-1 gap-1 mt-1">
  <button
  className={`px-6 py-2 rounded-lg border-0 text-[13.5px] font-semibold cursor-pointer transition-all outline-none${periodoFacturacion === "mensual" ? " bg-[#1E3A8A] text-white shadow-[0_2px_8px_rgba(30,58,138,0.35)]" : " bg-transparent text-muted"}`}
  onClick={() => setPeriodoFacturacion("mensual")}
@@ -234,7 +234,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
  </ul>
 
  <button
- className={`outline-none w-full py-[10px] rounded-[10px] text-[13.5px] font-bold cursor-pointer transition-all mt-auto${planSeleccionado === "gratis" ? " bg-[#1D4ED8] text-white border-0" : " bg-transparent border-2 border-[#1D4ED8] text-[#1D4ED8] hover:bg-[#1D4ED8] hover:text-white"}`}
+ className={`outline-none w-full py-[10px] rounded-[var(--radius-sm)] text-[13.5px] font-bold cursor-pointer transition-all mt-auto${planSeleccionado === "gratis" ? " bg-[#1D4ED8] text-white border-0" : " bg-transparent border-2 border-[#1D4ED8] text-[#1D4ED8] hover:bg-[#1D4ED8] hover:text-white"}`}
  onClick={() => setPlanSeleccionado("gratis")}
  >
  {planSeleccionado === "gratis" ? "Seleccionado" : "Elegir Plan"}
@@ -268,7 +268,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
  </ul>
 
  <button
- className={`outline-none w-full py-[10px] rounded-[10px] text-[13.5px] font-bold cursor-pointer transition-all mt-auto${planSeleccionado === "transporte" ? " bg-white/15 border-0 text-white" : " bg-transparent border-2 border-white/70 text-white hover:bg-white/15 hover:border-white"}`}
+ className={`outline-none w-full py-[10px] rounded-[var(--radius-sm)] text-[13.5px] font-bold cursor-pointer transition-all mt-auto${planSeleccionado === "transporte" ? " bg-white/15 border-0 text-white" : " bg-transparent border-2 border-white/70 text-white hover:bg-white/15 hover:border-white"}`}
  onClick={() => setPlanSeleccionado("transporte")}
  >
  {planSeleccionado === "transporte" ? "Seleccionado" : "Elegir Plan"}
@@ -286,7 +286,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
  </div>
 
  {planSeleccionado && (
- <button className="flex items-center justify-center gap-2 text-white border-0 rounded-[10px] py-[13px] px-6 text-sm font-bold cursor-pointer w-full mt-2.5 transition-[background,transform] duration-200 hover:-translate-y-px [animation:modal-fade_0.2s_ease] bg-[#1D4ED8] hover:bg-[#1E3A8A]" onClick={handleConfirmarPlan}>
+ <button className="flex items-center justify-center gap-2 text-white border-0 rounded-[var(--radius-sm)] py-[13px] px-6 text-sm font-bold cursor-pointer w-full mt-2.5 transition-[background,transform] duration-200 hover:-translate-y-px [animation:modal-fade_0.2s_ease] bg-[#1D4ED8] hover:bg-[#1E3A8A]" onClick={handleConfirmarPlan}>
  Continuar con {nombrePlanDisplay}
  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
  <path d="M5 12h14M12 5l7 7-7 7" />
@@ -295,7 +295,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
  )}
 
  {/* dimmed overlay */}
- {chatVisible && <div className="absolute inset-0 bg-black/[0.22] z-[2] rounded-[22px] pointer-events-auto" />}
+ {chatVisible && <div className="absolute inset-0 bg-black/[0.22] z-[2] rounded-[var(--radius-xl)] pointer-events-auto" />}
 
  </div>{/* /planes-wrap */}
 
@@ -305,7 +305,7 @@ function SelectorPlanTransporte({ estaAbierto, alCerrar, alProcederPago }) {
 
  {/* Panel chat */}
  {chatVisible && (
- <div className="absolute top-1/2 -translate-y-1/2 right-4 w-[360px] h-[88%] max-h-[540px] z-10 flex flex-col bg-surface rounded-[18px] shadow-[0_8px_40px_rgba(0,0,0,0.18)] overflow-hidden [animation:modal-chat-in_0.28s_cubic-bezier(0.34,1.3,0.64,1)] max-[700px]:fixed max-[700px]:top-auto max-[700px]:bottom-4 max-[700px]:left-2 max-[700px]:right-2 max-[700px]:w-[calc(100%-16px)] max-[700px]:h-auto max-[700px]:max-h-[80vh] max-[700px]:translate-y-0 max-[700px]:z-[10001] max-[700px]:rounded-[20px] max-[700px]:[animation:modal-chat-mobile-in_0.3s_cubic-bezier(0.34,1.2,0.64,1)]">
+ <div className="absolute top-1/2 -translate-y-1/2 right-4 w-[360px] h-[88%] max-h-[540px] z-10 flex flex-col bg-surface rounded-[var(--radius-lg)] shadow-[0_8px_40px_rgba(0,0,0,0.18)] overflow-hidden [animation:modal-chat-in_0.28s_cubic-bezier(0.34,1.3,0.64,1)] max-[700px]:fixed max-[700px]:top-auto max-[700px]:bottom-4 max-[700px]:left-2 max-[700px]:right-2 max-[700px]:w-[calc(100%-16px)] max-[700px]:h-auto max-[700px]:max-h-[80vh] max-[700px]:translate-y-0 max-[700px]:z-[10001] max-[700px]:rounded-[var(--radius-lg)] max-[700px]:[animation:modal-chat-mobile-in_0.3s_cubic-bezier(0.34,1.2,0.64,1)]">
  <div className="bg-[#1E3A8A] px-4 py-3.5 flex items-center justify-between gap-2.5 shrink-0">
  <div className="flex items-center gap-2.5">
  <div className="w-[38px] h-[38px] rounded-full bg-white/20 flex items-center justify-center shrink-0">

@@ -1,5 +1,4 @@
 import React from "react";
-import "./PanelCarrito.css"; /* solo @keyframes carrito-in */
 
 /**
  * Presentación — Barra flotante del Carrito de Suscripciones
@@ -18,7 +17,7 @@ function BarraCarritoSuscripciones({ items, totalCarrito, alQuitarItem, alProced
   if (items.length === 0) return null;
 
   return (
-    <div className="carrito-bar-anim fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--color-red-social)] text-white rounded-2xl px-5 py-[14px] flex items-center justify-between gap-5 shadow-[0_8px_32px_rgba(0,0,0,0.25)] z-[600] min-w-[360px] max-w-[680px] w-[calc(100%-48px)] max-[600px]:flex-col max-[600px]:items-stretch max-[600px]:gap-[10px] max-[600px]:bottom-4">
+    <div className="animate-carrito-bar fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--color-red-social)] text-white rounded-2xl px-5 py-[14px] flex items-center justify-between gap-5 shadow-[0_8px_32px_rgba(0,0,0,0.25)] z-[600] min-w-[360px] max-w-[680px] w-[calc(100%-48px)] max-[600px]:flex-col max-[600px]:items-stretch max-[600px]:gap-[10px] max-[600px]:bottom-4">
 
       {/* Izquierda: count + chips */}
       <div className="flex items-center gap-[10px] flex-1 min-w-0 overflow-hidden">
@@ -50,7 +49,7 @@ function BarraCarritoSuscripciones({ items, totalCarrito, alQuitarItem, alProced
           Desde S/{totalCarrito}/mes
         </span>
         <button
-          className="flex items-center gap-[6px] bg-[var(--accent)] text-white border-none rounded-[10px] px-[18px] py-[10px] text-[13px] font-bold cursor-pointer whitespace-nowrap transition-all duration-200 hover:bg-[var(--accent-hover)] hover:-translate-y-px"
+          className="flex items-center gap-[6px] bg-[var(--accent)] text-white border-none rounded-[var(--radius-sm)] px-[18px] py-[10px] text-[13px] font-bold cursor-pointer whitespace-nowrap transition-all duration-200 hover:bg-[var(--accent-hover)] hover:-translate-y-px"
           onClick={alProcederPago}
         >
           Proceder al pago

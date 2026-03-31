@@ -11,7 +11,7 @@ function Publicacion({ post, alVerPerfil }) {
   const handleVerAutor = () => alVerPerfil?.({ nombre: post.author, avatar: avatarSrc });
 
   return (
-    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[15px] shadow-[0_2px_8px_rgba(0,0,0,0.05)] mb-5 [@media(max-width:480px)]:px-[15px] [@media(max-width:480px)]:py-5">
+    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[var(--radius-md)] shadow-[var(--shadow-sm)] mb-5 [@media(max-width:480px)]:px-[15px] [@media(max-width:480px)]:py-5">
 
       {/* Cabecera: avatar + nombre + tiempo */}
       <div className="flex justify-between items-center mb-[18px]">
@@ -45,18 +45,66 @@ function Publicacion({ post, alVerPerfil }) {
         )}
       </div>
 
-      {/* Video (opcional) */}
+      {/* Video — full width sin padding lateral */}
       {post.videoSrc && (
-        <div className="my-[18px] rounded-[14px] overflow-hidden bg-black [@media(max-width:768px)]:mt-3 [@media(max-width:768px)]:mb-0 [@media(max-width:768px)]:rounded-[10px] [@media(max-width:480px)]:mt-[10px] [@media(max-width:480px)]:rounded-[8px]">
-          <div className="relative w-full aspect-video bg-[#0f0f0f] rounded-[14px] overflow-hidden [@media(max-width:768px)]:rounded-[10px] [@media(max-width:480px)]:rounded-[8px]">
-            <video
-              className="w-full h-full object-contain block rounded-[14px] bg-[#0f0f0f] [@media(max-width:768px)]:rounded-[10px] [@media(max-width:480px)]:rounded-[8px]"
-              src={post.videoSrc}
-              controls
-              preload="metadata"
-              poster={post.videoPoster}
+        <div className="-mx-8 [@media(max-width:480px)]:-mx-[15px] my-[18px] overflow-hidden bg-black">
+          <video
+            className="w-full block aspect-video object-contain bg-[#0f0f0f]"
+            src={post.videoSrc}
+            controls
+            preload="metadata"
+            poster={post.videoPoster}
+          />
+        </div>
+      )}
+
+      {/* Imágenes — full width sin padding lateral, grid estilo Facebook */}
+      {post.images && post.images.length > 0 && (
+        <div className="-mx-8 [@media(max-width:480px)]:-mx-[15px] my-[18px] overflow-hidden">
+
+          {/* 1 imagen: ancho completo */}
+          {post.images.length === 1 && (
+            <img
+              src={post.images[0]}
+              alt=""
+              className="w-full block object-cover max-h-[560px]"
             />
-          </div>
+          )}
+
+          {/* 2 imágenes: lado a lado */}
+          {post.images.length === 2 && (
+            <div className="grid grid-cols-2 gap-[2px]">
+              {post.images.map((src, i) => (
+                <img key={i} src={src} alt="" className="w-full aspect-square object-cover block" />
+              ))}
+            </div>
+          )}
+
+          {/* 3 imágenes: 1 grande izquierda + 2 apiladas derecha */}
+          {post.images.length === 3 && (
+            <div className="grid grid-cols-2 gap-[2px] h-[400px]">
+              <img src={post.images[0]} alt="" className="w-full h-full object-cover block row-span-2" />
+              <img src={post.images[1]} alt="" className="w-full h-full object-cover block" />
+              <img src={post.images[2]} alt="" className="w-full h-full object-cover block" />
+            </div>
+          )}
+
+          {/* 4+ imágenes: grilla 2×2, overlay "+N" en la última */}
+          {post.images.length >= 4 && (
+            <div className="grid grid-cols-2 gap-[2px]">
+              {post.images.slice(0, 4).map((src, i) => (
+                <div key={i} className="relative aspect-square">
+                  <img src={src} alt="" className="w-full h-full object-cover block" />
+                  {i === 3 && post.images.length > 4 && (
+                    <div className="absolute inset-0 bg-black/55 flex items-center justify-center">
+                      <span className="text-white text-[28px] font-bold">+{post.images.length - 4}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
         </div>
       )}
 

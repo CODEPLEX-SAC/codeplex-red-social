@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { MOCK_POST, PublicacionMock } from "./publicaciones.data";
+import { MOCK_POST, MOCK_POST_IMAGENES, MOCK_POST_UNA_IMAGEN, PublicacionMock } from "./publicaciones.data";
 
 /**
  * DOMINIO: Feed > Publicaciones
@@ -28,14 +28,14 @@ function extraerHashtags(texto: string): string[] {
   return texto.match(/#\w+/g) ?? [];
 }
 
-const POST_INICIAL: Publicacion = {
-  id: "mock-1",
-  ...MOCK_POST,
-  tipo: "post",
-};
+const POSTS_INICIALES: Publicacion[] = [
+  { id: "mock-1", ...MOCK_POST,           tipo: "post" },
+  { id: "mock-2", ...MOCK_POST_IMAGENES,  tipo: "post" },
+  { id: "mock-3", ...MOCK_POST_UNA_IMAGEN, tipo: "post" },
+];
 
 export default function usePublicaciones() {
-  const [publicaciones, setPublicaciones] = useState<Publicacion[]>([POST_INICIAL]);
+  const [publicaciones, setPublicaciones] = useState<Publicacion[]>(POSTS_INICIALES);
 
   const crearPublicacion = useCallback(
     (texto: string, autor?: string, avatar?: number, tipo: TipoPublicacion = "post"): boolean => {
@@ -48,8 +48,6 @@ export default function usePublicaciones() {
         time: obtenerTiempoRelativo(),
         text: texto.trim(),
         hashtags: extraerHashtags(texto),
-        videoSrc: "",
-        videoPoster: "",
         likeCount: 0,
         tipo,
       };

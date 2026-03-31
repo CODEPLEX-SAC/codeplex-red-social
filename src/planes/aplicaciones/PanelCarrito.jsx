@@ -1,5 +1,4 @@
 import React from "react";
-import "./PanelCarrito.css";
 
 /**
  * Presentación — Panel lateral del Carrito de Suscripciones
@@ -56,7 +55,7 @@ function PanelCarrito({ itemsCarrito = [], totalCarrito = 0, alQuitarItem, alPro
             {/* Lista de items */}
             <div className="flex flex-col gap-2">
               {itemsCarrito.map((item) => (
-                <div key={item.id} className="item-entrada flex items-center gap-[10px] bg-[var(--background-color)] border border-[var(--border-light)] rounded-[10px] px-3 py-[10px]">
+                <div key={item.id} className="animate-item-entrada flex items-center gap-[10px] bg-[var(--background-color)] border border-[var(--border-light)] rounded-[var(--radius-sm)] px-3 py-[10px]">
                   <div className="flex-1 min-w-0 flex flex-col gap-[2px]">
                     <span className="text-[13px] font-semibold text-[var(--text-primary)] whitespace-nowrap overflow-hidden text-ellipsis">
                       {item.nombre}
@@ -96,7 +95,7 @@ function PanelCarrito({ itemsCarrito = [], totalCarrito = 0, alQuitarItem, alPro
 
             {/* Botón de pago */}
             <button
-              className="w-full bg-[var(--accent)] text-white border-none rounded-[10px] py-[13px] px-4 text-[14px] font-bold cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-[0_4px_12px_var(--accent-shadow)] hover:bg-[var(--accent-hover)] hover:-translate-y-px"
+              className="w-full bg-[var(--accent)] text-white border-none rounded-[var(--radius-sm)] py-[13px] px-4 text-[14px] font-bold cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 shadow-[0_4px_12px_var(--accent-shadow)] hover:bg-[var(--accent-hover)] hover:-translate-y-px"
               onClick={alProcederPago}
             >
               Proceder al pago
