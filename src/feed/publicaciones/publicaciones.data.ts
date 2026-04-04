@@ -87,7 +87,7 @@ export const MOCK_COMMENTS: ComentarioMock[] = [
 ];
 
 export const REACTIONS: Reaccion[] = [
-  { icon: "like",       label: "Me gusta",  color: "#7F0DF2" },
+  { icon: "like",       label: "Me gusta",  color: "#487FFF" },
   { icon: "me_encanta", label: "Me encanta", color: "#ef4444" },
   { icon: "asombro",    label: "Asombro",    color: "#f59e0b" },
 ];

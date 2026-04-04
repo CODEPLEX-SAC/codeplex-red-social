@@ -53,7 +53,7 @@ function RegistroEmpresa({ estaAbierto, alCerrar, alExito }) {
         >
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse at 90% -10%, rgba(160,130,255,0.3) 0%, transparent 55%), radial-gradient(ellipse at -5% 110%, rgba(103,75,234,0.4) 0%, transparent 50%)" }}
+            style={{ background: "radial-gradient(ellipse at 90% -10%, rgba(160,130,255,0.3) 0%, transparent 55%), radial-gradient(ellipse at -5% 110%, rgba(72,127,255,0.4) 0%, transparent 50%)" }}
           />
           <div className="relative z-[1]">
             <div className="flex items-start justify-between mb-[18px]">
@@ -272,7 +272,7 @@ function RegistroEmpresa({ estaAbierto, alCerrar, alExito }) {
             Cancelar
           </button>
           <button
-            className="flex items-center gap-1.5 px-[18px] h-[38px] rounded-[var(--radius-sm)] text-[13.5px] font-semibold cursor-pointer font-[inherit] transition-all text-white hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(103,75,234,0.4)]"
+            className="flex items-center gap-1.5 px-[18px] h-[38px] rounded-[var(--radius-sm)] text-[13.5px] font-semibold cursor-pointer font-[inherit] transition-all text-white hover:-translate-y-px hover:shadow-[0_6px_18px_rgba(72,127,255,0.4)]"
             style={{ background: "linear-gradient(135deg, var(--secondary-color), #4a2fcf)", boxShadow: "var(--shadow-primary)" }}
             onClick={handleSubmit}
           >

@@ -18,8 +18,11 @@ function PanelReacciones({ onSelect, onMouseEnter, onMouseLeave }) {
             onSelect(reaction);
           }}
         >
-          <Icon name={reaction.icon} size={28} />
-          <span className="reaction-label" style={{ color: reaction.color }}>
+          <Icon name={reaction.icon} size={28} color={reaction.color} />
+          <span
+            className="reaction-label"
+            style={{ color: reaction.color, boxShadow: `0 4px 12px ${reaction.color}33` }}
+          >
             {reaction.label}
           </span>
         </button>

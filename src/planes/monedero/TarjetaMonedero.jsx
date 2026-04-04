@@ -3,7 +3,7 @@ import Icon from "../../ui/Icon/Icon";
 
 function TarjetaMonedero() {
   return (
-    <div className="bg-[var(--white-color)] p-[25px] rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] max-w-full overflow-hidden [@media(max-width:768px)]:p-5 [@media(max-width:480px)]:p-4">
+    <div className="bg-[var(--white-color)] p-[25px] rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[var(--border-color)] max-w-full overflow-hidden [@media(max-width:768px)]:p-5 [@media(max-width:480px)]:p-4">
       <div className="flex items-center gap-[10px] mb-5 flex-wrap">
         <div className="w-10 h-10 bg-gradient-to-br from-[#fbbf24] to-[#f59e0b] rounded-full flex items-center justify-center text-white text-[20px] font-bold shrink-0">$</div>
         <span className="font-bold text-[var(--text-dark)] text-[18px] flex-1">Mi Monedero</span>
@@ -31,7 +31,7 @@ function TarjetaMonedero() {
       </div>
 
       <button
-        className="w-full border-none p-4 rounded-[var(--radius-md)] text-white font-semibold text-[16px] cursor-pointer mb-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(127,13,242,0.4)] [@media(max-width:768px)]:py-[14px] [@media(max-width:768px)]:text-[15px] [@media(max-width:480px)]:py-3 [@media(max-width:480px)]:text-[14px]"
+        className="w-full border-none p-4 rounded-[var(--radius-md)] text-white font-semibold text-[16px] cursor-pointer mb-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(72,127,255,0.4)] [@media(max-width:768px)]:py-[14px] [@media(max-width:768px)]:text-[15px] [@media(max-width:480px)]:py-3 [@media(max-width:480px)]:text-[14px]"
         style={{ background: "var(--gradient-primary)" }}
       >
         Ir al Monedero Completo

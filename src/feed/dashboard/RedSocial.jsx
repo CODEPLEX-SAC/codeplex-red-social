@@ -9,14 +9,21 @@ import usePublicaciones from "../publicaciones/usePublicaciones";
 
 // RedSocial es el ORQUESTADOR — conecta creador ↔ feed via usePublicaciones
 function RedSocial({ alNavegar, alVerPerfil }) {
-  const { publicaciones, crearPublicacion, obtenerPorTipo } = usePublicaciones();
+  const { publicaciones, crearPublicacion, obtenerPorTipo, cambiarEstado, registrarFeedback, misPreguntas } = usePublicaciones();
 
   return (
     <div className="grid grid-cols-[1fr_350px] gap-5 [@media(max-width:1400px)]:grid-cols-1">
       <div className="flex flex-col gap-5 min-w-0">
         <TarjetasEstadisticas />
         <CreadorPublicacion onPublicar={crearPublicacion} />
-        <PublicacionesFeed publicaciones={publicaciones} obtenerPorTipo={obtenerPorTipo} alVerPerfil={alVerPerfil} />
+        <PublicacionesFeed
+          publicaciones={publicaciones}
+          obtenerPorTipo={obtenerPorTipo}
+          alVerPerfil={alVerPerfil}
+          misPreguntas={misPreguntas}
+          onCambiarEstado={cambiarEstado}
+          onFeedback={registrarFeedback}
+        />
       </div>
 
       <div className="flex flex-col gap-5 [@media(max-width:1400px)]:grid [@media(max-width:1400px)]:grid-cols-2 [@media(max-width:1400px)]:gap-5 [@media(max-width:768px)]:grid-cols-1">

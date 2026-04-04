@@ -7,7 +7,7 @@ function SidebarProfile() {
   if (modoExploracion) {
     return (
       <div className="px-4 py-5 flex flex-col items-center gap-[10px]">
-        <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#7F0DF2] to-[#5B21B6] flex items-center justify-center shadow-[0_4px_16px_rgba(127,13,242,0.3)]">
+        <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(72,127,255,0.3)]" style={{ background: "var(--gradient-primary)" }}>
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
             stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="8" r="4" />
@@ -19,13 +19,24 @@ function SidebarProfile() {
     );
   }
 
+  const inicial = usuario.nombre?.[0]?.toUpperCase() || "U";
+
   return (
     <div className="text-center px-[15px] pb-5 md:px-5 md:pb-[30px] border-b border-[var(--border-color)]">
-      <img
-        src={usuario.avatar}
-        alt={usuario.nombre}
-        className="w-[70px] h-[70px] md:w-20 md:h-20 rounded-full mx-auto mb-4 border-[3px] border-[var(--primary-color)]"
-      />
+      {usuario.avatar ? (
+        <img
+          src={usuario.avatar}
+          alt={usuario.nombre}
+          className="w-[70px] h-[70px] md:w-20 md:h-20 rounded-full mx-auto mb-4 border-[3px] border-[var(--primary-color)] object-cover"
+        />
+      ) : (
+        <div
+          className="w-[70px] h-[70px] md:w-20 md:h-20 rounded-full mx-auto mb-4 border-[3px] border-[var(--primary-color)] flex items-center justify-center text-[28px] font-bold text-white"
+          style={{ background: "var(--gradient-primary)" }}
+        >
+          {inicial}
+        </div>
+      )}
       <h3 className="text-base font-semibold text-fg mb-[5px]">{usuario.nombre}</h3>
       <p className="text-[14px] text-muted">{usuario.rol}</p>
     </div>

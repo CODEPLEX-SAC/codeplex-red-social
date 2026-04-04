@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "./custom.css";
 
 /* ── Dark mode: clase .dark en <html> (Tailwind) O data-theme="dark" (legado) ── */
@@ -217,7 +216,7 @@
 .mce-body::-webkit-scrollbar { width: 4px; }
 .mce-body::-webkit-scrollbar-track { background: transparent; }
 .mce-body::-webkit-scrollbar-thumb {
-  background: rgba(103,75,234,0.18);
+  background: rgba(72,127,255,0.18);
   border-radius: 4px;
 }
 
@@ -260,11 +259,11 @@
   --radius-xl:  24px;  /* panels y overlays               */
 
   /* Colores de marca */
-  --primary-color: #7F0DF2;
-  --secondary-color: #674BEA;
-  --tertiary-color: #588CE5;
-  --gradient-primary: linear-gradient(135deg, #7F0DF2, #674BEA, #588CE5);
-  --color-red-social: #350563;
+  --primary-color: #487FFF;
+  --secondary-color: #3366E0;
+  --tertiary-color: #6BA3FF;
+  --gradient-primary: linear-gradient(135deg, #487FFF, #3366E0, #6BA3FF);
+  --color-red-social: #1a3a7c;
   
   /* Backgrounds */
   --white-color: #FFFFFF;
@@ -282,12 +281,12 @@
 
 
   /* Bordes y divisores */
-  --border-color: #e2e8f0;
+  --border-color: #d1d5db80;
   --border-light: #f1f5f9;
   
   /* Estados */
-  --hover-color: rgba(127, 13, 242, 0.1);
-  --focus-ring: rgba(103, 75, 234, 0.1);
+  --hover-color: rgba(72, 127, 255, 0.1);
+  --focus-ring: rgba(72, 127, 255, 0.15);
   --error-color: #ef4444;
   --error-bg: #fef2f2;
   --success-color: #065f46;
@@ -308,8 +307,8 @@
   /* Sombras */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 28px rgba(103, 75, 234, 0.12);
-  --shadow-primary: 0 4px 12px rgba(103, 75, 234, 0.3);
+  --shadow-lg: 0 10px 28px rgba(72, 127, 255, 0.12);
+  --shadow-primary: 0 4px 12px rgba(72, 127, 255, 0.3);
 
 
   /* ══════════════════════════════════════════════
@@ -331,9 +330,9 @@
   --color-transporte:     #1E40AF;  --color-transporte-rgb:    30, 64, 175;
  
   /* Acento global Codeplex (botones, tabs activos, badges) */
-  --accent:               #7C3AED;
-  --accent-hover:         #6D28D9;
-  --accent-shadow:        rgba(124, 58, 237, 0.35);
+  --accent:               #487FFF;
+  --accent-hover:         #3366E0;
+  --accent-shadow:        rgba(72, 127, 255, 0.35);
 
   }
 
@@ -344,10 +343,10 @@
 ═══════════════════════════════════════════════════════════ */
 :root.dark, [data-theme="dark"] {
   /* Colores de marca - más claros para contraste */
-  --primary-color: #9D4EFF;
-  --secondary-color: #8566EA;
-  --tertiary-color: #7A9EF5;
-  --gradient-primary: linear-gradient(135deg, #9D4EFF, #8566EA, #7A9EF5);
+  --primary-color: #6B9FFF;
+  --secondary-color: #4D80F0;
+  --tertiary-color: #8FBAFF;
+  --gradient-primary: linear-gradient(135deg, #6B9FFF, #4D80F0, #8FBAFF);
   
   /* Backgrounds */
   --white-color: #1e293b;
@@ -365,8 +364,8 @@
   --border-light: rgba(255, 255, 255, 0.06);
   
   /* Estados */
-  --hover-color: rgba(157, 78, 255, 0.15);
-  --focus-ring: rgba(157, 78, 255, 0.2);
+  --hover-color: rgba(107, 159, 255, 0.15);
+  --focus-ring: rgba(107, 159, 255, 0.2);
   --error-color: #f87171;
   --error-bg: rgba(239, 68, 68, 0.1);
   --success-color: #6ee7b7;
@@ -388,11 +387,11 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.5);
-  --shadow-primary: 0 4px 12px rgba(157, 78, 255, 0.3);
+  --shadow-primary: 0 4px 12px rgba(107, 159, 255, 0.3);
 
   /* Acento en dark — un poco más brillante */
-  --accent:           #8B5CF6;
-  --accent-hover:     #7C3AED;
+  --accent:           #6B9FFF;
+  --accent-hover:     #4D80F0;
 }
 
 
@@ -433,7 +432,10 @@ body {
 }
  
 /* ── Scrollbar ── */
-::-webkit-scrollbar        { width: 10px; }
-::-webkit-scrollbar-track  { background: var(--background-color); }
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
 ::-webkit-scrollbar-thumb  { background: var(--border-color); border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; }

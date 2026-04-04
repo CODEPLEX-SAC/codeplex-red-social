@@ -65,7 +65,7 @@ function UserItem({ img, name, percentage }) {
 
 function RankingUsuarios() {
   return (
-    <div className="bg-[var(--white-color)] p-[25px] rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] [@media(max-width:480px)]:p-5">
+    <div className="bg-[var(--white-color)] p-[25px] rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[var(--border-color)] [@media(max-width:480px)]:p-5">
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-[10px] text-[18px] font-bold text-[var(--text-dark)]">
           <Icon name="libro_ranking" size={30} />
@@ -83,7 +83,7 @@ function RankingUsuarios() {
         ))}
       </div>
 
-      <button className="w-full py-3 bg-transparent border-2 border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[var(--primary-color)] font-semibold text-[14px] cursor-pointer transition-all duration-300 hover:bg-[var(--primary-color)] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(127,13,242,0.2)]">
+      <button className="w-full py-3 bg-transparent border-2 border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[var(--primary-color)] font-semibold text-[14px] cursor-pointer transition-all duration-300 hover:bg-[var(--primary-color)] hover:text-white hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(72,127,255,0.2)]">
         Ver todos los usuarios
       </button>
     </div>

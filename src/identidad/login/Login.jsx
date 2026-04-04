@@ -182,6 +182,7 @@ function Login({ onLogin, onBackToDemo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!email.trim() || !password.trim()) return;
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -205,7 +206,7 @@ function Login({ onLogin, onBackToDemo }) {
       >
 
         {/* ── PANEL IZQUIERDO ── */}
-        <div className="login-left-panel px-[38px] py-[40px] max-[860px]:px-[28px] max-[860px]:py-[32px] max-[520px]:px-5 max-[520px]:py-6 flex flex-col bg-surface border-r border-line overflow-y-auto [animation:slideL_0.8s_0.08s_cubic-bezier(0.16,1,0.3,1)_both]">
+        <div className="login-left-panel px-[38px] py-[40px] max-[860px]:px-[28px] max-[860px]:py-[32px] max-[520px]:px-5 max-[520px]:py-6 flex flex-col bg-surface border-r border-line [animation:slideL_0.8s_0.08s_cubic-bezier(0.16,1,0.3,1)_both]">
 
           {/* Logo */}
           <div className="flex items-center gap-2.5 mb-8 [animation:fadeUp_0.6s_0.2s_both]">
@@ -232,7 +233,7 @@ function Login({ onLogin, onBackToDemo }) {
 
           {/* Google */}
           <button
-            className="flex items-center justify-center gap-[9px] w-full py-[10px] px-4 border-[1.5px] border-line rounded-[var(--radius-sm)] bg-surface text-fg font-[Manrope,sans-serif] text-[13px] font-semibold cursor-pointer mb-2 transition-all outline-none [animation:fadeUp_0.5s_0.36s_both] hover:bg-field hover:border-brand hover:shadow-[0_2px_12px_rgba(127,13,242,0.15)] hover:-translate-y-px"
+            className="flex items-center justify-center gap-[9px] w-full py-[10px] px-4 border-[1.5px] border-line rounded-[var(--radius-sm)] bg-surface text-fg font-[Manrope,sans-serif] text-[13px] font-semibold cursor-pointer mb-2 transition-all outline-none [animation:fadeUp_0.5s_0.36s_both] hover:bg-field hover:border-brand hover:shadow-[0_2px_12px_rgba(72,127,255,0.15)] hover:-translate-y-px"
             type="button"
           >
             <svg width="16" height="16" viewBox="0 0 24 24">
@@ -370,11 +371,11 @@ function Login({ onLogin, onBackToDemo }) {
             {/* Botón submit */}
             <button
               type="submit"
-              className={`btn-login-shimmer w-full py-3 border-0 rounded-[var(--radius-sm)] text-white font-[Manrope,sans-serif] text-sm font-bold tracking-[0.1px] cursor-pointer flex items-center justify-center gap-2 transition-all min-h-[44px] [animation:fadeUp_0.6s_0.78s_cubic-bezier(0.34,1.56,0.64,1)_both] disabled:cursor-not-allowed not-disabled:hover:-translate-y-0.5 not-disabled:hover:shadow-[0_8px_24px_rgba(127,13,242,0.4)] active:not-disabled:translate-y-0
-                ${success ? "!bg-[#065f46] !shadow-[0_4px_16px_rgba(5,150,105,0.4)]" : ""}`}
+              className={`btn-login-shimmer w-full py-3 border-0 rounded-[var(--radius-sm)] text-white font-[Manrope,sans-serif] text-sm font-bold tracking-[0.1px] cursor-pointer flex items-center justify-center gap-2 transition-all min-h-[44px] [animation:fadeUp_0.6s_0.78s_cubic-bezier(0.34,1.56,0.64,1)_both] disabled:cursor-not-allowed not-disabled:hover:-translate-y-0.5 not-disabled:hover:shadow-[0_8px_24px_rgba(72,127,255,0.4)] active:not-disabled:translate-y-0
+              `}
               style={{
-                background: success ? undefined : "var(--gradient-primary)",
-                boxShadow: success ? undefined : "var(--shadow-primary)",
+                background: "var(--gradient-primary)",
+                boxShadow: success ? "var(--shadow-primary)" : "var(--shadow-primary)",
               }}
               disabled={loading || success}
             >

@@ -2,7 +2,36 @@ import React, { useState } from "react";
 import AccionesPublicacion from "./AccionesPublicacion";
 import Comentarios from "./Comentarios";
 
-function Publicacion({ post, alVerPerfil }) {
+const CONFIG_PRIORIDAD = {
+  urgente: { label: "Urgente", color: "#ef4444", bg: "#fef2f2" },
+  normal:  { label: "Normal",  color: "#f59e0b", bg: "#fffbeb" },
+  facil:   { label: "Fácil",   color: "#22c55e", bg: "#f0fdf4" },
+};
+
+function BadgePrioridad({ prioridad }) {
+  const cfg = CONFIG_PRIORIDAD[prioridad];
+  if (!cfg) return null;
+  return (
+    <span className="px-[10px] py-[3px] rounded-full text-[11px] font-bold"
+      style={{ background: cfg.bg, color: cfg.color }}>
+      {cfg.label}
+    </span>
+  );
+}
+
+function BadgeEstado({ estado }) {
+  const resuelto = estado === "resuelto";
+  return (
+    <span className="px-[10px] py-[3px] rounded-full text-[11px] font-semibold"
+      style={resuelto
+        ? { background: "#f0fdf4", color: "#16a34a" }
+        : { background: "#f8fafc", color: "#64748b" }}>
+      {resuelto ? "✓ Resuelto" : "Sin resolver"}
+    </span>
+  );
+}
+
+function Publicacion({ post, alVerPerfil, onCambiarEstado, onFeedback }) {
   const [showComments, setShowComments] = useState(false);
 
   const toggleComments = () => setShowComments((prev) => !prev);
@@ -11,7 +40,7 @@ function Publicacion({ post, alVerPerfil }) {
   const handleVerAutor = () => alVerPerfil?.({ nombre: post.author, avatar: avatarSrc });
 
   return (
-    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[var(--radius-md)] shadow-[var(--shadow-sm)] mb-5 [@media(max-width:480px)]:px-[15px] [@media(max-width:480px)]:py-5">
+    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[var(--radius-md)] shadow-[var(--shadow-sm)] border border-[var(--border-color)] mb-5 [@media(max-width:480px)]:px-[15px] [@media(max-width:480px)]:py-5">
 
       {/* Cabecera: avatar + nombre + tiempo */}
       <div className="flex justify-between items-center mb-[18px]">
@@ -30,7 +59,11 @@ function Publicacion({ post, alVerPerfil }) {
             <div className="text-[13px] text-[var(--text-gray)]">{post.time}</div>
           </div>
         </div>
-        <button className="bg-transparent border-none cursor-pointer text-[var(--text-muted)] text-[24px] p-1 px-2 transition-colors duration-300 hover:text-[var(--text-dark)]">&#x22EF;</button>
+        <div className="flex items-center gap-2">
+          {post.tipo === "pregunta" && post.prioridad && <BadgePrioridad prioridad={post.prioridad} />}
+          {post.tipo === "pregunta" && post.estado    && <BadgeEstado estado={post.estado} />}
+          <button className="bg-transparent border-none cursor-pointer text-[var(--text-muted)] text-[24px] p-1 px-2 transition-colors duration-300 hover:text-[var(--text-dark)]">&#x22EF;</button>
+        </div>
       </div>
 
       {/* Texto + hashtags */}
@@ -116,6 +149,45 @@ function Publicacion({ post, alVerPerfil }) {
         />
         <div className="h-px bg-[var(--border-color)] my-1"></div>
         <Comentarios visible={showComments} alVerPerfil={alVerPerfil} />
+
+        {/* Acciones de pregunta */}
+        {post.tipo === "pregunta" && post.estado && (
+          <div className="flex items-center gap-2 mt-3 pt-3 border-t border-[var(--border-color)] flex-wrap">
+            {/* Feedback */}
+            <span className="text-[12px] text-[var(--text-muted)]">¿Esta respuesta te ayudó?</span>
+            <button
+              onClick={() => onFeedback?.(post.id, post.feedback === "ayudo" ? null : "ayudo")}
+              className="flex items-center gap-1 px-3 py-[5px] rounded-full text-[12px] font-semibold border transition-all duration-200 cursor-pointer"
+              style={post.feedback === "ayudo"
+                ? { background: "#f0fdf4", color: "#16a34a", borderColor: "#16a34a" }
+                : { background: "transparent", color: "var(--text-muted)", borderColor: "var(--border-color)" }}
+            >
+              👍 Me ayudó
+            </button>
+            <button
+              onClick={() => onFeedback?.(post.id, post.feedback === "no-ayudo" ? null : "no-ayudo")}
+              className="flex items-center gap-1 px-3 py-[5px] rounded-full text-[12px] font-semibold border transition-all duration-200 cursor-pointer"
+              style={post.feedback === "no-ayudo"
+                ? { background: "#fef2f2", color: "#ef4444", borderColor: "#ef4444" }
+                : { background: "transparent", color: "var(--text-muted)", borderColor: "var(--border-color)" }}
+            >
+              👎 No me ayudó
+            </button>
+
+            {/* Marcar resuelto */}
+            {post.esPropia && (
+              <button
+                onClick={() => onCambiarEstado?.(post.id, post.estado === "resuelto" ? "sin-resolver" : "resuelto")}
+                className="ml-auto flex items-center gap-1 px-3 py-[5px] rounded-full text-[12px] font-semibold border transition-all duration-200 cursor-pointer"
+                style={post.estado === "resuelto"
+                  ? { background: "#f0fdf4", color: "#16a34a", borderColor: "#16a34a" }
+                  : { background: "var(--primary-color)", color: "white", borderColor: "var(--primary-color)" }}
+              >
+                {post.estado === "resuelto" ? "✓ Resuelto" : "Marcar como resuelto"}
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
     </div>

@@ -6,10 +6,13 @@ const MENU_ITEMS = [
   { icon: "home",             label: "Datos Personales",     vista: "datos-personales" },
   { icon: "empresa",          label: "Empresas",             vista: "empresas" },
   { icon: "datosFacturacion", label: "Datos de Facturación", vista: "datos-facturacion" },
-  { icon: "buzon",            label: "Buzón",                vista: "buzon" },
-  { icon: "buzon",            label: "Mensajes",             vista: "mensajes" },
   { icon: "tickets",          label: "Tickets",              vista: "tickets" },
   { icon: "mantenedores",     label: "Mantenedores",         vista: "mantenedores" },
+];
+
+const RED_SOCIAL_ITEMS = [
+  { icon: "buzon", label: "Correo", vista: "buzon"    },
+  { icon: "buzon", label: "Chat",   vista: "mensajes" },
 ];
 
 const COLABORACION_ITEMS = [
@@ -141,8 +144,8 @@ function MenuItem({ icon, label, vista, vistaActiva, alNavegar }) {
       href="#"
       className={`flex items-center gap-[15px] px-5 py-[10px] md:px-[30px] md:py-3 no-underline text-[13px] md:text-[14px] transition-all duration-300 cursor-pointer border-l-[3px] ${
         isActive
-          ? "bg-[rgba(127,13,242,0.1)] text-[var(--primary-color)] border-l-[var(--primary-color)] font-semibold"
-          : "text-[var(--text-muted)] border-l-transparent hover:bg-[var(--background-color)] hover:text-[var(--primary-color)] hover:border-l-[var(--primary-color)]"
+          ? "bg-[#e4f1ff] text-[var(--primary-color)] border-l-[var(--primary-color)] font-semibold"
+          : "text-[var(--text-muted)] border-l-transparent hover:bg-[#e4f1ff] hover:text-[var(--primary-color)] hover:border-l-[var(--primary-color)]"
       }`}
       onClick={(e) => {
         e.preventDefault();
@@ -192,6 +195,21 @@ function SidebarMenu({ vistaActiva, alNavegar, appsActivas = [] }) {
         /* ── Sin app seleccionada: menú general de Codeplex ── */
         <>
           {MENU_ITEMS.map((item) => (
+            <MenuItem
+              key={item.label}
+              icon={item.icon}
+              label={item.label}
+              vista={item.vista}
+              vistaActiva={vistaActiva}
+              alNavegar={alNavegar}
+            />
+          ))}
+
+          <div className="px-[30px] pt-5 pb-[10px] text-[12px] font-semibold text-[var(--text-gray)] uppercase tracking-[0.5px]">
+            Red Social
+          </div>
+
+          {RED_SOCIAL_ITEMS.map((item) => (
             <MenuItem
               key={item.label}
               icon={item.icon}

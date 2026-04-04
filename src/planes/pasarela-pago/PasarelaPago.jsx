@@ -357,7 +357,7 @@ function PasarelaPago({ itemsCarrito = [], alQuitarDelCarrito, alVolver, alActiv
           </div>
 
           {/* SUPER VIP — Upsell */}
-          <div className={`bg-[#0f172a] border-2 rounded-[var(--radius-md)] p-[22px] text-white transition-all ${vipSeleccionado ? "border-violet-700 shadow-[0_0_0_1px_#7C3AED,0_4px_24px_rgba(124,58,237,0.25)] -translate-y-px" : "border-[#1e293b]"}`}>
+          <div className={`bg-[#0f172a] border-2 rounded-[var(--radius-md)] p-[22px] text-white transition-all ${vipSeleccionado ? "border-violet-700 shadow-[0_0_0_1px_#7C3AED,0_4px_24px_rgba(72,127,255,0.25)] -translate-y-px" : "border-[#1e293b]"}`}>
             <div className="mb-[18px]">
               <div className="inline-block bg-white/20 text-white text-[10px] font-bold tracking-[1px] py-[3px] px-2.5 rounded-full mb-2.5">SERVICIO ADICIONAL</div>
               <div className="flex items-center gap-2 mb-1.5">

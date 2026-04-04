@@ -6,76 +6,81 @@ const STATS = [
     title:    "Tus post",
     icon:     "tusPost",
     iconSize: 18,
-    value:    10,
+    value:    "10",
+    stat:     "+5",
+    statLabel:"este mes",
     cardStyle: {
-      background: "linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%)",
-      border:     "0.5px solid rgba(124, 58, 237, 0.18)",
+      background: "linear-gradient(to right, #e6ebff, #ffffff)",
+      border:     "1px solid var(--border-color)",
     },
-    iconBg: "#7C3AED",
-    accent: "#7C3AED",
+    iconBg: "#487FFF",
+    accent: "#487FFF",
   },
   {
     title:    "Tus Videos",
     icon:     "videos",
     iconSize: 20,
-    value:    10,
+    value:    "10",
+    stat:     "+5",
+    statLabel:"este mes",
     cardStyle: {
-      background: "linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%)",
-      border:     "0.5px solid rgba(79, 70, 229, 0.18)",
+      background: "linear-gradient(to right, #ffeeee, #fffcfc)",
+      border:     "1px solid var(--border-color)",
     },
-    iconBg: "#4F46E5",
-    accent: "#4F46E5",
+    iconBg: "#EF4444",
+    accent: "#EF4444",
   },
   {
     title:    "Compartidos",
     icon:     "compartidos",
     iconSize: 18,
-    value:    10,
+    value:    "10",
+    stat:     "+5",
+    statLabel:"este mes",
     cardStyle: {
-      background: "linear-gradient(135deg, #e8e4f8 0%, #f1effe 100%)",
-      border:     "0.5px solid rgba(109, 40, 217, 0.18)",
+      background: "linear-gradient(to right, #f7e9ff, #fffefd)",
+      border:     "1px solid var(--border-color)",
     },
-    iconBg: "#6D28D9",
-    accent: "#6D28D9",
+    iconBg: "#A855F7",
+    accent: "#A855F7",
   },
 ];
 
-function StatCard({ title, icon, iconSize, value, cardStyle, iconBg, accent }) {
+function StatCard({ title, icon, iconSize, value, stat, statLabel, cardStyle, iconBg, accent }) {
   return (
     <div
-      className="p-[25px] rounded-[var(--radius-md)] relative overflow-hidden [@media(max-width:480px)]:p-5"
+      className="p-[20px] rounded-[var(--radius-md)] flex flex-col gap-3"
       style={cardStyle}
     >
-      {/* Título + ícono */}
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-[14px] font-semibold" style={{ color: accent }}>
-          {title}
-        </span>
+      {/* Fila principal: texto izquierda + círculo derecha */}
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col gap-1 min-w-0">
+          <span className="text-[13px] font-medium text-[var(--text-muted)] leading-none">{title}</span>
+          <span className="text-[28px] font-bold text-[var(--text-dark)] leading-tight">{value}</span>
+        </div>
         <div
-          className="w-10 h-10 rounded-[var(--radius-sm)] flex items-center justify-center shrink-0"
+          className="w-12 h-12 rounded-full flex items-center justify-center shrink-0"
           style={{ backgroundColor: iconBg }}
         >
           <Icon name={icon} size={iconSize} color="white" />
         </div>
       </div>
 
-      {/* Número */}
-      <div className="text-[32px] font-bold text-[var(--text-dark)] mb-3 [@media(max-width:480px)]:text-[28px]">
-        {value}
+      {/* Stat inferior */}
+      <div className="flex items-center gap-[5px]">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <polyline points="1,9 5,3 8,6 11,2" stroke="#22c55e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span className="text-[12px] font-semibold" style={{ color: accent }}>{stat}</span>
+        <span className="text-[12px] text-[var(--text-muted)]">{statLabel}</span>
       </div>
-
-      {/* Badge de crecimiento */}
-      <span className="inline-flex items-center gap-1 bg-[var(--success-bg)] text-[var(--success-color)] text-[12px] font-semibold px-[10px] py-[4px] rounded-full">
-        <Icon name="flecha" size={14} />
-        +5% este mes
-      </span>
     </div>
   );
 }
 
 function TarjetasEstadisticas() {
   return (
-    <div className="grid grid-cols-3 gap-5 min-w-0 [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[15px]">
+    <div className="grid grid-cols-3 gap-5 min-w-0 items-start [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[15px]">
       {STATS.map((stat) => (
         <StatCard key={stat.title} {...stat} />
       ))}

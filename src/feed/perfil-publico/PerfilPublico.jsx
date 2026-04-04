@@ -336,15 +336,15 @@ function TabMetricas() {
 }
 
 /* ── Cabecera de datos compartida entre tabs ── */
-function DatosHeader({ nombre, especialidad }) {
+function DatosHeader({ nombre, especialidad, ocultarEspecialidadMobile = false }) {
   return (
     <>
-      <div className="flex items-center gap-2 flex-wrap [@media(max-width:520px)]:justify-center" style={{ marginBottom: 4 }}>
-        <h2 className="text-[20px] font-bold text-[var(--text-dark)] m-0">{nombre}</h2>
+      <div className="flex items-center gap-2 flex-wrap" style={{ marginBottom: 4 }}>
+        <h2 className="text-[20px] font-bold text-[var(--text-dark)] m-0 [@media(max-width:520px)]:text-[17px]">{nombre}</h2>
         <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[11px] font-semibold px-2 py-[2px] rounded-[var(--radius-md)] border border-[var(--success-border)]">Verificado</span>
       </div>
-      <p className="text-[13px] text-[var(--text-muted)] mt-1 mb-3">{especialidad}</p>
-      <hr className="border-none border-t border-[var(--border-color)] my-[10px] mb-3" />
+      <p className={`text-[13px] text-[var(--text-muted)] mt-1 mb-3${ocultarEspecialidadMobile ? " [@media(max-width:520px)]:hidden" : ""}`}>{especialidad}</p>
+      <hr className={`border-0 border-t border-solid border-[var(--border-color)] my-[10px] mb-3 [@media(max-width:680px)]:hidden`} />
     </>
   );
 }
@@ -411,8 +411,8 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
 
   const perfil = usuario || USUARIO_JUAN;
 
-  const btnAmigoCls = "py-[9px] px-[22px] bg-transparent text-[var(--primary-color)] border-[1.5px] border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--primary-color)] hover:text-white [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:text-[13px] [@media(max-width:680px)]:flex-1 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:py-[10px]";
-  const btnMsjCls   = "py-[9px] px-[22px] bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:text-[13px] [@media(max-width:680px)]:flex-1 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:py-[10px]";
+  const btnAmigoCls = "py-[9px] px-[22px] bg-transparent text-[var(--primary-color)] border-[1.5px] border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--primary-color)] hover:text-white [@media(max-width:680px)]:px-3 [@media(max-width:680px)]:py-[7px] [@media(max-width:680px)]:text-[13px]";
+  const btnMsjCls   = "py-[9px] px-[22px] bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:px-3 [@media(max-width:680px)]:py-[7px] [@media(max-width:680px)]:text-[13px]";
   const redBtnCls   = "w-8 h-8 flex items-center justify-center border-[1.5px] border-[var(--border-color)] bg-[var(--white-color)] rounded-[var(--radius-sm)] text-[var(--text-muted)] cursor-pointer transition-all duration-200 hover:border-[var(--color-red-social)] hover:text-[var(--color-red-social)] hover:bg-[rgba(53,5,99,0.05)]";
 
   return (
@@ -433,28 +433,31 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
             </button>
 
             {/* ── Hero grid ── */}
-            <div className="grid grid-cols-[auto_1fr_auto] gap-6 px-7 pb-5 pt-1 items-start [@media(max-width:900px)]:gap-4 [@media(max-width:900px)]:px-5 [@media(max-width:680px)]:grid-cols-[auto_1fr] [@media(max-width:680px)]:gap-3 [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:pb-4 [@media(max-width:520px)]:grid-cols-1 [@media(max-width:520px)]:gap-2 [@media(max-width:520px)]:px-2 [@media(max-width:520px)]:justify-items-center">
+            <div className="grid grid-cols-[auto_1fr_auto] gap-6 px-7 pb-5 pt-1 items-start [@media(max-width:900px)]:gap-4 [@media(max-width:900px)]:px-5 [@media(max-width:680px)]:grid-cols-[auto_1fr] [@media(max-width:680px)]:gap-x-3 [@media(max-width:680px)]:gap-y-2 [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:pb-4">
 
               {/* Foto + golden badge */}
-              <div className="flex flex-col items-center shrink-0 gap-2">
-                <img src={perfil.avatar} alt={perfil.nombre} className="w-[90px] h-[90px] rounded-full object-cover border-[3px] border-[var(--border-color)]" />
-                <div className="flex items-center gap-1 bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[9px] font-bold tracking-[0.3px] px-2 py-1 rounded-[var(--radius-xs)] whitespace-nowrap">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+              <div className="flex flex-col items-center shrink-0 gap-1 self-start">
+                <img src={perfil.avatar} alt={perfil.nombre} className="w-[90px] h-[90px] rounded-full object-cover border-[3px] border-[var(--border-color)] [@media(max-width:680px)]:w-[84px] [@media(max-width:680px)]:h-[84px]" />
+                <div className="bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[9px] font-bold tracking-[0.3px] px-2 py-1 rounded-[var(--radius-xs)] whitespace-nowrap">
                   GOLDEN BOOK
                 </div>
               </div>
 
               {esRedSocial ? (
                 <>
-                  {/* Datos — Red Social */}
-                  <div className="flex-1 min-w-0 flex flex-col [@media(max-width:520px)]:w-full [@media(max-width:520px)]:text-center">
-                    <DatosHeader nombre={perfil.nombre} especialidad={perfil.especialidad || USUARIO_JUAN.especialidad} />
-                    <div className="flex flex-wrap gap-x-5 gap-y-[6px] text-[13px] text-[var(--text-muted)] [@media(max-width:520px)]:justify-center" style={{ margin: "10px 0" }}>
+                  {/* Nombre + stats — col2 fila1 en todas las vistas */}
+                  <div className="min-w-0 flex flex-col">
+                    <DatosHeader nombre={perfil.nombre} especialidad={perfil.especialidad || USUARIO_JUAN.especialidad} ocultarEspecialidadMobile />
+                    <div className="flex flex-wrap gap-x-5 gap-y-[6px] text-[13px] text-[var(--text-muted)]" style={{ margin: "6px 0 0" }}>
                       <span><strong className="text-[var(--text-dark)] font-bold">28</strong> Publicaciones</span>
                       <span><strong className="text-[var(--text-dark)] font-bold">40</strong> Amigos</span>
                       <span><strong className="text-[var(--text-dark)] font-bold">10</strong> amigos en común</span>
                     </div>
-                    <div className="flex flex-wrap gap-x-[10px] gap-y-1 [@media(max-width:520px)]:justify-center" style={{ margin: "6px 0 8px" }}>
+                  </div>
+
+                  {/* Bio + seguidores — col-span-2 en ≤680px (ocupa fila completa), col-start-2 en desktop */}
+                  <div className="[@media(min-width:681px)]:col-start-2 [@media(max-width:680px)]:col-span-2 flex flex-col gap-y-[6px]">
+                    <div className="flex flex-wrap gap-x-[10px] gap-y-1">
                       {[
                         { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>, label: "4.0 · 120 reseñas" },
                         { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: "Lima, Perú" },
@@ -464,7 +467,7 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                         <span key={i} className="flex items-center gap-1 text-[12px] text-[var(--text-muted)]">{item.icon}{item.label}</span>
                       ))}
                     </div>
-                    <div className="flex items-center gap-2 mt-2 [@media(max-width:520px)]:justify-center">
+                    <div className="flex items-center gap-2">
                       <div className="flex items-center">
                         {[20, 25, 30].map((img, i) => (
                           <img key={i} src={`https://i.pravatar.cc/150?img=${img}`} alt="" className="w-6 h-6 rounded-full border-2 border-[var(--white-color)] object-cover" style={{ marginLeft: i > 0 ? -8 : 0 }} />
@@ -473,18 +476,28 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                       <span className="text-[12px] text-[var(--text-muted)]">Carlos Valverde y 9 personas más siguen este perfil</span>
                     </div>
                   </div>
-                  {/* Botones amistad */}
-                  <div className="flex flex-row gap-[10px] shrink-0 items-start [@media(max-width:680px)]:col-span-full [@media(max-width:680px)]:items-center [@media(max-width:680px)]:justify-start [@media(max-width:520px)]:col-auto [@media(max-width:520px)]:w-full">
-                    <button className={btnAmigoCls}>{textoAmistad || "Añadir amigo"}</button>
-                    <button className={btnMsjCls} onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>Enviar mensaje</button>
+
+                  {/* Botones — desktop: col3 spanning 2 filas | ≤680px: fila completa al final */}
+                  <div className="[@media(min-width:681px)]:col-start-3 [@media(min-width:681px)]:row-start-1 [@media(min-width:681px)]:row-span-2 [@media(min-width:681px)]:self-start [@media(max-width:680px)]:col-span-2 flex gap-2">
+                    <button className={`${btnAmigoCls} [@media(max-width:680px)]:flex-1`}>{textoAmistad || "Añadir amigo"}</button>
+                    <button className={`${btnMsjCls} [@media(max-width:680px)]:flex-1`} onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>Enviar mensaje</button>
                   </div>
                 </>
               ) : (
                 <>
-                  {/* Datos — otros tabs */}
-                  <div className="flex-1 min-w-0 flex flex-col [@media(max-width:520px)]:w-full [@media(max-width:520px)]:text-center">
-                    <DatosHeader nombre={perfil.nombre} especialidad={perfil.especialidad || USUARIO_JUAN.especialidad} />
-                    <div className="flex flex-wrap gap-x-[10px] gap-y-1 mb-3 [@media(max-width:520px)]:justify-center">
+                  {/* Wrapper: flex-col en desktop (col2), display:contents en mobile (hijos pasan al grid) */}
+                  <div className="min-w-0 flex flex-col gap-3 [@media(max-width:680px)]:contents">
+
+                    {/* Nombre + Cargo + separador — col2 row1 siempre */}
+                    <div className="min-w-0">
+                      <DatosHeader nombre={perfil.nombre} especialidad={perfil.especialidad || USUARIO_JUAN.especialidad} />
+                    </div>
+
+                    {/* Separador full-width — solo mobile (col-span-2) */}
+                    <hr className="[@media(min-width:681px)]:hidden [@media(max-width:680px)]:col-span-2 border-0 border-t border-solid border-[var(--border-color)] my-0 w-full" />
+
+                    {/* Reseñas · Ubicación · Experiencia */}
+                    <div className="[@media(max-width:680px)]:col-span-2 flex flex-wrap gap-x-[10px] gap-y-1">
                       {[
                         { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>, label: "3.8 · 64 reseñas" },
                         { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: "Lima, Perú" },
@@ -493,15 +506,18 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                         <span key={i} className="flex items-center gap-1 text-[12px] text-[var(--text-muted)]">{item.icon}{item.label}</span>
                       ))}
                     </div>
-                    <div className="flex flex-wrap gap-[6px] mt-[2px] [@media(max-width:520px)]:justify-center">
+
+                    {/* Etiquetas */}
+                    <div className="[@media(max-width:680px)]:col-span-2 flex flex-wrap gap-[6px]">
                       {["AUDITORIA","NIIF","TRIBUTACIÓN","EXCEL"].map(t => (
                         <span key={t} className="bg-[var(--primary-color)] text-white text-[11px] font-semibold px-[10px] py-[3px] rounded-[var(--radius-xs)] tracking-[0.3px]">{t}</span>
                       ))}
                     </div>
                   </div>
-                  {/* Botón contratar + redes */}
-                  <div className="flex flex-col items-end gap-[14px] shrink-0 [@media(max-width:680px)]:col-span-full [@media(max-width:680px)]:flex-row [@media(max-width:680px)]:items-center [@media(max-width:680px)]:justify-between [@media(max-width:520px)]:col-auto [@media(max-width:520px)]:items-center [@media(max-width:520px)]:justify-center">
-                    <button className="py-[9px] px-5 bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[13px] font-semibold cursor-pointer whitespace-nowrap shrink-0 transition-colors duration-200 hover:bg-[var(--secondary-color)]" onClick={() => setModalContratar(true)}>
+
+                  {/* Contratar + redes: col3 desktop | col-span-2 mobile */}
+                  <div className="self-start flex flex-col items-end gap-[14px] [@media(max-width:680px)]:col-span-2 [@media(max-width:680px)]:flex-row [@media(max-width:680px)]:items-center [@media(max-width:680px)]:gap-2">
+                    <button className="py-[7px] px-5 bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[13px] font-semibold cursor-pointer whitespace-nowrap shrink-0 transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:flex-1" onClick={() => setModalContratar(true)}>
                       Contratar
                     </button>
                     <div className="flex gap-2">
@@ -531,7 +547,7 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
           </div>
 
           {/* ── Contenido ── */}
-          <div className="overflow-y-auto p-5 px-6 pt-5 [@media(max-width:520px)]:px-0 [@media(max-width:520px)]:pb-0 [@media(max-width:520px)]:pt-3">
+          <div className="overflow-y-auto py-5 [@media(max-width:520px)]:pb-0 [@media(max-width:520px)]:pt-3">
             {tab === "red-social"  && <TabRedSocial />}
             {tab === "resumen"     && <TabResumen />}
             {tab === "experiencia" && <TabExperiencia />}

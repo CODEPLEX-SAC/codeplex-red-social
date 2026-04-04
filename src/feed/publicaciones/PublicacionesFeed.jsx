@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import PestanasFeed from "./PestanasFeed";
 import Publicacion from "./Publicacion";
+import PanelMisPreguntas from "./PanelMisPreguntas";
 
 function EmptyState({ icon, title, description }) {
   return (
-    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] mb-5">
+    <div className="bg-[var(--white-color)] px-8 py-7 rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[var(--border-color)] mb-5">
       <div style={{ textAlign: "center", padding: "60px 20px" }}>
         <div style={{ fontSize: "64px", marginBottom: "16px" }}>{icon}</div>
         <h3 style={{ color: "var(--text-dark)", marginBottom: "8px" }}>{title}</h3>
@@ -14,7 +15,7 @@ function EmptyState({ icon, title, description }) {
   );
 }
 
-function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil }) {
+function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil, misPreguntas, onCambiarEstado, onFeedback }) {
   const [activeTab, setActiveTab] = useState("post");
 
   const postsFiltrados = obtenerPorTipo(activeTab);
@@ -25,7 +26,10 @@ function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil }) {
 
       {activeTab === "post" && (
         postsFiltrados.length > 0
-          ? postsFiltrados.map((post) => <Publicacion key={post.id} post={post} alVerPerfil={alVerPerfil} />)
+          ? postsFiltrados.map((post) => (
+              <Publicacion key={post.id} post={post} alVerPerfil={alVerPerfil}
+                onCambiarEstado={onCambiarEstado} onFeedback={onFeedback} />
+            ))
           : <EmptyState icon="📝" title="No hay publicaciones aún" description="¡Sé el primero en publicar algo!" />
       )}
 
@@ -35,6 +39,14 @@ function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil }) {
 
       {activeTab === "noticias" && (
         <EmptyState icon="📰" title="No hay noticias aún" description="Las noticias más recientes aparecerán aquí" />
+      )}
+
+      {activeTab === "mis-preguntas" && (
+        <PanelMisPreguntas
+          misPreguntas={misPreguntas ?? []}
+          onCambiarEstado={onCambiarEstado}
+          onFeedback={onFeedback}
+        />
       )}
     </>
   );

@@ -46,7 +46,7 @@ function LanguageSelect() {
 }
 
 function ProfileSlider({ alCerrar, darkMode, onToggleDarkMode, alIniciarSesion, alCerrarSesion }) {
-  const { modoExploracion, comenzarAutenticacion, cerrarSesion: cerrarSesionCtx } = useSesion();
+  const { modoExploracion, comenzarAutenticacion, cerrarSesion: cerrarSesionCtx, perfil, usuario } = useSesion();
   const handleIniciarSesion = alIniciarSesion ?? comenzarAutenticacion;
   const handleCerrarSesion  = alCerrarSesion  ?? cerrarSesionCtx;
 
@@ -104,14 +104,21 @@ function ProfileSlider({ alCerrar, darkMode, onToggleDarkMode, alIniciarSesion, 
             </>
           ) : (
             <>
-              <img
-                src="https://i.pravatar.cc/150?img=12"
-                alt="Gabriel Chumpitazi"
-                className="w-[90px] h-[90px] rounded-full mx-auto mb-[14px] border-[3px] border-[var(--primary-color)] block"
-              />
-              <h3 className="text-[17px] font-bold text-[var(--text-dark)] mb-1">Gabriel Chumpitazi</h3>
-              <p className="text-[14px] text-[var(--primary-color)] mb-1 font-medium">Contador Senior</p>
-              <p className="text-[13px] text-[var(--text-muted)] mb-4">gabriel@info.com</p>
+              {perfil?.avatar ? (
+                <img
+                  src={perfil.avatar}
+                  alt={usuario?.nombre}
+                  className="w-[90px] h-[90px] rounded-full mx-auto mb-[14px] border-[3px] border-[var(--primary-color)] block object-cover"
+                />
+              ) : (
+                <div className="w-[90px] h-[90px] rounded-full mx-auto mb-[14px] border-[3px] border-[var(--primary-color)] flex items-center justify-center text-[34px] font-bold text-white"
+                  style={{ background: "var(--gradient-primary)" }}>
+                  {usuario?.nombre?.[0]?.toUpperCase() || "U"}
+                </div>
+              )}
+              <h3 className="text-[17px] font-bold text-[var(--text-dark)] mb-1">{usuario?.nombre || "Sin nombre"}</h3>
+              <p className="text-[14px] text-[var(--primary-color)] mb-1 font-medium">{perfil?.cargo || "Sin cargo"}</p>
+              <p className="text-[13px] text-[var(--text-muted)] mb-4">{perfil?.email || ""}</p>
 
               <button className="bg-transparent border border-[var(--border-color)] py-[9px] px-5 rounded-[var(--radius-sm)] text-[var(--text-dark)] text-[14px] cursor-pointer inline-flex items-center justify-center gap-2 mb-5 transition-all duration-300 w-full hover:bg-[var(--background-color)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]">
                 <span>Ir a mi ficha</span>
@@ -148,7 +155,7 @@ function ProfileSlider({ alCerrar, darkMode, onToggleDarkMode, alIniciarSesion, 
           {!modoExploracion && (
             <>
               <button
-                className="border-none p-[13px] rounded-[var(--radius-sm)] text-white font-semibold text-[15px] cursor-pointer transition-all duration-300 w-full hover:-translate-y-[2px] hover:shadow-[0_4px_15px_rgba(127,13,242,0.35)]"
+                className="border-none p-[13px] rounded-[var(--radius-sm)] text-white font-semibold text-[15px] cursor-pointer transition-all duration-300 w-full hover:-translate-y-[2px] hover:shadow-[0_4px_15px_rgba(72,127,255,0.35)]"
                 style={{ background: 'var(--gradient-primary)' }}
               >
                 Guardar Cambios
