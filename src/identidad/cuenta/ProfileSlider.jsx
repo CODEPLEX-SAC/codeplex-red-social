@@ -45,7 +45,7 @@ function LanguageSelect() {
   );
 }
 
-function ProfileSlider({ alCerrar, darkMode, onToggleDarkMode, alIniciarSesion, alCerrarSesion }) {
+function ProfileSlider({ alCerrar, darkMode, onToggleDarkMode, alIniciarSesion, alCerrarSesion, alVerPerfil }) {
   const { modoExploracion, comenzarAutenticacion, cerrarSesion: cerrarSesionCtx, perfil, usuario } = useSesion();
   const handleIniciarSesion = alIniciarSesion ?? comenzarAutenticacion;
   const handleCerrarSesion  = alCerrarSesion  ?? cerrarSesionCtx;
@@ -120,7 +120,10 @@ function ProfileSlider({ alCerrar, darkMode, onToggleDarkMode, alIniciarSesion, 
               <p className="text-[14px] text-[var(--primary-color)] mb-1 font-medium">{perfil?.cargo || "Sin cargo"}</p>
               <p className="text-[13px] text-[var(--text-muted)] mb-4">{perfil?.email || ""}</p>
 
-              <button className="bg-transparent border border-[var(--border-color)] py-[9px] px-5 rounded-[var(--radius-sm)] text-[var(--text-dark)] text-[14px] cursor-pointer inline-flex items-center justify-center gap-2 mb-5 transition-all duration-300 w-full hover:bg-[var(--background-color)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]">
+              <button
+                className="bg-transparent border border-[var(--border-color)] py-[9px] px-5 rounded-[var(--radius-sm)] text-[var(--text-dark)] text-[14px] cursor-pointer inline-flex items-center justify-center gap-2 mb-5 transition-all duration-300 w-full hover:bg-[var(--background-color)] hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]"
+                onClick={alVerPerfil}
+              >
                 <span>Ir a mi ficha</span>
                 <Icon name="exportar" size={18} />
               </button>

@@ -290,6 +290,7 @@
   --error-color: #ef4444;
   --error-bg: #fef2f2;
   --success-color: #065f46;
+  --success-text:  #16a34a;
   --success-bg: #d1fae5;
   --success-border: #6ee7b7;
   --warning-color: #92400e;
@@ -298,6 +299,9 @@
   --warning-border: #f59e0b;
   --info-color: #0369a1;
   --info-bg: #e0f2fe;
+  --overlay-media:  rgba(0, 0, 0, 0.55); /* botones play sobre video       */
+  --overlay-modal:  rgba(0, 0, 0, 0.65); /* fondo de modales / backdrops   */
+  --video-bg:       #0f0f0f;             /* fondo del reproductor de video  */
   
   /* Inputs */
   --input-bg: #f9fafb;

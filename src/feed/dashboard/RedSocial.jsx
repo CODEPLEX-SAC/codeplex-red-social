@@ -5,24 +5,36 @@ import PublicacionesFeed from "../publicaciones/PublicacionesFeed";
 import TarjetaMonedero from "../../planes/monedero/TarjetaMonedero";
 import RankingUsuarios from "./RankingUsuarios";
 import MensajesFlotante from "../buzon/MensajesFlotante";
-import usePublicaciones from "../publicaciones/usePublicaciones";
-
-// RedSocial es el ORQUESTADOR — conecta creador ↔ feed via usePublicaciones
-function RedSocial({ alNavegar, alVerPerfil }) {
-  const { publicaciones, crearPublicacion, obtenerPorTipo, cambiarEstado, registrarFeedback, misPreguntas } = usePublicaciones();
+// RedSocial es el ORQUESTADOR — recibe publicaciones desde App (estado compartido)
+function RedSocial({ alNavegar, alVerPerfil,
+  publicaciones, crearPublicacion, obtenerPorTipo,
+  cambiarEstado, marcarComentarioUtil, registrarFeedback,
+  editarPublicacion, eliminarPublicacion,
+  agregarComentario, agregarRespuesta, editarComentario, eliminarComentario, reaccionarComentario,
+  misPreguntas,
+}) {
 
   return (
     <div className="grid grid-cols-[1fr_350px] gap-5 [@media(max-width:1400px)]:grid-cols-1">
       <div className="flex flex-col gap-5 min-w-0">
         <TarjetasEstadisticas />
-        <CreadorPublicacion onPublicar={crearPublicacion} />
+        <CreadorPublicacion onPublicar={crearPublicacion} alNavegar={alNavegar} />
         <PublicacionesFeed
           publicaciones={publicaciones}
           obtenerPorTipo={obtenerPorTipo}
           alVerPerfil={alVerPerfil}
+          alNavegar={alNavegar}
           misPreguntas={misPreguntas}
           onCambiarEstado={cambiarEstado}
+          onMarcarComentarioUtil={marcarComentarioUtil}
           onFeedback={registrarFeedback}
+          onEditar={editarPublicacion}
+          onEliminar={eliminarPublicacion}
+          onAgregarComentario={agregarComentario}
+          onAgregarRespuesta={agregarRespuesta}
+          onEditarComentario={editarComentario}
+          onEliminarComentario={eliminarComentario}
+          onReaccionarComentario={reaccionarComentario}
         />
       </div>
 

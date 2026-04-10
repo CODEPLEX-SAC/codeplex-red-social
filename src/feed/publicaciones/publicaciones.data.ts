@@ -1,15 +1,39 @@
 /**
  * DOMINIO: Feed > Publicaciones
  * Contexto Acotado: Datos mock del feed de publicaciones.
- *
- * Lenguaje Ubicuo:
- *  - Publicacion    : contenido compartido por un usuario en el feed
- *  - Comentario     : respuesta de un usuario a una publicación
- *  - Reaccion       : expresión emocional del usuario hacia una publicación
  */
 
+/* ── Tipos del dominio (exportados para uso en backend y frontend) ── */
+export type TipoPublicacion = "post" | "video" | "encuesta" | "pregunta";
+export type Prioridad       = "urgente" | "normal";
+export type EstadoPregunta  = "sin-resolver" | "resuelto";
+export type Feedback        = "ayudo" | "no-ayudo" | null;
+
+/** Medio adjunto: imagen o video. url puede ser blob: (prototipo) o https: (producción) */
+export interface Medio {
+  url:  string;
+  tipo: "imagen" | "video";
+}
+
+/**
+ PARA BACKEND: estos valores deben coincidir con el enum
+ * `PrioridadPublicacion` del modelo de dominio del servidor.
+ */
+export const PRIORIDADES: { id: Prioridad; label: string; color: string; bg: string }[] = [
+  { id: "urgente", label: "Urgente", color: "var(--error-color)",   bg: "var(--error-bg)"   },
+  { id: "normal",  label: "Normal",  color: "var(--warning-text)",  bg: "var(--warning-bg)" },
+];
+
+/**
+ * Catálogo de Estados de Pregunta — fuente única de verdad.
+ */
+export const ESTADOS_PREGUNTA: { id: EstadoPregunta; label: string; color: string; bg: string }[] = [
+  { id: "resuelto",     label: "✓ Resuelto",   color: "var(--success-text)", bg: "var(--success-bg)"  },
+  { id: "sin-resolver", label: "Sin resolver",  color: "var(--text-muted)",   bg: "var(--border-light)" },
+];
+
 export interface PublicacionMock {
-  avatarImg: number;
+  avatarImg: number | string;
   author: string;
   time: string;
   text: string;
@@ -87,7 +111,7 @@ export const MOCK_COMMENTS: ComentarioMock[] = [
 ];
 
 export const REACTIONS: Reaccion[] = [
-  { icon: "like",       label: "Me gusta",  color: "#487FFF" },
-  { icon: "me_encanta", label: "Me encanta", color: "#ef4444" },
-  { icon: "asombro",    label: "Asombro",    color: "#f59e0b" },
+  { icon: "like",       label: "Me gusta",  color: "var(--primary-color)" },
+  { icon: "me_encanta", label: "Me encanta", color: "var(--error-color)"   },
+  { icon: "asombro",    label: "Asombro",    color: "var(--warning-text)"  },
 ];

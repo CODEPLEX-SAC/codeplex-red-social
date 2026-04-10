@@ -5,13 +5,6 @@
  * Este archivo contiene los datos del catálogo de aplicaciones (APPS)
  * y los metadatos de identidad de cada aplicación (APP_META).
  *
- * Lenguaje Ubicuo:
- *  - Aplicacion     : producto de software que el usuario puede instalar/suscribir
- *  - CatalogoApp    : colección de todas las aplicaciones disponibles
- *  - MetaApp        : datos de identidad visual de la aplicación (nombre, ícono, tema)
- *  - ColorTema      : token de color asociado a cada aplicación para branding consistente
- *  - PrecioDesde    : precio mínimo mensual de acceso a la aplicación
- *  - Feature        : característica destacada de la aplicación
  */
 
 export interface Aplicacion {

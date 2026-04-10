@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { supabaseSaas } from "../../lib/supabase-saas";
 
 import carrusel1 from "../../assets/images/carrusel1.jpg";
 import carrusel2 from "../../assets/images/carrusel2.jpg";
@@ -179,16 +180,24 @@ function Login({ onLogin, onBackToDemo }) {
   const [remember, setRemember] = useState(true);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error,   setError]   = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email.trim() || !password.trim()) return;
     setLoading(true);
-    setTimeout(() => {
+    setError("");
+
+    const { error: authError } = await supabaseSaas.auth.signInWithPassword({ email, password });
+
+    if (authError) {
+      setError("Correo o contraseña incorrectos");
       setLoading(false);
-      setSuccess(true);
-      setTimeout(() => onLogin(), 600);
-    }, 1800);
+      return;
+    }
+
+    setSuccess(true);
+    setTimeout(() => onLogin(), 600);
   };
 
   const handleDemo = () => onBackToDemo ? onBackToDemo() : onLogin();
@@ -367,6 +376,11 @@ function Login({ onLogin, onBackToDemo }) {
                 ¿Olvidaste tu contraseña?
               </a>
             </div>
+
+            {/* Error */}
+            {error && (
+              <p className="text-[12px] text-red-500 text-center mb-3 font-medium">{error}</p>
+            )}
 
             {/* Botón submit */}
             <button

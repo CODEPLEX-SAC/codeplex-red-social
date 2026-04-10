@@ -77,7 +77,7 @@ export function useReacciones(initialCount: number = 0): UseReaccionesReturn {
       setLikeCount((prev: number) => prev - 1);
     } else {
       setLiked(true);
-      setActiveReaction({ icon: "like", label: "Me gusta", color: "#487FFF" });
+      setActiveReaction({ icon: "like", label: "Me gusta", color: "var(--primary-color)" });
       setLikeCount((prev: number) => prev + 1);
     }
   };

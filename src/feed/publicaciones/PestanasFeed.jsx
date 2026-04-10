@@ -1,10 +1,9 @@
 import React from "react";
 
 const TABS = [
-  { id: "post",          label: "Post" },
-  { id: "videos",        label: "Videos" },
-  { id: "noticias",      label: "Noticias" },
-  { id: "mis-preguntas", label: "Mis Preguntas" },
+  { id: "post",     label: "Post"     },
+  { id: "videos",   label: "Videos"   },
+  { id: "noticias", label: "Noticias" },
 ];
 
 const tabClass = (activo) =>

@@ -201,9 +201,9 @@ function DatosPersonales() {
             <p className="text-[12px] text-[var(--primary-color)] font-semibold m-0 text-center">
               {perfil.cargo || "Sin cargo"}
             </p>
-            {perfil.ciudad && (
+            {perfil.email && (
               <p className="text-[12px] text-[var(--text-muted)] m-0 mt-1 text-center">
-                {[perfil.ciudad, perfil.pais].filter(Boolean).join(", ")}
+                {perfil.email}
               </p>
             )}
 

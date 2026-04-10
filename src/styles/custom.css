@@ -91,7 +91,7 @@
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
-  .toggle-switch input:checked + .toggle-slider { background: linear-gradient(135deg, #487FFF, #3366E0); }
+  .toggle-switch input:checked + .toggle-slider { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); }
   .toggle-switch input:checked + .toggle-slider:before { transform: translateX(20px); }
   .toggle-slider:hover { background-color: var(--text-gray); }
   .toggle-switch input:checked + .toggle-slider:hover { background: linear-gradient(135deg, #3366E0, #2255CC); }
@@ -177,6 +177,7 @@
     padding: 12px 16px;
     background: transparent;
     border: none;
+    outline: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 14px;
@@ -198,15 +199,18 @@
   .post-react-btn .icon { transition: all 0.3s; }
   .post-react-btn .action-count { font-size: 13px; color: var(--text-muted); font-weight: 500; }
 
-  .post-react-btn:nth-child(1):hover { color: var(--error-color) !important; }
+  .post-react-btn:nth-child(1):hover { color: var(--primary-color); }
   .post-react-btn:nth-child(1):hover .icon { transform: scale(1.2); }
   .post-react-btn:nth-child(2):hover { color: var(--info-color); }
   .post-react-btn:nth-child(3):hover { color: var(--success-color); }
   .post-react-btn:nth-child(3):hover .icon { stroke: var(--success-color); transform: scale(1.2); }
 
+  /* Reacted: mantiene su color en hover sin ser sobreescrito */
+  .post-react-btn.reacted:hover { color: inherit; }
+
   .post-react-btn.reacted { background: transparent !important; border: none !important; }
-  .post-react-btn.reacted[data-reaction="Me gusta"]        { color: #487FFF; }
-  .post-react-btn.reacted[data-reaction="Me gusta"] .icon  { fill: #487FFF; }
+  .post-react-btn.reacted[data-reaction="Me gusta"]        { color: var(--primary-color); }
+  .post-react-btn.reacted[data-reaction="Me gusta"] .icon  { fill: var(--primary-color); }
   .post-react-btn.reacted[data-reaction="Me encanta"]       { color: #ef4444; }
   .post-react-btn.reacted[data-reaction="Me encanta"] .icon { fill: #ef4444; }
   .post-react-btn.reacted[data-reaction="Asombro"]          { color: var(--warning-text); }
@@ -279,9 +283,9 @@
   }
 
   .reaction-option:nth-child(1) .icon-wrapper { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
-  .reaction-option:nth-child(1) .icon         { fill: #487FFF; }
-  .reaction-option:nth-child(1):hover .icon-wrapper { background: linear-gradient(135deg, #487FFF, #3366E0); transform: scale(1.1); }
-  .reaction-option:nth-child(1):hover .icon   { fill: #487FFF; filter: drop-shadow(0 4px 10px rgba(72,127,255,0.8)); }
+  .reaction-option:nth-child(1) .icon         { fill: var(--primary-color); }
+  .reaction-option:nth-child(1):hover .icon-wrapper { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); transform: scale(1.1); }
+  .reaction-option:nth-child(1):hover .icon   { fill: var(--primary-color); filter: drop-shadow(0 4px 10px rgba(72,127,255,0.8)); }
 
   .reaction-option:nth-child(2) .icon-wrapper { background: linear-gradient(135deg, #fee2e2, #fecaca); }
   .reaction-option:nth-child(2) .icon         { fill: #ef4444; stroke: none; }
@@ -331,8 +335,8 @@
     }
     .reaction-option .icon { width: 24px; height: 24px; }
     .reaction-option:active { transform: scale(0.9); }
-    .reaction-option:nth-child(1) .icon { stroke: #487FFF; stroke-width: 0.5px; }
-    .reaction-option:nth-child(1):active { background: #487FFF; border-color: #487FFF; }
+    .reaction-option:nth-child(1) .icon { stroke: var(--primary-color); stroke-width: 0.5px; }
+    .reaction-option:nth-child(1):active { background: var(--primary-color); border-color: var(--primary-color); }
     .reaction-option:nth-child(2) .icon { stroke: #FF0000; stroke-width: 0.5px; }
     .reaction-option:nth-child(2):active { background: #FF0000; border-color: #FF0000; }
     .reaction-option:nth-child(3) .icon { stroke: #F3A758; stroke-width: 0.5px; }

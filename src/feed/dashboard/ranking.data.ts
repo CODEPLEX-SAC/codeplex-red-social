@@ -1,12 +1,6 @@
 /**
  * DOMINIO: Feed > Dashboard
  * Contexto Acotado: Ranking y gamificación de usuarios en la red social.
- *
- * Lenguaje Ubicuo:
- *  - UsuarioRanking  : usuario con su posición y porcentaje de habilidades en el ranking semanal
- *  - NivelRango      : categoría de prestigio del usuario (Bronce, Plata, Oro, Diamante)
- *  - PorcentajeSkill : métrica de 0–100 que determina el NivelRango del usuario
- *  - IconoRango      : identificador del ícono visual del rango (referencia al sistema de íconos)
  */
 
 export interface UsuarioRanking {

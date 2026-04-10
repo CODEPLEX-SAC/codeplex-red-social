@@ -4,12 +4,6 @@
  * Representa las Aplicaciones disponibles para suscripción.
  * Cada Aplicacion es una entidad del dominio con sus caracteristicas,
  * precioDesde y el modal de suscripción asociado.
- *
- * Lenguaje ubicuo:
- *   Aplicacion       → producto de software que el usuario puede suscribir
- *   caracteristicas  → funcionalidades incluidas en la aplicación
- *   precioDesde      → precio mínimo del plan disponible
- *   suscripcionModal → identificador del modal de planes de esa aplicación
  */
 
 export interface Aplicacion {

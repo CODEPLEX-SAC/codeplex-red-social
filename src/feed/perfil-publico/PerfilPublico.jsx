@@ -312,7 +312,7 @@ function TabMetricas() {
             <p className="text-[11px] text-[var(--text-muted)] m-0 leading-[1.4]">Calculadas a partir de documentos contables reales cargados y validados por el sistema.</p>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 gap-3 [@media(max-width:520px)]:grid-cols-1">
           {metricasProfesionales.map((m, i) => (
             <div key={i} className="bg-[var(--background-color)] border border-[var(--border-color)] rounded-[var(--radius-sm)] p-4">
               <h5 className="text-[13px] font-bold text-[var(--text-dark)] m-0 mb-3">{m.titulo}</h5>

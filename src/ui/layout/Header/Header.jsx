@@ -327,6 +327,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
           modoExploracion={modoExploracion}
           alIniciarSesion={() => { setShowSlider(false); comenzarAutenticacion(); }}
           alCerrarSesion={() => { setShowSlider(false); cerrarSesion(); }}
+          alVerPerfil={() => { setShowSlider(false); alNavegar("perfil-propio"); }}
         />
       )}
 

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { SesionProvider, useSesion } from './identidad/sesion/SesionContext';
+import { PerfilSocialProvider } from './feed/perfil-propio/PerfilSocialContext';
 import Sidebar from './ui/layout/Sidebar/Sidebar';
 import Header from './ui/layout/Header/Header';
 import RedSocial from './feed/dashboard/RedSocial';
 import Login from './identidad/login/Login';
+import { ModalAuthRedSocial } from './identidad/sesion/ModalAuthRedSocial';
 import GestionEmpresas from './organizacion/empresas/GestionEmpresas';
 import DatosPersonales from './identidad/datos-personales/DatosPersonales';
 import DatosFacturacion from './organizacion/facturacion/DatosFacturacion';
@@ -22,6 +24,8 @@ import PaginaCarrito from './planes/carrito/PaginaCarrito';
 import CarritoMobile from './planes/carrito/CarritoMobile';
 import VistaPlaceholder from './ui/placeholders/VistaPlaceholder';
 import PerfilPublico from './feed/perfil-publico/PerfilPublico';
+import PerfilPropio  from './feed/perfil-propio/PerfilPropio';
+import usePublicaciones from './feed/publicaciones/usePublicaciones';
 
 /* ── Apps precargadas en modo exploración ──────────────────────────────────
    El usuario sin login ve todas las apps disponibles en "Mis Aplicaciones"
@@ -47,6 +51,15 @@ function AppContent() {
   const [vistaActiva, setVistaActiva]           = useState("red-social");
   const [pagoData, setPagoData]                 = useState(null);
   const [perfilUsuario, setPerfilUsuario]       = useState(null);
+
+  /* Publicaciones levantadas al nivel App para compartir entre RedSocial y PerfilPropio */
+  const {
+    publicaciones, crearPublicacion, obtenerPorTipo,
+    cambiarEstado, marcarComentarioUtil, registrarFeedback,
+    editarPublicacion, eliminarPublicacion,
+    agregarComentario, agregarRespuesta, editarComentario, eliminarComentario, reaccionarComentario,
+    misPreguntas,
+  } = usePublicaciones();
 
   const alVerPerfil = (usuario) => {
     setPerfilUsuario(usuario);
@@ -118,8 +131,17 @@ function AppContent() {
 
   const renderVista = () => {
     switch (vistaActiva) {
-      case "red-social":        return <RedSocial alNavegar={setVistaActiva} alVerPerfil={alVerPerfil} />;
+      case "red-social":        return <RedSocial alNavegar={setVistaActiva} alVerPerfil={alVerPerfil}
+                                          publicaciones={publicaciones} crearPublicacion={crearPublicacion} obtenerPorTipo={obtenerPorTipo}
+                                          cambiarEstado={cambiarEstado} marcarComentarioUtil={marcarComentarioUtil} registrarFeedback={registrarFeedback}
+                                          editarPublicacion={editarPublicacion} eliminarPublicacion={eliminarPublicacion}
+                                          agregarComentario={agregarComentario} agregarRespuesta={agregarRespuesta}
+                                          editarComentario={editarComentario} eliminarComentario={eliminarComentario}
+                                          reaccionarComentario={reaccionarComentario} misPreguntas={misPreguntas} />;
       case "perfil-usuario":    return <PerfilPublico usuario={perfilUsuario} onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva} />;
+      case "perfil-propio":     return <PerfilPropio onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva}
+                                          publicaciones={publicaciones} misPreguntas={misPreguntas}
+                                          onMarcarComentarioUtil={marcarComentarioUtil} onCambiarEstado={cambiarEstado} />;
       case "datos-personales":  return <DatosPersonales />;
       case "empresas":          return <GestionEmpresas />;
       case "datos-facturacion": return <DatosFacturacion />;
@@ -170,7 +192,7 @@ function AppContent() {
     }
   };
 
-  if (estadoSesion === 'autenticando') {
+  if (estadoSesion === 'autenticando-saas') {
     return (
       <Login
         onLogin={confirmarSesion}
@@ -209,6 +231,13 @@ function AppContent() {
         </main>
       </div>
 
+      {estadoSesion === 'autenticando-social' && (
+        <ModalAuthRedSocial
+          onConfirmar={confirmarSesion}
+          onCerrar={irAExploracion}
+        />
+      )}
+
       {vistaActiva !== "carrito" && (
         <CarritoMobile
           itemsCarrito={itemsCarrito}
@@ -226,7 +255,9 @@ function AppContent() {
 function App() {
   return (
     <SesionProvider>
-      <AppContent />
+      <PerfilSocialProvider>
+        <AppContent />
+      </PerfilSocialProvider>
     </SesionProvider>
   );
 }

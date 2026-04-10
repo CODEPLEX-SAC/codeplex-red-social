@@ -54,14 +54,6 @@ export interface UseTiendaAplicacionesReturn {
  *   - iniciar una Suscripcion a una Aplicacion
  *   - ver y gestionar Suscripciones Activas
  *   - solicitar la desinstalación de una Suscripcion Activa
- *
- * Lenguaje ubicuo:
- *   pestanaActiva          → pestaña visible: "mis" | "adquirir"
- *   categoriaSeleccionada  → filtro de categoría aplicado al catálogo
- *   terminoBusqueda        → texto libre para buscar en el catálogo
- *   modalSuscripcionAbierto → qué modal de planes está visible, o null
- *   aplicacionADesinstalar → la SuscripcionActiva pendiente de confirmar desinstalación
- *   aplicacionesFiltradas  → resultado del catálogo tras aplicar filtros
  */
 export function useTiendaAplicaciones({
   suscripcionesActivas = [],

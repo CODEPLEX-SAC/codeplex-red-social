@@ -15,7 +15,7 @@ function EmptyState({ icon, title, description }) {
   );
 }
 
-function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil, misPreguntas, onCambiarEstado, onFeedback }) {
+function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil, alNavegar, misPreguntas, onCambiarEstado, onMarcarComentarioUtil, onFeedback, onEditar, onEliminar, onAgregarComentario, onAgregarRespuesta, onEditarComentario, onEliminarComentario, onReaccionarComentario }) {
   const [activeTab, setActiveTab] = useState("post");
 
   const postsFiltrados = obtenerPorTipo(activeTab);
@@ -27,8 +27,12 @@ function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil, misPreg
       {activeTab === "post" && (
         postsFiltrados.length > 0
           ? postsFiltrados.map((post) => (
-              <Publicacion key={post.id} post={post} alVerPerfil={alVerPerfil}
-                onCambiarEstado={onCambiarEstado} onFeedback={onFeedback} />
+              <Publicacion key={post.id} post={post} alVerPerfil={alVerPerfil} alNavegar={alNavegar}
+                onCambiarEstado={onCambiarEstado} onMarcarComentarioUtil={onMarcarComentarioUtil}
+                onFeedback={onFeedback} onEditar={onEditar} onEliminar={onEliminar}
+                onAgregarComentario={onAgregarComentario} onAgregarRespuesta={onAgregarRespuesta}
+                onEditarComentario={onEditarComentario} onEliminarComentario={onEliminarComentario}
+                onReaccionarComentario={onReaccionarComentario} />
             ))
           : <EmptyState icon="📝" title="No hay publicaciones aún" description="¡Sé el primero en publicar algo!" />
       )}
@@ -41,13 +45,6 @@ function PublicacionesFeed({ publicaciones, obtenerPorTipo, alVerPerfil, misPreg
         <EmptyState icon="📰" title="No hay noticias aún" description="Las noticias más recientes aparecerán aquí" />
       )}
 
-      {activeTab === "mis-preguntas" && (
-        <PanelMisPreguntas
-          misPreguntas={misPreguntas ?? []}
-          onCambiarEstado={onCambiarEstado}
-          onFeedback={onFeedback}
-        />
-      )}
     </>
   );
 }

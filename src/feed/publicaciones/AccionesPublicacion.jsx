@@ -5,7 +5,7 @@ import { useReacciones } from "./useReacciones";
 import { useSesion } from "../../identidad/sesion/SesionContext";
 
 function AccionesPublicacion({ initialLikeCount = 124, onToggleComments, commentCount = 0 }) {
-  const { modoExploracion, comenzarAutenticacion } = useSesion();
+  const { modoExploracion, comenzarAutenticacionSocial: comenzarAutenticacion } = useSesion();
   const {
     liked,
     likeCount,
@@ -49,7 +49,7 @@ function AccionesPublicacion({ initialLikeCount = 124, onToggleComments, comment
         </div>
         <div className="flex gap-4 [@media(max-width:768px)]:gap-[10px]">
           <span className="text-[14px] text-[var(--text-muted)] cursor-pointer transition-colors duration-300 hover:text-[var(--primary-color)]" onClick={onToggleComments} style={{ cursor: "pointer" }}>
-            {commentCount > 0 ? `${commentCount} comentarios` : "18 comentarios"}
+            {commentCount === 1 ? "1 comentario" : `${commentCount} comentarios`}
           </span>
           <span className="text-[14px] text-[var(--text-muted)] cursor-pointer transition-colors duration-300 hover:text-[var(--primary-color)]">5 compartidos</span>
         </div>

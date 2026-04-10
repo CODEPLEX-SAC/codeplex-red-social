@@ -1,12 +1,5 @@
 /**
  * Dominio — Carrito de Suscripciones
- *
- * Lógica de negocio pura del carrito. Sin estado, sin React.
- * Lista para conectarse a una API real sin modificar la UI.
- *
- * Lenguaje ubicuo:
- *   itemsCarrito   → Aplicaciones seleccionadas pendientes de suscribir
- *   totalCarrito   → Suma de precios base de los items
  */
 
 export interface ItemCarrito {
