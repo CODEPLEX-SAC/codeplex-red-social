@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { REACTIONS } from "./publicaciones.data";
 import { useSesion } from "../../identidad/sesion/SesionContext";
+import { usePerfilSocial } from "../perfil-propio/PerfilSocialContext";
 import Icon from "../../ui/Icon/Icon";
 import ModalConfirmar from "../../ui/ModalConfirmar/ModalConfirmar";
 import Lightbox from "../../ui/Lightbox/Lightbox";
@@ -524,8 +525,12 @@ function CommentInput({ onSend, modoExploracion, comenzarAutenticacion, currentU
 
 /* ── Comentarios ── */
 function Comentarios({ visible, alVerPerfil, comentariosIniciales, esPregunta, esAutorPost, respuestaAceptadaId, onAceptarRespuesta, onAgregarComentario, onAgregarRespuesta, onEditarComentario, onEliminarComentario, onReaccionarComentario }) {
-  const { modoExploracion, comenzarAutenticacionSocial: comenzarAutenticacion, usuario } = useSesion();
-  const bloqueado = modoExploracion;
+  const { modoExploracion, comenzarAutenticacionSocial: comenzarAutenticacion, userSocial, usuario } = useSesion();
+  const { perfilSocial, tienePerfil } = usePerfilSocial();
+  const onboardingSocialPendiente = Boolean(userSocial && tienePerfil === false);
+  const requiereLoginRedSocial      = modoExploracion || !userSocial;
+  const bloqueado                   = requiereLoginRedSocial || onboardingSocialPendiente;
+  const alPedirAuth                 = requiereLoginRedSocial ? comenzarAutenticacion : () => {};
 
   // Los comentarios vienen del padre (persistentes) — ya no hay estado local
   const comentarios = comentariosIniciales ?? [];
@@ -540,8 +545,8 @@ function Comentarios({ visible, alVerPerfil, comentariosIniciales, esPregunta, e
 
   const handleSend = (texto, media) => {
     onAgregarComentario?.({
-      img: 12, name: usuario?.nombre || "Usuario",
-      text: texto, time: "Ahora", avatarUrl: usuario?.avatar || "https://i.pravatar.cc/150?img=12",
+      name: perfilSocial.nombreVisible,
+      text: texto, time: "Ahora", avatarUrl: perfilSocial.avatar || "",
       replies: [], reaction: null, reactionCount: 0, esPropio: true,
       ...(media && media.length > 0 ? { images: media } : {}),
     });
@@ -550,8 +555,8 @@ function Comentarios({ visible, alVerPerfil, comentariosIniciales, esPregunta, e
   const handleReply = (parentId, texto, media) => {
     if (!texto.trim() && (!media || media.length === 0)) return;
     onAgregarRespuesta?.(parentId, {
-      img: 12, name: usuario?.nombre || "Usuario",
-      text: texto.trim(), time: "Ahora", avatarUrl: usuario?.avatar || "https://i.pravatar.cc/150?img=12",
+      name: perfilSocial.nombreVisible,
+      text: texto.trim(), time: "Ahora", avatarUrl: perfilSocial.avatar || "",
       replies: [], reaction: null, reactionCount: 0, esPropio: true,
       mentionedUser: findName(comentarios, parentId),
       ...(media && media.length > 0 ? { images: media } : {}),
@@ -568,14 +573,14 @@ function Comentarios({ visible, alVerPerfil, comentariosIniciales, esPregunta, e
     <div className="pt-4 flex flex-col gap-4">
       {comentarios.map((c) => (
         <Comment key={c.id} comment={c} currentUser={usuario}
-          modoExploracion={bloqueado} comenzarAutenticacion={comenzarAutenticacion}
+          modoExploracion={bloqueado} comenzarAutenticacion={alPedirAuth}
           onReply={handleReply} onEdit={handleEdit} onDelete={handleDelete}
           onReaction={handleReaction} alVerPerfil={alVerPerfil}
           esPregunta={esPregunta} esAutorPost={esAutorPost}
           respuestaAceptadaId={respuestaAceptadaId} onAceptarRespuesta={onAceptarRespuesta} />
       ))}
       <CommentInput onSend={handleSend} modoExploracion={bloqueado}
-        comenzarAutenticacion={comenzarAutenticacion} currentUser={usuario} />
+        comenzarAutenticacion={alPedirAuth} currentUser={usuario} />
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { SesionProvider, useSesion } from './identidad/sesion/SesionContext';
-import { PerfilSocialProvider } from './feed/perfil-propio/PerfilSocialContext';
+import { PerfilSocialProvider, usePerfilSocial } from './feed/perfil-propio/PerfilSocialContext';
 import Sidebar from './ui/layout/Sidebar/Sidebar';
 import Header from './ui/layout/Header/Header';
 import RedSocial from './feed/dashboard/RedSocial';
 import Login from './identidad/login/Login';
 import { ModalAuthRedSocial } from './identidad/sesion/ModalAuthRedSocial';
+import { ModalOnboardingSocial } from './identidad/sesion/ModalOnboardingSocial';
 import GestionEmpresas from './organizacion/empresas/GestionEmpresas';
 import DatosPersonales from './identidad/datos-personales/DatosPersonales';
 import DatosFacturacion from './organizacion/facturacion/DatosFacturacion';
@@ -45,7 +46,14 @@ const APPS_EXPLORACION = [
    AppContent — consume SesionContext, maneja estado de UI/apps
 ══════════════════════════════════════════════════════════════ */
 function AppContent() {
-  const { estadoSesion, modoExploracion, comenzarAutenticacion, confirmarSesion, irAExploracion } = useSesion();
+  const { estadoSesion, modoExploracion, comenzarAutenticacion, confirmarSesion, irAExploracion, userSocial } = useSesion();
+  const { tienePerfil } = usePerfilSocial();
+
+  /* El modal solo aparece si la auto-creación del perfil falló (caso extremo).
+     En condiciones normales, PerfilSocialContext crea el perfil automáticamente
+     usando los datos del SaaS sin necesitar intervención del usuario. */
+  const mostrarOnboardingSocial =
+    estadoSesion === 'autenticado' && Boolean(userSocial) && tienePerfil === false;
 
   const [sidebarOpen, setSidebarOpen]           = useState(false);
   const [vistaActiva, setVistaActiva]           = useState("red-social");
@@ -60,6 +68,9 @@ function AppContent() {
     agregarComentario, agregarRespuesta, editarComentario, eliminarComentario, reaccionarComentario,
     misPreguntas,
   } = usePublicaciones();
+
+  /* Amigos del usuario — Juan Pérez ya es amigo */
+  const AMIGOS_NOMBRES = new Set(["Juan Pérez"]);
 
   const alVerPerfil = (usuario) => {
     setPerfilUsuario(usuario);
@@ -138,7 +149,8 @@ function AppContent() {
                                           agregarComentario={agregarComentario} agregarRespuesta={agregarRespuesta}
                                           editarComentario={editarComentario} eliminarComentario={eliminarComentario}
                                           reaccionarComentario={reaccionarComentario} misPreguntas={misPreguntas} />;
-      case "perfil-usuario":    return <PerfilPublico usuario={perfilUsuario} onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva} />;
+      case "perfil-usuario":    return <PerfilPublico usuario={perfilUsuario} onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva}
+                                          sonAmigos={AMIGOS_NOMBRES.has(perfilUsuario?.nombre)} />;
       case "perfil-propio":     return <PerfilPropio onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva}
                                           publicaciones={publicaciones} misPreguntas={misPreguntas}
                                           onMarcarComentarioUtil={marcarComentarioUtil} onCambiarEstado={cambiarEstado} />;
@@ -231,12 +243,24 @@ function AppContent() {
         </main>
       </div>
 
+      {/* Login / Registro social normal */}
       {estadoSesion === 'autenticando-social' && (
         <ModalAuthRedSocial
           onConfirmar={confirmarSesion}
           onCerrar={irAExploracion}
         />
       )}
+
+      {/* Onboarding: usuario autenticado (SaaS o social) sin cuenta en la red social */}
+      {estadoSesion === 'autenticado' && !userSocial && (
+        <ModalAuthRedSocial
+          onConfirmar={confirmarSesion}
+          onCerrar={irAExploracion}
+          initialTab="registro"
+        />
+      )}
+
+      {mostrarOnboardingSocial && <ModalOnboardingSocial />}
 
       {vistaActiva !== "carrito" && (
         <CarritoMobile

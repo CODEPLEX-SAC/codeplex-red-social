@@ -1,28 +1,50 @@
 /**
  * PUERTO: SubidaMedios — Contexto: Publicaciones · Comentarios · Respuestas
- * PARA BACKEND
- * Reemplazar el cuerpo de `subirMedio` con la llamada real (S3, Cloudinary, etc.).
- * El contrato no cambia: entrada File → salida Promise<ResultadoSubida>
+ * Sube archivos a Supabase Storage (bucket: publicaciones-medios).
+ * Devuelve URL pública permanente → persiste entre sesiones.
+ *
+ * PASO PREVIO (una sola vez en el dashboard de Supabase Social):
+ *   Storage → New bucket → nombre: "publicaciones-medios" → Public: ON → Create
  */
 
+import { supabase } from "../../lib/supabase";
 import type { Medio } from "../../feed/publicaciones/publicaciones.data";
 
-/** Resultado de subir un Medio: su UrlMedio y tipo. */
+const BUCKET = "publicaciones-medios";
+
+/** Resultado de subir un Medio: su url y tipo. */
 export type ResultadoSubida = Medio;
 
 /**
- * Sube un Medio y retorna su UrlMedio + tipo.
- * Mock: blob URL temporal (válida solo en sesión). En producción: URL permanente.
+ * Sube un archivo a Supabase Storage y retorna su URL pública permanente.
+ * Si falla el upload (bucket no creado, permisos, etc.) cae a blob URL temporal
+ * para no romper el flujo durante desarrollo.
  */
 export async function subirMedio(archivo: File): Promise<ResultadoSubida> {
-  return {
-    url:  URL.createObjectURL(archivo),
-    tipo: archivo.type.startsWith("video/") ? "video" : "imagen",
-  };
+  const tipo: Medio["tipo"] = archivo.type.startsWith("video/") ? "video" : "imagen";
+
+  // Nombre único: timestamp + random + extensión original
+  const ext      = archivo.name.split(".").pop() ?? (tipo === "video" ? "mp4" : "jpg");
+  const nombre   = `${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+  const path     = `medios/${nombre}`;
+
+  const { error } = await supabase.storage.from(BUCKET).upload(path, archivo, {
+    cacheControl: "3600",
+    upsert: false,
+  });
+
+  if (error) {
+    // Fallback: blob URL temporal (solo válida en sesión actual)
+    console.warn("[SubidaMedios] Upload fallido, usando blob URL temporal:", error.message);
+    return { url: URL.createObjectURL(archivo), tipo };
+  }
+
+  const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
+  return { url: data.publicUrl, tipo };
 }
 
 /**
- * Sube múltiples Medios en paralelo, ignorando archivos que no sean imagen o video.
+ * Sube múltiples archivos en paralelo, ignorando los que no sean imagen o video.
  */
 export async function subirMedios(archivos: File[] | FileList): Promise<ResultadoSubida[]> {
   const validos = Array.from(archivos).filter(

@@ -294,11 +294,15 @@ export function ModalPublicacion({ usuario, onPublicar, onCerrar, textoInicial =
    CreadorPublicacion — barra de entrada (trigger)
 ══════════════════════════════════════════════ */
 function CreadorPublicacion({ onPublicar, alNavegar }) {
-  const { modoExploracion, comenzarAutenticacionSocial } = useSesion();
-  const { perfilSocial } = usePerfilSocial();
+  const { modoExploracion, comenzarAutenticacionSocial, userSocial } = useSesion();
+  const { perfilSocial, tienePerfil } = usePerfilSocial();
   /* La foto que aparece en la red social es la del perfil social, no la de la cuenta */
   const avatarRed = perfilSocial.avatar || null;
-  const nombreRed = perfilSocial.nombreVisible || "Usuario";
+  const nombreRed = perfilSocial.nombreVisible;
+  /* Sin @username completado: el modal de onboarding (App) es el flujo correcto, no el login */
+  const onboardingSocialPendiente = Boolean(userSocial && tienePerfil === false);
+  const requiereLoginRedSocial      = modoExploracion || !userSocial;
+  const bloquearComposer            = requiereLoginRedSocial || onboardingSocialPendiente;
   const [modalAbierto, setModalAbierto] = useState(false);
 
   const handlePublicar = (texto, autor, avatar, tipo, prioridad, imagenes) => {
@@ -310,7 +314,7 @@ function CreadorPublicacion({ onPublicar, alNavegar }) {
       {/* ── Barra trigger ── */}
       <div className="bg-[var(--white-color)] p-[20px] rounded-[var(--radius-md)] shadow-[0_2px_8px_rgba(0,0,0,0.05)] border border-[var(--border-color)] [@media(max-width:480px)]:px-[15px]">
         <div className="flex items-center gap-[14px]">
-          {modoExploracion ? (
+          {bloquearComposer ? (
             <div className="w-10 h-10 rounded-full bg-[var(--border-light)] border-2 border-dashed border-[var(--border-color)] flex items-center justify-center shrink-0">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="1.5">
                 <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
@@ -329,10 +333,18 @@ function CreadorPublicacion({ onPublicar, alNavegar }) {
             </div>
           )}
           <button
-            onClick={modoExploracion ? comenzarAutenticacionSocial : () => setModalAbierto(true)}
-            className="flex-1 text-left px-[15px] py-3 rounded-[var(--radius-md)] border border-[var(--border-color)] bg-[var(--white-color)] text-[14px] text-[var(--text-muted)] cursor-pointer transition-colors duration-200 hover:bg-[var(--background-color)] font-[inherit]"
+            type="button"
+            disabled={onboardingSocialPendiente}
+            onClick={requiereLoginRedSocial ? comenzarAutenticacionSocial : () => setModalAbierto(true)}
+            className={`flex-1 text-left px-[15px] py-3 rounded-[var(--radius-md)] border border-[var(--border-color)] bg-[var(--white-color)] text-[14px] text-[var(--text-muted)] font-[inherit] transition-colors duration-200 ${
+              onboardingSocialPendiente ? "cursor-not-allowed opacity-90" : "cursor-pointer hover:bg-[var(--background-color)]"
+            } disabled:cursor-not-allowed`}
           >
-            {modoExploracion ? "Inicia sesión para publicar..." : `¿Qué estás pensando, ${nombreRed.split(" ")[0] || ""}?`}
+            {requiereLoginRedSocial
+              ? "Inicia sesión para publicar..."
+              : onboardingSocialPendiente
+                ? "Completa tu @username arriba para publicar…"
+                : `¿Qué estás pensando, ${nombreRed.split(" ")[0] || ""}?`}
           </button>
         </div>
       </div>

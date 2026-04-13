@@ -21,9 +21,11 @@ const popupBtnClass = "bg-transparent border-none text-white cursor-pointer p-1 
 /* ═══════════════════════════════════════════
    BOTÓN FLOTANTE
 ═══════════════════════════════════════════ */
-function BotonFlotante({ totalSinLeer, onClick }) {
+function BotonFlotante({ totalSinLeer, onClick, ariaExpanded }) {
   return (
     <button
+      type="button"
+      aria-expanded={ariaExpanded}
       className="relative flex items-center justify-between w-[251px] h-14 px-5 text-white border-none rounded-[50px] text-[14px] font-semibold cursor-pointer shadow-[var(--shadow-lg)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px] hover:shadow-[var(--shadow-primary)] [@media(max-width:768px)]:w-[56px] [@media(max-width:768px)]:h-[56px] [@media(max-width:768px)]:rounded-full [@media(max-width:768px)]:p-0 [@media(max-width:768px)]:justify-center"
       style={{ background: 'var(--gradient-primary)' }}
       onClick={onClick}
@@ -266,13 +268,61 @@ function VistaChat({ conversacion, onVolver, onCerrar }) {
 }
 
 /* ═══════════════════════════════════════════
+   Aviso: SaaS sin sesión Red Social
+═══════════════════════════════════════════ */
+function AvisoActivarRedSocial({ onCerrar, onIrARedSocial }) {
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mensajes-flotante-aviso-titulo"
+      className="w-[min(calc(100vw-1.5rem),300px)] rounded-[var(--radius-md)] border border-[var(--border-color)] bg-[var(--white-color)] shadow-[var(--shadow-lg)] p-4 mb-1 animate-mensajes-popup"
+    >
+      <div className="flex justify-between items-start gap-2 mb-3">
+        <p id="mensajes-flotante-aviso-titulo" className="text-[13px] font-semibold text-[var(--text-dark)] m-0 leading-snug pr-1">
+          Activa tu cuenta de Red Social para usar mensajes
+        </p>
+        <button
+          type="button"
+          aria-label="Cerrar"
+          onClick={onCerrar}
+          className="shrink-0 w-7 h-7 rounded-full border-none bg-[var(--background-color)] text-[var(--text-muted)] cursor-pointer flex items-center justify-center hover:bg-[var(--hover-color)] hover:text-[var(--text-dark)] transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <button
+        type="button"
+        className="w-full py-2.5 px-3 border-none rounded-[var(--radius-sm)] text-white text-[13px] font-bold cursor-pointer font-[inherit] transition-[transform,box-shadow] duration-200 hover:-translate-y-px shadow-[var(--shadow-primary)]"
+        style={{ background: "var(--gradient-primary)" }}
+        onClick={() => {
+          onIrARedSocial();
+          onCerrar();
+        }}
+      >
+        Iniciar sesión en la Red Social
+      </button>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════
    ORQUESTADOR
 ═══════════════════════════════════════════ */
 function MensajesFlotante({ alNavegar }) {
-  const { modoExploracion, comenzarAutenticacion } = useSesion();
-  const [estado,     setEstado]     = useState("cerrado");
-  const [chatActivo, setChatActivo] = useState(null);
-  const [esMobile,   setEsMobile]   = useState(window.innerWidth <= 768);
+  const { userSaas, userSocial, comenzarAutenticacionSocial } = useSesion();
+  const [estado,        setEstado]        = useState("cerrado");
+  const [chatActivo,    setChatActivo]    = useState(null);
+  const [esMobile,      setEsMobile]      = useState(window.innerWidth <= 768);
+  const [avisoRedSocial, setAvisoRedSocial] = useState(false);
+  const panelRef = useRef(null);
+
+  const tieneSesionSaasOSocial = Boolean(userSaas || userSocial);
+  const puedeUsarMensajesRed   = Boolean(userSocial);
+  const soloSaasSinRedSocial   = Boolean(userSaas && !userSocial);
+
   const totalSinLeer = CONVERSACIONES_MOCK.reduce((sum, c) => sum + c.sinLeer, 0);
 
   useEffect(() => {
@@ -281,25 +331,66 @@ function MensajesFlotante({ alNavegar }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (puedeUsarMensajesRed) setAvisoRedSocial(false);
+  }, [puedeUsarMensajesRed]);
+
+  useEffect(() => {
+    if (!avisoRedSocial) return;
+    const onPointerDown = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target)) {
+        setAvisoRedSocial(false);
+      }
+    };
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setAvisoRedSocial(false);
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [avisoRedSocial]);
+
   const cerrarTodo  = () => { setEstado("cerrado"); setChatActivo(null); };
   const expandir    = () => { cerrarTodo(); if (alNavegar) alNavegar("mensajes"); };
   const abrirChat   = (conv) => { setChatActivo(conv); setEstado("chat"); };
   const volverLista = () => { setChatActivo(null); setEstado("lista"); };
 
+  const handleClickFlotante = () => {
+    if (soloSaasSinRedSocial) {
+      setAvisoRedSocial((v) => !v);
+      return;
+    }
+    if (!puedeUsarMensajesRed) return;
+    if (esMobile) expandir();
+    else if (estado === "cerrado") setEstado("lista");
+    else cerrarTodo();
+  };
+
+  if (!tieneSesionSaasOSocial) {
+    return null;
+  }
+
   return (
-    <div className="fixed bottom-[35px] right-6 [@media(max-width:480px)]:right-3 z-[999] flex flex-col items-end gap-3">
-      {!esMobile && estado === "lista" && (
+    <div ref={panelRef} className="fixed bottom-[35px] right-6 [@media(max-width:480px)]:right-3 z-[999] flex flex-col items-end gap-3">
+      {soloSaasSinRedSocial && avisoRedSocial && (
+        <AvisoActivarRedSocial
+          onCerrar={() => setAvisoRedSocial(false)}
+          onIrARedSocial={comenzarAutenticacionSocial}
+        />
+      )}
+      {!soloSaasSinRedSocial && !esMobile && estado === "lista" && (
         <PopupLista onCerrar={cerrarTodo} onAbrirChat={abrirChat} onExpandir={expandir} />
       )}
-      {!esMobile && estado === "chat" && chatActivo && (
+      {!soloSaasSinRedSocial && !esMobile && estado === "chat" && chatActivo && (
         <VistaChat conversacion={chatActivo} onVolver={volverLista} onCerrar={cerrarTodo} />
       )}
       <BotonFlotante
-        totalSinLeer={totalSinLeer}
-        onClick={modoExploracion
-          ? comenzarAutenticacion
-          : (esMobile ? expandir : (estado === "cerrado" ? () => setEstado("lista") : cerrarTodo))
-        }
+        totalSinLeer={puedeUsarMensajesRed ? totalSinLeer : 0}
+        ariaExpanded={soloSaasSinRedSocial ? avisoRedSocial : estado !== "cerrado"}
+        onClick={handleClickFlotante}
       />
     </div>
   );

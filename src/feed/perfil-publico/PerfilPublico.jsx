@@ -7,12 +7,19 @@ import React, { useState } from "react";
 import AccionesPublicacion from "../publicaciones/AccionesPublicacion";
 import Comentarios from "../publicaciones/Comentarios";
 
-/* ── Mock data de Juan Pérez (no es amigo aún) ── */
+/* ── Mock data de Juan Pérez ── */
 const USUARIO_JUAN = {
   nombre:       "Juan Pérez",
   avatar:       "https://i.pravatar.cc/150?img=33",
   especialidad: "Asesor Tributario y Auditor Externo · CPA",
 };
+
+/* ── Amigos en común con Juan Pérez ── */
+const AMIGOS_EN_COMUN = [
+  { nombre: "Carlos Valverde",  avatar: "https://i.pravatar.cc/150?img=12" },
+  { nombre: "Lucía Mamani",     avatar: "https://i.pravatar.cc/150?img=47" },
+  { nombre: "Roberto Salas",    avatar: "https://i.pravatar.cc/150?img=68" },
+];
 
 const TABS_PERFIL = [
   { id: "red-social",  label: "Red Social"  },
@@ -403,141 +410,330 @@ function ModalContratar({ nombre, onCerrar }) {
 
 /* ══════════════════════════════════════════════════════
    PerfilPublico — componente principal
+   Layout tipo Facebook móvil: sin portada, fondo plano
 ══════════════════════════════════════════════════════ */
-function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmistad }) {
-  const [tab, setTab] = useState("red-social");
+function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmistad, esPerfilPropio = false, sonAmigos = false }) {
+  const [tab, setTab]                       = useState("red-social");
   const [modalContratar, setModalContratar] = useState(false);
-  const esRedSocial = tab === "red-social";
 
   const perfil = usuario || USUARIO_JUAN;
 
-  const btnAmigoCls = "py-[9px] px-[22px] bg-transparent text-[var(--primary-color)] border-[1.5px] border-[var(--primary-color)] rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--primary-color)] hover:text-white [@media(max-width:680px)]:px-3 [@media(max-width:680px)]:py-[7px] [@media(max-width:680px)]:text-[13px]";
-  const btnMsjCls   = "py-[9px] px-[22px] bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[14px] font-semibold cursor-pointer whitespace-nowrap transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:px-3 [@media(max-width:680px)]:py-[7px] [@media(max-width:680px)]:text-[13px]";
-  const redBtnCls   = "w-8 h-8 flex items-center justify-center border-[1.5px] border-[var(--border-color)] bg-[var(--white-color)] rounded-[var(--radius-sm)] text-[var(--text-muted)] cursor-pointer transition-all duration-200 hover:border-[var(--color-red-social)] hover:text-[var(--color-red-social)] hover:bg-[rgba(53,5,99,0.05)]";
+  /* Datos de info fijados (íconos + texto, uno por línea) */
+  const datosInfo = [
+    { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, texto: "Lima, Perú" },
+    { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>, texto: "Colegio Angélica Román" },
+    { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>, texto: "Codeplex" },
+  ];
+
+  /* Botones de redes sociales (perfil propio) */
+  const redesBtns = [
+    { title: "Email",    icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> },
+    { title: "LinkedIn", icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg> },
+    { title: "Web",      icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> },
+  ];
+
+  const btnPrimario = "flex-1 flex items-center justify-center gap-2 py-[9px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer transition-opacity hover:opacity-90";
+  const btnSecundario = "flex-1 flex items-center justify-center gap-2 py-[9px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors";
 
   return (
     <>
       {modalContratar && <ModalContratar nombre={perfil.nombre} onCerrar={() => setModalContratar(false)} />}
-      <div className="w-full">
-        <div className="flex flex-col bg-[var(--background-color)] w-full">
 
-          {/* ── Cabecera ── */}
-          <div className="bg-[var(--white-color)] rounded-[var(--radius-md)] border border-[var(--border-color)] shadow-[var(--shadow-sm)] shrink-0 min-w-0 overflow-hidden">
-            <button
-              className="flex items-center gap-[6px] bg-transparent border-none text-[var(--text-dark)] cursor-pointer text-[13px] font-medium px-5 pt-3 pb-2 opacity-70 hover:opacity-100 transition-opacity duration-200"
-              onClick={onVolver} title="Volver"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
+      <div className="w-full">
+        <div className="flex flex-col bg-[var(--background-color)] w-full gap-3">
+
+          {/* ════════════ CABECERA ════════════ */}
+          <div className="bg-[var(--white-color)] rounded-[var(--radius-md)] border border-[var(--border-color)] shadow-[var(--shadow-sm)] overflow-hidden">
+
+            {/* Botón volver */}
+            <button onClick={onVolver}
+              className="flex items-center gap-1 bg-transparent border-none text-[var(--text-dark)] cursor-pointer px-4 pt-3 pb-2 opacity-60 hover:opacity-100 transition-opacity">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                <polyline points="15 18 9 12 15 6"/>
               </svg>
             </button>
 
-            {/* ── Hero grid ── */}
-            <div className="grid grid-cols-[auto_1fr_auto] gap-6 px-7 pb-5 pt-1 items-start [@media(max-width:900px)]:gap-4 [@media(max-width:900px)]:px-5 [@media(max-width:680px)]:grid-cols-[auto_1fr] [@media(max-width:680px)]:gap-x-3 [@media(max-width:680px)]:gap-y-2 [@media(max-width:680px)]:px-4 [@media(max-width:680px)]:pb-4">
+            <div className="px-4 pb-4">
 
-              {/* Foto + golden badge */}
-              <div className="flex flex-col items-center shrink-0 gap-1 self-start">
-                <img src={perfil.avatar} alt={perfil.nombre} className="w-[90px] h-[90px] rounded-full object-cover border-[3px] border-[var(--border-color)] [@media(max-width:680px)]:w-[84px] [@media(max-width:680px)]:h-[84px]" />
-                <div className="bg-gradient-to-br from-[#b45309] to-[#f59e0b] text-white text-[9px] font-bold tracking-[0.3px] px-2 py-1 rounded-[var(--radius-xs)] whitespace-nowrap">
-                  GOLDEN BOOK
+              {/* ════ DESKTOP (md+): 2 columnas — avatar | info ════ */}
+              <div className="hidden md:flex md:gap-4 md:items-start">
+
+                {/* Columna avatar */}
+                <div className="relative shrink-0">
+                  <img
+                    src={perfil.avatar}
+                    alt={perfil.nombre}
+                    className="w-[88px] h-[88px] rounded-full object-cover border-2 border-[var(--border-color)]"
+                  />
+                  <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[var(--background-color)] border-2 border-[var(--white-color)] flex items-center justify-center">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Columna info */}
+                <div className="flex-1 min-w-0 flex flex-col gap-[10px]">
+
+                  {/* FILA 1: Nombre + escudo  |  botones de acción (derecha) */}
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h2 className="text-[20px] font-bold text-[var(--text-dark)] m-0 leading-tight">{perfil.nombre}</h2>
+                      <button className="flex items-center gap-[5px] px-[10px] py-[4px] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-transparent text-[12px] font-semibold text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        Verificar cuenta
+                      </button>
+                    </div>
+
+                    {/* Botones derecha */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {esPerfilPropio && (
+                        <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                          </svg>
+                          Editar perfil
+                        </button>
+                      )}
+                      {!esPerfilPropio && sonAmigos && (
+                        <>
+                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                              <polyline points="16 11 18 13 22 9"/>
+                            </svg>
+                            Amigos
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                          </button>
+                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
+                            onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            Mensaje
+                          </button>
+                        </>
+                      )}
+                      {!esPerfilPropio && !sonAmigos && (
+                        <>
+                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                              <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+                            </svg>
+                            Enviar solicitud
+                          </button>
+                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
+                            onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            Mensaje
+                          </button>
+                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
+                            onClick={() => setModalContratar(true)}>
+                            Contratar
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* FILA 2: Stats + separador | + iconos redes sociales */}
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="text-[13px] text-[var(--text-muted)]">
+                      <strong className="text-[var(--text-dark)] font-bold">57</strong> Publicaciones
+                    </span>
+                    <span className="text-[var(--text-muted)] text-[13px]">·</span>
+                    <span className="text-[13px] text-[var(--text-muted)]">
+                      <strong className="text-[var(--text-dark)] font-bold">0</strong> Seguidores
+                    </span>
+                    <span className="text-[var(--text-muted)] text-[13px]">·</span>
+                    <span className="text-[13px] text-[var(--text-muted)]">
+                      <strong className="text-[var(--text-dark)] font-bold">0</strong> Seguidos
+                    </span>
+                    <span className="text-[var(--border-color)] select-none mx-1 text-[16px] font-thin">|</span>
+                    {redesBtns.map(({ title, icon }) => (
+                      <button key={title} title={title}
+                        className="w-8 h-8 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors shrink-0">
+                        {icon}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* FILA 3: Cargo + reseñas + datos de info en línea */}
+                  <div className="flex items-center gap-x-4 gap-y-[6px] flex-wrap">
+                    {(perfil.especialidad || USUARIO_JUAN.especialidad) && (
+                      <span className="text-[13px] text-[var(--text-dark)] font-medium">
+                        {perfil.especialidad || USUARIO_JUAN.especialidad}
+                      </span>
+                    )}
+                    <span className="flex items-center gap-1 text-[13px] text-[var(--text-muted)]">
+                      <span className="text-[var(--warning-color)]">★</span> 4.9 reseñas
+                    </span>
+                    {datosInfo.map(({ icon, texto }, i) => (
+                      <span key={i} className="flex items-center gap-[6px] text-[13px] text-[var(--text-muted)]">
+                        <span className="flex items-center justify-center shrink-0">{icon}</span>
+                        {texto}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* FILA 4: Amigos en común (solo si los hay) */}
+                  {!esPerfilPropio && AMIGOS_EN_COMUN.length > 0 && (
+                    <div className="flex items-center gap-[10px]">
+                      <div className="flex items-center">
+                        {AMIGOS_EN_COMUN.map((a, i) => (
+                          <img key={a.nombre} src={a.avatar} alt={a.nombre} title={a.nombre}
+                            className="w-7 h-7 rounded-full border-2 border-[var(--white-color)] object-cover"
+                            style={{ marginLeft: i > 0 ? -8 : 0, zIndex: AMIGOS_EN_COMUN.length - i }} />
+                        ))}
+                      </div>
+                      <span className="text-[12px] text-[var(--text-muted)] leading-[1.4]">
+                        <strong className="text-[var(--text-dark)] font-semibold">{AMIGOS_EN_COMUN[0].nombre}</strong>
+                        {AMIGOS_EN_COMUN.length > 1 && ` y ${AMIGOS_EN_COMUN.length - 1} persona${AMIGOS_EN_COMUN.length - 1 > 1 ? "s" : ""} más`}
+                        {" "}son amigos en común
+                      </span>
+                    </div>
+                  )}
+
                 </div>
               </div>
 
-              {esRedSocial ? (
-                <>
-                  {/* Nombre + stats — col2 fila1 en todas las vistas */}
-                  <div className="min-w-0 flex flex-col">
-                    <DatosHeader nombre={perfil.nombre} especialidad={perfil.especialidad || USUARIO_JUAN.especialidad} ocultarEspecialidadMobile />
-                    <div className="flex flex-wrap gap-x-5 gap-y-[6px] text-[13px] text-[var(--text-muted)]" style={{ margin: "6px 0 0" }}>
-                      <span><strong className="text-[var(--text-dark)] font-bold">28</strong> Publicaciones</span>
-                      <span><strong className="text-[var(--text-dark)] font-bold">40</strong> Amigos</span>
-                      <span><strong className="text-[var(--text-dark)] font-bold">10</strong> amigos en común</span>
+              {/* ════ MOBILE (< md): layout original sin cambios ════ */}
+              <div className="flex flex-col gap-3 md:hidden">
+
+                {/* FILA 1: Avatar + Nombre + Stats */}
+                <div className="flex items-center gap-3">
+                  <div className="relative shrink-0">
+                    <img
+                      src={perfil.avatar}
+                      alt={perfil.nombre}
+                      className="w-[72px] h-[72px] rounded-full object-cover border-2 border-[var(--border-color)]"
+                    />
+                    <div className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[var(--background-color)] border-2 border-[var(--white-color)] flex items-center justify-center">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                        <circle cx="12" cy="13" r="4"/>
+                      </svg>
                     </div>
                   </div>
-
-                  {/* Bio + seguidores — col-span-2 en ≤680px (ocupa fila completa), col-start-2 en desktop */}
-                  <div className="[@media(min-width:681px)]:col-start-2 [@media(max-width:680px)]:col-span-2 flex flex-col gap-y-[6px]">
-                    <div className="flex flex-wrap gap-x-[10px] gap-y-1">
-                      {[
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>, label: "4.0 · 120 reseñas" },
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: "Lima, Perú" },
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>, label: "Colegio Angélica Román" },
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>, label: "+8 años de experiencia" },
-                      ].map((item, i) => (
-                        <span key={i} className="flex items-center gap-1 text-[12px] text-[var(--text-muted)]">{item.icon}{item.label}</span>
-                      ))}
+                  <div className="flex flex-col gap-[3px] min-w-0">
+                    <div className="flex items-center gap-[6px] flex-wrap">
+                      <h2 className="text-[17px] font-bold text-[var(--text-dark)] m-0 leading-tight">{perfil.nombre}</h2>
+                      <span className="bg-[var(--success-bg)] text-[var(--success-color)] text-[10px] font-bold px-[6px] py-[2px] rounded-full border border-[var(--success-border)] whitespace-nowrap leading-tight">
+                        ✓ Verificado
+                      </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <p className="text-[12px] text-[var(--text-muted)] m-0">
+                      <strong className="text-[var(--text-dark)] font-semibold">752</strong> amigos
+                      {" · "}
+                      <strong className="text-[var(--text-dark)] font-semibold">57</strong> publicaciones
+                    </p>
+                  </div>
+                </div>
+
+                {/* FILA 2: Bio/Presentación */}
+                {(perfil.especialidad || USUARIO_JUAN.especialidad) && (
+                  <p className="text-[13px] text-[var(--text-dark)] m-0 leading-[1.5]">
+                    {perfil.especialidad || USUARIO_JUAN.especialidad}
+                  </p>
+                )}
+
+                {/* FILA 3: Datos fijados — cada uno en su línea */}
+                <div className="flex flex-col gap-[8px]">
+                  {datosInfo.map(({ icon, texto }, i) => (
+                    <div key={i} className="flex items-center gap-[10px]">
+                      <span className="w-5 flex items-center justify-center text-[var(--text-muted)] shrink-0">{icon}</span>
+                      <span className="text-[13px] text-[var(--text-dark)]">{texto}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* FILA 4: Botones de acción */}
+                {esPerfilPropio && (
+                  <div className="flex items-center gap-2">
+                    <button
+                      className="flex-1 flex items-center justify-center gap-2 py-[9px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer transition-opacity hover:opacity-90"
+                      style={{ background: "var(--gradient-primary)" }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                      </svg>
+                      Editar perfil
+                    </button>
+                    {redesBtns.map(({ title, icon }) => (
+                      <button key={title} title={title}
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors shrink-0">
+                        {icon}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                {!esPerfilPropio && sonAmigos && (
+                  <div className="flex flex-col gap-[10px]">
+                    <div className="flex items-center gap-[10px]">
                       <div className="flex items-center">
-                        {[20, 25, 30].map((img, i) => (
-                          <img key={i} src={`https://i.pravatar.cc/150?img=${img}`} alt="" className="w-6 h-6 rounded-full border-2 border-[var(--white-color)] object-cover" style={{ marginLeft: i > 0 ? -8 : 0 }} />
+                        {AMIGOS_EN_COMUN.map((a, i) => (
+                          <img key={a.nombre} src={a.avatar} alt={a.nombre} title={a.nombre}
+                            className="w-8 h-8 rounded-full border-2 border-[var(--white-color)] object-cover"
+                            style={{ marginLeft: i > 0 ? -10 : 0, zIndex: AMIGOS_EN_COMUN.length - i }} />
                         ))}
                       </div>
-                      <span className="text-[12px] text-[var(--text-muted)]">Carlos Valverde y 9 personas más siguen este perfil</span>
+                      <span className="text-[12px] text-[var(--text-muted)] leading-[1.4]">
+                        <strong className="text-[var(--text-dark)] font-semibold">{AMIGOS_EN_COMUN[0].nombre}</strong>
+                        {AMIGOS_EN_COMUN.length > 1 && ` y ${AMIGOS_EN_COMUN.length - 1} persona${AMIGOS_EN_COMUN.length - 1 > 1 ? "s" : ""} más`}
+                        {" "}son amigos en común
+                      </span>
                     </div>
-                  </div>
-
-                  {/* Botones — desktop: col3 spanning 2 filas | ≤680px: fila completa al final */}
-                  <div className="[@media(min-width:681px)]:col-start-3 [@media(min-width:681px)]:row-start-1 [@media(min-width:681px)]:row-span-2 [@media(min-width:681px)]:self-start [@media(max-width:680px)]:col-span-2 flex gap-2">
-                    <button className={`${btnAmigoCls} [@media(max-width:680px)]:flex-1`}>{textoAmistad || "Añadir amigo"}</button>
-                    <button className={`${btnMsjCls} [@media(max-width:680px)]:flex-1`} onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>Enviar mensaje</button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Wrapper: flex-col en desktop (col2), display:contents en mobile (hijos pasan al grid) */}
-                  <div className="min-w-0 flex flex-col gap-3 [@media(max-width:680px)]:contents">
-
-                    {/* Nombre + Cargo + separador — col2 row1 siempre */}
-                    <div className="min-w-0">
-                      <DatosHeader nombre={perfil.nombre} especialidad={perfil.especialidad || USUARIO_JUAN.especialidad} />
-                    </div>
-
-                    {/* Separador full-width — solo mobile (col-span-2) */}
-                    <hr className="[@media(min-width:681px)]:hidden [@media(max-width:680px)]:col-span-2 border-0 border-t border-solid border-[var(--border-color)] my-0 w-full" />
-
-                    {/* Reseñas · Ubicación · Experiencia */}
-                    <div className="[@media(max-width:680px)]:col-span-2 flex flex-wrap gap-x-[10px] gap-y-1">
-                      {[
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>, label: "3.8 · 64 reseñas" },
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, label: "Lima, Perú" },
-                        { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>, label: "+8 años de experiencia" },
-                      ].map((item, i) => (
-                        <span key={i} className="flex items-center gap-1 text-[12px] text-[var(--text-muted)]">{item.icon}{item.label}</span>
-                      ))}
-                    </div>
-
-                    {/* Etiquetas */}
-                    <div className="[@media(max-width:680px)]:col-span-2 flex flex-wrap gap-[6px]">
-                      {["AUDITORIA","NIIF","TRIBUTACIÓN","EXCEL"].map(t => (
-                        <span key={t} className="bg-[var(--primary-color)] text-white text-[11px] font-semibold px-[10px] py-[3px] rounded-[var(--radius-xs)] tracking-[0.3px]">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Contratar + redes: col3 desktop | col-span-2 mobile */}
-                  <div className="self-start flex flex-col items-end gap-[14px] [@media(max-width:680px)]:col-span-2 [@media(max-width:680px)]:flex-row [@media(max-width:680px)]:items-center [@media(max-width:680px)]:gap-2">
-                    <button className="py-[7px] px-5 bg-[var(--primary-color)] text-white border-none rounded-[var(--radius-sm)] text-[13px] font-semibold cursor-pointer whitespace-nowrap shrink-0 transition-colors duration-200 hover:bg-[var(--secondary-color)] [@media(max-width:680px)]:flex-1" onClick={() => setModalContratar(true)}>
-                      Contratar
-                    </button>
                     <div className="flex gap-2">
-                      <button className={redBtnCls} title="Email">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      <button className={btnPrimario} style={{ background: "var(--gradient-primary)" }}>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                          <polyline points="16 11 18 13 22 9"/>
+                        </svg>
+                        Amigos
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
                       </button>
-                      <button className={redBtnCls} title="LinkedIn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                      </button>
-                      <button className={redBtnCls} title="Sitio web">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                      <button className={btnSecundario}
+                        onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        Mensaje
                       </button>
                     </div>
                   </div>
-                </>
-              )}
+                )}
+                {!esPerfilPropio && !sonAmigos && (
+                  <div className="flex gap-2">
+                    <button className={btnPrimario} style={{ background: "var(--gradient-primary)" }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                        <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+                      </svg>
+                      Enviar solicitud
+                    </button>
+                    <button className={btnSecundario}
+                      onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                      </svg>
+                      Enviar mensaje
+                    </button>
+                  </div>
+                )}
+
+              </div>
+
             </div>
 
             {/* ── Tabs ── */}
-            <div className="flex px-6 border-t border-[var(--border-color)] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex border-t border-[var(--border-color)] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {TABS_PERFIL.map(t => (
                 <button key={t.id} className={tabClass(tab === t.id)} onClick={() => setTab(t.id)}>
                   {t.label}
@@ -546,8 +742,8 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
             </div>
           </div>
 
-          {/* ── Contenido ── */}
-          <div className="overflow-y-auto py-5 [@media(max-width:520px)]:pb-0 [@media(max-width:520px)]:pt-3">
+          {/* ════════════ CONTENIDO ════════════ */}
+          <div>
             {tab === "red-social"  && <TabRedSocial />}
             {tab === "resumen"     && <TabResumen />}
             {tab === "experiencia" && <TabExperiencia />}

@@ -317,9 +317,22 @@ function TabLogin({ onConfirmar }) {
   );
 }
 
+/* ── Datos para selects de fecha ── */
+const MESES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const ANIOS = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - 18 - i);
+const DIAS  = Array.from({ length: 31 }, (_, i) => i + 1);
+
+const selectCls =
+  "w-full min-w-0 min-h-[42px] box-border py-[10px] pl-[12px] pr-[30px] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] rounded-[var(--radius-sm)] text-[var(--text-dark)] font-[inherit] text-[13px] outline-none transition-[border-color] duration-200 cursor-pointer focus:border-[var(--primary-color)] appearance-none bg-no-repeat bg-[right_10px_center] bg-[length:12px]";
+
 /* ── Tab: Registrarse ── */
 function TabRegistro({ onConfirmar }) {
   const [nombre,   setNombre]   = useState("");
+  const [apellido, setApellido] = useState("");
+  const [dia,      setDia]      = useState("");
+  const [mes,      setMes]      = useState("");
+  const [anio,     setAnio]     = useState("");
+  const [genero,   setGenero]   = useState("");
   const [email,    setEmail]    = useState("");
   const [password, setPassword] = useState("");
   const [showPwd,  setShowPwd]  = useState(false);
@@ -333,62 +346,142 @@ function TabRegistro({ onConfirmar }) {
     setLoading(true);
     setError("");
 
-    const { data, error } = await supabase.auth.signUp({
+    const nombreVisible = [nombre.trim(), apellido.trim()].filter(Boolean).join(" ");
+
+    const { data, error: errSignUp } = await supabase.auth.signUp({
       email, password,
-      options: { data: { nombre_visible: nombre } },
+      options: { data: { nombre_visible: nombreVisible } },
     });
-    if (error) {
-      setError(error.message);
+    if (errSignUp) {
+      setError(errSignUp.message === "User already registered"
+        ? "Ya existe una cuenta con ese correo."
+        : errSignUp.message);
       setLoading(false);
       return;
     }
     if (data.user) {
       await supabase.from("perfiles").upsert({
-        id: data.user.id,
-        nombre_visible: nombre,
+        id:             data.user.id,
+        nombre_visible: nombreVisible,
       });
     }
     setSuccess(true);
-    setTimeout(onConfirmar, 500);
+    setTimeout(onConfirmar, 600);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div>
-        <label className="block text-[12px] font-bold text-[var(--text-dark)] mb-[6px]">Nombre completo</label>
-        <input type="text" className={inputCls} placeholder="Tu nombre"
-          value={nombre} onChange={e => setNombre(e.target.value)} />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-[14px]">
+
+      {/* Encabezado estilo Facebook */}
+      <div className="mb-1">
+        <h2 className="text-[18px] font-bold text-[var(--text-dark)] m-0 leading-tight">
+          Empieza a usar Codeplex Red Social
+        </h2>
+        <p className="text-[12.5px] text-[var(--text-muted)] m-0 mt-1">
+          Es rápido y fácil. Tu perfil social es independiente de tu cuenta empresarial.
+        </p>
       </div>
+
+      {/* Nombre + Apellido */}
+      <div className="flex gap-3">
+        <div className="flex-1">
+          <input type="text" className={inputCls} placeholder="Nombre"
+            value={nombre} onChange={e => setNombre(e.target.value)} required />
+        </div>
+        <div className="flex-1">
+          <input type="text" className={inputCls} placeholder="Apellido"
+            value={apellido} onChange={e => setApellido(e.target.value)} />
+        </div>
+      </div>
+
+      {/* Fecha de nacimiento: grid a ancho completo; una columna solo en pantallas muy estrechas */}
+      <div className="w-full min-w-0">
+        <label className="block text-[12px] font-bold text-[var(--text-dark)] mb-[6px]">
+          Fecha de nacimiento
+        </label>
+        <div className="grid w-full min-w-0 gap-2 [grid-template-columns:minmax(0,1fr)_minmax(0,2fr)_minmax(0,1.1fr)] max-[340px]:grid-cols-1">
+          <select className={selectCls} value={dia} onChange={e => setDia(e.target.value)}
+            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")" }}>
+            <option value="">Día</option>
+            {DIAS.map(d => <option key={d} value={d}>{d}</option>)}
+          </select>
+          <select className={selectCls} value={mes} onChange={e => setMes(e.target.value)}
+            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")" }}>
+            <option value="">Mes</option>
+            {MESES.map((m, i) => <option key={i} value={i + 1}>{m}</option>)}
+          </select>
+          <select className={selectCls} value={anio} onChange={e => setAnio(e.target.value)}
+            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")" }}>
+            <option value="">Año</option>
+            {ANIOS.map(a => <option key={a} value={a}>{a}</option>)}
+          </select>
+        </div>
+      </div>
+
+      {/* Género */}
       <div>
-        <label className="block text-[12px] font-bold text-[var(--text-dark)] mb-[6px]">Correo electrónico</label>
+        <label className="block text-[12px] font-bold text-[var(--text-dark)] mb-[6px]">Género</label>
+        <div className="relative">
+          <select className={selectCls} value={genero} onChange={e => setGenero(e.target.value)}
+            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E\")" }}>
+            <option value="">Selecciona tu género</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Prefiero no decirlo</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Email */}
+      <div>
+        <label className="block text-[12px] font-bold text-[var(--text-dark)] mb-[6px]">
+          Número de móvil o correo electrónico
+        </label>
         <input type="email" className={inputCls} placeholder="tu@correo.com"
-          value={email} onChange={e => setEmail(e.target.value)} />
+          value={email} onChange={e => setEmail(e.target.value)} required />
+        <p className="text-[10.5px] text-[var(--text-muted)] m-0 mt-[5px]">
+          Es posible que recibas notificaciones nuestras.{" "}
+          <span className="text-[var(--primary-color)] cursor-pointer">¿Por qué pedimos esto?</span>
+        </p>
       </div>
+
+      {/* Contraseña */}
       <div>
         <label className="block text-[12px] font-bold text-[var(--text-dark)] mb-[6px]">Contraseña</label>
         <div className="relative">
           <input type={showPwd ? "text" : "password"} className={`${inputCls} pr-10`}
-            placeholder="Mínimo 8 caracteres" value={password} onChange={e => setPassword(e.target.value)} />
+            placeholder="Contraseña" value={password} onChange={e => setPassword(e.target.value)} required />
           <button type="button" tabIndex={-1} onClick={() => setShowPwd(v => !v)}
             className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-dark)] bg-transparent border-none cursor-pointer p-0 flex items-center">
             <EyeIcon open={showPwd} />
           </button>
         </div>
       </div>
-      <p className="text-[11px] text-[var(--text-muted)] m-0 -mt-2">
-        Al registrarte aceptas los{" "}
-        <span className="text-[var(--primary-color)] cursor-pointer font-semibold">Términos de uso</span> y la{" "}
-        <span className="text-[var(--primary-color)] cursor-pointer font-semibold">Política de privacidad</span>.
+
+      {/* Términos */}
+      <p className="text-[10.5px] text-[var(--text-muted)] m-0 leading-[1.5]">
+        Al hacer clic en <strong>Enviar</strong>, aceptas los{" "}
+        <span className="text-[var(--primary-color)] cursor-pointer font-semibold">Términos de uso</span>,{" "}
+        la <span className="text-[var(--primary-color)] cursor-pointer font-semibold">Política de privacidad</span> y la{" "}
+        <span className="text-[var(--primary-color)] cursor-pointer font-semibold">Política de cookies</span>.
       </p>
 
-      {error && <p className="text-[12px] text-[var(--error-color)] text-center m-0 -mt-2">{error}</p>}
+      {error && (
+        <div className="flex items-center gap-2 px-3 py-[9px] rounded-[var(--radius-sm)] bg-[#fef2f2] border border-[#fecaca]">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <p className="text-[12px] text-[#ef4444] m-0">{error}</p>
+        </div>
+      )}
 
       <button type="submit" disabled={loading || success}
         className="w-full py-3 border-none rounded-[var(--radius-sm)] text-white text-[14px] font-bold cursor-pointer transition-all disabled:opacity-70 font-[inherit]"
         style={{ background: success ? "var(--success-color, #22c55e)" : "var(--gradient-primary)" }}>
         {loading
           ? <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-          : success ? "✓  Cuenta creada" : "Crear cuenta →"
+          : success ? "✓  Cuenta creada" : "Enviar"
         }
       </button>
     </form>
@@ -398,8 +491,8 @@ function TabRegistro({ onConfirmar }) {
 /* ══════════════════════════════════════════
    Modal principal
 ══════════════════════════════════════════ */
-export function ModalAuthRedSocial({ onConfirmar, onCerrar, modoVerificacion = false }) {
-  const [tab, setTab] = useState(modoVerificacion ? "verificacion" : "login");
+export function ModalAuthRedSocial({ onConfirmar, onCerrar, modoVerificacion = false, initialTab }) {
+  const [tab, setTab] = useState(initialTab ?? (modoVerificacion ? "verificacion" : "login"));
 
   const tabBtn = (id, label) => (
     <button onClick={() => setTab(id)}
@@ -415,15 +508,18 @@ export function ModalAuthRedSocial({ onConfirmar, onCerrar, modoVerificacion = f
   const esVerificacion = tab === "verificacion";
 
   return (
-    <div className="fixed inset-0 z-[600] flex items-center justify-center p-4"
+    <div
+      className="fixed inset-0 z-[600] overflow-y-auto overscroll-y-contain flex items-start justify-center sm:items-center p-3 sm:p-4 py-6 sm:py-8"
       style={{ background: "rgba(0,0,0,0.55)" }}
       onClick={e => { if (e.target === e.currentTarget) onCerrar(); }}>
 
-      <div className="bg-[var(--white-color)] rounded-[var(--radius-md)] shadow-[0_24px_64px_rgba(0,0,0,0.22)] w-full max-w-[420px] overflow-hidden"
-        style={{ animation: "modalSlideIn 0.18s ease" }}>
+      <div
+        className="bg-[var(--white-color)] rounded-[var(--radius-md)] shadow-[0_24px_64px_rgba(0,0,0,0.22)] w-full max-w-[420px] min-h-0 max-h-[calc(100dvh-3rem)] sm:max-h-[min(90vh,calc(100dvh-2rem))] flex flex-col overflow-hidden shrink-0"
+        style={{ animation: "modalSlideIn 0.18s ease" }}
+        onClick={e => e.stopPropagation()}>
 
         {/* Header */}
-        <div className="flex items-center justify-between px-6 pt-5 pb-4">
+        <div className="shrink-0 flex items-center justify-between px-6 pt-5 pb-4">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-[var(--radius-sm)] bg-[#0f1e3c] flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
@@ -454,31 +550,33 @@ export function ModalAuthRedSocial({ onConfirmar, onCerrar, modoVerificacion = f
 
         {/* Tabs — se ocultan durante verificación */}
         {!esVerificacion && (
-          <div className="flex border-b border-[var(--border-color)] px-6">
+          <div className="shrink-0 flex border-b border-[var(--border-color)] px-6">
             {tabBtn("login",    "Iniciar sesión")}
             {tabBtn("registro", "Registrarse"   )}
           </div>
         )}
 
-        {/* Contenido */}
-        <div className="px-6 py-5">
-          {tab === "login"        && <TabLogin       onConfirmar={onConfirmar} />}
-          {tab === "registro"     && <TabRegistro    onConfirmar={onConfirmar} />}
-          {tab === "verificacion" && <TabVerificacion onConfirmar={onConfirmar} onSaltar={onConfirmar} />}
-        </div>
-
-        {/* Footer — solo en login/registro */}
-        {!esVerificacion && (
-          <div className="px-6 pb-5 text-center">
-            <p className="text-[12px] text-[var(--text-muted)] m-0">
-              ¿Solo quieres explorar?{" "}
-              <button onClick={onCerrar}
-                className="text-[var(--primary-color)] font-semibold bg-transparent border-none cursor-pointer p-0 text-[12px] font-[inherit]">
-                Continuar en modo demo
-              </button>
-            </p>
+        {/* Cuerpo con scroll (móvil / teclado / formulario largo) */}
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-y-contain touch-pan-y">
+          <div className="px-6 py-5">
+            {tab === "login"        && <TabLogin       onConfirmar={onConfirmar} />}
+            {tab === "registro"     && <TabRegistro    onConfirmar={onConfirmar} />}
+            {tab === "verificacion" && <TabVerificacion onConfirmar={onConfirmar} onSaltar={onConfirmar} />}
           </div>
-        )}
+
+          {/* Footer — solo en login/registro; dentro del scroll para llegar a “Enviar” y al demo */}
+          {!esVerificacion && (
+            <div className="px-6 pb-5 pt-0 text-center">
+              <p className="text-[12px] text-[var(--text-muted)] m-0">
+                ¿Solo quieres explorar?{" "}
+                <button onClick={onCerrar}
+                  className="text-[var(--primary-color)] font-semibold bg-transparent border-none cursor-pointer p-0 text-[12px] font-[inherit]">
+                  Continuar en modo demo
+                </button>
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

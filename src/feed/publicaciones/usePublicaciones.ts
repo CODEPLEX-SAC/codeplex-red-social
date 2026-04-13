@@ -93,10 +93,19 @@ const POSTS_MOCK: Publicacion[] = [
 /* Convierte fila de Supabase → Publicacion local */
 function desdeSupabase(row: any, miId: string): Publicacion {
   const perfil = row.perfiles ?? {};
-  const imagenes: string[] = Array.isArray(row.imagenes) ? row.imagenes : [];
+
+  /* Medios: intenta leer columna 'medios' (jsonb con {url,tipo}[]),
+     si no existe, construye desde la columna legacy 'imagenes' (string[]) */
+  let medios: Medio[] = [];
+  if (Array.isArray(row.medios) && row.medios.length > 0) {
+    medios = row.medios as Medio[];
+  } else if (Array.isArray(row.imagenes) && row.imagenes.length > 0) {
+    medios = (row.imagenes as string[]).map((url) => ({ url, tipo: "imagen" as const }));
+  }
+
   return {
     id:             String(row.id),
-    avatarImg:      perfil.avatar_url || null,
+    avatarImg:      perfil.avatar_url  || null,
     author:         perfil.nombre_visible || "Usuario",
     time:           row.created_at
                       ? new Date(row.created_at).toLocaleDateString("es-PE", { day: "numeric", month: "short", year: "numeric" })
@@ -110,9 +119,8 @@ function desdeSupabase(row: any, miId: string): Publicacion {
     feedback:       null,
     esPropia:       row.autor_id === miId,
     comentarioUtil: null,
-    /* Preguntas traen comentarios simulados de María López y Juan Pérez para probar "respuesta útil" */
     comentarios:    row.tipo === "pregunta" ? comentariosMockIniciales() : [],
-    ...(imagenes.length > 0 ? { images: imagenes } : {}),
+    ...(medios.length > 0 ? { medios } : {}),
   };
 }
 
@@ -133,7 +141,7 @@ export default function usePublicaciones() {
 
     supabase
       .from("publicaciones")
-      .select("*, perfiles(nombre_visible, avatar_url)")
+      .select("*, medios, perfiles(nombre_visible, avatar_url)")
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {
         if (error || !data) return;
@@ -151,20 +159,23 @@ export default function usePublicaciones() {
       avatar?: number | string,
       tipo: TipoPublicacion = "post",
       prioridad: Prioridad = "normal",
-      imagenes?: string[]
+      mediosNuevos?: Medio[]   // ← ahora acepta {url, tipo}[] (imágenes Y videos)
     ): Promise<boolean> => {
-      if (!texto.trim() && (!imagenes || imagenes.length === 0)) return false;
+      if (!texto.trim() && (!mediosNuevos || mediosNuevos.length === 0)) return false;
 
       /* Usuario autenticado → guardar en Supabase */
       if (estadoSesion === "autenticado" && userSocial?.id) {
         const { data, error } = await supabase
           .from("publicaciones")
           .insert({
-            autor_id:  userSocial.id,
-            texto:     texto.trim(),
+            autor_id: userSocial.id,
+            texto:    texto.trim(),
             tipo,
             prioridad,
-            imagenes:  imagenes ?? [],
+            medios:   mediosNuevos ?? [],   // columna jsonb [{url, tipo}]
+            imagenes: (mediosNuevos ?? [])  // columna legacy — solo URLs para retrocompat
+                        .filter((m) => m.tipo === "imagen")
+                        .map((m) => m.url),
           })
           .select("*, perfiles(nombre_visible, avatar_url)")
           .single();
@@ -193,7 +204,7 @@ export default function usePublicaciones() {
         esPropia:       estadoSesion === "autenticado",
         comentarioUtil: null,
         comentarios:    tipo === "pregunta" ? comentariosMockIniciales() : [],
-        ...(imagenes && imagenes.length > 0 ? { images: imagenes } : {}),
+        ...(mediosNuevos && mediosNuevos.length > 0 ? { medios: mediosNuevos } : {}),
       };
       setPublicaciones((prev) => [nueva, ...prev]);
       return true;
