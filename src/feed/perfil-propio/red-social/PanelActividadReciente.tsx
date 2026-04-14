@@ -1,157 +1,105 @@
-import React, { useMemo, useRef, useState } from "react";
-import { supabase } from "../../../lib/supabase";
+import React, { useMemo, useState } from "react";
+import { supabase } from "../../../lib/supabase-red-social";
 import { useSesion } from "../../../identidad/sesion/SesionContext";
-
-interface PublicacionPropia {
-  id: string | number;
-  text?: string;
-  tipo?: string;
-  time?: string;
-  likes?: number;
-  comentarios?: any[];
-  imagenes?: string[];
-  videos?: string[];
-}
+import { ModalPublicacion } from "../../publicaciones/CreadorPublicacion";
+import Publicacion from "../../publicaciones/Publicacion";
 
 interface Props {
   perfilSocial: any;
-  publicacionesPropias: PublicacionPropia[];
+  publicacionesPropias: any[];
   alNavegar?: (tab: string) => void;
   card: string;
+  onMarcarComentarioUtil?: (postId: any, datos: any) => void;
+  onCambiarEstado?: (postId: any, estado: string) => void;
+  onEditarPublicacion?: (postId: any, texto: string, imagenes: any[]) => void;
+  onEliminarPublicacion?: (postId: any) => void;
+  onAgregarComentario?: (postId: any, comentario: any) => void;
+  onAgregarRespuesta?: (postId: any, parentId: any, respuesta: any) => void;
+  onEditarComentario?: (postId: any, cId: any, txt: string, imgs: any[]) => void;
+  onEliminarComentario?: (postId: any, cId: any) => void;
+  onReaccionarComentario?: (postId: any, cId: any, reaccion: any) => void;
 }
 
-export default function PanelActividadReciente({ perfilSocial, publicacionesPropias, alNavegar, card }: Props) {
+export default function PanelActividadReciente({ perfilSocial, publicacionesPropias, alNavegar, card, onMarcarComentarioUtil, onCambiarEstado, onEditarPublicacion, onEliminarPublicacion, onAgregarComentario, onAgregarRespuesta, onEditarComentario, onEliminarComentario, onReaccionarComentario }: Props) {
   const { userSocial } = useSesion() as any;
   const usuarioId = userSocial?.id as string | undefined;
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const dropZoneRef = useRef<HTMLDivElement | null>(null);
-  const [textoPublicacion, setTextoPublicacion] = useState("");
-  const [mediosSubidos, setMediosSubidos] = useState<string[]>([]);
-  const [publicacionesLocales, setPublicacionesLocales] = useState<PublicacionPropia[]>([]);
-  const [subiendo, setSubiendo] = useState(false);
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [publicacionesLocales, setPublicacionesLocales] = useState<any[]>([]);
 
-  const tipoBadge = (tipo?: string) => ({ pregunta: { label: "Pregunta", color: "var(--secondary-color)", bg: "rgba(139,92,246,0.1)" }, caso: { label: "Caso", color: "var(--success-color)", bg: "rgba(16,185,129,0.1)" }, novedad: { label: "Novedad", color: "var(--primary-color)", bg: "rgba(72,127,255,0.1)" } }[tipo || ""] ?? null);
+  const avatarSrc = perfilSocial.avatar || `https://i.pravatar.cc/150?img=3`;
+  const nombreCorto = perfilSocial.nombreVisible?.split(" ")[0] || "ti";
 
-  const publicarMedios = async (file: File) => {
-    if (!usuarioId) return null;
-    const path = `perfil-propio/${usuarioId}/publicaciones/${Date.now()}-${file.name}`;
-    const { error } = await supabase.storage.from("media").upload(path, file, { upsert: false });
-    if (error) { console.error(error); return null; }
-    const { data } = supabase.storage.from("media").getPublicUrl(path);
-    return data.publicUrl;
-  };
-
-  const procesarArchivos = async (files: FileList | File[]) => {
-    setSubiendo(true);
-    const entradas = Array.from(files);
-    const urls: string[] = [];
-    for (const file of entradas) {
-      const url = await publicarMedios(file);
-      if (url) urls.push(url);
-    }
-    setMediosSubidos((prev) => [...prev, ...urls]);
-    setSubiendo(false);
-  };
-
-  const manejarInputFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files?.length) return;
-    await procesarArchivos(files);
-    e.target.value = "";
-  };
-
-  const manejarPaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
-    const files = Array.from(e.clipboardData.files || []);
-    if (!files.length) return;
-    e.preventDefault();
-    await procesarArchivos(files);
-  };
-
-  const manejarDrop = async (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    if (e.dataTransfer.files?.length) await procesarArchivos(e.dataTransfer.files);
-  };
-
-  const crearPublicacion = async () => {
+  const onPublicar = async (texto: string, _autor: string, _avatar: string, tipo: string, prioridad: string, imagenes: any[]) => {
     if (!usuarioId) return;
-    if (!textoPublicacion.trim() && mediosSubidos.length === 0) return;
-
-    const imagenes = mediosSubidos.filter((url) => !url.match(/\.(mp4|webm|mov)(\?|$)/i));
-    const videos = mediosSubidos.filter((url) => url.match(/\.(mp4|webm|mov)(\?|$)/i));
-
-    const payload = {
-      autor_id: usuarioId,
-      texto: textoPublicacion.trim(),
-      tipo: "post",
-      prioridad: "normal",
-      imagenes,
-      videos,
-    };
-
+    const imgs = imagenes.filter((m: any) => m.tipo !== "video" && (typeof m === "string" ? !m.match(/\.(mp4|webm|mov)(\?|$)/i) : true)).map((m: any) => typeof m === "string" ? m : m.url);
+    const vids = imagenes.filter((m: any) => m.tipo === "video" || (typeof m === "string" && m.match(/\.(mp4|webm|mov)(\?|$)/i))).map((m: any) => typeof m === "string" ? m : m.url);
+    const payload = { autor_id: usuarioId, texto: texto.trim(), tipo: tipo || "post", prioridad: prioridad || "normal", imagenes: imgs, videos: vids };
     const { data, error } = await supabase.from("publicaciones").insert(payload).select("id,texto,tipo,created_at,imagenes,videos").single();
     if (error) return console.error(error);
-
-    const nueva: PublicacionPropia = {
-      id: data.id,
-      text: data.texto,
-      tipo: data.tipo,
+    const nueva = {
+      id: data.id, text: data.texto, tipo: data.tipo, esPropia: true,
+      author: perfilSocial.nombreVisible || "", avatarImg: avatarSrc,
       time: new Date(data.created_at).toLocaleDateString("es-PE", { day: "numeric", month: "short", year: "numeric" }),
-      imagenes: data.imagenes || [],
-      videos: data.videos || [],
+      images: (data.imagenes || []).map((url: string) => ({ url, tipo: "imagen" })),
+      likeCount: 0, comentarios: [],
     };
-
     setPublicacionesLocales((prev) => [nueva, ...prev]);
-    setTextoPublicacion("");
-    setMediosSubidos([]);
   };
 
   const publicacionesRender = useMemo(() => [...publicacionesLocales, ...publicacionesPropias], [publicacionesLocales, publicacionesPropias]);
 
-  if (publicacionesRender.length === 0 && !textoPublicacion && mediosSubidos.length === 0) {
+  if (publicacionesRender.length === 0) {
     return (
-      <div className={`${card} flex flex-col items-center gap-3 py-10 text-center`}>
-        <p className="text-[14px] font-bold text-[var(--text-dark)] m-0 mb-1">Aún no tienes publicaciones</p>
-        <button onClick={() => alNavegar?.("red-social")} className="px-4 py-[8px] text-[13px] font-bold rounded-[var(--radius-sm)] text-white border-none" style={{ background: "var(--gradient-primary)" }}>+ Nueva publicación</button>
-      </div>
+      <>
+        <div className={`${card} flex flex-col items-center gap-3 py-10 text-center`}>
+          <p className="text-[14px] font-bold text-[var(--text-dark)] m-0 mb-1">AÃºn no tienes publicaciones</p>
+          <button onClick={() => setModalAbierto(true)} className="px-4 py-[8px] text-[13px] font-bold rounded-[var(--radius-sm)] text-white border-none cursor-pointer" style={{ background: "var(--gradient-primary)" }}>+ Nueva publicaciÃ³n</button>
+        </div>
+        {modalAbierto && (
+          <ModalPublicacion usuario={{ nombre: perfilSocial.nombreVisible || "", avatar: avatarSrc }} onPublicar={onPublicar} onCerrar={() => setModalAbierto(false)} />
+        )}
+      </>
     );
   }
 
   return (
     <>
-      <div ref={dropZoneRef} onDragOver={(e) => e.preventDefault()} onDrop={manejarDrop} className={card}>
-        <textarea
-          className="w-full min-h-[80px] border border-[var(--border-color)] rounded-[var(--radius-sm)] p-3 text-[13px]"
-          placeholder={`¿Qué estás pensando, ${perfilSocial.nombreVisible?.split(" ")[0] || "tú"}?`}
-          value={textoPublicacion}
-          onChange={(e) => setTextoPublicacion(e.target.value)}
-          onPaste={manejarPaste}
-        />
-        <div className="flex items-center justify-between mt-2">
-          <div className="flex gap-2 flex-wrap">
-            {mediosSubidos.map((url) => <a key={url} href={url} target="_blank" rel="noreferrer" className="text-[12px] text-[var(--primary-color)]">Adjunto</a>)}
-          </div>
-          <div className="flex gap-2">
-            <input ref={fileInputRef} type="file" multiple accept="image/*,video/*" className="hidden" onChange={manejarInputFile} />
-            <button onClick={() => fileInputRef.current?.click()} className="px-3 py-[6px] text-[12px] border border-[var(--border-color)] rounded-[var(--radius-sm)]">Adjuntar</button>
-            <button disabled={subiendo} onClick={crearPublicacion} className="px-3 py-[6px] text-[12px] text-white rounded-[var(--radius-sm)]" style={{ background: "var(--primary-color)" }}>{subiendo ? "Subiendo..." : "Publicar"}</button>
-          </div>
+      {/* Trigger de nueva publicaciÃ³n */}
+      <div className={card}>
+        <div className="flex items-center gap-3">
+          <img src={avatarSrc} alt="" className="w-9 h-9 rounded-full object-cover shrink-0" />
+          <button
+            onClick={() => setModalAbierto(true)}
+            className="flex-1 text-left px-4 py-[10px] rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-[13px] text-[var(--text-muted)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
+          >
+            Â¿QuÃ© estÃ¡s pensando, {nombreCorto}?
+          </button>
         </div>
       </div>
 
-      {publicacionesRender.map((p) => {
-        const badge = tipoBadge(p.tipo);
-        return (
-          <div key={String(p.id)} className={card}>
-            <div className="flex items-start justify-between gap-2 mb-2">
-              <p className="text-[13px] font-bold text-[var(--text-dark)] m-0 leading-none">{perfilSocial.nombreVisible}</p>
-              {badge && <span className="text-[11px] font-semibold px-2 py-[3px] rounded-full" style={{ background: badge.bg, color: badge.color }}>{badge.label}</span>}
-            </div>
-            <p className="text-[13.5px] text-[var(--text-dark)] leading-[1.6] m-0 line-clamp-4">{p.text}</p>
-            {Array.isArray(p.imagenes) && p.imagenes.length > 0 && <div className="mt-2 text-[12px] text-[var(--text-muted)]">{p.imagenes.length} imagen(es)</div>}
-            {Array.isArray(p.videos) && p.videos.length > 0 && <div className="mt-1 text-[12px] text-[var(--text-muted)]">{p.videos.length} video(s)</div>}
-          </div>
-        );
-      })}
+      {/* Publicaciones usando el componente del feed */}
+      {publicacionesRender.map((p) => (
+        <Publicacion
+          key={String(p.id)}
+          post={p}
+          alVerPerfil={() => {}}
+          alNavegar={alNavegar}
+          onCambiarEstado={(postId: any, estado: string) => onCambiarEstado?.(postId, estado)}
+          onMarcarComentarioUtil={(postId: any, datos: any) => onMarcarComentarioUtil?.(postId, datos)}
+          onFeedback={() => {}}
+          onEditar={(postId: any, texto: string, imgs: any[]) => onEditarPublicacion?.(postId, texto, imgs)}
+          onEliminar={(postId: any) => onEliminarPublicacion?.(postId)}
+          onAgregarComentario={(postId: any, c: any) => onAgregarComentario?.(postId, c)}
+          onAgregarRespuesta={(postId: any, parentId: any, r: any) => onAgregarRespuesta?.(postId, parentId, r)}
+          onEditarComentario={(postId: any, cId: any, txt: string, imgs: any[]) => onEditarComentario?.(postId, cId, txt, imgs)}
+          onEliminarComentario={(postId: any, cId: any) => onEliminarComentario?.(postId, cId)}
+          onReaccionarComentario={(postId: any, cId: any, r: any) => onReaccionarComentario?.(postId, cId, r)}
+        />
+      ))}
+
+      {modalAbierto && (
+        <ModalPublicacion usuario={{ nombre: perfilSocial.nombreVisible || "", avatar: avatarSrc }} onPublicar={onPublicar} onCerrar={() => setModalAbierto(false)} />
+      )}
     </>
   );
 }

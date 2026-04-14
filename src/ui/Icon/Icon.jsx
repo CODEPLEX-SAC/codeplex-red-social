@@ -32,6 +32,9 @@ import IconArrowRigth from '../../assets/icons/arrow-rigth.svg?react'
 import IconFecha from '../../assets/icons/fecha.svg?react'
 import IconGuardar from '../../assets/icons/guardar.svg?react'
 import IconCerrar from '../../assets/icons/cerrar.svg?react'
+import IconEdit_Regular from '../../assets/icons/edit-regular.svg'
+
+
 
 const ICONS = {
   flecha: IconFlecha,
@@ -68,6 +71,7 @@ const ICONS = {
   fecha: IconFecha,
   guardar: IconGuardar,
   cerrar: IconCerrar,
+   edi_regular: IconEdit_Regular,
 
 }
 

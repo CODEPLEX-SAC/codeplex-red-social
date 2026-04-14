@@ -53,7 +53,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
 
   return (
     <>
-      <div className="fixed top-0 left-0 lg:left-[280px] right-0 z-[500] bg-[var(--white-color)]" ref={headerWrapperRef}>
+      <div className="fixed top-0 left-0 [@media(min-width:1300px)]:left-[280px] right-0 z-[500] bg-[var(--white-color)]" ref={headerWrapperRef}>
 
         {/* ── Demo banner ── */}
         {modoExploracion && (
@@ -66,12 +66,12 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
         )}
 
         {/* ── Fila 1 ── */}
-        <header className="bg-[var(--white-color)] px-4 py-[10px] lg:px-6 lg:py-3 flex items-center gap-2 lg:gap-[10px] shadow-[0_1px_3px_rgba(0,0,0,0.08)] border-b border-[var(--border-color)]">
+        <header className="bg-[var(--white-color)] px-4 py-[10px] [@media(min-width:1300px)]:px-6 [@media(min-width:1300px)]:py-3 flex items-center gap-2 [@media(min-width:1300px)]:gap-[10px] shadow-[0_1px_3px_rgba(0,0,0,0.08)] border-b border-[var(--border-color)]">
 
           {/* LEFT: hamburger + logo */}
           <div className="flex items-center gap-[10px] shrink-0">
             <button
-              className="flex lg:hidden items-center justify-center bg-transparent border-none cursor-pointer p-[6px] rounded-[var(--radius-xs)] text-[var(--text-dark)] transition-[background] duration-200 hover:bg-[var(--background-color)]"
+              className="flex [@media(min-width:1300px)]:hidden items-center justify-center bg-transparent border-none cursor-pointer p-[6px] rounded-[var(--radius-xs)] text-[var(--text-dark)] transition-[background] duration-200 hover:bg-[var(--background-color)]"
               onClick={alAlternarMenu}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -89,10 +89,10 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
           </div>
 
           {/* CENTER: Mis Apps */}
-          <div className="flex items-center flex-1 justify-center lg:flex-none lg:justify-start">
+          <div className="flex items-center flex-1 justify-center [@media(min-width:1300px)]:flex-none [@media(min-width:1300px)]:justify-start">
             <div className="relative" onClick={(e) => e.stopPropagation()}>
               <button
-                className={`flex items-center gap-[7px] bg-transparent border border-[var(--border-color)] cursor-pointer px-[10px] lg:px-4 py-2 rounded-[var(--radius-sm)] text-[14px] font-medium text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:bg-[var(--hover-color)] hover:border-[var(--primary-color)] ${showMisApps ? "bg-[var(--background-color)]" : ""}`}
+                className={`flex items-center gap-[7px] bg-transparent border border-[var(--border-color)] cursor-pointer px-[10px] [@media(min-width:1300px)]:px-4 py-2 rounded-[var(--radius-sm)] text-[14px] font-medium text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:bg-[var(--hover-color)] hover:border-[var(--primary-color)] ${showMisApps ? "bg-[var(--background-color)]" : ""}`}
                 onClick={() => setShowMisApps((v) => !v)}
               >
                 <span className="flex items-center shrink-0">
@@ -109,8 +109,8 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                     </defs>
                   </svg>
                 </span>
-                <span className="hidden lg:inline">Mis Aplicaciones</span>
-                <span className="inline lg:hidden">Mis Apps</span>
+                <span className="hidden md:inline">Mis Aplicaciones</span>
+                <span className="inline md:hidden">Mis Apps</span>
                 {misApps.length > 0 && (
                   <span className="inline-flex items-center justify-center min-w-[18px] h-[18px] px-[5px] text-white text-[10px] font-bold rounded-[var(--radius-sm)] shrink-0" style={{ background: "var(--gradient-primary)" }}>
                     {misApps.length}
@@ -127,7 +127,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
 
               {/* ── Dropdown ── */}
               {showMisApps && (
-                <div className="mis-apps-dropdown absolute top-[calc(100%+8px)] left-0 w-[290px] lg:w-[290px] bg-[var(--white-color)] border border-[var(--border-color)] rounded-[var(--radius-md)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] z-[600] overflow-hidden">
+                <div className="mis-apps-dropdown absolute top-[calc(100%+8px)] left-0 w-[290px] [@media(min-width:1300px)]:w-[290px] bg-[var(--white-color)] border border-[var(--border-color)] rounded-[var(--radius-md)] shadow-[0_8px_24px_rgba(0,0,0,0.12)] z-[600] overflow-hidden">
 
                   <div className="px-4 pt-[14px] pb-[10px] text-[12px] font-bold text-[var(--text-gray)] uppercase tracking-[0.5px] border-b border-[var(--border-color)] flex items-center justify-between">
                     Mis Aplicaciones activas
@@ -205,7 +205,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
           </div>
 
           {/* DESKTOP NAV */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <div className="hidden [@media(min-width:1300px)]:flex items-center gap-2 shrink-0">
             <button className="bg-transparent border border-[var(--border-color)] px-4 py-2 rounded-[var(--radius-sm)] cursor-pointer flex items-center gap-[6px] text-[14px] text-[var(--text-dark)] font-[inherit] transition-all duration-200 whitespace-nowrap hover:border-[var(--primary-color)] hover:text-[var(--primary-color)]" onClick={() => setShowModalEmpresa(true)}>
               <span>+</span>
               <span>Agregar Empresa</span>
@@ -219,13 +219,13 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
           </div>
 
           {/* RIGHT */}
-          <div className="flex items-center gap-[10px] lg:gap-[14px] ml-auto shrink-0">
+          <div className="flex items-center gap-[10px] [@media(min-width:1300px)]:gap-[14px] ml-auto shrink-0">
 
             {/* Carrito — hidden on mobile, 4 responsive states */}
             {itemsCarrito.length > 0 && (
               <button className="hidden md:flex relative items-center shrink-0 bg-transparent border-none cursor-pointer p-0" onClick={alVerCarrito} title="Ver carrito">
                 {/* Pill — desktop lg+ */}
-                <span className="hidden lg:flex items-center gap-[7px] bg-[var(--primary-color)] text-white py-[7px] pl-[10px] pr-[14px] rounded-[var(--radius-lg)] text-[13px] font-semibold whitespace-nowrap transition-opacity duration-200 hover:opacity-[0.88]">
+                <span className="hidden [@media(min-width:1300px)]:flex items-center gap-[7px] bg-[var(--primary-color)] text-white py-[7px] pl-[10px] pr-[14px] rounded-[var(--radius-lg)] text-[13px] font-semibold whitespace-nowrap transition-opacity duration-200 hover:opacity-[0.88]">
                   <span className="relative flex items-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
@@ -236,11 +236,11 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                     </span>
                   </span>
                   <span>{itemsCarrito.length} app{itemsCarrito.length > 1 ? 's' : ''}</span>
-                  <span className="hidden xl:inline opacity-50">·</span>
-                  <span className="hidden xl:inline opacity-90">S/{totalCarrito}/mes</span>
+                  <span className="hidden [@media(min-width:1300px)]:inline opacity-50">·</span>
+                  <span className="hidden [@media(min-width:1300px)]:inline opacity-90">S/{totalCarrito}/mes</span>
                 </span>
                 {/* Círculo — tablet md-lg */}
-                <span className="flex lg:hidden relative w-9 h-9 rounded-full bg-[var(--primary-color)] items-center justify-center">
+                <span className="flex [@media(min-width:1300px)]:hidden relative w-9 h-9 rounded-full bg-[var(--primary-color)] items-center justify-center">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                     <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -252,12 +252,12 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
               </button>
             )}
 
-            <button className="icon-btn hidden lg:flex w-[38px] h-[38px] rounded-full bg-[var(--background-color)] border-none cursor-pointer items-center justify-center text-[var(--text-dark)] transition-all duration-300 relative shrink-0 hover:bg-[var(--primary-color)] hover:text-white" title="Ayuda">
+            <button className="icon-btn hidden [@media(min-width:1300px)]:flex w-[38px] h-[38px] rounded-full bg-[var(--background-color)] border-none cursor-pointer items-center justify-center text-[var(--text-dark)] transition-all duration-300 relative shrink-0 hover:bg-[var(--primary-color)] hover:text-white" title="Ayuda">
               <Icon name="ayuda" size={22} />
             </button>
 
             {!modoExploracion && (
-              <button className="icon-btn has-notification w-[34px] h-[34px] lg:w-[38px] lg:h-[38px] rounded-full bg-[var(--background-color)] border-none cursor-pointer flex items-center justify-center text-[var(--text-dark)] transition-all duration-300 relative shrink-0 hover:bg-[var(--primary-color)] hover:text-white">
+              <button className="icon-btn has-notification w-[34px] h-[34px] [@media(min-width:1300px)]:w-[38px] [@media(min-width:1300px)]:h-[38px] rounded-full bg-[var(--background-color)] border-none cursor-pointer flex items-center justify-center text-[var(--text-dark)] transition-all duration-300 relative shrink-0 hover:bg-[var(--primary-color)] hover:text-white">
                 <Icon name="notificaciones" size={22} />
               </button>
             )}
@@ -280,12 +280,12 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                   <img
                     src={usuario.avatar}
                     alt={usuario.nombre}
-                    className="w-[34px] h-[34px] lg:w-[38px] lg:h-[38px] rounded-full cursor-pointer border-2 border-[var(--primary-color)] shrink-0 object-cover"
+                    className="w-[34px] h-[34px] [@media(min-width:1300px)]:w-[38px] [@media(min-width:1300px)]:h-[38px] rounded-full cursor-pointer border-2 border-[var(--primary-color)] shrink-0 object-cover"
                     onClick={() => setShowSlider(true)}
                   />
                 ) : (
                   <div
-                    className="w-[34px] h-[34px] lg:w-[38px] lg:h-[38px] rounded-full cursor-pointer border-2 border-[var(--primary-color)] shrink-0 flex items-center justify-center text-[15px] font-bold text-white"
+                    className="w-[34px] h-[34px] [@media(min-width:1300px)]:w-[38px] [@media(min-width:1300px)]:h-[38px] rounded-full cursor-pointer border-2 border-[var(--primary-color)] shrink-0 flex items-center justify-center text-[15px] font-bold text-white"
                     style={{ background: "var(--gradient-primary)" }}
                     onClick={() => setShowSlider(true)}
                   >
@@ -293,7 +293,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
                   </div>
                 )}
                 <span
-                  className="hidden lg:block text-[14px] font-semibold text-[var(--text-dark)] cursor-pointer whitespace-nowrap"
+                  className="hidden [@media(min-width:1300px)]:block text-[14px] font-semibold text-[var(--text-dark)] cursor-pointer whitespace-nowrap"
                   onClick={() => setShowSlider(true)}
                 >
                   {usuario?.nombre || "Usuario"}
@@ -304,7 +304,7 @@ function Header({ alAlternarMenu, alNavegar, vistaActiva,
         </header>
 
         {/* ── Fila 2: solo tablet + mobile ── */}
-        <div className="flex lg:hidden bg-[var(--white-color)] border-b border-[var(--border-color)] px-4 py-[10px] gap-[10px] justify-between">
+        <div className="flex [@media(min-width:1300px)]:hidden bg-[var(--white-color)] border-b border-[var(--border-color)] px-4 py-[10px] gap-[10px] justify-between">
           <button className={row2BtnClass("__never__")} onClick={() => setShowModalEmpresa(true)}>
             + Agregar Empresa
           </button>

@@ -5,7 +5,7 @@ import SidebarMenu from "./SidebarMenu";
 function Sidebar({ estaAbierto, alCerrar, vistaActiva, alNavegar, appsActivas = [] }) {
   const handleNavegar = (vista) => {
     alNavegar(vista);
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1300) {
       alCerrar();
     }
   };
@@ -14,13 +14,13 @@ function Sidebar({ estaAbierto, alCerrar, vistaActiva, alNavegar, appsActivas = 
     <>
       {estaAbierto && (
         <div
-          className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[599] lg:hidden"
+          className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-[599] [@media(min-width:1300px)]:hidden"
           onClick={alCerrar}
         />
       )}
       <aside
         className={`
-          w-[260px] lg:w-[280px]
+          w-[260px] [@media(min-width:1300px)]:w-[280px]
           bg-[var(--white-color)]
           fixed left-0 top-0
           h-[100dvh]
@@ -33,7 +33,7 @@ function Sidebar({ estaAbierto, alCerrar, vistaActiva, alNavegar, appsActivas = 
           [&::-webkit-scrollbar-track]:bg-transparent
           [&::-webkit-scrollbar-thumb]:bg-[var(--border-color)]
           [&::-webkit-scrollbar-thumb]:rounded-[3px]
-          ${estaAbierto ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+          ${estaAbierto ? "translate-x-0" : "-translate-x-full [@media(min-width:1300px)]:translate-x-0"}
         `}
       >
         <SidebarProfile />

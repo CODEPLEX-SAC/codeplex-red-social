@@ -3,7 +3,7 @@
    Flujo registro: datos → verificación identidad (DNI + selfie)
 ═══════════════════════════════════════════════════════════ */
 import React, { useState, useRef } from "react";
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../lib/supabase-red-social";
 import { useSesion } from "./SesionContext";
 
 const inputCls = "w-full py-[10px] px-[14px] bg-[var(--background-color)] border-[1.5px] border-[var(--border-color)] rounded-[var(--radius-sm)] text-[var(--text-dark)] font-[inherit] text-[13.5px] outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-[var(--text-muted)] focus:border-[var(--primary-color)] focus:bg-[var(--white-color)] focus:shadow-[0_0_0_3px_rgba(72,127,255,0.12)]";

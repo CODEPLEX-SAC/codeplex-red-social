@@ -1,5 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from "react";
-import { supabase } from "../../lib/supabase";
+import { useState, useCallback, useEffect } from "react";
+import { supabase } from "../../lib/supabase-red-social";
 import { useSesion } from "../../identidad/sesion/SesionContext";
 import {
   MOCK_POST, MOCK_POST_IMAGENES, MOCK_POST_UNA_IMAGEN, MOCK_COMMENTS,
@@ -120,36 +120,34 @@ function desdeSupabase(row: any, miId: string): Publicacion {
     esPropia:       row.autor_id === miId,
     comentarioUtil: null,
     comentarios:    row.tipo === "pregunta" ? comentariosMockIniciales() : [],
-    ...(medios.length > 0 ? { medios } : {}),
+    ...(medios.length > 0 ? { images: medios } : {}),
   };
 }
 
 export default function usePublicaciones() {
   const { userSocial, estadoSesion } = useSesion() as any;
   const [publicaciones, setPublicaciones] = useState<Publicacion[]>(POSTS_MOCK);
-  const cargadoRef = useRef(false);
 
-  /* ── Cargar posts desde Supabase al autenticarse ── */
+  /* ── Cargar posts públicos desde Supabase — con sesión o sin ella ──
+     Sin sesión: todos los posts con esPropia = false
+     Con sesión: los posts propios se marcan esPropia = true            */
   useEffect(() => {
-    if (estadoSesion !== "autenticado" || !userSocial?.id) {
-      setPublicaciones(POSTS_MOCK);
-      cargadoRef.current = false;
-      return;
-    }
-    if (cargadoRef.current) return;
-    cargadoRef.current = true;
+    const miId = userSocial?.id ?? "";
 
     supabase
       .from("publicaciones")
       .select("*, medios, perfiles(nombre_visible, avatar_url)")
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {
-        if (error || !data) return;
-        const postsReales = data.map((row: any) => desdeSupabase(row, userSocial.id));
-        /* Posts propios del usuario al tope, luego los mock de comunidad */
+        if (error || !data || data.length === 0) {
+          /* Si Supabase falla o no hay posts aún, mostrar solo mocks */
+          setPublicaciones(POSTS_MOCK);
+          return;
+        }
+        const postsReales = data.map((row: any) => desdeSupabase(row, miId));
         setPublicaciones([...postsReales, ...POSTS_MOCK]);
       });
-  }, [estadoSesion, userSocial?.id]);
+  }, [userSocial?.id]); /* Se re-ejecuta al iniciar/cerrar sesión para actualizar esPropia */
 
   /* ── Crear publicación ── */
   const crearPublicacion = useCallback(
@@ -204,7 +202,7 @@ export default function usePublicaciones() {
         esPropia:       estadoSesion === "autenticado",
         comentarioUtil: null,
         comentarios:    tipo === "pregunta" ? comentariosMockIniciales() : [],
-        ...(mediosNuevos && mediosNuevos.length > 0 ? { medios: mediosNuevos } : {}),
+        ...(mediosNuevos && mediosNuevos.length > 0 ? { images: mediosNuevos } : {}),
       };
       setPublicaciones((prev) => [nueva, ...prev]);
       return true;

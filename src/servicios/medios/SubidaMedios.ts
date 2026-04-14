@@ -1,13 +1,10 @@
 /**
  * PUERTO: SubidaMedios — Contexto: Publicaciones · Comentarios · Respuestas
- * Sube archivos a Supabase Storage (bucket: publicaciones-medios).
+ * Sube archivos a Supabase Storage (bucket: media).
  * Devuelve URL pública permanente → persiste entre sesiones.
- *
- * PASO PREVIO (una sola vez en el dashboard de Supabase Social):
- *   Storage → New bucket → nombre: "publicaciones-medios" → Public: ON → Create
  */
 
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../lib/supabase-red-social";
 import type { Medio } from "../../feed/publicaciones/publicaciones.data";
 
 const BUCKET = "publicaciones-medios";
@@ -26,7 +23,7 @@ export async function subirMedio(archivo: File): Promise<ResultadoSubida> {
   // Nombre único: timestamp + random + extensión original
   const ext      = archivo.name.split(".").pop() ?? (tipo === "video" ? "mp4" : "jpg");
   const nombre   = `${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
-  const path     = `medios/${nombre}`;
+  const path     = `publicaciones/${nombre}`;
 
   const { error } = await supabase.storage.from(BUCKET).upload(path, archivo, {
     cacheControl: "3600",

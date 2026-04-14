@@ -59,6 +59,7 @@ function AppContent() {
   const [vistaActiva, setVistaActiva]           = useState("red-social");
   const [pagoData, setPagoData]                 = useState(null);
   const [perfilUsuario, setPerfilUsuario]       = useState(null);
+  const [origenMensajes, setOrigenMensajes]     = useState(null);
 
   /* Publicaciones levantadas al nivel App para compartir entre RedSocial y PerfilPropio */
   const {
@@ -92,6 +93,11 @@ function AppContent() {
   /* Scroll al top en cada cambio de vista (SPA: el navegador no lo hace solo) */
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [vistaActiva]);
+
+  /* Limpiar origen de mensajes al salir de la vista mensajes */
+  useEffect(() => {
+    if (vistaActiva !== 'mensajes') setOrigenMensajes(null);
   }, [vistaActiva]);
 
   /* Al confirmar sesión: limpiar apps de exploración */
@@ -150,15 +156,26 @@ function AppContent() {
                                           editarComentario={editarComentario} eliminarComentario={eliminarComentario}
                                           reaccionarComentario={reaccionarComentario} misPreguntas={misPreguntas} />;
       case "perfil-usuario":    return <PerfilPublico usuario={perfilUsuario} onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva}
-                                          sonAmigos={AMIGOS_NOMBRES.has(perfilUsuario?.nombre)} />;
+                                          sonAmigos={AMIGOS_NOMBRES.has(perfilUsuario?.nombre)}
+                                          onEnviarMensaje={({ usuarioDestino, origenDesdePerfilPublico }) => {
+                                            setOrigenMensajes({ usuarioDestino, origenDesdePerfilPublico });
+                                            setVistaActiva("mensajes");
+                                          }} />;
       case "perfil-propio":     return <PerfilPropio onVolver={() => setVistaActiva("red-social")} alNavegar={setVistaActiva}
                                           publicaciones={publicaciones} misPreguntas={misPreguntas}
-                                          onMarcarComentarioUtil={marcarComentarioUtil} onCambiarEstado={cambiarEstado} />;
+                                          onMarcarComentarioUtil={marcarComentarioUtil} onCambiarEstado={cambiarEstado}
+                                          onEditarPublicacion={editarPublicacion} onEliminarPublicacion={eliminarPublicacion}
+                                          onAgregarComentario={agregarComentario} onAgregarRespuesta={agregarRespuesta}
+                                          onEditarComentario={editarComentario} onEliminarComentario={eliminarComentario}
+                                          onReaccionarComentario={reaccionarComentario} />;
       case "datos-personales":  return <DatosPersonales />;
       case "empresas":          return <GestionEmpresas />;
       case "datos-facturacion": return <DatosFacturacion />;
       case "buzon":             return <Buzon />;
-      case "mensajes":          return <Mensajes />;
+      case "mensajes":          return <Mensajes
+                                          usuarioOrigen={origenMensajes?.usuarioDestino ?? null}
+                                          origenDesdePerfilPublico={origenMensajes?.origenDesdePerfilPublico ?? false}
+                                          onVolverAlPerfil={(usuario) => { alVerPerfil(usuario); }} />;
       case "tickets":           return <Tickets />;
       case "mantenedores":      return <Mantenedores />;
       case "canje-monedas":     return <CanjeMonedas />;
@@ -237,7 +254,7 @@ function AppContent() {
         alDeseleccionarTodasApps={handleDeselectAllApps}
       />
 
-      <div className={`content-wrapper flex-1 min-w-0 ml-[280px] px-6 pb-6 transition-[margin-left] duration-300 ease-in-out min-h-screen [@media(max-width:1024px)]:ml-0 [@media(max-width:1024px)]:px-8 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:pb-4${modoExploracion ? " main-content--demo" : ""}`}>
+      <div className={`content-wrapper flex-1 min-w-0 ml-[280px] px-6 pb-6 transition-[margin-left] duration-300 ease-in-out min-h-screen [@media(max-width:1299px)]:ml-0 [@media(max-width:1299px)]:px-8 [@media(max-width:768px)]:px-4 [@media(max-width:768px)]:pb-4${modoExploracion ? " main-content--demo" : ""}`}>
         <main className="max-w-[1400px] mx-auto w-full">
           {renderVista()}
         </main>

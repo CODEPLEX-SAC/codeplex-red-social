@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { supabase } from "../../../lib/supabase";
+import { supabase } from "../../../lib/supabase-red-social";
 import { useSesion } from "../../../identidad/sesion/SesionContext";
 import BotonesInline from "../../../compartido/ui/BotonesInline";
 import FilaVacia from "../../../compartido/ui/FilaVacia";
+import BtnEditar from "../../../compartido/ui/BtnEditar";
 
 interface ExperienciaLaboral {
   id: number;
@@ -80,6 +81,7 @@ export default function SeccionExperienciaLaboral({ perfilSocial, actualizarPerf
     <div className={card}>
       <div className="flex items-center justify-between mb-4">
         <h4 className={tituloLg}>Experiencia laboral</h4>
+        {!indiceEnEdicion && <BtnEditar onClick={() => setIndiceEnEdicion(true)} />}
       </div>
 
       {indiceEnEdicion ? (
@@ -87,7 +89,7 @@ export default function SeccionExperienciaLaboral({ perfilSocial, actualizarPerf
           <input className={inputCls} value={experienciaEnEdicion.cargo} onChange={(e) => actualizarCampo("cargo", e.target.value)} placeholder="Cargo" />
           <input className={inputCls} value={experienciaEnEdicion.empresa} onChange={(e) => actualizarCampo("empresa", e.target.value)} placeholder="Empresa" />
           <input className={inputCls} value={experienciaEnEdicion.periodo} onChange={(e) => actualizarCampo("periodo", e.target.value)} placeholder="Periodo" />
-          <textarea className={`${inputCls} resize-none`} rows={3} value={experienciaEnEdicion.desc} onChange={(e) => actualizarCampo("desc", e.target.value)} placeholder="Descripción" />
+          <textarea className={`${inputCls} resize-none`} rows={3} value={experienciaEnEdicion.desc} onChange={(e) => actualizarCampo("desc", e.target.value)} placeholder="Descripciï¿½n" />
           <button onClick={agregarExperiencia} className="self-start px-4 py-[7px] text-[13px] font-semibold border border-[var(--border-color)] rounded-[var(--radius-sm)]">+ Agregar</button>
           <BotonesInline
             onCancelar={() => setIndiceEnEdicion(false)}
@@ -100,8 +102,8 @@ export default function SeccionExperienciaLaboral({ perfilSocial, actualizarPerf
       ) : experienciasParaVista.length ? (
         experienciasParaVista.map((item) => (
           <div key={item.id} className="flex justify-between py-2">
-            <span>{item.cargo} · {item.empresa}</span>
-            <button onClick={() => eliminarExperiencia(item.id)} className="text-[var(--error-color)] bg-transparent border-none">×</button>
+            <span>{item.cargo} ï¿½ {item.empresa}</span>
+            <button onClick={() => eliminarExperiencia(item.id)} className="text-[var(--error-color)] bg-transparent border-none">ï¿½</button>
           </div>
         ))
       ) : (

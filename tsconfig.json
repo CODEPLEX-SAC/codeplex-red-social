@@ -9,12 +9,7 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@feed/*":          ["src/feed/*"],
-      "@identidad/*":     ["src/identidad/*"],
-      "@organizacion/*":  ["src/organizacion/*"],
-      "@planes/*":        ["src/planes/*"],
-      "@compartido/*":    ["src/compartido/*"],
-      "@styles/*":        ["src/styles/*"]
+      "@/*": ["fuente/*"]
     },
     "strict": false,
     "noUnusedLocals": false,
@@ -28,6 +23,6 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src"],
+  "include": ["fuente"],
   "exclude": ["node_modules", "dist"]
 }

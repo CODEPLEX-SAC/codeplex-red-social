@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { supabase } from "../../../lib/supabase";
+import { supabase } from "../../../lib/supabase-red-social";
 import { useSesion } from "../../../identidad/sesion/SesionContext";
 import BtnEditar from "../../../compartido/ui/BtnEditar";
 import FilaVacia from "../../../compartido/ui/FilaVacia";
@@ -41,10 +41,10 @@ export default function SeccionDocumentos({ perfilSocial, actualizarPerfilSocial
   const subirDocumento = async (file: File) => {
     if (!usuarioId) return;
     const path = `perfil-propio/${usuarioId}/documentos/${Date.now()}-${file.name}`;
-    const { error: uploadError } = await supabase.storage.from("media").upload(path, file, { upsert: false });
+    const { error: uploadError } = await supabase.storage.from("publicaciones-medios").upload(path, file, { upsert: false });
     if (uploadError) return console.error(uploadError);
 
-    const { data: publicData } = supabase.storage.from("media").getPublicUrl(path);
+    const { data: publicData } = supabase.storage.from("publicaciones-medios").getPublicUrl(path);
     const url = publicData.publicUrl;
     const tipo = file.name.toLowerCase().includes("cv") ? "CV" : "Documento";
     const fecha = new Date().toLocaleDateString("es-PE", { day: "2-digit", month: "short", year: "numeric" });
@@ -77,7 +77,7 @@ export default function SeccionDocumentos({ perfilSocial, actualizarPerfilSocial
 
     if (doc?.url?.includes("/storage/v1/object/public/media/")) {
       const storagePath = doc.url.split("/storage/v1/object/public/media/")[1];
-      if (storagePath) await supabase.storage.from("media").remove([storagePath]);
+      if (storagePath) await supabase.storage.from("publicaciones-medios").remove([storagePath]);
     }
 
     const nuevos = documentosCargados.filter((d) => d.id !== id);
@@ -86,7 +86,7 @@ export default function SeccionDocumentos({ perfilSocial, actualizarPerfilSocial
   };
 
   const tieneCV = useMemo(() => documentosCargados.some((d) => d.tipo?.toLowerCase().includes("cv") || d.nombre?.toLowerCase().includes("cv")), [documentosCargados]);
-  const tieneTitulo = useMemo(() => documentosCargados.some((d) => d.tipo?.toLowerCase().includes("título") || d.nombre?.toLowerCase().includes("título")), [documentosCargados]);
+  const tieneTitulo = useMemo(() => documentosCargados.some((d) => d.tipo?.toLowerCase().includes("tï¿½tulo") || d.nombre?.toLowerCase().includes("tï¿½tulo")), [documentosCargados]);
   const mostrarAviso = !tieneCV || !tieneTitulo;
 
   return (
@@ -102,21 +102,21 @@ export default function SeccionDocumentos({ perfilSocial, actualizarPerfilSocial
           <div key={doc.id} className="flex items-center gap-[14px] py-3 border-b border-[var(--border-color)] last:border-b-0">
             <div className="flex-1 min-w-0">
               <a href={doc.url} target="_blank" rel="noreferrer" className="text-[14px] font-semibold text-[var(--text-dark)] truncate block">{doc.nombre}</a>
-              <span className="text-[12px] text-[var(--text-muted)] block">{doc.tipo} · Subido el {doc.fecha}</span>
+              <span className="text-[12px] text-[var(--text-muted)] block">{doc.tipo} ï¿½ Subido el {doc.fecha}</span>
             </div>
-            <button onClick={() => eliminarDocumento(doc.id)} className="text-[var(--text-muted)] hover:text-red-500 bg-transparent border-none">×</button>
+            <button onClick={() => eliminarDocumento(doc.id)} className="text-[var(--text-muted)] hover:text-red-500 bg-transparent border-none">ï¿½</button>
           </div>
         )) : (
           <>
             <FilaVacia icono={<span>+</span>} label="+ Subir CV actualizado" sublabel="PDF recomendado" onClick={() => fileRef.current?.click()} />
-            <FilaVacia icono={<span>+</span>} label="+ Subir título profesional" sublabel="Será verificado por Codeplex" onClick={() => fileRef.current?.click()} />
+            <FilaVacia icono={<span>+</span>} label="+ Subir tï¿½tulo profesional" sublabel="Serï¿½ verificado por Codeplex" onClick={() => fileRef.current?.click()} />
           </>
         )}
       </div>
 
       {mostrarAviso && (
         <div className="flex items-center gap-2 mt-3 p-3 rounded-[var(--radius-sm)] border border-[#f59e0b] bg-[#fffbeb]">
-          <p className="text-[12px] text-[#92400e] m-0">Debes subir al menos el CV y un título verificado para aparecer en búsquedas.</p>
+          <p className="text-[12px] text-[#92400e] m-0">Debes subir al menos el CV y un tï¿½tulo verificado para aparecer en bï¿½squedas.</p>
         </div>
       )}
     </div>

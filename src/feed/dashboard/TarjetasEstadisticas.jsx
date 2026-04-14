@@ -10,11 +10,11 @@ const STATS = [
     stat:     "+5",
     statLabel:"este mes",
     cardStyle: {
-      background: "linear-gradient(to right, #e6ebff, #ffffff)",
+      background: "linear-gradient(to right, var(--primary-bg, rgba(72,127,255,0.08)), var(--white-color))",
       border:     "1px solid var(--border-color)",
     },
-    iconBg: "#487FFF",
-    accent: "#487FFF",
+    iconBg: "var(--primary-color)",
+    accent: "var(--primary-color)",
   },
   {
     title:    "Tus Videos",
@@ -24,11 +24,11 @@ const STATS = [
     stat:     "+5",
     statLabel:"este mes",
     cardStyle: {
-      background: "linear-gradient(to right, #ffeeee, #fffcfc)",
+      background: "linear-gradient(to right, var(--error-bg, rgba(239,68,68,0.08)), var(--white-color))",
       border:     "1px solid var(--border-color)",
     },
-    iconBg: "#EF4444",
-    accent: "#EF4444",
+    iconBg: "var(--error-color)",
+    accent: "var(--error-color)",
   },
   {
     title:    "Compartidos",
@@ -38,11 +38,11 @@ const STATS = [
     stat:     "+5",
     statLabel:"este mes",
     cardStyle: {
-      background: "linear-gradient(to right, #f7e9ff, #fffefd)",
+      background: "linear-gradient(to right, var(--secondary-bg, rgba(139,92,246,0.08)), var(--white-color))",
       border:     "1px solid var(--border-color)",
     },
-    iconBg: "#A855F7",
-    accent: "#A855F7",
+    iconBg: "var(--secondary-color)",
+    accent: "var(--secondary-color)",
   },
 ];
 

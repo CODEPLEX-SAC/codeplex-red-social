@@ -5,7 +5,7 @@
    Store: Supabase Social â†' tabla "perfiles"
 â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { supabase } from '../../lib/supabase';
+import { supabase } from '../../lib/supabase-red-social';
 import { useSesion } from '../../identidad/sesion/SesionContext';
 
 const PerfilSocialContext = createContext(null);

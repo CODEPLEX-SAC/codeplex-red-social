@@ -37,14 +37,14 @@ function PanelFotos({ publicaciones, card }) {
   );
 }
 
-function TabRedSocial({ perfilSocial, publicaciones, misPreguntas, onMarcarComentarioUtil, onCambiarEstado, onEditarInfo, onIrResumen, onIrExperiencia, alNavegar }) {
+function TabRedSocial({ perfilSocial, publicaciones, misPreguntas, onMarcarComentarioUtil, onCambiarEstado, onEditarInfo, onIrResumen, onIrExperiencia, alNavegar, onEditarPublicacion, onEliminarPublicacion, onAgregarComentario, onAgregarRespuesta, onEditarComentario, onEliminarComentario, onReaccionarComentario }) {
   const [subTab, setSubTab] = useState("actividad");
   const publicacionesPropias = (publicaciones ?? []).filter((p) => p.esPropia).slice().reverse();
 
   return (
     <div className="flex gap-4 items-start [@media(max-width:860px)]:flex-col">
-      {/* Columna izquierda */}
-      <div className="w-[300px] shrink-0 flex flex-col gap-3 [@media(max-width:860px)]:w-full">
+      {/* Columna izquierda — oculta en responsivo */}
+      <div className="w-[300px] shrink-0 flex flex-col gap-3 [@media(max-width:860px)]:hidden">
         <PanelDatosPersonales perfilSocial={perfilSocial} onEditarInfo={onEditarInfo} onIrResumen={onIrResumen} onIrExperiencia={onIrExperiencia} card={card} />
         <PanelFotos publicaciones={publicaciones} card={card} />
         <div className={card}>
@@ -55,15 +55,21 @@ function TabRedSocial({ perfilSocial, publicaciones, misPreguntas, onMarcarComen
           <p className="text-[12px] text-[var(--text-muted)] m-0">0 amigos</p>
         </div>
       </div>
-      {/* Columna derecha */}
-      <div className="flex-1 min-w-0 flex flex-col gap-3">
+      {/* Columna derecha — full width en responsivo */}
+      <div className="flex-1 min-w-0 flex flex-col gap-3 [@media(max-width:860px)]:w-full">
         <div className="flex gap-2">
           {[{ id: "actividad", label: "Actividad reciente" }, { id: "mis-preguntas", label: "Mis Preguntas" }].map(({ id, label }) => (
             <button key={id} className={subTabClass(subTab === id)} onClick={() => setSubTab(id)}>{label}</button>
           ))}
         </div>
         {subTab === "actividad" && (
-          <PanelActividadReciente perfilSocial={perfilSocial} publicacionesPropias={publicacionesPropias} alNavegar={alNavegar} card={card} />
+          <PanelActividadReciente perfilSocial={perfilSocial} publicacionesPropias={publicacionesPropias} alNavegar={alNavegar} card={card}
+            onMarcarComentarioUtil={onMarcarComentarioUtil} onCambiarEstado={onCambiarEstado}
+            onEditarPublicacion={onEditarPublicacion} onEliminarPublicacion={onEliminarPublicacion}
+            onAgregarComentario={onAgregarComentario} onAgregarRespuesta={onAgregarRespuesta}
+            onEditarComentario={onEditarComentario} onEliminarComentario={onEliminarComentario}
+            onReaccionarComentario={onReaccionarComentario}
+          />
         )}
         {subTab === "mis-preguntas" && (
           <PanelMisPreguntas misPreguntas={misPreguntas} onMarcarComentarioUtil={onMarcarComentarioUtil} onCambiarEstado={onCambiarEstado} />

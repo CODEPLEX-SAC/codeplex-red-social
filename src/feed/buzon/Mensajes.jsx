@@ -204,7 +204,7 @@ function PanelChat({ conversacion, onVolver, onVerPerfil }) {
   );
 }
 
-function Mensajes() {
+function Mensajes({ usuarioOrigen = null, origenDesdePerfilPublico = false, onVolverAlPerfil }) {
   const { modoExploracion, comenzarAutenticacion } = useSesion();
   const [tabActivo,      setTabActivo]      = useState("todos");
   const [busqueda,       setBusqueda]       = useState("");
@@ -262,6 +262,21 @@ function Mensajes() {
             {...(modoExploracion ? { onClick: comenzarAutenticacion, style: { cursor: "not-allowed" } } : {})}
           />
         </div>
+
+        {/* Banda "Volver al perfil" — solo cuando se llegó desde un PerfilPublico */}
+        {origenDesdePerfilPublico && usuarioOrigen && (
+          <button
+            className="flex items-center gap-[7px] w-full px-3 py-2 bg-[var(--background-color)] border-b border-[var(--border-color)] text-[12px] cursor-pointer transition-opacity duration-150 hover:opacity-75"
+            style={{ borderTop: "none", outline: "none" }}
+            onClick={() => onVolverAlPerfil?.(usuarioOrigen)}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            <span className="text-[var(--text-muted)]">Volver al perfil de</span>
+            <span className="font-semibold" style={{ color: "var(--primary-color)" }}>{usuarioOrigen.nombre}</span>
+          </button>
+        )}
 
         <div className="flex items-center gap-1 px-4 pb-[10px]">
           {vistaLista === "mensajes" ? (

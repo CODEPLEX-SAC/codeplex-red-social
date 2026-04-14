@@ -35,6 +35,7 @@ export const ESTADOS_PREGUNTA: { id: EstadoPregunta; label: string; color: strin
 export interface PublicacionMock {
   avatarImg: number | string;
   author: string;
+  tituloProfesional?: string;
   time: string;
   text: string;
   hashtags: string[];
@@ -71,6 +72,7 @@ export const MOCK_POST: PublicacionMock = {
 export const MOCK_POST_IMAGENES: PublicacionMock = {
   avatarImg: 25,
   author: "María López",
+  tituloProfesional: "Contadora Pública · Especialista en NIIF",
   time: "Hace 3 horas",
   text: "¡Increíble evento de networking contable del mes! Grandes conexiones y aprendizajes 🤝✨",
   hashtags: ["#Networking", "#Contabilidad", "#Evento"],

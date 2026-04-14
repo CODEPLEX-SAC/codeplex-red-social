@@ -453,7 +453,7 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
               </svg>
             </button>
 
-            <div className="px-4 pb-4">
+            <div className="px-4 pb-4 flex flex-col gap-[10px]">
 
               {/* ════ DESKTOP (md+): 2 columnas — avatar | info ════ */}
               <div className="hidden md:flex md:gap-4 md:items-start">
@@ -476,133 +476,152 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                 {/* Columna info */}
                 <div className="flex-1 min-w-0 flex flex-col gap-[10px]">
 
-                  {/* FILA 1: Nombre + escudo  |  botones de acción (derecha) */}
-                  <div className="flex items-center justify-between gap-3 flex-wrap">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="text-[20px] font-bold text-[var(--text-dark)] m-0 leading-tight">{perfil.nombre}</h2>
-                      <button className="flex items-center gap-[5px] px-[10px] py-[4px] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-transparent text-[12px] font-semibold text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                        Verificar cuenta
-                      </button>
+                  {/* FILA 1: Nombre + cargo + escudo  |  botones de acción (derecha) */}
+                  <div className="flex items-start justify-between gap-3 flex-wrap">
+                    <div className="flex flex-col gap-[4px]">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h2 className="text-[20px] font-bold text-[var(--text-dark)] m-0 leading-tight">{perfil.nombre}</h2>
+                        <button className="flex items-center gap-[5px] px-[10px] py-[4px] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-transparent text-[12px] font-semibold text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                          </svg>
+                          Verificar cuenta
+                        </button>
+                      </div>
+                      {(perfil.tituloProfesional || perfil.cargo || perfil.especialidad || USUARIO_JUAN.especialidad) && (
+                        <p className="text-[13px] text-[var(--text-muted)] m-0">
+                          {perfil.tituloProfesional || perfil.cargo || perfil.especialidad || USUARIO_JUAN.especialidad}
+                        </p>
+                      )}
                     </div>
 
-                    {/* Botones derecha */}
-                    <div className="flex items-center gap-2 shrink-0">
-                      {esPerfilPropio && (
-                        <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
-                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                          </svg>
-                          Editar perfil
-                        </button>
-                      )}
-                      {!esPerfilPropio && sonAmigos && (
-                        <>
-                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-                              <polyline points="16 11 18 13 22 9"/>
-                            </svg>
-                            Amigos
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-                          </button>
-                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
-                            onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
-                            Mensaje
-                          </button>
-                        </>
-                      )}
-                      {!esPerfilPropio && !sonAmigos && (
-                        <>
-                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-                              <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
-                            </svg>
-                            Enviar solicitud
-                          </button>
-                          <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
-                            onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
-                            Mensaje
-                          </button>
+                    {/* Botones derecha — columna vertical: botones arriba, íconos abajo */}
+                    <div className="flex flex-col items-end gap-2 shrink-0">
+
+                      {/* Fila de botones — condicional por tab */}
+                      {tab === "red-social" ? (
+                        <div className="flex items-center gap-2">
+                          {esPerfilPropio && (
+                            <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                              </svg>
+                              Editar perfil
+                            </button>
+                          )}
+                          {!esPerfilPropio && sonAmigos && (
+                            <>
+                              <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                                  <polyline points="16 11 18 13 22 9"/>
+                                </svg>
+                                Amigos
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+                              </button>
+                              <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
+                                onClick={() => onEnviarMensaje
+                                  ? onEnviarMensaje({ usuarioDestino: perfil, origenDesdePerfilPublico: true })
+                                  : alNavegar?.("mensajes")}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                                Mensaje
+                              </button>
+                            </>
+                          )}
+                          {!esPerfilPropio && !sonAmigos && (
+                            <>
+                              <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-bold text-white rounded-[var(--radius-sm)] border-none cursor-pointer hover:opacity-90 transition-opacity" style={{ background: "var(--gradient-primary)" }}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                                  <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+                                </svg>
+                                Enviar solicitud
+                              </button>
+                              <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
+                                onClick={() => onEnviarMensaje
+                                  ? onEnviarMensaje({ usuarioDestino: perfil, origenDesdePerfilPublico: true })
+                                  : alNavegar?.("mensajes")}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                                Mensaje
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2">
                           <button className="flex items-center gap-[6px] px-4 py-[8px] text-[13px] font-semibold text-[var(--text-dark)] rounded-[var(--radius-sm)] border border-[var(--border-color)] bg-[var(--background-color)] cursor-pointer hover:bg-[var(--hover-color)] transition-colors"
                             onClick={() => setModalContratar(true)}>
                             Contratar
                           </button>
-                        </>
+                        </div>
                       )}
-                    </div>
-                  </div>
 
-                  {/* FILA 2: Stats + separador | + iconos redes sociales */}
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <span className="text-[13px] text-[var(--text-muted)]">
-                      <strong className="text-[var(--text-dark)] font-bold">57</strong> Publicaciones
-                    </span>
-                    <span className="text-[var(--text-muted)] text-[13px]">·</span>
-                    <span className="text-[13px] text-[var(--text-muted)]">
-                      <strong className="text-[var(--text-dark)] font-bold">0</strong> Seguidores
-                    </span>
-                    <span className="text-[var(--text-muted)] text-[13px]">·</span>
-                    <span className="text-[13px] text-[var(--text-muted)]">
-                      <strong className="text-[var(--text-dark)] font-bold">0</strong> Seguidos
-                    </span>
-                    <span className="text-[var(--border-color)] select-none mx-1 text-[16px] font-thin">|</span>
-                    {redesBtns.map(({ title, icon }) => (
-                      <button key={title} title={title}
-                        className="w-8 h-8 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors shrink-0">
-                        {icon}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* FILA 3: Cargo + reseñas + datos de info en línea */}
-                  <div className="flex items-center gap-x-4 gap-y-[6px] flex-wrap">
-                    {(perfil.especialidad || USUARIO_JUAN.especialidad) && (
-                      <span className="text-[13px] text-[var(--text-dark)] font-medium">
-                        {perfil.especialidad || USUARIO_JUAN.especialidad}
-                      </span>
-                    )}
-                    <span className="flex items-center gap-1 text-[13px] text-[var(--text-muted)]">
-                      <span className="text-[var(--warning-color)]">★</span> 4.9 reseñas
-                    </span>
-                    {datosInfo.map(({ icon, texto }, i) => (
-                      <span key={i} className="flex items-center gap-[6px] text-[13px] text-[var(--text-muted)]">
-                        <span className="flex items-center justify-center shrink-0">{icon}</span>
-                        {texto}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* FILA 4: Amigos en común (solo si los hay) */}
-                  {!esPerfilPropio && AMIGOS_EN_COMUN.length > 0 && (
-                    <div className="flex items-center gap-[10px]">
-                      <div className="flex items-center">
-                        {AMIGOS_EN_COMUN.map((a, i) => (
-                          <img key={a.nombre} src={a.avatar} alt={a.nombre} title={a.nombre}
-                            className="w-7 h-7 rounded-full border-2 border-[var(--white-color)] object-cover"
-                            style={{ marginLeft: i > 0 ? -8 : 0, zIndex: AMIGOS_EN_COMUN.length - i }} />
+                      {/* Íconos redes sociales — siempre visibles, debajo de los botones */}
+                      <div className="flex items-center gap-[6px]">
+                        {redesBtns.map(({ title, icon }) => (
+                          <button key={title} title={title}
+                            className="w-8 h-8 flex items-center justify-center rounded-full border border-[var(--border-color)] bg-[var(--background-color)] text-[var(--text-muted)] cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition-colors shrink-0">
+                            {icon}
+                          </button>
                         ))}
                       </div>
-                      <span className="text-[12px] text-[var(--text-muted)] leading-[1.4]">
-                        <strong className="text-[var(--text-dark)] font-semibold">{AMIGOS_EN_COMUN[0].nombre}</strong>
-                        {AMIGOS_EN_COMUN.length > 1 && ` y ${AMIGOS_EN_COMUN.length - 1} persona${AMIGOS_EN_COMUN.length - 1 > 1 ? "s" : ""} más`}
-                        {" "}son amigos en común
-                      </span>
+
                     </div>
-                  )}
+                  </div>
 
                 </div>
               </div>
+
+              {/* ── DESKTOP: Stats — debajo del bloque 2 columnas ── */}
+              <div className="hidden md:flex items-center gap-3 flex-wrap">
+                <span className="text-[13px] text-[var(--text-muted)]">
+                  <strong className="text-[var(--text-dark)] font-bold">57</strong> Publicaciones
+                </span>
+                <span className="text-[var(--text-muted)] text-[13px]">·</span>
+                <span className="text-[13px] text-[var(--text-muted)]">
+                  <strong className="text-[var(--text-dark)] font-bold">0</strong> Seguidores
+                </span>
+                <span className="text-[var(--text-muted)] text-[13px]">·</span>
+                <span className="text-[13px] text-[var(--text-muted)]">
+                  <strong className="text-[var(--text-dark)] font-bold">0</strong> Seguidos
+                </span>
+              </div>
+
+              {/* ── DESKTOP: Datos fijados — debajo de stats ── */}
+              <div className="hidden md:flex items-center gap-x-4 gap-y-[6px] flex-wrap">
+                <span className="flex items-center gap-1 text-[13px] text-[var(--text-muted)]">
+                  <span className="text-[var(--warning-color)]">★</span> 4.9 reseñas
+                </span>
+                {datosInfo.map(({ icon, texto }, i) => (
+                  <span key={i} className="flex items-center gap-[6px] text-[13px] text-[var(--text-muted)]">
+                    <span className="flex items-center justify-center shrink-0">{icon}</span>
+                    {texto}
+                  </span>
+                ))}
+              </div>
+
+              {/* ── DESKTOP: Amigos en común — solo si los hay ── */}
+              {!esPerfilPropio && AMIGOS_EN_COMUN.length > 0 && (
+                <div className="hidden md:flex items-center gap-[10px]">
+                  <div className="flex items-center">
+                    {AMIGOS_EN_COMUN.map((a, i) => (
+                      <img key={a.nombre} src={a.avatar} alt={a.nombre} title={a.nombre}
+                        className="w-7 h-7 rounded-full border-2 border-[var(--white-color)] object-cover"
+                        style={{ marginLeft: i > 0 ? -8 : 0, zIndex: AMIGOS_EN_COMUN.length - i }} />
+                    ))}
+                  </div>
+                  <span className="text-[12px] text-[var(--text-muted)] leading-[1.4]">
+                    <strong className="text-[var(--text-dark)] font-semibold">{AMIGOS_EN_COMUN[0].nombre}</strong>
+                    {AMIGOS_EN_COMUN.length > 1 && ` y ${AMIGOS_EN_COMUN.length - 1} persona${AMIGOS_EN_COMUN.length - 1 > 1 ? "s" : ""} más`}
+                    {" "}son amigos en común
+                  </span>
+                </div>
+              )}
 
               {/* ════ MOBILE (< md): layout original sin cambios ════ */}
               <div className="flex flex-col gap-3 md:hidden">
@@ -637,7 +656,12 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                   </div>
                 </div>
 
-                {/* FILA 2: Bio/Presentación */}
+                {/* FILA 2: Cargo profesional + Bio/Presentación */}
+                {(perfil.tituloProfesional || perfil.cargo) && (
+                  <p className="text-[13px] text-[var(--text-muted)] m-0 leading-[1.5]">
+                    {perfil.tituloProfesional || perfil.cargo}
+                  </p>
+                )}
                 {(perfil.especialidad || USUARIO_JUAN.especialidad) && (
                   <p className="text-[13px] text-[var(--text-dark)] m-0 leading-[1.5]">
                     {perfil.especialidad || USUARIO_JUAN.especialidad}
@@ -700,7 +724,9 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"><polyline points="6 9 12 15 18 9"/></svg>
                       </button>
                       <button className={btnSecundario}
-                        onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
+                        onClick={() => onEnviarMensaje
+                                  ? onEnviarMensaje({ usuarioDestino: perfil, origenDesdePerfilPublico: true })
+                                  : alNavegar?.("mensajes")}>
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
@@ -719,7 +745,9 @@ function PerfilPublico({ usuario, onVolver, alNavegar, onEnviarMensaje, textoAmi
                       Enviar solicitud
                     </button>
                     <button className={btnSecundario}
-                      onClick={() => onEnviarMensaje ? onEnviarMensaje() : alNavegar?.("mensajes")}>
+                      onClick={() => onEnviarMensaje
+                                  ? onEnviarMensaje({ usuarioDestino: perfil, origenDesdePerfilPublico: true })
+                                  : alNavegar?.("mensajes")}>
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                       </svg>

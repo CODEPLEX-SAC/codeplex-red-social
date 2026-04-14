@@ -88,7 +88,7 @@ function Publicacion({ post, alVerPerfil, alNavegar, onCambiarEstado, onMarcarCo
     : `https://i.pravatar.cc/150?img=${post.avatarImg}`;
   const handleVerAutor = () => {
     if (post.esPropia) { alNavegar?.("perfil-propio"); }
-    else { alVerPerfil?.({ nombre: post.author, avatar: avatarSrc }); }
+    else { alVerPerfil?.({ nombre: post.author, avatar: avatarSrc, tituloProfesional: post.tituloProfesional }); }
   };
 
 

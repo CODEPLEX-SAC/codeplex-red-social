@@ -30,7 +30,7 @@ export default function CabeceraPerfilPropio(props) {
   } = props;
 
   const nombreCompleto   = perfilSocial.nombreVisible || null;
-  const cargo            = perfilSocial.tituloProfesional || perfilSocial.cargo || perfilSocial.bioPública || null;
+  const cargo            = perfilSocial.bioPública || perfilSocial.tituloProfesional || perfilSocial.cargo || null;
   const ubicacion        = [perfilSocial.ciudad, perfilSocial.pais].filter(Boolean).join(", ");
   const formacion        = (perfilSocial.titulos ?? []).find((t) => t.esFormacion);
   const trabajos         = perfilSocial.trabajos ?? [];
@@ -103,6 +103,10 @@ export default function CabeceraPerfilPropio(props) {
                     </span>
                   </button>
                 </div>
+                {/* Presentación / Cargo — debajo del nombre, igual que en PerfilPublico */}
+                {cargo && (
+                  <p className="text-[13px] text-[var(--text-muted)] m-0 leading-[1.4]">{cargo}</p>
+                )}
                 {/* Stats */}
                 <p className="text-[12px] text-[var(--text-muted)] m-0">
                   <strong className="text-[var(--text-dark)] font-semibold">{numPublicaciones}</strong>{" "}Publicaciones
@@ -154,11 +158,6 @@ export default function CabeceraPerfilPropio(props) {
 
         {!modoEdicionIdentidad && (
           <>
-            {/* ─── Cargo / Bio ─── */}
-            {cargo && (
-              <p className="text-[13px] text-[var(--text-dark)] m-0 leading-[1.5]">{cargo}</p>
-            )}
-
             {/* ─── Data items inline con íconos ─── */}
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <span className="flex items-center gap-1 text-[12px] text-[var(--text-muted)]">
