@@ -1,0 +1,445 @@
+@import "tailwindcss";
+@import "./utilidades.css";
+
+/* ── Dark mode: clase .dark en <html> (Tailwind) O data-theme="dark" (legado) ── */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+/* ══════════════════════════════════════════════════════════
+@theme inline define variables CSS como utilidades de Tailwind, manteniéndolas dinámicas para soportar temas (como dark mode).
+══════════════════════════════════════════════════════════ */
+
+
+
+@theme inline {
+  /* Fondos */
+  --color-base:          var(--background-color);
+  --color-surface:       var(--surface-color);
+  --color-panel:         var(--white-color);
+
+  /* Textos */
+  --color-fg:            var(--text-dark);
+  --color-muted:         var(--text-muted);
+  --color-subtle:        var(--text-gray);
+
+  /* Marca */
+  --color-brand:         var(--primary-color);
+  --color-brand-alt:     var(--secondary-color);
+
+  /* Bordes */
+  --color-line:          var(--border-color);
+  --color-line-light:    var(--border-light);
+
+  /* Inputs */
+  --color-field:         var(--input-bg);
+  --color-field-border:  var(--input-border);
+  --color-field-text:    var(--input-text);
+
+  /* Estados */
+  --color-danger:        var(--error-color);
+  --color-danger-bg:     var(--error-bg);
+
+  /* ── Animaciones registradas como utilidades Tailwind (animate-*) ── */
+  --animate-slider-overlay:  fadeIn 0.3s ease;
+  --animate-slider-cuenta:   slideInRight 0.3s ease;
+  --animate-mensajes-popup:  mensajesSlideUp 0.25s ease-out;
+  --animate-item-entrada:    item-entrada 0.2s ease-out;
+  --animate-carrito-bar:     carrito-in 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+  --animate-modal-entrada:   modal-entrada 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+  --animate-vcat-fade:       vcat-fade-in 0.2s ease;
+  --animate-vcat-slide:      vcat-slide-in 0.25s cubic-bezier(0.34, 1.3, 0.64, 1);
+  --animate-vcat-spin:       vcat-spin 0.7s linear infinite;
+}
+
+/* ── Animación pantalla de éxito pasarela ── */
+@keyframes pp-exito-in {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Animaciones ModalPlanes (compartido 6 selectores) ── */
+@keyframes modal-fade   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-slide  { from { opacity: 0; transform: scale(0.93) translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes modal-pop-in { from { opacity: 0; transform: scale(0.88); } to { opacity: 1; transform: none; } }
+@keyframes modal-chat-in        { from { opacity: 0; transform: translateY(-50%) translateX(20px); } to { opacity: 1; transform: translateY(-50%) translateX(0); } }
+@keyframes modal-chat-mobile-in { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: none; } }
+
+/* ── Animaciones modal empresa ── */
+@keyframes mce-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes mce-slide-in-kf {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes mce-slide-out-left-kf {
+  from { opacity: 1; }
+  to   { opacity: 0; transform: translateX(-12px); }
+}
+@keyframes mce-slide-out-right-kf {
+  from { opacity: 1; }
+  to   { opacity: 0; transform: translateX(12px); }
+}
+
+/* ── Animaciones Login ── */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slideL {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideR {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Header: dropdown + profile slider ── */
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Mensajes flotante + vista ── */
+@keyframes mensajesSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+@keyframes msjDotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Carrito + modal desinstalación ── */
+@keyframes item-entrada {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes carrito-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes modal-entrada {
+  from { opacity: 0; transform: scale(0.88) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Visor catálogo PDF ── */
+@keyframes vcat-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes vcat-slide-in {
+  from { opacity: 0; transform: scale(0.94) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes vcat-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Red social: reactions + menus ── */
+@keyframes popupIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.8); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+@keyframes popupInMobile {
+  from { opacity: 0; transform: translateX(-30%) translateY(10px) scale(0.8); }
+  to   { opacity: 1; transform: translateX(-30%) translateY(0) scale(1); }
+}
+@keyframes menuFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes miniPopupIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px) scale(0.85); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+/* Login — dot grid overlay */
+.login-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(15,30,60,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  z-index: 0;
+}
+
+/* Login — panel izquierdo sin scrollbar */
+.login-left-panel { scrollbar-width: none; -ms-overflow-style: none; }
+.login-left-panel::-webkit-scrollbar { display: none; }
+
+/* Login — shimmer button */
+.btn-login-shimmer { position: relative; overflow: hidden; }
+.btn-login-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+.btn-login-shimmer:not(:disabled):hover::before { transform: translateX(100%); }
+
+/* Login — btn-demo dark mode */
+:root.dark .btn-demo-login, [data-theme="dark"] .btn-demo-login {
+  background: #ffffff;
+  color: var(--primary-color);
+  border-color: #ffffff;
+}
+:root.dark .btn-demo-login:hover, [data-theme="dark"] .btn-demo-login:hover {
+  background: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* ── Scrollbar body modal empresa ── */
+.mce-body::-webkit-scrollbar { width: 4px; }
+.mce-body::-webkit-scrollbar-track { background: transparent; }
+.mce-body::-webkit-scrollbar-thumb {
+  background: rgba(72,127,255,0.18);
+  border-radius: 4px;
+}
+
+/* ── Resumen sticky en modo demo (header más alto) ── */
+.main-content--demo .pp-resumen-col {
+  top: 120px;
+  max-height: calc(100vh - 120px);
+}
+@media (max-width: 1024px) {
+  .main-content--demo .pp-resumen-col {
+    top: 160px;
+    max-height: calc(100vh - 160px);
+  }
+}
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* Transición suave */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease;
+               box-sizing: border-box;
+              
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VARIABLES GLOBALES - MODO CLARO (default)
+═══════════════════════════════════════════════════════════ */
+:root {
+  /* ── Border radius — sistema global ── */
+  --radius-xs:  6px;   /* etiquetas, detalles mínimos     */
+  --radius-sm:  10px;  /* ícono-containers, badges        */
+  --radius-md:  15px;  /* cards del feed / dashboard      */
+  --radius-lg:  20px;  /* botones grandes, modales        */
+  --radius-xl:  24px;  /* panels y overlays               */
+
+  /* Colores de marca */
+  --primary-color: #487FFF;
+  --secondary-color: #3366E0;
+  --tertiary-color: #6BA3FF;
+  --gradient-primary: linear-gradient(135deg, #487FFF, #3366E0, #6BA3FF);
+  --color-red-social: #1a3a7c;
+  
+  /* Backgrounds */
+  --white-color: #FFFFFF;
+  --background-color: #F8F9FA;
+  --surface-color: #FFFFFF;
+  --surface-elevated: #FFFFFF;
+  
+  /* Textos */
+  --text-dark: #1e293b;
+  --text-gray: #94a3b8;
+  --text-muted: #64748B;
+  
+  --text-primary:     var(--text-dark);    /* títulos, nombres    */
+  --text-secondary:   var(--text-muted);   /* subtítulos, labels  */
+
+
+  /* Bordes y divisores */
+  --border-color: #d1d5db80;
+  --border-light: #f1f5f9;
+  
+  /* Estados */
+  --hover-color: rgba(72, 127, 255, 0.1);
+  --focus-ring: rgba(72, 127, 255, 0.15);
+  --error-color: #ef4444;
+  --error-bg: #fef2f2;
+  --success-color: #065f46;
+  --success-text:  #16a34a;
+  --success-bg: #d1fae5;
+  --success-border: #6ee7b7;
+  --warning-color: #92400e;
+  --warning-text: #D97706;
+  --warning-bg: #fffbeb;
+  --warning-border: #f59e0b;
+  --info-color: #0369a1;
+  --info-bg: #e0f2fe;
+  --overlay-media:  rgba(0, 0, 0, 0.55); /* botones play sobre video       */
+  --overlay-modal:  rgba(0, 0, 0, 0.65); /* fondo de modales / backdrops   */
+  --video-bg:       #0f0f0f;             /* fondo del reproductor de video  */
+  
+  /* Inputs */
+  --input-bg: #f9fafb;
+  --input-border: #e5e7eb;
+  --input-text: #111827;
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 28px rgba(72, 127, 255, 0.12);
+  --shadow-primary: 0 4px 12px rgba(72, 127, 255, 0.3);
+
+
+  /* ══════════════════════════════════════════════
+      PALETA DE NEGOCIOS — Codeplex Aplicaciones
+     
+     Cada negocio necesita DOS variables del mismo color:
+       --color-NOMBRE      → HEX → para border-top (color sólido)
+       --color-NOMBRE-rgb  → RGB → para rgba(..., opacidad) en shimmer hover
+     
+     ¿Por qué RGB separado? CSS no acepta rgba(#HEX, 0.08).
+     Con números sueltos sí funciona: rgba(var(--color-grifo-rgb), 0.08)
+    
+     ══════════════════════════════════════════════ */
+  --color-contaplex:      #0094C0;  --color-contaplex-rgb:     0, 148, 192;
+  --color-comercial:      #0D9488;  --color-comercial-rgb:     13, 148, 136;
+  --color-restaurante:    #F97316;  --color-restaurante-rgb:   249, 115, 22;
+  --color-grifo:          #B91C1C;  --color-grifo-rgb:         185, 28, 28;
+  --color-facturacion:    #1E40AF;  --color-facturacion-rgb:   30, 64, 175;
+  --color-transporte:     #1E40AF;  --color-transporte-rgb:    30, 64, 175;
+ 
+  /* Acento global Codeplex (botones, tabs activos, badges) */
+  --accent:               #487FFF;
+  --accent-hover:         #3366E0;
+  --accent-shadow:        rgba(72, 127, 255, 0.35);
+
+  }
+
+
+  
+/* ═══════════════════════════════════════════════════════════
+   MODO OSCURO
+═══════════════════════════════════════════════════════════ */
+:root.dark, [data-theme="dark"] {
+  /* Colores de marca - más claros para contraste */
+  --primary-color: #6B9FFF;
+  --secondary-color: #4D80F0;
+  --tertiary-color: #8FBAFF;
+  --gradient-primary: linear-gradient(135deg, #6B9FFF, #4D80F0, #8FBAFF);
+  
+  /* Backgrounds */
+  --white-color: #1e293b;
+  --background-color: #0f172a;
+  --surface-color: #1e293b;
+  --surface-elevated: #1a1530;
+  
+  /* Textos */
+  --text-dark: #f1f5f9;
+  --text-gray: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  /* Bordes */
+  --border-color: #334155;
+  --border-light: rgba(255, 255, 255, 0.06);
+  
+  /* Estados */
+  --hover-color: rgba(107, 159, 255, 0.15);
+  --focus-ring: rgba(107, 159, 255, 0.2);
+  --error-color: #f87171;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --success-color: #6ee7b7;
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --success-border: rgba(16, 185, 129, 0.35);
+  --warning-color: #fcd34d;
+  --warning-text: #fcd34d;
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --warning-border: rgba(245, 158, 11, 0.4);
+  --info-color: #7dd3fc;
+  --info-bg: rgba(14, 165, 233, 0.12);
+  
+  /* Inputs */
+  --input-bg: #1a1530;
+  --input-border: rgba(255, 255, 255, 0.08);
+  --input-text: #f1f5f9;
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.5);
+  --shadow-primary: 0 4px 12px rgba(107, 159, 255, 0.3);
+
+  /* Acento en dark — un poco más brillante */
+  --accent:           #6B9FFF;
+  --accent-hover:     #4D80F0;
+}
+
+
+
+
+
+
+
+
+
+
+/* ═══════════════════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════════════════ */
+
+html {
+  /* Reserva siempre el hueco del scrollbar para evitar saltos de ancho
+     al cambiar entre vistas con distinta altura de contenido */
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html { scrollbar-gutter: auto; }
+  ::-webkit-scrollbar { width: 0; }
+}
+
+body {
+  margin: 0;
+  display: block; /* anula el display:flex del default de Vite */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+ 
+/* ── Scrollbar ── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; }
