@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#local
+CodePlex_RedSocial_HTML_nativo
