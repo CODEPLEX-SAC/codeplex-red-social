@@ -1,5 +1,6 @@
 import { Icono } from '../../compartido/icono'
 import { EventosProximosPanel } from '../../compartido/bloques/eventos_proximos_panel'
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 
 const CONTACTOS_LINEA = [
   { nombre: 'Ana García', colaborador: true },
@@ -21,7 +22,8 @@ const EVENTOS_PROXIMOS = [
   { dia: '30', mes: 'JUN', titulo: 'Cumpleaños: Juan Pérez', detalle: 'Mar, 30 jun · Todo el día' },
 ] as const
 
-const AVATAR = "h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat"
+const AVATAR = 'h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat'
+const ESTILO_AVATAR = { backgroundImage: `url(${usuarioImg})` }
 
 export function PanelLateralMensajeria() {
   return (
@@ -33,7 +35,7 @@ export function PanelLateralMensajeria() {
         </div>
         {CONTACTOS_LINEA.map((c) => (
           <article key={c.nombre} className="flex items-center gap-2 border-b border-[#f0eef5] py-2">
-            <span className={AVATAR} />
+            <span className={AVATAR} style={ESTILO_AVATAR} />
             <div className="min-w-0 flex-1">
               <strong className="block text-[11px] text-texto">
                 {c.nombre}{' '}

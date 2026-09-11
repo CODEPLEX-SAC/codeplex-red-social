@@ -4,6 +4,7 @@ import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_
 import { Icono } from '../../componentes/compartido/icono'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { Colaborador } from '@/tipos/colaboradores/pagina_colaboradores'
 
 const APP_CALENDARIO = 'bg-[#6c3ce0]'
@@ -295,7 +296,7 @@ export function PaginaColaboradores() {
                       </td>
                       <td className="p-3.5 align-middle">
                         <div className="flex min-w-[200px] items-center gap-3">
-                          <img src="/imagenes/usuario.jpg" alt={c.nombre} className="h-10 w-10 flex-none rounded-full bg-gris-borde object-cover" />
+                          <img src={usuarioImg} alt={c.nombre} className="h-10 w-10 flex-none rounded-full bg-gris-borde object-cover" />
                           <div className="flex min-w-0 flex-col">
                             <span className="truncate text-sm font-semibold text-gris-oscuro-texto">{c.nombre}</span>
                             <span className="truncate text-[0.78rem] text-gris-texto-terciario">{c.correo}</span>

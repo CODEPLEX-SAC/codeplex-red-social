@@ -1,8 +1,9 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
-import { useCarrusel } from '../../ganchos/compartido/usar_carrusel'
+import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { MiniGrafico, Plantilla, ReporteReciente } from '@/tipos/reportes/pagina_reportes'
 
 const CLASES_ICONO_PLANTILLA: Record<Plantilla['color'], string> = {
@@ -264,7 +265,7 @@ export function PaginaReportes() {
                     <td className={TD}>{r.periodo}</td>
                     <td className={TD}>
                       <div className="flex items-center gap-2">
-                        <img className="h-[26px] w-[26px] rounded-full object-cover" src="/imagenes/usuario.jpg" alt="" />
+                        <img className="h-[26px] w-[26px] rounded-full object-cover" src={usuarioImg} alt="" />
                         <span>{r.autor}</span>
                       </div>
                     </td>

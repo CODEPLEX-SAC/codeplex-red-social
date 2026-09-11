@@ -6,6 +6,7 @@ import { Boton } from '../../componentes/compartido/interfaz/boton'
 import { PestanasGrupos } from '../../componentes/grupos/bloques/pestanas_grupos'
 import { FilaActividadGrupo } from '../../componentes/actividad/bloques/fila_actividad_grupo'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { GrupoAdmin, GrupoMis } from '@/tipos/grupos/pagina_grupos_mis_grupos'
 
 const GRUPOS_ADMIN: GrupoAdmin[] = [
@@ -112,7 +113,11 @@ export function PaginaGruposMisGrupos() {
                     <p className="m-0 mb-2.5 text-xs leading-[1.5] text-texto-suave">{g.descripcion}</p>
                     <div className="mb-0 flex items-center">
                       {Array.from({ length: 4 }).map((_, i) => (
-                        <span key={i} className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                        <span
+                          key={i}
+                          className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                          style={{ backgroundImage: `url(${usuarioImg})` }}
+                        />
                       ))}
                       <span className="-ml-1 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-[#ede9fe] text-[9px] font-bold text-primario">{g.masAvatares}</span>
                     </div>
@@ -143,7 +148,11 @@ export function PaginaGruposMisGrupos() {
                   <p className="my-2 text-xs leading-[1.5] text-texto-suave">{g.descripcion}</p>
                   <div className="mb-3 flex items-center">
                     {Array.from({ length: 4 }).map((_, i) => (
-                      <span key={i} className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                      <span
+                        key={i}
+                        className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                        style={{ backgroundImage: `url(${usuarioImg})` }}
+                      />
                     ))}
                     <span className="-ml-1 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-[#ede9fe] text-[9px] font-bold text-primario">{g.masAvatares}</span>
                   </div>

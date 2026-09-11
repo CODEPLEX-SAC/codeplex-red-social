@@ -1,4 +1,5 @@
 import { Icono } from '../../compartido/icono'
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { IconName } from '../../../tipos/compartido/icono'
 import type { PanelConversacionProps } from '@/tipos/mensajeria/panel_conversacion'
 
@@ -14,7 +15,10 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
         >
           <Icono name="flecha-izquierda" className="h-[18px] w-[18px]" />
         </button>
-        <span className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+        <span
+          className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${usuarioImg})` }}
+        />
         <div className="min-w-0 flex-1">
           <strong className="block text-[13px] font-bold text-texto">{conversacion.nombre}</strong>
           {conversacion.enLinea && (

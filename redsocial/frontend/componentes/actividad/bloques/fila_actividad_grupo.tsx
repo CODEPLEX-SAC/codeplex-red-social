@@ -1,4 +1,5 @@
 import { Icono } from '../../compartido/icono'
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { FilaActividadGrupoProps } from '../../../tipos/actividad/fila_actividad_grupo'
 
 const CLASES_ICONO: Record<NonNullable<FilaActividadGrupoProps['colorIcono']>, string> = {
@@ -13,7 +14,7 @@ const CLASES_ICONO: Record<NonNullable<FilaActividadGrupoProps['colorIcono']>, s
 export function FilaActividadGrupo({ nombre, accion, grupo, tiempo, icono, colorIcono }: FilaActividadGrupoProps) {
   return (
     <article className="flex items-start gap-2.5 border-b border-[#f5f5f5] py-2.25 last:border-b-0">
-      <img className="h-8 w-8 flex-none rounded-full object-cover" src="/imagenes/usuario.jpg" alt="" />
+      <img className="h-8 w-8 flex-none rounded-full object-cover" src={usuarioImg} alt="" />
       <div className="min-w-0 flex-1 text-xs leading-[1.4] text-texto">
         <strong className="font-semibold">{nombre}</strong> {accion} <span className="font-bold text-texto">{grupo}</span>
         <span className="mt-0.5 block text-[11px] text-texto-suave">{tiempo}</span>

@@ -1,6 +1,7 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { CampoBusqueda } from '../../componentes/compartido/interfaz/campo_busqueda'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 
 export function PaginaMensajesVideollamadaIniciar() {
   return (
@@ -97,7 +98,10 @@ export function PaginaMensajesVideollamadaIniciar() {
               { nombre: 'María Fernández', rol: 'En línea' },
             ].map((p) => (
               <article key={p.nombre} className="flex items-center gap-2.5 py-2">
-                <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                <span
+                  className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url(${usuarioImg})` }}
+                />
                 <div className="min-w-0 flex-1">
                   <strong className="block truncate text-[12.5px] text-texto">{p.nombre}</strong>
                   <span className="block text-[11px] text-exito">{p.rol}</span>
@@ -112,7 +116,10 @@ export function PaginaMensajesVideollamadaIniciar() {
             <div className="flex flex-col">
               {['Luis Rodríguez', 'Carmen López', 'Diego Mendoza', 'Ana García'].map((nombre) => (
                 <article key={nombre} className="flex items-center gap-2.5 py-2">
-                  <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                  <span
+                  className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url(${usuarioImg})` }}
+                />
                   <div className="min-w-0 flex-1">
                     <strong className="block truncate text-[12.5px] text-texto">{nombre}</strong>
                     <span className="block text-[11px] text-texto-suave">Colaborador</span>

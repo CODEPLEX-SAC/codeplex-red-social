@@ -8,7 +8,6 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
@@ -16,19 +15,16 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Alias hacia la raíz de frontend (todo el proyecto vive aquí ahora) */
     "paths": {
       "@/*": ["./*"]
     },
 
-    /* Type checking */
     "strict": true,
 
-    /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["arranque", "router", "paginas", "componentes", "hooks", "tipos", "datos", "formularios", "tablas", "servicios", "rutas"]
+  "include": ["arranque", "paginas", "componentes", "tipos", "datos", "formularios", "tablas", "servicios", "rutas","mensajes","catalogos"]
 }

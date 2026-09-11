@@ -7,6 +7,7 @@ import { Boton } from '../../componentes/compartido/interfaz/boton'
 import { CampoBusqueda } from '../../componentes/compartido/interfaz/campo_busqueda'
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { EventoDestacado, EventoProximo } from '@/tipos/eventos/pagina_eventos_para_ti'
 
 const CATEGORIA_GRADIENTE: Record<'tecnologia' | 'negocios' | 'educacion' | 'gastronomia', string> = {
@@ -156,7 +157,11 @@ export function PaginaEventosParaTi() {
                   <div className="mt-auto flex items-center justify-between">
                     <div className="flex items-center">
                       {Array.from({ length: 4 }).map((_, i) => (
-                        <span key={i} className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                        <span
+                          key={i}
+                          className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                          style={{ backgroundImage: `url(${usuarioImg})` }}
+                        />
                       ))}
                       <span className="-ml-1 inline-flex h-7 items-center rounded-2xl border-2 border-white bg-[#ede9fe] px-2 text-[10px] font-bold text-primario">{destacado.asistentes}</span>
                     </div>
@@ -213,7 +218,11 @@ export function PaginaEventosParaTi() {
                         </div>
                         <div className="flex items-center">
                           {Array.from({ length: 3 }).map((_, i) => (
-                            <span key={i} className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                            <span
+                          key={i}
+                          className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                          style={{ backgroundImage: `url(${usuarioImg})` }}
+                        />
                           ))}
                           <span className="-ml-1 inline-flex h-7 items-center rounded-2xl border-2 border-white bg-[#ede9fe] px-2 text-[10px] font-bold text-primario">{ev.masAsistentes}</span>
                         </div>

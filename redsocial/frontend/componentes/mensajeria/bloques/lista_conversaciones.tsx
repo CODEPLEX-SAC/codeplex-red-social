@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Icono } from '../../compartido/icono'
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { ListaConversacionesProps } from '@/tipos/mensajeria/lista_conversaciones'
 
 export function ListaConversaciones({ conversaciones, activa, onSeleccionar, oculta }: ListaConversacionesProps) {
@@ -51,7 +52,10 @@ export function ListaConversaciones({ conversaciones, activa, onSeleccionar, ocu
                 <Icono name="usuarios" className="h-4 w-4" />
               </span>
             ) : (
-              <span className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+              <span
+                className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${usuarioImg})` }}
+              />
             )}
             <span className="min-w-0 flex-1">
               <strong className="block truncate text-xs font-semibold text-texto">{c.nombre}</strong>

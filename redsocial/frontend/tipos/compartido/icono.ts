@@ -1,3 +1,4 @@
-import { ICONOS, MAPA_ICONOS } from '../../datos/compartido/iconos'
+import type { NOMBRES_ICONOS, MAPA_ICONOS } from '../../datos/compartido/iconos'
 
-export type IconName = keyof typeof MAPA_ICONOS | keyof typeof ICONOS
+export type NombreIcono = (typeof NOMBRES_ICONOS)[number]
+export type IconName = keyof typeof MAPA_ICONOS | NombreIcono

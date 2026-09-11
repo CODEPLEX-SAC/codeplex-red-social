@@ -1,3 +1,4 @@
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { ContactosPanelProps } from '@/tipos/compartido/contactos_panel'
 
 export function ContactosPanel({ titulo = 'Contactos', contactos }: ContactosPanelProps) {
@@ -9,7 +10,10 @@ export function ContactosPanel({ titulo = 'Contactos', contactos }: ContactosPan
       </div>
       {contactos.map((c) => (
         <article key={c.nombre} className="flex items-center gap-2 border-b border-[#f0eef5] py-2">
-          <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+          <span
+            className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${usuarioImg})` }}
+          />
           <div className="min-w-0 flex-1">
             <strong className="block truncate text-[11px] text-texto">{c.nombre}</strong>
             <span className="block truncate text-[10px] text-texto-suave">{c.subtitulo}</span>

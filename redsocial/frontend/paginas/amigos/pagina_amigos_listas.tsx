@@ -6,6 +6,7 @@ import { EncabezadoAmigos } from '../../componentes/amigos/bloques/encabezado_am
 import { PestanasAmigos } from '../../componentes/amigos/bloques/pestanas_amigos'
 import { PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos/bloques/panel_lateral_amigos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { MiLista } from '@/tipos/amigos/pagina_amigos_listas'
 
 const PERSONAS_CONOCER = [
@@ -94,7 +95,11 @@ export function PaginaAmigosListas() {
                   <div className="mb-3 flex items-center gap-1.5">
                     <div className="flex items-center">
                       {Array.from({ length: l.avatares }).map((_, i) => (
-                        <span key={i} className={'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                        <span
+                          key={i}
+                          className={'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                          style={{ backgroundImage: `url(${usuarioImg})` }}
+                        />
                       ))}
                     </div>
                     <span className="text-[8px] font-bold text-texto-suave">{l.masAvatares}</span>

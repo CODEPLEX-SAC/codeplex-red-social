@@ -1,6 +1,6 @@
 import { useRef } from 'react'
-import { useCarrusel } from '../../../ganchos/compartido/usar_carrusel'
-import { usarMemoriaScrollPestanas } from '../../../ganchos/compartido/usar_memoria_scroll_pestanas'
+import { useCarrusel } from '../../../servicios/compartido/usar_carrusel'
+import { usarMemoriaScrollPestanas } from '../../../servicios/compartido/usar_memoria_scroll_pestanas'
 import type { PestanaActividad } from '@/tipos/actividad/pestanas_actividad'
 
 const TABS = [

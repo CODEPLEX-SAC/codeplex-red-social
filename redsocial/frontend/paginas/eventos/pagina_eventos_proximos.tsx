@@ -4,6 +4,7 @@ import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { EventoLista } from '@/tipos/eventos/pagina_eventos_proximos'
 
 const CATEGORIA_GRADIENTE: Record<'tecnologia' | 'negocios' | 'educacion' | 'gastronomia', string> = {
@@ -146,7 +147,7 @@ export function PaginaEventosProximos() {
                     <div className="mt-auto flex items-center justify-between">
                       <div className="flex items-center">
                         {Array.from({ length: ev.avatares }).map((_, i) => (
-                          <img key={i} src="/imagenes/usuario.jpg" alt="" className={'h-7 w-7 rounded-full border-2 border-white object-cover' + (i > 0 ? ' -ml-2' : '')} />
+                          <img key={i} src={usuarioImg} alt="" className={'h-7 w-7 rounded-full border-2 border-white object-cover' + (i > 0 ? ' -ml-2' : '')} />
                         ))}
                         <span className="-ml-1 inline-flex h-7 items-center rounded-[14px] border-2 border-white bg-[#ede9fe] px-2 text-[10px] font-bold text-primario">{ev.masAsistentes}</span>
                       </div>

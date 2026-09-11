@@ -2,9 +2,10 @@ import { EstructuraApp } from '../../componentes/compartido/estructura/estructur
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { Icono } from '../../componentes/compartido/icono'
-import { useCarrusel } from '../../ganchos/compartido/usar_carrusel'
+import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { InvitacionPendiente, InvitacionRespondida, EventoLateral } from '@/tipos/eventos/pagina_eventos_invitaciones'
 
 const PENDIENTES: InvitacionPendiente[] = [
@@ -176,7 +177,7 @@ export function PaginaEventosInvitaciones() {
                         {Array.from({ length: inv.avatares }).map((_, i) => (
                           <img
                             key={i}
-                            src="/imagenes/usuario.jpg"
+                            src={usuarioImg}
                             alt=""
                             className={'h-7 w-7 rounded-full border-2 border-white object-cover' + (i > 0 ? ' -ml-2' : '')}
                           />

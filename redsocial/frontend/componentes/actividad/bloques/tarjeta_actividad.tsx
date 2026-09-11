@@ -1,4 +1,5 @@
 import { Icono } from '../../compartido/icono'
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { TarjetaActividadProps } from '@/tipos/actividad/tarjeta_actividad'
 
 export function TarjetaActividad({
@@ -19,7 +20,10 @@ export function TarjetaActividad({
           <Icono name={iconoSistema} className="h-[22px] w-[22px]" />
         </div>
       ) : (
-        <div className="h-9 w-9 flex-none overflow-hidden rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+        <div
+          className="h-9 w-9 flex-none overflow-hidden rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${usuarioImg})` }}
+        />
       )}
       <div className="min-w-0 flex-1">
         <div className="mb-0 flex items-start justify-between gap-2">

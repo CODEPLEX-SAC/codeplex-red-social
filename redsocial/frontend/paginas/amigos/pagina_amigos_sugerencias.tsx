@@ -6,6 +6,7 @@ import { EncabezadoAmigos } from '../../componentes/amigos/bloques/encabezado_am
 import { PestanasAmigos } from '../../componentes/amigos/bloques/pestanas_amigos'
 import { PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos/bloques/panel_lateral_amigos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { Sugerencia } from '@/tipos/amigos/pagina_amigos_sugerencias'
 
 const PERSONAS_CONOCER = [
@@ -66,7 +67,10 @@ export function PaginaAmigosSugerencias() {
             <div className="mb-4.5 grid grid-cols-4 gap-3.5 max-[900px]:grid-cols-2 max-[600px]:grid-cols-1">
               {SUGERENCIAS.map((s) => (
                 <article key={s.nombre} className="flex flex-col items-center rounded-[10px] border border-borde bg-white p-3 pb-3.5 pt-4.5 text-center">
-                  <span className="mb-2.5 h-14 w-14 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                  <span
+                    className="mb-2.5 h-14 w-14 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${usuarioImg})` }}
+                  />
                   <div className="mb-2 w-full">
                     <strong className="mb-0.5 block text-xs leading-[1.3] text-texto">{s.nombre}</strong>
                     <p className="m-0 text-[10px] leading-[1.4] text-texto-suave">{s.descripcion}</p>
@@ -76,7 +80,11 @@ export function PaginaAmigosSugerencias() {
                   </div>
                   <div className="mb-2.5 flex items-center justify-center">
                     {Array.from({ length: 4 }).map((_, i) => (
-                      <span key={i} className={'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                      <span
+                        key={i}
+                        className={'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                        style={{ backgroundImage: `url(${usuarioImg})` }}
+                      />
                     ))}
                     <span className="-ml-2 grid h-[22px] w-[22px] place-items-center rounded-full border-2 border-white bg-[#efedf7] text-[8px] font-bold text-texto-suave">{s.masAvatares}</span>
                   </div>

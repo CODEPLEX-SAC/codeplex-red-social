@@ -4,6 +4,7 @@ import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { PestanasMensajes } from '../../componentes/mensajeria/bloques/pestanas_mensajes'
 import { PanelLateralMensajeria } from '../../componentes/mensajeria/bloques/panel_lateral_mensajeria'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 
 const NO_LEIDOS = [
   { nombre: 'María Fernández', preview: 'Hola Pedro, ¿puedes enviarme el reporte de avances del proyecto Central?', contexto: 'Proyecto Puente Central', hora: '10:18 AM', badge: 2 },
@@ -46,7 +47,10 @@ export function PaginaMensajesNoLeidos() {
                     className="flex w-full items-center gap-2.5 rounded-[10px] border-b border-[#f5f3fa] px-3 py-3.5 text-left last:border-b-0 hover:bg-[#f9f8fc]"
                   >
                     <span className="h-2 w-2 flex-none rounded-full bg-primario" />
-                    <span className="h-11 w-11 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="h-11 w-11 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${usuarioImg})` }}
+                    />
                     <span className="min-w-0 flex-1">
                       <strong className="mb-0.5 block text-[13px] font-bold text-texto">{c.nombre}</strong>
                       <span className="mb-0.5 block truncate text-xs text-texto-suave">{c.preview}</span>

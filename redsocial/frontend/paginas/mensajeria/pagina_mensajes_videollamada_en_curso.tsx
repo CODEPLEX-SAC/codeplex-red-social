@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { CampoBusqueda } from '../../componentes/compartido/interfaz/campo_busqueda'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { ParticipanteVL } from '@/tipos/mensajeria/pagina_mensajes_videollamada_en_curso'
 
 const PARTICIPANTES: ParticipanteVL[] = [
@@ -71,7 +72,10 @@ export function PaginaMensajesVideollamadaEnCurso() {
                   {p.organizador && (
                     <span className="absolute left-2 top-2 z-[1] rounded-md bg-[rgba(15,12,30,.55)] px-2.25 py-0.75 text-[10px] font-bold text-white">Organizador</span>
                   )}
-                  <div className="absolute inset-0 bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center opacity-[.92]" />
+                  <div
+                    className="absolute inset-0 bg-primario-suave bg-cover bg-center opacity-[.92]"
+                    style={{ backgroundImage: `url(${usuarioImg})` }}
+                  />
                   <div className="absolute inset-x-2 bottom-2 z-[1] flex items-center gap-1.5">
                     <span className="min-w-0 flex-1 truncate rounded-md bg-[rgba(15,12,30,.55)] px-2.25 py-1 text-[11px] font-semibold text-white">{p.nombre}</span>
                     <span className={'grid h-6 w-6 flex-none place-items-center rounded-full p-1.25 ' + (p.micActivo ? 'bg-[rgba(30,154,104,.9)] text-white' : 'bg-[rgba(15,12,30,.55)] text-[#f2a0a0]')}>
@@ -165,7 +169,10 @@ export function PaginaMensajesVideollamadaEnCurso() {
             <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
               {PARTICIPANTES.map((p) => (
                 <article key={p.nombre} className="flex items-center gap-2 py-1.75">
-                  <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                  <span
+                    className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${usuarioImg})` }}
+                  />
                   <div className="min-w-0 flex-1">
                     <strong className="block truncate text-xs text-texto">{p.nombre}</strong>
                     <span className="block text-[10.5px] text-texto-suave">{p.rol}</span>

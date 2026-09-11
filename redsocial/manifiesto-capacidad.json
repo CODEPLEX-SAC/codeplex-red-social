@@ -10,6 +10,6 @@
   "dependencias": [],
   "ruta_menu": "/redsocial",
   "usa_frontend": true,
-  "usa_backend": true,
-  "usa_base_datos": true
+  "usa_backend": false,
+  "usa_base_datos": false
 }

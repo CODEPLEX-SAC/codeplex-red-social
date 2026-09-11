@@ -2,10 +2,12 @@ import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
-import { useCarrusel } from '../../ganchos/compartido/usar_carrusel'
+import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { Historia } from '@/tipos/inicio/pagina_inicio'
 
-const AVATAR = "h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat"
+const AVATAR = 'h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat'
+const ESTILO_AVATAR = { backgroundImage: `url(${usuarioImg})` }
 
 const HISTORIAS: Historia[] = [
   { nombre: 'Tu historia', crear: true },
@@ -58,7 +60,10 @@ function Historias() {
               }
               style={!h.crear ? { background: 'linear-gradient(45deg, #8f7cf3, var(--primario), var(--primario-oscuro))' } : undefined}
             >
-              <span className={"h-full w-full rounded-full border-[3px] border-white bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat"} />
+              <span
+                className="h-full w-full rounded-full border-[3px] border-white bg-primario-suave bg-cover bg-center bg-no-repeat"
+                style={ESTILO_AVATAR}
+              />
               {h.crear && (
                 <span className="absolute -bottom-0.5 -right-0.5 grid h-[30px] w-[30px] place-items-center rounded-full border-[3px] border-white bg-primario text-lg font-bold leading-none text-white">
                   +
@@ -83,7 +88,7 @@ export function PaginaInicio() {
           <section>
             <article className="mb-4 rounded-xl border border-borde bg-white p-4 shadow-sombra">
               <div className="mb-3 flex items-center gap-2.5">
-                <span className={AVATAR} />
+                <span className={AVATAR} style={ESTILO_AVATAR} />
                 <input
                   type="text"
                   placeholder="¿Qué estás pensando, Pedro?"
@@ -111,7 +116,7 @@ export function PaginaInicio() {
 
             <article className="mb-4 rounded-xl border border-borde bg-white shadow-sombra">
               <div className="flex items-center gap-2.5 px-4 py-3.5">
-                <span className={AVATAR} />
+                <span className={AVATAR} style={ESTILO_AVATAR} />
                 <div className="min-w-0 flex-1">
                   <strong className="block text-[13px] text-texto">María Fernández</strong>
                   <span className="mt-0.5 block text-[10px] text-texto-suave">2 horas · 🌐</span>
@@ -146,7 +151,7 @@ export function PaginaInicio() {
 
             <article className="mb-4 rounded-xl border border-borde bg-white shadow-sombra">
               <div className="flex items-center gap-2.5 px-4 py-3.5">
-                <span className={AVATAR} />
+                <span className={AVATAR} style={ESTILO_AVATAR} />
                 <div className="min-w-0 flex-1">
                   <strong className="block text-[13px] text-texto">Luis Rodríguez</strong>
                   <span className="mt-0.5 block text-[10px] text-texto-suave">compartió una publicación.</span>
@@ -158,7 +163,7 @@ export function PaginaInicio() {
               </div>
               <div className="mx-4 mb-4 overflow-hidden rounded-[10px] border border-borde">
                 <div className="flex items-center gap-2.5 px-3.5 pb-2 pt-3">
-                  <span className={AVATAR} />
+                  <span className={AVATAR} style={ESTILO_AVATAR} />
                   <div className="min-w-0 flex-1">
                     <strong className="block text-[13px] text-texto">Ingenieros Unidos</strong>
                     <span className="mt-0.5 block text-[10px] text-texto-suave">5 horas</span>
@@ -183,7 +188,7 @@ export function PaginaInicio() {
               </div>
               {CONTACTOS_LINEA.map((c) => (
                 <article key={c.nombre} className="flex items-center gap-2 border-b border-[#f0eef5] py-2">
-                  <span className={AVATAR} />
+                  <span className={AVATAR} style={ESTILO_AVATAR} />
                   <div className="min-w-0 flex-1">
                     <strong className="block text-[11px] text-texto">
                       {c.nombre}{' '}

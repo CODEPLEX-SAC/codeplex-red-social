@@ -5,6 +5,7 @@ import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/
 import { PestanasGrupos } from '../../componentes/grupos/bloques/pestanas_grupos'
 import { FilaActividadGrupo } from '../../componentes/actividad/bloques/fila_actividad_grupo'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { ColorGrupo, InvitacionPendiente, InvitacionAceptada } from '@/tipos/grupos/pagina_grupos_invitaciones'
 
 const CLASES_ICONO_INV: Record<ColorGrupo, string> = {
@@ -114,14 +115,21 @@ export function PaginaGruposInvitaciones() {
                       <span className="text-[11px] text-texto-suave">{p.tipo}</span>
                       <div className="mt-1.5 flex items-center">
                         {Array.from({ length: 4 }).map((_, i) => (
-                          <span key={i} className={'h-6 w-6 rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-1.5' : '')} />
+                          <span
+                            key={i}
+                            className={'h-6 w-6 rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-1.5' : '')}
+                            style={{ backgroundImage: `url(${usuarioImg})` }}
+                          />
                         ))}
                         <span className="-ml-1 inline-flex h-6 items-center rounded-xl border-2 border-white bg-[#ede9fe] px-1.5 text-[9px] font-bold text-primario">{p.masAvatares}</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex flex-none items-center gap-2" style={{ minWidth: 140 }}>
-                    <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${usuarioImg})` }}
+                    />
                     <div className="min-w-0">
                       <strong className="block text-xs font-semibold text-texto">{p.invitadoPor}</strong>
                       <span className="text-[10px] text-texto-suave">{p.tiempo}</span>
@@ -158,7 +166,10 @@ export function PaginaGruposInvitaciones() {
                     </div>
                   </div>
                   <div className="flex flex-none items-center gap-2" style={{ minWidth: 140 }}>
-                    <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${usuarioImg})` }}
+                    />
                     <div className="min-w-0">
                       <strong className="block text-xs font-semibold text-texto">{a.invitadoPor}</strong>
                       <span className="text-[10px] text-texto-suave">{a.tiempo}</span>

@@ -2,7 +2,7 @@ import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
 import { Insignia } from '../../componentes/compartido/interfaz/insignia'
-import { useCarrusel } from '../../ganchos/compartido/usar_carrusel'
+import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
 import type { Kpi, EstadoInd, FilaTabla, TarjetaModulo } from '@/tipos/indicadores/pagina_indicadores_clave'
 

@@ -6,9 +6,11 @@ import { EncabezadoAmigos } from '../../componentes/amigos/bloques/encabezado_am
 import { PestanasAmigos } from '../../componentes/amigos/bloques/pestanas_amigos'
 import { PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos/bloques/panel_lateral_amigos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { SolicitudRecibida } from '@/tipos/amigos/pagina_amigos_solicitudes'
 
-const AMIGOS_COMUNES = 'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center'
+const AMIGOS_COMUNES = 'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-cover bg-center'
+const ESTILO_AMIGOS_COMUNES = { backgroundImage: `url(${usuarioImg})` }
 
 const RECIBIDAS: SolicitudRecibida[] = [
   { nombre: 'Valeria Quispe', tiempo: 'Hace 2 horas', descripcion: 'Contadora en Estudio Contable Quispe & Asociados', comunes: '5 amigos en común', masAvatares: '+3' },
@@ -66,7 +68,10 @@ export function PaginaAmigosSolicitudes() {
 
             {RECIBIDAS.map((s) => (
               <article key={s.nombre} className="relative mb-3 flex items-start gap-4 rounded-xl border border-borde bg-white p-4.5 last:mb-0 max-[600px]:flex-wrap max-[600px]:p-3.5">
-                <span className="h-14 w-14 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                <span
+                  className="h-14 w-14 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                  style={ESTILO_AMIGOS_COMUNES}
+                />
                 <div className="min-w-0 flex-1">
                   <div className="mb-0.5 flex items-baseline gap-2 pr-[90px]">
                     <strong className="text-sm text-texto">{s.nombre}</strong>
@@ -77,7 +82,7 @@ export function PaginaAmigosSolicitudes() {
                     <span className="text-xs text-texto-suave">{s.comunes}</span>
                     <div className="flex items-center">
                       {Array.from({ length: s.masAvatares ? 4 : 3 }).map((_, i) => (
-                        <span key={i} className={AMIGOS_COMUNES + (i > 0 ? ' -ml-2' : '')} />
+                        <span key={i} className={AMIGOS_COMUNES + (i > 0 ? ' -ml-2' : '')} style={ESTILO_AMIGOS_COMUNES} />
                       ))}
                       {s.masAvatares && (
                         <span className="-ml-2 grid h-[22px] w-[22px] place-items-center rounded-full border-2 border-white bg-[#efedf7] text-[8px] font-bold text-texto-suave">{s.masAvatares}</span>
@@ -97,7 +102,10 @@ export function PaginaAmigosSolicitudes() {
             <section className="mt-4">
               <h2 className="mb-3.5 text-[15px] font-bold text-texto">Solicitudes enviadas</h2>
               <article className="relative mb-3 flex items-start gap-4 rounded-xl border border-borde bg-white p-4.5 max-[600px]:flex-wrap max-[600px]:p-3.5">
-                <span className="h-14 w-14 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                <span
+                  className="h-14 w-14 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                  style={ESTILO_AMIGOS_COMUNES}
+                />
                 <div className="min-w-0 flex-1">
                   <div className="mb-0.5 flex items-baseline gap-2 pr-[90px]">
                     <strong className="text-sm text-texto">Miguel Ángel Vargas</strong>
@@ -107,8 +115,8 @@ export function PaginaAmigosSolicitudes() {
                   <div className="mb-3 flex items-center gap-2.5">
                     <span className="text-xs text-texto-suave">2 amigos en común</span>
                     <div className="flex items-center">
-                      <span className={AMIGOS_COMUNES} />
-                      <span className={AMIGOS_COMUNES + ' -ml-2'} />
+                      <span className={AMIGOS_COMUNES} style={ESTILO_AMIGOS_COMUNES} />
+                      <span className={AMIGOS_COMUNES + ' -ml-2'} style={ESTILO_AMIGOS_COMUNES} />
                     </div>
                   </div>
                 </div>

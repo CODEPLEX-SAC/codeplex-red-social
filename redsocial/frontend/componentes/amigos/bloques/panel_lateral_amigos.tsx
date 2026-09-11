@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Icono } from '../../compartido/icono'
+import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { IconName } from '../../../tipos/compartido/icono'
 
 export function PanelLateralAmigos({ titulo, children }: { titulo: string; children: ReactNode }) {
@@ -17,7 +18,7 @@ export function PanelLateralAmigos({ titulo, children }: { titulo: string; child
 export function FilaPersonaConocer({ nombre, comunes }: { nombre: string; comunes: string }) {
   return (
     <article className="flex items-center gap-2.5 border-b border-[#f5f5f5] py-2.25 last:border-b-0">
-      <img className="h-9 w-9 flex-none rounded-full object-cover" src="/imagenes/usuario.jpg" alt="" />
+      <img className="h-9 w-9 flex-none rounded-full object-cover" src={usuarioImg} alt="" />
       <div className="min-w-0 flex-1">
         <span className="block text-xs font-semibold text-texto">{nombre}</span>
         <span className="text-[11px] text-texto-suave">{comunes}</span>
@@ -46,7 +47,7 @@ export function FilaListaLateral({ icono, color, nombre, miembros }: { icono: Ic
 export function FilaActividadReciente({ nombre, accion, tiempo }: { nombre: string; accion: string; tiempo: string }) {
   return (
     <article className="flex items-start gap-2.5 border-b border-[#f5f5f5] py-2.25 last:border-b-0">
-      <img className="h-8 w-8 flex-none rounded-full object-cover" src="/imagenes/usuario.jpg" alt="" />
+      <img className="h-8 w-8 flex-none rounded-full object-cover" src={usuarioImg} alt="" />
       <div className="min-w-0 flex-1 text-xs leading-[1.4] text-texto">
         <strong className="font-semibold">{nombre}</strong> {accion}
         <span className="mt-0.5 block text-[11px] text-texto-suave">{tiempo}</span>

@@ -7,6 +7,7 @@ import { ContactosPanel } from '../../componentes/compartido/bloques/contactos_p
 import { GruposRecomendadosPanel } from '../../componentes/compartido/bloques/grupos_recomendados_panel'
 import { EventosProximosPanel } from '../../componentes/compartido/bloques/eventos_proximos_panel'
 import { BloqueAnuncio } from '../../componentes/compartido/bloques/bloque_anuncio'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { EventoColaborador } from '@/tipos/actividad/pagina_actividad_colaboradores'
 
 const CONTACTOS = ['Ana Torres', 'Miguel Rojas', 'José Castillo', 'Laura Pérez', 'Sofía Gómez'].map((nombre) => ({
@@ -58,7 +59,10 @@ export function PaginaActividadColaboradores() {
               {EVENTOS_COLABORADOR.map((e) => (
                 <article key={e.nombre} className="flex items-start gap-3.5 border-b border-[#f0eef5] p-3.5 last:border-b-0 hover:bg-[#fdfcff]">
                   <div className="relative h-11 w-11 flex-none">
-                    <span className="block h-11 w-11 rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="block h-11 w-11 rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${usuarioImg})` }}
+                    />
                     <span className={`absolute -bottom-0.5 -right-0.5 grid h-[22px] w-[22px] place-items-center rounded-full border-2 border-white text-white ${CLASES_BADGE[e.color]}`}>
                       <Icono name={e.icono} className="h-3 w-3" />
                     </span>

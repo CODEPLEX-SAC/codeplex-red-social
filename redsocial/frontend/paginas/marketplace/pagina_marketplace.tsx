@@ -3,7 +3,7 @@ import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
-import { useCarrusel } from '../../ganchos/compartido/usar_carrusel'
+import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
 import type { Destacado } from '@/tipos/marketplace/pagina_marketplace'
 

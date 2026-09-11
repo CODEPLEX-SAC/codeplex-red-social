@@ -3,8 +3,9 @@ import { EstructuraApp } from '../../componentes/compartido/estructura/estructur
 import { CampoBusqueda } from '../../componentes/compartido/interfaz/campo_busqueda'
 import { PestanasMensajes } from '../../componentes/mensajeria/bloques/pestanas_mensajes'
 import { PanelLateralMensajeria } from '../../componentes/mensajeria/bloques/panel_lateral_mensajeria'
-import { useCarrusel } from '../../ganchos/compartido/usar_carrusel'
+import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 
 const LLAMADAS_RECIENTES: {
   nombre: string
@@ -95,7 +96,10 @@ export function PaginaMensajesVideollamadas() {
                       <Icono name="usuarios" className="h-4 w-4" />
                     </span>
                   ) : (
-                    <span className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${usuarioImg})` }}
+                    />
                   )}
                   <span className="min-w-0 flex-1">
                     <strong className="block truncate text-xs font-semibold text-texto">{c.nombre}</strong>
@@ -139,7 +143,10 @@ export function PaginaMensajesVideollamadas() {
                         </span>
                       ) : (
                         <>
-                          <span className="block h-13 w-13 rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                          <span
+                            className="block h-13 w-13 rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                            style={{ backgroundImage: `url(${usuarioImg})` }}
+                          />
                           <span className="absolute bottom-0.5 right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#22c55e]" />
                         </>
                       )}
@@ -178,7 +185,11 @@ export function PaginaMensajesVideollamadas() {
                     <div className="flex flex-none items-center gap-1.5">
                       <div className="flex items-center">
                         {Array.from({ length: r.avatares }).map((_, i) => (
-                          <span key={i} className={'h-8 w-8 rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')} />
+                          <span
+                            key={i}
+                            className={'h-8 w-8 rounded-full border-2 border-white bg-primario-suave bg-cover bg-center' + (i > 0 ? ' -ml-2' : '')}
+                            style={{ backgroundImage: `url(${usuarioImg})` }}
+                          />
                         ))}
                         <span className="-ml-2 grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-primario text-[10px] font-semibold text-white">{r.extra}</span>
                       </div>
@@ -208,7 +219,10 @@ export function PaginaMensajesVideollamadas() {
                         <Icono name="usuarios" className="h-4 w-4" />
                       </span>
                     ) : (
-                      <span className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                      <span
+                        className="h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url(${usuarioImg})` }}
+                      />
                     )}
                     <div className="min-w-0 flex-1">
                       <strong className="mb-0.75 block text-[13px] text-texto">{h.nombre}</strong>

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { usarMemoriaScrollPestanas } from '../../../ganchos/compartido/usar_memoria_scroll_pestanas'
+import { usarMemoriaScrollPestanas } from '../../../servicios/compartido/usar_memoria_scroll_pestanas'
 import type { PestanaEvento, InsigniaInvitaciones } from '@/tipos/eventos/pestanas_eventos'
 
 const TABS = [

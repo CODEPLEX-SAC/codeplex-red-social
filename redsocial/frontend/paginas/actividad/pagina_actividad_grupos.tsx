@@ -8,6 +8,7 @@ import { ContactosPanel } from '../../componentes/compartido/bloques/contactos_p
 import { GruposRecomendadosPanel } from '../../componentes/compartido/bloques/grupos_recomendados_panel'
 import { EventosProximosPanel } from '../../componentes/compartido/bloques/eventos_proximos_panel'
 import { BloqueAnuncio } from '../../componentes/compartido/bloques/bloque_anuncio'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { GrupoActividad } from '@/tipos/actividad/pagina_actividad_grupos'
 
 const CONTACTOS = ['Ana Torres', 'Miguel Rojas', 'José Castillo', 'Laura Pérez', 'Sofía Gómez'].map((nombre) => ({
@@ -101,7 +102,10 @@ export function PaginaActividadGrupos() {
                   </div>
 
                   <div className="flex items-center gap-2 [grid-area:actividad]">
-                    <span className="h-7 w-7 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="h-7 w-7 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={{ backgroundImage: `url(${usuarioImg})` }}
+                    />
                     <div className="min-w-0 flex-1 text-xs">
                       <span className="font-semibold text-texto">{g.usuario}</span>
                       <span className="text-texto-suave">{g.accion}</span>

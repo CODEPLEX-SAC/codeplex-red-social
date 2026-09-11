@@ -7,9 +7,11 @@ import { CampoBusqueda } from '../../componentes/compartido/interfaz/campo_busqu
 import { EncabezadoAmigos } from '../../componentes/amigos/bloques/encabezado_amigos'
 import { PestanasAmigos } from '../../componentes/amigos/bloques/pestanas_amigos'
 import type { IconName } from '../../tipos/compartido/icono'
+import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { Amigo } from '@/tipos/amigos/pagina_amigos_todos'
 
-const AVATAR = "h-8 w-8 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat"
+const AVATAR = 'h-8 w-8 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat'
+const ESTILO_AVATAR = { backgroundImage: `url(${usuarioImg})` }
 
 const RESUMEN: { icono: IconName; peligro?: boolean; etiqueta: string; valor: string }[] = [
   { icono: 'amigos-todos', etiqueta: 'Todos los amigos', valor: '128' },
@@ -89,7 +91,10 @@ export function PaginaAmigosTodos() {
             <div>
               {AMIGOS.map((a) => (
                 <article key={a.nombre} className="flex items-center gap-3.5 border-b border-borde py-3.5 last:border-b-0">
-                  <span className="h-12 w-12 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                  <span
+                    className="h-12 w-12 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                    style={ESTILO_AVATAR}
+                  />
                   <div className="w-[170px] min-w-0 flex-none max-[900px]:w-[130px]">
                     <strong className="block truncate text-[13px] text-texto">{a.nombre}</strong>
                     <span className={'mt-0.75 flex items-center gap-1.25 text-[10px] before:h-1.5 before:w-1.5 before:flex-none before:rounded-full ' + (a.enLinea ? 'text-exito before:bg-exito' : 'text-texto-suave before:bg-[#c7c4d6]')}>
@@ -100,7 +105,11 @@ export function PaginaAmigosTodos() {
                     <span className="whitespace-nowrap text-[11px] text-texto-suave">{a.comunes}</span>
                     <div className="flex items-center">
                       {[0, 1, 2, 3].map((i) => (
-                        <span key={i} className={'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-[url(/imagenes/usuario.jpg)] bg-cover bg-center ' + (i > 0 ? '-ml-2' : '')} />
+                        <span
+                          key={i}
+                          className={'h-[22px] w-[22px] rounded-full border-2 border-white bg-primario-suave bg-cover bg-center ' + (i > 0 ? '-ml-2' : '')}
+                          style={ESTILO_AVATAR}
+                        />
                       ))}
                       <span className="-ml-2 grid h-[22px] w-[22px] place-items-center rounded-full border-2 border-white bg-[#efedf7] text-[8px] font-bold text-texto-suave">{a.masAvatares}</span>
                     </div>
@@ -130,7 +139,10 @@ export function PaginaAmigosTodos() {
               {SOLICITUDES.map((s) => (
                 <article key={s.nombre} className="border-b border-borde py-3.5 last:border-b-0">
                   <div className="mb-2.5 flex gap-2.5">
-                    <span className="h-12 w-12 flex-none rounded-full bg-primario-suave bg-[url('/imagenes/usuario.jpg')] bg-cover bg-center bg-no-repeat" />
+                    <span
+                      className="h-12 w-12 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
+                      style={ESTILO_AVATAR}
+                    />
                     <div>
                       <strong className="block text-xs text-texto">{s.nombre}</strong>
                       <p className="m-0 mt-0.5 text-[10px] leading-[1.4] text-texto-suave">{s.descripcion}</p>
@@ -151,7 +163,7 @@ export function PaginaAmigosTodos() {
               </div>
               {PERSONAS_CONOCER.map((p) => (
                 <article key={p.nombre} className="flex items-center gap-2 border-b border-[#f0eef5] py-2 last:border-b-0">
-                  <span className={AVATAR} />
+                  <span className={AVATAR} style={ESTILO_AVATAR} />
                   <div className="min-w-0 flex-1">
                     <strong className="block truncate text-[11px] text-texto">{p.nombre}</strong>
                     <span className="block truncate text-[10px] text-texto-suave">{p.comunes}</span>
