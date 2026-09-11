@@ -1,0 +1,31 @@
+{
+  "acciones": [
+    "listar",
+    "registrar",
+    "ver_detalle",
+    "actualizar"
+  ],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "detalle": "/redsocial/:entidadId",
+    "edicion": "/redsocial/:entidadId/editar",
+    "listado": "/redsocial",
+    "registro": "/redsocial/nuevo"
+  },
+  "titulo_menu": "Red Social",
+  "titulos": {
+    "detalle": "Detalle de entidad base",
+    "edicion": "Edicion de entidad base",
+    "estado": "Estado de entidad base",
+    "formulario": "Formulario de entidad base",
+    "listado": "Listado de entidades base",
+    "registro": "Registro de entidad base",
+    "resumen": "Resumen de entidades base",
+    "tabla": "Tabla de entidades base"
+  }
+}

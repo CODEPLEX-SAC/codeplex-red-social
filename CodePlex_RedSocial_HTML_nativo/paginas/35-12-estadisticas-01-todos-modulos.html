@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Estadísticas — Red Social CodePlex">
+  <title>CodePlex — Estadísticas</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/paginas/estadisticas.css">
+</head>
+<body class="" data-pagina="estadisticas" data-titulo="Estadísticas">
+<div class="aplicacion">
+<div data-componente="barra-superior"></div>
+<div data-componente="barra-lateral"></div>
+<div class="zona-principal zona-principal-ancha">
+<main class="contenido-principal">
+
+  <section class="pagina-est">
+
+    <!-- Encabezado -->
+    <div class="encabezado-est">
+      <div>
+        <h1>Estadísticas</h1>
+        <p>Visualiza el rendimiento de tu empresa con datos en tiempo real.</p>
+      </div>
+      <div class="controles-est">
+        <label class="campo-select-est">
+          <span>Periodo</span>
+          <select><option>Junio 2026</option><option>Mayo 2026</option><option>Abril 2026</option></select>
+          <span class="icono icono-flecha" data-icono="flecha-abajo"></span>
+        </label>
+        <label class="campo-select-est">
+          <span>Comparar con</span>
+          <select><option>Mayo 2026</option><option>Abril 2026</option><option>Junio 2025</option></select>
+          <span class="icono icono-flecha" data-icono="flecha-abajo"></span>
+        </label>
+        <button type="button" class="boton-filtros-avanzados">
+          <span class="icono" data-icono="filtro"></span> Filtros avanzados
+        </button>
+      </div>
+    </div>
+
+    <!-- Pestañas de módulos -->
+    <div class="carrusel-modulos-est">
+      <div class="pestanas-modulos-est">
+        <button type="button" class="boton-pestana-modulo activo"><span class="icono" data-icono="cuadricula"></span> Todos los módulos</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="ventas"></span> Ventas</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="moneda"></span> Contabilidad</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="caja"></span> Inventarios</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="planillas"></span> Planillas</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="maletin"></span> Proyectos</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="compras"></span> Compras</button>
+        <button type="button" class="boton-pestana-modulo"><span class="icono" data-icono="tarjeta-pago"></span> Tesorería</button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="rejilla-kpi-est">
+      <article class="tarjeta-kpi-est">
+        <div class="cabecera-kpi-est"><span class="icono-kpi-est azul"><span class="icono" data-icono="documento"></span></span><span>Ventas netas</span></div>
+        <strong>S/ 1,250,000</strong>
+        <div class="pie-kpi-est">
+          <small class="variacion-est positiva"><span class="icono" data-icono="flecha-arriba"></span> 12.5% <em>vs. Mayo 2026</em></small>
+          <svg class="chispa-kpi-est" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,22 15,20 30,16 45,18 60,10 75,12 100,4" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+      <article class="tarjeta-kpi-est">
+        <div class="cabecera-kpi-est"><span class="icono-kpi-est rojo"><span class="icono" data-icono="flecha-abajo"></span></span><span>Egresos</span></div>
+        <strong>S/ 850,000</strong>
+        <div class="pie-kpi-est">
+          <small class="variacion-est negativa"><span class="icono" data-icono="flecha-abajo"></span> 8.3% <em>vs. Mayo 2026</em></small>
+          <svg class="chispa-kpi-est" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,8 15,14 30,10 45,20 60,16 75,24 100,18" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+      <article class="tarjeta-kpi-est">
+        <div class="cabecera-kpi-est"><span class="icono-kpi-est verde"><span class="icono" data-icono="documento"></span></span><span>Utilidad neta</span></div>
+        <strong>S/ 400,000</strong>
+        <div class="pie-kpi-est">
+          <small class="variacion-est positiva"><span class="icono" data-icono="flecha-arriba"></span> 18.7% <em>vs. Mayo 2026</em></small>
+          <svg class="chispa-kpi-est" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,24 15,20 30,22 45,14 60,16 75,8 100,6" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+      <article class="tarjeta-kpi-est">
+        <div class="cabecera-kpi-est"><span class="icono-kpi-est morado"><span class="icono" data-icono="estadisticas"></span></span><span>Margen de utilidad</span></div>
+        <strong>32.0%</strong>
+        <div class="pie-kpi-est">
+          <small class="variacion-est positiva"><span class="icono" data-icono="flecha-arriba"></span> 4.5 pp <em>vs. Mayo 2026</em></small>
+          <svg class="chispa-kpi-est" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,18 15,22 30,14 45,16 60,10 75,14 100,8" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+      <article class="tarjeta-kpi-est">
+        <div class="cabecera-kpi-est"><span class="icono-kpi-est cian"><span class="icono" data-icono="actualizar"></span></span><span>Flujo de caja</span></div>
+        <strong>S/ 320,000</strong>
+        <div class="pie-kpi-est">
+          <small class="variacion-est positiva"><span class="icono" data-icono="flecha-arriba"></span> 22.1% <em>vs. Mayo 2026</em></small>
+          <svg class="chispa-kpi-est" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,20 15,10 30,16 45,8 60,18 75,6 100,12" fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+    </div>
+
+    <!-- Fila 1: Evolución / Composición / Top clientes -->
+    <div class="fila-est fila-3-est">
+
+      <article class="panel panel-est ancho-2-est">
+        <div class="panel-cabecera">
+          <div><h2>Evolución de ventas</h2></div>
+          <span class="envoltorio-select-mini-est">
+            <select class="select-mini-est"><option>Mensual</option><option>Semanal</option></select>
+            <span class="icono icono-flecha" data-icono="flecha-abajo"></span>
+          </span>
+        </div>
+        <div class="grafico-lineas-est">
+          <svg viewBox="0 0 760 220" preserveAspectRatio="none" class="svg-lineas-est">
+            <line x1="0" y1="0" x2="760" y2="0" class="linea-guia-est"/>
+            <line x1="0" y1="55" x2="760" y2="55" class="linea-guia-est"/>
+            <line x1="0" y1="110" x2="760" y2="110" class="linea-guia-est"/>
+            <line x1="0" y1="165" x2="760" y2="165" class="linea-guia-est"/>
+            <line x1="0" y1="219" x2="760" y2="219" class="linea-guia-est"/>
+            <path d="M0,219 L0,150 L63,140 L127,125 L190,130 L253,95 L317,60 L380,75 L443,40 L507,55 L570,30 L570,219 Z" class="area-ventas-est"/>
+            <polyline points="0,150 63,140 127,125 190,130 253,95 317,60 380,75 443,40 507,55 570,30" class="linea-ventas-est"/>
+            <polyline points="570,30 633,20 696,32 760,10" class="linea-proyeccion-est"/>
+            <circle cx="380" cy="75" r="5" class="punto-ventas-est"/>
+          </svg>
+          <div class="tooltip-grafico-est" style="left:44%">
+            <strong>Jun 2026</strong>
+            <span>Ventas: S/ 1,250,000</span>
+            <span>Proyección: S/ 1,350,000</span>
+          </div>
+          <div class="eje-x-est">
+            <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span>
+          </div>
+        </div>
+        <div class="leyenda-lineas-est">
+          <span><i class="punto-leyenda-est solido"></i> Ventas reales</span>
+          <span><i class="punto-leyenda-est punteado"></i> Proyección</span>
+        </div>
+      </article>
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Composición de ingresos</h2></div></div>
+        <div class="dona-est" style="--conic-dona: conic-gradient(#3b82f6 0% 45%, #7c3aed 45% 70%, #22c55e 70% 90%, #f97316 90% 100%)">
+          <span class="centro-dona-est"><strong>S/ 1,250,000</strong><span>Total</span></span>
+        </div>
+        <ul class="leyenda-dona-est">
+          <li><i class="punto-leyenda-est" style="background:#3b82f6"></i> Construcción <b>45%</b> <small>S/ 562,500</small></li>
+          <li><i class="punto-leyenda-est" style="background:#7c3aed"></i> Consultoría <b>25%</b> <small>S/ 312,500</small></li>
+          <li><i class="punto-leyenda-est" style="background:#22c55e"></i> Servicios <b>20%</b> <small>S/ 250,000</small></li>
+          <li><i class="punto-leyenda-est" style="background:#f97316"></i> Otros <b>10%</b> <small>S/ 125,000</small></li>
+        </ul>
+      </article>
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Top 5 clientes</h2><p>Ventas</p></div><a href="#" class="enlace-panel-est">Ver todos</a></div>
+        <ul class="lista-ranking-est">
+          <li><span class="nombre-ranking-est">Inversiones Andinas SAC</span><div class="barra-ranking-est"><span style="width:100%"></span></div><span class="valor-ranking-est">S/ 320,000</span></li>
+          <li><span class="nombre-ranking-est">Inmobiliaria Los Álamos</span><div class="barra-ranking-est"><span style="width:66%"></span></div><span class="valor-ranking-est">S/ 210,000</span></li>
+          <li><span class="nombre-ranking-est">Constructora Horizonte</span><div class="barra-ranking-est"><span style="width:56%"></span></div><span class="valor-ranking-est">S/ 180,000</span></li>
+          <li><span class="nombre-ranking-est">Municipalidad de Surco</span><div class="barra-ranking-est"><span style="width:37%"></span></div><span class="valor-ranking-est">S/ 120,000</span></li>
+          <li><span class="nombre-ranking-est">Servicios Generales SRL</span><div class="barra-ranking-est"><span style="width:30%"></span></div><span class="valor-ranking-est">S/ 95,000</span></li>
+        </ul>
+        <div class="escala-ranking-est">
+          <span></span>
+          <div class="marcas-escala-est"><span>0</span><span>100K</span><span>200K</span><span>300K</span><span>400K</span></div>
+          <span></span>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Fila 2: Gastos / Estado de resultados / Ratios -->
+    <div class="fila-est fila-3-est">
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Gastos por categoría</h2></div></div>
+        <div class="dona-est" style="--conic-dona: conic-gradient(#3b82f6 0% 35%, #f97316 35% 65%, #22c55e 65% 80%, #7c3aed 80% 90%, #9ca3af 90% 100%)">
+          <span class="centro-dona-est"><strong>S/ 850,000</strong><span>Total</span></span>
+        </div>
+        <ul class="leyenda-dona-est">
+          <li><i class="punto-leyenda-est" style="background:#3b82f6"></i> Mano de obra <b>35%</b> <small>S/ 297,500</small></li>
+          <li><i class="punto-leyenda-est" style="background:#f97316"></i> Materiales <b>30%</b> <small>S/ 255,000</small></li>
+          <li><i class="punto-leyenda-est" style="background:#22c55e"></i> Servicios <b>15%</b> <small>S/ 127,500</small></li>
+          <li><i class="punto-leyenda-est" style="background:#7c3aed"></i> Administrativos <b>10%</b> <small>S/ 85,000</small></li>
+          <li><i class="punto-leyenda-est" style="background:#9ca3af"></i> Otros <b>10%</b> <small>S/ 85,000</small></li>
+        </ul>
+      </article>
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Estado de resultados</h2></div></div>
+        <div class="tabla-est-contenedor">
+          <table class="tabla-est">
+            <thead><tr><th>Concepto</th><th>Actual</th><th>%</th><th>vs. Mayo 2026</th></tr></thead>
+            <tbody>
+              <tr><td>Ventas netas</td><td>S/ 1,250,000</td><td>100%</td><td class="positiva-est">↑ 12.5%</td></tr>
+              <tr><td>Costo de ventas</td><td>-S/ 650,000</td><td>-52%</td><td class="positiva-est">↑ 8.2%</td></tr>
+              <tr><td><strong>Utilidad bruta</strong></td><td><strong>S/ 600,000</strong></td><td><strong>48%</strong></td><td class="positiva-est">↑ 16.9%</td></tr>
+              <tr><td>Gastos operativos</td><td>-S/ 200,000</td><td>-16%</td><td class="negativa-est">↓ 5.1%</td></tr>
+              <tr><td><strong>Utilidad operativa</strong></td><td><strong>S/ 400,000</strong></td><td><strong>32%</strong></td><td class="positiva-est">↑ 22.3%</td></tr>
+              <tr><td>Impuestos</td><td>-S/ 120,000</td><td>-9.6%</td><td class="positiva-est">↑ 15.4%</td></tr>
+              <tr><td><strong>Utilidad neta</strong></td><td><strong>S/ 400,000</strong></td><td><strong>32%</strong></td><td class="positiva-est">↑ 18.7%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Ratios financieros</h2></div><a href="#" class="enlace-panel-est">Ver todos</a></div>
+        <div class="tabla-est-contenedor">
+          <table class="tabla-est">
+            <thead><tr><th>Ratio</th><th>Valor</th><th>vs. Mayo</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>Liquidez corriente</td><td>2.15</td><td class="positiva-est">↑ 0.18</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Prueba ácida</td><td>1.48</td><td class="positiva-est">↑ 0.12</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Endeudamiento</td><td>0.35</td><td class="negativa-est">↓ -0.03</td><td><span class="estado-est bajo">Bajo</span></td></tr>
+              <tr><td>ROE</td><td>18.6%</td><td class="positiva-est">↑ 2.3 pp</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>ROA</td><td>11.2%</td><td class="positiva-est">↑ 1.4 pp</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Rotación de inventario</td><td>6.8</td><td class="positiva-est">↑ 0.9</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Periodo de cobranza (días)</td><td>32</td><td class="positiva-est">↓ -4</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Periodo de pago (días)</td><td>45</td><td class="negativa-est">↑ 3</td><td><span class="estado-est aceptable">Aceptable</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Fila 3: Proyección ventas / Flujo caja proyectado / Rentabilidad proyecto -->
+    <div class="fila-est fila-3-est">
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Proyección de ventas 2026</h2></div></div>
+        <div class="grafico-barras-est">
+          <div class="barra-est real" style="--valor:38%"><span></span><small>Ene</small></div>
+          <div class="barra-est real" style="--valor:44%"><span></span><small>Feb</small></div>
+          <div class="barra-est real" style="--valor:50%"><span></span><small>Mar</small></div>
+          <div class="barra-est real" style="--valor:56%"><span></span><small>Abr</small></div>
+          <div class="barra-est real" style="--valor:62%"><span></span><small>May</small></div>
+          <div class="barra-est real" style="--valor:100%"><span></span><small>Jun</small></div>
+          <div class="barra-est proyeccion" style="--valor:68%"><span></span><small>Jul</small></div>
+          <div class="barra-est proyeccion" style="--valor:74%"><span></span><small>Ago</small></div>
+          <div class="barra-est proyeccion" style="--valor:78%"><span></span><small>Sep</small></div>
+          <div class="barra-est proyeccion" style="--valor:82%"><span></span><small>Oct</small></div>
+          <div class="barra-est proyeccion" style="--valor:88%"><span></span><small>Nov</small></div>
+          <div class="barra-est proyeccion" style="--valor:94%"><span></span><small>Dic</small></div>
+        </div>
+        <div class="leyenda-lineas-est">
+          <span><i class="punto-leyenda-est solido" style="background:#7c3aed"></i> Ventas reales</span>
+          <span><i class="punto-leyenda-est" style="background:#e4defb"></i> Proyección</span>
+        </div>
+      </article>
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Flujo de caja proyectado</h2></div></div>
+        <div class="grafico-lineas-est chico-est">
+          <svg viewBox="0 0 340 170" preserveAspectRatio="none" class="svg-lineas-est">
+            <line x1="0" y1="0" x2="340" y2="0" class="linea-guia-est"/>
+            <line x1="0" y1="42" x2="340" y2="42" class="linea-guia-est"/>
+            <line x1="0" y1="85" x2="340" y2="85" class="linea-guia-est"/>
+            <line x1="0" y1="127" x2="340" y2="127" class="linea-guia-est"/>
+            <line x1="0" y1="169" x2="340" y2="169" class="linea-guia-est"/>
+            <path d="M0,110 L34,90 L68,100 L102,70 L136,80 L170,55 L204,60 L238,40 L272,48 L306,30 L340,35 L340,169 L0,169 Z" class="area-flujo-est"/>
+            <polyline points="0,110 34,90 68,100 102,70 136,80 170,55 204,60 238,40 272,48 306,30 340,35" class="linea-flujo-est"/>
+            <circle cx="204" cy="60" r="5" class="punto-flujo-est"/>
+          </svg>
+          <div class="tooltip-grafico-est chico-est" style="left:58%">
+            <strong>Junio 2026</strong>
+            <span>Flujo proyectado: S/ 320,000</span>
+          </div>
+          <div class="eje-x-est">
+            <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel panel-est">
+        <div class="panel-cabecera"><div><h2>Rentabilidad por proyecto</h2></div><a href="#" class="enlace-panel-est">Ver todos</a></div>
+        <div class="tabla-est-contenedor">
+          <table class="tabla-est">
+            <thead><tr><th>Proyecto</th><th>Margen</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>Edificio Corporativo Alpha</td><td>28.5%</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Puente San Miguel</td><td>24.8%</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+              <tr><td>Centro Comercial Plaza Norte</td><td>19.3%</td><td><span class="estado-est aceptable">Aceptable</span></td></tr>
+              <tr><td>Residencial Los Parques</td><td>16.1%</td><td><span class="estado-est riesgo">En riesgo</span></td></tr>
+              <tr><td>Carretera Interoceánica</td><td>22.7%</td><td><span class="estado-est optimo">Óptimo</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+</main>
+</div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+<script src="../scripts/historias.js"></script>
+</body>
+</html>

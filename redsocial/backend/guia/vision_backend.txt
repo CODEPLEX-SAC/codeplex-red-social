@@ -1,0 +1,1 @@
+Backend de capacidad orientado a casos de uso, persistencia por procedimientos y contexto activo obligatorio.

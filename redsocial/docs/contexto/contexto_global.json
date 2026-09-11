@@ -1,0 +1,15 @@
+{
+  "obligatorios": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id",
+    "pais_id"
+  ],
+  "opcionales": [
+    "zona_id",
+    "idioma",
+    "moneda",
+    "dispositivo_id"
+  ]
+}

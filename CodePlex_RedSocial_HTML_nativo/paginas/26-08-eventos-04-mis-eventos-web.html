@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Mis Eventos — Red Social CodePlex">
+  <title>CodePlex — Mis Eventos</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/componentes/columna-publicidad.css">
+  <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css">
+  <link rel="stylesheet" href="../estilos/paginas/eventos.css">
+</head>
+<body class="" data-pagina="eventos" data-titulo="Mis Eventos">
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+      <div class="contenido-tres-columnas">
+        <section class="columna-principal">
+
+          <!-- Encabezado -->
+          <div class="encabezado-eventos">
+            <div class="datos-encabezado-ev">
+              <span data-icono="calendario" class="icono icono-encabezado-ev-cal"></span>
+              <div>
+                <h1>Eventos <span class="ruta-ev">/ Mis eventos</span></h1>
+                <p class="subtitulo-ev">Administra los eventos que has creado o donde eres organizador.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pestañas -->
+          <div class="carrusel-pestanas-ev">
+          <div class="pestanas-eventos" role="tablist">
+            <a class="pestana-evento" role="tab" aria-selected="false" href="23-08-eventos-01-para-ti-web.html">Para ti</a>
+            <a class="pestana-evento" role="tab" aria-selected="false" href="24-08-eventos-02-proximos-web.html">Próximos</a>
+            <a class="pestana-evento" role="tab" aria-selected="false" href="25-08-eventos-03-populares-web.html">Populares</a>
+            <a class="pestana-evento activa" role="tab" aria-selected="true" href="26-08-eventos-04-mis-eventos-web.html">Mis eventos</a>
+            <a class="pestana-evento" role="tab" aria-selected="false" href="27-08-eventos-05-invitaciones-web.html">Invitaciones <span class="insignia-pestana">2</span></a>
+            <a class="pestana-evento" role="tab" aria-selected="false" href="28-08-eventos-06-calendario-web.html">Calendario</a>
+          </div>
+          </div>
+
+          <!-- Filtros -->
+          <div class="filtros-mis-eventos">
+            <button type="button" class="selector-filtro-mev">
+              <span data-icono="calendario" class="icono" style="width:15px;height:15px;"></span>
+              Mis eventos
+              <span data-icono="flecha-abajo" class="icono icono-flecha" style="width:14px;height:14px;"></span>
+            </button>
+            <button type="button" class="selector-filtro-mev">
+              <span data-icono="calendario" class="icono" style="width:15px;height:15px;"></span>
+              Estado
+              <span data-icono="flecha-abajo" class="icono icono-flecha" style="width:14px;height:14px;"></span>
+            </button>
+            <button type="button" class="selector-filtro-mev">
+              <span data-icono="calendario" class="icono" style="width:15px;height:15px;"></span>
+              Fecha
+              <span data-icono="flecha-abajo" class="icono icono-flecha" style="width:14px;height:14px;"></span>
+            </button>
+            <button type="button" class="boton-filtros-ev">
+              <span data-icono="filtro" class="icono" style="width:15px;height:15px;"></span>
+              Filtros
+            </button>
+          </div>
+
+          <!-- Eventos que organizas -->
+          <section class="seccion-mev">
+            <h2 class="titulo-seccion-mev">Eventos que organizas</h2>
+            <div class="lista-mis-eventos">
+
+              <!-- Evento 1: Concierto Codeplex Live -->
+              <article class="tarjeta-mev">
+                <div class="foto-mev">
+                  <div class="gradiente-foto" style="background:linear-gradient(135deg,#6c3ce0,#a855f7);"></div>
+                  <div class="fecha-badge-ev">
+                    <span class="dia">24</span>
+                    <span class="mes">AGO</span>
+                  </div>
+                </div>
+                <div class="datos-mev">
+                  <span class="etiqueta-estado-mev publicado">PUBLICADO</span>
+                  <h3 class="nombre-mev">Concierto Codeplex Live 2026</h3>
+                  <div class="info-mev">
+                    <span><span data-icono="calendario" class="icono" style="width:14px;height:14px;"></span> Sáb, 24 Ago 2026</span>
+                    <span><span data-icono="reloj" class="icono" style="width:14px;height:14px;"></span> 7:00 PM</span>
+                    <span><span data-icono="ubicacion" class="icono" style="width:14px;height:14px;"></span> Arena 1, Lima</span>
+                  </div>
+                  <div class="asistentes-mev">
+                    <span data-icono="usuarios" class="icono" style="width:14px;height:14px;"></span>
+                    1.2K asistentes
+                  </div>
+                </div>
+                <div class="stats-mev">
+                  <div class="stat-mev">
+                    <span class="valor-stat">1.2K</span>
+                    <span class="etiqueta-stat">Asistirán</span>
+                  </div>
+                  <div class="stat-mev">
+                    <span class="valor-stat">83%</span>
+                    <span class="etiqueta-stat">Confirmados</span>
+                  </div>
+                  <button type="button" class="boton-mas-opciones" aria-label="Más opciones">
+                    <span data-icono="puntos" class="icono" style="width:18px;height:18px;"></span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Evento 2: Codeplex Tech Summit -->
+              <article class="tarjeta-mev">
+                <div class="foto-mev">
+                  <div class="gradiente-foto" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);"></div>
+                  <div class="fecha-badge-ev">
+                    <span class="dia">15</span>
+                    <span class="mes">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-mev">
+                  <span class="etiqueta-estado-mev publicado">PUBLICADO</span>
+                  <h3 class="nombre-mev">Codeplex Tech Summit</h3>
+                  <div class="info-mev">
+                    <span><span data-icono="calendario" class="icono" style="width:14px;height:14px;"></span> Jue, 15 Jun 2026</span>
+                    <span><span data-icono="reloj" class="icono" style="width:14px;height:14px;"></span> 9:00 AM</span>
+                    <span><span data-icono="ubicacion" class="icono" style="width:14px;height:14px;"></span> Centro de Convenciones Lima</span>
+                  </div>
+                  <div class="asistentes-mev">
+                    <span data-icono="usuarios" class="icono" style="width:14px;height:14px;"></span>
+                    856 asistentes
+                  </div>
+                </div>
+                <div class="stats-mev">
+                  <div class="stat-mev">
+                    <span class="valor-stat">856</span>
+                    <span class="etiqueta-stat">Asistirán</span>
+                  </div>
+                  <div class="stat-mev">
+                    <span class="valor-stat">78%</span>
+                    <span class="etiqueta-stat">Confirmados</span>
+                  </div>
+                  <button type="button" class="boton-mas-opciones" aria-label="Más opciones">
+                    <span data-icono="puntos" class="icono" style="width:18px;height:18px;"></span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Evento 3: Networking Empresarial -->
+              <article class="tarjeta-mev">
+                <div class="foto-mev">
+                  <div class="gradiente-foto" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
+                  <div class="fecha-badge-ev">
+                    <span class="dia">22</span>
+                    <span class="mes">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-mev">
+                  <span class="etiqueta-estado-mev publicado">PUBLICADO</span>
+                  <h3 class="nombre-mev">Networking Empresarial</h3>
+                  <div class="info-mev">
+                    <span><span data-icono="calendario" class="icono" style="width:14px;height:14px;"></span> Jue, 22 Jun 2026</span>
+                    <span><span data-icono="reloj" class="icono" style="width:14px;height:14px;"></span> 6:00 PM</span>
+                    <span><span data-icono="ubicacion" class="icono" style="width:14px;height:14px;"></span> WeWork San Isidro</span>
+                  </div>
+                  <div class="asistentes-mev">
+                    <span data-icono="usuarios" class="icono" style="width:14px;height:14px;"></span>
+                    642 asistentes
+                  </div>
+                </div>
+                <div class="stats-mev">
+                  <div class="stat-mev">
+                    <span class="valor-stat">642</span>
+                    <span class="etiqueta-stat">Asistirán</span>
+                  </div>
+                  <div class="stat-mev">
+                    <span class="valor-stat">72%</span>
+                    <span class="etiqueta-stat">Confirmados</span>
+                  </div>
+                  <button type="button" class="boton-mas-opciones" aria-label="Más opciones">
+                    <span data-icono="puntos" class="icono" style="width:18px;height:18px;"></span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Evento 4: Taller Marketing Digital (BORRADOR) -->
+              <article class="tarjeta-mev">
+                <div class="foto-mev">
+                  <div class="gradiente-foto" style="background:linear-gradient(135deg,#10b981,#34d399);"></div>
+                  <div class="fecha-badge-ev">
+                    <span class="dia">05</span>
+                    <span class="mes">JUL</span>
+                  </div>
+                </div>
+                <div class="datos-mev">
+                  <span class="etiqueta-estado-mev borrador">BORRADOR</span>
+                  <h3 class="nombre-mev">Taller de Marketing Digital</h3>
+                  <div class="info-mev">
+                    <span><span data-icono="calendario" class="icono" style="width:14px;height:14px;"></span> Sáb, 5 Jul 2026</span>
+                    <span><span data-icono="reloj" class="icono" style="width:14px;height:14px;"></span> 10:00 AM</span>
+                    <span><span data-icono="ubicacion" class="icono" style="width:14px;height:14px;"></span> Online</span>
+                  </div>
+                  <div class="asistentes-mev" style="color:var(--color-texto-terciario,#9ca3af);">
+                    Sin publicar aún
+                  </div>
+                </div>
+                <div class="stats-mev" style="justify-content:center;">
+                  <button type="button" class="boton-continuar-mev">Continuar editando</button>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- Eventos en los que colaboras -->
+          <section class="seccion-mev">
+            <h2 class="titulo-seccion-mev">Eventos en los que colaboras</h2>
+            <div class="lista-mis-eventos">
+
+              <!-- Evento: Festival Gastronómico -->
+              <article class="tarjeta-mev">
+                <div class="foto-mev">
+                  <div class="gradiente-foto" style="background:linear-gradient(135deg,#ec4899,#f43f5e);"></div>
+                  <div class="fecha-badge-ev">
+                    <span class="dia">18</span>
+                    <span class="mes">JUL</span>
+                  </div>
+                </div>
+                <div class="datos-mev">
+                  <span class="etiqueta-estado-mev colaborador">COLABORADOR</span>
+                  <h3 class="nombre-mev">Festival Gastronómico</h3>
+                  <div class="info-mev">
+                    <span><span data-icono="calendario" class="icono" style="width:14px;height:14px;"></span> Vie, 18 Jul 2026</span>
+                    <span><span data-icono="reloj" class="icono" style="width:14px;height:14px;"></span> 7:00 PM</span>
+                    <span><span data-icono="ubicacion" class="icono" style="width:14px;height:14px;"></span> Parque de la Exposición</span>
+                  </div>
+                  <div class="organizador-mev">Organizado por: Municipalidad de Lima</div>
+                </div>
+                <div class="stats-mev">
+                  <div class="stat-mev">
+                    <span class="valor-stat">538</span>
+                    <span class="etiqueta-stat">Asistirán</span>
+                  </div>
+                  <div class="stat-mev">
+                    <span class="valor-stat">81%</span>
+                    <span class="etiqueta-stat">Confirmados</span>
+                  </div>
+                  <button type="button" class="boton-mas-opciones" aria-label="Más opciones">
+                    <span data-icono="puntos" class="icono" style="width:18px;height:18px;"></span>
+                  </button>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- Pie -->
+          <div class="pie-mis-eventos">
+            ¿No encuentras un evento? <a href="#">Ver todos mis eventos</a>
+          </div>
+
+        </section>
+
+        <div data-componente="columna-publicidad"></div>
+
+        <!-- Sidebar de Eventos -->
+        <!-- ══ Columna lateral Mis Eventos ══ -->
+        <aside class="columna-eventos-lateral">
+
+          <!-- Calendario mini -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Calendario</h3>
+              <a href="28-08-eventos-06-calendario-web.html" class="enlace-panel-ev">Ver calendario</a>
+            </div>
+            <div class="calendario-mini-ev">
+              <div class="encabezado-cal-mini">
+                <button type="button" class="flecha-cal-mini"><span class="icono" data-icono="flecha-izquierda"></span></button>
+                <span class="mes-cal">Junio 2026</span>
+                <button type="button" class="flecha-cal-mini"><span class="icono" data-icono="flecha-derecha"></span></button>
+              </div>
+              <table class="tabla-cal-mini">
+                <thead>
+                  <tr><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="otro-mes"><span class="dia-num">29</span></td>
+                    <td class="otro-mes"><span class="dia-num">30</span></td>
+                    <td class="otro-mes"><span class="dia-num">31</span></td>
+                    <td><span class="dia-num">01</span></td>
+                    <td><span class="dia-num">02</span></td>
+                    <td><span class="dia-num">03</span></td>
+                    <td><span class="dia-num">04</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">05</span></td>
+                    <td><span class="dia-num">06</span></td>
+                    <td><span class="dia-num">07</span></td>
+                    <td><span class="dia-num">08</span></td>
+                    <td><span class="dia-num">09</span></td>
+                    <td><span class="dia-num">10</span></td>
+                    <td><span class="dia-num">11</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">12</span></td>
+                    <td><span class="dia-num">13</span></td>
+                    <td><span class="dia-num">14</span></td>
+                    <td class="hoy"><span class="dia-num">15</span><span class="punto-cal"></span></td>
+                    <td><span class="dia-num">16</span></td>
+                    <td><span class="dia-num">17</span></td>
+                    <td><span class="dia-num">18</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">19</span></td>
+                    <td><span class="dia-num">20</span></td>
+                    <td><span class="dia-num">21</span></td>
+                    <td><span class="dia-num">22</span><span class="punto-cal"></span></td>
+                    <td><span class="dia-num">23</span></td>
+                    <td><span class="dia-num">24</span></td>
+                    <td><span class="dia-num">25</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">26</span></td>
+                    <td><span class="dia-num">27</span></td>
+                    <td><span class="dia-num">28</span></td>
+                    <td><span class="dia-num">29</span></td>
+                    <td><span class="dia-num">30</span></td>
+                    <td class="otro-mes"><span class="dia-num">01</span></td>
+                    <td class="otro-mes"><span class="dia-num">02</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Próximos de tus eventos -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h2 style="font-size:14px;font-weight:700;margin:0;">Próximos de tus eventos</h2>
+              <a href="#" style="font-size:12px;font-weight:600;color:#6c3ce0;text-decoration:none;">Ver todos</a>
+            </div>
+            <div class="lista-eventos-lat-foto">
+
+              <!-- Evento 1 -->
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#6c3ce0,#a855f7);"></div>
+                  <div class="fecha-badge-lat">
+                    <span class="dia-lat">24</span>
+                    <span class="mes-lat">AGO</span>
+                  </div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Concierto Codeplex Live 2026</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono" style="width:12px;height:12px;"></span> Sáb, 24 Ago 2026 · 7:00 PM</span>
+                  <span class="detalle-ev-lat"><span data-icono="ubicacion" class="icono" style="width:12px;height:12px;"></span> Arena 1, Lima</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono" style="width:12px;height:12px;"></span> 1.2K asistirán</span>
+                </div>
+              </article>
+
+              <!-- Evento 2 -->
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);"></div>
+                  <div class="fecha-badge-lat">
+                    <span class="dia-lat">15</span>
+                    <span class="mes-lat">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Codeplex Tech Summit</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono" style="width:12px;height:12px;"></span> Jue, 15 Jun 2026 · 9:00 AM</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono" style="width:12px;height:12px;"></span> 856 asistirán</span>
+                </div>
+              </article>
+
+              <!-- Evento 3 -->
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
+                  <div class="fecha-badge-lat">
+                    <span class="dia-lat">22</span>
+                    <span class="mes-lat">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Networking Empresarial</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono" style="width:12px;height:12px;"></span> Jue, 22 Jun 2026 · 6:00 PM</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono" style="width:12px;height:12px;"></span> 642 asistirán</span>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- Resumen de tus eventos -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h2 style="font-size:14px;font-weight:700;margin:0;">Resumen de tus eventos</h2>
+              <a href="#" style="font-size:12px;font-weight:600;color:#6c3ce0;text-decoration:none;">Este año ▾</a>
+            </div>
+            <div class="panel-resumen-ev-lat">
+              <div class="resumen-ev-lat">
+                <div class="stat-resumen-lat">
+                  <span class="valor-res">4</span>
+                  <span class="etiqueta-res">Eventos creados</span>
+                </div>
+                <div class="stat-resumen-lat">
+                  <span class="valor-res">3.3K</span>
+                  <span class="etiqueta-res">Asistentes totales</span>
+                </div>
+                <div class="stat-resumen-lat">
+                  <span class="valor-res">79%</span>
+                  <span class="etiqueta-res">Prom. confirmación</span>
+                </div>
+              </div>
+              <button type="button" class="boton-ver-reportes">
+                <span data-icono="reportes-barra" class="icono" style="width:16px;height:16px;"></span>
+                Ver reportes
+              </button>
+            </div>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+<script src="../scripts/historias.js"></script>
+</body>
+</html>

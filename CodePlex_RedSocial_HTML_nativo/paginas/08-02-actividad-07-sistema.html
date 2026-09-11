@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Actividad — Red Social CodePlex" />
+    <title>CodePlex — Actividad</title>
+    <link rel="stylesheet" href="../estilos/sistema.css" />
+    <link rel="stylesheet" href="../estilos/componentes/estructura.css" />
+    <link rel="stylesheet" href="../estilos/componentes/columna-publicidad.css" />
+    <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css" />
+    <link rel="stylesheet" href="../estilos/paginas/inicio-web.css" />
+    <link rel="stylesheet" href="../estilos/paginas/actividad.css" />
+  </head>
+
+  <body class="" data-pagina="actividad" data-titulo="Actividad">
+    <div class="aplicacion">
+      <div data-componente="barra-superior"></div>
+      <div data-componente="barra-lateral"></div>
+      <div class="zona-principal zona-principal-ancha">
+        <main class="contenido-principal">
+      <div class="contenido-tres-columnas">
+        <section class="columna-principal">
+
+          <!-- Cabecera -->
+          <div class="encabezado-actividad">
+            <h1>Actividad</h1>
+            <p class="subtitulo-actividad">Mantente al día con todo lo que ocurre en tu red y en tu empresa</p>
+          </div>
+
+          <!-- Pestañas -->
+          <div class="carrusel-pestanas-act">
+          <div class="pestanas-actividad" role="tablist">
+            <a class="pestana-actividad" role="tab" aria-selected="false" href="02-02-actividad-01-todas-web.html">Todas</a>
+            <a class="pestana-actividad" role="tab" aria-selected="false" href="03-02-actividad-02-publicaciones.html">Publicaciones</a>
+            <a class="pestana-actividad" role="tab" aria-selected="false" href="04-02-actividad-03-menciones.html">Menciones</a>
+            <a class="pestana-actividad" role="tab" aria-selected="false" href="05-02-actividad-04-colaboradores.html">Colaboradores</a>
+            <a class="pestana-actividad" role="tab" aria-selected="false" href="06-02-actividad-05-grupos.html">Grupos</a>
+            <a class="pestana-actividad" role="tab" aria-selected="false" href="07-02-actividad-06-modulos.html">Módulos</a>
+            <a class="pestana-actividad activa" role="tab" aria-selected="true" href="08-02-actividad-07-sistema.html">Sistema</a>
+          </div>
+          </div>
+
+          <!-- Lista de actividad del sistema -->
+          <section class="panel lista-actividad">
+
+            <!-- Encabezado de sección Sistema -->
+            <div class="encabezado-sistema">
+              <div class="datos-seccion-sistema">
+                <div class="icono-seccion-sistema">
+                  <span class="icono" data-icono="configuracion"></span>
+                </div>
+                <div>
+                  <h2 class="titulo-seccion-sistema">Sistema</h2>
+                  <p class="descripcion-seccion-sistema">Actividad del sistema y administración de la plataforma</p>
+                </div>
+              </div>
+              <button type="button" class="dropdown-filtro">
+                Todos los eventos
+                <span class="icono" data-icono="flecha-abajo"></span>
+              </button>
+            </div>
+
+            <!-- 1. Inicio de sesión -->
+            <article class="evento-sistema">
+              <div class="icono-evento verde">
+                <span class="icono" data-icono="inicio-sesion"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Inicio de sesión</span>
+                <span class="descripcion-evento">Juan Pérez inició sesión en el sistema</span>
+                <div class="detalles-evento">
+                  IP: 190.123.45.67
+                  <span class="separador">·</span>
+                  Dispositivo: Chrome en Windows
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Hace 15 min</span>
+                <span class="indicador-estado exito"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- 2. Nuevo usuario registrado -->
+            <article class="evento-sistema">
+              <div class="icono-evento azul">
+                <span class="icono" data-icono="nuevo-usuario"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Nuevo usuario registrado</span>
+                <span class="descripcion-evento">María Fernández fue registrado como nuevo usuario</span>
+                <div class="detalles-evento">
+                  Rol: Contador
+                  <span class="separador">·</span>
+                  Empresa: Constructora del Norte SAC
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Hace 1 hora</span>
+                <span class="indicador-estado info"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- 3. Cambio de contraseña -->
+            <article class="evento-sistema">
+              <div class="icono-evento morado">
+                <span class="icono" data-icono="clave"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Cambio de contraseña</span>
+                <span class="descripcion-evento">Carlos Mendoza cambió su contraseña</span>
+                <div class="detalles-evento">
+                  IP: 181.65.23.90
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Hace 2 horas</span>
+                <span class="indicador-estado pendiente"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- 4. Configuración actualizada -->
+            <article class="evento-sistema">
+              <div class="icono-evento naranja">
+                <span class="icono" data-icono="ajustes-sistema"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Configuración actualizada</span>
+                <span class="descripcion-evento">Se actualizó la configuración de notificaciones del sistema</span>
+                <div class="detalles-evento">
+                  Por: Sofía Ramirez
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Hace 3 horas</span>
+                <span class="indicador-estado advertencia"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- 5. Respaldo automático completado -->
+            <article class="evento-sistema">
+              <div class="icono-evento azul">
+                <span class="icono" data-icono="respaldo"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Respaldo automático completado</span>
+                <span class="descripcion-evento">Se completó el respaldo automático de la base de datos</span>
+                <div class="detalles-evento">
+                  Tamaño: 2.45 GB
+                  <span class="separador">·</span>
+                  Estado: Exitoso
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Hace 5 horas</span>
+                <span class="indicador-estado exito"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- 6. Intento de inicio de sesión fallido -->
+            <article class="evento-sistema">
+              <div class="icono-evento rojo">
+                <span class="icono" data-icono="alerta-roja"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Intento de inicio de sesión fallido</span>
+                <span class="descripcion-evento">Intento fallido de inicio de sesión con contraseña incorrecta</span>
+                <div class="detalles-evento">
+                  IP: 190.123.45.67
+                  <span class="separador">·</span>
+                  Usuario: admin
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Hace 6 horas</span>
+                <span class="indicador-estado error"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- 7. Mantenimiento del sistema -->
+            <article class="evento-sistema">
+              <div class="icono-evento verde">
+                <span class="icono" data-icono="mantenimiento"></span>
+              </div>
+              <div class="datos-evento">
+                <span class="titulo-evento">Mantenimiento del sistema</span>
+                <span class="descripcion-evento">Mantenimiento programado del sistema completado</span>
+                <div class="detalles-evento">
+                  Duración: 12 min
+                  <span class="separador">·</span>
+                  Estado: Exitoso
+                </div>
+              </div>
+              <div class="meta-evento">
+                <span class="tiempo-evento">Ayer, 11:30 p. m.</span>
+                <span class="indicador-estado exito"></span>
+                <button type="button" class="boton-evento-mas"><span class="icono" data-icono="puntos"></span></button>
+              </div>
+            </article>
+
+            <!-- Cargar más -->
+            <button type="button" class="boton-cargar-mas">
+              Cargar más
+              <span class="icono" data-icono="flecha-abajo"></span>
+            </button>
+
+          </section>
+        </section>
+
+        <div data-componente="columna-publicidad"></div>
+        <aside class="columna-derecha-generica">
+          <section class="panel panel-bloque">
+            <div class="cabecera-bloque">
+              <h2>Contactos</h2>
+              <a href="#">Ver todos</a>
+            </div>
+            <article class="tarjeta-persona">
+              <span class="avatar"></span>
+              <div class="datos-persona">
+                <strong>Ana Torres</strong><span>Conexión profesional</span>
+              </div>
+              <button type="button" class="boton boton-mini"></button>
+            </article>
+            <article class="tarjeta-persona">
+              <span class="avatar"></span>
+              <div class="datos-persona">
+                <strong>Miguel Rojas</strong><span>Conexión profesional</span>
+              </div>
+              <button type="button" class="boton boton-mini"></button>
+            </article>
+            <article class="tarjeta-persona">
+              <span class="avatar"></span>
+              <div class="datos-persona">
+                <strong>José Castillo</strong><span>Conexión profesional</span>
+              </div>
+              <button type="button" class="boton boton-mini"></button>
+            </article>
+            <article class="tarjeta-persona">
+              <span class="avatar"></span>
+              <div class="datos-persona">
+                <strong>Laura Pérez</strong><span>Conexión profesional</span>
+              </div>
+              <button type="button" class="boton boton-mini"></button>
+            </article>
+            <article class="tarjeta-persona">
+              <span class="avatar"></span>
+              <div class="datos-persona">
+                <strong>Sofía Gómez</strong><span>Conexión profesional</span>
+              </div>
+              <button type="button" class="boton boton-mini"></button>
+            </article>
+          </section>
+          <section class="panel panel-bloque">
+            <div class="cabecera-bloque">
+              <h2>Grupos recientes</h2>
+              <a href="#">Ver todos</a>
+            </div>
+            <div class="fila-grupo-recomendado">
+              <span class="icono-grupo-mini"></span>
+              <div class="datos-grupo-recomendado">
+                <strong>Ingenieros Civiles</strong>
+                <span>12.4 mil miembros</span>
+              </div>
+              <button type="button" class="boton-agregar-grupo" aria-label="Unirse">
+                <span class="icono" data-icono="mas"></span>
+              </button>
+            </div>
+            <div class="fila-grupo-recomendado">
+              <span class="icono-grupo-mini"></span>
+              <div class="datos-grupo-recomendado">
+                <strong>Emprendedores Perú</strong>
+                <span>8.7 mil miembros</span>
+              </div>
+              <button type="button" class="boton-agregar-grupo" aria-label="Unirse">
+                <span class="icono" data-icono="mas"></span>
+              </button>
+            </div>
+            <div class="fila-grupo-recomendado">
+              <span class="icono-grupo-mini"></span>
+              <div class="datos-grupo-recomendado">
+                <strong>Tecnología &amp; Innovación</strong>
+                <span>5.3 mil miembros</span>
+              </div>
+              <button type="button" class="boton-agregar-grupo" aria-label="Unirse">
+                <span class="icono" data-icono="mas"></span>
+              </button>
+            </div>
+          </section>
+          <section class="panel panel-bloque">
+            <div class="cabecera-bloque">
+              <h2>Eventos próximos</h2>
+              <a href="#">Ver todos</a>
+            </div>
+            <div class="lista-eventos compacta" style="padding: 0">
+              <article class="evento-item">
+                <div class="fecha-evento"><strong>15</strong><span>JUN</span></div>
+                <div class="evento-contenido">
+                  <h3>Reunión de Proyectos</h3>
+                  <p>Lun, 15 jun · 10:00 AM · Oficina Principal</p>
+                </div>
+              </article>
+              <article class="evento-item">
+                <div class="fecha-evento"><strong>22</strong><span>JUN</span></div>
+                <div class="evento-contenido">
+                  <h3>Capacitación en Seguridad</h3>
+                  <p>Lun, 22 jun · 2:00 PM · Virtual</p>
+                </div>
+              </article>
+              <article class="evento-item">
+                <div class="fecha-evento"><strong>30</strong><span>JUN</span></div>
+                <div class="evento-contenido">
+                  <h3>Cumpleaños: Juan Pérez</h3>
+                  <p>Mar, 30 jun · Todo el día</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="bloque-anuncio">
+            <span class="etiqueta-anuncio">CODEPLEX</span>
+            <strong>Trabaja, comparte y crece.</strong>
+            <p>Conecta con tu comunidad profesional.</p>
+            <button class="boton boton-oscuro" type="button">Explorar</button>
+          </section>
+        </aside>
+      </div>
+    </main>
+      </div>
+    </div>
+    <div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+    <script src="../scripts/componentes.js"></script>
+    <script src="../scripts/aplicacion.js"></script>
+    <script src="../scripts/historias.js"></script>
+  </body>
+</html>

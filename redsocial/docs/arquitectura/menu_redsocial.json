@@ -1,0 +1,19 @@
+{
+  "capacidad_id": "redsocial",
+  "menu": [
+    {
+      "clave": "resumen",
+      "titulo": "Resumen"
+    },
+    {
+      "acciones": [
+        "listar",
+        "registrar",
+        "ver_detalle",
+        "actualizar"
+      ],
+      "clave": "gestion_base",
+      "titulo": "Gestion base"
+    }
+  ]
+}

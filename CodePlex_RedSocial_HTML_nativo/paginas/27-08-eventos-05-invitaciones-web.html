@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Invitaciones — Red Social CodePlex">
+  <title>CodePlex — Invitaciones</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/componentes/columna-publicidad.css">
+  <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css">
+  <link rel="stylesheet" href="../estilos/paginas/eventos.css">
+</head>
+<body class="" data-pagina="eventos" data-titulo="Invitaciones">
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+      <div class="contenido-tres-columnas">
+        <section class="columna-principal">
+
+          <!-- Encabezado -->
+          <div class="encabezado-eventos">
+            <div class="datos-encabezado-ev">
+              <div class="icono-encabezado-ev"><span class="icono" data-icono="calendario"></span></div>
+              <div>
+                <h1>Eventos <span class="ruta-ev">/ Invitaciones</span></h1>
+                <p class="subtitulo-ev">Eventos a los que te han invitado.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pestañas -->
+          <div class="carrusel-pestanas-ev">
+          <div class="pestanas-eventos" role="tablist">
+            <a class="pestana-evento" href="23-08-eventos-01-para-ti-web.html" role="tab" aria-selected="false">Para ti</a>
+            <a class="pestana-evento" href="24-08-eventos-02-proximos-web.html" role="tab" aria-selected="false">Próximos</a>
+            <a class="pestana-evento" href="25-08-eventos-03-populares-web.html" role="tab" aria-selected="false">Populares</a>
+            <a class="pestana-evento" href="26-08-eventos-04-mis-eventos-web.html" role="tab" aria-selected="false">Mis eventos</a>
+            <a class="pestana-evento activa" href="27-08-eventos-05-invitaciones-web.html" role="tab" aria-selected="true">
+              Invitaciones <span class="insignia-ev">2</span>
+            </a>
+            <a class="pestana-evento" href="28-08-eventos-06-calendario-web.html" role="tab" aria-selected="false">Calendario</a>
+          </div>
+          </div>
+
+          <!-- Filtros -->
+          <div class="carrusel-filtros-inv">
+          <div class="filtros-invitaciones">
+            <button type="button" class="filtro-inv activo">
+              Todas <span class="insignia-filtro">2</span>
+            </button>
+            <button type="button" class="filtro-inv">
+              Pendientes <span class="insignia-filtro">2</span>
+            </button>
+            <button type="button" class="filtro-inv">
+              <span data-icono="reloj" class="icono" style="width:14px;height:14px;"></span>
+              Aceptadas
+            </button>
+            <button type="button" class="filtro-inv">
+              <span data-icono="rechazar" class="icono" style="width:14px;height:14px;"></span>
+              Rechazadas
+            </button>
+            <button type="button" class="boton-filtros-inv">
+              <span data-icono="filtro" class="icono" style="width:14px;height:14px;"></span>
+              Filtros
+            </button>
+          </div>
+          <button type="button" class="boton-desplazar-carrusel izquierda" aria-label="Ver filtros anteriores" hidden>
+            <span class="icono" data-icono="flecha-izquierda"></span>
+          </button>
+          <button type="button" class="boton-desplazar-carrusel derecha" aria-label="Ver más filtros">
+            <span class="icono" data-icono="flecha-derecha"></span>
+          </button>
+          </div>
+
+          <!-- Invitaciones pendientes -->
+          <section class="seccion-inv">
+            <h2 class="titulo-seccion-inv">Invitaciones pendientes</h2>
+            <div class="lista-invitaciones">
+
+              <!-- Invitación 1: Concierto Codeplex Live -->
+              <article class="tarjeta-inv-pendiente">
+                <div class="foto-inv">
+                  <div class="gradiente-foto-inv" style="background:linear-gradient(135deg,#6c3ce0,#a855f7);"></div>
+                  <div class="fecha-badge-ev" style="position:absolute;top:10px;left:10px;">
+                    <span class="dia">24</span>
+                    <span class="mes">AGO</span>
+                  </div>
+                </div>
+                <div class="datos-inv">
+                  <span class="categoria-inv" style="color:#6c3ce0;">MÚSICA</span>
+                  <h3 class="nombre-inv">Concierto Codeplex Live 2026</h3>
+                  <p class="descripcion-inv">Una noche increíble con los mejores artistas en vivo.</p>
+                  <div class="info-inv">
+                    <span><span data-icono="calendario" class="icono"></span> Sáb, 24 Ago 2026</span>
+                    <span><span data-icono="reloj" class="icono"></span> 7:00 PM</span>
+                    <span><span data-icono="ubicacion" class="icono"></span> Arena 1, Lima</span>
+                  </div>
+                  <div class="invitador-inv">
+                    <div class="avatares-invitador">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="">
+                    </div>
+                    <div class="datos-invitador">
+                      <span class="nombre-inv">María González</span><br>
+                      <span class="texto-inv">te ha invitado</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="acciones-inv">
+                  <button type="button" class="boton-aceptar-inv">Aceptar</button>
+                  <button type="button" class="boton-talvez-inv">Tal vez</button>
+                  <button type="button" class="boton-rechazar-inv">Rechazar</button>
+                </div>
+              </article>
+
+              <!-- Invitación 2: Networking Empresarial -->
+              <article class="tarjeta-inv-pendiente">
+                <div class="foto-inv">
+                  <div class="gradiente-foto-inv" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
+                  <div class="fecha-badge-ev" style="position:absolute;top:10px;left:10px;">
+                    <span class="dia">22</span>
+                    <span class="mes">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-inv">
+                  <span class="categoria-inv" style="color:#ea580c;">NEGOCIOS</span>
+                  <h3 class="nombre-inv">Networking Empresarial</h3>
+                  <p class="descripcion-inv">Conecta con empresarios y profesionales de diferentes industrias.</p>
+                  <div class="info-inv">
+                    <span><span data-icono="calendario" class="icono"></span> Jue, 22 Jun 2026</span>
+                    <span><span data-icono="reloj" class="icono"></span> 6:00 PM</span>
+                    <span><span data-icono="ubicacion" class="icono"></span> WeWork San Isidro</span>
+                  </div>
+                  <div class="invitador-inv">
+                    <div class="avatares-invitador">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="">
+                    </div>
+                    <div class="datos-invitador">
+                      <span class="nombre-inv">Carlos Mendoza</span><br>
+                      <span class="texto-inv">te ha invitado</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="acciones-inv">
+                  <button type="button" class="boton-aceptar-inv">Aceptar</button>
+                  <button type="button" class="boton-talvez-inv">Tal vez</button>
+                  <button type="button" class="boton-rechazar-inv">Rechazar</button>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+          <!-- Invitaciones respondidas -->
+          <section class="seccion-inv">
+            <h2 class="titulo-seccion-inv">Invitaciones respondidas</h2>
+            <div class="lista-invitaciones-respondidas">
+
+              <!-- Respondida 1: Codeplex Tech Summit -->
+              <article class="tarjeta-inv-respondida">
+                <div class="foto-inv">
+                  <div class="gradiente-foto-inv" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);"></div>
+                  <div class="fecha-badge-ev" style="position:absolute;top:10px;left:10px;">
+                    <span class="dia">15</span>
+                    <span class="mes">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-inv-resp">
+                  <span class="categoria-inv" style="color:#3b82f6;">TECNOLOGÍA</span>
+                  <h3 class="nombre-inv">Codeplex Tech Summit</h3>
+                  <div class="info-inv">
+                    <span><span data-icono="calendario" class="icono"></span> Jue, 15 Jun 2026</span>
+                    <span><span data-icono="reloj" class="icono"></span> 9:00 AM</span>
+                    <span><span data-icono="ubicacion" class="icono"></span> Centro de Convenciones Lima</span>
+                  </div>
+                </div>
+                <span class="estado-inv aceptada">Aceptada</span>
+                <span class="flecha-inv">›</span>
+              </article>
+
+              <!-- Respondida 2: Taller de Marketing Digital -->
+              <article class="tarjeta-inv-respondida">
+                <div class="foto-inv">
+                  <div class="gradiente-foto-inv" style="background:linear-gradient(135deg,#10b981,#34d399);"></div>
+                  <div class="fecha-badge-ev" style="position:absolute;top:10px;left:10px;">
+                    <span class="dia">05</span>
+                    <span class="mes">JUL</span>
+                  </div>
+                </div>
+                <div class="datos-inv-resp">
+                  <span class="categoria-inv" style="color:#10b981;">EDUCACIÓN</span>
+                  <h3 class="nombre-inv">Taller de Marketing Digital</h3>
+                  <div class="info-inv">
+                    <span><span data-icono="calendario" class="icono"></span> Sáb, 5 Jul 2026</span>
+                    <span><span data-icono="reloj" class="icono"></span> 10:00 AM</span>
+                    <span><span data-icono="ubicacion" class="icono"></span> Online</span>
+                  </div>
+                </div>
+                <span class="estado-inv aceptada">Aceptada</span>
+                <span class="flecha-inv">›</span>
+              </article>
+
+              <!-- Respondida 3: Festival Gastronómico -->
+              <article class="tarjeta-inv-respondida">
+                <div class="foto-inv">
+                  <div class="gradiente-foto-inv" style="background:linear-gradient(135deg,#ec4899,#f43f5e);"></div>
+                  <div class="fecha-badge-ev" style="position:absolute;top:10px;left:10px;">
+                    <span class="dia">10</span>
+                    <span class="mes">MAY</span>
+                  </div>
+                </div>
+                <div class="datos-inv-resp">
+                  <span class="categoria-inv" style="color:#ec4899;">GASTRONOMÍA</span>
+                  <h3 class="nombre-inv">Festival Gastronómico</h3>
+                  <div class="info-inv">
+                    <span><span data-icono="calendario" class="icono"></span> Dom, 10 May 2026</span>
+                    <span><span data-icono="reloj" class="icono"></span> 12:00 PM</span>
+                    <span><span data-icono="ubicacion" class="icono"></span> Parque de la Exposición</span>
+                  </div>
+                </div>
+                <span class="estado-inv rechazada">Rechazada</span>
+                <span class="flecha-inv">›</span>
+              </article>
+
+            </div>
+          </section>
+
+        </section>
+
+        <div data-componente="columna-publicidad"></div>
+
+        <!-- Sidebar de Eventos -->
+        <aside class="columna-eventos-lateral">
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Calendario</h3>
+              <a href="28-08-eventos-06-calendario-web.html" class="enlace-panel-ev">Ver calendario</a>
+            </div>
+            <div class="calendario-mini-ev">
+              <div class="encabezado-cal-mini">
+                <button type="button" class="flecha-cal-mini"><span class="icono" data-icono="flecha-izquierda"></span></button>
+                <span class="mes-cal">Junio 2026</span>
+                <button type="button" class="flecha-cal-mini"><span class="icono" data-icono="flecha-derecha"></span></button>
+              </div>
+              <table class="tabla-cal-mini">
+                <thead>
+                  <tr><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="otro-mes"><span class="dia-num">29</span></td>
+                    <td class="otro-mes"><span class="dia-num">30</span></td>
+                    <td class="otro-mes"><span class="dia-num">31</span></td>
+                    <td><span class="dia-num">01</span></td>
+                    <td><span class="dia-num">02</span></td>
+                    <td><span class="dia-num">03</span></td>
+                    <td><span class="dia-num">04</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">05</span></td>
+                    <td><span class="dia-num">06</span></td>
+                    <td><span class="dia-num">07</span></td>
+                    <td><span class="dia-num">08</span></td>
+                    <td><span class="dia-num">09</span></td>
+                    <td><span class="dia-num">10</span></td>
+                    <td><span class="dia-num">11</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">12</span></td>
+                    <td><span class="dia-num">13</span></td>
+                    <td><span class="dia-num">14</span></td>
+                    <td class="hoy"><span class="dia-num">15</span><span class="punto-cal"></span></td>
+                    <td><span class="dia-num">16</span></td>
+                    <td><span class="dia-num">17</span></td>
+                    <td><span class="dia-num">18</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">19</span></td>
+                    <td><span class="dia-num">20</span></td>
+                    <td><span class="dia-num">21</span></td>
+                    <td><span class="dia-num">22</span><span class="punto-cal"></span></td>
+                    <td><span class="dia-num">23</span></td>
+                    <td><span class="dia-num">24</span></td>
+                    <td><span class="dia-num">25</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">26</span></td>
+                    <td><span class="dia-num">27</span></td>
+                    <td><span class="dia-num">28</span></td>
+                    <td><span class="dia-num">29</span></td>
+                    <td><span class="dia-num">30</span></td>
+                    <td class="otro-mes"><span class="dia-num">01</span></td>
+                    <td class="otro-mes"><span class="dia-num">02</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h2 style="font-size:14px;font-weight:700;margin:0;">Próximos de tus eventos</h2>
+              <a href="#" style="font-size:12px;font-weight:600;color:#5a43f4;text-decoration:none;">Ver todos</a>
+            </div>
+            <div class="lista-eventos-lat-foto">
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#6c3ce0,#a855f7);"></div>
+                  <div class="fecha-badge-lat"><span class="dia-lat">24</span><span class="mes-lat">AGO</span></div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Concierto Codeplex Live 2026</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono"></span> Sáb, 24 Ago 2026 · 7:00 PM</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono"></span> 1.2K asistirán</span>
+                </div>
+              </article>
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);"></div>
+                  <div class="fecha-badge-lat"><span class="dia-lat">15</span><span class="mes-lat">JUN</span></div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Codeplex Tech Summit</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono"></span> Jue, 15 Jun 2026 · 9:00 AM</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono"></span> 856 asistirán</span>
+                </div>
+              </article>
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
+                  <div class="fecha-badge-lat"><span class="dia-lat">22</span><span class="mes-lat">JUN</span></div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Networking Empresarial</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono"></span> Jue, 22 Jun 2026 · 6:00 PM</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono"></span> 642 asistirán</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h2 style="font-size:14px;font-weight:700;margin:0;">Resumen de tus eventos</h2>
+              <a href="#" style="font-size:12px;font-weight:600;color:#5a43f4;text-decoration:none;">Este año ▾</a>
+            </div>
+            <div class="panel-resumen-ev-lat">
+              <div class="resumen-ev-lat">
+                <div class="stat-resumen-lat">
+                  <span class="valor-res">4</span>
+                  <span class="etiqueta-res">Eventos creados</span>
+                </div>
+                <div class="stat-resumen-lat">
+                  <span class="valor-res">3.3K</span>
+                  <span class="etiqueta-res">Asistentes totales</span>
+                </div>
+                <div class="stat-resumen-lat">
+                  <span class="valor-res">79%</span>
+                  <span class="etiqueta-res">Prom. confirmación</span>
+                </div>
+              </div>
+              <button type="button" class="boton-ver-reportes">
+                <span data-icono="reportes-barra" class="icono" style="width:16px;height:16px;"></span>
+                Ver reportes
+              </button>
+            </div>
+          </section>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+<script src="../scripts/historias.js"></script>
+</body>
+</html>

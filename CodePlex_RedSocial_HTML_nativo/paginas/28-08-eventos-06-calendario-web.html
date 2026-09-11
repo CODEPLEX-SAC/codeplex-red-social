@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Calendario — Red Social CodePlex">
+  <title>CodePlex — Calendario</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/componentes/columna-publicidad.css">
+  <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css">
+  <link rel="stylesheet" href="../estilos/paginas/eventos.css">
+</head>
+<body class="" data-pagina="eventos" data-titulo="Calendario">
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+      <div class="contenido-tres-columnas">
+        <section class="columna-principal">
+
+          <!-- Encabezado -->
+          <div class="encabezado-eventos">
+            <div class="datos-encabezado-ev">
+              <div class="icono-encabezado-ev"><span class="icono" data-icono="calendario"></span></div>
+              <div>
+                <h1>Eventos <span class="ruta-ev">/ Calendario</span></h1>
+                <p class="subtitulo-ev">Visualiza todos tus eventos en el calendario.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pestañas -->
+          <div class="carrusel-pestanas-ev">
+          <div class="pestanas-eventos" role="tablist">
+            <a class="pestana-evento" href="23-08-eventos-01-para-ti-web.html" role="tab" aria-selected="false">Para ti</a>
+            <a class="pestana-evento" href="24-08-eventos-02-proximos-web.html" role="tab" aria-selected="false">Próximos</a>
+            <a class="pestana-evento" href="25-08-eventos-03-populares-web.html" role="tab" aria-selected="false">Populares</a>
+            <a class="pestana-evento" href="26-08-eventos-04-mis-eventos-web.html" role="tab" aria-selected="false">Mis eventos</a>
+            <a class="pestana-evento" href="27-08-eventos-05-invitaciones-web.html" role="tab" aria-selected="false">
+              Invitaciones <span class="insignia-ev">2</span>
+            </a>
+            <a class="pestana-evento activa" href="28-08-eventos-06-calendario-web.html" role="tab" aria-selected="true">Calendario</a>
+          </div>
+          </div>
+
+          <!-- Controles -->
+          <div class="controles-calendario">
+            <button type="button" class="boton-hoy-cal">Hoy</button>
+            <div class="navegacion-mes">
+              <button type="button" class="flecha-mes-cal">‹</button>
+              <button type="button" class="flecha-mes-cal">›</button>
+            </div>
+            <span class="mes-anio-cal">Junio 2026 <span class="flecha-abajo-cal">▾</span></span>
+            <div class="vistas-cal">
+              <button type="button" class="vista-cal activa">Mes</button>
+              <button type="button" class="vista-cal">Semana</button>
+              <button type="button" class="vista-cal">Día</button>
+            </div>
+            <button type="button" class="boton-filtros-cal">
+              <span data-icono="filtro" class="icono" style="width:14px;height:14px;"></span>
+              Filtros
+            </button>
+          </div>
+
+          <!-- Calendario completo -->
+          <div class="calendario-completo">
+
+            <!-- Cabecera de días -->
+            <div class="cabecera-dias-cal">
+              <span class="dia-header">Lun</span>
+              <span class="dia-header">Mar</span>
+              <span class="dia-header">Mié</span>
+              <span class="dia-header">Jue</span>
+              <span class="dia-header">Vie</span>
+              <span class="dia-header">Sáb</span>
+              <span class="dia-header">Dom</span>
+            </div>
+
+            <!-- Rejilla de días -->
+            <div class="rejilla-calendario-cal">
+
+              <!-- Semana 1 -->
+              <div class="celda-dia-cal otro-mes"><span class="numero-dia-cal">29</span></div>
+              <div class="celda-dia-cal otro-mes"><span class="numero-dia-cal">30</span></div>
+              <div class="celda-dia-cal otro-mes"><span class="numero-dia-cal">31</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">1</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">2</span>
+                <div class="evento-cal musica">
+                  <span class="hora-ev-cal">7:00 PM</span>
+                  <span class="nombre-ev-cal">Concierto Live 2026</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">3</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">4</span></div>
+
+              <!-- Semana 2 -->
+              <div class="celda-dia-cal"><span class="numero-dia-cal">5</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">6</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">7</span>
+                <div class="evento-cal tecnologia">
+                  <span class="hora-ev-cal">9:00 AM</span>
+                  <span class="nombre-ev-cal">Codeplex Tech Summit</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">8</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">9</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">10</span>
+                <div class="evento-cal negocios">
+                  <span class="hora-ev-cal">10:00 AM</span>
+                  <span class="nombre-ev-cal">Taller de Marketing</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">11</span></div>
+
+              <!-- Semana 3 -->
+              <div class="celda-dia-cal"><span class="numero-dia-cal">12</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">13</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">14</span></div>
+              <div class="celda-dia-cal hoy">
+                <span class="numero-dia-cal">15</span>
+                <div class="evento-cal empresa">
+                  <span class="hora-ev-cal">9:00 AM</span>
+                  <span class="nombre-ev-cal">Reunión de Planificación</span>
+                </div>
+                <span class="evento-cal empresa mas-ev-cal">+ 1 más</span>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">16</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">17</span>
+                <div class="evento-cal negocios">
+                  <span class="hora-ev-cal">6:00 PM</span>
+                  <span class="nombre-ev-cal">Networking Empresarial</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">18</span></div>
+
+              <!-- Semana 4 -->
+              <div class="celda-dia-cal"><span class="numero-dia-cal">19</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">20</span>
+                <div class="evento-cal negocios">
+                  <span class="hora-ev-cal">12:00 PM</span>
+                  <span class="nombre-ev-cal">Almuerzo de Negocios</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">21</span>
+                <div class="evento-cal tecnologia">
+                  <span class="hora-ev-cal">6:00 PM</span>
+                  <span class="nombre-ev-cal">Webinar: IA en Negocios</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">22</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">24</span>
+                <div class="evento-cal empresa">
+                  <span class="hora-ev-cal">7:30 PM</span>
+                  <span class="nombre-ev-cal">Cena Anual Codeplex</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">25</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">26</span></div>
+
+              <!-- Semana 5 -->
+              <div class="celda-dia-cal"><span class="numero-dia-cal">26</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">27</span></div>
+              <div class="celda-dia-cal">
+                <span class="numero-dia-cal">28</span>
+                <div class="evento-cal educacion">
+                  <span class="hora-ev-cal">9:00 AM</span>
+                  <span class="nombre-ev-cal">Capacitación Interna</span>
+                </div>
+              </div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">29</span></div>
+              <div class="celda-dia-cal"><span class="numero-dia-cal">30</span></div>
+              <div class="celda-dia-cal otro-mes"><span class="numero-dia-cal">1</span></div>
+              <div class="celda-dia-cal otro-mes"><span class="numero-dia-cal">2</span></div>
+
+            </div>
+          </div>
+
+        </section>
+
+        <div data-componente="columna-publicidad"></div>
+
+        <!-- Sidebar de Eventos -->
+        <aside class="columna-eventos-lateral">
+
+          <!-- Mini calendario -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Calendario</h3>
+              <a href="#" class="enlace-panel-ev">Hoy</a>
+            </div>
+            <div class="calendario-mini-ev">
+              <div class="encabezado-cal-mini">
+                <button type="button" class="flecha-cal-mini"><span class="icono" data-icono="flecha-izquierda"></span></button>
+                <span class="mes-cal">Junio 2026</span>
+                <button type="button" class="flecha-cal-mini"><span class="icono" data-icono="flecha-derecha"></span></button>
+              </div>
+              <table class="tabla-cal-mini">
+                <thead>
+                  <tr><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="otro-mes"><span class="dia-num">29</span></td>
+                    <td class="otro-mes"><span class="dia-num">30</span></td>
+                    <td class="otro-mes"><span class="dia-num">31</span></td>
+                    <td><span class="dia-num">01</span></td>
+                    <td><span class="dia-num">02</span></td>
+                    <td><span class="dia-num">03</span></td>
+                    <td><span class="dia-num">04</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">05</span></td>
+                    <td><span class="dia-num">06</span></td>
+                    <td><span class="dia-num">07</span></td>
+                    <td><span class="dia-num">08</span></td>
+                    <td><span class="dia-num">09</span></td>
+                    <td><span class="dia-num">10</span></td>
+                    <td><span class="dia-num">11</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">12</span></td>
+                    <td><span class="dia-num">13</span></td>
+                    <td><span class="dia-num">14</span></td>
+                    <td class="hoy"><span class="dia-num">15</span><span class="punto-cal"></span></td>
+                    <td><span class="dia-num">16</span></td>
+                    <td><span class="dia-num">17</span></td>
+                    <td><span class="dia-num">18</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">19</span></td>
+                    <td><span class="dia-num">20</span></td>
+                    <td><span class="dia-num">21</span></td>
+                    <td><span class="dia-num">22</span><span class="punto-cal"></span></td>
+                    <td><span class="dia-num">23</span></td>
+                    <td><span class="dia-num">24</span></td>
+                    <td><span class="dia-num">25</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="dia-num">26</span></td>
+                    <td><span class="dia-num">27</span></td>
+                    <td><span class="dia-num">28</span></td>
+                    <td><span class="dia-num">29</span></td>
+                    <td><span class="dia-num">30</span></td>
+                    <td class="otro-mes"><span class="dia-num">01</span></td>
+                    <td class="otro-mes"><span class="dia-num">02</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Próximos eventos -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Próximos eventos</h3>
+              <a href="24-08-eventos-02-proximos-web.html" class="enlace-panel-ev">Ver todos</a>
+            </div>
+            <div class="lista-eventos-lat-foto">
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#6c3ce0,#a855f7);"></div>
+                  <div class="fecha-badge-lat"><span class="dia-lat">24</span><span class="mes-lat">AGO</span></div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Concierto Codeplex Live 2026</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono"></span> Sáb, 24 Ago 2026 · 7:00 PM</span>
+                  <span class="ubicacion-ev-lat"><span data-icono="ubicacion" class="icono"></span> Arena1, Lima</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono"></span> 1.2K asistirán</span>
+                </div>
+              </article>
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);"></div>
+                  <div class="fecha-badge-lat"><span class="dia-lat">15</span><span class="mes-lat">JUN</span></div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Codeplex Tech Summit</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono"></span> Jue, 15 Jun 2026 · 9:00 AM</span>
+                  <span class="ubicacion-ev-lat"><span data-icono="ubicacion" class="icono"></span> Centro de Convenciones Lima</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono"></span> 856 asistirán</span>
+                </div>
+              </article>
+              <article class="tarjeta-ev-lat-foto">
+                <div class="foto-ev-lat">
+                  <div class="gradiente-foto-lat" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div>
+                  <div class="fecha-badge-lat"><span class="dia-lat">22</span><span class="mes-lat">JUN</span></div>
+                </div>
+                <div class="datos-ev-lat-foto">
+                  <span class="nombre-ev-lat">Networking Empresarial</span>
+                  <span class="detalle-ev-lat"><span data-icono="calendario" class="icono"></span> Jue, 22 Jun 2026 · 6:00 PM</span>
+                  <span class="ubicacion-ev-lat"><span data-icono="ubicacion" class="icono"></span> WeWork San Isidro</span>
+                  <span class="asistentes-ev-lat"><span data-icono="usuarios" class="icono"></span> 642 asistirán</span>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Leyenda -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Leyenda</h3>
+            </div>
+            <div class="leyenda-ev-lat">
+              <span class="item-leyenda-lat"><span class="punto-leyenda-lat musica"></span> Música</span>
+              <span class="item-leyenda-lat"><span class="punto-leyenda-lat tecnologia"></span> Tecnología</span>
+              <span class="item-leyenda-lat"><span class="punto-leyenda-lat negocios"></span> Negocios</span>
+              <span class="item-leyenda-lat"><span class="punto-leyenda-lat educacion"></span> Educación</span>
+              <span class="item-leyenda-lat"><span class="punto-leyenda-lat reuniones"></span> Reuniones</span>
+              <span class="item-leyenda-lat"><span class="punto-leyenda-lat otros"></span> Otros</span>
+            </div>
+          </section>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+<script src="../scripts/historias.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "capacidad_id": "redsocial",
+  "reglas": [
+    "sin_mensajes_en_duro",
+    "sin_consultas_sql_en_codigo",
+    "contexto_activo_obligatorio",
+    "nombres_funcionales_en_espanol"
+  ]
+}

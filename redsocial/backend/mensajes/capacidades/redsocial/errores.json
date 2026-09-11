@@ -1,0 +1,4 @@
+{
+  "ERROR_GESTION_BASE_NOMBRE_REQUERIDO": "El nombre de la entidad base es obligatorio.",
+  "ERROR_GESTION_BASE_NO_ENCONTRADA": "La entidad base solicitada no existe."
+}

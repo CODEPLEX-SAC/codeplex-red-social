@@ -1,0 +1,529 @@
+/* ── Videollamada en curso ────────────────────────────── */
+
+/* Esta pantalla es de borde a borde (sin el ancho fijo ni el padding
+   del resto de las páginas): la llamada ocupa todo el alto visible. */
+.contenido-principal-encurso {
+  max-width: none;
+  padding: 20px 20px 0;
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.pantalla-llamada-encurso {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 14px;
+  padding-bottom: 20px;
+}
+
+/* Cabecera */
+.cabecera-llamada-encurso {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.datos-reunion-encurso {
+  flex: 1;
+  min-width: 200px;
+}
+.datos-reunion-encurso strong {
+  display: block;
+  font-size: 13.5px;
+}
+.datos-reunion-encurso p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  color: var(--texto-suave);
+}
+.estado-en-llamada {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--exito);
+}
+.punto-en-llamada {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--exito);
+}
+.cronometro-llamada {
+  font-variant-numeric: tabular-nums;
+}
+.acciones-cabecera-encurso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.pastilla-participantes-encurso {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primario-suave);
+  color: var(--primario);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pastilla-participantes-encurso .icono {
+  width: 15px;
+  height: 15px;
+}
+.boton-icono-encurso {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  background: #f6f4ff;
+  color: var(--texto);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.boton-icono-encurso .icono {
+  width: 16px;
+  height: 16px;
+}
+.boton-icono-encurso.grabando {
+  background: #fdecec;
+  color: var(--peligro);
+}
+.boton-salir-llamada {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: var(--peligro);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.boton-salir-llamada .icono {
+  width: 15px;
+  height: 15px;
+  transform: rotate(135deg);
+}
+
+/* Cuerpo: rejilla de video + panel de participantes */
+.cuerpo-llamada-encurso {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+/* Envuelve la rejilla + la barra de controles en columna: así la
+   barra reserva su propio espacio real en vez de flotar encima del
+   video con position:absolute, que chocaba con el scroll interno de
+   la rejilla en pantallas bajas (la última fila quedaba tapada). */
+.zona-video-llamada {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rejilla-video-llamada {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-auto-rows: minmax(120px, 1fr);
+  gap: 12px;
+  padding: 16px;
+  background: #0f0c1e;
+  border-radius: 14px;
+  overflow-y: auto;
+}
+.tarjeta-video-participante {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(155deg, #362a63, #1c1735);
+  min-height: 120px;
+}
+.foto-video-participante {
+  position: absolute;
+  inset: 0;
+  background: var(--primario-suave) url('../../imagenes/usuario.jpg') center/cover no-repeat;
+  opacity: 0.92;
+}
+.insignia-organizador {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: rgba(15, 12, 30, 0.55);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+.pie-video-participante {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nombre-video-participante {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(15, 12, 30, 0.55);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icono-estado-video {
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  border-radius: 50%;
+  background: rgba(15, 12, 30, 0.55);
+  color: #f2a0a0;
+  flex-shrink: 0;
+}
+.icono-estado-video.activo {
+  background: rgba(30, 154, 104, 0.9);
+  color: #fff;
+}
+
+/* Barra de controles: docked debajo de la rejilla (no flota encima
+   con position:absolute), para no chocar nunca con su scroll interno. */
+.controles-flotantes-llamada {
+  align-self: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(15, 12, 30, 0.9);
+  max-width: 100%;
+  overflow-x: auto;
+}
+.boton-control-llamada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.boton-control-llamada:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.boton-control-llamada .icono {
+  width: 19px;
+  height: 19px;
+}
+.boton-control-llamada small {
+  font-size: 10px;
+  white-space: nowrap;
+}
+.boton-control-llamada.activo .pieza-control-llamada .icono:first-child {
+  color: var(--exito);
+}
+.pieza-control-llamada {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.icono-flecha-control {
+  width: 11px !important;
+  height: 11px !important;
+  margin-left: 2px;
+}
+.insignia-control-llamada {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  border-radius: 8px;
+  background: var(--primario);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+.boton-colgar-llamada {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--peligro);
+  color: #fff;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.boton-colgar-llamada .icono {
+  width: 19px;
+  height: 19px;
+  transform: rotate(135deg);
+}
+
+/* Panel de participantes */
+.fondo-panel-participantes-encurso {
+  display: none;
+}
+.panel-participantes-encurso {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 14px;
+}
+.cabecera-panel-participantes-encurso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.cabecera-panel-participantes-encurso h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.boton-cerrar-panel-vl {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--texto-suave);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.boton-cerrar-panel-vl .icono {
+  width: 14px;
+  height: 14px;
+}
+.campo-busqueda-participantes-encurso {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.filtros-participantes-encurso {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+.filtro-participantes-encurso {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  background: #fff;
+  color: var(--texto-suave);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.filtro-participantes-encurso span {
+  font-size: 10px;
+}
+.filtro-participantes-encurso.activo {
+  background: var(--primario);
+  border-color: var(--primario);
+  color: #fff;
+}
+.filtro-participantes-encurso.mas {
+  width: 26px;
+  padding: 5px;
+  justify-content: center;
+}
+.lista-participantes-encurso {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.fila-participante-encurso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+}
+.datos-participante-encurso {
+  flex: 1;
+  min-width: 0;
+}
+.datos-participante-encurso strong {
+  display: block;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.datos-participante-encurso span {
+  display: block;
+  font-size: 10.5px;
+  color: var(--texto-suave);
+}
+.icono-estado-fila {
+  width: 15px;
+  height: 15px;
+  color: var(--peligro);
+  flex-shrink: 0;
+}
+.icono-estado-fila.activo {
+  color: var(--exito);
+}
+.boton-mas-participante-encurso {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  background: transparent;
+  color: var(--texto-suave);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.boton-mas-participante-encurso .icono {
+  width: 14px;
+  height: 14px;
+}
+.acciones-pie-participantes-encurso {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--borde);
+}
+.acciones-pie-participantes-encurso .boton-outline-vl {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+/* El panel de participantes pasa a overlay: cabe en pantallas
+   medianas sin robarle ancho a la rejilla de video. */
+@media (max-width: 1100px) {
+  .panel-participantes-encurso {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    width: min(320px, 88vw);
+    border-radius: 0;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+  }
+  .cuerpo-llamada-encurso.participantes-abiertos .panel-participantes-encurso {
+    transform: translateX(0);
+  }
+  .fondo-panel-participantes-encurso {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 29;
+    background: rgba(15, 12, 30, 0.4);
+  }
+  .cuerpo-llamada-encurso.participantes-abiertos .fondo-panel-participantes-encurso {
+    display: block;
+  }
+}
+
+@media (max-width: 780px) {
+  .contenido-principal-encurso {
+    padding: 12px 12px 0;
+  }
+  .cabecera-llamada-encurso {
+    padding: 10px 12px;
+  }
+  .datos-reunion-encurso strong {
+    font-size: 12.5px;
+  }
+  .boton-salir-llamada span:not(.icono) {
+    display: none;
+  }
+  .boton-salir-llamada {
+    padding: 0 12px;
+  }
+  .boton-icono-encurso {
+    width: 30px;
+    height: 30px;
+  }
+  .rejilla-video-llamada {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    padding: 10px;
+    padding-bottom: 64px;
+  }
+  .controles-flotantes-llamada {
+    gap: 0;
+    padding: 6px;
+  }
+  .boton-control-llamada small {
+    display: none;
+  }
+  .boton-control-llamada {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .datos-reunion-encurso p span:first-child {
+    display: none;
+  }
+  .acciones-cabecera-encurso .boton-icono-encurso:nth-of-type(2),
+  .acciones-cabecera-encurso .boton-icono-encurso:nth-of-type(3) {
+    display: none;
+  }
+  .rejilla-video-llamada {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 8px;
+  }
+}

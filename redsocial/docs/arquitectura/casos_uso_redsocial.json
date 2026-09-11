@@ -1,0 +1,9 @@
+{
+  "capacidad_id": "redsocial",
+  "casos_uso": [
+    "listar_entidades_base",
+    "registrar_entidad_base",
+    "ver_detalle_entidad_base",
+    "actualizar_entidad_base"
+  ]
+}

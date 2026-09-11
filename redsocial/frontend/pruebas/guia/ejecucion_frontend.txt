@@ -1,0 +1,1 @@
+Las pruebas frontend se ejecutan con el comando de pruebas del proyecto web.

@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Grupos — Red Social CodePlex">
+  <title>CodePlex — Grupos</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/componentes/columna-publicidad.css">
+  <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css">
+  <link rel="stylesheet" href="../estilos/paginas/grupos.css">
+</head>
+<body class="" data-pagina="grupos" data-titulo="Grupos">
+
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+      <div class="contenido-tres-columnas">
+      <section class="columna-principal">
+
+      <!-- Cabecera -->
+      <div class="encabezado-grupos">
+        <h1>Grupos</h1>
+        <div class="acciones-grupo">
+          <button type="button" class="boton boton-primario boton-md">
+            <span class="icono" data-icono="mas"></span> Crear grupo
+          </button>
+          <button type="button" class="menu-tres-puntos-grupo" aria-label="Más opciones">
+            <span class="icono" data-icono="puntos"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pestañas -->
+      <div class="pestanas-grupo" role="tablist">
+        <a class="pestana-grupo" role="tab" aria-selected="false" href="19-06-grupos-01-web-misgrupos.html">Mis grupos</a>
+        <a class="pestana-grupo activa" role="tab" aria-selected="true" href="20-06-grupos-02-web-descubrir.html">Descubrir</a>
+        <a class="pestana-grupo" role="tab" aria-selected="false" href="21-06-grupos-03-web-invitaciones.html">Invitaciones <span class="insignia-grupo">2</span></a>
+      </div>
+
+      <!-- Banner informativo -->
+      <div class="banner-grupos">
+        <div class="icono-banner-grupo">
+          <span class="icono" data-icono="amigos"></span>
+        </div>
+        <div class="datos-banner-grupo">
+          <strong>Conecta, colabora y comparte en grupos</strong>
+          <p>Únete a grupos de tu interés o crea los tuyos propios.</p>
+        </div>
+        <button type="button" class="cerrar-banner-grupo" aria-label="Cerrar">
+          <span class="icono" data-icono="cerrar"></span>
+        </button>
+      </div>
+
+      <!-- Panel contenedor -->
+      <section class="panel panel-grupos">
+
+        <!-- Grupos destacados -->
+        <div class="cabecera-seccion-grupo">
+          <h2>Grupos destacados</h2>
+          <a href="#" class="enlace-ver-todos-grupo">Ver todos</a>
+        </div>
+
+        <div class="rejilla-grupos-destacados">
+
+          <!-- Emprendedores Perú -->
+          <article class="tarjeta-grupo-destacado">
+            <div class="portada-grupo-destacado">
+              <div class="fondo-portada azul-oscuro">
+                <div class="icono-portada">
+                  <span class="icono" data-icono="amigos"></span>
+                </div>
+              </div>
+              <div class="icono-destacado-overlay morado">
+                <span class="icono" data-icono="amigos"></span>
+              </div>
+            </div>
+            <div class="datos-grupo-destacado">
+              <h3>Emprendedores Perú</h3>
+              <div class="tipo-miembros-destacado">Público · 12.4K miembros</div>
+              <p class="descripcion-destacado">Comunidad para emprendedores y dueños de negocio en Perú.</p>
+              <button type="button" class="boton-unirse-grupo">
+                <span class="icono" data-icono="mas"></span> Unirse
+              </button>
+            </div>
+          </article>
+
+          <!-- Construcción e Ingeniería -->
+          <article class="tarjeta-grupo-destacado">
+            <div class="portada-grupo-destacado">
+              <div class="fondo-portada naranja">
+                <div class="icono-portada">
+                  <span class="icono" data-icono="maletin"></span>
+                </div>
+              </div>
+              <div class="icono-destacado-overlay naranja">
+                <span class="icono" data-icono="maletin"></span>
+              </div>
+            </div>
+            <div class="datos-grupo-destacado">
+              <h3>Construcción e Ingeniería</h3>
+              <div class="tipo-miembros-destacado">Público · 8.7K miembros</div>
+              <p class="descripcion-destacado">Profesionales del sector construcción compartiendo conocimiento.</p>
+              <button type="button" class="boton-unirse-grupo">
+                <span class="icono" data-icono="mas"></span> Unirse
+              </button>
+            </div>
+          </article>
+
+          <!-- Desarrolladores Codeplex -->
+          <article class="tarjeta-grupo-destacado">
+            <div class="portada-grupo-destacado">
+              <div class="fondo-portada violeta">
+                <div class="icono-portada">
+                  <span class="icono" data-icono="cuadricula"></span>
+                </div>
+              </div>
+              <div class="icono-destacado-overlay violeta">
+                <span class="icono" data-icono="cuadricula"></span>
+              </div>
+            </div>
+            <div class="datos-grupo-destacado">
+              <h3>Desarrolladores Codeplex</h3>
+              <div class="tipo-miembros-destacado">Privado · 3.2K miembros</div>
+              <p class="descripcion-destacado">Grupo para desarrolladores que usan Codeplex y comparten soluciones.</p>
+              <button type="button" class="boton-unirse-grupo">
+                <span class="icono" data-icono="mas"></span> Unirse
+              </button>
+            </div>
+          </article>
+
+          <!-- Marketing Digital LATAM -->
+          <article class="tarjeta-grupo-destacado">
+            <div class="portada-grupo-destacado">
+              <div class="fondo-portada rosa-oscuro">
+                <div class="icono-portada">
+                  <span class="icono" data-icono="campana"></span>
+                </div>
+              </div>
+              <div class="icono-destacado-overlay rosa">
+                <span class="icono" data-icono="campana"></span>
+              </div>
+            </div>
+            <div class="datos-grupo-destacado">
+              <h3>Marketing Digital LATAM</h3>
+              <div class="tipo-miembros-destacado">Público · 9.5K miembros</div>
+              <p class="descripcion-destacado">Estrategias, herramientas y tendencias de marketing digital en LATAM.</p>
+              <button type="button" class="boton-unirse-grupo">
+                <span class="icono" data-icono="mas"></span> Unirse
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Todas las categorías -->
+        <div class="cabecera-seccion-grupo">
+          <h2>Todas las categorías</h2>
+          <a href="#" class="enlace-ver-todos-grupo">Ver todos</a>
+        </div>
+
+        <div class="rejilla-categorias">
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria morado">
+              <span class="icono" data-icono="maletin"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Negocios</h4>
+              <span>124 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria azul">
+              <span class="icono" data-icono="cuadricula"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Tecnología</h4>
+              <span>98 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria verde">
+              <span class="icono" data-icono="amigos"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Educación</h4>
+              <span>76 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria rosa">
+              <span class="icono" data-icono="campana"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Marketing</h4>
+              <span>65 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria naranja">
+              <span class="icono" data-icono="estadisticas"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Finanzas</h4>
+              <span>58 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria rojo">
+              <span class="icono" data-icono="usuarios"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Recursos Humanos</h4>
+              <span>42 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria verde">
+              <span class="icono" data-icono="me-gusta"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Salud y Bienestar</h4>
+              <span>38 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria rosa">
+              <span class="icono" data-icono="sentimiento"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Diseño</h4>
+              <span>33 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria cyan">
+              <span class="icono" data-icono="moneda"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Ventas</h4>
+              <span>29 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria azul">
+              <span class="icono" data-icono="panel"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Legal</h4>
+              <span>27 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria morado">
+              <span class="icono" data-icono="me-gusta"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Desarrollo Personal</h4>
+              <span>25 grupos</span>
+            </div>
+          </article>
+
+          <article class="tarjeta-categoria">
+            <div class="icono-categoria naranja">
+              <span class="icono" data-icono="puntos"></span>
+            </div>
+            <div class="datos-categoria">
+              <h4>Otros</h4>
+              <span>50+ grupos</span>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+      </section>
+
+      <div data-componente="columna-publicidad"></div>
+
+      <aside class="columna-grupos-lateral">
+
+        <!-- Mis grupos -->
+        <section class="panel-grupo-lateral">
+          <div class="cabecera-panel-grupo">
+            <h3>Mis grupos</h3>
+            <a href="#" class="enlace-panel-grupo">Ver todos</a>
+          </div>
+          <div class="lista-mis-grupos">
+            <article class="fila-grupo-lateral">
+              <div class="icono-grupo-lateral morado"><span class="icono" data-icono="grupos"></span></div>
+              <div class="datos-grupo-lateral">
+                <div class="fila-nombre-gl">
+                  <span class="nombre-gl">Equipo Codeplex</span>
+                  <span class="etiqueta-admin-gl">Admin</span>
+                </div>
+                <span class="miembros-gl">25 miembros</span>
+              </div>
+            </article>
+            <article class="fila-grupo-lateral">
+              <div class="icono-grupo-lateral naranja"><span class="icono" data-icono="grupos"></span></div>
+              <div class="datos-grupo-lateral">
+                <div class="fila-nombre-gl">
+                  <span class="nombre-gl">Proyecto Alfa</span>
+                </div>
+                <span class="miembros-gl">12 miembros</span>
+              </div>
+            </article>
+            <article class="fila-grupo-lateral">
+              <div class="icono-grupo-lateral verde"><span class="icono" data-icono="grupos"></span></div>
+              <div class="datos-grupo-lateral">
+                <div class="fila-nombre-gl">
+                  <span class="nombre-gl">Programación Go</span>
+                </div>
+                <span class="miembros-gl">85 miembros</span>
+              </div>
+            </article>
+            <article class="fila-grupo-lateral">
+              <div class="icono-grupo-lateral azul"><span class="icono" data-icono="grupos"></span></div>
+              <div class="datos-grupo-lateral">
+                <div class="fila-nombre-gl">
+                  <span class="nombre-gl">Ideas y Feedback</span>
+                </div>
+                <span class="miembros-gl">34 miembros</span>
+              </div>
+            </article>
+            <article class="fila-grupo-lateral">
+              <div class="icono-grupo-lateral rosa"><span class="icono" data-icono="grupos"></span></div>
+              <div class="datos-grupo-lateral">
+                <div class="fila-nombre-gl">
+                  <span class="nombre-gl">Contadores Perú</span>
+                </div>
+                <span class="miembros-gl">1.2K miembros</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Actividad reciente -->
+        <section class="panel-grupo-lateral">
+          <div class="cabecera-panel-grupo">
+            <h3>Actividad reciente</h3>
+            <a href="#" class="enlace-panel-grupo">Ver toda</a>
+          </div>
+          <div class="lista-actividad-grupo">
+            <article class="fila-actividad-gl">
+              <img class="avatar-actividad-gl" src="../imagenes/usuario.jpg" alt="" />
+              <div class="datos-actividad-gl">
+                <strong>Carlos Herrera</strong> publicó en
+                <span class="grupo-actividad-gl">Emprendedores Perú</span>
+                <span class="tiempo-gl">Hace 1 hora</span>
+              </div>
+            </article>
+            <article class="fila-actividad-gl">
+              <img class="avatar-actividad-gl" src="../imagenes/usuario.jpg" alt="" />
+              <div class="datos-actividad-gl">
+                <strong>María Fernández</strong> publicó en
+                <span class="grupo-actividad-gl">Construcción e Ingeniería</span>
+                <span class="tiempo-gl">Hace 3 horas</span>
+              </div>
+            </article>
+            <article class="fila-actividad-gl">
+              <img class="avatar-actividad-gl" src="../imagenes/usuario.jpg" alt="" />
+              <div class="datos-actividad-gl">
+                <strong>Luis Rodríguez</strong> comentó en
+                <span class="grupo-actividad-gl">Desarrolladores Codeplex</span>
+                <span class="tiempo-gl">Hace 5 horas</span>
+              </div>
+            </article>
+            <article class="fila-actividad-gl">
+              <img class="avatar-actividad-gl" src="../imagenes/usuario.jpg" alt="" />
+              <div class="datos-actividad-gl">
+                <strong>Ana García</strong> se unió a
+                <span class="grupo-actividad-gl">Marketing Digital LATAM</span>
+                <span class="tiempo-gl">Hace 1 día</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Consejo -->
+        <section class="panel-consejo-grupo">
+          <div class="icono-consejo-gl"><span class="icono" data-icono="amigos"></span></div>
+          <div class="datos-consejo-gl">
+            <strong>Consejo</strong>
+            <p>Únete a grupos relacionados con tus intereses para aprender, compartir y hacer crecer tu red profesional.</p>
+          </div>
+        </section>
+
+      </aside>
+
+      </div>
+    </main>
+  </div>
+
+</div>
+
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+</body>
+</html>

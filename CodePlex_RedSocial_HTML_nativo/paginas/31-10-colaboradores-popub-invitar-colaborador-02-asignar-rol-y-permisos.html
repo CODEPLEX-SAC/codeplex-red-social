@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Asignar rol y permisos — Invitar colaborador — CodePlex">
+  <title>CodePlex — Invitar colaborador: Rol y permisos</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/paginas/invitar-colaborador.css">
+</head>
+<body class="" data-pagina="colaboradores" data-titulo="Invitar colaborador">
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+
+      <!-- Popup Invitar Colaborador -->
+      <div class="popup-invitar-colab">
+
+        <!-- Cabecera -->
+        <div class="cabecera-popup-inv">
+          <div class="datos-popup-inv">
+            <h1>Invitar colaborador</h1>
+            <p class="subtitulo-popup-inv">Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado.</p>
+          </div>
+          <div class="acciones-popup-inv">
+            <button type="button" class="boton-icono-popup-inv" title="Configuración"><span class="icono" data-icono="ajustes-sistema"></span></button>
+            <button type="button" class="boton-icono-popup-inv" title="Aplicaciones"><span class="icono" data-icono="aplicaciones"></span></button>
+            <button type="button" class="boton-icono-popup-inv" title="Notificaciones"><span class="icono" data-icono="notificaciones"></span></button>
+            <button type="button" class="boton-icono-popup-inv boton-cerrar-popup-inv" title="Cerrar" onclick="location.href='29-10-colaboradores-todos.html'"><span class="icono" data-icono="cerrar"></span></button>
+          </div>
+        </div>
+
+        <!-- Stepper -->
+        <nav class="stepper-inv">
+          <div class="paso-stepper-inv completado">
+            <span class="numero-paso-inv">1</span>
+            <span class="texto-paso-inv">Información</span>
+          </div>
+          <span class="linea-stepper-inv completada"></span>
+          <div class="paso-stepper-inv activo">
+            <span class="numero-paso-inv">2</span>
+            <span class="texto-paso-inv">Rol y permisos</span>
+          </div>
+          <span class="linea-stepper-inv"></span>
+          <div class="paso-stepper-inv">
+            <span class="numero-paso-inv">3</span>
+            <span class="texto-paso-inv">Vigencia</span>
+          </div>
+          <span class="linea-stepper-inv"></span>
+          <div class="paso-stepper-inv">
+            <span class="numero-paso-inv">4</span>
+            <span class="texto-paso-inv">Resumen</span>
+          </div>
+        </nav>
+
+        <!-- Título del paso -->
+        <div style="padding: 20px 28px 0;">
+          <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-texto, #1f2937); margin: 0 0 4px;">2. Rol y permisos</h2>
+          <p style="font-size: 0.85rem; color: var(--color-texto-secundario, #6b7280); margin: 0; line-height: 1.4;">Selecciona el rol del colaborador y asigna los permisos por módulo.</p>
+        </div>
+
+        <!-- Contenido: módulos + permisos -->
+        <div class="contenido-permisos-inv">
+
+          <!-- Sidebar: selección de módulos -->
+          <aside class="sidebar-modulos-inv">
+            <p class="titulo-modulos-inv">Seleccionar módulo</p>
+            <ul class="lista-modulos-inv">
+              <li class="activo">
+                <div class="icono-modulo-inv morado"><span class="icono" data-icono="planillas"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Planillas</span>
+                  <span class="desc-modulo-inv">Empleados, planillas, cálculos y pagos</span>
+                </div>
+                <div class="verificar-modulo-inv"><span class="icono" data-icono="verificado"></span></div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv verde"><span class="icono" data-icono="contabilidad"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Contabilidad</span>
+                  <span class="desc-modulo-inv">Asientos, libros y reportes contables</span>
+                </div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv naranja"><span class="icono" data-icono="inventario"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Inventario</span>
+                  <span class="desc-modulo-inv">Productos, almacenes y movimientos</span>
+                </div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv azul"><span class="icono" data-icono="ventas"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Ventas</span>
+                  <span class="desc-modulo-inv">Cotizaciones, pedidos y facturación</span>
+                </div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv rojo"><span class="icono" data-icono="compras"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Compras</span>
+                  <span class="desc-modulo-inv">Proveedores, órdenes y compras</span>
+                </div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv cyan"><span class="icono" data-icono="proyectos"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Proyectos</span>
+                  <span class="desc-modulo-inv">Tareas, avances y costos</span>
+                </div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv amarillo"><span class="icono" data-icono="reportes"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Reportes</span>
+                  <span class="desc-modulo-inv">Dashboards y tableros</span>
+                </div>
+              </li>
+              <li>
+                <div class="icono-modulo-inv gris"><span class="icono" data-icono="configuracion"></span></div>
+                <div class="datos-modulo-inv">
+                  <span class="nombre-modulo-inv">Configuración</span>
+                  <span class="desc-modulo-inv">Parámetros y configuración del sistema</span>
+                </div>
+              </li>
+            </ul>
+            <div class="nota-modulos-inv">
+              <p><span class="icono" data-icono="alerta"></span> Los permisos asignados se aplicarán únicamente a este módulo. Podrás configurar otros módulos en los siguientes pasos.</p>
+            </div>
+          </aside>
+
+          <!-- Panel: permisos del módulo -->
+          <div class="panel-permisos-inv">
+
+            <!-- Selector de nivel rápido -->
+            <div class="nivel-rapido-inv">
+              <div class="izq-nivel-rapido-inv">
+                <div class="icono-nivel-rapido-inv"><span class="icono" data-icono="inicio-sesion"></span></div>
+                <div class="datos-nivel-rapido-inv">
+                  <h3>Seleccionar nivel rápido (perfil del módulo)</h3>
+                  <p>Aplica un conjunto de permisos predefinido para este módulo.</p>
+                </div>
+              </div>
+              <div class="der-nivel-rapido-inv">
+                <select class="select-nivel-rapido-inv">
+                  <option>Supervisor de Planillas</option>
+                  <option>Operador de Planillas</option>
+                  <option>Consultor de Planillas</option>
+                  <option>Solo lectura</option>
+                  <option>Sin permisos</option>
+                </select>
+                <a href="#" class="enlace-perfiles-inv">Ver perfiles <span class="icono" data-icono="alerta"></span></a>
+              </div>
+            </div>
+
+            <!-- Barra de perfil aplicado -->
+            <div class="perfil-aplicado-inv">
+              <div class="izq-perfil-aplicado-inv">
+                <span class="icono-perfil-aplicado-inv icono" data-icono="verificado"></span>
+                <span class="texto-perfil-aplicado-inv">Perfil aplicado: <strong>Supervisor de Planillas</strong></span>
+              </div>
+              <span class="texto-modificar-permisos-inv">Puedes modificar cualquier permiso de forma personalizada.</span>
+            </div>
+
+            <!-- Tabla de permisos -->
+            <div style="overflow-x:auto;">
+              <table class="tabla-permisos-inv">
+                <thead>
+                  <tr>
+                    <th>Permiso</th>
+                    <th>Sin acceso <span class="icono-th icono" data-icono="sin-acceso" style="color:#ef4444"></span></th>
+                    <th>Ver <span class="icono-th icono" data-icono="ver" style="color:#3b82f6"></span></th>
+                    <th>Crear <span class="icono-th icono" data-icono="mas" style="color:#10b981"></span></th>
+                    <th>Editar <span class="icono-th icono" data-icono="editar" style="color:#f97316"></span></th>
+                    <th>Eliminar <span class="icono-th icono" data-icono="eliminar" style="color:#ef4444"></span></th>
+                    <th>Imprimir <span class="icono-th icono" data-icono="imprimir" style="color:#8b5cf6"></span></th>
+                    <th>Exportar <span class="icono-th icono" data-icono="descargar" style="color:#10b981"></span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="fila-permiso-inv">
+                        <span class="nombre-permiso-inv"><span class="flecha-permiso">›</span> Empleados</span>
+                        <span class="desc-permiso-inv">Ver y gestionar información de empleados</span>
+                      </div>
+                    </td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv activo ver"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fila-permiso-inv">
+                        <span class="nombre-permiso-inv"><span class="flecha-permiso">›</span> Planillas</span>
+                        <span class="desc-permiso-inv">Crear y editar planillas</span>
+                      </div>
+                    </td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv activo ver"></span></td>
+                    <td><span class="radio-permiso-inv activo crear"></span></td>
+                    <td><span class="radio-permiso-inv activo editar"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fila-permiso-inv">
+                        <span class="nombre-permiso-inv"><span class="flecha-permiso">›</span> Cálculos</span>
+                        <span class="desc-permiso-inv">Realizar cálculos de planillas</span>
+                      </div>
+                    </td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv activo ver"></span></td>
+                    <td><span class="radio-permiso-inv activo crear"></span></td>
+                    <td><span class="radio-permiso-inv activo editar"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fila-permiso-inv">
+                        <span class="nombre-permiso-inv"><span class="flecha-permiso">›</span> Pagos</span>
+                        <span class="desc-permiso-inv">Registrar y gestionar pagos</span>
+                      </div>
+                    </td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv activo ver"></span></td>
+                    <td><span class="radio-permiso-inv activo crear"></span></td>
+                    <td><span class="radio-permiso-inv activo editar"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fila-permiso-inv">
+                        <span class="nombre-permiso-inv"><span class="flecha-permiso">›</span> Reportes</span>
+                        <span class="desc-permiso-inv">Generar reportes de planillas</span>
+                      </div>
+                    </td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv activo ver"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv activo exportar"></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="fila-permiso-inv">
+                        <span class="nombre-permiso-inv"><span class="flecha-permiso">›</span> Configuración del módulo</span>
+                        <span class="desc-permiso-inv">Configurar parámetros de planillas</span>
+                      </div>
+                    </td>
+                    <td><span class="radio-permiso-inv activo sin-acceso"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                    <td><span class="radio-permiso-inv"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Leyenda inferior -->
+            <div class="leyenda-permisos-inv">
+              <button type="button" class="boton-restablecer-perm-inv">
+                <span class="icono" data-icono="configuracion"></span> Restablecer permisos
+              </button>
+              <div class="items-leyenda-inv">
+                <span class="item-leyenda-inv"><span class="punto-leyenda sin-acceso"></span> Sin acceso</span>
+                <span class="item-leyenda-inv"><span class="punto-leyenda ver"></span> Ver</span>
+                <span class="item-leyenda-inv"><span class="punto-leyenda crear"></span> Crear</span>
+                <span class="item-leyenda-inv"><span class="punto-leyenda editar"></span> Editar</span>
+                <span class="item-leyenda-inv"><span class="punto-leyenda eliminar"></span> Eliminar</span>
+                <span class="item-leyenda-inv"><span class="punto-leyenda imprimir"></span> Imprimir</span>
+                <span class="item-leyenda-inv"><span class="punto-leyenda exportar"></span> Exportar</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pie -->
+        <div class="pie-popup-inv">
+          <button type="button" class="boton-cancelar-inv" onclick="location.href='29-10-colaboradores-todos.html'">Cancelar</button>
+          <button type="button" class="boton-anterior-inv" onclick="location.href='30-10-colaboradores-popub-invitar-colaborador-01-informacion.html'">
+            <span class="flecha">‹</span> Anterior
+          </button>
+          <button type="button" class="boton-siguiente-inv" onclick="location.href='32-10-colaboradores-popub-invitar-colaborador-03-vigencia.html'">
+            Siguiente <span class="flecha">›</span>
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+</body>
+</html>

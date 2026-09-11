@@ -1,0 +1,11 @@
+{
+  "dispositivo": "identificador_dispositivo",
+  "empresa_id": "uuid",
+  "idioma": "codigo_idioma",
+  "moneda": "codigo_moneda",
+  "pais_id": "codigo_pais",
+  "periodo_id": "uuid",
+  "sucursal_id": "uuid",
+  "usuario_id": "uuid",
+  "zona_horaria": "identificador_zona_horaria"
+}

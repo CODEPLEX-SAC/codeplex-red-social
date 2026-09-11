@@ -1,0 +1,411 @@
+/* ── Iniciar videollamada ─────────────────────────────── */
+
+.enlace-volver-vl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primario);
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.enlace-volver-vl:hover {
+  text-decoration: underline;
+}
+.enlace-volver-vl .icono {
+  width: 15px;
+  height: 15px;
+}
+
+/* Proporción propia de esta pantalla: la previsualización + ajustes
+   necesitan más espacio que el panel lateral de participantes. */
+.contenido-iniciar-vl {
+  grid-template-columns: minmax(400px, 720px) minmax(320px, 400px);
+}
+@media (max-width: 1000px) {
+  .contenido-iniciar-vl {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subtitulo-iniciar-vl {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+/* Previsualización de video */
+.video-previsualizacion-vl {
+  position: relative;
+  height: 420px;
+  border-radius: 14px;
+  margin: 20px 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2c2059, #4630d7);
+}
+.boton-camara-flotante-vl {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(15, 12, 30, 0.45);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.boton-camara-flotante-vl .icono {
+  width: 16px;
+  height: 16px;
+}
+.etiqueta-nombre-video-vl {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(15, 12, 30, 0.55);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.controles-video-vl {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.boton-control-video-vl {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--texto);
+}
+.boton-control-video-vl.activo {
+  background: #fff;
+}
+.boton-control-video-vl.oscuro {
+  background: rgba(15, 12, 30, 0.55);
+  color: #fff;
+}
+.boton-control-video-vl .icono {
+  width: 18px;
+  height: 18px;
+}
+
+/* Dispositivos + configuración de la llamada */
+.rejilla-config-iniciar-vl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.panel-config-vl {
+  padding: 16px;
+}
+.panel-config-vl h2 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.fila-dispositivo-vl,
+.fila-config-toggle-vl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--borde);
+}
+.fila-dispositivo-vl:last-of-type,
+.fila-config-toggle-vl:last-of-type {
+  border-bottom: 0;
+}
+.fila-dispositivo-vl > .icono:first-child,
+.fila-config-toggle-vl > .icono:first-child {
+  width: 17px;
+  height: 17px;
+  color: var(--texto-suave);
+  flex-shrink: 0;
+}
+.datos-dispositivo-vl,
+.datos-config-toggle-vl {
+  flex: 1;
+  min-width: 0;
+}
+.datos-dispositivo-vl strong,
+.datos-config-toggle-vl strong {
+  display: block;
+  font-size: 12.5px;
+}
+.datos-dispositivo-vl span,
+.datos-config-toggle-vl span {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fila-dispositivo-vl .icono-flecha {
+  width: 14px;
+  height: 14px;
+  color: var(--texto-suave);
+  flex-shrink: 0;
+}
+.enlace-probar-dispositivos-vl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primario);
+  text-decoration: none;
+}
+.enlace-probar-dispositivos-vl .icono {
+  width: 14px;
+  height: 14px;
+}
+
+/* Interruptor (toggle) */
+.interruptor-vl {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.interruptor-vl input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.deslizador-vl {
+  position: absolute;
+  inset: 0;
+  background: var(--borde);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.deslizador-vl::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.15s;
+}
+.interruptor-vl input:checked + .deslizador-vl {
+  background: var(--primario);
+}
+.interruptor-vl input:checked + .deslizador-vl::before {
+  transform: translateX(16px);
+}
+
+.boton-iniciar-llamada-vl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px;
+  font-size: 14px;
+}
+.boton-iniciar-llamada-vl .icono {
+  width: 17px;
+  height: 17px;
+}
+.enlace-cancelar-vl {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--texto-suave);
+  text-decoration: none;
+}
+.enlace-cancelar-vl:hover {
+  text-decoration: underline;
+}
+
+/* Columna derecha: participantes / opciones / detalles */
+.columna-derecha-vl {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+.panel-participantes-vl,
+.panel-opciones-llamada-vl,
+.panel-detalles-reunion-vl {
+  padding: 16px;
+}
+.cabecera-panel-participantes-vl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cabecera-panel-participantes-vl h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.cabecera-panel-participantes-vl .icono {
+  width: 15px;
+  height: 15px;
+  color: var(--texto-suave);
+}
+.fila-participante-vl,
+.fila-invitar-vl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+.datos-participante-vl {
+  flex: 1;
+  min-width: 0;
+}
+.datos-participante-vl strong {
+  display: block;
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rol-participante-vl {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+.rol-participante-vl.organizador,
+.rol-participante-vl.en-linea {
+  color: var(--exito);
+}
+.icono-mic-activo-vl {
+  width: 15px;
+  height: 15px;
+  color: var(--exito);
+  flex-shrink: 0;
+}
+.subtitulo-panel-vl {
+  margin: 14px 0 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+.campo-busqueda-invitar-vl {
+  width: 100%;
+  margin-bottom: 6px;
+}
+.lista-invitar-vl {
+  display: flex;
+  flex-direction: column;
+}
+.fila-invitar-vl .boton-outline-vl {
+  padding: 5px 12px;
+  font-size: 11.5px;
+  flex-shrink: 0;
+}
+.boton-copiar-enlace-vl {
+  width: 100%;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.panel-opciones-llamada-vl h2,
+.panel-detalles-reunion-vl h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.fila-opcion-llamada-vl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.icono-opcion-vl {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--primario-suave);
+  color: var(--primario);
+  flex-shrink: 0;
+}
+.icono-opcion-vl .icono {
+  width: 15px;
+  height: 15px;
+}
+.datos-opcion-vl {
+  flex: 1;
+  min-width: 0;
+}
+.datos-opcion-vl strong {
+  display: block;
+  font-size: 12.5px;
+}
+.datos-opcion-vl span {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+.fila-opcion-llamada-vl .icono-flecha {
+  width: 14px;
+  height: 14px;
+  color: var(--texto-suave);
+  flex-shrink: 0;
+}
+
+.titulo-reunion-detalle-vl {
+  display: block;
+  font-size: 12.5px;
+  margin-bottom: 10px;
+}
+.fila-detalle-reunion-vl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--texto-suave);
+  margin-bottom: 8px;
+}
+.fila-detalle-reunion-vl:last-child {
+  margin-bottom: 0;
+}
+.fila-detalle-reunion-vl .icono {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 900px) {
+  .rejilla-config-iniciar-vl {
+    grid-template-columns: 1fr;
+  }
+  .video-previsualizacion-vl {
+    height: 320px;
+  }
+}

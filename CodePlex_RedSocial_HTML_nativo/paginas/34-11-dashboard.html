@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Dashboard — Red Social CodePlex">
+  <title>CodePlex — Dashboard</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/paginas/dashboard.css">
+</head>
+<body class="" data-pagina="dashboard" data-titulo="Dashboard">
+<div class="aplicacion">
+<div data-componente="barra-superior"></div>
+<div data-componente="barra-lateral"></div>
+<div class="zona-principal zona-principal-ancha">
+<main class="contenido-principal">
+
+  <section class="pagina-dash">
+
+    <!-- Encabezado -->
+    <div class="encabezado-dash">
+      <div>
+        <h1>¡Buenos días, Pedro! <span class="emoji-dash">👋</span></h1>
+        <p>Aquí tienes el resumen de tu empresa al 15 de junio de 2026.</p>
+      </div>
+      <div class="controles-dash">
+        <label class="campo-select-dash">
+          <span>Periodo actual</span>
+          <select><option>Junio 2026</option><option>Mayo 2026</option></select>
+          <span class="icono icono-flecha" data-icono="flecha-abajo"></span>
+        </label>
+        <button type="button" class="boton boton-primario boton-md">
+          <span class="icono" data-icono="ajustes-sistema"></span> Personalizar dashboard
+        </button>
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="rejilla-kpi-dash">
+      <article class="tarjeta-kpi-dash">
+        <div class="cabecera-kpi-dash"><span class="icono-kpi-dash azul"><span class="icono" data-icono="documento"></span></span><span>Ventas del mes</span></div>
+        <strong>S/ 1,250,000</strong>
+        <div class="pie-kpi-dash">
+          <small class="variacion-dash positiva"><span class="icono" data-icono="flecha-arriba"></span> 12.5% <em>vs. Mayo 2026</em></small>
+        </div>
+        <svg class="chispa-kpi-dash" viewBox="0 0 100 26" preserveAspectRatio="none">
+          <polyline points="0,20 14,16 28,18 42,10 56,13 70,7 84,10 100,4" fill="none" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="0" cy="20" r="2.2" fill="#3b82f6"/><circle cx="14" cy="16" r="2.2" fill="#3b82f6"/><circle cx="28" cy="18" r="2.2" fill="#3b82f6"/><circle cx="42" cy="10" r="2.2" fill="#3b82f6"/><circle cx="56" cy="13" r="2.2" fill="#3b82f6"/><circle cx="70" cy="7" r="2.2" fill="#3b82f6"/><circle cx="84" cy="10" r="2.2" fill="#3b82f6"/><circle cx="100" cy="4" r="2.2" fill="#3b82f6"/>
+        </svg>
+      </article>
+      <article class="tarjeta-kpi-dash">
+        <div class="cabecera-kpi-dash"><span class="icono-kpi-dash rojo"><span class="icono" data-icono="tarjeta-pago"></span></span><span>Egresos del mes</span></div>
+        <strong>S/ 850,000</strong>
+        <div class="pie-kpi-dash">
+          <small class="variacion-dash negativa"><span class="icono" data-icono="flecha-abajo"></span> 8.3% <em>vs. Mayo 2026</em></small>
+        </div>
+        <svg class="chispa-kpi-dash" viewBox="0 0 100 26" preserveAspectRatio="none">
+          <polyline points="0,6 14,12 28,8 42,16 56,12 70,20 84,15 100,18" fill="none" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="0" cy="6" r="2.2" fill="#ef4444"/><circle cx="14" cy="12" r="2.2" fill="#ef4444"/><circle cx="28" cy="8" r="2.2" fill="#ef4444"/><circle cx="42" cy="16" r="2.2" fill="#ef4444"/><circle cx="56" cy="12" r="2.2" fill="#ef4444"/><circle cx="70" cy="20" r="2.2" fill="#ef4444"/><circle cx="84" cy="15" r="2.2" fill="#ef4444"/><circle cx="100" cy="18" r="2.2" fill="#ef4444"/>
+        </svg>
+      </article>
+      <article class="tarjeta-kpi-dash">
+        <div class="cabecera-kpi-dash"><span class="icono-kpi-dash azul"><span class="icono" data-icono="documento"></span></span><span>Utilidad neta</span></div>
+        <strong>S/ 400,000</strong>
+        <div class="pie-kpi-dash">
+          <small class="variacion-dash positiva"><span class="icono" data-icono="flecha-arriba"></span> 18.7% <em>vs. Mayo 2026</em></small>
+        </div>
+        <svg class="chispa-kpi-dash" viewBox="0 0 100 26" preserveAspectRatio="none">
+          <polyline points="0,20 14,17 28,19 42,13 56,15 70,9 84,12 100,5" fill="none" stroke="#3b82f6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="0" cy="20" r="2.2" fill="#3b82f6"/><circle cx="14" cy="17" r="2.2" fill="#3b82f6"/><circle cx="28" cy="19" r="2.2" fill="#3b82f6"/><circle cx="42" cy="13" r="2.2" fill="#3b82f6"/><circle cx="56" cy="15" r="2.2" fill="#3b82f6"/><circle cx="70" cy="9" r="2.2" fill="#3b82f6"/><circle cx="84" cy="12" r="2.2" fill="#3b82f6"/><circle cx="100" cy="5" r="2.2" fill="#3b82f6"/>
+        </svg>
+      </article>
+      <article class="tarjeta-kpi-dash">
+        <div class="cabecera-kpi-dash"><span class="icono-kpi-dash morado"><span class="icono" data-icono="documento"></span></span><span>Margen de utilidad</span></div>
+        <strong>32.0%</strong>
+        <div class="pie-kpi-dash">
+          <small class="variacion-dash positiva"><span class="icono" data-icono="flecha-arriba"></span> 4.5 pp <em>vs. Mayo 2026</em></small>
+        </div>
+        <svg class="chispa-kpi-dash" viewBox="0 0 100 26" preserveAspectRatio="none">
+          <polyline points="0,16 14,19 28,12 42,14 56,8 70,11 84,6 100,9" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="0" cy="16" r="2.2" fill="#7c3aed"/><circle cx="14" cy="19" r="2.2" fill="#7c3aed"/><circle cx="28" cy="12" r="2.2" fill="#7c3aed"/><circle cx="42" cy="14" r="2.2" fill="#7c3aed"/><circle cx="56" cy="8" r="2.2" fill="#7c3aed"/><circle cx="70" cy="11" r="2.2" fill="#7c3aed"/><circle cx="84" cy="6" r="2.2" fill="#7c3aed"/><circle cx="100" cy="9" r="2.2" fill="#7c3aed"/>
+        </svg>
+      </article>
+      <article class="tarjeta-kpi-dash">
+        <div class="cabecera-kpi-dash"><span class="icono-kpi-dash cian"><span class="icono" data-icono="documento"></span></span><span>Flujo de caja</span></div>
+        <strong>S/ 320,000</strong>
+        <div class="pie-kpi-dash">
+          <small class="variacion-dash positiva"><span class="icono" data-icono="flecha-arriba"></span> 22.1% <em>vs. Mayo 2026</em></small>
+        </div>
+        <svg class="chispa-kpi-dash" viewBox="0 0 100 26" preserveAspectRatio="none">
+          <polyline points="0,18 14,9 28,15 42,7 56,17 70,5 84,13 100,10" fill="none" stroke="#06b6d4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="0" cy="18" r="2.2" fill="#06b6d4"/><circle cx="14" cy="9" r="2.2" fill="#06b6d4"/><circle cx="28" cy="15" r="2.2" fill="#06b6d4"/><circle cx="42" cy="7" r="2.2" fill="#06b6d4"/><circle cx="56" cy="17" r="2.2" fill="#06b6d4"/><circle cx="70" cy="5" r="2.2" fill="#06b6d4"/><circle cx="84" cy="13" r="2.2" fill="#06b6d4"/><circle cx="100" cy="10" r="2.2" fill="#06b6d4"/>
+        </svg>
+      </article>
+    </div>
+
+    <!-- Fila 1: Evolución / Composición / Ratios -->
+    <div class="fila-dash fila-3-dash">
+
+      <article class="panel panel-dash ancho-2-dash">
+        <div class="panel-cabecera">
+          <div><h2>Evolución de ventas</h2></div>
+          <div class="acciones-cabecera-dash">
+            <span class="envoltorio-select-mini-dash">
+              <select class="select-mini-dash"><option>Mensual</option><option>Semanal</option></select>
+              <span class="icono icono-flecha" data-icono="flecha-abajo"></span>
+            </span>
+            <button type="button" class="boton-puntos-dash">⋮</button>
+          </div>
+        </div>
+        <div class="grafico-lineas-dash">
+          <svg viewBox="0 0 760 220" preserveAspectRatio="none" class="svg-lineas-dash">
+            <line x1="0" y1="0" x2="760" y2="0" class="linea-guia-dash"/>
+            <line x1="0" y1="55" x2="760" y2="55" class="linea-guia-dash"/>
+            <line x1="0" y1="110" x2="760" y2="110" class="linea-guia-dash"/>
+            <line x1="0" y1="165" x2="760" y2="165" class="linea-guia-dash"/>
+            <line x1="0" y1="219" x2="760" y2="219" class="linea-guia-dash"/>
+            <path d="M0,219 L0,150 L63,140 L127,125 L190,130 L253,95 L317,60 L380,75 L443,40 L507,55 L570,30 L570,219 Z" class="area-ventas-dash"/>
+            <polyline points="0,150 63,140 127,125 190,130 253,95 317,60 380,75 443,40 507,55 570,30" class="linea-ventas-dash"/>
+            <polyline points="570,30 633,20 696,32 760,10" class="linea-proyeccion-dash"/>
+            <circle cx="0" cy="150" r="4" class="punto-ventas-dash"/><circle cx="63" cy="140" r="4" class="punto-ventas-dash"/><circle cx="127" cy="125" r="4" class="punto-ventas-dash"/><circle cx="190" cy="130" r="4" class="punto-ventas-dash"/><circle cx="253" cy="95" r="4" class="punto-ventas-dash"/><circle cx="317" cy="60" r="4" class="punto-ventas-dash"/><circle cx="443" cy="40" r="4" class="punto-ventas-dash"/><circle cx="507" cy="55" r="4" class="punto-ventas-dash"/><circle cx="570" cy="30" r="4" class="punto-ventas-dash"/>
+            <circle cx="380" cy="75" r="5.5" class="punto-ventas-dash activo"/>
+          </svg>
+          <div class="tooltip-grafico-dash" style="left:50%">S/ 1,250,000</div>
+          <div class="eje-x-dash">
+            <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span>
+          </div>
+        </div>
+        <div class="leyenda-lineas-dash">
+          <span><i class="punto-leyenda-dash solido"></i> Ventas</span>
+          <span><i class="punto-leyenda-dash punteado"></i> Proyección</span>
+        </div>
+      </article>
+
+      <article class="panel panel-dash">
+        <div class="panel-cabecera"><div><h2>Composición de ingresos</h2></div></div>
+        <div class="dona-dash" style="--conic-dona: conic-gradient(#3b82f6 0% 45%, #7c3aed 45% 70%, #22c55e 70% 90%, #eab308 90% 100%)">
+          <span class="centro-dona-dash"><strong>S/ 1,250,000</strong><span>Total</span></span>
+        </div>
+        <ul class="leyenda-dona-dash">
+          <li><i class="punto-leyenda-dash" style="background:#3b82f6"></i> Construcción <b>45%</b> <small>S/ 562,500</small></li>
+          <li><i class="punto-leyenda-dash" style="background:#7c3aed"></i> Consultoría <b>25%</b> <small>S/ 312,500</small></li>
+          <li><i class="punto-leyenda-dash" style="background:#22c55e"></i> Servicios <b>20%</b> <small>S/ 250,000</small></li>
+          <li><i class="punto-leyenda-dash" style="background:#eab308"></i> Otros <b>10%</b> <small>S/ 125,000</small></li>
+        </ul>
+      </article>
+
+      <article class="panel panel-dash">
+        <div class="panel-cabecera"><div><h2>Ratios financieros</h2></div><a href="#" class="enlace-panel-dash">Ver todos</a></div>
+        <div class="tabla-dash-contenedor">
+          <table class="tabla-dash">
+            <thead><tr><th>Ratio</th><th>Valor</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>Liquidez corriente</td><td>2.15</td><td><span class="estado-dash optimo">Óptimo</span></td></tr>
+              <tr><td>Prueba ácida</td><td>1.48</td><td><span class="estado-dash optimo">Óptimo</span></td></tr>
+              <tr><td>Endeudamiento</td><td>0.35</td><td><span class="estado-dash bajo">Bajo</span></td></tr>
+              <tr><td>ROE</td><td>18.6%</td><td><span class="estado-dash optimo">Óptimo</span></td></tr>
+              <tr><td>ROA</td><td>11.2%</td><td><span class="estado-dash optimo">Óptimo</span></td></tr>
+              <tr><td>Rotación de inventario</td><td>6.8</td><td><span class="estado-dash optimo">Óptimo</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Resumen por módulo -->
+    <div class="panel-cabecera panel-cabecera-suelta-dash"><h2>Resumen por módulo</h2></div>
+    <div class="rejilla-modulos-dash">
+
+      <article class="tarjeta-modulo-dash">
+        <div class="cabecera-tarjeta-modulo-dash"><span class="icono-modulo-dash verde"><span class="icono" data-icono="planillas"></span></span><strong>Planillas</strong></div>
+        <div class="fila-dato-modulo-dash"><span>Empleados activos</span><b>120</b></div>
+        <div class="fila-dato-modulo-dash"><span>Planilla de junio</span><span class="estado-dash optimo">Generada</span></div>
+        <a href="#" class="enlace-modulo-dash">Ver detalles</a>
+      </article>
+
+      <article class="tarjeta-modulo-dash">
+        <div class="cabecera-tarjeta-modulo-dash"><span class="icono-modulo-dash azul"><span class="icono" data-icono="moneda"></span></span><strong>Contabilidad</strong></div>
+        <div class="fila-dato-modulo-dash"><span>Asientos del mes</span><b>152</b></div>
+        <div class="fila-dato-modulo-dash"><span>Estados financieros</span><b>Actualizados</b></div>
+        <a href="#" class="enlace-modulo-dash">Ver detalles</a>
+      </article>
+
+      <article class="tarjeta-modulo-dash">
+        <div class="cabecera-tarjeta-modulo-dash"><span class="icono-modulo-dash naranja"><span class="icono" data-icono="caja"></span></span><strong>Inventarios</strong></div>
+        <div class="fila-dato-modulo-dash"><span>Productos activos</span><b>1,248</b></div>
+        <div class="fila-dato-modulo-dash"><span>Stock valorizado</span><b>S/ 2,350,000</b></div>
+        <a href="#" class="enlace-modulo-dash">Ver detalles</a>
+      </article>
+
+      <article class="tarjeta-modulo-dash">
+        <div class="cabecera-tarjeta-modulo-dash"><span class="icono-modulo-dash morado"><span class="icono" data-icono="maletin"></span></span><strong>Proyectos</strong></div>
+        <div class="fila-dato-modulo-dash"><span>Proyectos en curso</span><b>8</b></div>
+        <div class="fila-dato-modulo-dash"><span>Avance promedio</span><b>65%</b></div>
+        <a href="#" class="enlace-modulo-dash">Ver detalles</a>
+      </article>
+
+      <article class="tarjeta-modulo-dash">
+        <div class="cabecera-tarjeta-modulo-dash"><span class="icono-modulo-dash cian"><span class="icono" data-icono="carrito"></span></span><strong>Ventas</strong></div>
+        <div class="fila-dato-modulo-dash"><span>Pedidos del mes</span><b>78</b></div>
+        <div class="fila-dato-modulo-dash"><span>Facturación del mes</span><b>S/ 1,250,000</b></div>
+        <a href="#" class="enlace-modulo-dash">Ver detalles</a>
+      </article>
+
+    </div>
+
+    <!-- Fila 2: Top productos / Proyección / Flujo -->
+    <div class="fila-dash fila-3-dash">
+
+      <article class="panel panel-dash">
+        <div class="panel-cabecera"><div><h2>Top 5 productos más vendidos</h2></div><a href="#" class="enlace-panel-dash">Ver reporte</a></div>
+        <ul class="lista-ranking-dash">
+          <li><span class="nombre-ranking-dash">Cemento Tipo I (42.5 kg)</span><div class="barra-ranking-dash"><span style="width:100%"></span></div><span class="cantidad-ranking-dash">1,250</span><span class="valor-ranking-dash">S/ 125,000</span></li>
+          <li><span class="nombre-ranking-dash">Acero de Construcción 1/2"</span><div class="barra-ranking-dash"><span style="width:78%"></span></div><span class="cantidad-ranking-dash">980</span><span class="valor-ranking-dash">S/ 98,000</span></li>
+          <li><span class="nombre-ranking-dash">Ladrillo King Kong 18 huecos</span><div class="barra-ranking-dash"><span style="width:68%"></span></div><span class="cantidad-ranking-dash">850</span><span class="valor-ranking-dash">S/ 68,000</span></li>
+          <li><span class="nombre-ranking-dash">Arena Gruesa</span><div class="barra-ranking-dash"><span style="width:58%"></span></div><span class="cantidad-ranking-dash">720</span><span class="valor-ranking-dash">S/ 43,000</span></li>
+          <li><span class="nombre-ranking-dash">Pintura Látex Blanca 4L</span><div class="barra-ranking-dash"><span style="width:49%"></span></div><span class="cantidad-ranking-dash">610</span><span class="valor-ranking-dash">S/ 30,500</span></li>
+        </ul>
+      </article>
+
+      <article class="panel panel-dash">
+        <div class="panel-cabecera"><div><h2>Proyección de ventas</h2></div><a href="#" class="enlace-panel-dash">Ver detalle</a></div>
+        <div class="grafico-barras-dash-envoltorio">
+          <div class="grafico-barras-dash">
+            <div class="barra-dash real" style="--valor:75%"><span></span><small>Jun</small></div>
+            <div class="barra-dash real" style="--valor:80%"><span></span><small>Jul</small></div>
+            <div class="barra-dash real" style="--valor:88%"><span></span><small>Ago</small></div>
+            <div class="barra-dash proyeccion" style="--valor:100%"><span></span><small>Sep</small></div>
+            <div class="barra-dash proyeccion" style="--valor:92%"><span></span><small>Oct</small></div>
+            <div class="barra-dash proyeccion" style="--valor:96%"><span></span><small>Nov</small></div>
+          </div>
+          <div class="tooltip-barras-dash">
+            <strong>Octubre 2026</strong>
+            <span>Proyección: S/ 1,650,000</span>
+          </div>
+        </div>
+        <div class="leyenda-lineas-dash">
+          <span><i class="punto-leyenda-dash solido" style="background:#7c3aed"></i> Ventas reales</span>
+          <span><i class="punto-leyenda-dash" style="background:#e4defb"></i> Proyección</span>
+        </div>
+      </article>
+
+      <article class="panel panel-dash">
+        <div class="panel-cabecera"><div><h2>Flujo de caja proyectado</h2></div><a href="#" class="enlace-panel-dash">Ver detalle</a></div>
+        <div class="grafico-lineas-dash chico-dash">
+          <svg viewBox="0 0 340 170" preserveAspectRatio="none" class="svg-lineas-dash">
+            <line x1="0" y1="0" x2="340" y2="0" class="linea-guia-dash"/>
+            <line x1="0" y1="42" x2="340" y2="42" class="linea-guia-dash"/>
+            <line x1="0" y1="85" x2="340" y2="85" class="linea-guia-dash"/>
+            <line x1="0" y1="127" x2="340" y2="127" class="linea-guia-dash"/>
+            <line x1="0" y1="169" x2="340" y2="169" class="linea-guia-dash"/>
+            <path d="M0,110 L34,90 L68,100 L102,70 L136,80 L170,55 L204,60 L238,40 L272,48 L306,30 L340,35 L340,169 L0,169 Z" class="area-flujo-dash"/>
+            <polyline points="0,110 34,90 68,100 102,70 136,80 170,55 204,60 238,40 272,48 306,30 340,35" class="linea-flujo-dash"/>
+            <circle cx="272" cy="48" r="5" class="punto-flujo-dash"/>
+          </svg>
+          <div class="tooltip-grafico-dash chico-dash" style="left:80%">
+            <strong>Noviembre 2026</strong>
+            <span>Flujo proyectado: S/ 385,000</span>
+          </div>
+          <div class="eje-x-dash">
+            <span>Jun</span><span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+</main>
+</div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+</body>
+</html>

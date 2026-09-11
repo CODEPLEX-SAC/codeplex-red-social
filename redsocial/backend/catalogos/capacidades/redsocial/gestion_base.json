@@ -1,0 +1,18 @@
+{
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "procedimientos": [
+    "gestion_base.fn_registrar_entidad_base",
+    "gestion_base.fn_actualizar_entidad_base",
+    "gestion_base.fn_listar_entidades_base",
+    "gestion_base.fn_ver_detalle_entidad_base"
+  ],
+  "vistas": [
+    "gestion_base.vista_resumen_entidades_base",
+    "gestion_base.vista_detalle_entidad_base"
+  ]
+}

@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+
+@theme {
+
+  --color-primario: #5a43f4;
+  --color-primario-oscuro: #4630d7;
+  --color-primario-suave: #f0edff;
+
+
+  --color-texto: #26243a;
+  --color-texto-suave: #77758a;
+  --color-borde: #e9e7f1;
+  --color-fondo: #f8f8fc;
+  --color-superficie: #fff;
+
+  --color-exito: #1e9a68;
+  --color-peligro: #e5484d;
+
+
+  --shadow-sombra: 0 8px 30px rgba(42, 35, 84, 0.06);
+
+  --color-azul-categoria: #3b82f6;
+  --color-verde-categoria: #22c55e;
+  --color-morado-categoria: #7c3aed;
+  --color-naranja-categoria: #f97316;
+  --color-positivo-kpi: #16a34a;
+  --color-negativo-kpi: #dc2626;
+
+
+  --color-gris-oscuro-texto: #1f2937;
+  --color-gris-texto: #374151;
+  --color-gris-texto-secundario: #6b7280;
+  --color-gris-texto-terciario: #9ca3af;
+  --color-gris-borde: #e5e7eb;
+
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  --radius-control: 10px;
+}
+
+@layer base {
+:root {
+  --primario: var(--color-primario);
+  --primario-oscuro: var(--color-primario-oscuro);
+  --primario-suave: var(--color-primario-suave);
+
+ 
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+
+  --control-radius: var(--radius-control);
+
+
+  --control-height: 44px;
+  --control-padding-x: 20px;
+}
+
+
+body {
+  font-size: 14px;
+}
+
+
+html {
+  scrollbar-gutter: stable;
+}
+}
+
+
+@layer components {
+.icono {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+}

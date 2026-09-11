@@ -1,0 +1,650 @@
+/* =====================================================
+   COLABORADORES — Estilos de la página
+   ===================================================== */
+
+/* --- Encabezado --- */
+.encabezado-colab {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.datos-encabezado-colab h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gris-oscuro-texto);
+  margin: 0 0 4px;
+}
+.datos-encabezado-colab .subtitulo-colab {
+  font-size: 0.875rem;
+  color: var(--gris-texto-secundario);
+  margin: 0;
+  max-width: 480px;
+  line-height: 1.4;
+}
+.boton-invitar-colab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: var(--primario);
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.boton-invitar-colab:hover { background: #4a35d4; }
+.boton-invitar-colab .icono { width: 16px; height: 16px; }
+
+/* --- Pestañas --- */
+.pestanas-colab {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.pestana-colab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gris-texto-secundario);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.pestana-colab:hover {
+  color: var(--gris-oscuro-texto);
+}
+.pestana-colab.activa {
+  color: var(--primario);
+  font-weight: 600;
+  border-bottom-color: var(--primario);
+}
+.insignia-colab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: #f3f4f6;
+  color: var(--gris-texto-secundario);
+}
+.pestana-colab.activa .insignia-colab {
+  background: rgba(90, 67, 244, 0.12);
+  color: var(--primario);
+}
+
+/* --- Buscador y acciones --- */
+.fila-busqueda-colab {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.campo-busqueda-colab {
+  flex: 1;
+  min-width: 240px;
+  position: relative;
+}
+.campo-busqueda-colab input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--gris-oscuro-texto);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.campo-busqueda-colab input:focus { border-color: var(--primario); }
+.campo-busqueda-colab input::placeholder { color: #9ca3af; }
+.campo-busqueda-colab .icono-buscar {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+}
+.acciones-colab {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.boton-accion-colab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--gris-texto);
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.boton-accion-colab:hover { background: #f9fafb; }
+.boton-accion-colab .icono { width: 14px; height: 14px; }
+
+/* --- Filtros dropdown --- */
+.filtros-dropdown-colab {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.campo-select-colab {
+  position: relative;
+}
+.campo-select-colab label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gris-texto-secundario);
+  margin-bottom: 4px;
+}
+.campo-select-colab select {
+  width: 100%;
+  padding: 8px 32px 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gris-oscuro-texto);
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.campo-select-colab .icono-flecha {
+    position: absolute;
+    right: 12px;
+    top: calc(100% - 20px);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* --- Tabla de colaboradores --- */
+.tabla-colab-contenedor {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+.tabla-colab {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.tabla-colab thead {
+  background: #f9fafb;
+}
+.tabla-colab thead th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--gris-texto-secundario);
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+.tabla-colab thead th:first-child {
+  width: 40px;
+  text-align: center;
+}
+.tabla-colab tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.15s;
+}
+.tabla-colab tbody tr:last-child { border-bottom: none; }
+.tabla-colab tbody tr:hover { background: #fafafe; }
+.tabla-colab tbody td {
+  padding: 14px;
+  vertical-align: middle;
+  color: var(--gris-texto);
+}
+
+/* Checkbox */
+.tabla-colab thead th:first-child,
+.tabla-colab tbody td:first-child {
+  width: 40px;
+  text-align: center;
+}
+.colab-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primario);
+  cursor: pointer;
+}
+
+/* Celda de persona */
+.celda-colab-persona {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+.avatar-colab-tabla {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #e5e7eb;
+}
+.datos-colab-persona {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.datos-colab-persona .nombre-colab {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--gris-oscuro-texto);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.datos-colab-persona .correo-colab {
+  font-size: 0.78rem;
+  color: var(--gris-texto-terciario);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.datos-colab-persona .telefono-colab {
+  font-size: 0.78rem;
+  color: var(--gris-texto-terciario);
+}
+
+/* Rol / Perfil */
+.celda-rol-colab {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.etiqueta-rol-colab {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.etiqueta-rol-colab.administrador { background: #ede9fe; color: #5b21b6; }
+.etiqueta-rol-colab.contador { background: #dbeafe; color: #1d4ed8; }
+.etiqueta-rol-colab.vendedor { background: #fef3c7; color: #92400e; }
+.etiqueta-rol-colab.almacenero { background: #d1fae5; color: #065f46; }
+.etiqueta-rol-colab.analista { background: #e0e7ff; color: #3730a3; }
+.etiqueta-rol-colab.asistente { background: #fce7f3; color: #9d174d; }
+.descripcion-rol-colab {
+  font-size: 0.78rem;
+  color: var(--gris-texto-terciario);
+}
+
+/* Aplicaciones */
+.celda-aplicaciones-colab {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.icono-app-colab {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icono-app-colab .icono { width: 14px; height: 14px; color: #fff; }
+.icono-app-colab.app-calendario { background: #6c3ce0; }
+.icono-app-colab.app-mensajes { background: var(--azul-categoria); }
+.icono-app-colab.app-actividad { background: var(--verde-categoria); }
+.icono-app-colab.app-marketplace { background: var(--naranja-categoria); }
+.icono-app-colab.app-eventos { background: #ec4899; }
+.icono-app-colab.app-estadisticas { background: #06b6d4; }
+.icono-app-colab.app-reportes { background: #8b5cf6; }
+.mas-apps-colab {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primario);
+  margin-left: 2px;
+}
+
+/* Estado */
+.estado-colab {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.estado-colab .punto-estado {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.estado-colab.activo { color: #16a34a; }
+.estado-colab.activo .punto-estado { background: #22c55e; }
+.estado-colab.invitado { color: #d97706; }
+.estado-colab.invitado .punto-estado { background: #f59e0b; }
+.estado-colab.inactivo { color: #6b7280; }
+.estado-colab.inactivo .punto-estado { background: #9ca3af; }
+.estado-colab.baja { color: #dc2626; }
+.estado-colab.baja .punto-estado { background: #ef4444; }
+
+/* Vigencia */
+.vigencia-colab {
+  font-size: 0.8rem;
+  color: var(--gris-texto-secundario);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.vigencia-colab .rango-fechas {
+  display: block;
+  font-size: 0.78rem;
+}
+.vigencia-colab .fecha-simple {
+  display: block;
+  font-size: 0.78rem;
+}
+.texto-invitacion {
+  font-size: 0.78rem;
+  color: var(--gris-texto-terciario);
+  display: block;
+}
+
+/* Acciones */
+.celda-acciones-colab {
+  text-align: center;
+}
+.boton-mas-colab {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #9ca3af;
+  transition: background 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.boton-mas-colab:hover { background: #f3f4f6; color: #374151; }
+.boton-reenviar-colab {
+  padding: 6px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gris-texto);
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.boton-reenviar-colab:hover { background: #f9fafb; }
+
+/* --- Paginación --- */
+.paginacion-colab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.info-paginacion-colab {
+  font-size: 0.82rem;
+  color: var(--gris-texto-secundario);
+}
+.controles-paginacion-colab {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.boton-pag-colab {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gris-texto);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.boton-pag-colab:hover { background: #f3f4f6; border-color: #9ca3af; }
+.boton-pag-colab.activa {
+  background: var(--primario);
+  color: #fff;
+  border-color: var(--primario);
+}
+.boton-pag-colab.flecha {
+  font-size: 1rem;
+  color: #9ca3af;
+}
+
+/* --- ¿Cómo funciona? --- */
+.como-funciona-colab {
+  margin-top: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+}
+.como-funciona-colab h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gris-oscuro-texto);
+  margin: 0 0 20px;
+}
+.pasos-funciona-colab {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.paso-funciona-colab {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.paso-funciona-colab:not(:last-child) {
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+}
+.paso-funciona-colab .icono-paso-colab {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f3ff;
+}
+.paso-funciona-colab .icono-paso-colab .icono {
+  width: 22px;
+  height: 22px;
+  color: var(--primario);
+}
+.paso-funciona-colab .icono-paso-colab.azul { background: #dbeafe; }
+.paso-funciona-colab .icono-paso-colab.azul .icono { color: var(--azul-categoria); }
+.paso-funciona-colab .icono-paso-colab.verde { background: #dcfce7; }
+.paso-funciona-colab .icono-paso-colab.verde .icono { color: var(--verde-categoria); }
+.paso-funciona-colab .icono-paso-colab.indigo { background: #e0e7ff; }
+.paso-funciona-colab .icono-paso-colab.indigo .icono { color: #6366f1; }
+.paso-funciona-colab .icono-paso-colab.morado { background: #f5f3ff; }
+.paso-funciona-colab .icono-paso-colab.morado .icono { color: var(--morado-categoria); }
+.paso-funciona-colab .numero-paso-colab {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--gris-oscuro-texto);
+}
+.paso-funciona-colab .descripcion-paso-colab {
+  font-size: 0.82rem;
+  color: var(--gris-texto-secundario);
+  line-height: 1.45;
+}
+
+/* --- Panel de detalle del colaborador --- */
+.contenido-colaboradores { display: grid; grid-template-columns: minmax(400px, 1fr) minmax(260px, 300px); gap: 24px; align-items: start; }
+.contenido-colaboradores.detalle-abierto { grid-template-columns: minmax(0, 1fr) minmax(260px, 300px) 360px; }
+.panel-detalle-colaborador {
+  display: none;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  position: sticky;
+  top: 88px;
+}
+.contenido-colaboradores.detalle-abierto .panel-detalle-colaborador { display: block; }
+
+.cabecera-detalle-colab { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.cabecera-detalle-colab h2 { font-size: 1rem; font-weight: 700; color: var(--gris-oscuro-texto); margin: 0; }
+.boton-cerrar-detalle-colab { width: 28px; height: 28px; border: 0; background: transparent; border-radius: 6px; display: grid; place-items: center; color: #9ca3af; cursor: pointer; }
+.boton-cerrar-detalle-colab:hover { background: #f3f4f6; color: #374151; }
+.boton-cerrar-detalle-colab .icono { width: 16px; height: 16px; }
+
+.perfil-detalle-colab { display: flex; flex-direction: column; gap: 10px; padding-bottom: 18px; border-bottom: 1px solid #f3f4f6; margin-bottom: 16px; }
+.fila-perfil-detalle-colab { display: flex; align-items: flex-start; gap: 12px; }
+.perfil-detalle-colab .avatar { width: 56px; height: 56px; flex-shrink: 0; }
+.datos-perfil-detalle-colab { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.datos-perfil-detalle-colab h3 { margin: 0; font-size: 1rem; font-weight: 700; color: var(--gris-oscuro-texto); }
+.rol-detalle-colab { color: var(--primario); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+.correo-detalle-colab, .telefono-detalle-colab { font-size: 0.8rem; color: var(--gris-texto-secundario); }
+
+.seccion-detalle-colab { margin-bottom: 18px; }
+.seccion-detalle-colab:last-child { margin-bottom: 0; }
+.seccion-detalle-colab > h4 { margin: 0 0 10px; font-size: 0.85rem; font-weight: 700; color: var(--gris-oscuro-texto); }
+.cabecera-seccion-detalle-colab { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cabecera-seccion-detalle-colab h4 { margin: 0; font-size: 0.85rem; font-weight: 700; color: var(--gris-oscuro-texto); }
+.cabecera-seccion-detalle-colab a { font-size: 0.78rem; color: var(--primario); text-decoration: none; font-weight: 600; }
+
+.lista-datos-detalle-colab { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.lista-datos-detalle-colab li { display: flex; align-items: flex-start; gap: 10px; }
+.lista-datos-detalle-colab .icono { width: 16px; height: 16px; color: #9ca3af; margin-top: 2px; flex-shrink: 0; }
+.lista-datos-detalle-colab li span { display: block; font-size: 0.75rem; color: var(--gris-texto-secundario); }
+.lista-datos-detalle-colab strong { display: block; font-size: 0.82rem; font-weight: 600; color: var(--gris-oscuro-texto); margin-top: 1px; }
+
+.grid-apps-detalle-colab { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+
+.grid-acciones-rapidas-colab { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.boton-accion-rapida-colab { padding: 9px 10px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--gris-texto); background: #fff; cursor: pointer; transition: background 0.15s; }
+.boton-accion-rapida-colab:hover { background: #f9fafb; }
+.boton-accion-rapida-colab.peligro { color: #dc2626; border-color: #fecaca; }
+.boton-accion-rapida-colab.peligro:hover { background: #fef2f2; }
+
+.linea-tiempo-colab { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.linea-tiempo-colab li { position: relative; padding-left: 16px; font-size: 0.8rem; }
+.linea-tiempo-colab li::before { content: ''; position: absolute; left: 0; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; }
+.linea-tiempo-colab li span { display: block; font-weight: 600; color: var(--gris-oscuro-texto); }
+.linea-tiempo-colab time { display: block; font-size: 0.75rem; color: var(--gris-texto-terciario); margin-top: 1px; }
+
+/* --- Menú de acciones por fila --- */
+.menu-acciones-colab { position: relative; display: inline-block; }
+.lista-menu-acciones-colab { display: none; position: absolute; right: 0; top: calc(100% + 4px); min-width: 170px; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 8px 24px rgba(15, 15, 35, 0.12); padding: 6px; z-index: 10; text-align: left; }
+.menu-acciones-colab.abierto .lista-menu-acciones-colab { display: grid; gap: 2px; }
+.item-menu-colab { display: block; width: 100%; text-align: left; padding: 8px 10px; border: 0; background: transparent; border-radius: 6px; font-size: 0.8rem; color: var(--gris-texto); cursor: pointer; }
+.item-menu-colab:hover { background: #f3f4f6; }
+.item-menu-colab.peligro { color: #dc2626; }
+.item-menu-colab.peligro:hover { background: #fef2f2; }
+
+/* --- Responsive --- */
+@media (max-width: 1100px) {
+  .filtros-dropdown-colab { grid-template-columns: repeat(2, 1fr); }
+  .pasos-funciona-colab { grid-template-columns: repeat(2, 1fr); row-gap: 20px; }
+  .paso-funciona-colab:not(:last-child) { border-right: none; padding-right: 0; }
+  .paso-funciona-colab:nth-child(odd) { border-right: 1px solid #eee; padding-right: 20px; }
+  .columna-publicidad { display: none; }
+  .contenido-colaboradores { grid-template-columns: 1fr; }
+  .contenido-colaboradores.detalle-abierto { grid-template-columns: 1fr; }
+  .panel-detalle-colaborador { position: static; }
+  .campo-busqueda-colab { min-width: 200px; }
+}
+@media (max-width: 900px) {
+  .encabezado-colab { flex-direction: column; align-items: stretch; }
+  .boton-invitar-colab { width: 100%; justify-content: center; }
+  .pestanas-colab { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pestanas-colab::-webkit-scrollbar { display: none; }
+  .pestanas-colab { scrollbar-width: none; }
+  .fila-busqueda-colab { flex-direction: column; gap: 8px; }
+  .campo-busqueda-colab { min-width: 100%; }
+  .acciones-colab { width: 100%; justify-content: flex-end; }
+  .tabla-colab-contenedor { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .celda-colab-persona { min-width: 160px; }
+}
+@media (max-width: 768px) {
+  .encabezado-colab { flex-direction: column; }
+  .datos-encabezado-colab h1 { font-size: 1.3rem; }
+  .fila-busqueda-colab { flex-direction: column; }
+  .campo-busqueda-colab { min-width: 100%; }
+  .acciones-colab { width: 100%; justify-content: flex-end; }
+  .filtros-dropdown-colab { grid-template-columns: 1fr; gap: 10px; }
+  .campo-select-colab select { padding: 10px 32px 10px 12px; }
+  .pasos-funciona-colab { grid-template-columns: 1fr; gap: 16px; }
+  .paso-funciona-colab:nth-child(odd) { border-right: none; padding-right: 0; }
+  .paginacion-colab { flex-direction: column; align-items: center; gap: 8px; }
+  .controles-paginacion-colab { gap: 2px; }
+  .boton-pag-colab { width: 32px; height: 32px; font-size: 0.8rem; }
+  .como-funciona-colab { padding: 16px; }
+  .como-funciona-colab h2 { font-size: 1rem; }
+  .panel-detalle-colaborador { padding: 16px; }
+  .celda-rol-colab { min-width: 80px; }
+  .celda-aplicaciones-colab { min-width: 80px; }
+}
+@media (max-width: 480px) {
+  .encabezado-colab { margin-bottom: 12px; }
+  .pestanas-colab { gap: 0; }
+  .pestana-colab { padding: 8px 12px; font-size: 0.8rem; }
+  .boton-accion-colab { padding: 8px 12px; font-size: 0.75rem; }
+  .tabla-colab { font-size: 0.8rem; }
+  .tabla-colab thead th, .tabla-colab tbody td { padding: 10px 8px; }
+  .avatar-colab-tabla { width: 32px; height: 32px; }
+  .datos-colab-persona .nombre-colab { font-size: 0.82rem; }
+  .datos-colab-persona .correo-colab, .datos-colab-persona .telefono-colab { font-size: 0.72rem; }
+  .etiqueta-rol-colab { font-size: 0.7rem; padding: 2px 8px; }
+  .icono-app-colab { width: 24px; height: 24px; }
+  .icono-app-colab .icono { width: 12px; height: 12px; }
+  .boton-reenviar-colab { padding: 5px 10px; font-size: 0.72rem; }
+  .vigencia-colab { font-size: 0.75rem; }
+  .rango-fechas { font-size: 0.72rem; }
+}

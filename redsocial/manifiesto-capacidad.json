@@ -1,0 +1,15 @@
+{
+  "capacidad_id": "redsocial",
+  "nombre": "Red Social",
+  "version": "1.0.0",
+  "dominio": "redsocial",
+  "punto_entrada": "modulo",
+  "activa": true,
+  "equipo": "equipo_redsocial",
+  "descripcion": "Sistemas saas con integracion de red social",
+  "dependencias": [],
+  "ruta_menu": "/redsocial",
+  "usa_frontend": true,
+  "usa_backend": true,
+  "usa_base_datos": true
+}

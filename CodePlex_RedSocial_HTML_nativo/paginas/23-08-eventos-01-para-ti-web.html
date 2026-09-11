@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Eventos — Red Social CodePlex" />
+    <title>CodePlex — Eventos</title>
+    <link rel="stylesheet" href="../estilos/sistema.css" />
+    <link rel="stylesheet" href="../estilos/componentes/estructura.css" />
+    <link rel="stylesheet" href="../estilos/componentes/columna-publicidad.css" />
+    <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css" />
+    <link rel="stylesheet" href="../estilos/paginas/eventos.css" />
+  </head>
+
+  <body class="" data-pagina="eventos" data-titulo="Eventos">
+    <div class="aplicacion">
+      <div data-componente="barra-superior"></div>
+      <div data-componente="barra-lateral"></div>
+      <div class="zona-principal zona-principal-ancha">
+        <main class="contenido-principal">
+      <div class="contenido-tres-columnas">
+        <section class="columna-principal">
+
+          <!-- Cabecera -->
+          <div class="encabezado-eventos">
+            <div class="datos-encabezado-ev">
+              <div class="icono-encabezado-ev"><span class="icono" data-icono="calendario"></span></div>
+              <div>
+                <h1>Eventos</h1>
+                <p class="subtitulo-ev">Descubre eventos que te interesan o crea los tuyos propios.</p>
+              </div>
+            </div>
+            <button type="button" class="boton boton-primario boton-md">
+              <span class="icono" data-icono="crear-evento"></span>
+              Crear evento
+            </button>
+          </div>
+
+          <!-- Barra de búsqueda -->
+          <div class="barra-busqueda-eventos">
+            <div class="campo-busqueda-ev">
+              <span class="icono" data-icono="buscar"></span>
+              <input type="search" placeholder="Buscar eventos..." aria-label="Buscar eventos" />
+            </div>
+            <div class="campo-busqueda-ev">
+              <span class="icono" data-icono="ubicacion"></span>
+              <input type="search" placeholder="Ubicación" aria-label="Ubicación" />
+            </div>
+            <button type="button" class="boton-buscar-ev">Buscar</button>
+          </div>
+
+          <!-- Pestañas -->
+          <div class="carrusel-pestanas-ev">
+          <div class="pestanas-eventos" role="tablist">
+            <a class="pestana-evento activa" href="23-08-eventos-01-para-ti-web.html" role="tab" aria-selected="true">Para ti</a>
+            <a class="pestana-evento" href="24-08-eventos-02-proximos-web.html" role="tab" aria-selected="false">Próximos</a>
+            <a class="pestana-evento" href="25-08-eventos-03-populares-web.html" role="tab" aria-selected="false">Populares</a>
+            <a class="pestana-evento" href="26-08-eventos-04-mis-eventos-web.html" role="tab" aria-selected="false">Mis eventos</a>
+            <a class="pestana-evento" href="27-08-eventos-05-invitaciones-web.html" role="tab" aria-selected="false">
+              Invitaciones
+              <span class="insignia-ev">7</span>
+            </a>
+            <a class="pestana-evento" href="28-08-eventos-06-calendario-web.html" role="tab" aria-selected="false">Calendario</a>
+          </div>
+          </div>
+
+          <!-- Filtros -->
+          <div class="carrusel-filtros-ev">
+          <div class="filtros-eventos">
+            <button type="button" class="filtro-ev activo">
+              <span class="icono" data-icono="calendario"></span>
+              Todos los eventos
+              <span class="icono" data-icono="flecha-abajo"></span>
+            </button>
+            <button type="button" class="filtro-ev">
+              <span class="icono" data-icono="calendario"></span>
+              Fecha
+              <span class="icono" data-icono="flecha-abajo"></span>
+            </button>
+            <button type="button" class="filtro-ev">
+              <span class="icono" data-icono="categoria-evento"></span>
+              Categoría
+              <span class="icono" data-icono="flecha-abajo"></span>
+            </button>
+            <button type="button" class="filtro-ev">
+              <span class="icono" data-icono="ubicacion"></span>
+              Ubicación
+              <span class="icono" data-icono="flecha-abajo"></span>
+            </button>
+            <button type="button" class="filtro-ev">
+              <span class="icono" data-icono="filtro"></span>
+              Filtros
+            </button>
+          </div>
+          <button type="button" class="boton-desplazar-carrusel izquierda" aria-label="Ver filtros anteriores" hidden>
+            <span class="icono" data-icono="flecha-izquierda"></span>
+          </button>
+          <button type="button" class="boton-desplazar-carrusel derecha" aria-label="Ver más filtros">
+            <span class="icono" data-icono="flecha-derecha"></span>
+          </button>
+          </div>
+
+          <!-- Eventos destacados -->
+          <section class="seccion-destacados-ev">
+            <div class="cabecera-seccion-ev">
+              <h2>Eventos destacados</h2>
+            </div>
+
+            <div class="tarjeta-destacado-ev">
+              <div class="foto-destacado-ev">
+                <div class="fondo-foto-ev"></div>
+                <div class="fecha-badge-ev">
+                  <span class="dia">24</span>
+                  <span class="mes">AGO</span>
+                </div>
+                <button type="button" class="flecha-ev izq"><span class="icono" data-icono="flecha-izquierda"></span></button>
+                <button type="button" class="flecha-ev der"><span class="icono" data-icono="flecha-derecha"></span></button>
+              </div>
+              <div class="datos-destacado-ev">
+                <span class="categoria-ev">Música</span>
+                <h3>Concierto Codeplex Live 2026</h3>
+                <p class="descripcion-ev">Una noche increíble con los mejores artistas.<br>¡No te lo pierdas!</p>
+                <div class="info-evento-ev">
+                  <span class="dato-ev">
+                    <span class="icono" data-icono="calendario"></span>
+                    Sáb, 24 Ago 2026
+                  </span>
+                  <span class="dato-ev">
+                    <span class="icono" data-icono="calendario"></span>
+                    7:00 PM
+                  </span>
+                  <span class="dato-ev">
+                    <span class="icono" data-icono="ubicacion"></span>
+                    Arena 1, Lima
+                  </span>
+                </div>
+                <div class="fila-asistentes-ev">
+                  <div class="avatares-asistentes-ev">
+                    <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                    <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                    <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                    <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                    <span class="mas-asistentes-ev">+128 asistirán</span>
+                  </div>
+                  <button type="button" class="boton-ver-detalles-ev">Ver detalles</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="puntos-carrusel-ev">
+              <button type="button" class="punto-ev activo"></button>
+              <button type="button" class="punto-ev"></button>
+              <button type="button" class="punto-ev"></button>
+              <button type="button" class="punto-ev"></button>
+            </div>
+          </section>
+
+          <!-- Próximos eventos -->
+          <section class="seccion-proximos-ev">
+            <div class="cabecera-seccion-ev">
+              <h2>Próximos eventos</h2>
+              <a href="#" class="enlace-ver-todos-ev">Ver todos</a>
+            </div>
+            <div class="rejilla-proximos-ev">
+
+              <!-- Tech Summit -->
+              <article class="tarjeta-proximo-ev">
+                <div class="foto-proximo-ev">
+                  <div class="fondo-foto-ev tecnologia"></div>
+                  <div class="fecha-badge-proximo-ev">
+                    <span class="dia">15</span>
+                    <span class="mes">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-proximo-ev">
+                  <span class="categoria-proximo-ev tecnologia">Tecnología</span>
+                  <h4>Codeplex Tech Summit</h4>
+                  <div class="info-proximo-ev">
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="calendario"></span>
+                      Jue, 15 Jun 2026
+                    </span>
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="ubicacion"></span>
+                      Centro de Convenciones Lima
+                    </span>
+                  </div>
+                  <div class="fila-asistentes-proximo-ev">
+                    <div class="avatares-asistentes-ev">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <span class="mas-asistentes-ev">+86</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Networking Empresarial -->
+              <article class="tarjeta-proximo-ev">
+                <div class="foto-proximo-ev">
+                  <div class="fondo-foto-ev negocios"></div>
+                  <div class="fecha-badge-proximo-ev">
+                    <span class="dia">22</span>
+                    <span class="mes">JUN</span>
+                  </div>
+                </div>
+                <div class="datos-proximo-ev">
+                  <span class="categoria-proximo-ev negocios">Negocios</span>
+                  <h4>Networking Empresarial</h4>
+                  <div class="info-proximo-ev">
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="calendario"></span>
+                      Jue, 22 Jun 2026
+                    </span>
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="ubicacion"></span>
+                      WeWork San Isidro
+                    </span>
+                  </div>
+                  <div class="fila-asistentes-proximo-ev">
+                    <div class="avatares-asistentes-ev">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <span class="mas-asistentes-ev">+42</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Taller Marketing -->
+              <article class="tarjeta-proximo-ev">
+                <div class="foto-proximo-ev">
+                  <div class="fondo-foto-ev educacion"></div>
+                  <div class="fecha-badge-proximo-ev">
+                    <span class="dia">05</span>
+                    <span class="mes">JUL</span>
+                  </div>
+                </div>
+                <div class="datos-proximo-ev">
+                  <span class="categoria-proximo-ev educacion">Educación</span>
+                  <h4>Taller de Marketing Digital</h4>
+                  <div class="info-proximo-ev">
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="calendario"></span>
+                      Sáb, 5 Jul 2026
+                    </span>
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="ubicacion"></span>
+                      Online
+                    </span>
+                  </div>
+                  <div class="fila-asistentes-proximo-ev">
+                    <div class="avatares-asistentes-ev">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <span class="mas-asistentes-ev">+56</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Festival Gastronómico -->
+              <article class="tarjeta-proximo-ev">
+                <div class="foto-proximo-ev">
+                  <div class="fondo-foto-ev gastronomia"></div>
+                  <div class="fecha-badge-proximo-ev">
+                    <span class="dia">18</span>
+                    <span class="mes">JUL</span>
+                  </div>
+                </div>
+                <div class="datos-proximo-ev">
+                  <span class="categoria-proximo-ev gastronomia">Gastronomía</span>
+                  <h4>Festival Gastronómico</h4>
+                  <div class="info-proximo-ev">
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="calendario"></span>
+                      Vie, 18 Jul 2026
+                    </span>
+                    <span class="dato-ev">
+                      <span class="icono" data-icono="ubicacion"></span>
+                      Parque de la Exposición
+                    </span>
+                  </div>
+                  <div class="fila-asistentes-proximo-ev">
+                    <div class="avatares-asistentes-ev">
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <img class="avatar" src="../imagenes/usuario.jpg" alt="" />
+                      <span class="mas-asistentes-ev">+74</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </section>
+
+        </section>
+
+        <div data-componente="columna-publicidad"></div>
+        <aside class="columna-eventos-lateral">
+
+          <!-- Próximos eventos -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Próximos eventos</h3>
+              <a href="#" class="enlace-panel-ev">Ver calendario</a>
+            </div>
+            <div class="lista-proximos-ev-lat">
+              <article class="fila-proximo-ev-lat">
+                <div class="fecha-badge-ev-lat">
+                  <span class="dia-lat">15</span>
+                  <span class="mes-lat">JUN</span>
+                </div>
+                <div class="datos-proximo-ev-lat">
+                  <span class="nombre-ev-lat">Codeplex Tech Summit</span>
+                  <span class="detalle-ev-lat">Jue, 15 Jun 2026 - 9:00 AM</span>
+                  <span class="detalle-ev-lat">Centro de Convenciones Lima</span>
+                  <span class="asistentes-ev-lat"><span class="icono" data-icono="amigos"></span> 86</span>
+                </div>
+              </article>
+              <article class="fila-proximo-ev-lat">
+                <div class="fecha-badge-ev-lat">
+                  <span class="dia-lat">22</span>
+                  <span class="mes-lat">JUN</span>
+                </div>
+                <div class="datos-proximo-ev-lat">
+                  <span class="nombre-ev-lat">Networking Empresarial</span>
+                  <span class="detalle-ev-lat">Jue, 22 Jun 2026 - 6:00 PM</span>
+                  <span class="detalle-ev-lat">WeWork San Isidro</span>
+                  <span class="asistentes-ev-lat"><span class="icono" data-icono="amigos"></span> 42</span>
+                </div>
+              </article>
+              <article class="fila-proximo-ev-lat">
+                <div class="fecha-badge-ev-lat">
+                  <span class="dia-lat">24</span>
+                  <span class="mes-lat">AGO</span>
+                </div>
+                <div class="datos-proximo-ev-lat">
+                  <span class="nombre-ev-lat">Concierto Codeplex Live 2026</span>
+                  <span class="detalle-ev-lat">Sáb, 24 Ago 2026 - 7:00 PM</span>
+                  <span class="detalle-ev-lat">Arena 1, Lima</span>
+                  <span class="asistentes-ev-lat"><span class="icono" data-icono="amigos"></span> 128</span>
+                </div>
+              </article>
+              <article class="fila-proximo-ev-lat">
+                <div class="fecha-badge-ev-lat">
+                  <span class="dia-lat">05</span>
+                  <span class="mes-lat">JUL</span>
+                </div>
+                <div class="datos-proximo-ev-lat">
+                  <span class="nombre-ev-lat">Taller de Marketing Digital</span>
+                  <span class="detalle-ev-lat">Sáb, 5 Jul 2026 - 10:00 AM</span>
+                  <span class="detalle-ev-lat">Online</span>
+                  <span class="asistentes-ev-lat"><span class="icono" data-icono="amigos"></span> 56</span>
+                </div>
+              </article>
+            </div>
+            <a href="#" class="enlace-ver-todos-ev-lat">
+              Ver todos los eventos
+              <span class="icono" data-icono="flecha-derecha"></span>
+            </a>
+          </section>
+
+          <!-- Categorías -->
+          <section class="panel-ev-lateral">
+            <div class="cabecera-panel-ev">
+              <h3>Categorías</h3>
+              <a href="#" class="enlace-panel-ev">Ver todas</a>
+            </div>
+            <div class="lista-categorias-ev-lat">
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat musica"><span class="icono" data-icono="estrella"></span></div>
+                <span class="nombre-categoria-ev-lat">Música</span>
+                <span class="conteo-categoria-ev-lat">128</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat tecnologia"><span class="icono" data-icono="panel"></span></div>
+                <span class="nombre-categoria-ev-lat">Tecnología</span>
+                <span class="conteo-categoria-ev-lat">95</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat negocios"><span class="icono" data-icono="empresa"></span></div>
+                <span class="nombre-categoria-ev-lat">Negocios</span>
+                <span class="conteo-categoria-ev-lat">86</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat educacion"><span class="icono" data-icono="calendario"></span></div>
+                <span class="nombre-categoria-ev-lat">Educación</span>
+                <span class="conteo-categoria-ev-lat">74</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat deportes"><span class="icono" data-icono="actividad"></span></div>
+                <span class="nombre-categoria-ev-lat">Deportes</span>
+                <span class="conteo-categoria-ev-lat">63</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat gastronomia"><span class="icono" data-icono="carrito"></span></div>
+                <span class="nombre-categoria-ev-lat">Gastronomía</span>
+                <span class="conteo-categoria-ev-lat">58</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat arte"><span class="icono" data-icono="imagen"></span></div>
+                <span class="nombre-categoria-ev-lat">Arte y cultura</span>
+                <span class="conteo-categoria-ev-lat">42</span>
+              </article>
+              <article class="fila-categoria-ev-lat">
+                <div class="icono-categoria-ev-lat salud"><span class="icono" data-icono="configuracion"></span></div>
+                <span class="nombre-categoria-ev-lat">Salud y bienestar</span>
+                <span class="conteo-categoria-ev-lat">38</span>
+              </article>
+            </div>
+          </section>
+
+        </aside>
+      </div>
+    </main>
+      </div>
+    </div>
+    <div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+    <script src="../scripts/componentes.js"></script>
+    <script src="../scripts/aplicacion.js"></script>
+    <script src="../scripts/historias.js"></script>
+  </body>
+</html>

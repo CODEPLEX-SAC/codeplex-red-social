@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Vigencia — Invitar colaborador — CodePlex">
+  <title>CodePlex — Invitar colaborador: Vigencia</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/paginas/invitar-colaborador.css">
+</head>
+<body class="" data-pagina="colaboradores" data-titulo="Invitar colaborador">
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+
+      <!-- Popup Invitar Colaborador -->
+      <div class="popup-invitar-colab">
+
+        <!-- Cabecera -->
+        <div class="cabecera-popup-inv">
+          <div class="datos-popup-inv">
+            <h1>Invitar colaborador</h1>
+            <p class="subtitulo-popup-inv">Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado.</p>
+          </div>
+          <div class="acciones-popup-inv">
+            <button type="button" class="boton-icono-popup-inv" title="Configuración"><span class="icono" data-icono="ajustes-sistema"></span></button>
+            <button type="button" class="boton-icono-popup-inv" title="Aplicaciones"><span class="icono" data-icono="aplicaciones"></span></button>
+            <button type="button" class="boton-icono-popup-inv" title="Notificaciones"><span class="icono" data-icono="notificaciones"></span></button>
+            <button type="button" class="boton-icono-popup-inv boton-cerrar-popup-inv" title="Cerrar" onclick="location.href='29-10-colaboradores-todos.html'"><span class="icono" data-icono="cerrar"></span></button>
+          </div>
+        </div>
+
+        <!-- Stepper -->
+        <nav class="stepper-inv">
+          <div class="paso-stepper-inv completado">
+            <span class="numero-paso-inv">1</span>
+            <span class="texto-paso-inv">Información</span>
+          </div>
+          <span class="linea-stepper-inv completada"></span>
+          <div class="paso-stepper-inv completado">
+            <span class="numero-paso-inv">2</span>
+            <span class="texto-paso-inv">Rol y permisos</span>
+          </div>
+          <span class="linea-stepper-inv completada"></span>
+          <div class="paso-stepper-inv activo">
+            <span class="numero-paso-inv">3</span>
+            <span class="texto-paso-inv">Vigencia</span>
+          </div>
+          <span class="linea-stepper-inv"></span>
+          <div class="paso-stepper-inv">
+            <span class="numero-paso-inv">4</span>
+            <span class="texto-paso-inv">Resumen</span>
+          </div>
+        </nav>
+
+        <!-- Título del paso -->
+        <div style="padding: 20px 28px 0;">
+          <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-texto, #1f2937); margin: 0 0 4px;">3. Vigencia</h2>
+          <p style="font-size: 0.85rem; color: var(--color-texto-secundario, #6b7280); margin: 0; line-height: 1.4;">Define el período de acceso del colaborador y qué ocurrirá al finalizar la vigencia.</p>
+        </div>
+
+        <!-- Contenido: vigencia -->
+        <div class="contenido-vigencia-inv">
+
+          <!-- Columna izquierda -->
+          <div>
+            <!-- Período de vigencia -->
+            <div class="seccion-vigencia-inv">
+              <div class="titulo-seccion-vig-inv">
+                <span class="icono-seccion-vig icono" data-icono="calendario"></span>
+                <h3>Período de vigencia</h3>
+              </div>
+
+              <label class="opcion-vig-inv">
+                <input type="radio" name="vigencia" value="periodo" checked>
+                <span class="radio-vig-inv"></span>
+                <div class="datos-opcion-vig-inv">
+                  <span class="nombre-opcion-vig-inv">Vigencia por período</span>
+                  <span class="desc-opcion-vig-inv">Establece una fecha de inicio y fin para esta invitación.</span>
+                </div>
+              </label>
+
+              <div class="campos-fecha-vig-inv">
+                <div class="campo-fecha-vig-inv">
+                  <label>Fecha de inicio <span class="obligatorio">*</span></label>
+                  <div class="input-fecha-inv">
+                    <span class="icono-fecha icono" data-icono="calendario"></span>
+                    <input type="text" value="13/08/2026" readonly>
+                    <span class="icono-fecha icono" data-icono="calendario"></span>
+                  </div>
+                </div>
+                <div class="campo-fecha-vig-inv">
+                  <label>Fecha de vencimiento <span class="obligatorio">*</span></label>
+                  <div class="input-fecha-inv">
+                    <span class="icono-fecha icono" data-icono="calendario"></span>
+                    <input type="text" value="13/08/2027" readonly>
+                    <span class="icono-fecha icono" data-icono="calendario"></span>
+                  </div>
+                </div>
+              </div>
+              <span class="duracion-vig-inv">Duración: 1 año</span>
+
+              <label class="opcion-vig-inv" style="margin-top: 16px;">
+                <input type="radio" name="vigencia" value="indefinida">
+                <span class="radio-vig-inv"></span>
+                <div class="datos-opcion-vig-inv">
+                  <span class="nombre-opcion-vig-inv">Vigencia indefinida</span>
+                  <span class="desc-opcion-vig-inv">El colaborador tendrá acceso sin fecha de vencimiento.</span>
+                </div>
+              </label>
+
+              <div class="nota-recomendada-inv">
+                <span class="icono-nota-inv icono" data-icono="alerta"></span>
+                <p>Recomendado para colaboradores permanentes en tu equipo.</p>
+              </div>
+            </div>
+
+            <!-- Al vencer la vigencia -->
+            <div class="seccion-vigencia-inv" style="margin-top: 20px;">
+              <div class="titulo-seccion-vig-inv">
+                <span class="icono-seccion-vig icono" data-icono="reloj"></span>
+                <h3>Al vencer la vigencia</h3>
+              </div>
+              <p class="subtitulo-seccion-vig-inv">Selecciona qué ocurrirá cuando finalice el período de acceso.</p>
+
+              <label class="opcion-vig-inv">
+                <input type="radio" name="al-vencer" value="desactivar" checked>
+                <span class="radio-vig-inv"></span>
+                <div class="datos-opcion-vig-inv">
+                  <span class="nombre-opcion-vig-inv">Desactivar acceso automáticamente</span>
+                  <span class="desc-opcion-vig-inv">El colaborador perderá el acceso a los sistemas al vencer.</span>
+                </div>
+              </label>
+
+              <label class="opcion-vig-inv">
+                <input type="radio" name="al-vencer" value="revision">
+                <span class="radio-vig-inv"></span>
+                <div class="datos-opcion-vig-inv">
+                  <span class="nombre-opcion-vig-inv">Mantener acceso con revisión</span>
+                  <span class="desc-opcion-vig-inv">El acceso no se desactivará automáticamente. Se requerirá revisión manual.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Columna derecha -->
+          <div class="columna-derecha-vig-inv">
+
+            <!-- Renovación -->
+            <div class="panel-vig-inv">
+              <div class="titulo-panel-vig-inv">
+                <span class="icono-panel-vig icono" data-icono="actualizar"></span>
+                <h4>Renovación</h4>
+              </div>
+              <p class="desc-panel-vig-inv">Configura si esta invitación puede ser renovada.</p>
+
+              <label class="opcion-check-vig-inv">
+                <input type="radio" name="renovacion" value="permitir" checked>
+                <span class="radio-vig-inv"></span>
+                <div class="datos-opcion-check-vig-inv">
+                  <span class="nombre-opcion-check-vig-inv">Permitir renovación</span>
+                  <span class="desc-opcion-check-vig-inv">Podrás renovar la invitación antes de que venza.</span>
+                </div>
+              </label>
+
+              <label class="opcion-check-vig-inv">
+                <input type="radio" name="renovacion" value="no-permitir">
+                <span class="radio-vig-inv"></span>
+                <div class="datos-opcion-check-vig-inv">
+                  <span class="nombre-opcion-check-vig-inv">No permitir renovación</span>
+                  <span class="desc-opcion-check-vig-inv">Cuando venza, deberás enviar una nueva invitación.</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Recordatorios -->
+            <div class="panel-vig-inv">
+              <div class="titulo-panel-vig-inv">
+                <span class="icono-panel-vig icono" data-icono="campana"></span>
+                <h4>Recordatorios</h4>
+              </div>
+              <p class="desc-panel-vig-inv">Recibe recordatorios antes de que venza la invitación.</p>
+
+              <label class="opcion-check-vig-inv">
+                <input type="checkbox" checked>
+                <span class="check-vig-inv"></span>
+                <div class="datos-opcion-check-vig-inv">
+                  <span class="nombre-opcion-check-vig-inv">Enviar recordatorio por correo</span>
+                  <span class="desc-opcion-check-vig-inv">Te notificaremos antes de la fecha de vencimiento.</span>
+                </div>
+              </label>
+
+              <div class="select-recordatorio-inv">
+                <label>Recordar con anticipación <span class="obligatorio">*</span></label>
+                <select>
+                  <option>7 días antes</option>
+                  <option>14 días antes</option>
+                  <option>30 días antes</option>
+                  <option>60 días antes</option>
+                  <option>90 días antes</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Zona horaria -->
+            <div class="panel-vig-inv">
+              <div class="titulo-panel-vig-inv">
+                <span class="icono-panel-vig icono" data-icono="mundo"></span>
+                <h4>Zona horaria</h4>
+              </div>
+              <p class="desc-panel-vig-inv">La vigencia se aplicará según la siguiente zona horaria.</p>
+
+              <div class="select-zona-horaria-inv">
+                <select>
+                  <option>(GMT-05:00) Lima, Bogotá, Quito</option>
+                  <option>(GMT-06:00) Ciudad de México, Guatemala</option>
+                  <option>(GMT-03:00) Buenos Aires, São Paulo</option>
+                  <option>(GMT+01:00) Madrid, Barcelona</option>
+                  <option>(GMT+00:00) Londres, Lisboa</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pie -->
+        <div class="pie-popup-inv">
+          <button type="button" class="boton-cancelar-inv" onclick="location.href='29-10-colaboradores-todos.html'">Cancelar</button>
+          <button type="button" class="boton-anterior-inv" onclick="location.href='31-10-colaboradores-popub-invitar-colaborador-02-asignar-rol-y-permisos.html'">
+            <span class="flecha">‹</span> Anterior
+          </button>
+          <button type="button" class="boton-siguiente-inv" onclick="location.href='33-10-colaboradores-popub-invitar-colaborador-04-resumen.html'">
+            Siguiente <span class="flecha">›</span>
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Resumen — Invitar colaborador — CodePlex">
+  <title>CodePlex — Invitar colaborador: Resumen</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/paginas/invitar-colaborador.css">
+</head>
+<body class="" data-pagina="colaboradores" data-titulo="Invitar colaborador">
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+
+      <!-- Popup Invitar Colaborador -->
+      <div class="popup-invitar-colab">
+
+        <!-- Cabecera -->
+        <div class="cabecera-popup-inv">
+          <div class="datos-popup-inv">
+            <h1>Invitar colaborador</h1>
+            <p class="subtitulo-popup-inv">Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado.</p>
+          </div>
+          <div class="acciones-popup-inv">
+            <button type="button" class="boton-icono-popup-inv" title="Configuración"><span class="icono" data-icono="ajustes-sistema"></span></button>
+            <button type="button" class="boton-icono-popup-inv" title="Aplicaciones"><span class="icono" data-icono="aplicaciones"></span></button>
+            <button type="button" class="boton-icono-popup-inv" title="Notificaciones"><span class="icono" data-icono="notificaciones"></span></button>
+            <button type="button" class="boton-icono-popup-inv boton-cerrar-popup-inv" title="Cerrar" onclick="location.href='29-10-colaboradores-todos.html'"><span class="icono" data-icono="cerrar"></span></button>
+          </div>
+        </div>
+
+        <!-- Stepper -->
+        <nav class="stepper-inv">
+          <div class="paso-stepper-inv completado">
+            <span class="numero-paso-inv">1</span>
+            <span class="texto-paso-inv">Información</span>
+          </div>
+          <span class="linea-stepper-inv completada"></span>
+          <div class="paso-stepper-inv completado">
+            <span class="numero-paso-inv">2</span>
+            <span class="texto-paso-inv">Rol y permisos</span>
+          </div>
+          <span class="linea-stepper-inv completada"></span>
+          <div class="paso-stepper-inv completado">
+            <span class="numero-paso-inv">3</span>
+            <span class="texto-paso-inv">Vigencia</span>
+          </div>
+          <span class="linea-stepper-inv completada"></span>
+          <div class="paso-stepper-inv activo">
+            <span class="numero-paso-inv">4</span>
+            <span class="texto-paso-inv">Resumen</span>
+          </div>
+        </nav>
+
+        <!-- Título del paso -->
+        <div style="padding: 20px 28px 0;">
+          <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-texto, #1f2937); margin: 0 0 4px;">4. Resumen</h2>
+          <p style="font-size: 0.85rem; color: var(--color-texto-secundario, #6b7280); margin: 0; line-height: 1.4;">Revisa la información de la invitación. El colaborador recibirá un correo con los detalles y el acceso para unirse al equipo.</p>
+        </div>
+
+        <!-- Contenido: resumen -->
+        <div class="contenido-resumen-inv">
+
+          <!-- Columna izquierda: tarjetas de resumen -->
+          <div>
+
+            <!-- Colaborador -->
+            <div class="tarjeta-resumen-inv">
+              <div class="cabecera-tarjeta-res-inv">
+                <div class="titulo-tarjeta-res-inv">
+                  <span class="icono-tarjeta-res icono" data-icono="nuevo-usuario"></span>
+                  <h4>Colaborador</h4>
+                </div>
+                <button type="button" class="boton-editar-res-inv">Editar</button>
+              </div>
+              <div class="datos-colab-res-inv">
+                <div class="avatar-res-inv">JM</div>
+                <div class="info-colab-res-inv">
+                  <span class="nombre-res">Juan Pérez Martínez</span>
+                  <span class="correo-res">juan.perez@email.com</span>
+                  <span class="telefono-res">
+                    <span class="icono" data-icono="llamada"></span>
+                    +51 987 654 321
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rol y permisos -->
+            <div class="tarjeta-resumen-inv">
+              <div class="cabecera-tarjeta-res-inv">
+                <div class="titulo-tarjeta-res-inv">
+                  <span class="icono-tarjeta-res icono" data-icono="escudo"></span>
+                  <h4>Rol y permisos</h4>
+                </div>
+                <button type="button" class="boton-editar-res-inv">Editar</button>
+              </div>
+              <div class="datos-rol-res-inv">
+                <div class="fila-dato-res-inv">
+                  <span class="etiqueta-res">Rol asignado</span>
+                  <span class="etiqueta-rol-res-inv">Analista Contable</span>
+                </div>
+                <div class="fila-dato-res-inv">
+                  <span class="etiqueta-res">Módulos y permisos</span>
+                  <a href="#" class="enlace-modulos-res-inv">4 módulos con permisos asignados</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vigencia -->
+            <div class="tarjeta-resumen-inv">
+              <div class="cabecera-tarjeta-res-inv">
+                <div class="titulo-tarjeta-res-inv">
+                  <span class="icono-tarjeta-res icono" data-icono="calendario"></span>
+                  <h4>Vigencia</h4>
+                </div>
+                <button type="button" class="boton-editar-res-inv">Editar</button>
+              </div>
+              <div class="datos-vigencia-res-inv">
+                <div class="campo-vig-res-inv">
+                  <span class="etiqueta-res">Fecha de inicio</span>
+                  <span class="valor-res">13 de agosto de 2026</span>
+                </div>
+                <div class="campo-vig-res-inv">
+                  <span class="etiqueta-res">Fecha de vencimiento</span>
+                  <span class="valor-res">13 de agosto de 2027</span>
+                </div>
+                <div class="campo-vig-res-inv">
+                  <span class="etiqueta-res">Al vencer la vigencia</span>
+                  <span class="valor-res">Desactivar acceso automáticamente</span>
+                </div>
+                <div class="campo-vig-res-inv">
+                  <span class="etiqueta-res">Recordatorios</span>
+                  <span class="valor-res">7 días antes del vencimiento</span>
+                </div>
+                <div class="campo-vig-res-inv" style="grid-column: 1 / -1;">
+                  <span class="etiqueta-res">Zona horaria</span>
+                  <span class="valor-res">(GMT-05:00) Lima, Bogotá, Quito</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna derecha: vista previa del correo -->
+          <div>
+            <div class="vista-previa-correo-inv">
+              <div class="cabecera-vista-previa-inv">
+                <div class="titulo-vista-previa-inv">
+                  <span class="icono-vista-previa icono" data-icono="correo"></span>
+                  <span>Vista previa del correo que recibirá el colaborador</span>
+                </div>
+                <button type="button" class="boton-cambiar-plantilla-inv">Cambiar plantilla</button>
+              </div>
+
+              <div class="contenido-correo-inv">
+                <!-- Logo -->
+                <div class="logo-correo-inv">
+                  <span class="marca-simbolo">C</span><span class="marca-texto">CODEPLEX</span>
+                </div>
+
+                <!-- Texto de saludo -->
+                <p class="texto-correo-inv">
+                  Hola Juan,
+                </p>
+                <p class="texto-correo-inv">
+                  <strong>Pedro Rafael</strong> te ha invitado a formar parte del equipo de <strong>Ai Robotics Peru SAC</strong> en <strong>CODEPLEX</strong>.
+                </p>
+
+                <!-- Datos de la invitación -->
+                <div class="datos-correo-inv">
+                  <div class="fila-dato-correo-inv">
+                    <span class="icono-dato-correo icono" data-icono="nuevo-usuario"></span>
+                    <span class="etiqueta-correo">Rol asignado</span>
+                    <span class="valor-correo">Analista Contable</span>
+                  </div>
+                  <div class="fila-dato-correo-inv">
+                    <span class="icono-dato-correo icono" data-icono="calendario"></span>
+                    <span class="etiqueta-correo">Vigencia</span>
+                    <span class="valor-correo">13/08/2026 al 13/08/2027</span>
+                  </div>
+                  <div class="fila-dato-correo-inv">
+                    <span class="icono-dato-correo icono" data-icono="pantalla-compartida"></span>
+                    <span class="etiqueta-correo">Módulos</span>
+                    <span class="valor-correo">4 módulos con permisos asignados</span>
+                  </div>
+                </div>
+
+                <!-- Botón de aceptar -->
+                <button type="button" class="boton-aceptar-correo-inv">Aceptar invitación</button>
+                <p class="texto-expiracion-inv">Este enlace expirará en 7 días.</p>
+
+                <!-- Enlace alternativo -->
+                <div class="enlace-alternativo-inv">
+                  <p>Si el botón no funciona, copia y pega este enlace en tu navegador:</p>
+                  <a href="#">https://codeplex.com/invitacion/abc123def456</a>
+                </div>
+                <p class="texto-no-esperabas-inv">¿No esperabas esta invitación? Puedes ignorar este correo.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Nota informativa -->
+        <div class="nota-informativa-res-inv">
+          <span class="icono-nota-info icono" data-icono="alerta"></span>
+          <p>El colaborador deberá aceptar la invitación para poder acceder a los sistemas según los permisos asignados.</p>
+        </div>
+
+        <!-- Pie -->
+        <div class="pie-popup-inv">
+          <button type="button" class="boton-anterior-inv" onclick="location.href='32-10-colaboradores-popub-invitar-colaborador-03-vigencia.html'">
+            <span class="flecha">‹</span> Anterior
+          </button>
+          <button type="button" class="boton-guardar-borrador-inv">
+            <span class="icono" data-icono="guardar"></span>
+            Guardar borrador
+          </button>
+          <button type="button" class="boton-enviar-inv" onclick="location.href='29-10-colaboradores-todos.html'">
+            <span class="icono" data-icono="enviar"></span>
+            <span>Enviar invitación<br><span class="sub-texto-inv">Se enviará por correo</span></span>
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+</body>
+</html>

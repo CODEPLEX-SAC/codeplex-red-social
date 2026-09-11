@@ -1,0 +1,1330 @@
+/* Estilos únicos de Amigos › Todos. Lo compartido con otras pantallas
+   (paneles, pestañas, tarjeta-persona, tarjeta-solicitud, botones)
+   vive en sistema.css; aquí solo lo exclusivo de este diseño. */
+
+.columna-derecha-amigos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Panel de encabezado de página (título + pestañas + buscador),
+   antes con padding inline repetido en las 4 páginas de Amigos. */
+.panel-amigos {
+  padding: 18px 20px;
+}
+
+/* ── Panel lateral amigos (columna derecha) ─────────── */
+.panel-lateral-amigos {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+}
+.cabecera-panel-lat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.cabecera-panel-lat h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto);
+  margin: 0;
+}
+.cabecera-panel-lat a {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primario);
+  text-decoration: none;
+}
+.cabecera-panel-lat a:hover {
+  text-decoration: underline;
+}
+
+/* Personas que quizá conozcas */
+.fila-persona-conocer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.fila-persona-conocer:last-child {
+  border-bottom: none;
+}
+.avatar-conocer {
+  width: 36px;
+  height: 36px;
+}
+.datos-persona-conocer {
+  flex: 1;
+  min-width: 0;
+}
+.datos-persona-conocer .nombre-pc {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto);
+  display: block;
+}
+.datos-persona-conocer .amigos-comunes-pc {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+.boton-agregar-pc {
+  padding: 5px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--texto);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: background .12s, border-color .12s;
+}
+.boton-agregar-pc:hover {
+  background: #f5f3ff;
+  border-color: var(--primario);
+  color: var(--primario);
+}
+
+/* Tus listas */
+.fila-lista-lat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.fila-lista-lat:last-child {
+  border-bottom: none;
+}
+.icono-lista-sl {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+.icono-lista-sl .icono {
+  width: 17px;
+  height: 17px;
+  color: #fff;
+}
+.icono-lista-sl.morado { background: var(--morado-categoria); }
+.icono-lista-sl.naranja { background: var(--naranja-categoria); }
+.icono-lista-sl.azul { background: var(--azul-categoria); }
+.icono-lista-sl.verde { background: var(--verde-categoria); }
+.datos-lista-sl {
+  flex: 1;
+  min-width: 0;
+}
+.datos-lista-sl .nombre-sl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto);
+  display: block;
+}
+.datos-lista-sl .miembros-sl {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+/* Actividad reciente */
+.fila-actividad-lat {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.fila-actividad-lat:last-child {
+  border-bottom: none;
+}
+.avatar-actividad-lat {
+  width: 32px;
+  height: 32px;
+}
+.datos-actividad-lat {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--texto);
+  line-height: 1.4;
+}
+.datos-actividad-lat strong {
+  font-weight: 600;
+}
+.datos-actividad-lat .tiempo-lat {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-suave);
+  margin-top: 2px;
+}
+
+.barra-busqueda-amigos {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+}
+.barra-busqueda-amigos .campo-busqueda {
+  flex: 1;
+}
+.selector-filtro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 190px;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--texto-suave);
+  font-size: 12px;
+}
+.selector-filtro .icono {
+  width: 13px;
+  height: 13px;
+}
+
+.rejilla-resumen-amigos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.tarjeta-resumen {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+.icono-resumen {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--primario-suave);
+  color: var(--primario);
+  flex: 0 0 auto;
+}
+.icono-resumen .icono {
+  width: 17px;
+  height: 17px;
+}
+.icono-resumen.peligro {
+  background: #fdeceb;
+  color: var(--peligro);
+}
+.datos-resumen span {
+  display: block;
+  font-size: 10px;
+  color: var(--texto-suave);
+}
+.datos-resumen strong {
+  display: block;
+  font-size: 18px;
+  margin-top: 2px;
+}
+
+.lista-amigos {
+  padding: 0;
+}
+.fila-amigo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--borde);
+}
+.fila-amigo:last-child {
+  border-bottom: 0;
+}
+.avatar-mediano {
+  width: 48px;
+  height: 48px;
+  font-size: 13px;
+}
+.datos-amigo {
+  width: 170px;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+.datos-amigo strong {
+  display: block;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.estado-amigo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--texto-suave);
+  margin-top: 3px;
+}
+.estado-amigo::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c7c4d6;
+  flex: 0 0 auto;
+}
+.estado-amigo.en-linea {
+  color: var(--exito);
+}
+.estado-amigo.en-linea::before {
+  background: var(--exito);
+}
+.amigos-comunes {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.amigos-comunes > span {
+  font-size: 11px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+.pila-avatares {
+  display: flex;
+  align-items: center;
+}
+.pila-avatares .avatar {
+  width: 22px;
+  height: 22px;
+  font-size: 8px;
+  border: 2px solid #fff;
+  margin-left: -8px;
+}
+.pila-avatares .avatar:first-child {
+  margin-left: 0;
+}
+.mas-avatares {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #efedf7;
+  color: var(--texto-suave);
+  font-size: 8px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  margin-left: -8px;
+  border: 2px solid #fff;
+}
+.acciones-fila-amigo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.enlace-ver-mas-amigos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px;
+  font-size: 12px;
+  color: var(--texto-suave);
+  text-decoration: none;
+  border-top: 1px solid var(--borde);
+}
+.enlace-ver-mas-amigos .icono {
+  width: 13px;
+  height: 13px;
+}
+
+.tarjeta-solicitud-mini {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--borde);
+}
+.tarjeta-solicitud-mini:last-child {
+  border-bottom: 0;
+}
+.tarjeta-solicitud-mini .fila-solicitud {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.tarjeta-solicitud-mini strong {
+  display: block;
+  font-size: 12px;
+}
+.tarjeta-solicitud-mini p {
+  margin: 2px 0 0;
+  font-size: 10px;
+  color: var(--texto-suave);
+  line-height: 1.4;
+}
+.tarjeta-solicitud-mini .acciones-tarjeta {
+  display: flex;
+  gap: 6px;
+}
+.tarjeta-solicitud-mini .acciones-tarjeta .boton {
+  flex: 1;
+}
+
+.fila-lista-amigos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--borde);
+  text-decoration: none;
+  color: inherit;
+}
+.fila-lista-amigos:last-child {
+  border-bottom: 0;
+}
+.icono-lista-mini {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  flex: 0 0 auto;
+}
+.icono-lista-mini .icono {
+  width: 17px;
+  height: 17px;
+}
+.datos-lista-mini {
+  flex: 1;
+  min-width: 0;
+}
+.datos-lista-mini strong {
+  display: block;
+  font-size: 12px;
+}
+.datos-lista-mini span {
+  display: block;
+  font-size: 10px;
+  color: var(--texto-suave);
+  margin-top: 2px;
+}
+.fila-lista-amigos .icono-flecha-lista {
+  width: 13px;
+  height: 13px;
+  color: #b3b0c2;
+  flex: 0 0 auto;
+}
+
+/* ── Solicitudes de amistad ─────────────────────────────── */
+
+.titulo-seccion-solicitudes {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 14px;
+}
+.seccion-solicitudes {
+  margin-bottom: 28px;
+}
+.encabezado-seccion-solicitudes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.encabezado-seccion-solicitudes h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto);
+}
+.filtros-solicitudes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: nowrap;
+}
+.filtros-solicitudes .pastilla-filtro {
+  flex: 0 0 auto;
+}
+label.campo-busqueda.campo-busqueda-solicitudes {
+  margin-left: auto;
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: 32px;
+}
+.pastilla-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+  background: #fff;
+  color: var(--texto-suave);
+  font-size: 11px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, color .15s, border-color .15s;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.pastilla-filtro:hover {
+  background: #f7f6fa;
+}
+.pastilla-filtro.activa {
+  background: var(--primario);
+  color: #fff;
+  border-color: var(--primario);
+}
+.pastilla-filtro .insignia-pastilla {
+  display: inline-grid;
+  place-items: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.25);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+.pastilla-filtro:not(.activa) .insignia-pastilla {
+  background: #efedf7;
+  color: var(--texto-suave);
+}
+.campo-busqueda-solicitudes {
+  margin-left: auto;
+}
+
+.tarjeta-solicitud-completa {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  background: #fff;
+  margin-bottom: 12px;
+}
+.tarjeta-solicitud-completa:last-child {
+  margin-bottom: 0;
+}
+.avatar-solicitud-grande {
+  width: 56px;
+  height: 56px;
+  font-size: 15px;
+  flex: 0 0 auto;
+}
+.datos-solicitud-completa {
+  flex: 1;
+  min-width: 0;
+}
+.fila-solicitud-cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+  padding-right: 90px;
+}
+.fila-solicitud-cabecera strong {
+  font-size: 14px;
+  color: var(--texto);
+}
+.fila-solicitud-cabecera .tiempo-solicitud {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 11px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+.descripcion-solicitud {
+  font-size: 12px;
+  color: var(--texto-suave);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.amigos-comunes-solicitud {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.amigos-comunes-solicitud > span {
+  font-size: 12px;
+  color: var(--texto-suave);
+}
+.acciones-solicitud-completa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  align-self: center;
+}
+.boton-aceptar {
+  background: var(--primario);
+  color: #fff;
+  border: 1px solid var(--primario);
+  border-radius: 7px;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.boton-aceptar:hover {
+  background: var(--primario-oscuro);
+  border-color: var(--primario-oscuro);
+}
+.boton-accion-solicitud {
+  background: #fff;
+  color: var(--texto-suave);
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.boton-accion-solicitud:hover {
+  background: #f7f6fa;
+  border-color: #d0cdd9;
+}
+.estado-pendiente {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 12px;
+  color: #e08a1e;
+  font-weight: 600;
+}
+.enlace-ver-mas-solicitudes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  font-size: 12px;
+  color: var(--primario);
+  text-decoration: none;
+}
+.enlace-ver-mas-solicitudes:hover {
+  background: #faf9fc;
+}
+
+/* ── Sugerencias de amistad ─────────────────────────────── */
+
+.banner-sugerencia {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #f0edff;
+  border-radius: 10px;
+  margin-bottom: 22px;
+}
+.icono-banner-sugerencia {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--primario-suave);
+  color: var(--primario);
+  flex: 0 0 auto;
+}
+.icono-banner-sugerencia .icono {
+  width: 20px;
+  height: 20px;
+}
+.datos-banner-sugerencia {
+  flex: 1;
+  min-width: 0;
+}
+.datos-banner-sugerencia strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 3px;
+}
+.datos-banner-sugerencia p {
+  font-size: 12px;
+  color: var(--texto-suave);
+  line-height: 1.4;
+  margin: 0;
+}
+.cerrar-banner-sugerencia {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #b3b0c2;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 0;
+}
+.cerrar-banner-sugerencia:hover {
+  background: rgba(0,0,0,.06);
+  color: var(--texto-suave);
+}
+.cerrar-banner-sugerencia .icono {
+  width: 14px;
+  height: 14px;
+}
+
+.rejilla-sugerencias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.tarjeta-sugerencia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 18px 12px 14px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+.avatar-sugerencia {
+  width: 56px;
+  height: 56px;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.datos-sugerencia {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.datos-sugerencia strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+.datos-sugerencia .descripcion-sugerencia {
+  font-size: 10px;
+  color: var(--texto-suave);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.amigos-comunes-sugerencia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+.amigos-comunes-sugerencia > span {
+  font-size: 10px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+.acciones-sugerencia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
+}
+.boton-agregar-sugerencia {
+  width: 100%;
+  max-width: 120px;
+  height: 30px;
+  border: 1px solid var(--borde);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--texto);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.boton-agregar-sugerencia:hover {
+  background: #f7f6fa;
+  border-color: #d0cdd9;
+}
+.enlace-ver-perfil {
+  font-size: 11px;
+  color: var(--primario);
+  text-decoration: none;
+  font-weight: 600;
+}
+.enlace-ver-perfil:hover {
+  text-decoration: underline;
+}
+.enlace-ver-mas-sugerencias {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px;
+  font-size: 12px;
+  color: var(--texto-suave);
+  text-decoration: none;
+  border-top: 1px solid var(--borde);
+}
+.enlace-ver-mas-sugerencias:hover {
+  background: #faf9fc;
+}
+.enlace-ver-mas-sugerencias .icono {
+  width: 13px;
+  height: 13px;
+}
+
+/* ── Listas de amigos ─────────────────────────────── */
+
+.banner-listas {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #f0edff;
+  border-radius: 10px;
+  margin-bottom: 22px;
+}
+.icono-banner-listas {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--primario-suave);
+  color: var(--primario);
+  flex: 0 0 auto;
+}
+.icono-banner-listas .icono {
+  width: 20px;
+  height: 20px;
+}
+.datos-banner-listas {
+  flex: 1;
+  min-width: 0;
+}
+.datos-banner-listas strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 3px;
+}
+.datos-banner-listas p {
+  font-size: 12px;
+  color: var(--texto-suave);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.titulo-seccion-listas {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 14px;
+}
+
+.rejilla-listas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 0;
+  overflow: hidden;
+}
+.tarjeta-lista {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px 16px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+.icono-lista {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: #fff;
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+}
+.icono-lista .icono {
+  width: 20px;
+  height: 20px;
+}
+.icono-lista.morado {
+  background: var(--morado-categoria);
+}
+.icono-lista.naranja {
+  background: #ea580c;
+}
+.icono-lista.azul {
+  background: #2563eb;
+}
+.icono-lista.verde {
+  background: #16a34a;
+}
+.icono-lista.rosa {
+  background: #db2777;
+}
+.icono-lista.azul-claro {
+  background: var(--azul-categoria);
+}
+.menu-tres-puntos-lista {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #b3b0c2;
+  cursor: pointer;
+  padding: 0;
+}
+.menu-tres-puntos-lista:hover {
+  background: rgba(0,0,0,.06);
+  color: var(--texto-suave);
+}
+.menu-tres-puntos-lista .icono {
+  width: 14px;
+  height: 14px;
+}
+.datos-lista {
+  margin-bottom: 10px;
+}
+.datos-lista strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 2px;
+}
+.datos-lista .contador-amigos-lista {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+.amigos-comunes-lista {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.descripcion-lista {
+  font-size: 11px;
+  color: var(--texto-suave);
+  line-height: 1.4;
+  margin-top: auto;
+}
+
+.boton-crear-lista {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  border: 2px dashed var(--borde);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--primario);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 28px;
+  transition: background .15s, border-color .15s;
+}
+.boton-crear-lista:hover {
+  background: #faf9fc;
+  border-color: var(--primario);
+}
+.boton-crear-lista .icono {
+  width: 16px;
+  height: 16px;
+}
+
+.encabezado-listas-sugeridas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.encabezado-listas-sugeridas h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--texto);
+}
+.enlace-ver-todas {
+  font-size: 12px;
+  color: var(--primario);
+  text-decoration: none;
+  font-weight: 600;
+}
+.enlace-ver-todas:hover {
+  text-decoration: underline;
+}
+.rejilla-listas-sugeridas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+.tarjeta-lista-sugerida {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+.icono-lista-sugerida {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  color: #fff;
+  flex: 0 0 auto;
+}
+.icono-lista-sugerida .icono {
+  width: 16px;
+  height: 16px;
+}
+.datos-lista-sugerida {
+  flex: 1;
+  min-width: 0;
+}
+.datos-lista-sugerida strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 1px;
+}
+.datos-lista-sugerida span {
+  font-size: 10px;
+  color: var(--texto-suave);
+}
+.boton-agregar-lista-sugerida {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--borde);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--texto-suave);
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 0;
+}
+.boton-agregar-lista-sugerida:hover {
+  background: #f7f6fa;
+  border-color: #d0cdd9;
+  color: var(--primario);
+}
+.boton-agregar-lista-sugerida .icono {
+  width: 13px;
+  height: 13px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLUMNA LATERAL SOLICITUDES
+   ═══════════════════════════════════════════════════════ */
+.columna-solicitudes-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Paneles */
+.panel-sol-lateral {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cabecera-panel-sol {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 10px;
+}
+.cabecera-panel-sol h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--texto);
+  margin: 0;
+}
+.cabecera-panel-sol .enlace-panel-sol {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primario);
+  text-decoration: none;
+}
+.cabecera-panel-sol .enlace-panel-sol:hover {
+  text-decoration: underline;
+}
+
+/* Personas que quizá conozcas */
+.lista-personas-conocer {
+  padding: 0 16px 8px;
+}
+.fila-persona-conocer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.fila-persona-conocer:last-child {
+  border-bottom: none;
+}
+.avatar-persona-conocer {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  object-fit: cover;
+}
+.datos-persona-conocer {
+  flex: 1;
+  min-width: 0;
+}
+.datos-persona-conocer .nombre-pc {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto);
+  display: block;
+}
+.datos-persona-conocer .amigos-comunes-pc {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+.boton-agregar-pc {
+  padding: 5px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--texto);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: background .12s, border-color .12s;
+}
+.boton-agregar-pc:hover {
+  background: #f5f3ff;
+  border-color: var(--primario);
+  color: var(--primario);
+}
+
+/* Tus listas */
+.lista-tus-listas {
+  padding: 0 16px 8px;
+}
+.fila-lista-sl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.fila-lista-sl:last-child {
+  border-bottom: none;
+}
+.icono-lista-sl {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+.icono-lista-sl .icono {
+  width: 17px;
+  height: 17px;
+  color: #fff;
+}
+.icono-lista-sl.morado { background: var(--morado-categoria); }
+.icono-lista-sl.naranja { background: var(--naranja-categoria); }
+.icono-lista-sl.azul { background: var(--azul-categoria); }
+.icono-lista-sl.verde { background: var(--verde-categoria); }
+.datos-lista-sl {
+  flex: 1;
+  min-width: 0;
+}
+.datos-lista-sl .nombre-sl {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto);
+  display: block;
+}
+.datos-lista-sl .miembros-sl {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+/* Actividad reciente lateral */
+.lista-actividad-sl {
+  padding: 0 16px 8px;
+}
+.fila-actividad-sl {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.fila-actividad-sl:last-child {
+  border-bottom: none;
+}
+.avatar-actividad-sl {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  object-fit: cover;
+}
+.datos-actividad-sl {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--texto);
+  line-height: 1.4;
+}
+.datos-actividad-sl strong {
+  font-weight: 600;
+}
+.datos-actividad-sl .tiempo-sl {
+  display: block;
+  font-size: 11px;
+  color: var(--texto-suave);
+  margin-top: 2px;
+}
+.icono-actividad-sl {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  background: #f0edff;
+  color: var(--primario);
+  flex: 0 0 auto;
+}
+.icono-actividad-sl .icono {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 1250px) {
+  .columna-derecha-amigos {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .rejilla-resumen-amigos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rejilla-sugerencias {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rejilla-listas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rejilla-listas-sugeridas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .datos-amigo {
+    width: 130px;
+  }
+  .amigos-comunes > span,
+  .amigos-comunes .pila-avatares {
+    display: none;
+  }
+  .acciones-solicitud-completa {
+    flex-direction: column;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .filtros-solicitudes {
+    flex-wrap: wrap;
+  }
+  label.campo-busqueda.campo-busqueda-solicitudes {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+}
+@media (max-width: 600px) {
+  .tarjeta-solicitud-completa {
+    flex-wrap: wrap;
+    padding: 14px;
+  }
+  .acciones-solicitud-completa {
+    flex: 1 1 100%;
+    flex-direction: row;
+    margin-left: 0;
+    margin-top: 12px;
+    align-self: stretch;
+  }
+  .acciones-solicitud-completa .boton-aceptar,
+  .acciones-solicitud-completa .boton-accion-solicitud {
+    flex: 1;
+  }
+  .rejilla-listas {
+    grid-template-columns: 1fr;
+  }
+  .rejilla-listas-sugeridas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rejilla-sugerencias {
+    grid-template-columns: 1fr;
+  }
+  .datos-banner-listas {
+    font-size: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .rejilla-listas-sugeridas {
+    grid-template-columns: 1fr;
+  }
+}

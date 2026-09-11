@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Videollamadas — Mensajes CodePlex">
+  <title>CodePlex — Videollamadas</title>
+  <link rel="stylesheet" href="../estilos/sistema.css">
+  <link rel="stylesheet" href="../estilos/componentes/estructura.css">
+  <link rel="stylesheet" href="../estilos/componentes/contenido-tres-columnas.css">
+  <link rel="stylesheet" href="../estilos/paginas/inicio-web.css">
+  <link rel="stylesheet" href="../estilos/paginas/mensajes.css">
+</head>
+<body class="" data-pagina="mensajes" data-titulo="Videollamadas">
+
+<div class="aplicacion">
+  <div data-componente="barra-superior"></div>
+  <div data-componente="barra-lateral"></div>
+
+  <div class="zona-principal zona-principal-ancha">
+    <main class="contenido-principal">
+      <!-- Cabecera -->
+      <div class="encabezado-pagina">
+        <div>
+          <h1>Mensajes</h1>
+        </div>
+        <div class="acciones-pagina">
+          <a class="boton-texto-llamadas" href="#">
+            <span class="icono" data-icono="reloj"></span> Historial de llamadas
+          </a>
+        </div>
+      </div>
+
+      <!-- Pestañas Mensajes/Videollamadas + acciones de reunión, en una sola fila -->
+      <div class="cabecera-tabs-vl">
+        <div class="pestanas-mensajes" role="tablist">
+          <a class="pestana-mensaje" role="tab" aria-selected="false" href="09-04-mensajes-01-todos-web.html">Mensajes</a>
+          <a class="pestana-mensaje activa" role="tab" aria-selected="true" href="12-04-mensajes-04-videollamadas.html">Videollamadas</a>
+        </div>
+        <div class="acciones-videollamadas">
+          <a class="boton boton-outline-vl" href="#">
+            <span class="icono" data-icono="crear-evento"></span> Nueva reunión
+          </a>
+          <a class="boton boton-primario" href="13-04-mensajes-04-videollamadas-iniciar.html">
+            <span class="icono" data-icono="video"></span> Iniciar videollamada
+          </a>
+        </div>
+      </div>
+
+      <div class="contenido-tres-columnas contenido-videollamadas-invertido">
+      <section class="columna-principal columna-llamadas-vl">
+
+        <!-- Buscador -->
+        <label class="campo-busqueda">
+          <span class="icono" data-icono="buscar"></span>
+          <input type="search" placeholder="Buscar videollamadas..." aria-label="Buscar videollamadas">
+        </label>
+
+        <!-- Filtros -->
+        <div class="filtros-vl">
+          <button class="filtro-vl activo" type="button">Recientes</button>
+          <button class="filtro-vl" type="button">Contactos</button>
+          <button class="filtro-vl" type="button">Grupos</button>
+          <button class="filtro-vl" type="button">Reuniones programadas</button>
+        </div>
+
+        <!-- Lista de llamadas recientes -->
+        <div class="lista-llamadas-recientes">
+          <article class="conversacion">
+            <span class="avatar"></span>
+            <span class="conversacion-datos">
+              <strong>María Fernández</strong>
+              <small><span class="icono icono-direccion-llamada" data-icono="flecha-abajo-izquierda"></span> Videollamada entrante</small>
+            </span>
+            <span class="conversacion-meta"><time>10:24 AM</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar"></span>
+            <span class="conversacion-datos">
+              <strong>Luis Rodríguez</strong>
+              <small><span class="icono icono-direccion-llamada" data-icono="flecha-arriba-derecha"></span> Videollamada saliente</small>
+            </span>
+            <span class="conversacion-meta"><time>09:15 AM</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar avatar-grupo"><span class="icono" data-icono="usuarios"></span></span>
+            <span class="conversacion-datos">
+              <strong>Equipo de Proyectos</strong>
+              <small>4 miembros</small>
+            </span>
+            <span class="conversacion-meta"><time>Ayer</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar"></span>
+            <span class="conversacion-datos">
+              <strong>Carmen López</strong>
+              <small><span class="icono icono-direccion-llamada" data-icono="flecha-abajo-izquierda"></span> Videollamada entrante</small>
+            </span>
+            <span class="conversacion-meta"><time>Ayer</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar"></span>
+            <span class="conversacion-datos">
+              <strong>Diego Mendoza</strong>
+              <small><span class="icono icono-direccion-llamada" data-icono="flecha-arriba-derecha"></span> Videollamada saliente</small>
+            </span>
+            <span class="conversacion-meta"><time>2 días</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar avatar-grupo"><span class="icono" data-icono="usuarios"></span></span>
+            <span class="conversacion-datos">
+              <strong>Grupo Contabilidad</strong>
+              <small>5 miembros</small>
+            </span>
+            <span class="conversacion-meta"><time>2 días</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar"></span>
+            <span class="conversacion-datos">
+              <strong>Ana García</strong>
+              <small><span class="icono icono-direccion-llamada" data-icono="flecha-abajo-izquierda"></span> Videollamada entrante</small>
+            </span>
+            <span class="conversacion-meta"><time>3 días</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+          <article class="conversacion">
+            <span class="avatar avatar-grupo"><span class="icono" data-icono="usuarios"></span></span>
+            <span class="conversacion-datos">
+              <strong>Infraestructura TI</strong>
+              <small>3 miembros</small>
+            </span>
+            <span class="conversacion-meta"><time>3 días</time></span>
+            <button class="boton-chat-accion" type="button" aria-label="Videollamar">
+              <span class="icono" data-icono="video"></span>
+            </button>
+          </article>
+        </div>
+
+        <div class="ver-mas-mensajes">
+          <a href="#">Ver más llamadas</a>
+        </div>
+
+      </section>
+
+      <section class="columna-paneles-vl">
+
+        <!-- Contactos frecuentes -->
+        <section class="panel panel-bloque">
+          <div class="cabecera-bloque">
+            <h2>Contactos frecuentes</h2>
+            <a href="#">Ver todos</a>
+          </div>
+          <div class="carrusel-contactos-frecuentes">
+          <div class="rejilla-contactos-frecuentes">
+            <article class="tarjeta-contacto-frecuente">
+              <div class="avatar-frecuente">
+                <span class="avatar"></span>
+                <span class="punto-online"></span>
+              </div>
+              <strong>María Fernández</strong>
+              <span class="estado-online"><span class="punto-verde"></span> En línea</span>
+              <a class="boton boton-mini-outline-vl" href="#">
+                <span class="icono" data-icono="video"></span> Videollamar
+              </a>
+            </article>
+            <article class="tarjeta-contacto-frecuente">
+              <div class="avatar-frecuente">
+                <span class="avatar"></span>
+                <span class="punto-online"></span>
+              </div>
+              <strong>Luis Rodríguez</strong>
+              <span class="estado-online"><span class="punto-verde"></span> En línea</span>
+              <a class="boton boton-mini-outline-vl" href="#">
+                <span class="icono" data-icono="video"></span> Videollamar
+              </a>
+            </article>
+            <article class="tarjeta-contacto-frecuente">
+              <div class="avatar-frecuente">
+                <span class="avatar"></span>
+                <span class="punto-online"></span>
+              </div>
+              <strong>Carmen López</strong>
+              <span class="estado-online"><span class="punto-verde"></span> En línea</span>
+              <a class="boton boton-mini-outline-vl" href="#">
+                <span class="icono" data-icono="video"></span> Videollamar
+              </a>
+            </article>
+            <article class="tarjeta-contacto-frecuente">
+              <div class="avatar-frecuente">
+                <span class="avatar"></span>
+                <span class="punto-online"></span>
+              </div>
+              <strong>Diego Mendoza</strong>
+              <span class="estado-online"><span class="punto-verde"></span> En línea</span>
+              <a class="boton boton-mini-outline-vl" href="#">
+                <span class="icono" data-icono="video"></span> Videollamar
+              </a>
+            </article>
+            <article class="tarjeta-contacto-frecuente">
+              <div class="avatar-frecuente">
+                <span class="avatar avatar-grupo-grande">
+                  <span class="icono" data-icono="usuarios"></span>
+                </span>
+                <span class="insignia-grupo-frecuente">4</span>
+              </div>
+              <strong>Equipo de Proyectos</strong>
+              <span class="estado-online">4 miembros</span>
+              <a class="boton boton-mini-outline-vl" href="#">
+                <span class="icono" data-icono="video"></span> Videollamar
+              </a>
+            </article>
+          </div>
+          <button type="button" class="boton-desplazar-carrusel izquierda" aria-label="Ver contactos anteriores" hidden>
+            <span class="icono" data-icono="flecha-izquierda"></span>
+          </button>
+          <button type="button" class="boton-desplazar-carrusel derecha" aria-label="Ver más contactos">
+            <span class="icono" data-icono="flecha-derecha"></span>
+          </button>
+          </div>
+        </section>
+
+        <!-- Reuniones programadas -->
+        <section class="panel panel-bloque">
+          <div class="cabecera-bloque">
+            <h2>Reuniones programadas</h2>
+          </div>
+          <div class="lista-reuniones-prog">
+            <article class="tarjeta-reunion-prog">
+              <div class="fecha-reunion">
+                <span class="dia-reunion">15</span>
+                <span class="mes-reunion">AGO</span>
+              </div>
+              <div class="datos-reunion">
+                <strong>Reunión de seguimiento del proyecto Puerto Central</strong>
+                <p><span class="icono" data-icono="reloj"></span> 10:00 AM - 11:00 AM · <span class="icono" data-icono="usuarios"></span> 4 participantes</p>
+              </div>
+              <div class="avatars-reunion">
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini avatar-extra">+1</span>
+              </div>
+              <a class="boton boton-primario-sm" href="#">Unirse</a>
+            </article>
+            <article class="tarjeta-reunion-prog">
+              <div class="fecha-reunion">
+                <span class="dia-reunion">16</span>
+                <span class="mes-reunion">AGO</span>
+              </div>
+              <div class="datos-reunion">
+                <strong>Presentación de avances - Módulo Inventario</strong>
+                <p><span class="icono" data-icono="reloj"></span> 02:00 PM - 03:00 PM · <span class="icono" data-icono="usuarios"></span> 5 participantes</p>
+              </div>
+              <div class="avatars-reunion">
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini avatar-extra">+2</span>
+              </div>
+              <a class="boton boton-primario-sm" href="#">Unirse</a>
+            </article>
+            <article class="tarjeta-reunion-prog">
+              <div class="fecha-reunion">
+                <span class="dia-reunion">18</span>
+                <span class="mes-reunion">AGO</span>
+              </div>
+              <div class="datos-reunion">
+                <strong>Capacitación en seguridad de la información</strong>
+                <p><span class="icono" data-icono="reloj"></span> 04:00 PM - 05:00 PM · <span class="icono" data-icono="usuarios"></span> 6 participantes</p>
+              </div>
+              <div class="avatars-reunion">
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini"></span>
+                <span class="avatar avatar-mini avatar-extra">+3</span>
+              </div>
+              <a class="boton boton-primario-sm" href="#">Unirse</a>
+            </article>
+          </div>
+          <div class="ver-todas-reuniones">
+            <a href="#">Ver todas las reuniones</a>
+          </div>
+        </section>
+
+        <!-- Historial reciente -->
+        <section class="panel panel-bloque">
+          <div class="cabecera-bloque">
+            <h2>Historial reciente</h2>
+          </div>
+          <div class="lista-historial-vl">
+            <article class="tarjeta-historial-vl">
+              <span class="avatar"></span>
+              <div class="datos-historial">
+                <strong>Videollamada con María Fernández</strong>
+                <p>Ayer, 04:32 PM · <span class="icono" data-icono="reloj"></span> 12 min 45 seg</p>
+              </div>
+              <span class="estado-historial completada"><span class="punto-estado"></span>Completada</span>
+              <button class="boton-icono-menu" type="button" aria-label="Más opciones">
+                <span class="icono" data-icono="puntos"></span>
+              </button>
+            </article>
+            <article class="tarjeta-historial-vl">
+              <span class="avatar"></span>
+              <div class="datos-historial">
+                <strong>Videollamada con Luis Rodríguez</strong>
+                <p>Ayer, 11:15 AM · <span class="icono" data-icono="reloj"></span> 09 min 21 seg</p>
+              </div>
+              <span class="estado-historial completada"><span class="punto-estado"></span>Completada</span>
+              <button class="boton-icono-menu" type="button" aria-label="Más opciones">
+                <span class="icono" data-icono="puntos"></span>
+              </button>
+            </article>
+            <article class="tarjeta-historial-vl">
+              <span class="avatar avatar-grupo">
+                <span class="icono" data-icono="usuarios"></span>
+              </span>
+              <div class="datos-historial">
+                <strong>Videollamada grupal - Equipo de Proyectos</strong>
+                <p>12 ago, 03:20 PM · <span class="icono" data-icono="reloj"></span> 25 min 10 seg</p>
+              </div>
+              <span class="estado-historial completada"><span class="punto-estado"></span>Completada</span>
+              <button class="boton-icono-menu" type="button" aria-label="Más opciones">
+                <span class="icono" data-icono="puntos"></span>
+              </button>
+            </article>
+          </div>
+          <div class="ver-todo-historial">
+            <a href="#">Ver todo el historial</a>
+          </div>
+        </section>
+
+      </section>
+
+      <aside class="columna-derecha-generica">
+
+        <!-- Contactos en línea -->
+        <section class="panel panel-bloque">
+          <div class="cabecera-bloque">
+            <h2>Contactos en línea</h2>
+            <a href="#">Ver todos</a>
+          </div>
+          <article class="tarjeta-persona">
+            <span class="avatar"></span>
+            <div class="datos-persona">
+              <strong>Ana García <span class="etiqueta-colaborador">(COLABORADOR)</span></strong>
+            </div>
+            <span class="punto-en-linea"></span>
+          </article>
+          <article class="tarjeta-persona">
+            <span class="avatar"></span>
+            <div class="datos-persona">
+              <strong>Luis Rodríguez <span class="etiqueta-colaborador">(COLABORADOR)</span></strong>
+            </div>
+            <span class="punto-en-linea"></span>
+          </article>
+          <article class="tarjeta-persona">
+            <span class="avatar"></span>
+            <div class="datos-persona">
+              <strong>Carmen López <span class="etiqueta-colaborador">(COLABORADOR)</span></strong>
+            </div>
+            <span class="punto-en-linea"></span>
+          </article>
+          <article class="tarjeta-persona">
+            <span class="avatar"></span>
+            <div class="datos-persona">
+              <strong>Diego Mendoza</strong>
+            </div>
+            <span class="punto-en-linea"></span>
+          </article>
+          <article class="tarjeta-persona">
+            <span class="avatar"></span>
+            <div class="datos-persona">
+              <strong>María Fernández</strong>
+            </div>
+            <span class="punto-en-linea"></span>
+          </article>
+        </section>
+
+        <!-- Grupos recientes -->
+        <section class="panel panel-bloque">
+          <div class="cabecera-bloque">
+            <h2>Grupos recientes</h2>
+            <a href="#">Ver todos</a>
+          </div>
+          <div class="fila-grupo-recomendado">
+            <span class="icono-grupo-mini"></span>
+            <div class="datos-grupo-recomendado">
+              <strong>Ingenieros Civiles</strong>
+              <span>12.4 mil miembros</span>
+            </div>
+            <button type="button" class="boton-agregar-grupo" aria-label="Unirse">
+              <span class="icono" data-icono="mas"></span>
+            </button>
+          </div>
+          <div class="fila-grupo-recomendado">
+            <span class="icono-grupo-mini"></span>
+            <div class="datos-grupo-recomendado">
+              <strong>Emprendedores Perú</strong>
+              <span>8.7 mil miembros</span>
+            </div>
+            <button type="button" class="boton-agregar-grupo" aria-label="Unirse">
+              <span class="icono" data-icono="mas"></span>
+            </button>
+          </div>
+          <div class="fila-grupo-recomendado">
+            <span class="icono-grupo-mini"></span>
+            <div class="datos-grupo-recomendado">
+              <strong>Tecnología &amp; Innovación</strong>
+              <span>5.3 mil miembros</span>
+            </div>
+            <button type="button" class="boton-agregar-grupo" aria-label="Unirse">
+              <span class="icono" data-icono="mas"></span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Eventos próximos -->
+        <section class="panel panel-bloque">
+          <div class="cabecera-bloque">
+            <h2>Eventos próximos</h2>
+            <a href="#">Ver todos</a>
+          </div>
+          <div class="lista-eventos compacta" style="padding:0">
+            <article class="evento-item">
+              <div class="fecha-evento">
+                <strong>15</strong><span>JUN</span>
+              </div>
+              <div class="evento-contenido">
+                <h3>Reunión de Proyectos</h3>
+                <p>Lun, 15 jun · 10:00 AM · Oficina Principal</p>
+              </div>
+            </article>
+            <article class="evento-item">
+              <div class="fecha-evento">
+                <strong>22</strong><span>JUN</span>
+              </div>
+              <div class="evento-contenido">
+                <h3>Capacitación en Seguridad</h3>
+                <p>Lun, 22 jun · 2:00 PM · Virtual</p>
+              </div>
+            </article>
+            <article class="evento-item">
+              <div class="fecha-evento">
+                <strong>30</strong><span>JUN</span>
+              </div>
+              <div class="evento-contenido">
+                <h3>Cumpleaños: Juan Pérez</h3>
+                <p>Mar, 30 jun · Todo el día</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </aside>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="notificacion-flotante" role="status" aria-live="polite" data-notificacion></div>
+<script src="../scripts/componentes.js"></script>
+<script src="../scripts/aplicacion.js"></script>
+<script src="../scripts/historias.js"></script>
+</body>
+</html>
