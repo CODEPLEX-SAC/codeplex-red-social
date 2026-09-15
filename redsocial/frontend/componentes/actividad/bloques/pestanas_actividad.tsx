@@ -1,16 +1,17 @@
 import { useRef } from 'react'
-import { useCarrusel } from '../../../servicios/compartido/usar_carrusel'
-import { usarMemoriaScrollPestanas } from '../../../servicios/compartido/usar_memoria_scroll_pestanas'
+import { useCarrusel } from '../../compartido/usar_carrusel'
+import { usarMemoriaScrollPestanas } from '../../compartido/usar_memoria_scroll_pestanas'
+import catalogoActividad from '../../../catalogos/capacidades/redsocial/actividad.json'
 import type { PestanaActividad } from '@/tipos/actividad/pestanas_actividad'
 
 const TABS = [
-  { etiqueta: 'Todas', href: '02-02-actividad-01-todas-web.html' },
-  { etiqueta: 'Publicaciones', href: '03-02-actividad-02-publicaciones.html' },
-  { etiqueta: 'Menciones', href: '04-02-actividad-03-menciones.html' },
-  { etiqueta: 'Colaboradores', href: '05-02-actividad-04-colaboradores.html' },
-  { etiqueta: 'Grupos', href: '06-02-actividad-05-grupos.html' },
-  { etiqueta: 'Módulos', href: '07-02-actividad-06-modulos.html' },
-  { etiqueta: 'Sistema', href: '08-02-actividad-07-sistema.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.todas, href: '02-02-actividad-01-todas-web.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.publicaciones, href: '03-02-actividad-02-publicaciones.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.menciones, href: '04-02-actividad-03-menciones.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.colaboradores, href: '05-02-actividad-04-colaboradores.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.grupos, href: '06-02-actividad-05-grupos.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.modulos, href: '07-02-actividad-06-modulos.html' },
+  { etiqueta: catalogoActividad.titulos_pestanas.sistema, href: '08-02-actividad-07-sistema.html' },
 ] as const
 
 export function PestanasActividad({ activa }: { activa: PestanaActividad }) {

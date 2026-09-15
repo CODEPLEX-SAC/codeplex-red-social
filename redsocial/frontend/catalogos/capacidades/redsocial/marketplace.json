@@ -1,0 +1,60 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "principal": "/marketplace"
+  },
+  "titulo_menu": "Marketplace",
+  "titulos": {
+    "principal": "Marketplace"
+  },
+  "subtitulos": {
+    "principal": "Descubre aplicaciones, módulos y soluciones para potenciar tu negocio."
+  },
+  "hero": {
+    "titulo_pre": "Potencia tu empresa con las mejores soluciones del",
+    "titulo_destacado": "marketplace",
+    "beneficio_1_titulo": "Soluciones verificadas",
+    "beneficio_1_detalle": "y confiables",
+    "beneficio_2_titulo": "Instalación rápida",
+    "beneficio_2_detalle": "y segura",
+    "beneficio_3_titulo": "Soporte y actualizaciones",
+    "beneficio_3_detalle": "continuas"
+  },
+  "placeholders": {
+    "buscar": "Buscar aplicaciones, módulos o soluciones..."
+  },
+  "filtros": {
+    "todas": "Todas",
+    "mas": "Más",
+    "pestanas": ["Contabilidad", "Ventas", "RRHH", "Inventario", "Productividad", "Marketing", "Seguridad"]
+  },
+  "secciones": {
+    "destacados": "Destacados",
+    "mas_categorias": "Más categorías",
+    "mis_compras_recientes": "Mis compras recientes",
+    "popular_esta_semana": "Popular esta semana"
+  },
+  "botones": {
+    "mis_compras": "Mis compras",
+    "ver_detalles": "Ver detalles",
+    "ir_a_mis_compras": "Ir a mis compras",
+    "publicar_mi_aplicacion": "Publicar mi aplicación",
+    "anterior": "Anterior",
+    "siguiente": "Siguiente"
+  },
+  "leyendas": {
+    "popular": "Popular",
+    "activo": "Activo",
+    "por_mes": "/mes"
+  },
+  "desarrollador": {
+    "titulo": "¿Eres desarrollador?",
+    "texto": "Publica tus aplicaciones en Codeplex y llega a miles de empresas."
+  }
+}

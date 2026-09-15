@@ -1,4 +1,7 @@
 import type { EstructuraTresColumnasProps } from '@/tipos/compartido/estructura_tres_columnas'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 export function EstructuraTresColumnas({ principal, publicidad, lateral, alturaCompleta }: EstructuraTresColumnasProps) {
   return (

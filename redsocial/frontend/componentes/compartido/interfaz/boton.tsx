@@ -1,4 +1,7 @@
 import type { BotonVariant, BotonSize, BotonProps } from '@/tipos/compartido/boton'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 const CLASES_VARIANTE: Record<BotonVariant, string> = {
   primario: 'border-transparent bg-primario text-white hover:bg-primario-oscuro',

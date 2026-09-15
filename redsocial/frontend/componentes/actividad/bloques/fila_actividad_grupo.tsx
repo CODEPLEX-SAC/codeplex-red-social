@@ -1,6 +1,9 @@
 import { Icono } from '../../compartido/icono'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
 import type { FilaActividadGrupoProps } from '../../../tipos/actividad/fila_actividad_grupo'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 const CLASES_ICONO: Record<NonNullable<FilaActividadGrupoProps['colorIcono']>, string> = {
   morado: 'bg-[#ede9fe] text-morado-categoria',

@@ -1,5 +1,8 @@
 import { Icono } from '../icono'
 import type { BotonIconoVariant, BotonIconoSize, BotonIconoProps } from '@/tipos/compartido/boton_icono'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 const CLASES_VARIANTE: Record<BotonIconoVariant, string> = {
   default: 'bg-transparent text-[#6d6a7c] hover:bg-[#f2f1f6]',

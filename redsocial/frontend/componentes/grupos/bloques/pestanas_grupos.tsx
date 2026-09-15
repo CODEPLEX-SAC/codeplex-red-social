@@ -1,9 +1,10 @@
+import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import type { PestanaGrupo } from '@/tipos/grupos/pestanas_grupos'
 
 const TABS = [
-  { etiqueta: 'Mis grupos', href: '19-06-grupos-01-web-misgrupos.html' },
-  { etiqueta: 'Descubrir', href: '20-06-grupos-02-web-descubrir.html' },
-  { etiqueta: 'Invitaciones', href: '21-06-grupos-03-web-invitaciones.html', insignia: 2 },
+  { etiqueta: catalogoGrupos.titulos_pestanas.mis_grupos, href: '19-06-grupos-01-web-misgrupos.html' },
+  { etiqueta: catalogoGrupos.titulos_pestanas.descubrir, href: '20-06-grupos-02-web-descubrir.html' },
+  { etiqueta: catalogoGrupos.titulos_pestanas.invitaciones, href: '21-06-grupos-03-web-invitaciones.html', insignia: 2 },
 ] as const
 
 export function PestanasGrupos({ activa }: { activa: PestanaGrupo }) {

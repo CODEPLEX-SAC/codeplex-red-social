@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import { Icono } from '../../compartido/icono'
+import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
+import mensajesGlobales from '../../../mensajes/globales/textos.json'
 import type { IconName } from '../../../tipos/compartido/icono'
 
 export function PanelLateralAmigos({ titulo, children }: { titulo: string; children: ReactNode }) {
@@ -8,7 +10,7 @@ export function PanelLateralAmigos({ titulo, children }: { titulo: string; child
     <section className="rounded-xl border border-[#eee] bg-white p-4">
       <div className="mb-3.5 flex items-center justify-between">
         <h3 className="m-0 text-sm font-bold text-texto">{titulo}</h3>
-        <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">Ver todas</a>
+        <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
       </div>
       {children}
     </section>
@@ -33,9 +35,9 @@ export function FilaPersonaConocer({ nombre, comunes }: { nombre: string; comune
 export function FilaListaLateral({ icono, color, nombre, miembros }: { icono: IconName; color: string; nombre: string; miembros: string }) {
   return (
     <article className="flex items-center gap-2.5 border-b border-[#f5f5f5] py-2.25 last:border-b-0">
-      <div className="grid h-[34px] w-[34px] flex-none place-items-center rounded-[9px]" style={{ background: color }}>
+      <SuperficieColor color={color} className="grid h-[34px] w-[34px] flex-none place-items-center rounded-[9px]">
         <Icono name={icono} className="h-[17px] w-[17px] text-white" />
-      </div>
+      </SuperficieColor>
       <div className="min-w-0 flex-1">
         <span className="block text-xs font-semibold text-texto">{nombre}</span>
         <span className="text-[11px] text-texto-suave">{miembros}</span>

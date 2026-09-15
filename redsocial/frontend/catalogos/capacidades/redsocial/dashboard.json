@@ -1,0 +1,46 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "principal": "/dashboard"
+  },
+  "titulo_menu": "Dashboard",
+  "titulos": {
+    "principal": "Dashboard"
+  },
+  "secciones": {
+    "evolucion_ventas": "Evolución de ventas",
+    "composicion_ingresos": "Composición de ingresos",
+    "ratios_financieros": "Ratios financieros",
+    "resumen_por_modulo": "Resumen por módulo",
+    "top_productos": "Top 5 productos más vendidos",
+    "proyeccion_ventas": "Proyección de ventas",
+    "flujo_caja": "Flujo de caja proyectado"
+  },
+  "botones": {
+    "personalizar_dashboard": "Personalizar dashboard",
+    "ver_reporte": "Ver reporte",
+    "ver_detalle": "Ver detalle",
+    "ver_detalles": "Ver detalles"
+  },
+  "leyendas": {
+    "ventas": "Ventas",
+    "proyeccion": "Proyección",
+    "ventas_reales": "Ventas reales",
+    "total": "Total"
+  },
+  "tabla": {
+    "ratio": "Ratio",
+    "valor": "Valor",
+    "estado": "Estado"
+  },
+  "selectores": {
+    "periodo_actual": { "etiqueta": "Periodo actual", "opciones": ["Junio 2026", "Mayo 2026"] },
+    "mensual_semanal": { "opciones": ["Mensual", "Semanal"] }
+  }
+}

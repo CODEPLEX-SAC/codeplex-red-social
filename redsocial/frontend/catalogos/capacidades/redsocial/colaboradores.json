@@ -1,0 +1,192 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "listado": "/colaboradores",
+    "perfil": "/colaboradores/perfil",
+    "invitar": "/colaboradores/invitar",
+    "invitar_rol_permisos": "/colaboradores/invitar/rol-permisos",
+    "invitar_vigencia": "/colaboradores/invitar/vigencia",
+    "invitar_resumen": "/colaboradores/invitar/resumen"
+  },
+  "titulo_menu": "Colaboradores",
+  "titulos": {
+    "listado": "Colaboradores",
+    "perfil": "Perfil del colaborador",
+    "invitar": "Invitar colaborador",
+    "invitar_rol_permisos": "Invitar colaborador",
+    "invitar_vigencia": "Invitar colaborador",
+    "invitar_resumen": "Invitar colaborador"
+  },
+  "subtitulos": {
+    "listado": "Gestiona a las personas que forman parte de tu equipo y acceden a los sistemas.",
+    "invitar_asistente": "Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado."
+  },
+  "stepper_invitar": ["Información", "Rol y permisos", "Vigencia", "Resumen"],
+  "secciones": {
+    "como_funciona": "¿Cómo funciona?",
+    "detalle_colaborador": "Detalle del colaborador",
+    "informacion_general": "Información general",
+    "rol_y_permisos": "Rol y permisos",
+    "rol_perfil_etiqueta": "Rol / Perfil",
+    "descripcion": "Descripción",
+    "aplicaciones_asignadas": "Aplicaciones asignadas (7)",
+    "acciones_rapidas": "Acciones rápidas",
+    "historial_actividad": "Historial de actividad",
+    "datos_del_colaborador": "Datos del colaborador",
+    "metodo_de_invitacion": "Método de invitación",
+    "seguridad": "Seguridad"
+  },
+  "pasos_invitar": {
+    "informacion": { "titulo": "1. Información", "subtitulo": "Completa los datos del colaborador que deseas invitar." },
+    "rol_permisos": { "titulo": "2. Rol y permisos", "subtitulo": "Selecciona el rol del colaborador y asigna los permisos por módulo." },
+    "vigencia": { "titulo": "3. Vigencia", "subtitulo": "Define el período de acceso del colaborador y qué ocurrirá al finalizar la vigencia." },
+    "resumen": { "titulo": "4. Resumen", "subtitulo": "Revisa la información de la invitación. El colaborador recibirá un correo con los detalles y el acceso para unirse al equipo." }
+  },
+  "campos_resumen": {
+    "colaborador": "Colaborador",
+    "editar": "Editar",
+    "rol_y_permisos": "Rol y permisos",
+    "rol_asignado": "Rol asignado",
+    "modulos_y_permisos": "Módulos y permisos",
+    "vigencia": "Vigencia",
+    "fecha_de_inicio": "Fecha de inicio",
+    "fecha_de_vencimiento": "Fecha de vencimiento",
+    "al_vencer_la_vigencia": "Al vencer la vigencia",
+    "recordatorios": "Recordatorios",
+    "zona_horaria": "Zona horaria",
+    "vista_previa_correo": "Vista previa del correo que recibirá el colaborador",
+    "cambiar_plantilla": "Cambiar plantilla",
+    "hola_saludo": "Hola {nombre},",
+    "invitacion_intro": "te ha invitado a formar parte del equipo de",
+    "en_codeplex": "en",
+    "filas_correo": {
+      "rol_asignado": "Rol asignado",
+      "vigencia": "Vigencia",
+      "modulos": "Módulos"
+    },
+    "aceptar_invitacion": "Aceptar invitación",
+    "si_boton_no_funciona": "Si el botón no funciona, copia y pega este enlace en tu navegador:",
+    "no_esperabas_invitacion": "¿No esperabas esta invitación? Puedes ignorar este correo.",
+    "nota_aceptacion": "El colaborador deberá aceptar la invitación para poder acceder a los sistemas según los permisos asignados.",
+    "guardar_borrador": "Guardar borrador",
+    "enviar_invitacion": "Enviar invitación",
+    "se_enviara_por_correo": "Se enviará por correo",
+    "enlace_invitacion_preview": "https://codeplex.com/invitacion/abc123def456"
+  },
+  "campos_vigencia": {
+    "periodo_de_vigencia": "Período de vigencia",
+    "vigencia_por_periodo": "Vigencia por período",
+    "vigencia_por_periodo_detalle": "Establece una fecha de inicio y fin para esta invitación.",
+    "fecha_de_inicio": "Fecha de inicio",
+    "fecha_de_vencimiento": "Fecha de vencimiento",
+    "vigencia_indefinida": "Vigencia indefinida",
+    "vigencia_indefinida_detalle": "El colaborador tendrá acceso sin fecha de vencimiento.",
+    "nota_indefinida": "Recomendado para colaboradores permanentes en tu equipo.",
+    "al_vencer_vigencia": "Al vencer la vigencia",
+    "al_vencer_subtitulo": "Selecciona qué ocurrirá cuando finalice el período de acceso.",
+    "desactivar_automaticamente": "Desactivar acceso automáticamente",
+    "desactivar_automaticamente_detalle": "El colaborador perderá el acceso a los sistemas al vencer.",
+    "mantener_con_revision": "Mantener acceso con revisión",
+    "mantener_con_revision_detalle": "El acceso no se desactivará automáticamente. Se requerirá revisión manual.",
+    "renovacion": "Renovación",
+    "renovacion_subtitulo": "Configura si esta invitación puede ser renovada.",
+    "permitir_renovacion": "Permitir renovación",
+    "permitir_renovacion_detalle": "Podrás renovar la invitación antes de que venza.",
+    "no_permitir_renovacion": "No permitir renovación",
+    "no_permitir_renovacion_detalle": "Cuando venza, deberás enviar una nueva invitación.",
+    "recordatorios": "Recordatorios",
+    "recordatorios_subtitulo": "Recibe recordatorios antes de que venza la invitación.",
+    "enviar_recordatorio_correo": "Enviar recordatorio por correo",
+    "enviar_recordatorio_correo_detalle": "Te notificaremos antes de la fecha de vencimiento.",
+    "recordar_con_anticipacion": "Recordar con anticipación",
+    "zona_horaria": "Zona horaria",
+    "zona_horaria_subtitulo": "La vigencia se aplicará según la siguiente zona horaria."
+  },
+  "campos_rol_permisos": {
+    "seleccionar_modulo": "Seleccionar módulo",
+    "nota_modulo": "Los permisos asignados se aplicarán únicamente a este módulo. Podrás configurar otros módulos en los siguientes pasos.",
+    "seleccionar_nivel_titulo": "Seleccionar nivel rápido (perfil del módulo)",
+    "seleccionar_nivel_subtitulo": "Aplica un conjunto de permisos predefinido para este módulo.",
+    "ver_perfiles": "Ver perfiles",
+    "perfil_aplicado_prefijo": "Perfil aplicado:",
+    "perfil_aplicado_nota": "Puedes modificar cualquier permiso de forma personalizada.",
+    "columna_permiso": "Permiso",
+    "restablecer_permisos": "Restablecer permisos",
+    "anterior": "Anterior"
+  },
+  "columnas_permisos": [
+    { "clave": "sin-acceso", "icono": "sin-acceso", "color": "#ef4444", "etiqueta": "Sin acceso" },
+    { "clave": "ver", "icono": "ver", "color": "#3b82f6", "etiqueta": "Ver" },
+    { "clave": "crear", "icono": "mas", "color": "#10b981", "etiqueta": "Crear" },
+    { "clave": "editar", "icono": "editar", "color": "#f97316", "etiqueta": "Editar" },
+    { "clave": "eliminar", "icono": "eliminar", "color": "#ef4444", "etiqueta": "Eliminar" },
+    { "clave": "imprimir", "icono": "imprimir", "color": "#8b5cf6", "etiqueta": "Imprimir" },
+    { "clave": "exportar", "icono": "descargar", "color": "#10b981", "etiqueta": "Exportar" }
+  ],
+  "campos_informacion": {
+    "nombres": "Nombres",
+    "apellidos": "Apellidos",
+    "correo_electronico": "Correo electrónico",
+    "correo_ayuda": "Se enviará la invitación a este correo.",
+    "telefono_whatsapp": "Teléfono / WhatsApp",
+    "telefono_ayuda": "Opcional. Se puede invitar por WhatsApp.",
+    "documento_identidad": "Documento de identidad",
+    "cargo_puesto": "Cargo / Puesto",
+    "cargo_ayuda": "Opcional. Ej: Contador, Analista, Asistente, etc.",
+    "empresa": "Empresa",
+    "area_departamento": "Área / Departamento",
+    "area_ayuda": "Opcional.",
+    "metodo_invitacion_ayuda": "Elige cómo deseas enviar la invitación al colaborador.",
+    "enviar_correo": "Enviar por correo electrónico",
+    "enviar_correo_ayuda": "Se enviará un correo con el enlace de invitación.",
+    "enviar_whatsapp": "Enviar por WhatsApp",
+    "enviar_whatsapp_ayuda": "Se enviará un mensaje con el enlace de invitación.",
+    "nota_registro": "Si el colaborador aún no tiene una cuenta en CODEPLEX, podrá registrarse al aceptar la invitación.",
+    "nota_seguridad": "El colaborador solo tendrá acceso a los sistemas y módulos que le asignes."
+  },
+  "botones": {
+    "invitar_colaborador": "Invitar colaborador",
+    "filtros": "Filtros",
+    "exportar": "Exportar",
+    "editar": "Editar",
+    "reenviar": "Reenviar",
+    "ver_colaborador": "Ver colaborador",
+    "editar_colaborador": "Editar colaborador",
+    "cambiar_rol_perfil": "Cambiar rol / perfil",
+    "dar_de_baja": "Dar de baja",
+    "desactivar_acceso": "Desactivar acceso",
+    "ver_todo": "Ver todo",
+    "mas_opciones": "Más opciones",
+    "volver_a_colaboradores": "Volver a colaboradores"
+  },
+  "placeholders": {
+    "buscar_colaborador": "Buscar colaborador por nombre, correo o teléfono..."
+  },
+  "selectores": {
+    "estado": { "etiqueta": "Estado", "opciones": ["Todos", "Activo", "Invitado", "Inactivo", "Baja"] },
+    "rol_perfil": { "etiqueta": "Rol / Perfil", "opciones": ["Todos", "Administrador", "Contador", "Vendedor", "Almacenero", "Analista", "Asistente"] },
+    "aplicaciones": { "etiqueta": "Aplicaciones", "opciones": ["Todas", "Calendario", "Mensajes", "Actividad", "Marketplace"] },
+    "ordenar_por": { "etiqueta": "Ordenar por", "opciones": ["Más recientes", "Más antiguos", "Nombre A-Z", "Nombre Z-A"] },
+    "codigo_pais": { "opciones": ["+51", "+52", "+54", "+57", "+56"] },
+    "tipo_documento": { "opciones": ["DNI", "RUC", "C.E."] },
+    "empresa_colaborador": { "opciones": ["AI Robotics Peru SAC", "Otra empresa"] },
+    "area_departamento": { "opciones": ["Contabilidad", "Ventas", "Tecnología", "Recursos Humanos", "Marketing"] }
+  },
+  "tabla": {
+    "colaborador": "Colaborador",
+    "rol_perfil": "Rol / Perfil",
+    "aplicaciones": "Aplicaciones",
+    "estado": "Estado",
+    "vigencia": "Vigencia",
+    "acciones": "Acciones"
+  },
+  "paginacion": {
+    "resumen": "Mostrando 1 a 6 de 24 colaboradores"
+  }
+}

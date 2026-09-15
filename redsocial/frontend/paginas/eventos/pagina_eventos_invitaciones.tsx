@@ -1,88 +1,25 @@
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
+import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { Icono } from '../../componentes/compartido/icono'
-import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
+import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
+import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
+import { TextoColor } from '../../componentes/compartido/interfaz/texto_color'
 import type { IconName } from '../../tipos/compartido/icono'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
-import type { InvitacionPendiente, InvitacionRespondida, EventoLateral } from '@/tipos/eventos/pagina_eventos_invitaciones'
+import mensajesGlobales from '../../mensajes/globales/textos.json'
+import {
+  PENDIENTES,
+  RESPONDIDAS,
+  PROXIMOS_LATERAL,
+  MES_CALENDARIO_INVITACIONES,
+  RESUMEN_INVITACIONES,
+  CONTEO_PESTANAS_INVITACIONES,
+} from '../../datos/eventos/invitaciones'
 
-const PENDIENTES: InvitacionPendiente[] = [
-  {
-    gradiente: 'linear-gradient(135deg,#6c3ce0,#a855f7)',
-    dia: '24',
-    mes: 'AGO',
-    categoria: 'MÚSICA',
-    categoriaColor: '#6c3ce0',
-    nombre: 'Concierto Codeplex Live 2026',
-    descripcion: 'Una noche increíble con los mejores artistas en vivo.',
-    fecha: 'Sáb, 24 Ago 2026',
-    hora: '7:00 PM',
-    ubicacion: 'Arena 1, Lima',
-    avatares: 4,
-    invitador: 'María González',
-  },
-  {
-    gradiente: 'linear-gradient(135deg,#f59e0b,#ef4444)',
-    dia: '22',
-    mes: 'JUN',
-    categoria: 'NEGOCIOS',
-    categoriaColor: '#ea580c',
-    nombre: 'Networking Empresarial',
-    descripcion: 'Conecta con empresarios y profesionales de diferentes industrias.',
-    fecha: 'Jue, 22 Jun 2026',
-    hora: '6:00 PM',
-    ubicacion: 'WeWork San Isidro',
-    avatares: 1,
-    invitador: 'Carlos Mendoza',
-  },
-]
-
-const RESPONDIDAS: InvitacionRespondida[] = [
-  {
-    gradiente: 'linear-gradient(135deg,#3b82f6,#06b6d4)',
-    dia: '15',
-    mes: 'JUN',
-    categoria: 'TECNOLOGÍA',
-    categoriaColor: '#3b82f6',
-    nombre: 'Codeplex Tech Summit',
-    fecha: 'Jue, 15 Jun 2026',
-    hora: '9:00 AM',
-    ubicacion: 'Centro de Convenciones Lima',
-    estado: 'aceptada',
-  },
-  {
-    gradiente: 'linear-gradient(135deg,#10b981,#34d399)',
-    dia: '05',
-    mes: 'JUL',
-    categoria: 'EDUCACIÓN',
-    categoriaColor: '#10b981',
-    nombre: 'Taller de Marketing Digital',
-    fecha: 'Sáb, 5 Jul 2026',
-    hora: '10:00 AM',
-    ubicacion: 'Online',
-    estado: 'aceptada',
-  },
-  {
-    gradiente: 'linear-gradient(135deg,#ec4899,#f43f5e)',
-    dia: '10',
-    mes: 'MAY',
-    categoria: 'GASTRONOMÍA',
-    categoriaColor: '#ec4899',
-    nombre: 'Festival Gastronómico',
-    fecha: 'Dom, 10 May 2026',
-    hora: '12:00 PM',
-    ubicacion: 'Parque de la Exposición',
-    estado: 'rechazada',
-  },
-]
-
-const PROXIMOS_LATERAL: EventoLateral[] = [
-  { gradiente: 'linear-gradient(135deg,#6c3ce0,#a855f7)', dia: '24', mes: 'AGO', nombre: 'Concierto Codeplex Live 2026', fechaHora: 'Sáb, 24 Ago 2026 · 7:00 PM', asistentes: '1.2K asistirán' },
-  { gradiente: 'linear-gradient(135deg,#3b82f6,#06b6d4)', dia: '15', mes: 'JUN', nombre: 'Codeplex Tech Summit', fechaHora: 'Jue, 15 Jun 2026 · 9:00 AM', asistentes: '856 asistirán' },
-  { gradiente: 'linear-gradient(135deg,#f59e0b,#ef4444)', dia: '22', mes: 'JUN', nombre: 'Networking Empresarial', fechaHora: 'Jue, 22 Jun 2026 · 6:00 PM', asistentes: '642 asistirán' },
-]
+const DIAS_SEMANA = catalogoEventos.dias_semana
 
 const SEMANAS_CALENDARIO: { numero: string; otroMes?: boolean; hoy?: boolean; conPunto?: boolean }[][] = [
   [
@@ -119,9 +56,9 @@ export function PaginaEventosInvitaciones() {
               </div>
               <div>
                 <h1 className="m-0 text-[22px] font-extrabold text-texto">
-                  Eventos <span className="text-primario">/ Invitaciones</span>
+                  {catalogoEventos.titulos.seccion} <span className="text-primario">/ {catalogoEventos.titulos.invitaciones}</span>
                 </h1>
-                <p className="m-0 mt-0.5 text-[13px] text-texto-suave">Eventos a los que te han invitado.</p>
+                <p className="m-0 mt-0.5 text-[13px] text-texto-suave">{catalogoEventos.subtitulos.invitaciones}</p>
               </div>
             </div>
           </div>
@@ -133,38 +70,38 @@ export function PaginaEventosInvitaciones() {
             className="mb-6 flex items-center gap-3 overflow-x-auto border-b border-gris-borde py-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-[950px]:flex-nowrap"
           >
             <button type="button" className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primario bg-primario px-3.5 py-2 text-sm text-white">
-              Todas <span className="rounded-[10px] bg-white/30 px-[7px] py-px text-[11px] font-bold">2</span>
+              {catalogoEventos.filtros.todas} <span className="rounded-[10px] bg-white/30 px-[7px] py-px text-[11px] font-bold">{CONTEO_PESTANAS_INVITACIONES.todas}</span>
             </button>
             <button type="button" className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-gris-borde bg-fondo px-3.5 py-2 text-sm text-gris-texto hover:border-primario">
-              Pendientes <span className="rounded-[10px] bg-[#f3f4f6] px-[7px] py-px text-[11px] font-bold text-gris-texto-secundario">2</span>
+              {catalogoEventos.filtros.pendientes} <span className="rounded-[10px] bg-[#f3f4f6] px-[7px] py-px text-[11px] font-bold text-gris-texto-secundario">{CONTEO_PESTANAS_INVITACIONES.pendientes}</span>
             </button>
             <button type="button" className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-gris-borde bg-fondo px-3.5 py-2 text-sm text-gris-texto hover:border-primario">
-              <Icono name="reloj" className="w-[14px] h-[14px]" /> Aceptadas
+              <Icono name="reloj" className="w-[14px] h-[14px]" /> {catalogoEventos.filtros.aceptadas}
             </button>
             <button type="button" className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-gris-borde bg-fondo px-3.5 py-2 text-sm text-gris-texto hover:border-primario">
-              <Icono name={'rechazar' as IconName} className="w-[14px] h-[14px]" /> Rechazadas
+              <Icono name={'rechazar' as IconName} className="w-[14px] h-[14px]" /> {catalogoEventos.filtros.rechazadas}
             </button>
             <button type="button" className="ml-auto flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-gris-borde bg-fondo px-3.5 py-2 text-sm text-gris-texto hover:border-primario">
-              <Icono name="filtro" className="w-[14px] h-[14px]" /> Filtros
+              <Icono name="filtro" className="w-[14px] h-[14px]" /> {catalogoEventos.filtros.filtros}
             </button>
           </div>
 
           <section className="mb-7">
-            <h2 className="mb-4 text-[1.05rem] font-bold text-gris-oscuro-texto">Invitaciones pendientes</h2>
+            <h2 className="mb-4 text-[1.05rem] font-bold text-gris-oscuro-texto">{catalogoEventos.secciones.invitaciones_pendientes}</h2>
             <div className="flex flex-col gap-4">
               {PENDIENTES.map((inv) => (
                 <article key={inv.nombre} className="grid grid-cols-[140px_1fr_auto] overflow-hidden rounded-xl border border-gris-borde bg-white transition-shadow hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] max-[900px]:grid-cols-1">
                   <div className="relative min-h-[140px] overflow-hidden">
-                    <div className="h-full w-full" style={{ background: inv.gradiente }} />
+                    <SuperficieColor color={inv.gradiente} className="h-full w-full" />
                     <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                       <span className="block text-xl font-extrabold leading-[1.1] text-texto">{inv.dia}</span>
                       <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{inv.mes}</span>
                     </div>
                   </div>
                   <div className="flex flex-col justify-center gap-1.5 px-5 py-4">
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wide" style={{ color: inv.categoriaColor }}>
+                    <TextoColor color={inv.categoriaColor} className="inline-block text-[10px] font-bold uppercase tracking-wide">
                       {inv.categoria}
-                    </span>
+                    </TextoColor>
                     <h3 className="m-0 text-base font-bold text-gris-oscuro-texto">{inv.nombre}</h3>
                     <p className="m-0 text-[0.8125rem] leading-snug text-gris-texto-secundario">{inv.descripcion}</p>
                     <div className="flex flex-wrap gap-3 text-[0.8125rem] text-gris-texto-secundario">
@@ -185,14 +122,14 @@ export function PaginaEventosInvitaciones() {
                       </div>
                       <div className="text-[0.8125rem] leading-tight">
                         <span className="block text-[0.8125rem] font-semibold">{inv.invitador}</span>
-                        <span className="text-xs text-gris-texto-terciario">te ha invitado</span>
+                        <span className="text-xs text-gris-texto-terciario">{catalogoEventos.leyendas.te_ha_invitado}</span>
                       </div>
                     </div>
                   </div>
                   <div className="flex flex-col justify-center gap-2 p-4 max-[900px]:flex-row max-[900px]:px-4 max-[900px]:pb-4 max-[900px]:pt-0">
-                    <button type="button" className="rounded-lg bg-primario px-5 py-2 text-[0.8125rem] font-semibold text-white hover:bg-[#4a35d4] max-[900px]:flex-1">Aceptar</button>
-                    <button type="button" className="rounded-lg border border-gris-borde bg-transparent px-5 py-2 text-[0.8125rem] font-semibold text-gris-texto hover:border-primario max-[900px]:flex-1">Tal vez</button>
-                    <button type="button" className="rounded-lg border border-[#fca5a5] bg-transparent px-5 py-2 text-[0.8125rem] font-semibold text-[#ef4444] hover:bg-[#fef2f2] max-[900px]:flex-1">Rechazar</button>
+                    <button type="button" className="rounded-lg bg-primario px-5 py-2 text-[0.8125rem] font-semibold text-white hover:bg-[#4a35d4] max-[900px]:flex-1">{catalogoEventos.botones.aceptar}</button>
+                    <button type="button" className="rounded-lg border border-gris-borde bg-transparent px-5 py-2 text-[0.8125rem] font-semibold text-gris-texto hover:border-primario max-[900px]:flex-1">{catalogoEventos.botones.tal_vez}</button>
+                    <button type="button" className="rounded-lg border border-[#fca5a5] bg-transparent px-5 py-2 text-[0.8125rem] font-semibold text-[#ef4444] hover:bg-[#fef2f2] max-[900px]:flex-1">{catalogoEventos.botones.rechazar}</button>
                   </div>
                 </article>
               ))}
@@ -200,7 +137,7 @@ export function PaginaEventosInvitaciones() {
           </section>
 
           <section className="mb-7">
-            <h2 className="mb-4 text-[1.05rem] font-bold text-gris-oscuro-texto">Invitaciones respondidas</h2>
+            <h2 className="mb-4 text-[1.05rem] font-bold text-gris-oscuro-texto">{catalogoEventos.secciones.invitaciones_respondidas}</h2>
             <div className="flex flex-col overflow-hidden rounded-xl border border-gris-borde bg-white">
               {RESPONDIDAS.map((inv, i) => (
                 <article
@@ -211,16 +148,16 @@ export function PaginaEventosInvitaciones() {
                   }
                 >
                   <div className="relative min-h-20 w-[100px] overflow-hidden max-[900px]:w-full">
-                    <div className="h-full w-full" style={{ background: inv.gradiente }} />
+                    <SuperficieColor color={inv.gradiente} className="h-full w-full" />
                     <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                       <span className="block text-xl font-extrabold leading-[1.1] text-texto">{inv.dia}</span>
                       <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{inv.mes}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1 px-4 py-3.5">
-                    <span className="inline-block text-[10px] font-bold uppercase tracking-wide" style={{ color: inv.categoriaColor }}>
+                    <TextoColor color={inv.categoriaColor} className="inline-block text-[10px] font-bold uppercase tracking-wide">
                       {inv.categoria}
-                    </span>
+                    </TextoColor>
                     <h3 className="m-0 text-[0.9375rem] font-bold text-gris-oscuro-texto">{inv.nombre}</h3>
                     <div className="flex flex-wrap gap-3 text-xs text-gris-texto-secundario">
                       <span className="flex items-center gap-1"><Icono name="calendario" className="w-[14px] h-[14px]" /> {inv.fecha}</span>
@@ -235,7 +172,7 @@ export function PaginaEventosInvitaciones() {
                         (inv.estado === 'aceptada' ? 'bg-[#ecfdf5] text-[#059669]' : 'bg-[#fef2f2] text-[#ef4444]')
                       }
                     >
-                      {inv.estado === 'aceptada' ? 'Aceptada' : 'Rechazada'}
+                      {inv.estado === 'aceptada' ? catalogoEventos.leyendas.estado_aceptada : catalogoEventos.leyendas.estado_rechazada}
                     </span>
                     <span className="flex h-9 w-9 items-center justify-center text-xl text-gris-texto-terciario max-[900px]:hidden">›</span>
                   </div>
@@ -250,15 +187,15 @@ export function PaginaEventosInvitaciones() {
         <aside className="flex flex-col gap-4">
           <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
             <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
-              <h3 className="m-0 text-sm font-bold text-texto">Calendario</h3>
-              <a href="28-08-eventos-06-calendario-web.html" className="text-[11px] font-semibold text-primario no-underline hover:underline">Ver calendario</a>
+              <h3 className="m-0 text-sm font-bold text-texto">{catalogoEventos.secciones.calendario}</h3>
+              <a href="28-08-eventos-06-calendario-web.html" className="text-[11px] font-semibold text-primario no-underline hover:underline">{catalogoEventos.botones.ver_calendario}</a>
             </div>
             <div className="px-4 pb-3">
               <div className="mb-2.5 flex items-center justify-between px-1">
                 <button type="button" className="grid h-6 w-6 place-items-center rounded-md border-0 bg-transparent text-primario hover:bg-[#f5f3ff]">
                   <Icono name="flecha-izquierda" className="w-[14px] h-[14px]" />
                 </button>
-                <span className="text-[13px] font-bold text-texto">Junio 2026</span>
+                <span className="text-[13px] font-bold text-texto">{MES_CALENDARIO_INVITACIONES}</span>
                 <button type="button" className="grid h-6 w-6 place-items-center rounded-md border-0 bg-transparent text-primario hover:bg-[#f5f3ff]">
                   <Icono name="flecha-derecha" className="w-[14px] h-[14px]" />
                 </button>
@@ -266,7 +203,7 @@ export function PaginaEventosInvitaciones() {
               <table className="w-full border-collapse text-center">
                 <thead>
                   <tr>
-                    {['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map((d) => (
+                    {DIAS_SEMANA.map((d) => (
                       <th key={d} className="py-1 text-[10px] font-semibold uppercase text-texto-suave">{d}</th>
                     ))}
                   </tr>
@@ -296,14 +233,14 @@ export function PaginaEventosInvitaciones() {
 
           <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
             <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
-              <h2 className="m-0 text-sm font-bold">Próximos de tus eventos</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">Ver todos</a>
+              <h2 className="m-0 text-sm font-bold">{catalogoEventos.secciones.proximos_de_tus_eventos}</h2>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
             </div>
             <div className="px-3 pb-2">
               {PROXIMOS_LATERAL.map((ev, i) => (
                 <article key={ev.nombre} className={'grid grid-cols-[64px_1fr] gap-2.5 py-2 ' + (i < PROXIMOS_LATERAL.length - 1 ? 'border-b border-[#f5f5f5]' : '')}>
                   <div className="relative h-16 w-16 flex-none overflow-hidden rounded-lg">
-                    <div className="h-full w-full" style={{ background: ev.gradiente }} />
+                    <SuperficieColor color={ev.gradiente} className="h-full w-full" />
                     <div className="absolute left-1 top-1 rounded-[4px] bg-white px-1 py-0.5 text-center leading-none shadow-[0_1px_3px_rgba(0,0,0,0.15)]">
                       <span className="block text-[11px] font-extrabold text-gris-oscuro-texto">{ev.dia}</span>
                       <span className="block text-[7px] font-bold uppercase text-gris-texto-terciario">{ev.mes}</span>
@@ -325,16 +262,12 @@ export function PaginaEventosInvitaciones() {
 
           <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
             <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
-              <h2 className="m-0 text-sm font-bold">Resumen de tus eventos</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">Este año ▾</a>
+              <h2 className="m-0 text-sm font-bold">{catalogoEventos.secciones.resumen_de_tus_eventos}</h2>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{catalogoEventos.leyendas.este_anio}</a>
             </div>
             <div className="px-4 pb-4">
               <div className="grid grid-cols-3 gap-2 py-2 text-center">
-                {[
-                  { valor: '4', etiqueta: 'Eventos creados' },
-                  { valor: '3.3K', etiqueta: 'Asistentes totales' },
-                  { valor: '79%', etiqueta: 'Prom. confirmación' },
-                ].map((s) => (
+                {RESUMEN_INVITACIONES.map((s) => (
                   <div key={s.etiqueta} className="flex flex-col items-center gap-0.5">
                     <span className="text-xl font-extrabold text-gris-oscuro-texto">{s.valor}</span>
                     <span className="text-[10px] leading-tight text-gris-texto-terciario">{s.etiqueta}</span>
@@ -342,7 +275,7 @@ export function PaginaEventosInvitaciones() {
                 ))}
               </div>
               <button type="button" className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg border border-gris-borde bg-[#f9fafb] py-2.5 text-[13px] font-semibold text-gris-texto hover:border-primario hover:bg-[#f3f4f6]">
-                <Icono name="reportes-barra" className="w-4 h-4" /> Ver reportes
+                <Icono name="reportes-barra" className="w-4 h-4" /> {catalogoEventos.botones.ver_reportes}
               </button>
             </div>
           </section>

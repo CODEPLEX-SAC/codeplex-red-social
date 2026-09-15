@@ -1,6 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Icono } from '../../compartido/icono'
+import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
+import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
+import { NO_LEIDOS } from '../../../datos/mensajeria/bandejas'
 import type { ListaConversacionesProps } from '@/tipos/mensajeria/lista_conversaciones'
 
 export function ListaConversaciones({ conversaciones, activa, onSeleccionar, oculta }: ListaConversacionesProps) {
@@ -28,15 +31,15 @@ export function ListaConversaciones({ conversaciones, activa, onSeleccionar, ocu
     >
       <div className="mx-3.5 mb-2.5 mt-3.5 flex items-center gap-2 rounded-[10px] border border-borde bg-white px-3.5 py-2.25">
         <Icono name="buscar" className="h-4 w-4 flex-none text-texto-suave" />
-        <input type="search" placeholder="Buscar mensajes..." aria-label="Buscar mensajes" className="min-w-0 flex-1 border-0 bg-transparent text-[13px] text-texto outline-none placeholder:text-texto-suave" />
+        <input type="search" placeholder={catalogoMensajeria.placeholders.buscar_mensajes} aria-label={catalogoMensajeria.placeholders.buscar_mensajes} className="min-w-0 flex-1 border-0 bg-transparent text-[13px] text-texto outline-none placeholder:text-texto-suave" />
       </div>
 
       <div className="flex flex-shrink-0 gap-1 border-b border-borde px-3.5 pb-3.5 pt-2.5">
-        <a href="09-04-mensajes-01-todos-web.html" className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-primario bg-primario px-3 text-[11px] font-medium text-white no-underline">Todos</a>
+        <a href="09-04-mensajes-01-todos-web.html" className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-primario bg-primario px-3 text-[11px] font-medium text-white no-underline">{catalogoMensajeria.titulos_pestanas.todos}</a>
         <a href="10-04-mensajes-02-no-leidos.html" className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-borde bg-white px-3 text-[11px] font-medium text-texto-suave no-underline hover:bg-[#f7f6fa]">
-          No leídos <span className="inline-grid h-4 min-w-4 place-items-center rounded-lg bg-primario px-1 text-[9px] font-bold leading-none text-white">5</span>
+          {catalogoMensajeria.titulos_pestanas.no_leidos} <span className="inline-grid h-4 min-w-4 place-items-center rounded-lg bg-primario px-1 text-[9px] font-bold leading-none text-white">{NO_LEIDOS.length}</span>
         </a>
-        <a href="11-04-mensajes-03-favoritos.html" className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-borde bg-white px-3 text-[11px] font-medium text-texto-suave no-underline hover:bg-[#f7f6fa]">Favoritos</a>
+        <a href="11-04-mensajes-03-favoritos.html" className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-borde bg-white px-3 text-[11px] font-medium text-texto-suave no-underline hover:bg-[#f7f6fa]">{catalogoMensajeria.titulos_pestanas.favoritos}</a>
       </div>
 
       <div ref={pistaRef} className="min-h-0 flex-1 overflow-y-auto">
@@ -52,10 +55,7 @@ export function ListaConversaciones({ conversaciones, activa, onSeleccionar, ocu
                 <Icono name="usuarios" className="h-4 w-4" />
               </span>
             ) : (
-              <span
-                className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${usuarioImg})` }}
-              />
+              <AvatarImagen src={usuarioImg} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
             )}
             <span className="min-w-0 flex-1">
               <strong className="block truncate text-xs font-semibold text-texto">{c.nombre}</strong>

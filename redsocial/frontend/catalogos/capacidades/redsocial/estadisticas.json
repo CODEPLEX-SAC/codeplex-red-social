@@ -1,0 +1,75 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "todos_modulos": "/estadisticas",
+    "ventas": "/estadisticas/ventas",
+    "contabilidad": "/estadisticas/contabilidad",
+    "planillas": "/estadisticas/planillas"
+  },
+  "titulo_menu": "Estadísticas",
+  "titulos": {
+    "todos_modulos": "Estadísticas",
+    "ventas": "Estadísticas",
+    "contabilidad": "Estadísticas",
+    "planillas": "Estadísticas"
+  },
+  "capacidad_nombre": "Red Social",
+  "subtitulos": {
+    "todos_modulos": "Visualiza el rendimiento de tu empresa con datos en tiempo real."
+  },
+  "secciones": {
+    "evolucion_ventas": "Evolución de ventas",
+    "composicion_ingresos": "Composición de ingresos",
+    "top_clientes": "Top 5 clientes",
+    "top_clientes_sub": "Ventas",
+    "gastos_categoria": "Gastos por categoría",
+    "estado_resultados": "Estado de resultados",
+    "ratios_financieros": "Ratios financieros",
+    "proyeccion_ventas": "Proyección de ventas 2026",
+    "flujo_caja": "Flujo de caja proyectado",
+    "rentabilidad_proyecto": "Rentabilidad por proyecto",
+    "modulo_resumen": "Resumen",
+    "modulo_resumen_sub": "Indicadores destacados.",
+    "modulo_detalle": "Detalle",
+    "modulo_detalle_sub": "Datos consolidados por periodo.",
+    "modulo_comparativa": "Comparativa mensual.",
+    "evolucion_de_prefijo": "Evolución de"
+  },
+  "botones": {
+    "filtros_avanzados": "Filtros avanzados",
+    "crear": "+ Crear",
+    "exportar": "Exportar"
+  },
+  "leyendas": {
+    "ventas": "Ventas",
+    "proyeccion": "Proyección",
+    "ventas_reales": "Ventas reales",
+    "total": "Total"
+  },
+  "selectores": {
+    "periodo": { "etiqueta": "Periodo", "opciones": ["Junio 2026", "Mayo 2026", "Abril 2026"] },
+    "comparar_con": { "etiqueta": "Comparar con", "opciones": ["Mayo 2026", "Abril 2026", "Junio 2025"] },
+    "anio_grafico": { "etiqueta": "Año del gráfico", "opciones": ["2026", "2025"] },
+    "frecuencia_grafico": { "etiqueta": "Frecuencia del gráfico", "opciones": ["Mensual", "Semanal"] }
+  },
+  "tabla_estado_resultados": ["Concepto", "Actual", "%", "vs. Mayo 2026"],
+  "tabla_ratios": ["Ratio", "Valor", "vs. Mayo", "Estado"],
+  "tabla_rentabilidad": ["Proyecto", "Margen", "Estado"],
+  "tabla_detalle_modulo": ["Periodo", "Resultado", "Variación", "Meta", "Cumplimiento"],
+  "modulos_tabs": [
+    { "etiqueta": "Todos los módulos", "icono": "cuadricula" },
+    { "etiqueta": "Ventas", "icono": "ventas" },
+    { "etiqueta": "Contabilidad", "icono": "moneda" },
+    { "etiqueta": "Inventarios", "icono": "caja" },
+    { "etiqueta": "Planillas", "icono": "planillas" },
+    { "etiqueta": "Proyectos", "icono": "maletin" },
+    { "etiqueta": "Compras", "icono": "compras" },
+    { "etiqueta": "Tesorería", "icono": "tarjeta-pago" }
+  ]
+}

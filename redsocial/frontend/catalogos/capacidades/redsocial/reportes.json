@@ -1,0 +1,61 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "principal": "/reportes"
+  },
+  "titulo_menu": "Reportes",
+  "titulos": {
+    "principal": "Reportes"
+  },
+  "subtitulos": {
+    "principal": "Genera y consulta reportes de tu empresa. Exporta, programa y comparte información clave."
+  },
+  "selectores": {
+    "periodo": { "etiqueta": "Periodo", "opciones": ["Junio 2026", "Mayo 2026"] },
+    "comparar_con": { "etiqueta": "Comparar con", "opciones": ["Mayo 2026", "Abril 2026"] }
+  },
+  "modulos_tabs": [
+    { "etiqueta": "Todos los módulos", "icono": "cuadricula" },
+    { "etiqueta": "Ventas", "icono": "ventas" },
+    { "etiqueta": "Contabilidad", "icono": "moneda" },
+    { "etiqueta": "Inventarios", "icono": "caja" },
+    { "etiqueta": "Planillas", "icono": "planillas" },
+    { "etiqueta": "Proyectos", "icono": "maletin" },
+    { "etiqueta": "Compras", "icono": "compras" },
+    { "etiqueta": "Tesorería", "icono": "tarjeta-pago" }
+  ],
+  "botones": {
+    "filtros_avanzados": "Filtros avanzados",
+    "ver_todas_las_plantillas": "Ver todas las plantillas",
+    "favorito": "Favorito",
+    "mas_opciones": "Más opciones",
+    "ver": "Ver",
+    "descargar": "Descargar",
+    "compartir": "Compartir",
+    "mas": "Más",
+    "ver_todos_los_reportes": "Ver todos los reportes"
+  },
+  "secciones": {
+    "plantillas_de_reportes": "Plantillas de reportes",
+    "reportes_recientes": "Reportes recientes"
+  },
+  "tabla": {
+    "nombre_del_reporte": "Nombre del reporte",
+    "modulo": "Módulo",
+    "periodo": "Periodo",
+    "generado_por": "Generado por",
+    "fecha_de_generacion": "Fecha de generación",
+    "formato": "Formato",
+    "columna_acciones": "Acciones"
+  },
+  "formatos": {
+    "pdf": "PDF",
+    "excel": "Excel"
+  }
+}

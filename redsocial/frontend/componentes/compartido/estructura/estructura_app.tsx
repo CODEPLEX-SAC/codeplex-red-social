@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import { BarraLateral } from '../navegacion/barra_lateral'
 import { BarraSuperior } from '../navegacion/barra_superior'
 import type { EstructuraAppProps } from '@/tipos/compartido/estructura_app'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 const CONSULTA_MOVIL = '(max-width: 800px)'
 

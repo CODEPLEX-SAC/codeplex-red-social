@@ -1,5 +1,6 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
+import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { PestanasActividad } from '../../componentes/actividad/bloques/pestanas_actividad'
@@ -7,24 +8,10 @@ import { ContactosPanel } from '../../componentes/compartido/bloques/contactos_p
 import { GruposRecomendadosPanel } from '../../componentes/compartido/bloques/grupos_recomendados_panel'
 import { EventosProximosPanel } from '../../componentes/compartido/bloques/eventos_proximos_panel'
 import { BloqueAnuncio } from '../../componentes/compartido/bloques/bloque_anuncio'
-import type { ColorModulo, EventoModulo } from '@/tipos/actividad/pagina_actividad_modulos'
-
-const CONTACTOS = ['Ana Torres', 'Miguel Rojas', 'José Castillo', 'Laura Pérez', 'Sofía Gómez'].map((nombre) => ({
-  nombre,
-  subtitulo: 'Conexión profesional',
-}))
-
-const GRUPOS = [
-  { nombre: 'Ingenieros Civiles', miembros: '12.4 mil miembros' },
-  { nombre: 'Emprendedores Perú', miembros: '8.7 mil miembros' },
-  { nombre: 'Tecnología & Innovación', miembros: '5.3 mil miembros' },
-]
-
-const EVENTOS = [
-  { dia: '15', mes: 'JUN', titulo: 'Reunión de Proyectos', detalle: 'Lun, 15 jun · 10:00 AM · Oficina Principal' },
-  { dia: '22', mes: 'JUN', titulo: 'Capacitación en Seguridad', detalle: 'Lun, 22 jun · 2:00 PM · Virtual' },
-  { dia: '30', mes: 'JUN', titulo: 'Cumpleaños: Juan Pérez', detalle: 'Mar, 30 jun · Todo el día' },
-]
+import mensajesGlobales from '../../mensajes/globales/textos.json'
+import type { ColorModulo } from '@/tipos/actividad/pagina_actividad_modulos'
+import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../datos/compartido/panel_lateral'
+import { EVENTOS_MODULO } from '../../datos/actividad/eventos_modulos'
 
 const CLASES_ICONO: Record<ColorModulo, string> = {
   verde: 'bg-verde-categoria',
@@ -40,15 +27,6 @@ const CLASES_REFERENCIA: Record<ColorModulo, string> = {
   rosa: 'bg-[#fce4ec] text-[#c62828]',
 }
 
-const EVENTOS_MODULO: EventoModulo[] = [
-  { nombre: 'Contabilidad', icono: 'contabilidad', color: 'verde', descripcion: 'María Fernández registró un asiento contable', referencia: 'Asiento: A-006587', colorReferencia: 'verde', detalles: 'Empresa: Constructora del Norte SAC', tiempo: 'Hace 2 horas' },
-  { nombre: 'Compras', icono: 'compras', color: 'azul', descripcion: 'Carlos Mendoza aprobó una orden de compra', referencia: 'OC: C-2026-0451', colorReferencia: 'azul', detalles: 'Proveedor: Inversiones Globales SAC', tiempo: 'Hace 3 horas' },
-  { nombre: 'Ventas', icono: 'ventas', color: 'naranja', descripcion: 'Lucía Gómez emitió una factura electrónica', referencia: 'Factura: F001-0001523', colorReferencia: 'naranja', detalles: 'Cliente: Servicios Generales SAC', tiempo: 'Hace 4 horas' },
-  { nombre: 'Inventario', icono: 'inventario', color: 'azul', descripcion: 'Diego Torres actualizó el stock de un producto', referencia: 'Producto: Cemento Tipo I', colorReferencia: 'rosa', detalles: 'Almacén: Principal', tiempo: 'Hace 5 horas' },
-  { nombre: 'Planillas', icono: 'planillas', color: 'naranja', descripcion: 'Sofía Ramírez procesó las planillas de abril 2026', referencia: 'Período: 2026-04', colorReferencia: 'verde', detalles: 'Trabajadores: 52', tiempo: 'Hace 6 horas' },
-  { nombre: 'Reportes', icono: 'reportes-barra', color: 'naranja', descripcion: 'Jorge Luis generó el reporte de Estado de Resultados', referencia: 'Reporte: ER_Abril_2026', colorReferencia: 'naranja', detalles: 'Formato: PDF', tiempo: 'Hace 7 horas' },
-]
-
 export function PaginaActividadModulos() {
   return (
     <EstructuraApp paginaActiva="actividad">
@@ -56,8 +34,8 @@ export function PaginaActividadModulos() {
         principal={
           <section>
             <div className="mb-5">
-              <h1 className="m-0 mb-1 text-xl font-extrabold text-texto">Actividad</h1>
-              <p className="m-0 text-xs text-texto-suave">Mantente al día con todo lo que ocurre en tu red y en tu empresa</p>
+              <h1 className="m-0 mb-1 text-xl font-extrabold text-texto">{catalogoActividad.titulos.modulos}</h1>
+              <p className="m-0 text-xs text-texto-suave">{catalogoActividad.subtitulos.modulos}</p>
             </div>
 
             <PestanasActividad activa="07-02-actividad-06-modulos.html" />
@@ -69,12 +47,12 @@ export function PaginaActividadModulos() {
                     <Icono name="cuadricula" className="h-[22px] w-[22px]" />
                   </div>
                   <div>
-                    <h2 className="m-0 mb-0.5 text-base font-bold text-texto">Módulos</h2>
-                    <p className="m-0 text-xs text-texto-suave">Actividad reciente en los módulos del sistema</p>
+                    <h2 className="m-0 mb-0.5 text-base font-bold text-texto">{catalogoActividad.secciones.modulos.titulo}</h2>
+                    <p className="m-0 text-xs text-texto-suave">{catalogoActividad.secciones.modulos.descripcion}</p>
                   </div>
                 </div>
                 <button type="button" className="inline-flex h-8 flex-none items-center gap-1.5 whitespace-nowrap rounded-lg border border-borde bg-white px-3 text-xs font-medium text-texto">
-                  Todos los módulos
+                  {catalogoActividad.botones.modulos_todos}
                   <Icono name="flecha-abajo" className="h-3.5 w-3.5 text-texto-suave" />
                 </button>
               </div>
@@ -95,7 +73,7 @@ export function PaginaActividadModulos() {
                   <div className="flex flex-none items-center gap-2">
                     <span className="whitespace-nowrap text-[11px] text-[#aaa7b5]">{m.tiempo}</span>
                     <span className="h-2 w-2 flex-none rounded-full bg-[#3b82f6]" />
-                    <button type="button" aria-label="Más opciones" className="grid h-7 w-7 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
+                    <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="grid h-7 w-7 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
                       <Icono name="puntos" className="h-4 w-4" />
                     </button>
                   </div>
@@ -103,7 +81,7 @@ export function PaginaActividadModulos() {
               ))}
 
               <button type="button" className="flex w-full items-center justify-center gap-1.5 border-t border-[#f0eef5] bg-transparent p-3.5 text-[13px] font-semibold text-primario hover:bg-[#fdfcff]">
-                Cargar más
+                {mensajesGlobales.CARGAR_MAS}
                 <Icono name="flecha-abajo" className="h-4 w-4" />
               </button>
             </section>
@@ -112,9 +90,9 @@ export function PaginaActividadModulos() {
         publicidad={<ColumnaPublicidad />}
         lateral={
           <aside className="grid gap-4">
-            <ContactosPanel contactos={CONTACTOS} />
-            <GruposRecomendadosPanel titulo="Grupos recientes" grupos={GRUPOS} />
-            <EventosProximosPanel eventos={EVENTOS} />
+            <ContactosPanel contactos={CONTACTOS_SUGERIDOS} />
+            <GruposRecomendadosPanel titulo="Grupos recientes" grupos={GRUPOS_RECOMENDADOS} />
+            <EventosProximosPanel eventos={EVENTOS_PROXIMOS} />
             <BloqueAnuncio />
           </aside>
         }

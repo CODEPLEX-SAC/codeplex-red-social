@@ -1,0 +1,84 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "mis_grupos": "/grupos",
+    "descubrir": "/grupos/descubrir",
+    "invitaciones": "/grupos/invitaciones"
+  },
+  "titulo_menu": "Grupos",
+  "titulos_pestanas": {
+    "mis_grupos": "Mis grupos",
+    "descubrir": "Descubrir",
+    "invitaciones": "Invitaciones"
+  },
+  "titulos": {
+    "mis_grupos": "Mis grupos",
+    "descubrir": "Grupos",
+    "invitaciones": "Invitaciones"
+  },
+  "banner": {
+    "titulo": "Conecta, colabora y comparte en grupos",
+    "descripcion": "Únete a grupos de tu interés o crea los tuyos propios.",
+    "descripcion_mis_grupos": "Únete a grupos que te interesan o crea los tuyos para colaborar con personas que comparten tus objetivos."
+  },
+  "secciones": {
+    "destacados": "Grupos destacados",
+    "categorias": "Todas las categorías",
+    "mis_grupos": "Mis grupos",
+    "actividad_reciente": "Actividad reciente",
+    "actividad_reciente_grupos": "Actividad reciente en tus grupos",
+    "resumen_invitaciones": "Resumen de invitaciones",
+    "grupos_que_administro": "Grupos que administro",
+    "mis_grupos_titulo": "Mis grupos",
+    "grupos_populares": "Grupos populares"
+  },
+  "botones": {
+    "crear_grupo": "Crear grupo",
+    "unirse": "Unirse",
+    "mas_opciones": "Más opciones",
+    "cerrar": "Cerrar",
+    "invitar_a_grupo": "Invitar a grupo",
+    "aceptar": "Aceptar",
+    "rechazar": "Rechazar",
+    "opciones": "Opciones",
+    "mas_recientes": "Más recientes",
+    "ir_a_configuracion": "Ir a configuración",
+    "ver_grupo": "Ver grupo",
+    "explorar_grupos": "Explorar grupos"
+  },
+  "leyendas": {
+    "admin": "Admin",
+    "ver_toda": "Ver toda",
+    "privado": "Privado",
+    "en_grupo": "En grupo",
+    "expira_en": "Expira en",
+    "aceptaste_el": "Aceptaste el",
+    "ver_todas_aceptadas": "Ver todas las invitaciones aceptadas",
+    "ver_todas_invitaciones": "Ver todas las invitaciones"
+  },
+  "filtros": {
+    "todas": "Todas",
+    "pendientes": "Pendientes",
+    "aceptadas": "Aceptadas",
+    "rechazadas": "Rechazadas",
+    "expiradas": "Expiradas"
+  },
+  "placeholders": {
+    "buscar_invitaciones": "Buscar invitaciones por grupo o persona..."
+  },
+  "ayuda": {
+    "titulo": "¿Necesitas ayuda?",
+    "texto": "Gestiona tus invitaciones y permisos de grupo desde la configuración."
+  },
+  "consejo": {
+    "titulo": "Consejo",
+    "texto": "Únete a grupos relacionados con tus intereses para aprender, compartir y hacer crecer tu red profesional.",
+    "texto_mis_grupos": "Explora grupos que se alineen con tus intereses para aprender, compartir y hacer crecer tu red."
+  }
+}

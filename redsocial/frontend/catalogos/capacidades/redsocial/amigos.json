@@ -1,0 +1,69 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "todos": "/amigos",
+    "solicitudes": "/amigos/solicitudes",
+    "sugerencias": "/amigos/sugerencias",
+    "listas": "/amigos/listas"
+  },
+  "titulo_menu": "Amigos",
+  "titulos_pestanas": {
+    "todos": "Todos",
+    "solicitudes": "Solicitudes",
+    "sugerencias": "Sugerencias",
+    "listas": "Listas"
+  },
+  "titulos": {
+    "todos": "Amigos",
+    "solicitudes": "Amigos",
+    "sugerencias": "Amigos",
+    "listas": "Amigos"
+  },
+  "botones": {
+    "agregar_amigos": "Agregar amigos",
+    "crear_listas": "Crear listas",
+    "todos_los_amigos": "Todos los amigos...",
+    "mensaje": "Mensaje",
+    "ver_mas_amigos": "Ver más amigos",
+    "aceptar": "Aceptar",
+    "eliminar": "Eliminar",
+    "ignorar": "Ignorar",
+    "ver_mas_solicitudes_recibidas": "Ver más solicitudes recibidas",
+    "cancelar_solicitud": "Cancelar solicitud",
+    "ver_todas_solicitudes_enviadas": "Ver todas las solicitudes enviadas",
+    "agregar": "Agregar",
+    "ver_perfil": "Ver perfil",
+    "ver_mas_sugerencias": "Ver más sugerencias",
+    "crear_nueva_lista": "Crear nueva lista"
+  },
+  "secciones": {
+    "tus_amigos": "Tus amigos (128)",
+    "solicitudes_amistad": "Solicitudes de amistad",
+    "solicitudes_amistad_lateral": "Solicitudes de amistad (3)",
+    "personas_conocer": "Personas que quizá conozcas",
+    "tus_listas": "Tus listas",
+    "actividad_reciente": "Actividad reciente",
+    "solicitudes_enviadas": "Solicitudes enviadas",
+    "amplia_tu_red_titulo": "Amplía tu red profesional",
+    "amplia_tu_red_desc": "Conecta con colegas, clientes y colaboradores que podrían interesarte.",
+    "mis_listas": "Mis listas (6)",
+    "listas_sugeridas": "Listas sugeridas",
+    "organiza_contactos_titulo": "Organiza a tus contactos en listas personalizadas",
+    "organiza_contactos_desc": "Crea listas para mantener mejor contacto con las personas que más te importan."
+  },
+  "pestanas_solicitudes": {
+    "recibidas": "Recibidas",
+    "enviadas": "Enviadas",
+    "ignoradas": "Ignoradas"
+  },
+  "placeholders": {
+    "buscar_amigos": "Buscar amigos...",
+    "buscar_solicitudes": "Buscar solicitudes..."
+  }
+}

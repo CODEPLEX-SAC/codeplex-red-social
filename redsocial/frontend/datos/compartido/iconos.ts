@@ -1,5 +1,5 @@
 export const NOMBRES_ICONOS = [
-  'actividad', 'adjuntar', 'ajustes-sistema', 'alerta-roja', 'amigos-todos', 'amigos',
+  'actividad', 'adjuntar', 'ajustes-sistema', 'aviso-critico', 'amigos-todos', 'amigos',
   'archivo-hoja', 'archivo-pdf', 'bloqueado', 'buscar', 'caja', 'calendario', 'campana',
   'carrito', 'categoria-evento', 'cerrar', 'clave', 'cohete', 'colaborador', 'comentario',
   'compartir', 'compras', 'configuracion', 'contabilidad', 'corona', 'crear-evento',
@@ -8,7 +8,7 @@ export const NOMBRES_ICONOS = [
   'filtros', 'flecha-abajo', 'flecha-derecha', 'flecha-izquierda', 'fuego', 'microfono',
   'altavoz', 'enlace', 'actualizar', 'escudo', 'pantalla-compartida', 'microfono-apagado',
   'video-apagado', 'flecha-arriba', 'punto-circular', 'sin-acceso', 'ver', 'eliminar',
-  'imprimir', 'descargar', 'alerta', 'correo', 'tarjeta-pago', 'documento', 'guardar',
+  'imprimir', 'descargar', 'aviso', 'correo', 'tarjeta-pago', 'documento', 'guardar',
   'idea', 'grupos', 'guardado', 'imagen', 'indicador', 'informacion', 'inicio-sesion',
   'inicio', 'intercambio', 'inventario', 'listas', 'llamada', 'maletin', 'mantenimiento',
   'mas', 'me-gusta', 'mensaje', 'menu-hamburguesa', 'moneda', 'mundo', 'nuevo-usuario',
@@ -20,7 +20,6 @@ export const NOMBRES_ICONOS = [
 export const MAPA_ICONOS = {
   inicio: 'inicio',
   actividad: 'actividad',
-  notificaciones: 'campana',
   campana: 'campana',
   mensajes: 'mensaje',
   amigos: 'amigos',
@@ -85,7 +84,7 @@ export const MAPA_ICONOS = {
   eliminar: 'eliminar',
   imprimir: 'imprimir',
   descargar: 'descargar',
-  alerta: 'alerta',
+  aviso: 'aviso',
   correo: 'correo',
   'tarjeta-pago': 'tarjeta-pago',
   documento: 'documento',
@@ -111,7 +110,7 @@ export const MAPA_ICONOS = {
   clave: 'clave',
   'ajustes-sistema': 'ajustes-sistema',
   respaldo: 'respaldo',
-  'alerta-roja': 'alerta-roja',
+  'aviso-critico': 'aviso-critico',
   mantenimiento: 'mantenimiento',
 
   intercambio: 'intercambio',

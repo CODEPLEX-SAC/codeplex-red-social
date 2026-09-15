@@ -1,10 +1,14 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
+import catalogoReportes from '../../catalogos/capacidades/redsocial/reportes.json'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
-import { useCarrusel } from '../../servicios/compartido/usar_carrusel'
+import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
+import { MedidaDinamica } from '../../componentes/compartido/interfaz/medida_dinamica'
+import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
-import type { MiniGrafico, Plantilla, ReporteReciente } from '@/tipos/reportes/pagina_reportes'
+import type { MiniGrafico, Plantilla } from '@/tipos/reportes/pagina_reportes'
+import { PLANTILLAS, REPORTES_RECIENTES } from '../../datos/reportes/reportes'
 
 const CLASES_ICONO_PLANTILLA: Record<Plantilla['color'], string> = {
   morado: 'bg-[#f3e8ff] text-morado-categoria',
@@ -14,99 +18,7 @@ const CLASES_ICONO_PLANTILLA: Record<Plantilla['color'], string> = {
   rojo: 'bg-[#fee2e2] text-[#ef4444]',
 }
 
-const PLANTILLAS: Plantilla[] = [
-  {
-    nombre: 'Estado de Resultados', icono: 'documento', color: 'morado',
-    descripcion: 'Resumen de ingresos, costos y gastos para determinar la utilidad neta.',
-    modulo: 'Contabilidad',
-    grafico: { tipo: 'barras', barras: [
-      { v: '35%', c: '#c4b5fd' }, { v: '55%', c: '#c4b5fd' }, { v: '45%', c: '#7c3aed' },
-      { v: '75%', c: '#c4b5fd' }, { v: '90%', c: '#7c3aed' }, { v: '60%', c: '#c4b5fd' },
-    ] },
-  },
-  {
-    nombre: 'Balance General', icono: 'documento', color: 'verde',
-    descripcion: 'Situación financiera de la empresa en una fecha determinada.',
-    modulo: 'Contabilidad',
-    grafico: { tipo: 'linea', color: '#22c55e', puntos: '0,30 20,26 40,32 60,18 80,22 100,10 120,14' },
-  },
-  {
-    nombre: 'Flujo de Caja', icono: 'actualizar', color: 'naranja',
-    descripcion: 'Entradas y salidas de efectivo en el periodo seleccionado.',
-    modulo: 'Tesorería',
-    grafico: { tipo: 'barras', barras: [
-      { v: '30%', c: '#fed7aa' }, { v: '50%', c: '#fed7aa' }, { v: '65%', c: '#f97316' },
-      { v: '45%', c: '#fed7aa' }, { v: '85%', c: '#f97316' }, { v: '55%', c: '#fed7aa' },
-    ] },
-  },
-  {
-    nombre: 'Ventas por Producto', icono: 'ventas', color: 'azul',
-    descripcion: 'Análisis de productos más vendidos y su rentabilidad.',
-    modulo: 'Ventas',
-    grafico: { tipo: 'dona-lista', conic: 'conic-gradient(#3b82f6 0% 60%, #93c5fd 60% 100%)' },
-  },
-  {
-    nombre: 'Cuentas por Cobrar', icono: 'documento', color: 'verde',
-    descripcion: 'Detalle de saldos pendientes de cobro de clientes.',
-    modulo: 'Contabilidad',
-    grafico: { tipo: 'lista' },
-  },
-  {
-    nombre: 'Cuentas por Pagar', icono: 'documento', color: 'rojo',
-    descripcion: 'Detalle de saldos pendientes de pago a proveedores.',
-    modulo: 'Contabilidad',
-    grafico: { tipo: 'lista' },
-  },
-  {
-    nombre: 'Inventario Valorizado', icono: 'caja', color: 'morado',
-    descripcion: 'Valor total del inventario por categoría y almacén.',
-    modulo: 'Inventarios',
-    grafico: { tipo: 'barras', barras: [
-      { v: '40%', c: '#ddd6fe' }, { v: '60%', c: '#ddd6fe' }, { v: '50%', c: '#7c3aed' },
-      { v: '80%', c: '#ddd6fe' }, { v: '95%', c: '#7c3aed' }, { v: '65%', c: '#ddd6fe' },
-    ] },
-  },
-  {
-    nombre: 'Rotación de Inventario', icono: 'actualizar', color: 'azul',
-    descripcion: 'Análisis de rotación y días de inventario.',
-    modulo: 'Inventarios',
-    grafico: { tipo: 'linea', color: '#3b82f6', puntos: '0,20 20,30 40,15 60,25 80,12 100,22 120,8' },
-  },
-  {
-    nombre: 'Planilla de Empleados', icono: 'planillas', color: 'verde',
-    descripcion: 'Resumen de remuneraciones y beneficios del personal.',
-    modulo: 'Planillas',
-    grafico: { tipo: 'lista' },
-  },
-  {
-    nombre: 'Rentabilidad por Proyecto', icono: 'maletin', color: 'morado',
-    descripcion: 'Análisis de ingresos, costos y utilidad por proyecto.',
-    modulo: 'Proyectos',
-    grafico: { tipo: 'barras', barras: [
-      { v: '45%', c: '#ddd6fe' }, { v: '65%', c: '#7c3aed' }, { v: '55%', c: '#ddd6fe' },
-      { v: '85%', c: '#7c3aed' }, { v: '70%', c: '#ddd6fe' }, { v: '90%', c: '#7c3aed' },
-    ] },
-  },
-]
-
-const MODULOS_TABS: { etiqueta: string; icono: IconName }[] = [
-  { etiqueta: 'Todos los módulos', icono: 'cuadricula' },
-  { etiqueta: 'Ventas', icono: 'ventas' },
-  { etiqueta: 'Contabilidad', icono: 'moneda' },
-  { etiqueta: 'Inventarios', icono: 'caja' },
-  { etiqueta: 'Planillas', icono: 'planillas' },
-  { etiqueta: 'Proyectos', icono: 'maletin' },
-  { etiqueta: 'Compras', icono: 'compras' },
-  { etiqueta: 'Tesorería', icono: 'tarjeta-pago' },
-]
-
-const REPORTES_RECIENTES: ReporteReciente[] = [
-  { nombre: 'Estado de Resultados', modulo: 'Contabilidad', periodo: 'Junio 2026', autor: 'Pedro Lozano', fecha: '15/06/2026 09:15 AM', formato: 'pdf' },
-  { nombre: 'Flujo de Caja', modulo: 'Tesorería', periodo: 'Junio 2026', autor: 'María Fernández', fecha: '15/06/2026 08:45 AM', formato: 'excel' },
-  { nombre: 'Ventas por Producto', modulo: 'Ventas', periodo: 'Junio 2026', autor: 'Luis Rodríguez', fecha: '14/06/2026 06:30 PM', formato: 'pdf' },
-  { nombre: 'Inventario Valorizado', modulo: 'Inventarios', periodo: 'Junio 2026', autor: 'Ana García', fecha: '14/06/2026 04:20 PM', formato: 'excel' },
-  { nombre: 'Balance General', modulo: 'Contabilidad', periodo: 'Mayo 2026', autor: 'Pedro Lozano', fecha: '13/06/2026 11:10 AM', formato: 'pdf' },
-]
+const MODULOS_TABS: { etiqueta: string; icono: IconName }[] = catalogoReportes.modulos_tabs as { etiqueta: string; icono: IconName }[]
 
 const CLASES_FORMATO: Record<'pdf' | 'excel', string> = {
   pdf: 'text-[#dc2626]',
@@ -124,7 +36,7 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
     return (
       <div className="mt-0.5 flex h-[46px] items-end gap-[5px]">
         {grafico.barras.map((b, i) => (
-          <span key={i} className="flex-1 rounded-t-sm" style={{ height: b.v, background: b.c }} />
+          <MedidaDinamica key={i} alto={b.v} color={b.c} className="flex-1 rounded-t-sm" />
         ))}
       </div>
     )
@@ -143,12 +55,12 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
   if (grafico.tipo === 'dona-lista') {
     return (
       <div className="mt-0.5 flex items-center gap-3">
-        <div className="relative h-[42px] w-[42px] flex-none rounded-full" style={{ background: grafico.conic }}>
+        <SuperficieColor color={grafico.conic} className="relative h-[42px] w-[42px] flex-none rounded-full">
           <div className="absolute inset-[10px] rounded-full bg-white" />
-        </div>
+        </SuperficieColor>
         <div className="grid flex-1 gap-[7px]">
           {ANCHOS_MINI_LINEAS_DONA.map((w) => (
-            <span key={w} className="block h-[7px] rounded-full bg-[#f0eef5]" style={{ width: w }} />
+            <MedidaDinamica key={w} ancho={w} className="block h-[7px] rounded-full bg-[#f0eef5]" />
           ))}
         </div>
       </div>
@@ -157,7 +69,7 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
   return (
     <div className="mt-1 grid gap-[7px]">
       {ANCHOS_MINI_LISTA.map((w) => (
-        <span key={w} className="block h-[7px] rounded-full bg-[#f0eef5]" style={{ width: w }} />
+        <MedidaDinamica key={w} ancho={w} className="block h-[7px] rounded-full bg-[#f0eef5]" />
       ))}
     </div>
   )
@@ -171,23 +83,21 @@ export function PaginaReportes() {
       <div className="mx-auto max-w-[1680px]">
         <div className="mb-5 flex items-start justify-between gap-5 max-[900px]:flex-col max-[900px]:items-stretch">
           <div>
-            <h1 className="m-0 text-[22px] font-extrabold text-texto">Reportes</h1>
-            <p className="m-0 mt-1 text-[13px] text-texto-suave">Genera y consulta reportes de tu empresa. Exporta, programa y comparte información clave.</p>
+            <h1 className="m-0 text-[22px] font-extrabold text-texto">{catalogoReportes.titulos.principal}</h1>
+            <p className="m-0 mt-1 text-[13px] text-texto-suave">{catalogoReportes.subtitulos.principal}</p>
           </div>
           <div className="flex flex-wrap items-end gap-3.5 max-[480px]:flex-col max-[480px]:items-stretch">
-            <Selector variant="default" label="Periodo">
-              <option>Junio 2026</option>
-              <option>Mayo 2026</option>
+            <Selector variant="default" label={catalogoReportes.selectores.periodo.etiqueta}>
+              {catalogoReportes.selectores.periodo.opciones.map((o) => <option key={o}>{o}</option>)}
             </Selector>
-            <Selector variant="default" label="Comparar con">
-              <option>Mayo 2026</option>
-              <option>Abril 2026</option>
+            <Selector variant="default" label={catalogoReportes.selectores.comparar_con.etiqueta}>
+              {catalogoReportes.selectores.comparar_con.opciones.map((o) => <option key={o}>{o}</option>)}
             </Selector>
             <button
               type="button"
               className="inline-flex h-[38px] flex-none items-center gap-1.5 whitespace-nowrap rounded-lg border border-primario bg-white px-4 text-[13px] font-semibold text-primario hover:bg-[#f5f3ff] max-[900px]:w-full max-[900px]:justify-center"
             >
-              <Icono name="filtro" className="h-[15px] w-[15px]" /> Filtros avanzados
+              <Icono name="filtro" className="h-[15px] w-[15px]" /> {catalogoReportes.botones.filtros_avanzados}
             </button>
           </div>
         </div>
@@ -213,8 +123,8 @@ export function PaginaReportes() {
         </div>
 
         <div className="mb-3.5 flex items-center justify-between">
-          <h2 className="m-0 text-base font-bold text-texto">Plantillas de reportes</h2>
-          <a href="#" className="text-xs font-semibold text-primario no-underline">Ver todas las plantillas</a>
+          <h2 className="m-0 text-base font-bold text-texto">{catalogoReportes.secciones.plantillas_de_reportes}</h2>
+          <a href="#" className="text-xs font-semibold text-primario no-underline">{catalogoReportes.botones.ver_todas_las_plantillas}</a>
         </div>
         <div className="mb-7 grid grid-cols-5 gap-4 max-[1250px]:grid-cols-3 max-[900px]:grid-cols-2 max-[480px]:grid-cols-1">
           {PLANTILLAS.map((p) => (
@@ -229,10 +139,10 @@ export function PaginaReportes() {
               <span className="text-[10.5px] font-semibold text-texto-suave">{p.modulo}</span>
               <MiniGraficoPlantilla grafico={p.grafico} />
               <div className="mt-1 flex items-center justify-between border-t border-[#f5f3fa] pt-2">
-                <button type="button" aria-label="Favorito" className="grid h-[26px] w-[26px] place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
+                <button type="button" aria-label={catalogoReportes.botones.favorito} className="grid h-[26px] w-[26px] place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
                   <Icono name="estrella" className="h-[15px] w-[15px]" />
                 </button>
-                <button type="button" aria-label="Más opciones" className="grid h-[26px] w-[26px] place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
+                <button type="button" aria-label={catalogoReportes.botones.mas_opciones} className="grid h-[26px] w-[26px] place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
                   ⋯
                 </button>
               </div>
@@ -242,19 +152,19 @@ export function PaginaReportes() {
 
         <div className="rounded-xl border border-borde bg-white p-5">
           <div className="mb-3.5 border-b border-[#f0eef5] pb-3.5">
-            <h2 className="m-0 text-[15px] font-bold text-texto">Reportes recientes</h2>
+            <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoReportes.secciones.reportes_recientes}</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-[12.5px] [&_tbody_tr:last-child_td]:border-b-0">
               <thead>
                 <tr>
-                  <th className={TH}>Nombre del reporte</th>
-                  <th className={TH}>Módulo</th>
-                  <th className={TH}>Periodo</th>
-                  <th className={TH}>Generado por</th>
-                  <th className={TH}>Fecha de generación</th>
-                  <th className={TH}>Formato</th>
-                  <th className={TH}>Acciones</th>
+                  <th className={TH}>{catalogoReportes.tabla.nombre_del_reporte}</th>
+                  <th className={TH}>{catalogoReportes.tabla.modulo}</th>
+                  <th className={TH}>{catalogoReportes.tabla.periodo}</th>
+                  <th className={TH}>{catalogoReportes.tabla.generado_por}</th>
+                  <th className={TH}>{catalogoReportes.tabla.fecha_de_generacion}</th>
+                  <th className={TH}>{catalogoReportes.tabla.formato}</th>
+                  <th className={TH}>{catalogoReportes.tabla.columna_acciones}</th>
                 </tr>
               </thead>
               <tbody>
@@ -272,21 +182,21 @@ export function PaginaReportes() {
                     <td className={TD}>{r.fecha}</td>
                     <td className={TD}>
                       <span className={`inline-flex items-center gap-1.5 text-[11px] font-bold ${CLASES_FORMATO[r.formato]}`}>
-                        <Icono name="documento" className="h-[13px] w-[13px]" /> {r.formato === 'pdf' ? 'PDF' : 'Excel'}
+                        <Icono name="documento" className="h-[13px] w-[13px]" /> {r.formato === 'pdf' ? catalogoReportes.formatos.pdf : catalogoReportes.formatos.excel}
                       </span>
                     </td>
                     <td className={TD}>
                       <div className="flex items-center gap-1">
-                        <button type="button" aria-label="Ver" className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
+                        <button type="button" aria-label={catalogoReportes.botones.ver} className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
                           <Icono name="ver" className="h-3.5 w-3.5" />
                         </button>
-                        <button type="button" aria-label="Descargar" className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
+                        <button type="button" aria-label={catalogoReportes.botones.descargar} className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
                           <Icono name="descargar" className="h-3.5 w-3.5" />
                         </button>
-                        <button type="button" aria-label="Compartir" className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
+                        <button type="button" aria-label={catalogoReportes.botones.compartir} className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
                           <Icono name="compartir" className="h-3.5 w-3.5" />
                         </button>
-                        <button type="button" aria-label="Más" className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
+                        <button type="button" aria-label={catalogoReportes.botones.mas} className="grid h-7 w-7 place-items-center rounded-md border-0 bg-transparent text-texto-suave hover:bg-[#f5f3ff] hover:text-primario">
                           <Icono name="puntos" className="h-3.5 w-3.5" />
                         </button>
                       </div>
@@ -296,7 +206,7 @@ export function PaginaReportes() {
               </tbody>
             </table>
           </div>
-          <a href="#" className="mt-3.5 block text-center text-[12.5px] font-semibold text-primario no-underline">Ver todos los reportes</a>
+          <a href="#" className="mt-3.5 block text-center text-[12.5px] font-semibold text-primario no-underline">{catalogoReportes.botones.ver_todos_los_reportes}</a>
         </div>
       </div>
     </EstructuraApp>

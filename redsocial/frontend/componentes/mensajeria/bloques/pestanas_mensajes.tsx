@@ -1,4 +1,7 @@
 import type { PestanaMensajeItem } from '@/tipos/mensajeria/pestanas_mensajes'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 export function PestanasMensajes({ tabs, activa }: { tabs: readonly PestanaMensajeItem[]; activa: string }) {
   return (

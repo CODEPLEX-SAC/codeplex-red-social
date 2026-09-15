@@ -1,19 +1,17 @@
 {
   "capacidad_id": "redsocial",
   "menu": [
-    {
-      "clave": "resumen",
-      "titulo": "Resumen"
-    },
-    {
-      "acciones": [
-        "listar",
-        "registrar",
-        "ver_detalle",
-        "actualizar"
-      ],
-      "clave": "gestion_base",
-      "titulo": "Gestion base"
-    }
+    { "clave": "inicio", "titulo": "Inicio" },
+    { "clave": "actividad", "titulo": "Actividad" },
+    { "clave": "mensajeria", "titulo": "Mensajes" },
+    { "clave": "amigos", "titulo": "Amigos" },
+    { "clave": "grupos", "titulo": "Grupos" },
+    { "clave": "marketplace", "titulo": "Marketplace" },
+    { "clave": "eventos", "titulo": "Eventos" },
+    { "clave": "colaboradores", "titulo": "Colaboradores" },
+    { "clave": "dashboard", "titulo": "Dashboard" },
+    { "clave": "estadisticas", "titulo": "Estadísticas" },
+    { "clave": "reportes", "titulo": "Reportes" },
+    { "clave": "indicadores", "titulo": "Indicadores clave" }
   ]
 }

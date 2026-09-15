@@ -1,0 +1,66 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "clave": "/indicadores"
+  },
+  "titulo_menu": "Indicadores clave",
+  "titulos": {
+    "clave": "Indicadores Clave (KPI)"
+  },
+  "subtitulos": {
+    "clave": "Monitorea los indicadores más importantes de tu empresa en tiempo real."
+  },
+  "selectores": {
+    "periodo": { "etiqueta": "Periodo", "opciones": ["Junio 2026", "Mayo 2026"] },
+    "comparar_con": { "etiqueta": "Comparar con", "opciones": ["Mayo 2026", "Abril 2026"] }
+  },
+  "botones": {
+    "filtros_avanzados": "Filtros avanzados",
+    "ver_todos": "Ver todos",
+    "ver_detalle": "Ver detalle",
+    "ver_todos_los_indicadores": "Ver todos los indicadores"
+  },
+  "secciones": {
+    "rentabilidad": "Indicadores de Rentabilidad",
+    "liquidez": "Indicadores de Liquidez",
+    "gestion": "Indicadores de Gestión",
+    "evolucion_utilidad_neta": "Evolución de Utilidad Neta",
+    "ventas_vs_proyeccion": "Ventas vs. Proyección",
+    "estructura_costos": "Estructura de Costos",
+    "indicadores_por_modulo": "Indicadores por Módulo"
+  },
+  "tabla": {
+    "indicador": "Indicador",
+    "valor": "Valor",
+    "estado": "Estado",
+    "variacion": "Var."
+  },
+  "estados": {
+    "optimo": "Óptimo",
+    "regular": "Regular",
+    "bajo": "Bajo"
+  },
+  "modulos_tabs": [
+    { "etiqueta": "Todos los módulos", "icono": "cuadricula" },
+    { "etiqueta": "Financieros", "icono": "moneda" },
+    { "etiqueta": "Comerciales", "icono": "ventas" },
+    { "etiqueta": "Operativos", "icono": "caja" },
+    { "etiqueta": "Recursos Humanos", "icono": "planillas" },
+    { "etiqueta": "Clientes", "icono": "amigos" },
+    { "etiqueta": "Proyectos", "icono": "maletin" },
+    { "etiqueta": "Inventarios", "icono": "caja" }
+  ],
+  "leyendas": {
+    "utilidad_neta": "Utilidad Neta (S/)",
+    "margen_neto": "Margen Neto (%)",
+    "ventas_reales": "Ventas Reales",
+    "proyeccion": "Proyección",
+    "total_de_costos": "Total de Costos"
+  }
+}

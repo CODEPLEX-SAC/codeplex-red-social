@@ -9,4 +9,5 @@ export interface EventoColaborador {
   detalle?: string
   tiempo: string
   boton: string
+  irAGrupos?: boolean
 }

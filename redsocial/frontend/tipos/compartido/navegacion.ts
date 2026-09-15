@@ -15,10 +15,10 @@ export interface ModuloDisponible {
   icono: IconName
 }
 
-export type SeveridadAlerta = 'peligro' | 'advertencia' | 'neutro'
+export type SeveridadAviso = 'peligro' | 'advertencia' | 'neutro'
 
-export interface AlertaBarraLateral {
-  severidad: SeveridadAlerta
+export interface AvisoBarraLateral {
+  severidad: SeveridadAviso
   titulo: string
   detalle: string
 }

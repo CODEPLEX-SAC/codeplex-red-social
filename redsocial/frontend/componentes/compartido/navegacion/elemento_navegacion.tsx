@@ -1,5 +1,8 @@
 import { Icono } from '../icono'
 import type { ElementoNavegacionProps } from '@/tipos/compartido/elemento_navegacion'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 export function ElementoNavegacion({ item, activo = false, colapsado = false }: ElementoNavegacionProps) {
   const href = item.archivo ?? '#'

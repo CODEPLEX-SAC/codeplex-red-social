@@ -1,5 +1,7 @@
 import { Icono } from '../../compartido/icono'
+import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
+import mensajesGlobales from '../../../mensajes/globales/textos.json'
 import type { TarjetaActividadProps } from '@/tipos/actividad/tarjeta_actividad'
 
 export function TarjetaActividad({
@@ -20,10 +22,7 @@ export function TarjetaActividad({
           <Icono name={iconoSistema} className="h-[22px] w-[22px]" />
         </div>
       ) : (
-        <div
-          className="h-9 w-9 flex-none overflow-hidden rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${usuarioImg})` }}
-        />
+        <AvatarImagen src={usuarioImg} className="h-9 w-9 flex-none overflow-hidden rounded-full bg-primario-suave" />
       )}
       <div className="min-w-0 flex-1">
         <div className="mb-0 flex items-start justify-between gap-2">
@@ -33,7 +32,7 @@ export function TarjetaActividad({
             {nombreGrupo && <span className="font-bold text-primario">{nombreGrupo}</span>}
             {nombreModulo && <span className="font-bold text-texto">{nombreModulo}</span>}
           </div>
-          <button type="button" aria-label="Más opciones" className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
+          <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
             <Icono name="puntos" className="h-3.5 w-3.5" />
           </button>
         </div>

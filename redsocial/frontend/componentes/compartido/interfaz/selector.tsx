@@ -1,5 +1,8 @@
 import { Icono } from '../icono'
 import type { SelectorVariant, SelectorProps } from '@/tipos/compartido/selector'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 const CLASES_SELECT: Record<SelectorVariant, string> = {
   default:

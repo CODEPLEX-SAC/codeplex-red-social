@@ -1,10 +1,11 @@
+import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
 import type { PestanaAmigos } from '@/tipos/amigos/pestanas_amigos'
 
 const TABS = [
-  { etiqueta: 'Todos', href: '15-05-amigos-01-todos-web.html' },
-  { etiqueta: 'Solicitudes', href: '16-05-amigos-02-solicitudes-web.html' },
-  { etiqueta: 'Sugerencias', href: '17-05-amigos-03-web-sugerencias.html' },
-  { etiqueta: 'Listas', href: '18-05-amigos-04-web-listas.html' },
+  { etiqueta: catalogoAmigos.titulos_pestanas.todos, href: '15-05-amigos-01-todos-web.html' },
+  { etiqueta: catalogoAmigos.titulos_pestanas.solicitudes, href: '16-05-amigos-02-solicitudes-web.html' },
+  { etiqueta: catalogoAmigos.titulos_pestanas.sugerencias, href: '17-05-amigos-03-web-sugerencias.html' },
+  { etiqueta: catalogoAmigos.titulos_pestanas.listas, href: '18-05-amigos-04-web-listas.html' },
 ] as const
 
 export function PestanasAmigos({ activa, insigniaSolicitudes }: { activa: PestanaAmigos; insigniaSolicitudes?: number }) {

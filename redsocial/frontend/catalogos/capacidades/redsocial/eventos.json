@@ -1,0 +1,113 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "para_ti": "/eventos",
+    "proximos": "/eventos/proximos",
+    "populares": "/eventos/populares",
+    "mis_eventos": "/eventos/mis-eventos",
+    "invitaciones": "/eventos/invitaciones",
+    "calendario": "/eventos/calendario"
+  },
+  "titulo_menu": "Eventos",
+  "titulos_pestanas": {
+    "para_ti": "Para ti",
+    "proximos": "Próximos",
+    "populares": "Populares",
+    "mis_eventos": "Mis eventos",
+    "invitaciones": "Invitaciones",
+    "calendario": "Calendario"
+  },
+  "titulos": {
+    "seccion": "Eventos",
+    "para_ti": "Eventos",
+    "proximos": "Próximos",
+    "populares": "Populares",
+    "mis_eventos": "Mis eventos",
+    "invitaciones": "Invitaciones",
+    "calendario": "Calendario"
+  },
+  "subtitulos": {
+    "para_ti": "Descubre eventos que te interesan o crea los tuyos propios.",
+    "proximos": "Los eventos que están por ocurrir.",
+    "populares": "Descubre los eventos más populares y con más asistentes.",
+    "mis_eventos": "Administra los eventos que has creado o donde eres organizador.",
+    "invitaciones": "Eventos a los que te han invitado.",
+    "calendario": "Visualiza todos tus eventos en el calendario."
+  },
+  "secciones": {
+    "destacados": "Eventos destacados",
+    "proximos": "Próximos eventos",
+    "categorias": "Categorías",
+    "calendario": "Calendario",
+    "mis_proximas_fechas": "Mis próximas fechas",
+    "eventos_organizas": "Eventos que organizas",
+    "eventos_colaboras": "Eventos en los que colaboras",
+    "proximos_de_tus_eventos": "Próximos de tus eventos",
+    "resumen_de_tus_eventos": "Resumen de tus eventos",
+    "invitaciones_pendientes": "Invitaciones pendientes",
+    "invitaciones_respondidas": "Invitaciones respondidas",
+    "leyenda": "Leyenda"
+  },
+  "botones": {
+    "crear_evento": "Crear evento",
+    "buscar": "Buscar",
+    "ver_detalles": "Ver detalles",
+    "ver_calendario": "Ver calendario",
+    "ir_al_destacado": "Ir al destacado",
+    "guardar_evento": "Guardar evento",
+    "ver_mas_categorias": "Ver más categorías",
+    "mis_eventos": "Mis eventos",
+    "estado": "Estado",
+    "continuar_editando": "Continuar editando",
+    "mas_opciones": "Más opciones",
+    "ver_todos_mis_eventos": "Ver todos mis eventos",
+    "ver_reportes": "Ver reportes",
+    "aceptar": "Aceptar",
+    "tal_vez": "Tal vez",
+    "rechazar": "Rechazar",
+    "hoy": "Hoy",
+    "vista_mes": "Mes",
+    "vista_semana": "Semana",
+    "vista_dia": "Día"
+  },
+  "insignias": {
+    "mas_popular": "Más popular",
+    "publicado": "PUBLICADO",
+    "borrador": "BORRADOR",
+    "colaborador": "COLABORADOR"
+  },
+  "leyendas": {
+    "asistiran": "Asistirán",
+    "confirmados": "Confirmados",
+    "sin_publicar_aun": "Sin publicar aún",
+    "no_encuentras_evento": "¿No encuentras un evento?",
+    "este_anio": "Este año ▾",
+    "te_ha_invitado": "te ha invitado",
+    "estado_aceptada": "Aceptada",
+    "estado_rechazada": "Rechazada"
+  },
+  "filtros": {
+    "todos_los_eventos": "Todos los eventos",
+    "proximos_eventos": "Próximos eventos",
+    "mas_populares": "Más populares",
+    "fecha": "Fecha",
+    "categoria": "Categoría",
+    "ubicacion": "Ubicación",
+    "filtros": "Filtros",
+    "todas": "Todas",
+    "pendientes": "Pendientes",
+    "aceptadas": "Aceptadas",
+    "rechazadas": "Rechazadas"
+  },
+  "dias_semana": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+  "placeholders": {
+    "buscar_eventos": "Buscar eventos...",
+    "ubicacion": "Ubicación"
+  }
+}

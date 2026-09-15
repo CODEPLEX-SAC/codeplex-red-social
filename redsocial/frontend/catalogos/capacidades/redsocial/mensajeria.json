@@ -1,0 +1,121 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "todos": "/mensajes",
+    "no_leidos": "/mensajes/no-leidos",
+    "favoritos": "/mensajes/favoritos",
+    "videollamadas": "/mensajes/videollamadas",
+    "videollamada_iniciar": "/mensajes/videollamadas/iniciar",
+    "videollamada_en_curso": "/mensajes/videollamadas/en-curso"
+  },
+  "titulo_menu": "Mensajes",
+  "titulos_pestanas": {
+    "todos": "Todos",
+    "no_leidos": "No leídos",
+    "favoritos": "Favoritos",
+    "mensajes": "Mensajes",
+    "videollamadas": "Videollamadas"
+  },
+  "titulos": {
+    "todos": "Mensajes",
+    "no_leidos": "Mensajes",
+    "favoritos": "Mensajes",
+    "videollamadas": "Mensajes",
+    "videollamada_iniciar": "Iniciar videollamada"
+  },
+  "subtitulos": {
+    "videollamada_iniciar": "Revisa tu configuración antes de ingresar a la llamada"
+  },
+  "botones": {
+    "nuevo_mensaje": "Nuevo mensaje",
+    "marcar_favorito": "Marcar como favorito",
+    "ver_todos": "Ver todos",
+    "ver_mas_llamadas": "Ver más llamadas",
+    "ver_todas_las_reuniones": "Ver todas las reuniones",
+    "ver_todo_el_historial": "Ver todo el historial",
+    "unirse": "Unirse",
+    "videollamar": "Videollamar",
+    "nueva_reunion": "Nueva reunión",
+    "iniciar_videollamada": "Iniciar videollamada",
+    "cambiar_camara": "Cambiar cámara",
+    "silenciar_microfono": "Silenciar micrófono",
+    "apagar_camara": "Apagar cámara",
+    "configuracion": "Configuración",
+    "probar_dispositivos": "Probar dispositivos",
+    "invitar": "Invitar",
+    "copiar_enlace_reunion": "Copiar enlace de la reunión",
+    "cancelar": "Cancelar",
+    "ver_participantes": "Ver participantes",
+    "chat": "Chat",
+    "seguridad_llamada": "Seguridad de la llamada",
+    "grabando_llamada": "Grabando la llamada",
+    "mas_opciones": "Más opciones",
+    "salir_de_la_llamada": "Salir de la llamada",
+    "microfono": "Micrófono",
+    "camara": "Cámara",
+    "compartir_pantalla": "Compartir pantalla",
+    "participantes": "Participantes",
+    "reacciones": "Reacciones",
+    "mas": "Más",
+    "cerrar": "Cerrar",
+    "mas_filtros": "Más filtros",
+    "invitar_por_enlace": "Invitar por enlace",
+    "silenciar_a_todos": "Silenciar a todos"
+  },
+  "filtros": {
+    "recientes": "Recientes",
+    "contactos": "Contactos",
+    "grupos": "Grupos",
+    "reuniones_programadas": "Reuniones programadas",
+    "todos": "Todos",
+    "en_linea": "En línea",
+    "invitados": "Invitados"
+  },
+  "secciones": {
+    "contactos_frecuentes": "Contactos frecuentes",
+    "reuniones_programadas": "Reuniones programadas",
+    "historial_reciente": "Historial reciente",
+    "dispositivos": "Dispositivos",
+    "configuracion_llamada": "Configuración de la llamada",
+    "detalles_reunion": "Detalles de la reunión",
+    "opciones_llamada": "Opciones de llamada",
+    "invitar_mas_personas": "Invitar a más personas"
+  },
+  "leyendas": {
+    "historial_de_llamadas": "Historial de llamadas",
+    "videollamada_entrante": "Videollamada entrante",
+    "videollamada_saliente": "Videollamada saliente",
+    "completada": "Completada",
+    "organizador": "Organizador",
+    "en_llamada": "En llamada",
+    "colaborador": "Colaborador",
+    "colaborador_badge": "(COLABORADOR)"
+  },
+  "placeholders": {
+    "buscar_videollamadas": "Buscar videollamadas...",
+    "buscar_contactos_o_correo": "Buscar contactos o ingresar correo...",
+    "buscar_participantes": "Buscar participantes...",
+    "buscar_mensajes": "Buscar mensajes...",
+    "escribe_un_mensaje": "Escribe un mensaje..."
+  },
+  "conversacion": {
+    "en_linea": "En línea",
+    "volver_a_la_lista": "Volver a la lista de conversaciones",
+    "videollamada": "Videollamada",
+    "llamada": "Llamada",
+    "informacion": "Información",
+    "mensaje_fijado": "Mensaje fijado",
+    "mensaje": "Mensaje",
+    "adjuntar_archivo": "Adjuntar archivo",
+    "enviar_imagen": "Enviar imagen",
+    "emojis": "Emojis",
+    "gif": "GIF",
+    "descargar": "Descargar"
+  }
+}

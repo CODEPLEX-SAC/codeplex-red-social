@@ -1,0 +1,25 @@
+# El validador del kit exige gofmt, y gofmt exige LF. El autocrlf global de
+# Windows reescribia los .go a CRLF en cada checkout y tumbaba la validacion.
+* text=auto eol=lf
+
+# Los scripts de Windows si necesitan CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binarios: git no los toca
+*.pdf binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.xlsx binary
+*.docx binary
+
+# Material de trabajo que solo existe en la rama desarrollo: se versiona tal cual,
+# sin normalizar saltos de línea, para no reescribir en disco lo que ya está escrito
+docss/** -text
+Xontext/** -text
+herramientas/** -text
+
+# Ejecutables del utillaje de Codeplex
+*.exe binary
+*.ico binary

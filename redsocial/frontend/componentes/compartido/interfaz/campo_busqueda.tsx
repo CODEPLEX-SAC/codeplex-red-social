@@ -1,5 +1,8 @@
 import { Icono } from '../icono'
 import type { CampoBusquedaProps } from '@/tipos/compartido/campo_busqueda'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 export function CampoBusqueda({ className, icono = 'buscar', ...rest }: CampoBusquedaProps) {
   return (

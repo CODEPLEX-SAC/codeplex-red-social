@@ -1,5 +1,8 @@
 import { Icono } from '../../compartido/icono'
+import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
+import mensajesGlobales from '../../../mensajes/globales/textos.json'
+import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import type { IconName } from '../../../tipos/compartido/icono'
 import type { PanelConversacionProps } from '@/tipos/mensajeria/panel_conversacion'
 
@@ -9,32 +12,29 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
       <header className="flex items-center gap-2.5 rounded-t-[10px] border-b border-borde bg-white px-4.5 py-3">
         <button
           type="button"
-          aria-label="Volver a la lista de conversaciones"
+          aria-label={catalogoMensajeria.conversacion.volver_a_la_lista}
           onClick={onVolver}
           className="hidden h-8 w-8 flex-none items-center justify-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario max-[900px]:flex"
         >
           <Icono name="flecha-izquierda" className="h-[18px] w-[18px]" />
         </button>
-        <span
-          className="h-10 w-10 flex-none rounded-full bg-primario-suave bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${usuarioImg})` }}
-        />
+        <AvatarImagen src={usuarioImg} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
         <div className="min-w-0 flex-1">
           <strong className="block text-[13px] font-bold text-texto">{conversacion.nombre}</strong>
           {conversacion.enLinea && (
             <span className="mt-0.5 flex items-center gap-1.25 text-[11px] text-exito">
-              <span className="h-1.5 w-1.5 rounded-full bg-exito" /> En línea
+              <span className="h-1.5 w-1.5 rounded-full bg-exito" /> {catalogoMensajeria.conversacion.en_linea}
             </span>
           )}
         </div>
         <div className="flex flex-none gap-1.5">
-          <button type="button" aria-label="Videollamada" className="grid h-8.5 w-8.5 place-items-center rounded-full border border-borde bg-white text-texto-suave hover:border-primario hover:bg-[#f7f6fa] hover:text-primario">
+          <button type="button" aria-label={catalogoMensajeria.conversacion.videollamada} className="grid h-8.5 w-8.5 place-items-center rounded-full border border-borde bg-white text-texto-suave hover:border-primario hover:bg-[#f7f6fa] hover:text-primario">
             <Icono name="video" className="h-4 w-4" />
           </button>
-          <button type="button" aria-label="Llamada" className="grid h-8.5 w-8.5 place-items-center rounded-full border border-borde bg-white text-texto-suave hover:border-primario hover:bg-[#f7f6fa] hover:text-primario">
+          <button type="button" aria-label={catalogoMensajeria.conversacion.llamada} className="grid h-8.5 w-8.5 place-items-center rounded-full border border-borde bg-white text-texto-suave hover:border-primario hover:bg-[#f7f6fa] hover:text-primario">
             <Icono name="llamada" className="h-4 w-4" />
           </button>
-          <button type="button" aria-label="Información" className="grid h-8.5 w-8.5 place-items-center rounded-full border border-borde bg-white text-texto-suave hover:border-primario hover:bg-[#f7f6fa] hover:text-primario">
+          <button type="button" aria-label={catalogoMensajeria.conversacion.informacion} className="grid h-8.5 w-8.5 place-items-center rounded-full border border-borde bg-white text-texto-suave hover:border-primario hover:bg-[#f7f6fa] hover:text-primario">
             <Icono name="informacion" className="h-4 w-4" />
           </button>
         </div>
@@ -43,11 +43,11 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
       <div className="flex items-start gap-2.5 border-b border-borde bg-[#faf9fc] px-4.5 py-3">
         <div className="min-w-0 flex-1">
           <strong className="mb-0.5 flex items-center gap-1.25 text-[11px] font-bold text-texto">
-            <Icono name="fijar" className="h-[13px] w-[13px] text-primario" /> Mensaje fijado
+            <Icono name="fijar" className="h-[13px] w-[13px] text-primario" /> {catalogoMensajeria.conversacion.mensaje_fijado}
           </strong>
           <p className="m-0 text-[11px] text-texto-suave">{conversacion.mensajeFijado}</p>
         </div>
-        <button type="button" aria-label="Cerrar" className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full border-0 bg-transparent text-[#b3b0c2] hover:bg-black/[.06]">
+        <button type="button" aria-label={mensajesGlobales.CERRAR} className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full border-0 bg-transparent text-[#b3b0c2] hover:bg-black/[.06]">
           <Icono name="cerrar" className="h-3 w-3" />
         </button>
       </div>
@@ -84,7 +84,7 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
                       <strong className="block text-[11px] font-semibold text-texto">{m.adjunto.nombre}</strong>
                       <span className="block text-[10px] text-texto-suave">{m.adjunto.peso}</span>
                     </span>
-                    <button type="button" aria-label="Descargar" className="grid h-[30px] w-[30px] flex-none place-items-center rounded-full border border-borde bg-white text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
+                    <button type="button" aria-label={catalogoMensajeria.conversacion.descargar} className="grid h-[30px] w-[30px] flex-none place-items-center rounded-full border border-borde bg-white text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
                       <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -104,20 +104,20 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
       </div>
 
       <form className="flex items-center gap-2 rounded-b-[10px] border-t border-borde bg-white px-4.5 py-3">
-        <input type="text" placeholder="Escribe un mensaje..." aria-label="Mensaje" className="h-[38px] min-w-0 flex-1 rounded-2xl border border-borde px-3.5 text-xs outline-none focus:border-primario" />
+        <input type="text" placeholder={catalogoMensajeria.placeholders.escribe_un_mensaje} aria-label={catalogoMensajeria.conversacion.mensaje} className="h-[38px] min-w-0 flex-1 rounded-2xl border border-borde px-3.5 text-xs outline-none focus:border-primario" />
         <div className="flex flex-none gap-1">
-          <button type="button" aria-label="Adjuntar archivo" className="grid h-8 w-8 place-items-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
+          <button type="button" aria-label={catalogoMensajeria.conversacion.adjuntar_archivo} className="grid h-8 w-8 place-items-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
             <Icono name="adjuntar" className="h-4.5 w-4.5" />
           </button>
-          <button type="button" aria-label="Enviar imagen" className="grid h-8 w-8 place-items-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
+          <button type="button" aria-label={catalogoMensajeria.conversacion.enviar_imagen} className="grid h-8 w-8 place-items-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
             <Icono name="imagen" className="h-4.5 w-4.5" />
           </button>
-          <button type="button" aria-label="Emojis" className="grid h-8 w-8 place-items-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
+          <button type="button" aria-label={catalogoMensajeria.conversacion.emojis} className="grid h-8 w-8 place-items-center rounded-full border-0 bg-transparent text-texto-suave hover:bg-[#f7f6fa] hover:text-primario">
             <Icono name={'sentimiento' as IconName} className="h-4.5 w-4.5" />
           </button>
-          <button type="button" className="rounded-md border border-borde bg-white px-2 py-1 text-[11px] font-bold text-texto-suave hover:border-primario hover:text-primario">GIF</button>
+          <button type="button" className="rounded-md border border-borde bg-white px-2 py-1 text-[11px] font-bold text-texto-suave hover:border-primario hover:text-primario">{catalogoMensajeria.conversacion.gif}</button>
         </div>
-        <button type="submit" aria-label="Enviar" className="grid h-[38px] w-[38px] flex-none place-items-center rounded-full border-0 bg-primario text-white hover:opacity-[.88]">
+        <button type="submit" aria-label={mensajesGlobales.ENVIAR} className="grid h-[38px] w-[38px] flex-none place-items-center rounded-full border-0 bg-primario text-white hover:opacity-[.88]">
           <Icono name="enviar" className="h-4.5 w-4.5" />
         </button>
       </form>

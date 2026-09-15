@@ -1,0 +1,12 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {},
+  "titulo_menu": "Compartido",
+  "titulos": {}
+}

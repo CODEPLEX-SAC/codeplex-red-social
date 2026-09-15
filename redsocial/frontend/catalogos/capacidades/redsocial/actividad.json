@@ -1,0 +1,62 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "todas": "/actividad",
+    "publicaciones": "/actividad/publicaciones",
+    "menciones": "/actividad/menciones",
+    "colaboradores": "/actividad/colaboradores",
+    "grupos": "/actividad/grupos",
+    "modulos": "/actividad/modulos",
+    "sistema": "/actividad/sistema"
+  },
+  "titulo_menu": "Actividad",
+  "titulos_pestanas": {
+    "todas": "Todas",
+    "publicaciones": "Publicaciones",
+    "menciones": "Menciones",
+    "colaboradores": "Colaboradores",
+    "grupos": "Grupos",
+    "modulos": "Módulos",
+    "sistema": "Sistema"
+  },
+  "titulos": {
+    "todas": "Actividad",
+    "publicaciones": "Actividad",
+    "menciones": "Actividad",
+    "colaboradores": "Actividad",
+    "grupos": "Actividad",
+    "modulos": "Actividad",
+    "sistema": "Actividad"
+  },
+  "subtitulos": {
+    "todas": "Mantente al día con todo lo que ocurre en tu red y en tu empresa",
+    "publicaciones": "Mantente al día con todo lo que ocurre en tu red y en tu empresa",
+    "menciones": "Mantente al día con todo lo que ocurre en tu red y en tu empresa",
+    "colaboradores": "todo lo que ocurre en tu red y en tu empresa",
+    "grupos": "Mantente al día con todo lo que ocurre en tu red y en tu empresa",
+    "modulos": "Mantente al día con todo lo que ocurre en tu red y en tu empresa",
+    "sistema": "Mantente al día con todo lo que ocurre en tu red y en tu empresa"
+  },
+  "secciones": {
+    "grupos": { "titulo": "Grupos", "descripcion": "Actividad reciente en los grupos que participas" },
+    "modulos": { "titulo": "Módulos", "descripcion": "Actividad reciente en los módulos del sistema" },
+    "sistema": { "titulo": "Sistema", "descripcion": "Actividad del sistema y administración de la plataforma" }
+  },
+  "botones": {
+    "grupos_crear": "Crear grupo",
+    "grupos_ver_mas": "Ver más grupos",
+    "modulos_todos": "Todos los módulos",
+    "sistema_todos": "Todos los eventos",
+    "todas_ver_grupo": "Ver grupo"
+  },
+  "insignias": {
+    "grupo_publico": "Grupo público",
+    "grupo_privado": "Grupo privado"
+  }
+}

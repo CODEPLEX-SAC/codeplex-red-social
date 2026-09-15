@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
+import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { PestanasMensajes } from '../../componentes/mensajeria/bloques/pestanas_mensajes'
@@ -19,9 +20,9 @@ export function PaginaMensajesTodos() {
         principal={
           <section className="flex h-full flex-col">
             <div className="mb-5 flex items-start justify-between gap-5">
-              <h1 className="m-0 text-[23px] font-extrabold tracking-[-0.02em] text-texto">Mensajes</h1>
+              <h1 className="m-0 text-[23px] font-extrabold tracking-[-0.02em] text-texto">{catalogoMensajeria.titulos.todos}</h1>
               <div className="flex items-center gap-2.5">
-                <button type="button" aria-label="Nuevo mensaje" className="grid h-8 w-8 place-items-center rounded-[7px] border border-borde text-primario hover:bg-[#f7f6fa]">
+                <button type="button" aria-label={catalogoMensajeria.botones.nuevo_mensaje} className="grid h-8 w-8 place-items-center rounded-[7px] border border-borde text-primario hover:bg-[#f7f6fa]">
                   <Icono name="editar" className="h-[18px] w-[18px]" />
                 </button>
               </div>
@@ -30,8 +31,8 @@ export function PaginaMensajesTodos() {
             <PestanasMensajes
               activa="09-04-mensajes-01-todos-web.html"
               tabs={[
-                { etiqueta: 'Mensajes', archivo: '09-04-mensajes-01-todos-web.html' },
-                { etiqueta: 'Videollamadas', archivo: '12-04-mensajes-04-videollamadas.html' },
+                { etiqueta: catalogoMensajeria.titulos_pestanas.mensajes, archivo: '09-04-mensajes-01-todos-web.html' },
+                { etiqueta: catalogoMensajeria.titulos_pestanas.videollamadas, archivo: '12-04-mensajes-04-videollamadas.html' },
               ]}
             />
 

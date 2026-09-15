@@ -4,43 +4,14 @@ import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_
 import { Boton } from '../../componentes/compartido/interfaz/boton'
 import { ContactosPanel } from '../../componentes/compartido/bloques/contactos_panel'
 import { BloqueAnuncio } from '../../componentes/compartido/bloques/bloque_anuncio'
+import { CONTACTOS_SUGERIDOS } from '../../datos/compartido/panel_lateral'
+import { METRICAS, BARRAS, RESUMEN, DETALLE } from '../../datos/estadisticas/modulo'
+import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadisticas.json'
 
-const METRICAS = [
-  { etiqueta: 'total', valor: 'S/ 842,640', variacion: '↗ 12.4%', tipo: 'positiva' as const },
-  { etiqueta: 'Crecimiento', valor: '18.6%', variacion: '↘ 6.2%', tipo: 'negativa' as const },
-  { etiqueta: 'Promedio mensual', valor: 'S/ 70,220', variacion: '↗ 9.8%', tipo: 'positiva' as const },
-  { etiqueta: 'Registros', valor: '12,480', variacion: '↗ 14.1%', tipo: 'positiva' as const },
-]
-
-const BARRAS = [
-  { mes: 'Ene', valor: 20 }, { mes: 'Feb', valor: 29 }, { mes: 'Mar', valor: 38 }, { mes: 'Abr', valor: 47 },
-  { mes: 'May', valor: 56 }, { mes: 'Jun', valor: 65 }, { mes: 'Jul', valor: 74 }, { mes: 'Ago', valor: 83 },
-]
-
-const RESUMEN = [
-  { etiqueta: 'Resultado acumulado', valor: 'S/ 542,800' },
-  { etiqueta: 'Variación interanual', valor: '+18.6%' },
-  { etiqueta: 'Meta del periodo', valor: '82%' },
-  { etiqueta: 'Proyección', valor: 'S/ 980,200' },
-]
-
-const DETALLE = [
-  { periodo: 'Enero 2026', resultado: 'S/ 42,000', variacion: '+8%', meta: 'S/ 50,000', cumplimiento: '72%' },
-  { periodo: 'Febrero 2026', resultado: 'S/ 47,300', variacion: '+9%', meta: 'S/ 54,000', cumplimiento: '75%' },
-  { periodo: 'Marzo 2026', resultado: 'S/ 52,600', variacion: '+10%', meta: 'S/ 58,000', cumplimiento: '78%' },
-  { periodo: 'Abril 2026', resultado: 'S/ 57,900', variacion: '+11%', meta: 'S/ 62,000', cumplimiento: '81%' },
-  { periodo: 'Mayo 2026', resultado: 'S/ 63,200', variacion: '+12%', meta: 'S/ 66,000', cumplimiento: '84%' },
-  { periodo: 'Junio 2026', resultado: 'S/ 68,500', variacion: '+13%', meta: 'S/ 70,000', cumplimiento: '87%' },
-  { periodo: 'Julio 2026', resultado: 'S/ 73,800', variacion: '+14%', meta: 'S/ 74,000', cumplimiento: '90%' },
-  { periodo: 'Agosto 2026', resultado: 'S/ 79,100', variacion: '+15%', meta: 'S/ 78,000', cumplimiento: '93%' },
-]
-
-const CONTACTOS = ['Ana Torres', 'Miguel Rojas', 'José Castillo', 'Laura Pérez', 'Sofía Gómez'].map((nombre) => ({
-  nombre,
-  subtitulo: 'Conexión profesional',
-}))
+const TABLA_DETALLE_MODULO = catalogoEstadisticas.tabla_detalle_modulo
 
 export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
+  const titulo = (catalogoEstadisticas.titulos as Record<string, string>)[modulo] ?? catalogoEstadisticas.titulos.todos_modulos
   return (
     <EstructuraApp paginaActiva="estadisticas">
       <EstructuraTresColumnas
@@ -48,11 +19,11 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
           <section>
             <div className="mb-5 flex items-start justify-between gap-5">
               <div>
-                <p className="m-0 mb-1 text-[11px] font-bold text-primario">Red Social</p>
-                <h1 className="m-0 text-[23px] tracking-[-0.02em] text-texto">Estadísticas</h1>
+                <p className="m-0 mb-1 text-[11px] font-bold text-primario">{catalogoEstadisticas.capacidad_nombre}</p>
+                <h1 className="m-0 text-[23px] tracking-[-0.02em] text-texto">{titulo}</h1>
               </div>
               <div className="flex items-center gap-2.5 max-[560px]:hidden">
-                <Boton variant="primario">+ Crear</Boton>
+                <Boton variant="primario">{catalogoEstadisticas.botones.crear}</Boton>
               </div>
             </div>
 
@@ -70,18 +41,17 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
               <article className="min-h-[300px] min-w-0 rounded-[10px] border border-borde bg-white shadow-sombra">
                 <div className="flex items-center justify-between p-[18px_20px] pb-3.5">
                   <div>
-                    <h2 className="m-0 text-[15px] font-bold text-texto">Evolución de {modulo.toLowerCase()}</h2>
-                    <p className="m-0 mt-0.5 text-xs text-texto-suave">Comparativa mensual.</p>
+                    <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.evolucion_de_prefijo} {modulo.toLowerCase()}</h2>
+                    <p className="m-0 mt-0.5 text-xs text-texto-suave">{catalogoEstadisticas.secciones.modulo_comparativa}</p>
                   </div>
-                  <select defaultValue="2026">
-                    <option>2026</option>
-                    <option>2025</option>
+                  <select aria-label={catalogoEstadisticas.selectores.anio_grafico.etiqueta} defaultValue={catalogoEstadisticas.selectores.anio_grafico.opciones[0]}>
+                    {catalogoEstadisticas.selectores.anio_grafico.opciones.map((o) => <option key={o}>{o}</option>)}
                   </select>
                 </div>
                 <div className="flex h-[205px] items-end gap-3.5 px-6 pb-4">
                   {BARRAS.map((b) => (
                     <div key={b.mes} className="flex h-[60%] flex-1 flex-col items-center justify-end gap-1.5">
-                      <span className="h-full min-h-[15px] w-full rounded-t" style={{ background: 'linear-gradient(#7662fa, #c0b8ff)' }} />
+                      <span className="h-full min-h-[15px] w-full rounded-t bg-[linear-gradient(#7662fa,#c0b8ff)]" />
                       <small className="text-[10px] text-texto-suave">{b.mes}</small>
                     </div>
                   ))}
@@ -89,8 +59,8 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
               </article>
               <article className="min-w-0 rounded-[10px] border border-borde bg-white shadow-sombra">
                 <div className="p-[18px_20px] pb-3.5">
-                  <h2 className="m-0 text-[15px] font-bold text-texto">Resumen</h2>
-                  <p className="m-0 mt-0.5 text-xs text-texto-suave">Indicadores destacados.</p>
+                  <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.modulo_resumen}</h2>
+                  <p className="m-0 mt-0.5 text-xs text-texto-suave">{catalogoEstadisticas.secciones.modulo_resumen_sub}</p>
                 </div>
                 <ul className="m-0 list-none p-0 px-5 pb-4.5">
                   {RESUMEN.map((r) => (
@@ -106,16 +76,16 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
             <section className="rounded-[10px] border border-borde bg-white shadow-sombra">
               <div className="flex items-center justify-between p-[18px_20px] pb-3.5">
                 <div>
-                  <h2 className="m-0 text-[15px] font-bold text-texto">Detalle</h2>
-                  <p className="m-0 mt-0.5 text-xs text-texto-suave">Datos consolidados por periodo.</p>
+                  <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.modulo_detalle}</h2>
+                  <p className="m-0 mt-0.5 text-xs text-texto-suave">{catalogoEstadisticas.secciones.modulo_detalle_sub}</p>
                 </div>
-                <Boton variant="secundario">Exportar</Boton>
+                <Boton variant="secundario">{catalogoEstadisticas.botones.exportar}</Boton>
               </div>
               <div className="overflow-auto px-5 pb-5">
                 <table className="w-full border-collapse text-[11px]">
                   <thead>
                     <tr>
-                      {['Periodo', 'Resultado', 'Variación', 'Meta', 'Cumplimiento'].map((h) => (
+                      {TABLA_DETALLE_MODULO.map((h) => (
                         <th key={h} className="whitespace-nowrap border-b border-[#f0eef5] bg-[#fcfbfe] px-3.5 py-3 text-left text-[9px] font-bold uppercase tracking-[0.04em] text-[#9693a5]">
                           {h}
                         </th>
@@ -143,7 +113,7 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
         publicidad={<ColumnaPublicidad />}
         lateral={
           <aside className="grid gap-4">
-            <ContactosPanel contactos={CONTACTOS} />
+            <ContactosPanel contactos={CONTACTOS_SUGERIDOS} />
             <BloqueAnuncio />
           </aside>
         }

@@ -1,11 +1,12 @@
-import type { AlertaBarraLateral, ModuloDisponible, ElementoNavegacion } from '../../tipos/compartido/navegacion'
+import type { AvisoBarraLateral, ModuloDisponible, ElementoNavegacion } from '../../tipos/compartido/navegacion'
+import mensajesGlobales from '../../mensajes/globales/textos.json'
 
 export const NAV_PRINCIPAL: readonly ElementoNavegacion[] = [
   { clave: 'inicio', etiqueta: 'Inicio', archivo: '01-01-inicio-web.html', icono: 'inicio' },
   { clave: 'actividad', etiqueta: 'Actividad', archivo: '02-02-actividad-01-todas-web.html', icono: 'actividad' },
-  { clave: 'notificaciones', etiqueta: 'Notificaciones', archivo: null, insignia: 3, icono: 'notificaciones' },
-  { clave: 'mensajes', etiqueta: 'Mensajes', archivo: '09-04-mensajes-01-todos-web.html', insignia: 5, icono: 'mensajes' },
-  { clave: 'amigos', etiqueta: 'Amigos', archivo: '15-05-amigos-01-todos-web.html', icono: 'amigos' },
+  { clave: 'avisos', etiqueta: mensajesGlobales.AVISO_CAMPANA, archivo: null, insignia: 3, icono: 'campana' },
+  { clave: 'mensajes', etiqueta: mensajesGlobales.MENSAJES, archivo: '09-04-mensajes-01-todos-web.html', insignia: 5, icono: 'mensajes' },
+  { clave: 'amigos', etiqueta: mensajesGlobales.AMIGOS, archivo: '15-05-amigos-01-todos-web.html', icono: 'amigos' },
   { clave: 'grupos', etiqueta: 'Grupos', archivo: '19-06-grupos-01-web-misgrupos.html', icono: 'grupos' },
   { clave: 'marketplace', etiqueta: 'Marketplace', archivo: '22-07-marketplace-web-03.html', icono: 'marketplace' },
   { clave: 'eventos', etiqueta: 'Eventos', archivo: '23-08-eventos-01-para-ti-web.html', icono: 'eventos' },
@@ -29,7 +30,7 @@ export const MODULOS_DISPONIBLES: readonly ModuloDisponible[] = [
   { etiqueta: 'Reportes', descripcion: 'Análisis e informes', color: '#7a5af4', icono: 'reportes' },
 ]
 
-export const ALERTAS_SIDEBAR: readonly AlertaBarraLateral[] = [
+export const AVISOS_SIDEBAR: readonly AvisoBarraLateral[] = [
   { severidad: 'peligro', titulo: '3 facturas por vencer', detalle: 'Por cobrar S/ 45,000' },
   { severidad: 'advertencia', titulo: 'Stock bajo en 5 productos', detalle: 'Requieren reposición' },
   { severidad: 'neutro', titulo: '2 pagos pendientes', detalle: 'Vencen en los próximos 7 días' },

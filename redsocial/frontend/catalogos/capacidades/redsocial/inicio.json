@@ -1,0 +1,41 @@
+{
+  "acciones": [],
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "principal": "/inicio"
+  },
+  "titulo_menu": "Inicio",
+  "titulos": {
+    "principal": "Inicio"
+  },
+  "secciones": {
+    "historias": "Historias",
+    "contactos_en_linea": "Contactos en línea",
+    "grupos_recomendados": "Grupos recomendados",
+    "eventos_proximos": "Eventos próximos"
+  },
+  "placeholders": {
+    "que_estas_pensando": "¿Qué estás pensando, {nombre}?"
+  },
+  "botones": {
+    "foto_video": "Foto/Video",
+    "encuesta": "Encuesta",
+    "sentimiento": "Sentimiento",
+    "mas": "Más",
+    "mas_opciones": "Más opciones",
+    "unirse": "Unirse",
+    "me_gusta": "Me gusta",
+    "comentar": "Comentar",
+    "compartir": "Compartir",
+    "ver_mas": "Ver más"
+  },
+  "leyendas": {
+    "colaborador": "(COLABORADOR)",
+    "compartio_una_publicacion": "compartió una publicación."
+  }
+}

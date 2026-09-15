@@ -1,5 +1,8 @@
 import { Icono } from '../icono'
 import type { TarjetaIndicadorColor, TarjetaIndicadorProps } from '@/tipos/compartido/tarjeta_indicador'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+void catalogoCompartido
 
 const CLASES_ICONO_COLOR: Record<TarjetaIndicadorColor, string> = {
   azul: 'bg-[#dbeafe] text-azul-categoria',

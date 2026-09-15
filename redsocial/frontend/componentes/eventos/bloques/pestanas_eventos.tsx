@@ -1,14 +1,15 @@
 import { useRef } from 'react'
-import { usarMemoriaScrollPestanas } from '../../../servicios/compartido/usar_memoria_scroll_pestanas'
+import { usarMemoriaScrollPestanas } from '../../compartido/usar_memoria_scroll_pestanas'
+import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import type { PestanaEvento, InsigniaInvitaciones } from '@/tipos/eventos/pestanas_eventos'
 
 const TABS = [
-  { etiqueta: 'Para ti', archivo: '23-08-eventos-01-para-ti-web.html' },
-  { etiqueta: 'Próximos', archivo: '24-08-eventos-02-proximos-web.html' },
-  { etiqueta: 'Populares', archivo: '25-08-eventos-03-populares-web.html' },
-  { etiqueta: 'Mis eventos', archivo: '26-08-eventos-04-mis-eventos-web.html' },
-  { etiqueta: 'Invitaciones', archivo: '27-08-eventos-05-invitaciones-web.html' },
-  { etiqueta: 'Calendario', archivo: '28-08-eventos-06-calendario-web.html' },
+  { etiqueta: catalogoEventos.titulos_pestanas.para_ti, archivo: '23-08-eventos-01-para-ti-web.html' },
+  { etiqueta: catalogoEventos.titulos_pestanas.proximos, archivo: '24-08-eventos-02-proximos-web.html' },
+  { etiqueta: catalogoEventos.titulos_pestanas.populares, archivo: '25-08-eventos-03-populares-web.html' },
+  { etiqueta: catalogoEventos.titulos_pestanas.mis_eventos, archivo: '26-08-eventos-04-mis-eventos-web.html' },
+  { etiqueta: catalogoEventos.titulos_pestanas.invitaciones, archivo: '27-08-eventos-05-invitaciones-web.html' },
+  { etiqueta: catalogoEventos.titulos_pestanas.calendario, archivo: '28-08-eventos-06-calendario-web.html' },
 ] as const
 
 export function PestanasEventos({ activa, insigniaInvitaciones }: { activa: PestanaEvento; insigniaInvitaciones: InsigniaInvitaciones }) {

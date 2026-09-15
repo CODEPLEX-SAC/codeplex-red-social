@@ -26,5 +26,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["arranque", "paginas", "componentes", "tipos", "datos", "formularios", "tablas", "servicios", "rutas","mensajes","catalogos"]
+  "include": ["paginas", "componentes", "tipos", "datos", "formularios", "tablas", "servicios", "rutas","mensajes","catalogos", "aplicacion.tsx", "main.tsx"]
 }

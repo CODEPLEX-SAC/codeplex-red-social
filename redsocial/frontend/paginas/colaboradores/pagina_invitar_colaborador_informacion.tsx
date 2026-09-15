@@ -1,22 +1,19 @@
 import { Fragment } from 'react'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
+import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Icono } from '../../componentes/compartido/icono'
-import { navegar } from '../../enrutamiento/navegacion'
-import { ARCHIVO_A_RUTA } from '../../enrutamiento/rutas'
+import { navegar } from '../../rutas/compartido/navegacion'
+import { ARCHIVO_A_RUTA } from '../../rutas/compartido/rutas'
+import mensajesGlobales from '../../mensajes/globales/textos.json'
+import { PASOS_FUNCIONA_INVITAR_COLABORADOR, FORM_INFORMACION_DEFAULT } from '../../datos/colaboradores/invitar_colaborador'
 import type { IconName } from '../../tipos/compartido/icono'
 
 const NAVEGAR_A = (archivo: string) => {
   navegar(ARCHIVO_A_RUTA[archivo] ?? archivo)
 }
 
-const PASOS_FUNCIONA = [
-  { icono: 'mensaje' as IconName, nombre: '1. Invitación', descripcion: 'Envías una invitación al colaborador por correo o WhatsApp.' },
-  { icono: 'inicio-sesion' as IconName, nombre: '2. Registro / Acceso', descripcion: 'El colaborador acepta la invitación y crea su cuenta o inicia sesión.' },
-  { icono: 'ajustes-sistema' as IconName, nombre: '3. Asignación', descripcion: 'Se le asigna el rol y permisos según lo que hayas configurado.' },
-  { icono: 'verificado' as IconName, nombre: '4. Listo', descripcion: 'El colaborador aparecerá en tu lista y podrá usar los sistemas.' },
-]
-
-const STEPPER = ['Información', 'Rol y permisos', 'Vigencia', 'Resumen']
+const PASOS_FUNCIONA = PASOS_FUNCIONA_INVITAR_COLABORADOR
+const STEPPER = catalogoColaboradores.stepper_invitar
 
 export function PaginaInvitarColaboradorInformacion() {
   return (
@@ -24,24 +21,24 @@ export function PaginaInvitarColaboradorInformacion() {
       <div className="mx-auto my-5 max-w-[960px] overflow-hidden rounded-2xl bg-white shadow-[0_8px_32px_rgba(0,0,0,0.12)] max-[960px]:m-3 max-[960px]:rounded-xl max-[480px]:m-1">
         <div className="flex items-start justify-between px-7 pt-6 max-[768px]:px-4 max-[768px]:pt-4 max-[480px]:px-3 max-[480px]:pt-3">
           <div>
-            <h1 className="m-0 mb-1 text-[1.35rem] font-bold text-gris-oscuro-texto max-[768px]:text-[1.1rem]">Invitar colaborador</h1>
+            <h1 className="m-0 mb-1 text-[1.35rem] font-bold text-gris-oscuro-texto max-[768px]:text-[1.1rem]">{catalogoColaboradores.titulos.invitar}</h1>
             <p className="m-0 max-w-[500px] text-[0.85rem] leading-snug text-gris-texto-secundario max-[768px]:text-[0.8rem]">
-              Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado.
+              {catalogoColaboradores.subtitulos.invitar_asistente}
             </p>
           </div>
           <div className="flex flex-none items-center gap-2 max-[768px]:gap-1">
-            <button type="button" title="Configuración" className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={mensajesGlobales.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="ajustes-sistema" className="w-5 h-5" />
             </button>
-            <button type="button" title="Aplicaciones" className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={mensajesGlobales.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name={'aplicaciones' as IconName} className="w-5 h-5" />
             </button>
-            <button type="button" title="Notificaciones" className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
-              <Icono name="notificaciones" className="w-5 h-5" />
+            <button type="button" title={mensajesGlobales.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+              <Icono name="campana" className="w-5 h-5" />
             </button>
             <button
               type="button"
-              title="Cerrar"
+              title={mensajesGlobales.CERRAR}
               onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
               className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8"
             >
@@ -77,8 +74,8 @@ export function PaginaInvitarColaboradorInformacion() {
         </nav>
 
         <div className="px-7 pt-5 max-[768px]:px-4">
-          <h2 className="m-0 mb-1 text-[1.15rem] font-bold text-gris-oscuro-texto max-[480px]:text-[0.9rem]">1. Información</h2>
-          <p className="m-0 text-[0.85rem] leading-snug text-gris-texto-secundario">Completa los datos del colaborador que deseas invitar.</p>
+          <h2 className="m-0 mb-1 text-[1.15rem] font-bold text-gris-oscuro-texto max-[480px]:text-[0.9rem]">{catalogoColaboradores.pasos_invitar.informacion.titulo}</h2>
+          <p className="m-0 text-[0.85rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.pasos_invitar.informacion.subtitulo}</p>
         </div>
 
         <div className="grid grid-cols-[1fr_300px] max-[960px]:grid-cols-1">
@@ -86,79 +83,68 @@ export function PaginaInvitarColaboradorInformacion() {
             <div className="mb-6">
               <div className="mb-1 flex items-center gap-2">
                 <Icono name="usuarios" className="w-5 h-5 text-primario" />
-                <h2 className="m-0 text-base font-bold text-gris-oscuro-texto max-[480px]:text-[0.9rem]">Datos del colaborador</h2>
+                <h2 className="m-0 text-base font-bold text-gris-oscuro-texto max-[480px]:text-[0.9rem]">{catalogoColaboradores.secciones.datos_del_colaborador}</h2>
               </div>
 
               <div className="grid grid-cols-2 gap-4 max-[768px]:grid-cols-1 max-[768px]:gap-3">
                 <div className="flex flex-col gap-1">
                   <label className="text-[0.8rem] font-medium text-gris-texto">
-                    Nombres <span className="ml-0.5 text-[#dc2626]">*</span>
+                    {catalogoColaboradores.campos_informacion.nombres} <span className="ml-0.5 text-[#dc2626]">*</span>
                   </label>
-                  <input type="text" defaultValue="Juan Pérez" className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
+                  <input type="text" defaultValue={FORM_INFORMACION_DEFAULT.nombres} className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-[0.8rem] font-medium text-gris-texto">
-                    Apellidos <span className="ml-0.5 text-[#dc2626]">*</span>
+                    {catalogoColaboradores.campos_informacion.apellidos} <span className="ml-0.5 text-[#dc2626]">*</span>
                   </label>
-                  <input type="text" defaultValue="Martinez" className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
+                  <input type="text" defaultValue={FORM_INFORMACION_DEFAULT.apellidos} className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="text-[0.8rem] font-medium text-gris-texto">
-                    Correo electrónico <span className="ml-0.5 text-[#dc2626]">*</span>
+                    {catalogoColaboradores.campos_informacion.correo_electronico} <span className="ml-0.5 text-[#dc2626]">*</span>
                   </label>
-                  <input type="email" defaultValue="juan.perez@email.com" className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
-                  <span className="text-xs text-gris-texto-terciario">Se enviará la invitación a este correo.</span>
+                  <input type="email" defaultValue={FORM_INFORMACION_DEFAULT.correo} className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
+                  <span className="text-xs text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.correo_ayuda}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[0.8rem] font-medium text-gris-texto">Teléfono / WhatsApp</label>
+                  <label className="text-[0.8rem] font-medium text-gris-texto">{catalogoColaboradores.campos_informacion.telefono_whatsapp}</label>
                   <div className="flex max-[768px]:flex-col">
                     <div className="flex items-center gap-1 whitespace-nowrap rounded-l-lg border border-r-0 border-[#d1d5db] bg-[#f9fafb] px-2.5 py-[9px] text-[0.85rem] text-gris-texto max-[768px]:rounded-b-none max-[768px]:rounded-t-lg max-[768px]:border-b-0 max-[768px]:border-r max-[768px]:border-[#d1d5db]">
-                      <span className="h-[13px] w-[18px] rounded-sm" style={{ background: 'linear-gradient(180deg, #d92228 33%, #fff 33% 66%, #d92228 66%)' }} />
-                      <select defaultValue="+51" className="w-auto border-0 bg-transparent p-0 text-[0.85rem] text-gris-texto outline-none">
-                        <option>+51</option>
-                        <option>+52</option>
-                        <option>+54</option>
-                        <option>+57</option>
-                        <option>+56</option>
+                      <span className="h-[13px] w-[18px] rounded-sm bg-[linear-gradient(180deg,#d92228_33%,#fff_33%_66%,#d92228_66%)]" />
+                      <select defaultValue={catalogoColaboradores.selectores.codigo_pais.opciones[0]} className="w-auto border-0 bg-transparent p-0 text-[0.85rem] text-gris-texto outline-none">
+                        {catalogoColaboradores.selectores.codigo_pais.opciones.map((o) => <option key={o}>{o}</option>)}
                       </select>
                     </div>
-                    <input type="tel" defaultValue="987 654 321" className="flex-1 rounded-r-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario max-[768px]:rounded-t-none max-[768px]:rounded-b-lg" />
+                    <input type="tel" defaultValue={FORM_INFORMACION_DEFAULT.telefono} className="flex-1 rounded-r-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario max-[768px]:rounded-t-none max-[768px]:rounded-b-lg" />
                   </div>
-                  <span className="text-xs text-gris-texto-terciario">Opcional. Se puede invitar por WhatsApp.</span>
+                  <span className="text-xs text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.telefono_ayuda}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[0.8rem] font-medium text-gris-texto">Documento de identidad</label>
+                  <label className="text-[0.8rem] font-medium text-gris-texto">{catalogoColaboradores.campos_informacion.documento_identidad}</label>
                   <div className="flex gap-2">
-                    <select defaultValue="DNI" className="w-auto min-w-20 rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario">
-                      <option>DNI</option>
-                      <option>RUC</option>
-                      <option>C.E.</option>
+                    <select defaultValue={catalogoColaboradores.selectores.tipo_documento.opciones[0]} className="w-auto min-w-20 rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario">
+                      {catalogoColaboradores.selectores.tipo_documento.opciones.map((o) => <option key={o}>{o}</option>)}
                     </select>
-                    <input type="text" defaultValue="45678912" className="flex-1 rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
+                    <input type="text" defaultValue={FORM_INFORMACION_DEFAULT.documentoNumero} className="flex-1 rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[0.8rem] font-medium text-gris-texto">Cargo / Puesto</label>
-                  <input type="text" defaultValue="Analista Contable" className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
-                  <span className="text-xs text-gris-texto-terciario">Opcional. Ej: Contador, Analista, Asistente, etc.</span>
+                  <label className="text-[0.8rem] font-medium text-gris-texto">{catalogoColaboradores.campos_informacion.cargo_puesto}</label>
+                  <input type="text" defaultValue={FORM_INFORMACION_DEFAULT.cargo} className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario" />
+                  <span className="text-xs text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.cargo_ayuda}</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[0.8rem] font-medium text-gris-texto">Empresa</label>
-                  <select defaultValue="AI Robotics Peru SAC" className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario">
-                    <option>AI Robotics Peru SAC</option>
-                    <option>Otra empresa</option>
+                  <label className="text-[0.8rem] font-medium text-gris-texto">{catalogoColaboradores.campos_informacion.empresa}</label>
+                  <select defaultValue={catalogoColaboradores.selectores.empresa_colaborador.opciones[0]} className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario">
+                    {catalogoColaboradores.selectores.empresa_colaborador.opciones.map((o) => <option key={o}>{o}</option>)}
                   </select>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-[0.8rem] font-medium text-gris-texto">Área / Departamento</label>
-                  <select defaultValue="Contabilidad" className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario">
-                    <option>Contabilidad</option>
-                    <option>Ventas</option>
-                    <option>Tecnología</option>
-                    <option>Recursos Humanos</option>
-                    <option>Marketing</option>
+                  <label className="text-[0.8rem] font-medium text-gris-texto">{catalogoColaboradores.campos_informacion.area_departamento}</label>
+                  <select defaultValue={catalogoColaboradores.selectores.area_departamento.opciones[0]} className="rounded-lg border border-[#d1d5db] px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none focus:border-primario">
+                    {catalogoColaboradores.selectores.area_departamento.opciones.map((o) => <option key={o}>{o}</option>)}
                   </select>
-                  <span className="text-xs text-gris-texto-terciario">Opcional.</span>
+                  <span className="text-xs text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.area_ayuda}</span>
                 </div>
               </div>
             </div>
@@ -166,29 +152,29 @@ export function PaginaInvitarColaboradorInformacion() {
             <div className="mt-2">
               <div className="mb-3 flex items-center gap-2">
                 <Icono name="mensaje" className="w-[18px] h-[18px] text-primario" />
-                <span className="text-[0.82rem] font-semibold text-gris-texto">Método de invitación</span>
+                <span className="text-[0.82rem] font-semibold text-gris-texto">{catalogoColaboradores.secciones.metodo_de_invitacion}</span>
               </div>
-              <p className="mb-3 text-[0.78rem] text-gris-texto-terciario">Elige cómo deseas enviar la invitación al colaborador.</p>
+              <p className="mb-3 text-[0.78rem] text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.metodo_invitacion_ayuda}</p>
               <div className="mb-3 flex gap-4 max-[480px]:flex-col">
                 <label className="flex cursor-pointer items-start gap-2">
                   <input type="radio" name="metodo-inv" defaultChecked className="mt-0.5 h-4 w-4 accent-primario" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-[0.82rem] font-semibold text-gris-oscuro-texto">Enviar por correo electrónico</span>
-                    <span className="text-xs text-gris-texto-terciario">Se enviará un correo con el enlace de invitación.</span>
+                    <span className="text-[0.82rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_informacion.enviar_correo}</span>
+                    <span className="text-xs text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.enviar_correo_ayuda}</span>
                   </div>
                 </label>
                 <label className="flex cursor-pointer items-start gap-2">
                   <input type="radio" name="metodo-inv" className="mt-0.5 h-4 w-4 accent-primario" />
                   <div className="flex flex-col gap-0.5">
-                    <span className="text-[0.82rem] font-semibold text-gris-oscuro-texto">Enviar por WhatsApp</span>
-                    <span className="text-xs text-gris-texto-terciario">Se enviará un mensaje con el enlace de invitación.</span>
+                    <span className="text-[0.82rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_informacion.enviar_whatsapp}</span>
+                    <span className="text-xs text-gris-texto-terciario">{catalogoColaboradores.campos_informacion.enviar_whatsapp_ayuda}</span>
                   </div>
                 </label>
               </div>
               <div className="mt-4 flex items-start gap-2 rounded-lg border border-[#e0e0ff] bg-[#f0f0ff] px-3.5 py-2.5">
-                <Icono name="alerta" className="mt-px w-4 h-4 flex-none text-primario" />
+                <Icono name="aviso" className="mt-px w-4 h-4 flex-none text-primario" />
                 <p className="m-0 text-[0.78rem] leading-snug text-gris-texto-secundario">
-                  Si el colaborador aún no tiene una cuenta en CODEPLEX, podrá registrarse al aceptar la invitación.
+                  {catalogoColaboradores.campos_informacion.nota_registro}
                 </p>
               </div>
             </div>
@@ -197,7 +183,7 @@ export function PaginaInvitarColaboradorInformacion() {
           <aside className="bg-[#fafafa] px-6 py-7 max-[960px]:px-6 max-[960px]:py-5 max-[768px]:p-4 max-[480px]:p-3">
             <div>
               <h3 className="m-0 mb-5 flex items-center gap-2 text-base font-bold text-gris-oscuro-texto">
-                <Icono name="alerta" className="w-5 h-5 text-primario" /> ¿Cómo funciona?
+                <Icono name="aviso" className="w-5 h-5 text-primario" /> {catalogoColaboradores.secciones.como_funciona}
               </h3>
               <div className="flex flex-col gap-5">
                 {PASOS_FUNCIONA.map((paso) => (
@@ -217,10 +203,10 @@ export function PaginaInvitarColaboradorInformacion() {
             <div className="mt-6 rounded-[10px] border border-gris-borde bg-white p-4">
               <div className="mb-1.5 flex items-center gap-2">
                 <Icono name="verificado" className="w-[18px] h-[18px] text-[#16a34a]" />
-                <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Seguridad</span>
+                <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.secciones.seguridad}</span>
               </div>
               <p className="m-0 text-[0.78rem] leading-snug text-gris-texto-secundario">
-                El colaborador solo tendrá acceso a los sistemas y módulos que le asignes.
+                {catalogoColaboradores.campos_informacion.nota_seguridad}
               </p>
             </div>
           </aside>
@@ -232,14 +218,14 @@ export function PaginaInvitarColaboradorInformacion() {
             onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
             className="rounded-lg border border-[#d1d5db] bg-white px-6 py-2.5 text-[0.875rem] font-medium text-gris-texto hover:bg-[#f9fafb] max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            Cancelar
+            {mensajesGlobales.CANCELAR}
           </button>
           <button
             type="button"
             onClick={() => NAVEGAR_A('31-10-colaboradores-popub-invitar-colaborador-02-asignar-rol-y-permisos.html')}
             className="inline-flex items-center gap-1.5 rounded-lg border-0 bg-primario px-6 py-2.5 text-[0.875rem] font-semibold text-white hover:bg-[#4a35d4] max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            Siguiente <span>›</span>
+            {mensajesGlobales.SIGUIENTE} <span>›</span>
           </button>
         </div>
       </div>

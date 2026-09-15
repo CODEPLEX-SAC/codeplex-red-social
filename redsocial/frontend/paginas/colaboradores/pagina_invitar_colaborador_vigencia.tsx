@@ -1,12 +1,17 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
-import { navegar } from '../../enrutamiento/navegacion'
-import { ARCHIVO_A_RUTA } from '../../enrutamiento/rutas'
+import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
+import { navegar } from '../../rutas/compartido/navegacion'
+import { ARCHIVO_A_RUTA } from '../../rutas/compartido/rutas'
 import type { IconName } from '../../tipos/compartido/icono'
+import mensajesGlobales from '../../mensajes/globales/textos.json'
+import { VIGENCIA_DEFAULT, OPCIONES_RECORDATORIO, OPCIONES_ZONA_HORARIA } from '../../datos/colaboradores/vigencia'
 
 const NAVEGAR_A = (archivo: string) => {
   navegar(ARCHIVO_A_RUTA[archivo] ?? archivo)
 }
+
+const STEPPER_INVITAR = catalogoColaboradores.stepper_invitar
 
 function RadioVigencia({ nombre, valor, defaultChecked }: { nombre: string; valor: string; defaultChecked?: boolean }) {
   return (
@@ -30,24 +35,24 @@ export function PaginaInvitarColaboradorVigencia() {
       <div className="mx-auto my-5 max-w-[960px] overflow-hidden rounded-2xl bg-white shadow-[0_8px_32px_rgba(0,0,0,0.12)] max-[960px]:m-3 max-[960px]:rounded-xl max-[480px]:m-1">
         <div className="flex items-start justify-between px-7 pt-6 max-[768px]:px-4 max-[768px]:pt-4 max-[480px]:px-3 max-[480px]:pt-3">
           <div>
-            <h1 className="m-0 mb-1 text-[1.35rem] font-bold text-gris-oscuro-texto max-[768px]:text-[1.1rem]">Invitar colaborador</h1>
+            <h1 className="m-0 mb-1 text-[1.35rem] font-bold text-gris-oscuro-texto max-[768px]:text-[1.1rem]">{catalogoColaboradores.titulos.invitar_vigencia}</h1>
             <p className="m-0 max-w-[500px] text-[0.85rem] leading-snug text-gris-texto-secundario max-[768px]:text-[0.8rem]">
-              Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado.
+              {catalogoColaboradores.subtitulos.invitar_asistente}
             </p>
           </div>
           <div className="flex flex-none items-center gap-2 max-[768px]:gap-1">
-            <button type="button" title="Configuración" className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={mensajesGlobales.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="ajustes-sistema" className="w-5 h-5" />
             </button>
-            <button type="button" title="Aplicaciones" className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={mensajesGlobales.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name={'aplicaciones' as IconName} className="w-5 h-5" />
             </button>
-            <button type="button" title="Notificaciones" className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
-              <Icono name="notificaciones" className="w-5 h-5" />
+            <button type="button" title={mensajesGlobales.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+              <Icono name="campana" className="w-5 h-5" />
             </button>
             <button
               type="button"
-              title="Cerrar"
+              title={mensajesGlobales.CERRAR}
               onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
               className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8"
             >
@@ -57,7 +62,7 @@ export function PaginaInvitarColaboradorVigencia() {
         </div>
 
         <nav className="flex items-center gap-0 px-7 pt-5 max-[960px]:overflow-x-auto max-[960px]:[scrollbar-width:none] max-[960px]:[&::-webkit-scrollbar]:hidden max-[768px]:px-4 max-[768px]:pt-3.5 max-[480px]:px-3 max-[480px]:pt-2.5">
-          {['Información', 'Rol y permisos', 'Vigencia', 'Resumen'].map((paso, i) => (
+          {STEPPER_INVITAR.map((paso, i) => (
             <span key={paso} className="contents">
               <span className="flex flex-none items-center gap-2">
                 <span
@@ -83,8 +88,8 @@ export function PaginaInvitarColaboradorVigencia() {
         </nav>
 
         <div className="px-7 pt-5 max-[768px]:px-4">
-          <h2 className="m-0 mb-1 text-[1.15rem] font-bold text-gris-oscuro-texto max-[480px]:text-[0.9rem]">3. Vigencia</h2>
-          <p className="m-0 text-[0.85rem] leading-snug text-gris-texto-secundario">Define el período de acceso del colaborador y qué ocurrirá al finalizar la vigencia.</p>
+          <h2 className="m-0 mb-1 text-[1.15rem] font-bold text-gris-oscuro-texto max-[480px]:text-[0.9rem]">{catalogoColaboradores.pasos_invitar.vigencia.titulo}</h2>
+          <p className="m-0 text-[0.85rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.pasos_invitar.vigencia.subtitulo}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-6 p-7 max-[960px]:grid-cols-1 max-[960px]:p-4">
@@ -92,7 +97,7 @@ export function PaginaInvitarColaboradorVigencia() {
             <div className="rounded-xl border border-gris-borde p-5">
               <div className="mb-4 flex items-center gap-2">
                 <Icono name="calendario" className="w-5 h-5 text-primario" />
-                <h3 className="m-0 text-[0.95rem] font-bold text-gris-oscuro-texto">Período de vigencia</h3>
+                <h3 className="m-0 text-[0.95rem] font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.periodo_de_vigencia}</h3>
               </div>
 
               <label className="mb-4 flex cursor-pointer items-start gap-2.5 last:mb-0">
@@ -101,34 +106,34 @@ export function PaginaInvitarColaboradorVigencia() {
                   <span className={puntoRadio} />
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Vigencia por período</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">Establece una fecha de inicio y fin para esta invitación.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.vigencia_por_periodo}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.vigencia_por_periodo_detalle}</span>
                 </span>
               </label>
 
               <div className="my-3 grid grid-cols-2 gap-4 max-[960px]:grid-cols-1">
                 <div>
                   <label className="mb-1 block text-[0.8rem] font-medium text-gris-texto">
-                    Fecha de inicio <span className="text-[#dc2626]">*</span>
+                    {catalogoColaboradores.campos_vigencia.fecha_de_inicio} <span className="text-[#dc2626]">*</span>
                   </label>
                   <div className="flex items-center gap-2 rounded-lg border border-[#d1d5db] bg-white px-3 py-[9px]">
                     <Icono name="calendario" className="w-[18px] h-[18px] text-[#9ca3af]" />
-                    <input type="text" defaultValue="13/08/2026" readOnly className="flex-1 border-0 bg-transparent text-[0.875rem] text-gris-oscuro-texto outline-none" />
+                    <input type="text" defaultValue={VIGENCIA_DEFAULT.fechaInicio} readOnly className="flex-1 border-0 bg-transparent text-[0.875rem] text-gris-oscuro-texto outline-none" />
                     <Icono name="calendario" className="w-[18px] h-[18px] text-[#9ca3af]" />
                   </div>
                 </div>
                 <div>
                   <label className="mb-1 block text-[0.8rem] font-medium text-gris-texto">
-                    Fecha de vencimiento <span className="text-[#dc2626]">*</span>
+                    {catalogoColaboradores.campos_vigencia.fecha_de_vencimiento} <span className="text-[#dc2626]">*</span>
                   </label>
                   <div className="flex items-center gap-2 rounded-lg border border-[#d1d5db] bg-white px-3 py-[9px]">
                     <Icono name="calendario" className="w-[18px] h-[18px] text-[#9ca3af]" />
-                    <input type="text" defaultValue="13/08/2027" readOnly className="flex-1 border-0 bg-transparent text-[0.875rem] text-gris-oscuro-texto outline-none" />
+                    <input type="text" defaultValue={VIGENCIA_DEFAULT.fechaVencimiento} readOnly className="flex-1 border-0 bg-transparent text-[0.875rem] text-gris-oscuro-texto outline-none" />
                     <Icono name="calendario" className="w-[18px] h-[18px] text-[#9ca3af]" />
                   </div>
                 </div>
               </div>
-              <span className="mt-2 inline-flex items-center rounded-md bg-[#f3f4f6] px-3 py-1 text-[0.78rem] font-semibold text-gris-texto-secundario">Duración: 1 año</span>
+              <span className="mt-2 inline-flex items-center rounded-md bg-[#f3f4f6] px-3 py-1 text-[0.78rem] font-semibold text-gris-texto-secundario">{VIGENCIA_DEFAULT.duracion}</span>
 
               <label className="mt-4 flex cursor-pointer items-start gap-2.5">
                 <RadioVigencia nombre="vigencia" valor="indefinida" />
@@ -136,23 +141,23 @@ export function PaginaInvitarColaboradorVigencia() {
                   <span className={puntoRadio} />
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Vigencia indefinida</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">El colaborador tendrá acceso sin fecha de vencimiento.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.vigencia_indefinida}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.vigencia_indefinida_detalle}</span>
                 </span>
               </label>
 
               <div className="mt-3 flex items-start gap-2 rounded-lg border border-[#bfdbfe] bg-[#f0f7ff] px-3.5 py-2.5">
-                <Icono name="alerta" className="mt-px w-4 h-4 flex-none text-primario" />
-                <p className="m-0 text-[0.78rem] leading-snug text-[#1e40af]">Recomendado para colaboradores permanentes en tu equipo.</p>
+                <Icono name="aviso" className="mt-px w-4 h-4 flex-none text-primario" />
+                <p className="m-0 text-[0.78rem] leading-snug text-[#1e40af]">{catalogoColaboradores.campos_vigencia.nota_indefinida}</p>
               </div>
             </div>
 
             <div className="mt-5 rounded-xl border border-gris-borde p-5">
               <div className="mb-1 flex items-center gap-2">
                 <Icono name="reloj" className="w-5 h-5 text-primario" />
-                <h3 className="m-0 text-[0.95rem] font-bold text-gris-oscuro-texto">Al vencer la vigencia</h3>
+                <h3 className="m-0 text-[0.95rem] font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.al_vencer_vigencia}</h3>
               </div>
-              <p className="-mt-2 mb-4 text-[0.82rem] leading-snug text-gris-texto-secundario">Selecciona qué ocurrirá cuando finalice el período de acceso.</p>
+              <p className="-mt-2 mb-4 text-[0.82rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.al_vencer_subtitulo}</p>
 
               <label className="mb-4 flex cursor-pointer items-start gap-2.5">
                 <RadioVigencia nombre="al-vencer" valor="desactivar" defaultChecked />
@@ -160,8 +165,8 @@ export function PaginaInvitarColaboradorVigencia() {
                   <span className={puntoRadio} />
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Desactivar acceso automáticamente</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">El colaborador perderá el acceso a los sistemas al vencer.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.desactivar_automaticamente}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.desactivar_automaticamente_detalle}</span>
                 </span>
               </label>
 
@@ -171,8 +176,8 @@ export function PaginaInvitarColaboradorVigencia() {
                   <span className={puntoRadio} />
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Mantener acceso con revisión</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">El acceso no se desactivará automáticamente. Se requerirá revisión manual.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.mantener_con_revision}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.mantener_con_revision_detalle}</span>
                 </span>
               </label>
             </div>
@@ -182,9 +187,9 @@ export function PaginaInvitarColaboradorVigencia() {
             <div className="rounded-xl border border-gris-borde px-5 py-[18px]">
               <div className="mb-3.5 flex items-center gap-2">
                 <Icono name="actualizar" className="w-5 h-5 text-primario" />
-                <h4 className="m-0 text-[0.9rem] font-bold text-gris-oscuro-texto">Renovación</h4>
+                <h4 className="m-0 text-[0.9rem] font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.renovacion}</h4>
               </div>
-              <p className="-mt-2 mb-3.5 text-[0.78rem] leading-snug text-gris-texto-secundario">Configura si esta invitación puede ser renovada.</p>
+              <p className="-mt-2 mb-3.5 text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.renovacion_subtitulo}</p>
 
               <label className="mb-3 flex cursor-pointer items-start gap-2.5">
                 <RadioVigencia nombre="renovacion" valor="permitir" defaultChecked />
@@ -192,8 +197,8 @@ export function PaginaInvitarColaboradorVigencia() {
                   <span className={puntoRadio} />
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Permitir renovación</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">Podrás renovar la invitación antes de que venza.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.permitir_renovacion}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.permitir_renovacion_detalle}</span>
                 </span>
               </label>
 
@@ -203,8 +208,8 @@ export function PaginaInvitarColaboradorVigencia() {
                   <span className={puntoRadio} />
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">No permitir renovación</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">Cuando venza, deberás enviar una nueva invitación.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.no_permitir_renovacion}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.no_permitir_renovacion_detalle}</span>
                 </span>
               </label>
             </div>
@@ -212,9 +217,9 @@ export function PaginaInvitarColaboradorVigencia() {
             <div className="rounded-xl border border-gris-borde px-5 py-[18px]">
               <div className="mb-3.5 flex items-center gap-2">
                 <Icono name="campana" className="w-5 h-5 text-primario" />
-                <h4 className="m-0 text-[0.9rem] font-bold text-gris-oscuro-texto">Recordatorios</h4>
+                <h4 className="m-0 text-[0.9rem] font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.recordatorios}</h4>
               </div>
-              <p className="-mt-2 mb-3.5 text-[0.78rem] leading-snug text-gris-texto-secundario">Recibe recordatorios antes de que venza la invitación.</p>
+              <p className="-mt-2 mb-3.5 text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.recordatorios_subtitulo}</p>
 
               <label className="mb-3 flex cursor-pointer items-start gap-2.5">
                 <input type="checkbox" defaultChecked className="peer sr-only" />
@@ -224,21 +229,17 @@ export function PaginaInvitarColaboradorVigencia() {
                   </svg>
                 </span>
                 <span className="flex flex-col gap-0.5">
-                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">Enviar recordatorio por correo</span>
-                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">Te notificaremos antes de la fecha de vencimiento.</span>
+                  <span className="text-[0.85rem] font-semibold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.enviar_recordatorio_correo}</span>
+                  <span className="text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.enviar_recordatorio_correo_detalle}</span>
                 </span>
               </label>
 
               <div className="mt-2">
                 <label className="mb-1 block text-[0.8rem] font-medium text-gris-texto">
-                  Recordar con anticipación <span className="text-[#dc2626]">*</span>
+                  {catalogoColaboradores.campos_vigencia.recordar_con_anticipacion} <span className="text-[#dc2626]">*</span>
                 </label>
-                <select defaultValue="7 días antes" className="w-full appearance-none rounded-lg border border-[#d1d5db] bg-white px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none">
-                  <option>7 días antes</option>
-                  <option>14 días antes</option>
-                  <option>30 días antes</option>
-                  <option>60 días antes</option>
-                  <option>90 días antes</option>
+                <select defaultValue={OPCIONES_RECORDATORIO[0]} className="w-full appearance-none rounded-lg border border-[#d1d5db] bg-white px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none">
+                  {OPCIONES_RECORDATORIO.map((o) => <option key={o}>{o}</option>)}
                 </select>
               </div>
             </div>
@@ -246,15 +247,11 @@ export function PaginaInvitarColaboradorVigencia() {
             <div className="rounded-xl border border-gris-borde px-5 py-[18px]">
               <div className="mb-3.5 flex items-center gap-2">
                 <Icono name="mundo" className="w-5 h-5 text-primario" />
-                <h4 className="m-0 text-[0.9rem] font-bold text-gris-oscuro-texto">Zona horaria</h4>
+                <h4 className="m-0 text-[0.9rem] font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_vigencia.zona_horaria}</h4>
               </div>
-              <p className="-mt-2 mb-3.5 text-[0.78rem] leading-snug text-gris-texto-secundario">La vigencia se aplicará según la siguiente zona horaria.</p>
-              <select defaultValue="(GMT-05:00) Lima, Bogotá, Quito" className="w-full appearance-none rounded-lg border border-[#d1d5db] bg-white px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none">
-                <option>(GMT-05:00) Lima, Bogotá, Quito</option>
-                <option>(GMT-06:00) Ciudad de México, Guatemala</option>
-                <option>(GMT-03:00) Buenos Aires, São Paulo</option>
-                <option>(GMT+01:00) Madrid, Barcelona</option>
-                <option>(GMT+00:00) Londres, Lisboa</option>
+              <p className="-mt-2 mb-3.5 text-[0.78rem] leading-snug text-gris-texto-secundario">{catalogoColaboradores.campos_vigencia.zona_horaria_subtitulo}</p>
+              <select defaultValue={OPCIONES_ZONA_HORARIA[0]} className="w-full appearance-none rounded-lg border border-[#d1d5db] bg-white px-3 py-[9px] text-[0.875rem] text-gris-oscuro-texto outline-none">
+                {OPCIONES_ZONA_HORARIA.map((o) => <option key={o}>{o}</option>)}
               </select>
             </div>
           </div>
@@ -266,21 +263,21 @@ export function PaginaInvitarColaboradorVigencia() {
             onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
             className="rounded-lg border border-[#d1d5db] bg-white px-6 py-2.5 text-[0.875rem] font-medium text-gris-texto hover:bg-[#f9fafb] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            Cancelar
+            {mensajesGlobales.CANCELAR}
           </button>
           <button
             type="button"
             onClick={() => NAVEGAR_A('31-10-colaboradores-popub-invitar-colaborador-02-asignar-rol-y-permisos.html')}
             className="inline-flex items-center gap-1.5 rounded-lg border border-[#d1d5db] bg-white px-6 py-2.5 text-[0.875rem] font-medium text-gris-texto hover:bg-[#f9fafb] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            <span>‹</span> Anterior
+            <span>‹</span> {catalogoColaboradores.campos_rol_permisos.anterior}
           </button>
           <button
             type="button"
             onClick={() => NAVEGAR_A('33-10-colaboradores-popub-invitar-colaborador-04-resumen.html')}
             className="inline-flex items-center gap-1.5 rounded-lg border-0 bg-primario px-6 py-2.5 text-[0.875rem] font-semibold text-white hover:bg-[#4a35d4] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            Siguiente <span>›</span>
+            {mensajesGlobales.SIGUIENTE} <span>›</span>
           </button>
         </div>
       </div>
