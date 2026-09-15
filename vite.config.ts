@@ -4,21 +4,23 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const raiz = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
+  root: path.resolve(raiz, 'montaje_local'),
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '.'),
+      '@': path.resolve(raiz, 'redsocial/frontend'),
     },
   },
-  cacheDir: path.resolve(__dirname, '../../node_modules/.vite'),
+  cacheDir: path.resolve(raiz, 'node_modules/.vite'),
   server: {
     port: 5173,
+    fs: { allow: [raiz] },
   },
   build: {
-    outDir: path.resolve(__dirname, '../../dist'),
+    outDir: path.resolve(raiz, 'dist'),
     emptyOutDir: true,
     chunkSizeWarningLimit: 800,
   },

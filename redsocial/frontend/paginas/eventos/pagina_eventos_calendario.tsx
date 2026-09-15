@@ -7,7 +7,7 @@ import { SuperficieColor } from '../../componentes/compartido/interfaz/superfici
 import type { EventoCalGrid } from '@/tipos/eventos/pagina_eventos_calendario'
 import { CELDAS, PROXIMOS_LATERAL, MES_CALENDARIO_ACTUAL, LEYENDA_CALENDARIO } from '../../datos/eventos/calendario'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 
 const DIAS_SEMANA = catalogoEventos.dias_semana
 
@@ -162,13 +162,13 @@ export function PaginaEventosCalendario() {
             <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoEventos.secciones.proximos}</h3>
-                <a href="24-08-eventos-02-proximos-web.html" className="text-[11px] font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="24-08-eventos-02-proximos-web.html" className="text-[11px] font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               <div className="px-3 pb-2">
                 {PROXIMOS_LATERAL.map((ev, i) => (
                   <article key={ev.nombre} className={'grid grid-cols-[64px_1fr] gap-2.5 py-2 ' + (i < PROXIMOS_LATERAL.length - 1 ? 'border-b border-[#f5f5f5]' : '')}>
                     <div className="relative h-16 w-16 flex-none overflow-hidden rounded-lg">
-                      <SuperficieColor color={ev.gradiente} className="h-full w-full" />
+                      <SuperficieColor degradado={ev.gradiente} className="h-full w-full" />
                       <div className="absolute left-1 top-1 rounded-[4px] bg-white px-1 py-0.5 text-center leading-none shadow-[0_1px_3px_rgba(0,0,0,0.15)]">
                         <span className="block text-[11px] font-extrabold text-gris-oscuro-texto">{ev.dia}</span>
                         <span className="block text-[7px] font-bold uppercase text-gris-texto-terciario">{ev.mes}</span>
@@ -198,7 +198,7 @@ export function PaginaEventosCalendario() {
               <div className="grid grid-cols-2 gap-x-4 gap-y-2 px-4 pb-3.5 pt-1">
                 {LEYENDA_CALENDARIO.map((l) => (
                   <span key={l.nombre} className="flex items-center gap-1.5 text-xs text-gris-texto">
-                    <SuperficieColor as="span" color={l.color} className="h-2 w-2 flex-none rounded-full" /> {l.nombre}
+                    <SuperficieColor as="span" variante={l.color} className="h-2 w-2 flex-none rounded-full" /> {l.nombre}
                   </span>
                 ))}
               </div>

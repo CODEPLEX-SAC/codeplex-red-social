@@ -1,23 +1,22 @@
 import type { ElementType, ReactNode } from 'react'
-import { useEstiloDinamico } from '../usar_estilo_dinamico'
+import { CLASE_TEXTO } from '../paleta_colores'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
 void catalogoCompartido
 
 export function TextoColor({
-  color,
+  variante,
   className = '',
   children,
   as: Tag = 'span',
 }: {
-  color: string
+  variante: string
   className?: string
   children?: ReactNode
   as?: ElementType
 }) {
-  const ref = useEstiloDinamico<HTMLElement>({ color })
   return (
-    <Tag ref={ref} className={className}>
+    <Tag className={`${CLASE_TEXTO[variante] ?? 'text-gris-categoria'} ${className}`}>
       {children}
     </Tag>
   )

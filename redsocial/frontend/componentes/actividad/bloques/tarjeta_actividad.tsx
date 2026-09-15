@@ -1,7 +1,7 @@
 import { Icono } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
-import mensajesGlobales from '../../../mensajes/globales/textos.json'
+import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { TarjetaActividadProps } from '@/tipos/actividad/tarjeta_actividad'
 
 export function TarjetaActividad({
@@ -32,7 +32,7 @@ export function TarjetaActividad({
             {nombreGrupo && <span className="font-bold text-primario">{nombreGrupo}</span>}
             {nombreModulo && <span className="font-bold text-texto">{nombreModulo}</span>}
           </div>
-          <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
+          <button type="button" aria-label={textosRedSocial.MAS_OPCIONES} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
             <Icono name="puntos" className="h-3.5 w-3.5" />
           </button>
         </div>

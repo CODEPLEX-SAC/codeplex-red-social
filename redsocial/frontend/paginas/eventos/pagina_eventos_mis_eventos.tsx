@@ -6,7 +6,7 @@ import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import type { EventoOrganizas } from '@/tipos/eventos/pagina_eventos_mis_eventos'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import {
   EVENTOS_ORGANIZAS,
   EVENTO_COLABORAS,
@@ -90,7 +90,7 @@ export function PaginaEventosMisEventos() {
                 {EVENTOS_ORGANIZAS.map((ev) => (
                   <article key={ev.nombre} className="grid grid-cols-[140px_1fr_auto] overflow-hidden rounded-xl border border-gris-borde bg-fondo hover:shadow-[0_2px_8px_rgba(0,0,0,.06)] max-[1100px]:grid-cols-[120px_1fr_auto] max-[900px]:grid-cols-1">
                     <div className="relative min-h-[140px] overflow-hidden max-[900px]:min-h-[160px]">
-                      <SuperficieColor color={ev.gradiente} className="h-full w-full" />
+                      <SuperficieColor degradado={ev.gradiente} className="h-full w-full" />
                       <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                         <span className="block text-xl font-extrabold leading-[1.1] text-texto">{ev.dia}</span>
                         <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{ev.mes}</span>
@@ -143,7 +143,7 @@ export function PaginaEventosMisEventos() {
               <div className="flex flex-col gap-4">
                 <article className="grid grid-cols-[140px_1fr_auto] overflow-hidden rounded-xl border border-gris-borde bg-fondo hover:shadow-[0_2px_8px_rgba(0,0,0,.06)] max-[1100px]:grid-cols-[120px_1fr_auto] max-[900px]:grid-cols-1">
                   <div className="relative min-h-[140px] overflow-hidden max-[900px]:min-h-[160px]">
-                    <SuperficieColor color={EVENTO_COLABORAS.gradiente} className="h-full w-full" />
+                    <SuperficieColor degradado={EVENTO_COLABORAS.gradiente} className="h-full w-full" />
                     <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                       <span className="block text-xl font-extrabold leading-[1.1] text-texto">{EVENTO_COLABORAS.dia}</span>
                       <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{EVENTO_COLABORAS.mes}</span>
@@ -232,13 +232,13 @@ export function PaginaEventosMisEventos() {
             <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h2 className="m-0 text-sm font-bold">{catalogoEventos.secciones.proximos_de_tus_eventos}</h2>
-                <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-xs font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               <div className="px-3 pb-2">
                 {PROXIMOS_LATERAL.map((ev, i) => (
                   <article key={ev.nombre} className={'grid grid-cols-[64px_1fr] gap-2.5 py-2 ' + (i < PROXIMOS_LATERAL.length - 1 ? 'border-b border-[#f5f5f5]' : '')}>
                     <div className="relative h-16 w-16 flex-none overflow-hidden rounded-lg">
-                      <SuperficieColor color={ev.gradiente} className="h-full w-full" />
+                      <SuperficieColor degradado={ev.gradiente} className="h-full w-full" />
                       <div className="absolute left-1 top-1 rounded-[4px] bg-white px-1 py-0.5 text-center leading-none shadow-[0_1px_3px_rgba(0,0,0,0.15)]">
                         <span className="block text-[11px] font-extrabold text-gris-oscuro-texto">{ev.dia}</span>
                         <span className="block text-[7px] font-bold uppercase text-gris-texto-terciario">{ev.mes}</span>

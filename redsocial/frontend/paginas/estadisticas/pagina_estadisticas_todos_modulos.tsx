@@ -4,11 +4,11 @@ import { EstructuraApp } from '../../componentes/compartido/estructura/estructur
 import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadisticas.json'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
 import { Insignia } from '../../componentes/compartido/interfaz/insignia'
-import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
+import { DonaProgreso } from '../../componentes/compartido/interfaz/dona_progreso'
 import { MedidaDinamica } from '../../componentes/compartido/interfaz/medida_dinamica'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import type { Kpi, EstadoRatio } from '@/tipos/estadisticas/pagina_estadisticas_todos_modulos'
 import {
   KPIS,
@@ -38,20 +38,19 @@ const TABLA_ESTADO_RESULTADOS = catalogoEstadisticas.tabla_estado_resultados
 const TABLA_RATIOS = catalogoEstadisticas.tabla_ratios
 const TABLA_RENTABILIDAD = catalogoEstadisticas.tabla_rentabilidad
 
-const CLASES_ESTADO_EST: Record<EstadoRatio, { color: string; background: string }> = {
-  optimo: { color: '#16a34a', background: '#dcfce7' },
-  aceptable: { color: '#a16207', background: '#fef9c3' },
-  bajo: { color: '#b45309', background: '#fef3c7' },
-  riesgo: { color: '#dc2626', background: '#fee2e2' },
+const CLASES_ESTADO_EST: Record<EstadoRatio, string> = {
+  optimo: 'bg-[#dcfce7] text-[#16a34a]',
+  aceptable: 'bg-[#fef9c3] text-[#a16207]',
+  bajo: 'bg-[#fef3c7] text-[#b45309]',
+  riesgo: 'bg-[#fee2e2] text-[#dc2626]',
 }
 
 const MESES_EJE_X_VENTAS = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
 const MESES_EJE_X_FLUJO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov']
 
 function EstadoBadge({ estado, children }: { estado: EstadoRatio; children: string }) {
-  const c = CLASES_ESTADO_EST[estado]
   return (
-    <Insignia variant="status" color={c.color} background={c.background}>
+    <Insignia variant="status" className={CLASES_ESTADO_EST[estado]}>
       {children}
     </Insignia>
   )
@@ -78,7 +77,7 @@ const TH = 'whitespace-nowrap border-b border-[#f0eef5] py-0 pb-2 pr-1.5 pl-0 te
 const TD = 'whitespace-nowrap border-b border-[#f7f6fa] py-1.75 pr-1.5 pl-0 text-texto'
 
 export function PaginaEstadisticasTodosModulos() {
-  const modulos = useCarrusel()
+  const modulos = usarCarrusel()
 
   return (
     <EstructuraApp paginaActiva="estadisticas">
@@ -194,17 +193,23 @@ export function PaginaEstadisticasTodosModulos() {
             <div className="mb-3.5 border-b border-[#f0eef5] pb-3.5">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.composicion_ingresos}</h2>
             </div>
-            <SuperficieColor color={COMPOSICION_INGRESOS.conic} className="relative mx-auto mb-4 grid h-[140px] w-[140px] place-items-center rounded-full">
+            <div className="relative mx-auto mb-4 grid h-[140px] w-[140px] place-items-center rounded-full">
+              <DonaProgreso
+                segmentos={COMPOSICION_INGRESOS.items.map((it) => ({ color: it.color, porcentaje: Number(it.pct.replace('%', '')) }))}
+                tamano={140}
+                grosor={16}
+                className="absolute inset-0"
+              />
               <div className="absolute inset-[22px] rounded-full bg-white" />
               <span className="relative z-10 flex flex-col items-center text-center">
                 <strong className="text-[13px] font-extrabold text-texto">{COMPOSICION_INGRESOS.total}</strong>
                 <span className="text-[10px] text-texto-suave">{catalogoEstadisticas.leyendas.total}</span>
               </span>
-            </SuperficieColor>
+            </div>
             <ul className="m-0 grid list-none gap-2 p-0">
               {COMPOSICION_INGRESOS.items.map((it) => (
                 <li key={it.etiqueta} className="flex items-center gap-2 text-xs text-texto">
-                  <SuperficieColor as="i" color={it.color} className="h-2.5 w-2.5 flex-none rounded-full" />
+                  <svg width="10" height="10" viewBox="0 0 10 10" className="flex-none"><circle cx="5" cy="5" r="5" fill={it.color} /></svg>
                   {it.etiqueta} <b className="ml-auto font-bold">{it.pct}</b> <small className="min-w-[68px] text-right text-texto-suave">{it.valor}</small>
                 </li>
               ))}
@@ -217,7 +222,7 @@ export function PaginaEstadisticasTodosModulos() {
                 <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.top_clientes}</h2>
                 <p className="m-0 text-xs text-texto-suave">{catalogoEstadisticas.secciones.top_clientes_sub}</p>
               </div>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <ul className="m-0 grid list-none gap-3 p-0">
               {TOP_CLIENTES.map((c) => (
@@ -245,17 +250,23 @@ export function PaginaEstadisticasTodosModulos() {
             <div className="mb-3.5 border-b border-[#f0eef5] pb-3.5">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.gastos_categoria}</h2>
             </div>
-            <SuperficieColor color={GASTOS_CATEGORIA.conic} className="relative mx-auto mb-4 grid h-[140px] w-[140px] place-items-center rounded-full">
+            <div className="relative mx-auto mb-4 grid h-[140px] w-[140px] place-items-center rounded-full">
+              <DonaProgreso
+                segmentos={GASTOS_CATEGORIA.items.map((it) => ({ color: it.color, porcentaje: Number(it.pct.replace('%', '')) }))}
+                tamano={140}
+                grosor={16}
+                className="absolute inset-0"
+              />
               <div className="absolute inset-[22px] rounded-full bg-white" />
               <span className="relative z-10 flex flex-col items-center text-center">
                 <strong className="text-[13px] font-extrabold text-texto">{GASTOS_CATEGORIA.total}</strong>
                 <span className="text-[10px] text-texto-suave">{catalogoEstadisticas.leyendas.total}</span>
               </span>
-            </SuperficieColor>
+            </div>
             <ul className="m-0 grid list-none gap-2 p-0">
               {GASTOS_CATEGORIA.items.map((it) => (
                 <li key={it.etiqueta} className="flex items-center gap-2 text-xs text-texto">
-                  <SuperficieColor as="i" color={it.color} className="h-2.5 w-2.5 flex-none rounded-full" />
+                  <svg width="10" height="10" viewBox="0 0 10 10" className="flex-none"><circle cx="5" cy="5" r="5" fill={it.color} /></svg>
                   {it.etiqueta} <b className="ml-auto font-bold">{it.pct}</b> <small className="min-w-[68px] text-right text-texto-suave">{it.valor}</small>
                 </li>
               ))}
@@ -288,7 +299,7 @@ export function PaginaEstadisticasTodosModulos() {
           <article className="min-w-0 rounded-xl border border-borde bg-white p-[18px_20px]">
             <div className="mb-3.5 flex items-center justify-between border-b border-[#f0eef5] pb-3.5">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.ratios_financieros}</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <TablaEst>
               <thead>
@@ -320,7 +331,7 @@ export function PaginaEstadisticasTodosModulos() {
                 <div key={b.mes} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
                   <MedidaDinamica
                     as="span"
-                    alto={`${b.valor}%`}
+                    alto={b.claseAlto}
                     className={'w-full max-w-[26px] rounded-t ' + (b.tipo === 'real' ? 'bg-morado-categoria' : 'bg-[#e4defb]')}
                   />
                   <small className="text-[10px] text-texto-suave">{b.mes}</small>
@@ -361,7 +372,7 @@ export function PaginaEstadisticasTodosModulos() {
           <article className="min-w-0 rounded-xl border border-borde bg-white p-[18px_20px]">
             <div className="mb-3.5 flex items-center justify-between border-b border-[#f0eef5] pb-3.5">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoEstadisticas.secciones.rentabilidad_proyecto}</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <TablaEst>
               <thead>

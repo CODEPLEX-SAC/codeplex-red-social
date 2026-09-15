@@ -3,19 +3,19 @@ import { AvatarImagen } from '../../componentes/compartido/interfaz/avatar_image
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import { HISTORIAS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../datos/inicio/inicio'
 import { GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../datos/compartido/panel_lateral'
 import { SESION_ACTUAL } from '../../datos/compartido/sesion_actual'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 
 const AVATAR = 'h-8 w-8 flex-none rounded-full bg-primario-suave'
 
 function Historias() {
-  const carrusel = useCarrusel()
+  const carrusel = usarCarrusel()
   return (
     <section className="relative mb-4 rounded-xl border border-borde bg-white pt-4">
       <h2 className="m-0 mb-3 px-4 text-[13px] text-texto">{catalogoInicio.secciones.historias}</h2>
@@ -35,7 +35,7 @@ function Historias() {
             ) : (
               <SuperficieColor
                 as="span"
-                color="linear-gradient(45deg, #8f7cf3, var(--primario), var(--primario-oscuro))"
+                degradado="primario"
                 className="relative grid h-[104px] w-[104px] place-items-center rounded-full p-[3.5px]"
               >
                 <AvatarImagen src={usuarioImg} className="h-full w-full rounded-full border-[3px] border-white bg-primario-suave" />
@@ -156,7 +156,7 @@ export function PaginaInicio() {
             <section className="rounded-xl border border-borde bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-[13px] text-texto">{catalogoInicio.secciones.contactos_en_linea}</h2>
-                <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               {CONTACTOS_LINEA.map((c) => (
                 <article key={c.nombre} className="flex items-center gap-2 border-b border-[#f0eef5] py-2">
@@ -175,7 +175,7 @@ export function PaginaInicio() {
             <section className="rounded-xl border border-borde bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-[13px] text-texto">{catalogoInicio.secciones.grupos_recomendados}</h2>
-                <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               {GRUPOS_RECOMENDADOS.map((g) => (
                 <div key={g.nombre} className="flex items-center gap-2.5 py-2">
@@ -194,7 +194,7 @@ export function PaginaInicio() {
             <section className="rounded-xl border border-borde bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-[13px] text-texto">{catalogoInicio.secciones.eventos_proximos}</h2>
-                <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               {EVENTOS_PROXIMOS.map((e) => (
                 <article key={e.titulo} className="grid grid-cols-[52px_1fr] gap-3.5 border-b border-[#f0eef5] py-2.5">

@@ -29,7 +29,6 @@ export const KPIS: Kpi[] = [
 ]
 
 export const COMPOSICION_INGRESOS = {
-  conic: 'conic-gradient(#3b82f6 0% 45%, #7c3aed 45% 70%, #22c55e 70% 90%, #f97316 90% 100%)',
   total: 'S/ 1,250,000',
   items: [
     { color: '#3b82f6', etiqueta: 'Construcción', pct: '45%', valor: 'S/ 562,500' },
@@ -40,7 +39,6 @@ export const COMPOSICION_INGRESOS = {
 }
 
 export const GASTOS_CATEGORIA = {
-  conic: 'conic-gradient(#3b82f6 0% 35%, #f97316 35% 65%, #22c55e 65% 80%, #7c3aed 80% 90%, #9ca3af 90% 100%)',
   total: 'S/ 850,000',
   items: [
     { color: '#3b82f6', etiqueta: 'Mano de obra', pct: '35%', valor: 'S/ 297,500' },
@@ -52,11 +50,11 @@ export const GASTOS_CATEGORIA = {
 }
 
 export const TOP_CLIENTES = [
-  { nombre: 'Inversiones Andinas SAC', ancho: '100%', valor: 'S/ 320,000' },
-  { nombre: 'Inmobiliaria Los Álamos', ancho: '66%', valor: 'S/ 210,000' },
-  { nombre: 'Constructora Horizonte', ancho: '56%', valor: 'S/ 180,000' },
-  { nombre: 'Municipalidad de Surco', ancho: '37%', valor: 'S/ 120,000' },
-  { nombre: 'Servicios Generales SRL', ancho: '30%', valor: 'S/ 95,000' },
+  { nombre: 'Inversiones Andinas SAC', ancho: 'w-[100%]', valor: 'S/ 320,000' },
+  { nombre: 'Inmobiliaria Los Álamos', ancho: 'w-[66%]', valor: 'S/ 210,000' },
+  { nombre: 'Constructora Horizonte', ancho: 'w-[56%]', valor: 'S/ 180,000' },
+  { nombre: 'Municipalidad de Surco', ancho: 'w-[37%]', valor: 'S/ 120,000' },
+  { nombre: 'Servicios Generales SRL', ancho: 'w-[30%]', valor: 'S/ 95,000' },
 ]
 
 export const ESTADO_RESULTADOS: { concepto: string; actual: string; pct: string; variacion: string; tipo: 'positiva' | 'negativa'; fuerte?: boolean }[] = [
@@ -80,19 +78,19 @@ export const RATIOS_FINANCIEROS: { nombre: string; valor: string; variacion: str
   { nombre: 'Periodo de pago (días)', valor: '45', variacion: '↑ 3', tipo: 'negativa', estado: 'aceptable' },
 ]
 
-export const PROYECCION_VENTAS: { mes: string; valor: number; tipo: 'real' | 'proyeccion' }[] = [
-  { mes: 'Ene', valor: 38, tipo: 'real' },
-  { mes: 'Feb', valor: 44, tipo: 'real' },
-  { mes: 'Mar', valor: 50, tipo: 'real' },
-  { mes: 'Abr', valor: 56, tipo: 'real' },
-  { mes: 'May', valor: 62, tipo: 'real' },
-  { mes: 'Jun', valor: 100, tipo: 'real' },
-  { mes: 'Jul', valor: 68, tipo: 'proyeccion' },
-  { mes: 'Ago', valor: 74, tipo: 'proyeccion' },
-  { mes: 'Sep', valor: 78, tipo: 'proyeccion' },
-  { mes: 'Oct', valor: 82, tipo: 'proyeccion' },
-  { mes: 'Nov', valor: 88, tipo: 'proyeccion' },
-  { mes: 'Dic', valor: 94, tipo: 'proyeccion' },
+export const PROYECCION_VENTAS: { mes: string; claseAlto: string; tipo: 'real' | 'proyeccion' }[] = [
+  { mes: 'Ene', claseAlto: 'h-[38%]', tipo: 'real' },
+  { mes: 'Feb', claseAlto: 'h-[44%]', tipo: 'real' },
+  { mes: 'Mar', claseAlto: 'h-[50%]', tipo: 'real' },
+  { mes: 'Abr', claseAlto: 'h-[56%]', tipo: 'real' },
+  { mes: 'May', claseAlto: 'h-[62%]', tipo: 'real' },
+  { mes: 'Jun', claseAlto: 'h-[100%]', tipo: 'real' },
+  { mes: 'Jul', claseAlto: 'h-[68%]', tipo: 'proyeccion' },
+  { mes: 'Ago', claseAlto: 'h-[74%]', tipo: 'proyeccion' },
+  { mes: 'Sep', claseAlto: 'h-[78%]', tipo: 'proyeccion' },
+  { mes: 'Oct', claseAlto: 'h-[82%]', tipo: 'proyeccion' },
+  { mes: 'Nov', claseAlto: 'h-[88%]', tipo: 'proyeccion' },
+  { mes: 'Dic', claseAlto: 'h-[94%]', tipo: 'proyeccion' },
 ]
 
 export const RENTABILIDAD_PROYECTO: { nombre: string; margen: string; estado: EstadoRatio }[] = [

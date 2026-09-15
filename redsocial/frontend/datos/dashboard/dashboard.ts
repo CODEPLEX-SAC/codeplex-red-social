@@ -46,27 +46,27 @@ export const MODULOS: Modulo[] = [
 ]
 
 export const RANKING = [
-  { nombre: 'Cemento Tipo I (42.5 kg)', ancho: '100%', cantidad: '1,250', valor: 'S/ 125,000' },
-  { nombre: 'Acero de Construcción 1/2"', ancho: '78%', cantidad: '980', valor: 'S/ 98,000' },
-  { nombre: 'Ladrillo King Kong 18 huecos', ancho: '68%', cantidad: '850', valor: 'S/ 68,000' },
-  { nombre: 'Arena Gruesa', ancho: '58%', cantidad: '720', valor: 'S/ 43,000' },
-  { nombre: 'Pintura Látex Blanca 4L', ancho: '49%', cantidad: '610', valor: 'S/ 30,500' },
+  { nombre: 'Cemento Tipo I (42.5 kg)', ancho: 'w-[100%]', cantidad: '1,250', valor: 'S/ 125,000' },
+  { nombre: 'Acero de Construcción 1/2"', ancho: 'w-[78%]', cantidad: '980', valor: 'S/ 98,000' },
+  { nombre: 'Ladrillo King Kong 18 huecos', ancho: 'w-[68%]', cantidad: '850', valor: 'S/ 68,000' },
+  { nombre: 'Arena Gruesa', ancho: 'w-[58%]', cantidad: '720', valor: 'S/ 43,000' },
+  { nombre: 'Pintura Látex Blanca 4L', ancho: 'w-[49%]', cantidad: '610', valor: 'S/ 30,500' },
 ]
 
 export const BARRAS_PROYECCION = [
-  { mes: 'Jun', valor: '75%', tipo: 'real' as const },
-  { mes: 'Jul', valor: '80%', tipo: 'real' as const },
-  { mes: 'Ago', valor: '88%', tipo: 'real' as const },
-  { mes: 'Sep', valor: '100%', tipo: 'proyeccion' as const },
-  { mes: 'Oct', valor: '92%', tipo: 'proyeccion' as const },
-  { mes: 'Nov', valor: '96%', tipo: 'proyeccion' as const },
+  { mes: 'Jun', claseAlto: 'h-[75%]', tipo: 'real' as const },
+  { mes: 'Jul', claseAlto: 'h-[80%]', tipo: 'real' as const },
+  { mes: 'Ago', claseAlto: 'h-[88%]', tipo: 'real' as const },
+  { mes: 'Sep', claseAlto: 'h-[100%]', tipo: 'proyeccion' as const },
+  { mes: 'Oct', claseAlto: 'h-[92%]', tipo: 'proyeccion' as const },
+  { mes: 'Nov', claseAlto: 'h-[96%]', tipo: 'proyeccion' as const },
 ]
 
 export const DONA_SEGMENTOS = [
-  { etiqueta: 'Construcción', color: '#3b82f6', porcentaje: '45%', monto: 'S/ 562,500' },
-  { etiqueta: 'Consultoría', color: '#7c3aed', porcentaje: '25%', monto: 'S/ 312,500' },
-  { etiqueta: 'Servicios', color: '#22c55e', porcentaje: '20%', monto: 'S/ 250,000' },
-  { etiqueta: 'Otros', color: '#eab308', porcentaje: '10%', monto: 'S/ 125,000' },
+  { etiqueta: 'Construcción', color: 'azul', porcentaje: '45%', monto: 'S/ 562,500' },
+  { etiqueta: 'Consultoría', color: 'morado', porcentaje: '25%', monto: 'S/ 312,500' },
+  { etiqueta: 'Servicios', color: 'verde', porcentaje: '20%', monto: 'S/ 250,000' },
+  { etiqueta: 'Otros', color: 'amarillo', porcentaje: '10%', monto: 'S/ 125,000' },
 ]
 
 export const RESUMEN_DASHBOARD = {

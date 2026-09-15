@@ -1,7 +1,7 @@
 import { Icono } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../../recursos/imagenes/usuario.jpg'
-import mensajesGlobales from '../../../mensajes/globales/textos.json'
+import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import type { IconName } from '../../../tipos/compartido/icono'
 import type { PanelConversacionProps } from '@/tipos/mensajeria/panel_conversacion'
@@ -47,7 +47,7 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
           </strong>
           <p className="m-0 text-[11px] text-texto-suave">{conversacion.mensajeFijado}</p>
         </div>
-        <button type="button" aria-label={mensajesGlobales.CERRAR} className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full border-0 bg-transparent text-[#b3b0c2] hover:bg-black/[.06]">
+        <button type="button" aria-label={textosRedSocial.CERRAR} className="grid h-[22px] w-[22px] flex-none place-items-center rounded-full border-0 bg-transparent text-[#b3b0c2] hover:bg-black/[.06]">
           <Icono name="cerrar" className="h-3 w-3" />
         </button>
       </div>
@@ -117,7 +117,7 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
           </button>
           <button type="button" className="rounded-md border border-borde bg-white px-2 py-1 text-[11px] font-bold text-texto-suave hover:border-primario hover:text-primario">{catalogoMensajeria.conversacion.gif}</button>
         </div>
-        <button type="submit" aria-label={mensajesGlobales.ENVIAR} className="grid h-[38px] w-[38px] flex-none place-items-center rounded-full border-0 bg-primario text-white hover:opacity-[.88]">
+        <button type="submit" aria-label={textosRedSocial.ENVIAR} className="grid h-[38px] w-[38px] flex-none place-items-center rounded-full border-0 bg-primario text-white hover:opacity-[.88]">
           <Icono name="enviar" className="h-4.5 w-4.5" />
         </button>
       </form>

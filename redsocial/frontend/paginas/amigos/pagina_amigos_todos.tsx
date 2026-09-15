@@ -10,7 +10,7 @@ import { AvatarImagen } from '../../componentes/compartido/interfaz/avatar_image
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import {
   RESUMEN_AMIGOS as RESUMEN,
   AMIGOS,
@@ -82,7 +82,7 @@ export function PaginaAmigosTodos() {
                   </div>
                   <div className="flex flex-none items-center gap-2">
                     <Boton variant="secundario" size="mini">{catalogoAmigos.botones.mensaje}</Boton>
-                    <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="grid h-8 w-8 place-items-center rounded-[7px] border-0 bg-transparent text-[#6d6a7c] hover:bg-[#f2f1f6]">
+                    <button type="button" aria-label={textosRedSocial.MAS_OPCIONES} className="grid h-8 w-8 place-items-center rounded-[7px] border-0 bg-transparent text-[#6d6a7c] hover:bg-[#f2f1f6]">
                       <Icono name="puntos" className="h-[18px] w-[18px]" />
                     </button>
                   </div>
@@ -100,7 +100,7 @@ export function PaginaAmigosTodos() {
             <section className="rounded-xl border border-borde bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-[13px] text-texto">{catalogoAmigos.secciones.solicitudes_amistad_lateral}</h2>
-                <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               {SOLICITUDES.map((s) => (
                 <article key={s.nombre} className="border-b border-borde py-3.5 last:border-b-0">
@@ -122,7 +122,7 @@ export function PaginaAmigosTodos() {
             <section className="rounded-xl border border-borde bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-[13px] text-texto">{catalogoAmigos.secciones.personas_conocer}</h2>
-                <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               {PERSONAS_CONOCER.map((p) => (
                 <article key={p.nombre} className="flex items-center gap-2 border-b border-[#f0eef5] py-2 last:border-b-0">
@@ -139,11 +139,11 @@ export function PaginaAmigosTodos() {
             <section className="rounded-xl border border-borde bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-[13px] text-texto">{catalogoAmigos.secciones.tus_listas}</h2>
-                <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               {TUS_LISTAS.map((l) => (
                 <a key={l.nombre} href="#" className="flex items-center gap-2.5 border-b border-borde py-2.5 text-inherit no-underline last:border-b-0">
-                  <SuperficieColor as="span" color={l.color} className="grid h-9 w-9 flex-none place-items-center rounded-[9px]">
+                  <SuperficieColor as="span" variante={l.color} className="grid h-9 w-9 flex-none place-items-center rounded-[9px]">
                     <Icono name={l.icono} className="h-[17px] w-[17px] text-white" />
                   </SuperficieColor>
                   <div className="min-w-0 flex-1">

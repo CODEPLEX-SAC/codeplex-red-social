@@ -9,10 +9,10 @@ export const PERSONAS_CONOCER: { nombre: string; comunes: string }[] = [
 ]
 
 export const TUS_LISTAS_LATERAL: { icono: IconName; color: string; nombre: string; miembros: string }[] = [
-  { icono: 'amigos', color: '#7c3aed', nombre: 'Mejores amigos', miembros: '24 amigos' },
-  { icono: 'amigos', color: '#f97316', nombre: 'Familia', miembros: '16 amigos' },
-  { icono: 'maletin', color: '#3b82f6', nombre: 'Trabajo', miembros: '38 amigos' },
-  { icono: 'panel', color: '#22c55e', nombre: 'Universidad', miembros: '22 amigos' },
+  { icono: 'amigos', color: 'morado', nombre: 'Mejores amigos', miembros: '24 amigos' },
+  { icono: 'amigos', color: 'naranja', nombre: 'Familia', miembros: '16 amigos' },
+  { icono: 'maletin', color: 'azul', nombre: 'Trabajo', miembros: '38 amigos' },
+  { icono: 'panel', color: 'verde', nombre: 'Universidad', miembros: '22 amigos' },
 ]
 
 export const ACTIVIDAD_RECIENTE_AMIGOS: { nombre: string; accion: string; tiempo: string }[] = [

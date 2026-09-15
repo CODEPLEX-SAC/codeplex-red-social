@@ -16,7 +16,7 @@
     "jsx": "react-jsx",
 
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./redsocial/frontend/*"]
     },
 
     "strict": true,
@@ -26,5 +26,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["paginas", "componentes", "tipos", "datos", "formularios", "tablas", "servicios", "rutas","mensajes","catalogos", "aplicacion.tsx", "main.tsx"]
+  "include": ["montaje_local", "redsocial/frontend"]
 }

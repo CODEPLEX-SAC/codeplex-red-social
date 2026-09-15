@@ -32,18 +32,18 @@ export const CELDAS: CeldaCal[] = [
 ]
 
 export const PROXIMOS_LATERAL: EventoLateral[] = [
-  { gradiente: 'linear-gradient(135deg,#6c3ce0,#a855f7)', dia: '24', mes: 'AGO', nombre: 'Concierto Codeplex Live 2026', fechaHora: 'Sáb, 24 Ago 2026 · 7:00 PM', ubicacion: 'Arena1, Lima', asistentes: '1.2K asistirán' },
-  { gradiente: 'linear-gradient(135deg,#3b82f6,#06b6d4)', dia: '15', mes: 'JUN', nombre: 'Codeplex Tech Summit', fechaHora: 'Jue, 15 Jun 2026 · 9:00 AM', ubicacion: 'Centro de Convenciones Lima', asistentes: '856 asistirán' },
-  { gradiente: 'linear-gradient(135deg,#f59e0b,#ef4444)', dia: '22', mes: 'JUN', nombre: 'Networking Empresarial', fechaHora: 'Jue, 22 Jun 2026 · 6:00 PM', ubicacion: 'WeWork San Isidro', asistentes: '642 asistirán' },
+  { gradiente: 'morado', dia: '24', mes: 'AGO', nombre: 'Concierto Codeplex Live 2026', fechaHora: 'Sáb, 24 Ago 2026 · 7:00 PM', ubicacion: 'Arena1, Lima', asistentes: '1.2K asistirán' },
+  { gradiente: 'azul', dia: '15', mes: 'JUN', nombre: 'Codeplex Tech Summit', fechaHora: 'Jue, 15 Jun 2026 · 9:00 AM', ubicacion: 'Centro de Convenciones Lima', asistentes: '856 asistirán' },
+  { gradiente: 'calido', dia: '22', mes: 'JUN', nombre: 'Networking Empresarial', fechaHora: 'Jue, 22 Jun 2026 · 6:00 PM', ubicacion: 'WeWork San Isidro', asistentes: '642 asistirán' },
 ]
 
 export const MES_CALENDARIO_ACTUAL = 'Junio 2026'
 
 export const LEYENDA_CALENDARIO: { color: string; nombre: string }[] = [
-  { color: 'var(--color-verde-categoria)', nombre: 'Música' },
-  { color: '#6c3ce0', nombre: 'Tecnología' },
-  { color: '#facc15', nombre: 'Negocios' },
-  { color: 'var(--color-naranja-categoria)', nombre: 'Educación' },
-  { color: '#ec4899', nombre: 'Reuniones' },
-  { color: '#d1d5db', nombre: 'Otros' },
+  { color: 'musica', nombre: 'Música' },
+  { color: 'tecnologia', nombre: 'Tecnología' },
+  { color: 'negocios', nombre: 'Negocios' },
+  { color: 'educacion', nombre: 'Educación' },
+  { color: 'reuniones', nombre: 'Reuniones' },
+  { color: 'otros', nombre: 'Otros' },
 ]

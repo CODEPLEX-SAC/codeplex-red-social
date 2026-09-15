@@ -1,5 +1,22 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "descubrir", "crear", "unirse", "aceptar_invitacion", "rechazar_invitacion"],
+  "alertas": {
+    "confirmar_salir_grupo": "Vas a salir de este grupo y dejarás de ver su actividad."
+  },
+  "campos": {
+    "nombre_grupo": "Nombre del grupo"
+  },
+  "errores": {
+    "carga_grupos": "No fue posible cargar los grupos."
+  },
+  "mensajes": {
+    "sin_grupos": "Aún no formas parte de ningún grupo.",
+    "sin_invitaciones_grupo": "No tienes invitaciones a grupos pendientes."
+  },
+  "toast": {
+    "grupo_creado": "Grupo creado.",
+    "te_uniste_al_grupo": "Te uniste al grupo."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

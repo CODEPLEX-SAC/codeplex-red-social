@@ -32,6 +32,6 @@ function suscribir(escucha: Escucha) {
   }
 }
 
-export function useRutaActual(): string {
+export function usarRutaActual(): string {
   return useSyncExternalStore(suscribir, obtenerInstantanea, obtenerInstantanea)
 }

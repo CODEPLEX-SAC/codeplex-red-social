@@ -6,8 +6,8 @@ export const PLANTILLAS: Plantilla[] = [
     descripcion: 'Resumen de ingresos, costos y gastos para determinar la utilidad neta.',
     modulo: 'Contabilidad',
     grafico: { tipo: 'barras', barras: [
-      { v: '35%', c: '#c4b5fd' }, { v: '55%', c: '#c4b5fd' }, { v: '45%', c: '#7c3aed' },
-      { v: '75%', c: '#c4b5fd' }, { v: '90%', c: '#7c3aed' }, { v: '60%', c: '#c4b5fd' },
+      { v: 'h-[35%]', c: 'bg-[#c4b5fd]' }, { v: 'h-[55%]', c: 'bg-[#c4b5fd]' }, { v: 'h-[45%]', c: 'bg-[#7c3aed]' },
+      { v: 'h-[75%]', c: 'bg-[#c4b5fd]' }, { v: 'h-[90%]', c: 'bg-[#7c3aed]' }, { v: 'h-[60%]', c: 'bg-[#c4b5fd]' },
     ] },
   },
   {
@@ -21,15 +21,15 @@ export const PLANTILLAS: Plantilla[] = [
     descripcion: 'Entradas y salidas de efectivo en el periodo seleccionado.',
     modulo: 'Tesorería',
     grafico: { tipo: 'barras', barras: [
-      { v: '30%', c: '#fed7aa' }, { v: '50%', c: '#fed7aa' }, { v: '65%', c: '#f97316' },
-      { v: '45%', c: '#fed7aa' }, { v: '85%', c: '#f97316' }, { v: '55%', c: '#fed7aa' },
+      { v: 'h-[30%]', c: 'bg-[#fed7aa]' }, { v: 'h-[50%]', c: 'bg-[#fed7aa]' }, { v: 'h-[65%]', c: 'bg-[#f97316]' },
+      { v: 'h-[45%]', c: 'bg-[#fed7aa]' }, { v: 'h-[85%]', c: 'bg-[#f97316]' }, { v: 'h-[55%]', c: 'bg-[#fed7aa]' },
     ] },
   },
   {
     nombre: 'Ventas por Producto', icono: 'ventas', color: 'azul',
     descripcion: 'Análisis de productos más vendidos y su rentabilidad.',
     modulo: 'Ventas',
-    grafico: { tipo: 'dona-lista', conic: 'conic-gradient(#3b82f6 0% 60%, #93c5fd 60% 100%)' },
+    grafico: { tipo: 'dona-lista', segmentos: [{ color: '#3b82f6', porcentaje: 60 }, { color: '#93c5fd', porcentaje: 40 }] },
   },
   {
     nombre: 'Cuentas por Cobrar', icono: 'documento', color: 'verde',
@@ -48,8 +48,8 @@ export const PLANTILLAS: Plantilla[] = [
     descripcion: 'Valor total del inventario por categoría y almacén.',
     modulo: 'Inventarios',
     grafico: { tipo: 'barras', barras: [
-      { v: '40%', c: '#ddd6fe' }, { v: '60%', c: '#ddd6fe' }, { v: '50%', c: '#7c3aed' },
-      { v: '80%', c: '#ddd6fe' }, { v: '95%', c: '#7c3aed' }, { v: '65%', c: '#ddd6fe' },
+      { v: 'h-[40%]', c: 'bg-[#ddd6fe]' }, { v: 'h-[60%]', c: 'bg-[#ddd6fe]' }, { v: 'h-[50%]', c: 'bg-[#7c3aed]' },
+      { v: 'h-[80%]', c: 'bg-[#ddd6fe]' }, { v: 'h-[95%]', c: 'bg-[#7c3aed]' }, { v: 'h-[65%]', c: 'bg-[#ddd6fe]' },
     ] },
   },
   {
@@ -69,8 +69,8 @@ export const PLANTILLAS: Plantilla[] = [
     descripcion: 'Análisis de ingresos, costos y utilidad por proyecto.',
     modulo: 'Proyectos',
     grafico: { tipo: 'barras', barras: [
-      { v: '45%', c: '#ddd6fe' }, { v: '65%', c: '#7c3aed' }, { v: '55%', c: '#ddd6fe' },
-      { v: '85%', c: '#7c3aed' }, { v: '70%', c: '#ddd6fe' }, { v: '90%', c: '#7c3aed' },
+      { v: 'h-[45%]', c: 'bg-[#ddd6fe]' }, { v: 'h-[65%]', c: 'bg-[#7c3aed]' }, { v: 'h-[55%]', c: 'bg-[#ddd6fe]' },
+      { v: 'h-[85%]', c: 'bg-[#7c3aed]' }, { v: 'h-[70%]', c: 'bg-[#ddd6fe]' }, { v: 'h-[90%]', c: 'bg-[#7c3aed]' },
     ] },
   },
 ]

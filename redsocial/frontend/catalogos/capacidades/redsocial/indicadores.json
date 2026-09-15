@@ -1,5 +1,21 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "filtrar_por_modulo", "comparar"],
+  "alertas": {
+    "confirmar_cambio_periodo": "Los indicadores se recalcularán para el periodo seleccionado."
+  },
+  "campos": {
+    "periodo": "Periodo",
+    "comparar_con": "Comparar con"
+  },
+  "errores": {
+    "carga_indicadores": "No fue posible cargar los indicadores."
+  },
+  "mensajes": {
+    "sin_indicadores_modulo": "No hay indicadores disponibles para este módulo."
+  },
+  "toast": {
+    "filtros_aplicados": "Filtros aplicados."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

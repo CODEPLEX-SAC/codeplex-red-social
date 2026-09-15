@@ -6,7 +6,7 @@ import { Insignia } from '../../componentes/compartido/interfaz/insignia'
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import { MedidaDinamica } from '../../componentes/compartido/interfaz/medida_dinamica'
 import catalogoDashboard from '../../catalogos/capacidades/redsocial/dashboard.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { SESION_ACTUAL } from '../../datos/compartido/sesion_actual'
 import type { Kpi, Modulo } from '@/tipos/dashboard/pagina_dashboard'
 import {
@@ -32,10 +32,10 @@ const CLASES_ICONO_KPI: Record<Kpi['color'], string> = {
 }
 
 const CLASES_ESTADO_DASH = {
-  optimo: { color: '#16a34a', background: '#dcfce7' },
-  aceptable: { color: '#a16207', background: '#fef9c3' },
-  bajo: { color: '#b45309', background: '#fef3c7' },
-  riesgo: { color: '#dc2626', background: '#fee2e2' },
+  optimo: 'bg-[#dcfce7] text-[#16a34a]',
+  aceptable: 'bg-[#fef9c3] text-[#a16207]',
+  bajo: 'bg-[#fef3c7] text-[#b45309]',
+  riesgo: 'bg-[#fee2e2] text-[#dc2626]',
 }
 
 const CLASES_ICONO_MODULO: Record<Modulo['color'], string> = {
@@ -54,9 +54,8 @@ const ETIQUETA_RATIO: Record<keyof typeof CLASES_ESTADO_DASH, string> = {
 }
 
 function EstadoBadge({ estado, children }: { estado: keyof typeof CLASES_ESTADO_DASH; children: string }) {
-  const c = CLASES_ESTADO_DASH[estado]
   return (
-    <Insignia variant="status" color={c.color} background={c.background}>
+    <Insignia variant="status" className={CLASES_ESTADO_DASH[estado]}>
       {children}
     </Insignia>
   )
@@ -175,7 +174,7 @@ export function PaginaDashboard() {
             <ul className="m-0 grid list-none gap-2 p-0">
               {DONA_SEGMENTOS.map((s) => (
                 <li key={s.etiqueta} className="flex items-center gap-2 text-xs text-texto">
-                  <SuperficieColor as="i" color={s.color} className="h-2.5 w-2.5 flex-none rounded-full not-italic" />
+                  <SuperficieColor as="i" variante={s.color} className="h-2.5 w-2.5 flex-none rounded-full not-italic" />
                   {s.etiqueta} <b className="ml-auto font-bold">{s.porcentaje}</b>
                   <small className="min-w-[68px] text-right text-texto-suave">{s.monto}</small>
                 </li>
@@ -186,7 +185,7 @@ export function PaginaDashboard() {
           <article className="min-w-0 rounded-[10px] border border-gris-borde bg-white p-[18px_20px] shadow-sombra">
             <div className="mb-3.5 flex items-center justify-between border-b border-[#f0eef5] pb-3.5">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoDashboard.secciones.ratios_financieros}</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-xs">
@@ -267,7 +266,7 @@ export function PaginaDashboard() {
                   <div key={b.mes} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
                     <MedidaDinamica
                       as="span"
-                      alto={b.valor}
+                      alto={b.claseAlto}
                       className={'block w-full max-w-[34px] rounded-t ' + (b.tipo === 'real' ? 'bg-[#7c3aed]' : 'bg-[#e4defb]')}
                     />
                     <small className="text-[10px] text-texto-suave">{b.mes}</small>

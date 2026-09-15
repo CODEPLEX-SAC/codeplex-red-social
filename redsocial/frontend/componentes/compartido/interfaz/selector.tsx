@@ -2,8 +2,6 @@ import { Icono } from '../icono'
 import type { SelectorVariant, SelectorProps } from '@/tipos/compartido/selector'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
-void catalogoCompartido
-
 const CLASES_SELECT: Record<SelectorVariant, string> = {
   default:
     'h-[38px] rounded-lg border border-gris-borde bg-white pl-3 pr-[30px] text-[13px] font-semibold text-texto min-w-[150px] max-[900px]:w-full max-[900px]:min-w-0',
@@ -23,10 +21,11 @@ const CLASES_LABEL: Record<Exclude<SelectorVariant, 'mini'>, string> = {
   colaboradores: 'text-xs font-medium text-gris-texto-secundario',
 }
 
-export function Selector({ variant = 'default', label, className, children, ...rest }: SelectorProps) {
+export function Selector({ variant = 'default', label, className, children, 'aria-label': ariaLabel, ...rest }: SelectorProps) {
   const select = (
     <div className={CLASES_ENVOLTORIO[variant]}>
       <select
+        aria-label={label ? undefined : (ariaLabel ?? catalogoCompartido.campos.seleccionar_opcion)}
         className={`appearance-none ${CLASES_SELECT[variant]} ${className ?? ''}`}
         {...rest}
       >

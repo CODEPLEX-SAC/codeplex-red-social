@@ -10,7 +10,7 @@ import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_even
 import { AvatarImagen } from '../../componentes/compartido/interfaz/avatar_imagen'
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import { TextoColor } from '../../componentes/compartido/interfaz/texto_color'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import {
   DESTACADOS,
@@ -18,20 +18,6 @@ import {
   PROXIMOS_LATERAL_PARA_TI as PROXIMOS_LATERAL,
   CATEGORIAS_LATERAL_PARA_TI as CATEGORIAS_LATERAL,
 } from '../../datos/eventos/para_ti'
-
-const CATEGORIA_GRADIENTE: Record<'tecnologia' | 'negocios' | 'educacion' | 'gastronomia', string> = {
-  tecnologia: 'linear-gradient(135deg, #667eea, #764ba2)',
-  negocios: 'linear-gradient(135deg, #f093fb, #f5576c)',
-  educacion: 'linear-gradient(135deg, #4facfe, #00f2fe)',
-  gastronomia: 'linear-gradient(135deg, #fa709a, #fee140)',
-}
-
-const CATEGORIA_COLOR: Record<keyof typeof CATEGORIA_GRADIENTE, string> = {
-  tecnologia: '#667eea',
-  negocios: '#f5576c',
-  educacion: '#4facfe',
-  gastronomia: '#fa709a',
-}
 
 export function PaginaEventosParaTi() {
   const [indiceDestacado, setIndiceDestacado] = useState(0)
@@ -110,15 +96,15 @@ export function PaginaEventosParaTi() {
               </div>
               <div className="grid grid-cols-2 overflow-hidden rounded-[14px] border border-[#eee] bg-white max-[900px]:grid-cols-1">
                 <div className="relative min-h-[220px] overflow-hidden">
-                  <SuperficieColor color={destacado.gradiente} className="h-full w-full" />
+                  <SuperficieColor degradado={destacado.gradiente} className="h-full w-full" />
                   <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                     <span className="block text-xl font-extrabold leading-[1.1] text-texto">{destacado.dia}</span>
                     <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{destacado.mes}</span>
                   </div>
-                  <button type="button" aria-label={mensajesGlobales.ANTERIOR} onClick={() => alCambiarDestacado(-1)} className="absolute left-2.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border-0 bg-white/90 shadow-[0_2px_8px_rgba(0,0,0,.1)]">
+                  <button type="button" aria-label={textosRedSocial.ANTERIOR} onClick={() => alCambiarDestacado(-1)} className="absolute left-2.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border-0 bg-white/90 shadow-[0_2px_8px_rgba(0,0,0,.1)]">
                     <Icono name="flecha-izquierda" className="h-3.5 w-3.5 text-texto" />
                   </button>
-                  <button type="button" aria-label={mensajesGlobales.SIGUIENTE} onClick={() => alCambiarDestacado(1)} className="absolute right-2.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border-0 bg-white/90 shadow-[0_2px_8px_rgba(0,0,0,.1)]">
+                  <button type="button" aria-label={textosRedSocial.SIGUIENTE} onClick={() => alCambiarDestacado(1)} className="absolute right-2.5 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border-0 bg-white/90 shadow-[0_2px_8px_rgba(0,0,0,.1)]">
                     <Icono name="flecha-derecha" className="h-3.5 w-3.5 text-texto" />
                   </button>
                 </div>
@@ -162,12 +148,12 @@ export function PaginaEventosParaTi() {
             <section>
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-base font-bold text-texto">{catalogoEventos.secciones.proximos}</h2>
-                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               <div className="relative">
                 <button
                   type="button"
-                  aria-label={mensajesGlobales.ANTERIOR}
+                  aria-label={textosRedSocial.ANTERIOR}
                   onClick={() => alDesplazarProximos(-1)}
                   className="absolute -left-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border border-[#e0dce8] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
                 >
@@ -180,14 +166,14 @@ export function PaginaEventosParaTi() {
                   {PROXIMOS.map((ev) => (
                     <article key={ev.nombre} className="w-55 flex-none overflow-hidden rounded-xl border border-[#eee] bg-white hover:shadow-[0_4px_16px_rgba(0,0,0,.08)]">
                       <div className="relative h-[140px] overflow-hidden">
-                        <SuperficieColor color={CATEGORIA_GRADIENTE[ev.categoria]} className="h-full w-full" />
+                        <SuperficieColor degradado={ev.categoria} className="h-full w-full" />
                         <div className="absolute left-2.5 top-2.5 rounded-[10px] bg-white px-2.5 py-1.5 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                           <span className="block text-base font-extrabold leading-[1.1] text-texto">{ev.dia}</span>
                           <span className="block text-[9px] font-bold uppercase text-texto-suave">{ev.mes}</span>
                         </div>
                       </div>
                       <div className="p-3.5">
-                        <TextoColor color={CATEGORIA_COLOR[ev.categoria]} className="mb-1 inline-block text-[10px] font-bold uppercase tracking-wide">{ev.categoriaEtiqueta}</TextoColor>
+                        <TextoColor variante={ev.categoria} className="mb-1 inline-block text-[10px] font-bold uppercase tracking-wide">{ev.categoriaEtiqueta}</TextoColor>
                         <h4 className="m-0 mb-1.5 text-[13px] font-bold leading-[1.3] text-texto">{ev.nombre}</h4>
                         <div className="mb-2.5 flex flex-col gap-0.75">
                           <span className="flex items-center gap-1.25 text-[11px] text-texto-suave"><Icono name="calendario" className="h-3.5 w-3.5 text-primario" /> {ev.fecha}</span>
@@ -209,7 +195,7 @@ export function PaginaEventosParaTi() {
                 </div>
                 <button
                   type="button"
-                  aria-label={mensajesGlobales.SIGUIENTE}
+                  aria-label={textosRedSocial.SIGUIENTE}
                   onClick={() => alDesplazarProximos(1)}
                   className="absolute -right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full border border-[#e0dce8] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
                 >
@@ -253,12 +239,12 @@ export function PaginaEventosParaTi() {
             <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoEventos.secciones.categorias}</h3>
-                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               <div className="px-4 pb-2">
                 {CATEGORIAS_LATERAL.map((c) => (
                   <article key={c.nombre} className="flex items-center gap-2.5 border-b border-[#f5f5f5] py-2 last:border-b-0">
-                    <SuperficieColor color={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-[7px]">
+                    <SuperficieColor variante={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-[7px]">
                       <Icono name={c.icono} className="h-3.5 w-3.5 text-white" />
                     </SuperficieColor>
                     <span className="flex-1 text-xs font-medium text-texto">{c.nombre}</span>

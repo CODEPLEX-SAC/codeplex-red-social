@@ -2,9 +2,8 @@ import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import catalogoReportes from '../../catalogos/capacidades/redsocial/reportes.json'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
-import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
-import { MedidaDinamica } from '../../componentes/compartido/interfaz/medida_dinamica'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { DonaProgreso } from '../../componentes/compartido/interfaz/dona_progreso'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { MiniGrafico, Plantilla } from '@/tipos/reportes/pagina_reportes'
@@ -25,8 +24,8 @@ const CLASES_FORMATO: Record<'pdf' | 'excel', string> = {
   excel: 'text-[#16a34a]',
 }
 
-const ANCHOS_MINI_LISTA = ['92%', '70%', '84%', '55%']
-const ANCHOS_MINI_LINEAS_DONA = ['100%', '75%', '60%']
+const ANCHOS_MINI_LISTA = ['w-[92%]', 'w-[70%]', 'w-[84%]', 'w-[55%]']
+const ANCHOS_MINI_LINEAS_DONA = ['w-[100%]', 'w-[75%]', 'w-[60%]']
 
 const TH = 'whitespace-nowrap border-b border-[#f0eef5] py-0 pb-2.5 pr-2.5 pl-0 text-left text-[10px] font-semibold uppercase text-texto-suave'
 const TD = 'whitespace-nowrap border-b border-[#f7f6fa] py-2.5 pr-2.5 pl-0 text-texto'
@@ -36,7 +35,7 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
     return (
       <div className="mt-0.5 flex h-[46px] items-end gap-[5px]">
         {grafico.barras.map((b, i) => (
-          <MedidaDinamica key={i} alto={b.v} color={b.c} className="flex-1 rounded-t-sm" />
+          <div key={i} className={`flex-1 rounded-t-sm ${b.v} ${b.c}`} />
         ))}
       </div>
     )
@@ -55,12 +54,13 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
   if (grafico.tipo === 'dona-lista') {
     return (
       <div className="mt-0.5 flex items-center gap-3">
-        <SuperficieColor color={grafico.conic} className="relative h-[42px] w-[42px] flex-none rounded-full">
+        <div className="relative h-[42px] w-[42px] flex-none">
+          <DonaProgreso segmentos={grafico.segmentos} tamano={42} grosor={10} />
           <div className="absolute inset-[10px] rounded-full bg-white" />
-        </SuperficieColor>
+        </div>
         <div className="grid flex-1 gap-[7px]">
           {ANCHOS_MINI_LINEAS_DONA.map((w) => (
-            <MedidaDinamica key={w} ancho={w} className="block h-[7px] rounded-full bg-[#f0eef5]" />
+            <span key={w} className={`block h-[7px] rounded-full bg-[#f0eef5] ${w}`} />
           ))}
         </div>
       </div>
@@ -69,14 +69,14 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
   return (
     <div className="mt-1 grid gap-[7px]">
       {ANCHOS_MINI_LISTA.map((w) => (
-        <MedidaDinamica key={w} ancho={w} className="block h-[7px] rounded-full bg-[#f0eef5]" />
+        <span key={w} className={`block h-[7px] rounded-full bg-[#f0eef5] ${w}`} />
       ))}
     </div>
   )
 }
 
 export function PaginaReportes() {
-  const modulos = useCarrusel()
+  const modulos = usarCarrusel()
 
   return (
     <EstructuraApp paginaActiva="reportes">

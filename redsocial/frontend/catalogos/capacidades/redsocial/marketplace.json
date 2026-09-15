@@ -1,5 +1,21 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "buscar", "comprar", "publicar_aplicacion"],
+  "alertas": {
+    "confirmar_compra": "Se agregará este cargo a tu próxima facturación."
+  },
+  "campos": {
+    "buscar": "Buscar aplicaciones, módulos o soluciones"
+  },
+  "errores": {
+    "carga_marketplace": "No fue posible cargar el marketplace.",
+    "procesar_compra": "No fue posible procesar la compra."
+  },
+  "mensajes": {
+    "sin_compras": "Aún no tienes compras en el marketplace."
+  },
+  "toast": {
+    "compra_realizada": "Compra realizada."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

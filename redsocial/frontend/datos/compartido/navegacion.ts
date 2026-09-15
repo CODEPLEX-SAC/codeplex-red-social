@@ -1,12 +1,12 @@
 import type { AvisoBarraLateral, ModuloDisponible, ElementoNavegacion } from '../../tipos/compartido/navegacion'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 
 export const NAV_PRINCIPAL: readonly ElementoNavegacion[] = [
   { clave: 'inicio', etiqueta: 'Inicio', archivo: '01-01-inicio-web.html', icono: 'inicio' },
   { clave: 'actividad', etiqueta: 'Actividad', archivo: '02-02-actividad-01-todas-web.html', icono: 'actividad' },
-  { clave: 'avisos', etiqueta: mensajesGlobales.AVISO_CAMPANA, archivo: null, insignia: 3, icono: 'campana' },
-  { clave: 'mensajes', etiqueta: mensajesGlobales.MENSAJES, archivo: '09-04-mensajes-01-todos-web.html', insignia: 5, icono: 'mensajes' },
-  { clave: 'amigos', etiqueta: mensajesGlobales.AMIGOS, archivo: '15-05-amigos-01-todos-web.html', icono: 'amigos' },
+  { clave: 'avisos', etiqueta: textosRedSocial.AVISO_CAMPANA, archivo: null, insignia: 3, icono: 'campana' },
+  { clave: 'mensajes', etiqueta: textosRedSocial.MENSAJES, archivo: '09-04-mensajes-01-todos-web.html', insignia: 5, icono: 'mensajes' },
+  { clave: 'amigos', etiqueta: textosRedSocial.AMIGOS, archivo: '15-05-amigos-01-todos-web.html', icono: 'amigos' },
   { clave: 'grupos', etiqueta: 'Grupos', archivo: '19-06-grupos-01-web-misgrupos.html', icono: 'grupos' },
   { clave: 'marketplace', etiqueta: 'Marketplace', archivo: '22-07-marketplace-web-03.html', icono: 'marketplace' },
   { clave: 'eventos', etiqueta: 'Eventos', archivo: '23-08-eventos-01-para-ti-web.html', icono: 'eventos' },
@@ -22,12 +22,12 @@ export const ESPACIO_TRABAJO: readonly ElementoNavegacion[] = [
 ]
 
 export const MODULOS_DISPONIBLES: readonly ModuloDisponible[] = [
-  { etiqueta: 'Planillas', descripcion: 'RRHH y nómina', color: '#1e9a68', icono: 'colaboradores' },
-  { etiqueta: 'Contabilidad', descripcion: 'Finanzas y registros', color: '#3d6bf4', icono: 'moneda' },
-  { etiqueta: 'Inventario', descripcion: 'Almacén y stock', color: '#e08a1e', icono: 'caja' },
-  { etiqueta: 'Ventas', descripcion: 'Facturación y clientes', color: '#0f9ea8', icono: 'marketplace' },
-  { etiqueta: 'Proyectos', descripcion: 'Gestión de proyectos', color: '#e5484d', icono: 'maletin' },
-  { etiqueta: 'Reportes', descripcion: 'Análisis e informes', color: '#7a5af4', icono: 'reportes' },
+  { etiqueta: 'Planillas', descripcion: 'RRHH y nómina', color: 'verde', icono: 'colaboradores' },
+  { etiqueta: 'Contabilidad', descripcion: 'Finanzas y registros', color: 'azul', icono: 'moneda' },
+  { etiqueta: 'Inventario', descripcion: 'Almacén y stock', color: 'naranja', icono: 'caja' },
+  { etiqueta: 'Ventas', descripcion: 'Facturación y clientes', color: 'teal', icono: 'marketplace' },
+  { etiqueta: 'Proyectos', descripcion: 'Gestión de proyectos', color: 'rojo', icono: 'maletin' },
+  { etiqueta: 'Reportes', descripcion: 'Análisis e informes', color: 'violeta', icono: 'reportes' },
 ]
 
 export const AVISOS_SIDEBAR: readonly AvisoBarraLateral[] = [

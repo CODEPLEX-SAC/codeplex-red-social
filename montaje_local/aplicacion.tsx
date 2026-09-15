@@ -1,9 +1,6 @@
-import { usarInterceptarEnlaces } from './rutas/compartido/usar_interceptar_enlaces'
-import { usarPaginaActual } from './rutas/compartido/usar_pagina_actual'
+import { usarInterceptarEnlaces } from '@/rutas/compartido/usar_interceptar_enlaces'
+import { usarPaginaActual } from '@/rutas/compartido/usar_pagina_actual'
 import { PaginaNoEncontrada } from '@/paginas/compartido/pagina_no_encontrada'
-import catalogoCompartido from './catalogos/capacidades/redsocial/compartido.json'
-
-void catalogoCompartido
 
 function Aplicacion() {
   usarInterceptarEnlaces()

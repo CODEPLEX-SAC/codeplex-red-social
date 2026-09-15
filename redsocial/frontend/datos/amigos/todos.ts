@@ -33,8 +33,8 @@ export const PERSONAS_CONOCER_TODOS: { nombre: string; comunes: string }[] = [
 ]
 
 export const TUS_LISTAS_TODOS: { icono: IconName; color: string; nombre: string; cantidad: string }[] = [
-  { icono: 'guardados', color: '#7a5af4', nombre: 'Mejores amigos', cantidad: '24 amigos' },
-  { icono: 'amigos-todos', color: '#e08a1e', nombre: 'Familia', cantidad: '16 amigos' },
-  { icono: 'maletin', color: '#3d6bf4', nombre: 'Trabajo', cantidad: '38 amigos' },
-  { icono: 'listas', color: '#1e9a68', nombre: 'Universidad', cantidad: '22 amigos' },
+  { icono: 'guardados', color: 'morado', nombre: 'Mejores amigos', cantidad: '24 amigos' },
+  { icono: 'amigos-todos', color: 'naranja', nombre: 'Familia', cantidad: '16 amigos' },
+  { icono: 'maletin', color: 'azul', nombre: 'Trabajo', cantidad: '38 amigos' },
+  { icono: 'listas', color: 'verde', nombre: 'Universidad', cantidad: '22 amigos' },
 ]

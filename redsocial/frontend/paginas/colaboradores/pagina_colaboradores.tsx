@@ -6,7 +6,7 @@ import { Icono } from '../../componentes/compartido/icono'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
 import type { IconName } from '../../tipos/compartido/icono'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import type { Colaborador } from '@/tipos/colaboradores/pagina_colaboradores'
 import {
   COLABORADORES,
@@ -278,7 +278,7 @@ export function PaginaColaboradores() {
             <h2 className="m-0 text-base font-bold text-gris-oscuro-texto">{catalogoColaboradores.secciones.detalle_colaborador}</h2>
             <button
               type="button"
-              aria-label={mensajesGlobales.CERRAR}
+              aria-label={textosRedSocial.CERRAR}
               onClick={() => setPanelAbierto(false)}
               className="grid h-7 w-7 place-items-center rounded-md text-[#9ca3af] hover:bg-[#f3f4f6] hover:text-[#374151]"
             >

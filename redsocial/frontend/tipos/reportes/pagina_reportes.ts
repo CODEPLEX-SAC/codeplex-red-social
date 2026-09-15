@@ -4,7 +4,7 @@ export type MiniGrafico =
   | { tipo: 'barras'; barras: { v: string; c: string }[] }
   | { tipo: 'linea'; puntos: string; color: string }
   | { tipo: 'lista' }
-  | { tipo: 'dona-lista'; conic: string }
+  | { tipo: 'dona-lista'; segmentos: { color: string; porcentaje: number }[] }
 
 export interface Plantilla {
   nombre: string

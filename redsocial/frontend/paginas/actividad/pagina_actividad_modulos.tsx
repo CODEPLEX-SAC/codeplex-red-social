@@ -8,7 +8,7 @@ import { ContactosPanel } from '../../componentes/compartido/bloques/contactos_p
 import { GruposRecomendadosPanel } from '../../componentes/compartido/bloques/grupos_recomendados_panel'
 import { EventosProximosPanel } from '../../componentes/compartido/bloques/eventos_proximos_panel'
 import { BloqueAnuncio } from '../../componentes/compartido/bloques/bloque_anuncio'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import type { ColorModulo } from '@/tipos/actividad/pagina_actividad_modulos'
 import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../datos/compartido/panel_lateral'
 import { EVENTOS_MODULO } from '../../datos/actividad/eventos_modulos'
@@ -73,7 +73,7 @@ export function PaginaActividadModulos() {
                   <div className="flex flex-none items-center gap-2">
                     <span className="whitespace-nowrap text-[11px] text-[#aaa7b5]">{m.tiempo}</span>
                     <span className="h-2 w-2 flex-none rounded-full bg-[#3b82f6]" />
-                    <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="grid h-7 w-7 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
+                    <button type="button" aria-label={textosRedSocial.MAS_OPCIONES} className="grid h-7 w-7 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-[#f5f3fa] hover:text-texto">
                       <Icono name="puntos" className="h-4 w-4" />
                     </button>
                   </div>
@@ -81,7 +81,7 @@ export function PaginaActividadModulos() {
               ))}
 
               <button type="button" className="flex w-full items-center justify-center gap-1.5 border-t border-[#f0eef5] bg-transparent p-3.5 text-[13px] font-semibold text-primario hover:bg-[#fdfcff]">
-                {mensajesGlobales.CARGAR_MAS}
+                {textosRedSocial.CARGAR_MAS}
                 <Icono name="flecha-abajo" className="h-4 w-4" />
               </button>
             </section>

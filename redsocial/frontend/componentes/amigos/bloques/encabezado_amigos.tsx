@@ -1,7 +1,7 @@
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
-import mensajesGlobales from '../../../mensajes/globales/textos.json'
+import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 
 export function EncabezadoAmigos({ textoBoton }: { textoBoton: string }) {
   return (
@@ -11,7 +11,7 @@ export function EncabezadoAmigos({ textoBoton }: { textoBoton: string }) {
         <Boton variant="primario">
           <Icono name="mas" className="h-[18px] w-[18px]" /> {textoBoton}
         </Boton>
-        <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="relative grid h-8 w-8 place-items-center rounded-[7px] border-0 bg-transparent p-0 text-[#6d6a7c] hover:bg-[#f2f1f6]">
+        <button type="button" aria-label={textosRedSocial.MAS_OPCIONES} className="relative grid h-8 w-8 place-items-center rounded-[7px] border-0 bg-transparent p-0 text-[#6d6a7c] hover:bg-[#f2f1f6]">
           <Icono name="puntos" className="h-[18px] w-[18px]" />
         </button>
       </div>

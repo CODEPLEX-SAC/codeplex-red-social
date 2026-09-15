@@ -11,8 +11,8 @@ export const MIS_LISTAS: MiLista[] = [
 ]
 
 export const LISTAS_SUGERIDAS: { icono: IconName; color: string; nombre: string; cantidad: string }[] = [
-  { icono: 'maletin', color: '#7c3aed', nombre: 'Emprendedores', cantidad: '12 amigos' },
-  { icono: 'mensaje', color: '#ea580c', nombre: 'Marketing Digital', cantidad: '15 amigos' },
-  { icono: 'actividad', color: '#16a34a', nombre: 'Deportes', cantidad: '19 amigos' },
-  { icono: 'compartir', color: '#2563eb', nombre: 'Viajes', cantidad: '11 amigos' },
+  { icono: 'maletin', color: 'morado', nombre: 'Emprendedores', cantidad: '12 amigos' },
+  { icono: 'mensaje', color: 'naranja', nombre: 'Marketing Digital', cantidad: '15 amigos' },
+  { icono: 'actividad', color: 'verde', nombre: 'Deportes', cantidad: '19 amigos' },
+  { icono: 'compartir', color: 'azul', nombre: 'Viajes', cantidad: '11 amigos' },
 ]

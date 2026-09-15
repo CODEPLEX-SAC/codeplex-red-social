@@ -3,9 +3,9 @@ import { EstructuraApp } from '../../componentes/compartido/estructura/estructur
 import catalogoIndicadores from '../../catalogos/capacidades/redsocial/indicadores.json'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
 import { Insignia } from '../../componentes/compartido/interfaz/insignia'
-import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
+import { DonaProgreso } from '../../componentes/compartido/interfaz/dona_progreso'
 import { MedidaDinamica } from '../../componentes/compartido/interfaz/medida_dinamica'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
 import type { Kpi, EstadoInd, FilaTabla, TarjetaModulo } from '@/tipos/indicadores/pagina_indicadores_clave'
 import {
@@ -30,10 +30,10 @@ const CLASES_ICONO_KPI: Record<Kpi['color'], string> = {
 
 const MODULOS_TABS: { etiqueta: string; icono: IconName }[] = catalogoIndicadores.modulos_tabs as { etiqueta: string; icono: IconName }[]
 
-const CLASES_ESTADO_IND: Record<EstadoInd, { color: string; background: string }> = {
-  optimo: { color: '#16a34a', background: '#dcfce7' },
-  regular: { color: '#a16207', background: '#fef9c3' },
-  bajo: { color: '#dc2626', background: '#fee2e2' },
+const CLASES_ESTADO_IND: Record<EstadoInd, string> = {
+  optimo: 'bg-[#dcfce7] text-[#16a34a]',
+  regular: 'bg-[#fef9c3] text-[#a16207]',
+  bajo: 'bg-[#fee2e2] text-[#dc2626]',
 }
 
 const ETIQUETA_ESTADO_IND: Record<EstadoInd, string> = {
@@ -43,8 +43,7 @@ const ETIQUETA_ESTADO_IND: Record<EstadoInd, string> = {
 }
 
 function EstadoIndBadge({ estado }: { estado: EstadoInd }) {
-  const c = CLASES_ESTADO_IND[estado]
-  return <Insignia variant="status" color={c.color} background={c.background}>{ETIQUETA_ESTADO_IND[estado]}</Insignia>
+  return <Insignia variant="status" className={CLASES_ESTADO_IND[estado]}>{ETIQUETA_ESTADO_IND[estado]}</Insignia>
 }
 
 const TH = 'whitespace-nowrap border-b border-[#f0eef5] py-0 pb-2 pr-1.5 pl-0 text-left text-[9.5px] font-semibold uppercase text-texto-suave'
@@ -86,7 +85,7 @@ const CLASES_ICONO_MODULO: Record<TarjetaModulo['color'], string> = {
 }
 
 export function PaginaIndicadoresClave() {
-  const modulos = useCarrusel()
+  const modulos = usarCarrusel()
 
   return (
     <EstructuraApp paginaActiva="indicadores">
@@ -202,10 +201,10 @@ export function PaginaIndicadoresClave() {
                   <MedidaDinamica
                     key={b.mes}
                     as="div"
-                    alto={b.valor !== null ? `${b.valor}%` : undefined}
+                    alto={b.claseAlto}
                     className={
                       'relative flex flex-1 items-end justify-center rounded-t-[3px] ' +
-                      (b.valor === null ? 'h-full bg-transparent' : b.activa ? 'bg-[#22c55e]' : 'bg-[#86efac]')
+                      (b.claseAlto === null ? 'h-full bg-transparent' : b.activa ? 'bg-[#22c55e]' : 'bg-[#86efac]')
                     }
                   >
                     <small className="absolute -bottom-5 whitespace-nowrap text-[10px] text-texto-suave">{b.mes}</small>
@@ -265,17 +264,23 @@ export function PaginaIndicadoresClave() {
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoIndicadores.secciones.estructura_costos}</h2>
               <a href="#" className="whitespace-nowrap text-xs font-semibold text-primario no-underline">{catalogoIndicadores.botones.ver_detalle}</a>
             </div>
-            <SuperficieColor color={COSTOS.conic} className="relative mx-auto mb-4 grid h-[130px] w-[130px] place-items-center rounded-full">
+            <div className="relative mx-auto mb-4 grid h-[130px] w-[130px] place-items-center rounded-full">
+              <DonaProgreso
+                segmentos={COSTOS.items.map((it) => ({ color: it.color, porcentaje: Number(it.pct.replace('%', '')) }))}
+                tamano={130}
+                grosor={16}
+                className="absolute inset-0"
+              />
               <div className="absolute inset-5 rounded-full bg-white" />
               <span className="relative z-10 flex flex-col items-center text-center">
                 <strong className="text-xs font-extrabold text-texto">{COSTOS.total}</strong>
                 <span className="text-[10px] text-texto-suave">{catalogoIndicadores.leyendas.total_de_costos}</span>
               </span>
-            </SuperficieColor>
+            </div>
             <ul className="m-0 grid list-none gap-2 p-0">
               {COSTOS.items.map((it) => (
                 <li key={it.etiqueta} className="flex items-center gap-2 text-xs text-texto">
-                  <SuperficieColor as="i" color={it.color} className="h-2.5 w-2.5 flex-none rounded-full" />
+                  <svg width="10" height="10" viewBox="0 0 10 10" className="flex-none"><circle cx="5" cy="5" r="5" fill={it.color} /></svg>
                   {it.etiqueta} <b className="ml-auto font-bold">{it.pct}</b> <small className="min-w-[68px] text-right text-texto-suave">{it.valor}</small>
                 </li>
               ))}

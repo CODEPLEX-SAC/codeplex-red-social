@@ -4,14 +4,14 @@ import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria
 import { CampoBusqueda } from '../../componentes/compartido/interfaz/campo_busqueda'
 import { PestanasMensajes } from '../../componentes/mensajeria/bloques/pestanas_mensajes'
 import { PanelLateralMensajeria } from '../../componentes/mensajeria/bloques/panel_lateral_mensajeria'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import type { IconName } from '../../tipos/compartido/icono'
 import { AvatarImagen } from '../../componentes/compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import { LLAMADAS_RECIENTES, CONTACTOS_FRECUENTES, REUNIONES_PROGRAMADAS, HISTORIAL } from '../../datos/mensajeria/videollamadas'
 
 export function PaginaMensajesVideollamadas() {
-  const carrusel = useCarrusel()
+  const carrusel = usarCarrusel()
 
   return (
     <EstructuraApp paginaActiva="mensajes">

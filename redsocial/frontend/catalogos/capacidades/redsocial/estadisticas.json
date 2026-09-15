@@ -1,5 +1,21 @@
 {
-  "acciones": [],
+  "acciones": ["ver_por_modulo", "comparar", "exportar"],
+  "alertas": {
+    "confirmar_exportar": "Se generará un archivo con las estadísticas del periodo seleccionado."
+  },
+  "campos": {
+    "periodo": "Periodo",
+    "comparar_con": "Comparar con"
+  },
+  "errores": {
+    "carga_estadisticas": "No fue posible cargar las estadísticas."
+  },
+  "mensajes": {
+    "sin_datos_modulo": "No hay estadísticas para este módulo en el periodo seleccionado."
+  },
+  "toast": {
+    "estadisticas_exportadas": "Estadísticas exportadas."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

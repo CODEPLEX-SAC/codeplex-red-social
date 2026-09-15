@@ -2,10 +2,10 @@ import { useRef } from 'react'
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import { DESTACADOS, CATEGORIAS, COMPRAS, POPULARES } from '../../datos/marketplace/marketplace'
 
 const CLASES_MODULO: Record<'verde' | 'azul' | 'morado' | 'naranja', string> = {
@@ -21,7 +21,7 @@ const CLASES_CATEGORIA_COLOR: Record<'verde' | 'azul' | 'morado' | 'naranja' | '
 }
 
 export function PaginaMarketplace() {
-  const carrusel = useCarrusel()
+  const carrusel = usarCarrusel()
   const pistaDestacadosRef = useRef<HTMLDivElement>(null)
 
   function alDesplazarDestacados(direccion: -1 | 1) {
@@ -110,7 +110,7 @@ export function PaginaMarketplace() {
             <section className="mb-7">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-base font-bold text-texto">{catalogoMarketplace.secciones.destacados}</h2>
-                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               <div className="relative">
                 <button
@@ -165,7 +165,7 @@ export function PaginaMarketplace() {
             <section>
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-base font-bold text-texto">{catalogoMarketplace.secciones.mas_categorias}</h2>
-                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3.5">
                 {CATEGORIAS.map((c) => (
@@ -189,7 +189,7 @@ export function PaginaMarketplace() {
             <section className="rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoMarketplace.secciones.mis_compras_recientes}</h3>
-                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               <div className="px-4 pb-1">
                 {COMPRAS.map((c) => (
@@ -211,7 +211,7 @@ export function PaginaMarketplace() {
             <section className="rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoMarketplace.secciones.popular_esta_semana}</h3>
-                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               <div className="px-4 pb-3">
                 {POPULARES.map((p, i) => (

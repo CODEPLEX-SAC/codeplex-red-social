@@ -1,6 +1,6 @@
 import { Icono } from '../icono'
 import { ANUNCIOS_PUBLICIDAD, ANUNCIO_PUBLICIDAD_DESTACADO } from '../../../datos/compartido/publicidad'
-import mensajesGlobales from '../../../mensajes/globales/textos.json'
+import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 
 const BOTON_MINI =
   'inline-flex min-h-[30px] items-center justify-center gap-sm whitespace-nowrap rounded-[7px] border px-[10px] text-xs no-underline'
@@ -34,7 +34,7 @@ function PuntosCarrusel({ cantidad }: { cantidad: number }) {
 export function ColumnaPublicidad() {
   return (
     <aside className="grid min-w-0 content-start gap-3.5">
-      <span className="mb-0.5 text-[10px] font-extrabold uppercase tracking-[.1em] text-[#9c99ab]">{mensajesGlobales.PUBLICIDAD}</span>
+      <span className="mb-0.5 text-[10px] font-extrabold uppercase tracking-[.1em] text-[#9c99ab]">{textosRedSocial.PUBLICIDAD}</span>
 
       <article className="relative overflow-hidden rounded-xl border border-borde bg-white p-4 shadow-sombra">
         <h3 className="m-0 mb-1 text-[15px] leading-[1.25] tracking-[-.01em] text-texto">
@@ -78,11 +78,11 @@ export function ColumnaPublicidad() {
       </article>
 
       <div className="mt-2.5 flex items-center justify-center gap-2.5">
-        <button type="button" aria-label={mensajesGlobales.ANTERIOR} className="grid h-5.5 w-5.5 place-items-center rounded-full border-0 bg-white/[.12] text-white">
+        <button type="button" aria-label={textosRedSocial.ANTERIOR} className="grid h-5.5 w-5.5 place-items-center rounded-full border-0 bg-white/[.12] text-white">
           <Icono name="flecha-izquierda" className="h-3 w-3" />
         </button>
         <PuntosCarrusel cantidad={2} />
-        <button type="button" aria-label={mensajesGlobales.SIGUIENTE} className="grid h-5.5 w-5.5 place-items-center rounded-full border-0 bg-white/[.12] text-white">
+        <button type="button" aria-label={textosRedSocial.SIGUIENTE} className="grid h-5.5 w-5.5 place-items-center rounded-full border-0 bg-white/[.12] text-white">
           <Icono name="flecha-derecha" className="h-3 w-3" />
         </button>
       </div>

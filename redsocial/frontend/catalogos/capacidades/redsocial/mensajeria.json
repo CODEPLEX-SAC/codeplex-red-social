@@ -1,5 +1,23 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "enviar_mensaje", "marcar_favorito", "iniciar_videollamada"],
+  "alertas": {
+    "confirmar_salir_de_la_llamada": "Vas a salir de la videollamada en curso."
+  },
+  "campos": {
+    "escribe_un_mensaje": "Escribe un mensaje"
+  },
+  "errores": {
+    "carga_mensajes": "No fue posible cargar tus mensajes.",
+    "enviar_mensaje": "No fue posible enviar el mensaje.",
+    "iniciar_videollamada": "No fue posible iniciar la videollamada."
+  },
+  "mensajes": {
+    "sin_mensajes": "No tienes mensajes para mostrar."
+  },
+  "toast": {
+    "mensaje_enviado": "Mensaje enviado.",
+    "marcado_como_favorito": "Conversación marcada como favorita."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

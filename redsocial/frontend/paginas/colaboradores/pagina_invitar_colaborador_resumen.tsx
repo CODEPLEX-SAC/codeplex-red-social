@@ -9,10 +9,10 @@ import {
   RESUMEN_VIGENCIA,
   CORREO_PREVIEW,
 } from '../../datos/colaboradores/invitacion_resumen'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import type { IconName } from '../../tipos/compartido/icono'
 
-const NOMBRE_MARCA = mensajesGlobales.MARCA
+const NOMBRE_MARCA = textosRedSocial.MARCA
 const INICIAL_MARCA = NOMBRE_MARCA.charAt(0)
 
 const NAVEGAR_A = (archivo: string) => {
@@ -52,18 +52,18 @@ export function PaginaInvitarColaboradorResumen() {
             </p>
           </div>
           <div className="flex flex-none items-center gap-2 max-[768px]:gap-1">
-            <button type="button" title={mensajesGlobales.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="ajustes-sistema" className="w-5 h-5" />
             </button>
-            <button type="button" title={mensajesGlobales.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name={'aplicaciones' as IconName} className="w-5 h-5" />
             </button>
-            <button type="button" title={mensajesGlobales.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="campana" className="w-5 h-5" />
             </button>
             <button
               type="button"
-              title={mensajesGlobales.CERRAR}
+              title={textosRedSocial.CERRAR}
               onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
               className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8"
             >
@@ -186,13 +186,13 @@ export function PaginaInvitarColaboradorResumen() {
               <div className="bg-[#fafafa] px-6 py-7">
                 <div className="mb-5 text-center">
                   <span className="mr-1.5 inline-block h-6 w-6 rounded-md bg-primario text-center text-[0.9rem] leading-6 text-white">{INICIAL_MARCA}</span>
-                  <span className="text-[1.2rem] font-extrabold tracking-wide text-primario">{mensajesGlobales.MARCA}</span>
+                  <span className="text-[1.2rem] font-extrabold tracking-wide text-primario">{textosRedSocial.MARCA}</span>
                 </div>
 
                 <p className="mb-4 text-[0.875rem] leading-snug text-gris-texto">{catalogoColaboradores.campos_resumen.hola_saludo.replace('{nombre}', CORREO_PREVIEW.nombrePila)}</p>
                 <p className="mb-4 text-[0.875rem] leading-snug text-gris-texto">
                   <strong className="text-gris-oscuro-texto">{CORREO_PREVIEW.invitadoPor}</strong> {catalogoColaboradores.campos_resumen.invitacion_intro}{' '}
-                  <strong className="text-gris-oscuro-texto">{CORREO_PREVIEW.empresa}</strong> {catalogoColaboradores.campos_resumen.en_codeplex} <strong className="text-gris-oscuro-texto">{mensajesGlobales.MARCA}</strong>.
+                  <strong className="text-gris-oscuro-texto">{CORREO_PREVIEW.empresa}</strong> {catalogoColaboradores.campos_resumen.en_codeplex} <strong className="text-gris-oscuro-texto">{textosRedSocial.MARCA}</strong>.
                 </p>
 
                 <div className="mb-5 rounded-lg border border-gris-borde bg-white px-4 py-3.5">

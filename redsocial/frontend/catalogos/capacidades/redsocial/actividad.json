@@ -1,5 +1,21 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "filtrar", "ver_detalle", "comentar"],
+  "alertas": {
+    "confirmar_ver_todo_el_sistema": "Vas a ver la actividad de todo el sistema, incluidos otros equipos."
+  },
+  "campos": {
+    "buscar_actividad": "Buscar en la actividad",
+    "tipo_actividad": "Tipo de actividad"
+  },
+  "errores": {
+    "carga_actividad": "No fue posible cargar la actividad."
+  },
+  "mensajes": {
+    "sin_actividad": "No hay actividad para mostrar todavía."
+  },
+  "toast": {
+    "comentario_enviado": "Comentario enviado."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

@@ -8,7 +8,7 @@ import { PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividad
 import { AvatarImagen } from '../../componentes/compartido/interfaz/avatar_imagen'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { PERSONAS_CONOCER, TUS_LISTAS_LATERAL as TUS_LISTAS, ACTIVIDAD_RECIENTE_AMIGOS as ACTIVIDAD_RECIENTE } from '../../datos/amigos/panel_lateral'
 import { SUGERENCIAS } from '../../datos/amigos/sugerencias'
 
@@ -29,7 +29,7 @@ export function PaginaAmigosSugerencias() {
                 <strong className="mb-0.75 block text-[13px] text-texto">{catalogoAmigos.secciones.amplia_tu_red_titulo}</strong>
                 <p className="m-0 text-xs leading-[1.4] text-texto-suave">{catalogoAmigos.secciones.amplia_tu_red_desc}</p>
               </div>
-              <button type="button" aria-label={mensajesGlobales.CERRAR} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-black/[0.06] hover:text-texto-suave">
+              <button type="button" aria-label={textosRedSocial.CERRAR} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-black/[0.06] hover:text-texto-suave">
                 <Icono name="cerrar" className="h-3.5 w-3.5" />
               </button>
             </div>

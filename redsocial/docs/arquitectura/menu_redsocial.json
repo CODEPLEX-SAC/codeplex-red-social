@@ -1,17 +1,17 @@
 {
   "capacidad_id": "redsocial",
   "menu": [
-    { "clave": "inicio", "titulo": "Inicio" },
-    { "clave": "actividad", "titulo": "Actividad" },
-    { "clave": "mensajeria", "titulo": "Mensajes" },
-    { "clave": "amigos", "titulo": "Amigos" },
-    { "clave": "grupos", "titulo": "Grupos" },
-    { "clave": "marketplace", "titulo": "Marketplace" },
-    { "clave": "eventos", "titulo": "Eventos" },
-    { "clave": "colaboradores", "titulo": "Colaboradores" },
-    { "clave": "dashboard", "titulo": "Dashboard" },
-    { "clave": "estadisticas", "titulo": "Estadísticas" },
-    { "clave": "reportes", "titulo": "Reportes" },
-    { "clave": "indicadores", "titulo": "Indicadores clave" }
+    { "clave": "inicio", "titulo": "Inicio", "acciones": ["publicar", "reaccionar", "comentar", "compartir"] },
+    { "clave": "actividad", "titulo": "Actividad", "acciones": ["listar", "filtrar", "ver_detalle", "comentar"] },
+    { "clave": "mensajeria", "titulo": "Mensajes", "acciones": ["listar", "enviar_mensaje", "marcar_favorito", "iniciar_videollamada"] },
+    { "clave": "amigos", "titulo": "Amigos", "acciones": ["listar", "buscar", "solicitar", "aceptar", "rechazar", "crear_lista"] },
+    { "clave": "grupos", "titulo": "Grupos", "acciones": ["listar", "descubrir", "crear", "unirse", "aceptar_invitacion", "rechazar_invitacion"] },
+    { "clave": "marketplace", "titulo": "Marketplace", "acciones": ["listar", "buscar", "comprar", "publicar_aplicacion"] },
+    { "clave": "eventos", "titulo": "Eventos", "acciones": ["listar", "crear", "invitar", "aceptar_invitacion", "rechazar_invitacion"] },
+    { "clave": "colaboradores", "titulo": "Colaboradores", "acciones": ["listar", "invitar", "ver_detalle", "cambiar_rol", "dar_de_baja"] },
+    { "clave": "dashboard", "titulo": "Dashboard", "acciones": ["ver_resumen", "personalizar", "exportar"] },
+    { "clave": "estadisticas", "titulo": "Estadísticas", "acciones": ["ver_por_modulo", "comparar", "exportar"] },
+    { "clave": "reportes", "titulo": "Reportes", "acciones": ["listar", "generar", "descargar", "compartir"] },
+    { "clave": "indicadores", "titulo": "Indicadores clave", "acciones": ["listar", "filtrar_por_modulo", "comparar"] }
   ]
 }

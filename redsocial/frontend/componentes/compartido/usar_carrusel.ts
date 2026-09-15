@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-export function useCarrusel() {
+export function usarCarrusel() {
   const pistaRef = useRef<HTMLDivElement>(null)
   return { pistaRef }
 }

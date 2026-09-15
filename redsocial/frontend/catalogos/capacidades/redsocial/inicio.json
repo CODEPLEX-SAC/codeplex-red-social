@@ -1,5 +1,21 @@
 {
-  "acciones": [],
+  "acciones": ["publicar", "reaccionar", "comentar", "compartir"],
+  "alertas": {
+    "confirmar_eliminar_publicacion": "Esta publicación se eliminará de tu perfil y del muro de inicio."
+  },
+  "campos": {
+    "que_estas_pensando": "¿Qué estás pensando?"
+  },
+  "errores": {
+    "carga_muro": "No fue posible cargar tu muro de inicio.",
+    "publicar": "No fue posible publicar tu actualización."
+  },
+  "mensajes": {
+    "sin_publicaciones": "Aún no hay publicaciones en tu muro."
+  },
+  "toast": {
+    "publicacion_creada": "Publicación creada."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

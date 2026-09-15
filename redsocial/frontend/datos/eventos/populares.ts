@@ -31,12 +31,12 @@ export const PROXIMAS_FECHAS_POPULARES: { dia: string; mes: string; nombre: stri
 ]
 
 export const CATEGORIAS_LATERAL_POPULARES: { icono: IconName; color: string; nombre: string; conteo: string }[] = [
-  { icono: 'estrella', color: '#ec4899', nombre: 'Música', conteo: '128' },
-  { icono: 'panel', color: '#6366f1', nombre: 'Tecnología', conteo: '95' },
-  { icono: 'empresa', color: '#f97316', nombre: 'Negocios', conteo: '86' },
-  { icono: 'calendario', color: '#3b82f6', nombre: 'Educación', conteo: '74' },
-  { icono: 'carrito', color: '#ef4444', nombre: 'Gastronomía', conteo: '58' },
-  { icono: 'actividad', color: '#22c55e', nombre: 'Deportes', conteo: '63' },
+  { icono: 'estrella', color: 'rosa', nombre: 'Música', conteo: '128' },
+  { icono: 'panel', color: 'violeta', nombre: 'Tecnología', conteo: '95' },
+  { icono: 'empresa', color: 'naranja', nombre: 'Negocios', conteo: '86' },
+  { icono: 'calendario', color: 'azul', nombre: 'Educación', conteo: '74' },
+  { icono: 'carrito', color: 'rojo', nombre: 'Gastronomía', conteo: '58' },
+  { icono: 'actividad', color: 'verde', nombre: 'Deportes', conteo: '63' },
 ]
 
 export const MES_CALENDARIO_POPULARES = 'Junio 2026'

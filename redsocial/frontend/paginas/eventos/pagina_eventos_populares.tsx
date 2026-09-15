@@ -1,7 +1,7 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
@@ -16,18 +16,6 @@ import {
 } from '../../datos/eventos/populares'
 
 const DIAS_SEMANA = catalogoEventos.dias_semana
-
-const CATEGORIA_GRADIENTE: Record<'tecnologia' | 'negocios' | 'gastronomia', string> = {
-  tecnologia: 'linear-gradient(135deg, #667eea, #764ba2)',
-  negocios: 'linear-gradient(135deg, #f093fb, #f5576c)',
-  gastronomia: 'linear-gradient(135deg, #fa709a, #fee140)',
-}
-
-const CATEGORIA_COLOR: Record<keyof typeof CATEGORIA_GRADIENTE, string> = {
-  tecnologia: '#667eea',
-  negocios: '#f5576c',
-  gastronomia: '#fa709a',
-}
 
 const SEMANAS_CALENDARIO: { numero: string; otroMes?: boolean; hoy?: boolean }[][] = [
   [
@@ -48,12 +36,6 @@ const SEMANAS_CALENDARIO: { numero: string; otroMes?: boolean; hoy?: boolean }[]
     { numero: '01', otroMes: true }, { numero: '02', otroMes: true },
   ],
 ]
-
-const PUNTO_COLOR: Record<'tecnologia' | 'negocios' | 'educacion', string> = {
-  tecnologia: '#6366f1',
-  negocios: '#f97316',
-  educacion: '#3b82f6',
-}
 
 export function PaginaEventosPopulares() {
   return (
@@ -99,14 +81,14 @@ export function PaginaEventosPopulares() {
               {EVENTOS.map((ev) => (
                 <article key={ev.nombre} className="relative grid grid-cols-[140px_1fr] overflow-hidden rounded-xl border border-[#eee] bg-white hover:shadow-[0_4px_16px_rgba(0,0,0,.08)] max-[1100px]:grid-cols-[120px_1fr] max-[900px]:grid-cols-1">
                   <div className="relative min-h-[180px] overflow-hidden">
-                    <SuperficieColor color={CATEGORIA_GRADIENTE[ev.categoria]} className="h-full w-full" />
+                    <SuperficieColor degradado={ev.categoria} className="h-full w-full" />
                     <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                       <span className="block text-xl font-extrabold leading-[1.1] text-texto">{ev.dia}</span>
                       <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{ev.mes}</span>
                     </div>
                   </div>
                   <div className="flex flex-col p-5">
-                    <TextoColor color={CATEGORIA_COLOR[ev.categoria]} className="mb-1 inline-block text-[10px] font-bold uppercase tracking-wide">{ev.categoriaEtiqueta}</TextoColor>
+                    <TextoColor variante={ev.categoria} className="mb-1 inline-block text-[10px] font-bold uppercase tracking-wide">{ev.categoriaEtiqueta}</TextoColor>
                     <h3 className="m-0 mb-1.5 text-base font-bold leading-[1.3] text-texto">{ev.nombre}</h3>
                     <p className="m-0 mb-3 text-xs leading-[1.5] text-texto-suave">{ev.descripcion}</p>
                     <div className="mb-3.5 flex flex-wrap gap-3.5">
@@ -190,7 +172,7 @@ export function PaginaEventosPopulares() {
             <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoEventos.secciones.mis_proximas_fechas}</h3>
-                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               <div className="px-4 pb-1">
                 {PROXIMAS_FECHAS.map((f) => (
@@ -202,7 +184,7 @@ export function PaginaEventosPopulares() {
                     <div className="min-w-0 flex-1">
                       <span className="mb-0.5 block text-xs font-bold text-texto">{f.nombre}</span>
                       <span className="flex items-center gap-1 text-[11px] leading-[1.35] text-texto-suave">
-                        <SuperficieColor as="span" color={PUNTO_COLOR[f.punto]} className="h-1.5 w-1.5 flex-none rounded-full" /> {f.detalle}
+                        <SuperficieColor as="span" variante={f.punto} className="h-1.5 w-1.5 flex-none rounded-full" /> {f.detalle}
                       </span>
                     </div>
                   </article>
@@ -213,12 +195,12 @@ export function PaginaEventosPopulares() {
             <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
               <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoEventos.secciones.categorias}</h3>
-                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
+                <a href="#" className="text-[11px] font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
               </div>
               <div className="px-4 pb-2">
                 {CATEGORIAS_LATERAL.map((c) => (
                   <article key={c.nombre} className="flex items-center gap-2.5 border-b border-[#f5f5f5] py-2 last:border-b-0">
-                    <SuperficieColor color={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-[7px]">
+                    <SuperficieColor variante={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-[7px]">
                       <Icono name={c.icono} className="h-3.5 w-3.5 text-white" />
                     </SuperficieColor>
                     <span className="flex-1 text-xs font-medium text-texto">{c.nombre}</span>

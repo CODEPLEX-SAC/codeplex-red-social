@@ -3,13 +3,13 @@ import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { Icono } from '../../componentes/compartido/icono'
-import { useCarrusel } from '../../componentes/compartido/usar_carrusel'
+import { usarCarrusel } from '../../componentes/compartido/usar_carrusel'
 import { PestanasEventos } from '../../componentes/eventos/bloques/pestanas_eventos'
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import { TextoColor } from '../../componentes/compartido/interfaz/texto_color'
 import type { IconName } from '../../tipos/compartido/icono'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import {
   PENDIENTES,
   RESPONDIDAS,
@@ -42,7 +42,7 @@ const SEMANAS_CALENDARIO: { numero: string; otroMes?: boolean; hoy?: boolean; co
 ]
 
 export function PaginaEventosInvitaciones() {
-  const filtros = useCarrusel()
+  const filtros = usarCarrusel()
 
   return (
     <EstructuraApp paginaActiva="eventos">
@@ -92,14 +92,14 @@ export function PaginaEventosInvitaciones() {
               {PENDIENTES.map((inv) => (
                 <article key={inv.nombre} className="grid grid-cols-[140px_1fr_auto] overflow-hidden rounded-xl border border-gris-borde bg-white transition-shadow hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)] max-[900px]:grid-cols-1">
                   <div className="relative min-h-[140px] overflow-hidden">
-                    <SuperficieColor color={inv.gradiente} className="h-full w-full" />
+                    <SuperficieColor degradado={inv.gradiente} className="h-full w-full" />
                     <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                       <span className="block text-xl font-extrabold leading-[1.1] text-texto">{inv.dia}</span>
                       <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{inv.mes}</span>
                     </div>
                   </div>
                   <div className="flex flex-col justify-center gap-1.5 px-5 py-4">
-                    <TextoColor color={inv.categoriaColor} className="inline-block text-[10px] font-bold uppercase tracking-wide">
+                    <TextoColor variante={inv.categoriaColor} className="inline-block text-[10px] font-bold uppercase tracking-wide">
                       {inv.categoria}
                     </TextoColor>
                     <h3 className="m-0 text-base font-bold text-gris-oscuro-texto">{inv.nombre}</h3>
@@ -148,14 +148,14 @@ export function PaginaEventosInvitaciones() {
                   }
                 >
                   <div className="relative min-h-20 w-[100px] overflow-hidden max-[900px]:w-full">
-                    <SuperficieColor color={inv.gradiente} className="h-full w-full" />
+                    <SuperficieColor degradado={inv.gradiente} className="h-full w-full" />
                     <div className="absolute left-3.5 top-3.5 rounded-[10px] bg-white px-3 py-2 text-center shadow-[0_2px_8px_rgba(0,0,0,.12)]">
                       <span className="block text-xl font-extrabold leading-[1.1] text-texto">{inv.dia}</span>
                       <span className="mt-px block text-[10px] font-bold uppercase text-texto-suave">{inv.mes}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1 px-4 py-3.5">
-                    <TextoColor color={inv.categoriaColor} className="inline-block text-[10px] font-bold uppercase tracking-wide">
+                    <TextoColor variante={inv.categoriaColor} className="inline-block text-[10px] font-bold uppercase tracking-wide">
                       {inv.categoria}
                     </TextoColor>
                     <h3 className="m-0 text-[0.9375rem] font-bold text-gris-oscuro-texto">{inv.nombre}</h3>
@@ -234,13 +234,13 @@ export function PaginaEventosInvitaciones() {
           <section className="overflow-hidden rounded-xl border border-[#eee] bg-white">
             <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
               <h2 className="m-0 text-sm font-bold">{catalogoEventos.secciones.proximos_de_tus_eventos}</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <div className="px-3 pb-2">
               {PROXIMOS_LATERAL.map((ev, i) => (
                 <article key={ev.nombre} className={'grid grid-cols-[64px_1fr] gap-2.5 py-2 ' + (i < PROXIMOS_LATERAL.length - 1 ? 'border-b border-[#f5f5f5]' : '')}>
                   <div className="relative h-16 w-16 flex-none overflow-hidden rounded-lg">
-                    <SuperficieColor color={ev.gradiente} className="h-full w-full" />
+                    <SuperficieColor degradado={ev.gradiente} className="h-full w-full" />
                     <div className="absolute left-1 top-1 rounded-[4px] bg-white px-1 py-0.5 text-center leading-none shadow-[0_1px_3px_rgba(0,0,0,0.15)]">
                       <span className="block text-[11px] font-extrabold text-gris-oscuro-texto">{ev.dia}</span>
                       <span className="block text-[7px] font-bold uppercase text-gris-texto-terciario">{ev.mes}</span>

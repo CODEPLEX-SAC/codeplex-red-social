@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useCarrusel } from '../../compartido/usar_carrusel'
+import { usarCarrusel } from '../../compartido/usar_carrusel'
 import { usarMemoriaScrollPestanas } from '../../compartido/usar_memoria_scroll_pestanas'
 import catalogoActividad from '../../../catalogos/capacidades/redsocial/actividad.json'
 import type { PestanaActividad } from '@/tipos/actividad/pestanas_actividad'
@@ -15,7 +15,7 @@ const TABS = [
 ] as const
 
 export function PestanasActividad({ activa }: { activa: PestanaActividad }) {
-  const carrusel = useCarrusel()
+  const carrusel = usarCarrusel()
   const activaRef = useRef<HTMLAnchorElement | null>(null)
   const { alDesplazarManualmente } = usarMemoriaScrollPestanas(carrusel.pistaRef, activaRef, activa)
 

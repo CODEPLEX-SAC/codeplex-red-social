@@ -1,7 +1,7 @@
 import { Icono } from '../../componentes/compartido/icono'
 import { EstructuraApp } from '../../componentes/compartido/estructura/estructura_app'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { ColumnaPublicidad } from '../../componentes/compartido/bloques/columna_publicidad'
 import { EstructuraTresColumnas } from '../../componentes/compartido/estructura/estructura_tres_columnas'
 import { Boton } from '../../componentes/compartido/interfaz/boton'
@@ -72,7 +72,7 @@ export function PaginaGruposMisGrupos() {
 
             <div className="mb-3.5 flex items-center justify-between">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoGrupos.secciones.grupos_que_administro} ({GRUPOS_ADMIN.length})</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <div className="mb-8 grid grid-cols-2 gap-5 max-[900px]:grid-cols-1">
               {GRUPOS_ADMIN.map((g) => (
@@ -107,7 +107,7 @@ export function PaginaGruposMisGrupos() {
 
             <div className="mb-3.5 flex items-center justify-between">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoGrupos.secciones.mis_grupos_titulo} ({MIS_GRUPOS.length})</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
             </div>
             <div className="grid grid-cols-3 gap-5 max-[900px]:grid-cols-2 max-[600px]:grid-cols-1">
               {MIS_GRUPOS.map((g) => (
@@ -157,7 +157,7 @@ export function PaginaGruposMisGrupos() {
             <section className="rounded-xl border border-[#eee] bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h3 className="m-0 text-sm font-bold text-texto">{catalogoGrupos.secciones.grupos_populares}</h3>
-                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODOS}</a>
+                <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
               </div>
               {GRUPOS_POPULARES.map((g) => (
                 <article key={g.nombre} className="flex items-center gap-2.5 border-b border-[#f5f5f5] py-2.25 last:border-b-0">

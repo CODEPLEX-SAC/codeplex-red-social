@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { reemplazarRuta, useRutaActual } from './navegacion'
+import { reemplazarRuta, usarRutaActual } from './navegacion'
 import type { RutaApp } from '@/tipos/enrutamiento/rutas'
 import { RUTA_INICIAL, resolverRuta } from './rutas'
 
 export function usarPaginaActual(): RutaApp | undefined {
-  const ruta = useRutaActual()
+  const ruta = usarRutaActual()
 
   useEffect(() => {
     if (window.location.pathname === '/') {

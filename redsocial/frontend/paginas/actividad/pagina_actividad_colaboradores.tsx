@@ -13,7 +13,7 @@ import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import type { EventoColaborador } from '@/tipos/actividad/pagina_actividad_colaboradores'
 import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../datos/compartido/panel_lateral'
 import { EVENTOS_COLABORADOR } from '../../datos/actividad/eventos_colaboradores'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { navegar } from '../../rutas/compartido/navegacion'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
@@ -65,7 +65,7 @@ export function PaginaActividadColaboradores() {
                 </article>
               ))}
               <button type="button" className="flex w-full items-center justify-center gap-1.5 border-t border-[#f0eef5] bg-transparent p-3.5 text-[13px] font-semibold text-primario hover:bg-[#fdfcff]">
-                {mensajesGlobales.CARGAR_MAS}
+                {textosRedSocial.CARGAR_MAS}
                 <Icono name="flecha-abajo" className="h-4 w-4" />
               </button>
             </section>

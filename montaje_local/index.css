@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../redsocial/frontend";
 
 
 @theme {
@@ -24,6 +25,14 @@
   --color-verde-categoria: #22c55e;
   --color-morado-categoria: #7c3aed;
   --color-naranja-categoria: #f97316;
+  --color-rosa-categoria: #ec4899;
+  --color-rojo-categoria: #ef4444;
+  --color-gris-categoria: #9ca3af;
+  --color-amarillo-categoria: #eab308;
+  --color-cian-categoria: #06b6d4;
+  --color-teal-categoria: #14b8a6;
+  --color-violeta-categoria: #8b5cf6;
+  --color-azul-claro-categoria: #60a5fa;
   --color-positivo-kpi: #16a34a;
   --color-negativo-kpi: #dc2626;
 
@@ -82,6 +91,19 @@ html {
 
 
 @layer components {
+.degradado-morado { background-image: linear-gradient(135deg, #6c3ce0, #a855f7); }
+.degradado-azul { background-image: linear-gradient(135deg, #3b82f6, #06b6d4); }
+.degradado-calido { background-image: linear-gradient(135deg, #f59e0b, #ef4444); }
+.degradado-verde { background-image: linear-gradient(135deg, #10b981, #34d399); }
+.degradado-rosa { background-image: linear-gradient(135deg, #ec4899, #f43f5e); }
+.degradado-nocturno { background-image: linear-gradient(135deg, #2d1b69, #11998e); }
+.degradado-rosa-suave { background-image: linear-gradient(135deg, #f093fb, #f5576c); }
+.degradado-violeta-suave { background-image: linear-gradient(135deg, #667eea, #764ba2); }
+.degradado-teal { background-image: linear-gradient(135deg, #11998e, #38ef7d); }
+.degradado-educativo { background-image: linear-gradient(135deg, #4facfe, #00f2fe); }
+.degradado-gastronomico { background-image: linear-gradient(135deg, #fa709a, #fee140); }
+.degradado-primario { background-image: linear-gradient(45deg, #8f7cf3, var(--primario), var(--primario-oscuro)); }
+
 .icono {
   width: 17px;
   height: 17px;

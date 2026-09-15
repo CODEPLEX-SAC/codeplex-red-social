@@ -1,5 +1,26 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "crear", "invitar", "aceptar_invitacion", "rechazar_invitacion"],
+  "alertas": {
+    "confirmar_cancelar_evento": "Vas a cancelar este evento; se notificará a los invitados."
+  },
+  "campos": {
+    "buscar_eventos": "Buscar eventos",
+    "categoria": "Categoría",
+    "fecha": "Fecha",
+    "ubicacion": "Ubicación"
+  },
+  "errores": {
+    "carga_eventos": "No fue posible cargar los eventos.",
+    "guardar_evento": "No fue posible guardar el evento."
+  },
+  "mensajes": {
+    "sin_eventos": "No hay eventos para mostrar.",
+    "sin_invitaciones": "No tienes invitaciones a eventos pendientes."
+  },
+  "toast": {
+    "evento_creado": "Evento creado.",
+    "invitacion_respondida": "Respuesta enviada."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

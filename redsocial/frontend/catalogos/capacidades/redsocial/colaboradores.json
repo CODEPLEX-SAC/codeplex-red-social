@@ -1,5 +1,24 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "invitar", "ver_detalle", "cambiar_rol", "dar_de_baja"],
+  "alertas": {
+    "confirmar_dar_de_baja": "El colaborador perderá el acceso a todos los sistemas asignados.",
+    "confirmar_desactivar_acceso": "El colaborador no podrá volver a ingresar hasta que reactives su acceso."
+  },
+  "campos": {
+    "nombres": "Nombres",
+    "correo_electronico": "Correo electrónico"
+  },
+  "errores": {
+    "carga_colaboradores": "No fue posible cargar el listado de colaboradores.",
+    "envio_invitacion": "No fue posible enviar la invitación."
+  },
+  "mensajes": {
+    "sin_colaboradores": "No hay colaboradores para mostrar con estos filtros."
+  },
+  "toast": {
+    "invitacion_enviada": "Invitación enviada.",
+    "colaborador_actualizado": "Colaborador actualizado."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",
@@ -121,13 +140,13 @@
     "anterior": "Anterior"
   },
   "columnas_permisos": [
-    { "clave": "sin-acceso", "icono": "sin-acceso", "color": "#ef4444", "etiqueta": "Sin acceso" },
-    { "clave": "ver", "icono": "ver", "color": "#3b82f6", "etiqueta": "Ver" },
-    { "clave": "crear", "icono": "mas", "color": "#10b981", "etiqueta": "Crear" },
-    { "clave": "editar", "icono": "editar", "color": "#f97316", "etiqueta": "Editar" },
-    { "clave": "eliminar", "icono": "eliminar", "color": "#ef4444", "etiqueta": "Eliminar" },
-    { "clave": "imprimir", "icono": "imprimir", "color": "#8b5cf6", "etiqueta": "Imprimir" },
-    { "clave": "exportar", "icono": "descargar", "color": "#10b981", "etiqueta": "Exportar" }
+    { "clave": "sin-acceso", "icono": "sin-acceso", "color": "rojo", "etiqueta": "Sin acceso" },
+    { "clave": "ver", "icono": "ver", "color": "azul", "etiqueta": "Ver" },
+    { "clave": "crear", "icono": "mas", "color": "verde", "etiqueta": "Crear" },
+    { "clave": "editar", "icono": "editar", "color": "naranja", "etiqueta": "Editar" },
+    { "clave": "eliminar", "icono": "eliminar", "color": "rojo", "etiqueta": "Eliminar" },
+    { "clave": "imprimir", "icono": "imprimir", "color": "violeta", "etiqueta": "Imprimir" },
+    { "clave": "exportar", "icono": "descargar", "color": "verde", "etiqueta": "Exportar" }
   ],
   "campos_informacion": {
     "nombres": "Nombres",

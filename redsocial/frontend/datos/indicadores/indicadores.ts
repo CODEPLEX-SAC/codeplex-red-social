@@ -50,15 +50,14 @@ export const GESTION: FilaTabla[] = [
   { indicador: 'Ciclo de Conversión de Efectivo (días)', valor: '10', estado: 'optimo', variacion: '↓ 1', tipo: 'negativa' },
 ]
 
-export const BARRAS_COMBO: { mes: string; valor: number | null; activa?: boolean }[] = [
-  { mes: 'Ene', valor: 60 }, { mes: 'Feb', valor: 66 }, { mes: 'Mar', valor: 70 },
-  { mes: 'Abr', valor: 76 }, { mes: 'May', valor: 80 }, { mes: 'Jun', valor: 100, activa: true },
-  { mes: 'Jul', valor: null }, { mes: 'Ago', valor: null }, { mes: 'Sep', valor: null },
-  { mes: 'Oct', valor: null }, { mes: 'Nov', valor: null }, { mes: 'Dic', valor: null },
+export const BARRAS_COMBO: { mes: string; claseAlto: string | null; activa?: boolean }[] = [
+  { mes: 'Ene', claseAlto: 'h-[60%]' }, { mes: 'Feb', claseAlto: 'h-[66%]' }, { mes: 'Mar', claseAlto: 'h-[70%]' },
+  { mes: 'Abr', claseAlto: 'h-[76%]' }, { mes: 'May', claseAlto: 'h-[80%]' }, { mes: 'Jun', claseAlto: 'h-[100%]', activa: true },
+  { mes: 'Jul', claseAlto: null }, { mes: 'Ago', claseAlto: null }, { mes: 'Sep', claseAlto: null },
+  { mes: 'Oct', claseAlto: null }, { mes: 'Nov', claseAlto: null }, { mes: 'Dic', claseAlto: null },
 ]
 
 export const COSTOS = {
-  conic: 'conic-gradient(#3b82f6 0% 35%, #f97316 35% 65%, #22c55e 65% 80%, #ec4899 80% 90%, #eab308 90% 100%)',
   total: 'S/ 850,000',
   items: [
     { color: '#3b82f6', etiqueta: 'Mano de Obra', pct: '35%', valor: 'S/ 297,500' },

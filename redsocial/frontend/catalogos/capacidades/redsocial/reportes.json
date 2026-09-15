@@ -1,5 +1,23 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "generar", "descargar", "compartir"],
+  "alertas": {
+    "confirmar_compartir_reporte": "Este reporte se compartirá con los colaboradores que selecciones."
+  },
+  "campos": {
+    "periodo": "Periodo",
+    "formato": "Formato"
+  },
+  "errores": {
+    "carga_reportes": "No fue posible cargar los reportes.",
+    "generar_reporte": "No fue posible generar el reporte."
+  },
+  "mensajes": {
+    "sin_reportes": "No hay reportes recientes para mostrar."
+  },
+  "toast": {
+    "reporte_generado": "Reporte generado.",
+    "reporte_descargado": "Reporte descargado."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

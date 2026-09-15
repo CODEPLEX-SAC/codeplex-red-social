@@ -1,5 +1,22 @@
 {
-  "acciones": [],
+  "acciones": ["listar", "buscar", "solicitar", "aceptar", "rechazar", "crear_lista"],
+  "alertas": {
+    "confirmar_eliminar_amigo": "Vas a eliminar a este amigo de tu lista de contactos."
+  },
+  "campos": {
+    "nombre_lista": "Nombre de la lista"
+  },
+  "errores": {
+    "carga_amigos": "No fue posible cargar tus amigos."
+  },
+  "mensajes": {
+    "sin_solicitudes": "No tienes solicitudes de amistad pendientes.",
+    "sin_sugerencias": "No hay sugerencias de amigos por ahora."
+  },
+  "toast": {
+    "solicitud_enviada": "Solicitud de amistad enviada.",
+    "solicitud_aceptada": "Solicitud de amistad aceptada."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

@@ -6,7 +6,7 @@ import { navegar } from '../../rutas/compartido/navegacion'
 import { ARCHIVO_A_RUTA } from '../../rutas/compartido/rutas'
 import type { IconName } from '../../tipos/compartido/icono'
 import type { ClavePermiso } from '@/tipos/colaboradores/pagina_invitar_colaborador_rol_permisos'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { MODULOS, FILAS, PERFILES_NIVEL_RAPIDO, PERFIL_APLICADO } from '../../datos/colaboradores/permisos'
 
 const COLUMNAS: { clave: ClavePermiso; icono: IconName; color: string; etiqueta: string }[] = catalogoColaboradores.columnas_permisos as { clave: ClavePermiso; icono: IconName; color: string; etiqueta: string }[]
@@ -55,18 +55,18 @@ export function PaginaInvitarColaboradorRolPermisos() {
             </p>
           </div>
           <div className="flex flex-none items-center gap-2 max-[768px]:gap-1">
-            <button type="button" title={mensajesGlobales.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="ajustes-sistema" className="w-5 h-5" />
             </button>
-            <button type="button" title={mensajesGlobales.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name={'aplicaciones' as IconName} className="w-5 h-5" />
             </button>
-            <button type="button" title={mensajesGlobales.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="campana" className="w-5 h-5" />
             </button>
             <button
               type="button"
-              title={mensajesGlobales.CERRAR}
+              title={textosRedSocial.CERRAR}
               onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
               className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8"
             >
@@ -183,7 +183,7 @@ export function PaginaInvitarColaboradorRolPermisos() {
                     <th className="min-w-[180px] whitespace-nowrap border-b border-gris-borde py-2 pr-1.5 text-left text-[0.72rem] font-semibold text-gris-texto-secundario">{catalogoColaboradores.campos_rol_permisos.columna_permiso}</th>
                     {COLUMNAS.map((c) => (
                       <th key={c.clave} className="whitespace-nowrap border-b border-gris-borde px-1.5 py-2 text-center text-[0.72rem] font-semibold text-gris-texto-secundario">
-                        {c.etiqueta} <TextoColor as="span" color={c.color} className="inline-block align-middle"><Icono name={c.icono} className="inline-block w-4 h-4 align-middle" /></TextoColor>
+                        {c.etiqueta} <TextoColor as="span" variante={c.color} className="inline-block align-middle"><Icono name={c.icono} className="inline-block w-4 h-4 align-middle" /></TextoColor>
                       </th>
                     ))}
                   </tr>
@@ -231,7 +231,7 @@ export function PaginaInvitarColaboradorRolPermisos() {
             onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
             className="rounded-lg border border-[#d1d5db] bg-white px-6 py-2.5 text-[0.875rem] font-medium text-gris-texto hover:bg-[#f9fafb] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            {mensajesGlobales.CANCELAR}
+            {textosRedSocial.CANCELAR}
           </button>
           <button
             type="button"
@@ -245,7 +245,7 @@ export function PaginaInvitarColaboradorRolPermisos() {
             onClick={() => NAVEGAR_A('32-10-colaboradores-popub-invitar-colaborador-03-vigencia.html')}
             className="inline-flex items-center gap-1.5 rounded-lg border-0 bg-primario px-6 py-2.5 text-[0.875rem] font-semibold text-white hover:bg-[#4a35d4] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            {mensajesGlobales.SIGUIENTE} <span>›</span>
+            {textosRedSocial.SIGUIENTE} <span>›</span>
           </button>
         </div>
       </div>

@@ -9,7 +9,7 @@ import { AvatarImagen } from '../../componentes/compartido/interfaz/avatar_image
 import { SuperficieColor } from '../../componentes/compartido/interfaz/superficie_color'
 import usuarioImg from '../../../recursos/imagenes/usuario.jpg'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import type { MiLista } from '@/tipos/amigos/pagina_amigos_listas'
 import { PERSONAS_CONOCER, TUS_LISTAS_LATERAL, ACTIVIDAD_RECIENTE_AMIGOS as ACTIVIDAD_RECIENTE } from '../../datos/amigos/panel_lateral'
 import { MIS_LISTAS, LISTAS_SUGERIDAS } from '../../datos/amigos/listas'
@@ -40,7 +40,7 @@ export function PaginaAmigosListas() {
                 <strong className="mb-0.75 block text-[13px] text-texto">{catalogoAmigos.secciones.organiza_contactos_titulo}</strong>
                 <p className="m-0 text-xs leading-[1.4] text-texto-suave">{catalogoAmigos.secciones.organiza_contactos_desc}</p>
               </div>
-              <button type="button" aria-label={mensajesGlobales.CERRAR} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-black/[0.06] hover:text-texto-suave">
+              <button type="button" aria-label={textosRedSocial.CERRAR} className="grid h-6 w-6 flex-none place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-black/[0.06] hover:text-texto-suave">
                 <Icono name="cerrar" className="h-3.5 w-3.5" />
               </button>
             </div>
@@ -49,7 +49,7 @@ export function PaginaAmigosListas() {
             <div className="mb-4.5 grid grid-cols-3 gap-3.5 max-[900px]:grid-cols-2 max-[600px]:grid-cols-1">
               {MIS_LISTAS.map((l) => (
                 <article key={l.nombre} className="relative flex flex-col rounded-[10px] border border-borde bg-white p-4 pb-4 pt-4.5">
-                  <button type="button" aria-label={mensajesGlobales.MAS_OPCIONES} className="absolute right-3.5 top-3.5 grid h-6 w-6 place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-black/[0.06] hover:text-texto-suave">
+                  <button type="button" aria-label={textosRedSocial.MAS_OPCIONES} className="absolute right-3.5 top-3.5 grid h-6 w-6 place-items-center rounded-full border-0 bg-transparent p-0 text-[#b3b0c2] hover:bg-black/[0.06] hover:text-texto-suave">
                     <Icono name="puntos" className="h-3.5 w-3.5" />
                   </button>
                   <div className={`mb-2.5 grid h-10 w-10 flex-none place-items-center rounded-[10px] text-white ${CLASES_ICONO_LISTA[l.color]}`}>
@@ -82,12 +82,12 @@ export function PaginaAmigosListas() {
 
             <div className="mb-3.5 flex items-center justify-between">
               <h2 className="m-0 text-[15px] font-bold text-texto">{catalogoAmigos.secciones.listas_sugeridas}</h2>
-              <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{mensajesGlobales.VER_TODAS}</a>
+              <a href="#" className="text-xs font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
             </div>
             <div className="grid grid-cols-4 gap-3 max-[900px]:grid-cols-2 max-[600px]:grid-cols-2 max-[380px]:grid-cols-1">
               {LISTAS_SUGERIDAS.map((l) => (
                 <article key={l.nombre} className="flex items-center gap-2.5 rounded-[10px] border border-borde bg-white p-3">
-                  <SuperficieColor color={l.color} className="grid h-[34px] w-[34px] flex-none place-items-center rounded-[9px] text-white">
+                  <SuperficieColor variante={l.color} className="grid h-[34px] w-[34px] flex-none place-items-center rounded-[9px] text-white">
                     <Icono name={l.icono} className="h-4 w-4" />
                   </SuperficieColor>
                   <div className="min-w-0 flex-1">

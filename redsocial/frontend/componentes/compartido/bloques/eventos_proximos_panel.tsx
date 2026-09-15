@@ -1,12 +1,12 @@
-import mensajesGlobales from '../../../mensajes/globales/textos.json'
+import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { EventosProximosPanelProps } from '@/tipos/compartido/eventos_proximos_panel'
 
 export function EventosProximosPanel({ eventos }: EventosProximosPanelProps) {
   return (
     <section className="rounded-xl border border-borde bg-white p-4">
       <div className="mb-3.5 flex items-center justify-between">
-        <h2 className="m-0 text-[13px] text-texto">{mensajesGlobales.EVENTOS_PROXIMOS}</h2>
-        <a href="#" className="text-[11px] text-primario no-underline">{mensajesGlobales.VER_TODOS}</a>
+        <h2 className="m-0 text-[13px] text-texto">{textosRedSocial.EVENTOS_PROXIMOS}</h2>
+        <a href="#" className="text-[11px] text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
       </div>
       {eventos.map((e) => (
         <article key={e.titulo} className="grid grid-cols-[52px_1fr] gap-3.5 border-b border-[#f0eef5] py-2.5">

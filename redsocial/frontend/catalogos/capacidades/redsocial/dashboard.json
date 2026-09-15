@@ -1,5 +1,20 @@
 {
-  "acciones": [],
+  "acciones": ["ver_resumen", "personalizar", "exportar"],
+  "alertas": {
+    "confirmar_restablecer_dashboard": "Vas a restablecer el dashboard a su configuración original."
+  },
+  "campos": {
+    "periodo": "Periodo"
+  },
+  "errores": {
+    "carga_dashboard": "No fue posible cargar el dashboard."
+  },
+  "mensajes": {
+    "sin_datos_periodo": "No hay datos para el periodo seleccionado."
+  },
+  "toast": {
+    "dashboard_personalizado": "Dashboard actualizado."
+  },
   "contexto_requerido": [
     "empresa_id",
     "sucursal_id",

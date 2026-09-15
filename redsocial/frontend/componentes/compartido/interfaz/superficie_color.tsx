@@ -1,23 +1,25 @@
 import type { ElementType, ReactNode } from 'react'
-import { useEstiloDinamico } from '../usar_estilo_dinamico'
+import { CLASE_SUPERFICIE, CLASE_DEGRADADO } from '../paleta_colores'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
 void catalogoCompartido
 
 export function SuperficieColor({
-  color,
+  variante,
+  degradado,
   className = '',
   children,
   as: Tag = 'div',
 }: {
-  color: string
+  variante?: string
+  degradado?: string
   className?: string
   children?: ReactNode
   as?: ElementType
 }) {
-  const ref = useEstiloDinamico<HTMLElement>({ background: color })
+  const clase = degradado ? CLASE_DEGRADADO[degradado] : variante ? CLASE_SUPERFICIE[variante] : undefined
   return (
-    <Tag ref={ref} className={className}>
+    <Tag className={`${clase ?? 'bg-gris-categoria'} bg-cover bg-center ${className}`}>
       {children}
     </Tag>
   )

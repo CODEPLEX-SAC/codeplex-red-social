@@ -4,7 +4,7 @@ import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colabor
 import { navegar } from '../../rutas/compartido/navegacion'
 import { ARCHIVO_A_RUTA } from '../../rutas/compartido/rutas'
 import type { IconName } from '../../tipos/compartido/icono'
-import mensajesGlobales from '../../mensajes/globales/textos.json'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { VIGENCIA_DEFAULT, OPCIONES_RECORDATORIO, OPCIONES_ZONA_HORARIA } from '../../datos/colaboradores/vigencia'
 
 const NAVEGAR_A = (archivo: string) => {
@@ -41,18 +41,18 @@ export function PaginaInvitarColaboradorVigencia() {
             </p>
           </div>
           <div className="flex flex-none items-center gap-2 max-[768px]:gap-1">
-            <button type="button" title={mensajesGlobales.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.CONFIGURACION} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="ajustes-sistema" className="w-5 h-5" />
             </button>
-            <button type="button" title={mensajesGlobales.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.APLICACIONES} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name={'aplicaciones' as IconName} className="w-5 h-5" />
             </button>
-            <button type="button" title={mensajesGlobales.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
+            <button type="button" title={textosRedSocial.AVISO_CAMPANA} className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8">
               <Icono name="campana" className="w-5 h-5" />
             </button>
             <button
               type="button"
-              title={mensajesGlobales.CERRAR}
+              title={textosRedSocial.CERRAR}
               onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
               className="flex h-9 w-9 items-center justify-center rounded-lg border-0 bg-transparent text-[#6b7280] hover:bg-[#f3f4f6] hover:text-[#374151] max-[768px]:h-8 max-[768px]:w-8"
             >
@@ -263,7 +263,7 @@ export function PaginaInvitarColaboradorVigencia() {
             onClick={() => NAVEGAR_A('29-10-colaboradores-todos.html')}
             className="rounded-lg border border-[#d1d5db] bg-white px-6 py-2.5 text-[0.875rem] font-medium text-gris-texto hover:bg-[#f9fafb] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            {mensajesGlobales.CANCELAR}
+            {textosRedSocial.CANCELAR}
           </button>
           <button
             type="button"
@@ -277,7 +277,7 @@ export function PaginaInvitarColaboradorVigencia() {
             onClick={() => NAVEGAR_A('33-10-colaboradores-popub-invitar-colaborador-04-resumen.html')}
             className="inline-flex items-center gap-1.5 rounded-lg border-0 bg-primario px-6 py-2.5 text-[0.875rem] font-semibold text-white hover:bg-[#4a35d4] max-[768px]:w-full max-[768px]:justify-center max-[480px]:px-3 max-[480px]:py-[9px] max-[480px]:text-[0.78rem]"
           >
-            {mensajesGlobales.SIGUIENTE} <span>›</span>
+            {textosRedSocial.SIGUIENTE} <span>›</span>
           </button>
         </div>
       </div>

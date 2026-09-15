@@ -1,4 +1,3 @@
-import { useEstiloDinamico } from '../usar_estilo_dinamico'
 import type { InsigniaProps } from '@/tipos/compartido/insignia'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
@@ -10,10 +9,6 @@ const CLASES_PRIVACY: Record<'publico' | 'privado', string> = {
 }
 
 export function Insignia(props: InsigniaProps) {
-  const ref = useEstiloDinamico<HTMLSpanElement>(
-    props.variant === 'status' ? { color: props.color, 'background-color': props.background } : {},
-  )
-
   switch (props.variant) {
     case 'counter':
       return (
@@ -24,7 +19,7 @@ export function Insignia(props: InsigniaProps) {
 
     case 'status':
       return (
-        <span ref={ref} className="inline-block whitespace-nowrap rounded-xl px-2 py-0.5 text-[10px] font-bold">
+        <span className={`inline-block whitespace-nowrap rounded-xl px-2 py-0.5 text-[10px] font-bold ${props.className}`}>
           {props.children}
         </span>
       )
