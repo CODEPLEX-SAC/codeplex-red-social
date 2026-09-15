@@ -25,3 +25,7 @@ dist-ssr
 
 #local
 CodePlex_RedSocial_HTML_nativo
+
+# Validacion local con herramientas/validacion/validar_capacidad.ps1
+_validacion/
+herramientas/validacion/__pycache__/
