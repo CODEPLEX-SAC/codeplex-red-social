@@ -1,0 +1,6 @@
+export * from './bloques/bloque_estadisticas_todos_modulos1'
+export * from './bloques/seccion_evolucion_ventas2'
+export * from './bloques/seccion_gastos_categoria'
+export * from './bloques/seccion_gastos_categoria2'
+export * from './bloques/seccion_proyeccion_ventas'
+export * from './bloques/seccion_top_clientes'

@@ -1,0 +1,69 @@
+{
+  "historias": [
+    {
+      "nombre": "Tu historia",
+      "crear": true
+    },
+    {
+      "nombre": "Maria F."
+    },
+    {
+      "nombre": "Luis R."
+    },
+    {
+      "nombre": "Carmen L."
+    },
+    {
+      "nombre": "Diego M."
+    },
+    {
+      "nombre": "Ana G."
+    },
+    {
+      "nombre": "Grupo Ing."
+    },
+    {
+      "nombre": "Javier T."
+    },
+    {
+      "nombre": "Sofía R."
+    },
+    {
+      "nombre": "Equipo TI"
+    }
+  ],
+  "contactosLinea": [
+    {
+      "nombre": "Ana García",
+      "colaborador": true
+    },
+    {
+      "nombre": "Luis Rodríguez",
+      "colaborador": true
+    },
+    {
+      "nombre": "Carmen López",
+      "colaborador": true
+    },
+    {
+      "nombre": "Diego Mendoza"
+    },
+    {
+      "nombre": "María Fernández"
+    }
+  ],
+  "publicacionInicio": {
+    "nombre": "María Fernández",
+    "tiempo": "2 horas · 🌐",
+    "texto": "Avance del proyecto del puente en la Av. Central.",
+    "reacciones": "👍❤️😮 128",
+    "comentarios": "24 comentarios"
+  },
+  "publicacionCompartidaInicio": {
+    "nombre": "Luis Rodríguez",
+    "tiempoCompartio": "3 horas · 🌐",
+    "origenNombre": "Ingenieros Unidos",
+    "origenTiempo": "5 horas",
+    "texto": "Normas de seguridad en obras: siempre primero la prevención."
+  }
+}

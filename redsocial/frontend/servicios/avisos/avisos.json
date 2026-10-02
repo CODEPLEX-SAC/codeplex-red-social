@@ -1,0 +1,462 @@
+{
+  "avisos": [
+    {
+      "id": "1",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "nombreUsuario": "Ana García y 4 personas más",
+      "accion": "comentaron en tu publicación",
+      "detalle": "\"Excelente iniciativa! Me encantaría participar\"",
+      "tiempo": "Hace 10 min",
+      "leida": false,
+      "avataresExtra": 3
+    },
+    {
+      "id": "2",
+      "icono": "grupos",
+      "colorIcono": "azul",
+      "nombreUsuario": "Nuevos miembros en tu grupo",
+      "nombreGrupo": "\"Ingenieros Civiles\"",
+      "detalle": "3 personas se unieron a tu grupo",
+      "tiempo": "Hace 25 min",
+      "leida": false,
+      "avataresExtra": 1
+    },
+    {
+      "id": "3",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "nombreUsuario": "Luis Rodríguez",
+      "accion": "te mencionó en un comentario",
+      "detalle": "\"@Pedro Lozano revisa esta propuesta\"",
+      "tiempo": "Hace 1 hora",
+      "leida": false
+    },
+    {
+      "id": "4",
+      "icono": "calendario",
+      "colorIcono": "rojo",
+      "nombreUsuario": "Recordatorio de evento",
+      "detalle": "\"Reunión de Proyectos\" comienza en 30 minutos",
+      "tiempo": "Hace 2 horas",
+      "leida": false
+    },
+    {
+      "id": "5",
+      "icono": "me-gusta",
+      "colorIcono": "azul",
+      "nombreUsuario": "María Fernández",
+      "accion": "reaccionó a tu publicación",
+      "detalle": "\"Nuevo diseño del dashboard de la comunidad\" ✨",
+      "tiempo": "Hace 3 horas",
+      "leida": false
+    }
+  ],
+  "avisosNoLeidas": [
+    {
+      "id": "1",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "nombreUsuario": "Ana García y 4 personas más",
+      "accion": "comentaron en tu publicación",
+      "detalle": "\"Excelente iniciativa! Me encantaría participar\"",
+      "tiempo": "Hace 10 min",
+      "leida": false
+    },
+    {
+      "id": "2",
+      "tipo": "icono",
+      "icono": "grupos",
+      "colorIcono": "azul",
+      "nombreUsuario": "Nuevos miembros en tu grupo",
+      "nombreGrupo": "\"Ingenieros Civiles\"",
+      "detalle": "3 personas se unieron a tu grupo",
+      "tiempo": "Hace 25 min",
+      "leida": false
+    },
+    {
+      "id": "3",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "conInsigniaIcono": true,
+      "nombreUsuario": "Luis Rodríguez",
+      "accion": "te mencionó en un comentario",
+      "detalle": "\"@Pedro Lozano revisa esta propuesta\"",
+      "tiempo": "Hace 1 hora",
+      "leida": false
+    },
+    {
+      "id": "4",
+      "tipo": "icono",
+      "icono": "calendario",
+      "colorIcono": "rojo",
+      "nombreUsuario": "Recordatorio de evento",
+      "detalle": "\"Reunión de Proyectos\" comienza en 30 minutos",
+      "tiempo": "Hace 2 horas",
+      "leida": false
+    },
+    {
+      "id": "5",
+      "tipo": "icono",
+      "icono": "me-gusta",
+      "colorIcono": "azul",
+      "nombreUsuario": "María Fernández",
+      "accion": "reaccionó a tu publicación",
+      "detalle": "\"Nuevo diseño del dashboard de la comunidad\" ✨",
+      "tiempo": "Hace 3 horas",
+      "leida": false
+    },
+    {
+      "id": "6",
+      "tipo": "avatar",
+      "icono": "amigos",
+      "colorIcono": "azul",
+      "nombreUsuario": "Jorge Ramírez",
+      "accion": "te envió una solicitud de amistad",
+      "tiempo": "Hace 4 horas",
+      "leida": false,
+      "solicitud": true
+    },
+    {
+      "id": "7",
+      "tipo": "icono",
+      "icono": "tienda",
+      "colorIcono": "rojo",
+      "nombreUsuario": "Nuevo producto en Marketplace",
+      "detalle": "\"Laptop Lenovo IdeaPad 5\" coincide con tu búsqueda",
+      "tiempo": "Hace 5 horas",
+      "leida": false
+    },
+    {
+      "id": "8",
+      "tipo": "icono",
+      "icono": "grupos",
+      "colorIcono": "morado",
+      "nombreUsuario": "Tu grupo",
+      "nombreGrupo": "\"Diseño UX/UI LATAM\"",
+      "detalle": "5 publicaciones nuevas",
+      "tiempo": "Hace 6 horas",
+      "leida": false,
+      "accion": "tiene nuevas publicaciones"
+    },
+    {
+      "id": "9",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "conInsigniaIcono": true,
+      "nombreUsuario": "Sofía Torres",
+      "accion": "te mencionó en un comentario",
+      "detalle": "\"@Pedro Lozano totalmente de acuerdo!\"",
+      "tiempo": "Hace 8 horas",
+      "leida": false
+    },
+    {
+      "id": "10",
+      "tipo": "icono",
+      "icono": "documento",
+      "colorIcono": "morado",
+      "nombreUsuario": "Nueva actualización en el sistema",
+      "detalle": "Se ha publicado una nueva versión de los Términos y Condiciones",
+      "tiempo": "Hace 10 horas",
+      "leida": false
+    },
+    {
+      "id": "11",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "nombreUsuario": "Carlos Mendoza",
+      "accion": "reaccionó a tu comentario",
+      "detalle": "\"Muy buen punto, lo voy a revisar\"",
+      "tiempo": "Hace 12 horas",
+      "leida": false
+    },
+    {
+      "id": "12",
+      "tipo": "icono",
+      "icono": "idea",
+      "colorIcono": "amarillo",
+      "nombreUsuario": "Tienes una nueva sugerencia en Ideas",
+      "detalle": "\"Mejora en el módulo de reportes\"",
+      "tiempo": "Hace 1 día",
+      "leida": false
+    }
+  ],
+  "menciones": [
+    {
+      "id": "1",
+      "tipo": "publicacion",
+      "nombre": "Ana García",
+      "tiempo": "Hace 10 min",
+      "texto": ":usuario gracias por tu apoyo en este proyecto, tus aportes fueron clave. 🙌",
+      "vistaPrevia": {
+        "icono": "imagen",
+        "colorSuperficie": "gris",
+        "titulo": "Nuevo espacio de aprendizaje para la comunidad"
+      }
+    },
+    {
+      "id": "2",
+      "tipo": "comentario",
+      "nombre": "Luis Rodríguez",
+      "tiempo": "Hace 25 min",
+      "texto": ":usuario revisa esta propuesta y dices qué opinas",
+      "vistaPrevia": {
+        "icono": "documento",
+        "colorSuperficie": "gris",
+        "titulo": "Propuesta de mejora en el módulo de contabilidad"
+      }
+    },
+    {
+      "id": "3",
+      "tipo": "grupo",
+      "nombre": "Equipo de Diseño",
+      "tiempo": "Hace 1 hora",
+      "texto": ":usuario te hemos agregado en esta discusión sobre la nueva interfaz.",
+      "vistaPrevia": {
+        "icono": "grupos",
+        "colorSuperficie": "morado",
+        "titulo": "Diseño UX/UI LATAM",
+        "subtitulo": "Grupo · 24 miembros"
+      }
+    },
+    {
+      "id": "4",
+      "tipo": "comentario",
+      "nombre": "María Fernández",
+      "tiempo": "Hace 2 horas",
+      "texto": "Totalmente de acuerdo con lo que dice :usuario 👍",
+      "vistaPrevia": {
+        "icono": "documento",
+        "colorSuperficie": "naranja",
+        "titulo": "5 consejos para una mejor organización financiera"
+      }
+    },
+    {
+      "id": "5",
+      "tipo": "evento",
+      "nombre": "Jorge Ramírez",
+      "tiempo": "Hace 4 horas",
+      "texto": ":usuario te esperamos en este evento, tu participación será valiosa.",
+      "vistaPrevia": {
+        "icono": "calendario",
+        "colorSuperficie": "azul",
+        "titulo": "Webinar: Actualización Tributaria 2026",
+        "subtitulo": "Evento virtual",
+        "fecha": { "dia": "22", "mes": "JUN" }
+      }
+    },
+    {
+      "id": "6",
+      "tipo": "comentario",
+      "nombre": "Sofía Torres",
+      "tiempo": "Hace 6 horas",
+      "texto": ":usuario aquí está el diseño del que hablamos ✨",
+      "vistaPrevia": {
+        "icono": "idea",
+        "colorSuperficie": "violeta",
+        "titulo": "Avance de la nueva identidad visual"
+      }
+    },
+    {
+      "id": "7",
+      "tipo": "publicacion",
+      "nombre": "Carlos Mendoza",
+      "tiempo": "Hace 8 horas",
+      "texto": "Gracias a :usuario por la guía, muy útil.",
+      "vistaPrevia": {
+        "icono": "documento",
+        "colorSuperficie": "gris",
+        "titulo": "Recursos gratuitos para aprender TypeScript"
+      }
+    },
+    {
+      "id": "8",
+      "tipo": "grupo",
+      "nombre": "Comunidad Contable",
+      "tiempo": "Hace 12 horas",
+      "texto": ":usuario ¿podrías compartir tu opinión sobre este tema?",
+      "vistaPrevia": {
+        "icono": "grupos",
+        "colorSuperficie": "azul",
+        "titulo": "Profesionales de Contabilidad",
+        "subtitulo": "Grupo · 1.2K miembros"
+      }
+    }
+  ],
+  "eventosAviso": [
+    {
+      "id": "1",
+      "grupo": "hoy",
+      "avatar": false,
+      "icono": "calendario",
+      "colorIcono": "rojo",
+      "titulo": "Recordatorio de evento",
+      "detalle": "El evento \"Webinar: Actualización Tributaria 2026\" comienza en 30 minutos.",
+      "tiempo": "Hoy, 10:30 a. m."
+    },
+    {
+      "id": "2",
+      "grupo": "hoy",
+      "avatar": true,
+      "icono": "enviar",
+      "colorIcono": "morado",
+      "conInsigniaIcono": true,
+      "titulo": "Ana García te invitó a un evento",
+      "detalle": "\"Taller: Diseño de marca personal para profesionales\"",
+      "tiempo": "Hoy, 9:15 a. m.",
+      "accion": "invitacion"
+    },
+    {
+      "id": "3",
+      "grupo": "hoy",
+      "avatar": false,
+      "icono": "amigos",
+      "colorIcono": "morado",
+      "titulo": "María Flores confirmó su asistencia a tu evento",
+      "detalle": "\"Reunión de Proyectos Q3\"",
+      "tiempo": "Hoy, 8:40 a. m."
+    },
+    {
+      "id": "4",
+      "grupo": "hoy",
+      "avatar": false,
+      "forma": "cuadrado",
+      "icono": "reloj",
+      "colorIcono": "morado",
+      "titulo": "El evento cambió de horario",
+      "detalle": "\"Conferencia de Innovación Contable\" ahora será el 25 de jun. a las 4:00 p. m.",
+      "tiempo": "Hoy, 8:10 a. m."
+    },
+    {
+      "id": "5",
+      "grupo": "hoy",
+      "avatar": true,
+      "icono": "comentario",
+      "colorIcono": "azul",
+      "conInsigniaIcono": true,
+      "titulo": "Carlos Mendoza publicó una actualización en el evento",
+      "detalle": "\"Networking para profesionales tech\"",
+      "detalleSecundario": "Hemos añadido un nuevo panelista. ¡No te lo pierdas!",
+      "tiempo": "Hoy, 7:25 a. m."
+    },
+    {
+      "id": "6",
+      "grupo": "ayer",
+      "avatar": false,
+      "forma": "cuadrado",
+      "icono": "idea",
+      "colorIcono": "morado",
+      "titulo": "Nuevo evento recomendado",
+      "detalle": "\"IA para negocios: de la teoría a la práctica\" podría interesarte.",
+      "tiempo": "Ayer, 6:30 p. m.",
+      "accion": "ver_evento"
+    },
+    {
+      "id": "7",
+      "grupo": "ayer",
+      "avatar": true,
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "conInsigniaIcono": true,
+      "titulo": "Sofía Torres te mencionó en un evento",
+      "detalle": "\"UX/UI LATAM 2026\"",
+      "detalleSecundario": "@Pedro Lozano nos vemos en el evento, será genial contar con tu experiencia.",
+      "tiempo": "Ayer, 4:12 p. m."
+    },
+    {
+      "id": "8",
+      "grupo": "ayer",
+      "avatar": false,
+      "icono": "calendario",
+      "colorIcono": "morado",
+      "titulo": "Tu recordatorio de evento",
+      "detalle": "\"Taller de Excel para contadores\" es mañana a las 10:00 a. m.",
+      "tiempo": "Ayer, 2:18 p. m."
+    }
+  ],
+  "conteos": {
+    "todas": 12,
+    "no_leidas": 12,
+    "menciones": 8,
+    "solicitudes": 6
+  },
+  "solicitudesAmistad": [
+    {
+      "id": "1",
+      "nombre": "Lucía Ramírez",
+      "rol": "Diseñadora UI/UX | Digital Products",
+      "comunes": "12 conexiones en común",
+      "tiempo": "Hace 2 días"
+    },
+    {
+      "id": "2",
+      "nombre": "Carlos Mendoza",
+      "rol": "Contador Público | Gestión Tributaria",
+      "comunes": "5 conexiones en común",
+      "tiempo": "Hace 3 días"
+    },
+    {
+      "id": "3",
+      "nombre": "Valeria Torres",
+      "rol": "Analista de Datos | Business Intelligence",
+      "comunes": "8 conexiones en común",
+      "tiempo": "Hace 5 días"
+    }
+  ],
+  "solicitudesGrupo": [
+    {
+      "id": "1",
+      "nombreGrupo": "Comunidad de Contadores del Perú",
+      "miembros": "12.4K miembros",
+      "solicitanteNombre": "Diego Fernández",
+      "solicitanteTexto": "quiere unirse a este grupo.",
+      "tiempo": "Hace 1 día",
+      "colorMiniatura": "nocturno",
+      "iconoMiniatura": "contabilidad"
+    },
+    {
+      "id": "2",
+      "nombreGrupo": "Diseño UX/UI LATAM",
+      "miembros": "8.7K miembros",
+      "solicitanteNombre": "Camila Rojas",
+      "solicitanteTexto": "quiere unirse a este grupo.",
+      "tiempo": "Hace 2 días",
+      "colorMiniatura": "nocturno",
+      "iconoMiniatura": "panel"
+    }
+  ],
+  "solicitudesEvento": [
+    {
+      "id": "1",
+      "nombreEvento": "Webinar: Actualización Tributaria 2026",
+      "organizador": "Por Colegio de Contadores del Perú",
+      "solicitanteNombre": "María Flores",
+      "solicitanteTexto": "solicitó participar en este evento.",
+      "tiempo": "Hace 4 horas",
+      "dia": "22",
+      "mes": "JUN",
+      "colorMiniatura": "nocturno"
+    }
+  ],
+  "solicitudesColaboracion": [],
+  "detalle": {
+    "autor": "Ana García",
+    "tiempo": "hace 10 min",
+    "comentario": "\"Excelente iniciativa! Me encantaría participar\"",
+    "publicacion": {
+      "titulo": "Nuevo espacio de aprendizaje para la comunidad",
+      "descripcion": "Estamos muy emocionados de compartir este nuevo espacio..."
+    },
+    "comentarios": [
+      { "nombre": "Ana García", "texto": "Excelente iniciativa!", "tiempo": "Hace 10 min" },
+      { "nombre": "Carlos Mendoza", "texto": "¿Cuenta conmigo!", "tiempo": "Hace 25 min" },
+      { "nombre": "María Fernández", "texto": "Muy buen enfoque", "tiempo": "Hace 1 hora" },
+      { "nombre": "Jorge Ramírez", "texto": "Me parece excelente", "tiempo": "Hace 2 horas" },
+      { "nombre": "Sofía Torres", "texto": "¿Cuándo inicia?", "tiempo": "Hace 3 horas" }
+    ]
+  }
+}

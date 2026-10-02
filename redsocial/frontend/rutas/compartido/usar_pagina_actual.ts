@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { reemplazarRuta, usarRutaActual } from './navegacion'
-import type { RutaApp } from '@/tipos/enrutamiento/rutas'
+import type { RutaApp } from '@/tipos/enrutamiento/contrato_rutas'
 import { RUTA_INICIAL, resolverRuta } from './rutas'
 
 export function usarPaginaActual(): RutaApp | undefined {

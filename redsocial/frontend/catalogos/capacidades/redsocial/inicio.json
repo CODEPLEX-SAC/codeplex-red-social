@@ -22,6 +22,12 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "publicar": "INICIO_PUBLICAR",
+    "reaccionar": "INICIO_REACCIONAR",
+    "comentar": "INICIO_COMENTAR",
+    "compartir": "INICIO_COMPARTIR"
+  },
   "rutas": {
     "principal": "/inicio"
   },
@@ -36,7 +42,7 @@
     "eventos_proximos": "Eventos próximos"
   },
   "placeholders": {
-    "que_estas_pensando": "¿Qué estás pensando, {nombre}?"
+    "que_estas_pensando": "¿Qué estás pensando, :nombre?"
   },
   "botones": {
     "foto_video": "Foto/Video",
@@ -50,8 +56,65 @@
     "compartir": "Compartir",
     "ver_mas": "Ver más"
   },
+  "contadores": {
+    "reaccion_singular": "reacción",
+    "reaccion_plural": "reacciones",
+    "comentario_singular": "comentario",
+    "comentario_plural": "comentarios"
+  },
+  "publicacion": {
+    "tiempo_ahora": "Ahora"
+  },
   "leyendas": {
     "colaborador": "(COLABORADOR)",
     "compartio_una_publicacion": "compartió una publicación."
+  },
+  "modal_crear_publicacion": {
+    "titulo": "Crear publicación",
+    "cerrar": "Cerrar",
+    "marcador_editor": "¿Qué estás pensando, :nombre?",
+    "etiqueta_editor": "Contenido de la publicación",
+    "filas_minimas": 4,
+    "clase_editor": "m-0 block w-full resize-none overflow-hidden border-0 bg-transparent p-0 text-cuerpo leading-1.55 text-texto shadow-none outline-none placeholder:text-texto-suave",
+    "etiqueta_tipos": "Tipo de publicación",
+    "tipos": [
+      { "valor": "publicacion", "etiqueta": "Publicación" },
+      { "valor": "encuesta", "etiqueta": "Encuesta" },
+      { "valor": "pregunta", "etiqueta": "Pregunta" }
+    ],
+    "encuesta": {
+      "titulo": "Opciones de la encuesta",
+      "minimo": "(mínimo 2)",
+      "marcador_opcion": "Opción :numero",
+      "etiqueta_opcion": "Opción :numero de la encuesta",
+      "quitar_opcion": "Quitar opción :numero",
+      "agregar_opcion": "Agregar opción",
+      "opciones_iniciales": 2,
+      "opciones_minimas": 2,
+      "opciones_maximas": 6,
+      "caracteres_maximos": 80
+    },
+    "prioridad": {
+      "titulo": "Prioridad",
+      "opciones": [
+        { "valor": "urgente", "etiqueta": "Urgente", "punto": "h-1.75 w-1.75 flex-none rounded-full bg-peligro" },
+        { "valor": "normal", "etiqueta": "Normal", "punto": "h-1.75 w-1.75 flex-none rounded-full bg-naranja-categoria" }
+      ],
+      "inicial": "normal"
+    },
+    "agregar_a_publicacion": "Agregar a tu publicación",
+    "foto_video": "Foto/Video",
+    "medios": {
+      "etiqueta_selector": "Seleccionar fotos o videos",
+      "tipos_aceptados": "image/*,video/*",
+      "prefijos_aceptados": ["image/", "video/"],
+      "prefijo_video": "video/",
+      "tamano_maximo": 52428800,
+      "maximo_archivos": 10,
+      "vista_previa": "Vista previa de archivos",
+      "texto_alternativo": "Archivo :numero",
+      "quitar": "Quitar archivo :numero"
+    },
+    "publicar": "Publicar"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "clasesModulo": {
+    "verde": "bg-t-34c759",
+    "azul": "bg-t-007aff",
+    "morado": "bg-t-5856d6",
+    "naranja": "bg-t-ff9500"
+  },
+  "clasesCategoriaColor": {
+    "verde": "bg-t-34c759",
+    "azul": "bg-t-007aff",
+    "morado": "bg-t-5856d6",
+    "naranja": "bg-t-ff9500",
+    "rosa": "bg-t-ff2d55"
+  }
+}

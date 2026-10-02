@@ -1,0 +1,10 @@
+{
+  "clasesIconoLista": {
+    "morado": "bg-morado-categoria",
+    "naranja": "bg-t-ea580c",
+    "azul": "bg-t-2563eb",
+    "verde": "bg-positivo-kpi",
+    "rosa": "bg-t-db2777",
+    "azul-claro": "bg-azul-categoria"
+  }
+}

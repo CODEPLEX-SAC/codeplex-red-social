@@ -1,0 +1,12 @@
+{
+  "estadoEstilo": {
+    "publicado": "bg-t-ede9fe text-t-6c3ce0",
+    "borrador": "bg-t-fef3c7 text-t-d97706",
+    "colaborador": "bg-t-d1fae5 text-t-059669"
+  },
+  "estadoEtiqueta": {
+    "publicado": "PUBLICADO",
+    "borrador": "BORRADOR",
+    "colaborador": "COLABORADOR"
+  }
+}

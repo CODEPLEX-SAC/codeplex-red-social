@@ -1,0 +1,30 @@
+{
+  "clasesFondo": {
+    "azul-oscuro": "degradado-azul-oscuro",
+    "naranja": "degradado-naranja-oscuro",
+    "violeta": "degradado-violeta-intenso",
+    "rosa-oscuro": "degradado-rosa-oscuro"
+  },
+  "clasesOverlay": {
+    "morado": "bg-morado-categoria",
+    "violeta": "bg-morado-categoria",
+    "naranja": "bg-naranja-categoria",
+    "rosa": "bg-rosa-categoria"
+  },
+  "clasesCategoria": {
+    "morado": "bg-morado-categoria",
+    "azul": "bg-azul-categoria",
+    "verde": "bg-verde-categoria",
+    "rosa": "bg-rosa-categoria",
+    "naranja": "bg-naranja-categoria",
+    "rojo": "bg-rojo-categoria",
+    "cyan": "bg-cian-categoria"
+  },
+  "clasesLateral": {
+    "morado": "bg-morado-categoria",
+    "naranja": "bg-naranja-categoria",
+    "verde": "bg-verde-categoria",
+    "azul": "bg-azul-categoria",
+    "rosa": "bg-rosa-categoria"
+  }
+}

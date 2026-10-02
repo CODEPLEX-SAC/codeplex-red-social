@@ -23,12 +23,25 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "GRUPOS_CONSULTAR",
+    "descubrir": "GRUPOS_DESCUBRIR",
+    "crear": "GRUPOS_CREAR",
+    "unirse": "GRUPOS_UNIRSE",
+    "aceptar_invitacion": "GRUPOS_ACEPTAR",
+    "rechazar_invitacion": "GRUPOS_RECHAZAR"
+  },
   "rutas": {
     "mis_grupos": "/grupos",
     "descubrir": "/grupos/descubrir",
     "invitaciones": "/grupos/invitaciones"
   },
   "titulo_menu": "Grupos",
+  "pestanas": [
+    {"clave": "mis_grupos", "etiqueta": "Mis grupos", "ruta": "/grupos"},
+    {"clave": "descubrir", "etiqueta": "Descubrir", "ruta": "/grupos/descubrir"},
+    {"clave": "invitaciones", "etiqueta": "Invitaciones", "ruta": "/grupos/invitaciones", "insignia": 2}
+  ],
   "titulos_pestanas": {
     "mis_grupos": "Mis grupos",
     "descubrir": "Descubrir",

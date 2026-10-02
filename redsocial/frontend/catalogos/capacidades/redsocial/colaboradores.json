@@ -1,5 +1,5 @@
 {
-  "acciones": ["listar", "invitar", "ver_detalle", "cambiar_rol", "dar_de_baja"],
+  "acciones": ["listar", "invitar", "ver_detalle", "cambiar_rol", "dar_de_baja", "exportar"],
   "alertas": {
     "confirmar_dar_de_baja": "El colaborador perderá el acceso a todos los sistemas asignados.",
     "confirmar_desactivar_acceso": "El colaborador no podrá volver a ingresar hasta que reactives su acceso."
@@ -25,6 +25,17 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "COLABORADORES_CONSULTAR",
+    "invitar": "COLABORADORES_INVITAR",
+    "ver_detalle": "COLABORADORES_CONSULTAR",
+    "cambiar_rol": "COLABORADORES_CAMBIAR",
+    "dar_de_baja": "COLABORADORES_DAR",
+    "exportar": "COLABORADORES_EXPORTAR"
+  },
+  "claves": {
+    "modulo": "colaboradores"
+  },
   "rutas": {
     "listado": "/colaboradores",
     "perfil": "/colaboradores/perfil",
@@ -52,9 +63,12 @@
     "detalle_colaborador": "Detalle del colaborador",
     "informacion_general": "Información general",
     "rol_y_permisos": "Rol y permisos",
+    "rol_y_perfil": "Rol y perfil",
     "rol_perfil_etiqueta": "Rol / Perfil",
     "descripcion": "Descripción",
     "aplicaciones_asignadas": "Aplicaciones asignadas (7)",
+    "aplicaciones_titulo": "Aplicaciones asignadas",
+    "vigencia_y_acceso": "Vigencia y acceso",
     "acciones_rapidas": "Acciones rápidas",
     "historial_actividad": "Historial de actividad",
     "datos_del_colaborador": "Datos del colaborador",
@@ -97,6 +111,10 @@
     "enviar_invitacion": "Enviar invitación",
     "se_enviara_por_correo": "Se enviará por correo",
     "enlace_invitacion_preview": "https://codeplex.com/invitacion/abc123def456"
+  },
+  "celda_vigencia": {
+    "tipo_rango": "rango",
+    "conector_hasta": "al"
   },
   "campos_vigencia": {
     "periodo_de_vigencia": "Período de vigencia",
@@ -171,7 +189,7 @@
   },
   "botones": {
     "invitar_colaborador": "Invitar colaborador",
-    "filtros": "Filtros",
+    "filtros": "Filtros avanzados",
     "exportar": "Exportar",
     "editar": "Editar",
     "reenviar": "Reenviar",
@@ -182,10 +200,65 @@
     "desactivar_acceso": "Desactivar acceso",
     "ver_todo": "Ver todo",
     "mas_opciones": "Más opciones",
+    "seleccionar_todos": "Seleccionar todos los colaboradores visibles",
     "volver_a_colaboradores": "Volver a colaboradores"
   },
   "placeholders": {
-    "buscar_colaborador": "Buscar colaborador por nombre, correo o teléfono..."
+    "buscar_colaborador": "Buscar colaborador por nombre, correo o teléfono...",
+    "fecha": "DD/MM/AAAA"
+  },
+  "menu_exportar": [
+    { "etiqueta": "Exportar a Excel", "icono": "planillas" },
+    { "etiqueta": "Exportar a CSV", "icono": "documento" },
+    { "etiqueta": "Exportar a PDF", "icono": "documento", "divisor": true },
+    { "etiqueta": "Exportar resultados filtrados", "icono": "filtro" }
+  ],
+  "panel_filtros_avanzados": {
+    "titulo": "Filtros avanzados",
+    "limpiar": "Limpiar filtros",
+    "vigencia_acceso": "Vigencia de acceso",
+    "fecha_invitacion": "Fecha de invitación",
+    "desde": "Desde",
+    "hasta": "Hasta",
+    "ultimo_acceso": { "etiqueta": "Último acceso", "opciones": ["Todos", "Últimas 24 horas", "Últimos 7 días", "Últimos 30 días", "Nunca"] },
+    "estado_acceso": "Estado de acceso",
+    "acceso_vigente": "Con acceso vigente",
+    "acceso_vencido": "Sin acceso (vencido)",
+    "aplicaciones_asignadas": { "etiqueta": "Aplicaciones asignadas", "opciones": ["Todas las aplicaciones", "Calendario", "Mensajes", "Actividad", "Marketplace"] },
+    "tipo_cuenta": "Tipo de cuenta",
+    "cuenta_creada": "Cuenta creada",
+    "cuenta_invitada": "Cuenta invitada (pendiente)",
+    "metodo_invitacion": { "etiqueta": "Método de invitación", "opciones": ["Todos", "Correo electrónico", "WhatsApp"] },
+    "aplicar": "Aplicar filtros",
+    "idioma": "es",
+    "marcador_fecha": "Selecciona la fecha",
+    "formato_fecha": "DD/MM/YYYY"
+  },
+  "confirmar_baja": {
+    "titulo": "Dar de baja colaborador",
+    "pregunta_prefijo": "¿Dar de baja a",
+    "pregunta_sufijo": "?",
+    "descripcion": "Esta acción cambiará su estado a Baja y retirará su acceso a los sistemas. El colaborador dejará de formar parte del equipo activo.",
+    "motivo": {
+      "etiqueta": "Motivo de baja",
+      "placeholder": "Selecciona un motivo",
+      "opciones": ["Renuncia voluntaria", "Término de contrato", "Despido", "Otro"]
+    },
+    "fecha_baja": "Fecha de baja",
+    "tecla_cerrar": "Escape"
+  },
+  "editar": {
+    "titulo": "Editar colaborador",
+    "subtitulo": "Modifica la información, el rol y los accesos de la persona.",
+    "cambiar_foto": "Cambiar foto",
+    "nombre_completo": "Nombre completo",
+    "telefono": "Teléfono",
+    "descripcion_del_rol": "Descripción del rol",
+    "fecha_inicio": "Fecha de inicio",
+    "fecha_fin": "Fecha de fin",
+    "estado_de_acceso": "Estado de acceso",
+    "aplicaciones_subtitulo": "Selecciona las aplicaciones a las que tendrá acceso.",
+    "guardar_cambios": "Guardar cambios"
   },
   "selectores": {
     "estado": { "etiqueta": "Estado", "opciones": ["Todos", "Activo", "Invitado", "Inactivo", "Baja"] },
@@ -205,7 +278,22 @@
     "vigencia": "Vigencia",
     "acciones": "Acciones"
   },
+  "perfil": {
+    "vigencia_acceso": {
+      "inicio": "Inicio",
+      "fin": "Fin"
+    },
+    "mas_aplicaciones": {
+      "prefijo": "y",
+      "sufijo": "más"
+    },
+    "informacion_general": {
+      "vigencia": "Vigencia",
+      "fecha_invitacion": "Fecha de invitación",
+      "ultimo_acceso": "Último acceso"
+    }
+  },
   "paginacion": {
-    "resumen": "Mostrando 1 a 6 de 24 colaboradores"
+    "resumen": "Mostrando {desde} a {hasta} de {total} colaboradores"
   }
 }

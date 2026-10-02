@@ -6,8 +6,15 @@ function Aplicacion() {
   usarInterceptarEnlaces()
   const pagina = usarPaginaActual()
 
-  if (!pagina) return <PaginaNoEncontrada />
-  return <>{pagina.render()}</>
+  return (
+    <>
+      {pagina ? pagina.render() : <PaginaNoEncontrada />}
+      <div className="pointer-events-none fixed bottom-2 left-2 z-50 rounded bg-black/60 px-2 py-1 text-xs text-white">
+        Última actualización: {__FECHA_ACTUALIZACION__}
+      </div>
+    </>
+  )
 }
 
 export default Aplicacion
+ 

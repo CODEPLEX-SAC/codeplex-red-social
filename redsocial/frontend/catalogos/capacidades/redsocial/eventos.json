@@ -1,5 +1,30 @@
 {
-  "acciones": ["listar", "crear", "invitar", "aceptar_invitacion", "rechazar_invitacion"],
+  "menu_organizas": {
+    "publicado": [
+      { "etiqueta": "Gestionar asistentes", "icono": "grupos" },
+      { "etiqueta": "Duplicar evento", "icono": "documento" },
+      { "etiqueta": "Compartir evento", "icono": "compartir" },
+      { "etiqueta": "Cerrar inscripciones", "icono": "bloqueado" }
+    ],
+    "borrador": [
+      { "etiqueta": "Duplicar evento", "icono": "documento" },
+      { "etiqueta": "Eliminar borrador", "icono": "eliminar", "peligro": true }
+    ]
+  },
+  "acciones": [
+    "listar",
+    "crear",
+    "invitar",
+    "aceptar_invitacion",
+    "rechazar_invitacion"
+  ],
+  "permisos": {
+    "listar": "EVENTOS_CONSULTAR",
+    "crear": "EVENTOS_CREAR",
+    "invitar": "EVENTOS_INVITAR",
+    "aceptar_invitacion": "EVENTOS_ACEPTAR",
+    "rechazar_invitacion": "EVENTOS_RECHAZAR"
+  },
   "alertas": {
     "confirmar_cancelar_evento": "Vas a cancelar este evento; se notificará a los invitados."
   },
@@ -33,9 +58,41 @@
     "populares": "/eventos/populares",
     "mis_eventos": "/eventos/mis-eventos",
     "invitaciones": "/eventos/invitaciones",
+    "invitaciones_pendientes": "/eventos/invitaciones/pendientes",
+    "invitaciones_aceptadas": "/eventos/invitaciones/aceptadas",
+    "invitaciones_rechazadas": "/eventos/invitaciones/rechazadas",
     "calendario": "/eventos/calendario"
   },
+  "claves": {
+    "modulo": "eventos",
+    "pestanas": {
+      "para_ti": "para_ti",
+      "proximos": "proximos",
+      "populares": "populares",
+      "mis_eventos": "mis_eventos",
+      "invitaciones": "invitaciones",
+      "calendario": "calendario"
+    },
+    "vistas_calendario": {
+      "mes": "mes",
+      "semana": "semana",
+      "dia": "dia"
+    },
+    "insignia": {
+      "pill": "pill",
+      "texto": "texto"
+    },
+    "desplazamiento_suave": "smooth"
+  },
   "titulo_menu": "Eventos",
+  "pestanas": [
+    {"clave": "para_ti", "etiqueta": "Para ti", "ruta": "/eventos"},
+    {"clave": "proximos", "etiqueta": "Próximos", "ruta": "/eventos/proximos"},
+    {"clave": "populares", "etiqueta": "Populares", "ruta": "/eventos/populares"},
+    {"clave": "mis_eventos", "etiqueta": "Mis eventos", "ruta": "/eventos/mis-eventos"},
+    {"clave": "invitaciones", "etiqueta": "Invitaciones", "ruta": "/eventos/invitaciones"},
+    {"clave": "calendario", "etiqueta": "Calendario", "ruta": "/eventos/calendario"}
+  ],
   "titulos_pestanas": {
     "para_ti": "Para ti",
     "proximos": "Próximos",
@@ -51,7 +108,11 @@
     "populares": "Populares",
     "mis_eventos": "Mis eventos",
     "invitaciones": "Invitaciones",
-    "calendario": "Calendario"
+    "calendario": "Calendario",
+    "todas_las_invitaciones": "Todas las invitaciones",
+    "invitaciones_pendientes": "Invitaciones pendientes",
+    "invitaciones_aceptadas": "Invitaciones aceptadas",
+    "invitaciones_rechazadas": "Invitaciones rechazadas"
   },
   "subtitulos": {
     "para_ti": "Descubre eventos que te interesan o crea los tuyos propios.",
@@ -59,7 +120,11 @@
     "populares": "Descubre los eventos más populares y con más asistentes.",
     "mis_eventos": "Administra los eventos que has creado o donde eres organizador.",
     "invitaciones": "Eventos a los que te han invitado.",
-    "calendario": "Visualiza todos tus eventos en el calendario."
+    "calendario": "Visualiza todos tus eventos en el calendario.",
+    "todas_las_invitaciones": "Aquí puedes ver todas tus invitaciones, sin importar su estado.",
+    "invitaciones_pendientes": "Eventos a los que te han invitado y están esperando tu respuesta.",
+    "invitaciones_aceptadas": "Eventos a los que confirmaste tu asistencia.",
+    "invitaciones_rechazadas": "Eventos a los que rechazaste la invitación."
   },
   "secciones": {
     "destacados": "Eventos destacados",
@@ -71,9 +136,12 @@
     "eventos_colaboras": "Eventos en los que colaboras",
     "proximos_de_tus_eventos": "Próximos de tus eventos",
     "resumen_de_tus_eventos": "Resumen de tus eventos",
-    "invitaciones_pendientes": "Invitaciones pendientes",
+    "invitaciones_pendientes": "Pendientes",
     "invitaciones_respondidas": "Invitaciones respondidas",
-    "leyenda": "Leyenda"
+    "invitaciones_aceptadas": "Aceptadas",
+    "invitaciones_rechazadas": "Rechazadas",
+    "leyenda": "Leyenda",
+    "eventos_de_hoy": "Eventos de hoy"
   },
   "botones": {
     "crear_evento": "Crear evento",
@@ -95,7 +163,14 @@
     "hoy": "Hoy",
     "vista_mes": "Mes",
     "vista_semana": "Semana",
-    "vista_dia": "Día"
+    "vista_dia": "Día",
+    "todo_el_dia": "Todo el día",
+    "limpiar_seleccion": "Limpiar selección",
+    "ver_todas": "Ver todas",
+    "ver_evento": "Ver evento",
+    "agregar_calendario": "Agregar al calendario",
+    "limpiar_filtros": "Limpiar filtros",
+    "quitar_filtro": "Quitar filtro"
   },
   "insignias": {
     "mas_popular": "Más popular",
@@ -124,11 +199,297 @@
     "todas": "Todas",
     "pendientes": "Pendientes",
     "aceptadas": "Aceptadas",
-    "rechazadas": "Rechazadas"
+    "rechazadas": "Rechazadas",
+    "ubicacion_prefijo": "Ubicación: "
   },
-  "dias_semana": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+  "pestanas_filtro_invitaciones": [
+    {"clave": "todas", "etiqueta": "Todas", "ruta": "/eventos/invitaciones"},
+    {"clave": "pendientes", "etiqueta": "Pendientes", "ruta": "/eventos/invitaciones/pendientes"},
+    {"clave": "aceptadas", "etiqueta": "Aceptadas", "ruta": "/eventos/invitaciones/aceptadas", "icono": "verificado"},
+    {"clave": "rechazadas", "etiqueta": "Rechazadas", "ruta": "/eventos/invitaciones/rechazadas", "icono": "cerrar"}
+  ],
+  "dias_semana": [
+    "Lun",
+    "Mar",
+    "Mié",
+    "Jue",
+    "Vie",
+    "Sáb",
+    "Dom"
+  ],
+  "dias_semana_cortos": [
+    "Lu",
+    "Ma",
+    "Mi",
+    "Ju",
+    "Vi",
+    "Sá",
+    "Do"
+  ],
+  "meses": [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+  ],
+  "panel_filtro_fecha": {
+    "opciones_rapidas": [
+      {"clave": "cualquiera", "etiqueta": "Cualquier fecha", "detalle": "Sin filtro de fechas"},
+      {"clave": "hoy", "etiqueta": "Hoy", "detalle": "Solo eventos de hoy"},
+      {"clave": "manana", "etiqueta": "Mañana", "detalle": "Solo eventos de mañana"},
+      {"clave": "fin_de_semana", "etiqueta": "Fin de semana", "detalle": "Eventos de sábado y domingo"}
+    ],
+    "opciones_avanzadas": [
+      {"clave": "especifica", "etiqueta": "Fecha específica", "detalle": "Selecciona una fecha en el calendario"},
+      {"clave": "rango", "etiqueta": "Rango de fechas", "detalle": "Selecciona un rango de fechas"}
+    ],
+    "clase_contenedor": "absolute left-0 top-tooltip z-20 flex max-h-135 overflow-y-auto overflow-x-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 panel-hoja-movil panel-hoja-movil-fija max-600:w-full max-600:flex-col max-600:rounded-b-none max-600:rounded-t-2xl max-600:border-0",
+    "titulo": "Filtrar por fecha",
+    "cualquier_fecha": "Cualquier fecha",
+    "hoy": "Hoy",
+    "manana": "Mañana",
+    "este_fin_de_semana": "Fin de semana",
+    "fecha_especifica": "Fecha específica",
+    "rango_de_fechas": "Rango de fechas",
+    "espacio": " ",
+    "separador_rango": " – ",
+    "conector_de": " de ",
+    "rango_seleccionado": "Rango seleccionado",
+    "aplicar": "Aplicar",
+    "cancelar": "Cancelar",
+    "cualquier_fecha_detalle": "Sin filtro de fechas",
+    "hoy_detalle": "Solo eventos de hoy",
+    "manana_detalle": "Solo eventos de mañana",
+    "fin_de_semana_detalle": "Eventos de sábado y domingo",
+    "fecha_especifica_detalle": "Selecciona una fecha en el calendario",
+    "rango_de_fechas_detalle": "Selecciona un rango de fechas",
+    "separador_dia": ", ",
+    "eventos_del": "Eventos del",
+    "otros_eventos_del": "Otros eventos del",
+    "eventos_encontrados": "eventos encontrados",
+    "conector_al": " al ",
+    "rango_apertura": " (",
+    "rango_cierre": ")",
+    "sin_eventos_titulo": "No hay eventos este fin de semana",
+    "sin_eventos_texto": "Por el momento no hay eventos programados para el sábado y domingo.",
+    "explorar_otros": "Explorar otros eventos",
+    "sugeridos": "Eventos que podrían interesarte"
+  },
+  "panel_filtro_estado": {
+    "opciones": [
+      {"clave": "todos", "etiqueta": "Todos los estados"},
+      {"clave": "publicados", "etiqueta": "Publicados"},
+      {"clave": "borradores", "etiqueta": "Borradores"},
+      {"clave": "finalizados", "etiqueta": "Finalizados"},
+      {"clave": "cancelados", "etiqueta": "Cancelados"}
+    ],
+    "titulo": "Filtrar por estado",
+    "todos_los_estados": "Todos los estados",
+    "publicados": "Publicados",
+    "borradores": "Borradores",
+    "finalizados": "Finalizados",
+    "cancelados": "Cancelados",
+    "limpiar": "Limpiar",
+    "aplicar": "Aplicar"
+  },
+  "panel_filtro_ubicacion": {
+    "titulo": "Ubicación",
+    "todas_las_ubicaciones": "Todas las ubicaciones",
+    "mi_ubicacion_actual": "Mi ubicación actual",
+    "ciudades_principales": "Ciudades principales",
+    "mas_ubicaciones": "Más ciudades",
+    "pais": "Perú",
+    "aplicar": "Aplicar",
+    "titulo_mapa": "Seleccionar en el mapa",
+    "ver_en_el_mapa": "Ver en el mapa",
+    "cambiar_ubicacion": "Cambiar ubicación",
+    "separador_lugar": ", ",
+    "cancelar": "Cancelar",
+    "volver": "Volver",
+    "zoom_ciudad": 12,
+    "zoom_mapa": 11,
+    "vista_en_el_mapa": "Vista en el mapa",
+    "titulo_buscar": "Buscar ubicación",
+    "altura_mapa_movil": "max(10rem, calc(85dvh - 20rem))",
+    "altura_mapa": 260,
+    "clase_hoja_fija": "panel-hoja-movil-fija"
+  },
   "placeholders": {
     "buscar_eventos": "Buscar eventos...",
-    "ubicacion": "Ubicación"
+    "ubicacion": "Ubicación",
+    "buscar_categorias": "Buscar categorías...",
+    "buscar_ubicacion": "Buscar ciudad, distrito o lugar...",
+    "buscar_lugar_mapa": "Buscar un lugar en el mapa..."
+  },
+  "detalle_evento": {
+    "volver": "Volver a Eventos",
+    "guardar": "Guardar",
+    "compartir": "Compartir",
+    "hora": "Hora",
+    "lugar": "Lugar",
+    "asistentes": "Asistentes",
+    "quiero_asistir": "Quiero asistir",
+    "agregar_calendario": "Agregar al calendario",
+    "ubicacion": "Ubicación",
+    "ver_google_maps": "Ver en Google Maps",
+    "categoria": "Categoría",
+    "descripcion": "Descripción",
+    "agenda": "Agenda",
+    "organizador": "Organizador",
+    "ver_perfil": "Ver perfil",
+    "coma": ", ",
+    "espacio": " "
+  },
+  "modal_crear_evento": {
+    "titulo": "Crear evento",
+    "subtitulo": "Comparte tu evento con la comunidad de Codeplex",
+    "cerrar": "Cerrar",
+    "tecla_cerrar": "Escape",
+    "informacion": "Información del evento",
+    "titulo_evento": "Título del evento",
+    "placeholder_titulo": "Ej. Concierto Codeplex Live 2026",
+    "descripcion": "Descripción",
+    "placeholder_descripcion": "Describe tu evento, qué lo hace especial, artistas, actividades, etc.",
+    "categoria": "Categoría",
+    "placeholder_categoria": "Selecciona una categoría",
+    "tipo": "Tipo de evento",
+    "placeholder_tipo": "Selecciona el tipo de evento",
+    "inicio": "Fecha y hora de inicio",
+    "fin": "Fecha y hora de fin",
+    "placeholder_fecha": "Selecciona la fecha y hora",
+    "ubicacion": "Ubicación",
+    "placeholder_ubicacion": "Busca una ubicación o ingresa la dirección",
+    "modalidad": "Modalidad",
+    "placeholder_modalidad": "Selecciona la modalidad",
+    "imagen": "Imagen del evento",
+    "imagen_formatos": "Formatos: JPG, PNG. Tamaño máximo: 5 MB.",
+    "organizador": "Organizador",
+    "organizador_nombre": "CodePlex",
+    "organizador_detalle": "Comunidad de eventos",
+    "organizador_aviso": "El evento se publicará con tu perfil como organizador.",
+    "configuracion": "Configuración adicional",
+    "permitir_inscripciones": "Permitir inscripciones",
+    "mostrar_calendario": "Mostrar en calendario público",
+    "permitir_comentarios": "Permitir comentarios",
+    "configuracion_aviso": "Podrás gestionar más opciones después de crear el evento.",
+    "cancelar": "Cancelar",
+    "borrador": "Guardar como borrador",
+    "publicar": "Publicar evento",
+    "separador_limite": "/",
+    "categorias": [
+      "Música",
+      "Negocios",
+      "Educación",
+      "Tecnología",
+      "Gastronomía",
+      "Deportes",
+      "Arte y cultura",
+      "Salud y bienestar"
+    ],
+    "tipos": [
+      "Concierto",
+      "Conferencia",
+      "Taller",
+      "Networking",
+      "Festival",
+      "Encuentro"
+    ],
+    "modalidades": [
+      "Presencial",
+      "Virtual",
+      "Híbrido"
+    ],
+    "imagen_tipos": {
+      "image/jpeg": [
+        ".jpg",
+        ".jpeg"
+      ],
+      "image/png": [
+        ".png"
+      ]
+    },
+    "tipo_fecha": "datetime-local",
+    "imagen_titulo": "Sube una imagen para tu evento",
+    "imagen_ayuda": "Arrastra una imagen aquí o haz clic para seleccionar",
+    "imagen_tamano_maximo": 5242880,
+    "imagen_max_archivos": 1,
+    "fecha": "Fecha",
+    "marcador_fecha": "Selecciona la fecha",
+    "marcador_hora": "Selecciona la hora",
+    "formato_fecha": "DD/MM/YYYY",
+    "formato_hora": "HH:mm",
+    "idioma": "es",
+    "modalidad_opciones": [
+      {
+        "valor": "presencial",
+        "etiqueta": "Presencial",
+        "icono": "ubicacion"
+      },
+      {
+        "valor": "virtual",
+        "etiqueta": "Virtual",
+        "icono": "video"
+      },
+      {
+        "valor": "hibrido",
+        "etiqueta": "Híbrido",
+        "icono": "grupos"
+      }
+    ],
+    "costo": "Costo del evento",
+    "costo_opciones": [
+      {
+        "valor": "gratuito",
+        "etiqueta": "Evento gratuito",
+        "detalle": "No tiene costo para los asistentes"
+      },
+      {
+        "valor": "con_costo",
+        "etiqueta": "Evento con costo",
+        "detalle": "Define el precio de entrada"
+      }
+    ],
+    "limite": "Límite de asistentes",
+    "limite_texto": "Establecer límite de personas",
+    "limite_numero": "Número máximo de asistentes",
+    "limite_minimo": 1,
+    "opcional": "(opcional)",
+    "enlace": "Enlace adicional",
+    "enlace_marcador": "https://...",
+    "enlace_ayuda": "Enlace a una web, transmisión, registro, etc.",
+    "etiquetas": "Etiquetas",
+    "etiquetas_marcador": "ej. música, conferencia, tecnología",
+    "etiquetas_ayuda": "Separa las etiquetas con comas"
+  },
+  "formulario_evento": {
+    "clase_columna": "flex min-w-0 flex-col gap-4"
+  },
+  "tarjeta_evento_organizado": {
+    "contenedor": "grid grid-cols-140-1fr-auto overflow-hidden rounded-xl border border-gris-borde bg-fondo hover:shadow-t3 max-1100:grid-cols-120-1fr-auto max-900:grid-cols-1",
+    "miniatura": "relative min-h-35 overflow-hidden max-900:min-h-40"
+  },
+  "editar_evento": {
+    "volver": "Volver a mis eventos",
+    "titulo": "Editar evento",
+    "subtitulo": "Modifica la información de tu evento antes de publicarlo.",
+    "cambiar_imagen": "Cambiar imagen",
+    "quitar_imagen": "Quitar imagen actual",
+    "guardar_cambios": "Guardar cambios",
+    "eliminar_borrador": "Eliminar borrador"
+  },
+  "sin_eventos_ubicacion": {
+    "titulo": "No encontramos eventos en",
+    "espacio": " ",
+    "texto": "Por el momento no hay eventos programados en esta ubicación. Puedes probar con otra ciudad o quitar este filtro.",
+    "cambiar": "Cambiar ubicación",
+    "ver_todos": "Ver todos los eventos"
   }
 }

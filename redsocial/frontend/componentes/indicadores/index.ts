@@ -1,0 +1,5 @@
+export * from './bloques/bloque_indicadores_clave1'
+export * from './bloques/bloque_indicadores_clave2'
+export * from './bloques/seccion_clave'
+export * from './bloques/seccion_estructura_costos'
+export * from './bloques/seccion_evolucion_utilidad_neta'

@@ -1,0 +1,267 @@
+{
+  "celdas": [
+    {
+      "numero": 29,
+      "otroMes": true
+    },
+    {
+      "numero": 30,
+      "otroMes": true
+    },
+    {
+      "numero": 31,
+      "otroMes": true
+    },
+    {
+      "numero": 1
+    },
+    {
+      "numero": 2,
+      "evento": {
+        "hora": "7:00 PM",
+        "nombre": "Concierto Live 2026",
+        "color": "musica"
+      }
+    },
+    {
+      "numero": 3
+    },
+    {
+      "numero": 4
+    },
+    {
+      "numero": 5
+    },
+    {
+      "numero": 6
+    },
+    {
+      "numero": 7,
+      "evento": {
+        "hora": "9:00 AM",
+        "nombre": "Codeplex Tech Summit",
+        "color": "tecnologia"
+      }
+    },
+    {
+      "numero": 8
+    },
+    {
+      "numero": 9
+    },
+    {
+      "numero": 10,
+      "evento": {
+        "hora": "10:00 AM",
+        "nombre": "Taller de Marketing",
+        "color": "negocios"
+      }
+    },
+    {
+      "numero": 11
+    },
+    {
+      "numero": 12
+    },
+    {
+      "numero": 13
+    },
+    {
+      "numero": 14
+    },
+    {
+      "numero": 15,
+      "hoy": true,
+      "evento": {
+        "hora": "9:00 AM",
+        "nombre": "Reunión de Planificación",
+        "color": "empresa"
+      },
+      "masTexto": "+ 1 más"
+    },
+    {
+      "numero": 16
+    },
+    {
+      "numero": 17,
+      "evento": {
+        "hora": "6:00 PM",
+        "nombre": "Networking Empresarial",
+        "color": "negocios"
+      }
+    },
+    {
+      "numero": 18
+    },
+    {
+      "numero": 19
+    },
+    {
+      "numero": 20,
+      "evento": {
+        "hora": "12:00 PM",
+        "nombre": "Almuerzo de Negocios",
+        "color": "negocios"
+      }
+    },
+    {
+      "numero": 21,
+      "evento": {
+        "hora": "6:00 PM",
+        "nombre": "Webinar: IA en Negocios",
+        "color": "tecnologia"
+      }
+    },
+    {
+      "numero": 22
+    },
+    {
+      "numero": 23
+    },
+    {
+      "numero": 24,
+      "evento": {
+        "hora": "7:30 PM",
+        "nombre": "Cena Anual Codeplex",
+        "color": "empresa"
+      }
+    },
+    {
+      "numero": 25
+    },
+    {
+      "numero": 26
+    },
+    {
+      "numero": 27
+    },
+    {
+      "numero": 28,
+      "evento": {
+        "hora": "9:00 AM",
+        "nombre": "Capacitación Interna",
+        "color": "educacion"
+      }
+    },
+    {
+      "numero": 29
+    },
+    {
+      "numero": 30
+    },
+    {
+      "numero": 1,
+      "otroMes": true
+    },
+    {
+      "numero": 2,
+      "otroMes": true
+    }
+  ],
+  "proximosLateral": [
+    {
+      "gradiente": "morado",
+      "dia": "24",
+      "mes": "AGO",
+      "nombre": "Concierto Codeplex Live 2026",
+      "fechaHora": "Sáb, 24 Ago 2026 · 7:00 PM",
+      "ubicacion": "Arena1, Lima",
+      "asistentes": "1.2K asistirán"
+    },
+    {
+      "gradiente": "azul",
+      "dia": "15",
+      "mes": "JUN",
+      "nombre": "Codeplex Tech Summit",
+      "fechaHora": "Jue, 15 Jun 2026 · 9:00 AM",
+      "ubicacion": "Centro de Convenciones Lima",
+      "asistentes": "856 asistirán"
+    },
+    {
+      "gradiente": "calido",
+      "dia": "22",
+      "mes": "JUN",
+      "nombre": "Networking Empresarial",
+      "fechaHora": "Jue, 22 Jun 2026 · 6:00 PM",
+      "ubicacion": "WeWork San Isidro",
+      "asistentes": "642 asistirán"
+    }
+  ],
+  "mesCalendarioActual": "Junio 2026",
+  "mesAbreviadoActual": "Jun",
+  "eventosPorDia": {
+    "2": [
+      { "hora": "7:00 PM", "nombre": "Concierto Live 2026", "detalle": "Arena1, Lima", "icono": "ubicacion", "color": "musica" }
+    ],
+    "7": [
+      { "hora": "9:00 AM", "nombre": "Codeplex Tech Summit", "detalle": "Centro de Convenciones", "icono": "ubicacion", "color": "tecnologia" }
+    ],
+    "10": [
+      { "hora": "10:00 AM", "nombre": "Taller de Marketing", "detalle": "Sala de talleres", "icono": "ubicacion", "color": "negocios" }
+    ],
+    "15": [
+      { "hora": "9:00 AM", "nombre": "Reunión de Planificación", "detalle": "Sala de reuniones", "icono": "usuarios", "color": "empresa" },
+      { "hora": "11:00 AM", "nombre": "Revisión de avances", "detalle": "Videollamada", "icono": "video", "color": "negocios" }
+    ],
+    "17": [
+      { "hora": "6:00 PM", "nombre": "Networking Empresarial", "detalle": "WeWork San Isidro", "icono": "ubicacion", "color": "negocios" }
+    ],
+    "20": [
+      { "hora": "12:00 PM", "nombre": "Almuerzo de Negocios", "detalle": "Restaurante Central", "icono": "ubicacion", "color": "negocios" }
+    ],
+    "21": [
+      { "hora": "6:00 PM", "nombre": "Webinar: IA en Negocios", "detalle": "Transmisión en línea", "icono": "video", "color": "tecnologia" }
+    ],
+    "24": [
+      { "hora": "7:30 PM", "nombre": "Cena Anual Codeplex", "detalle": "Salón de eventos", "icono": "ubicacion", "color": "empresa" }
+    ],
+    "28": [
+      { "hora": "9:00 AM", "nombre": "Capacitación Interna", "detalle": "Sala de capacitación", "icono": "usuarios", "color": "educacion" }
+    ]
+  },
+  "semanasMini": [
+    [
+      { "numero": "29", "otroMes": true }, { "numero": "30", "otroMes": true }, { "numero": "31", "otroMes": true },
+      { "numero": "01" }, { "numero": "02" }, { "numero": "03" }, { "numero": "04" }
+    ],
+    [
+      { "numero": "05" }, { "numero": "06" }, { "numero": "07" }, { "numero": "08" }, { "numero": "09" }, { "numero": "10" }, { "numero": "11" }
+    ],
+    [
+      { "numero": "12" }, { "numero": "13" }, { "numero": "14" }, { "numero": "15", "hoy": true, "conPunto": true }, { "numero": "16" }, { "numero": "17" }, { "numero": "18" }
+    ],
+    [
+      { "numero": "19" }, { "numero": "20" }, { "numero": "21" }, { "numero": "22", "conPunto": true }, { "numero": "23" }, { "numero": "24" }, { "numero": "25" }
+    ],
+    [
+      { "numero": "26" }, { "numero": "27" }, { "numero": "28" }, { "numero": "29" }, { "numero": "30" },
+      { "numero": "01", "otroMes": true }, { "numero": "02", "otroMes": true }
+    ]
+  ],
+  "leyendaCalendario": [
+    {
+      "color": "musica",
+      "nombre": "Música"
+    },
+    {
+      "color": "tecnologia",
+      "nombre": "Tecnología"
+    },
+    {
+      "color": "negocios",
+      "nombre": "Negocios"
+    },
+    {
+      "color": "educacion",
+      "nombre": "Educación"
+    },
+    {
+      "color": "reuniones",
+      "nombre": "Reuniones"
+    },
+    {
+      "color": "otros",
+      "nombre": "Otros"
+    }
+  ]
+}

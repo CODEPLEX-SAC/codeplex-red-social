@@ -1,17 +1,22 @@
 import { Icono } from '../icono'
-import type { CampoBusquedaProps } from '@/tipos/compartido/campo_busqueda'
+import { CampoTexto } from './campo_texto'
+import type { CampoBusquedaCambio, CampoBusquedaProps } from '@/tipos/compartido/contrato_campo_busqueda'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
-export function CampoBusqueda({ className, icono = 'buscar', 'aria-label': ariaLabel, ...rest }: CampoBusquedaProps) {
+export function CampoBusqueda({ className, icono = 'buscar', 'aria-label': ariaLabel, value, onChange, placeholder, name, accion }: CampoBusquedaProps) {
   return (
-    <label className={'flex h-[34px] items-center gap-2 rounded-[7px] border border-borde bg-white px-2.5 text-[#9b99a9] ' + (className ?? '')}>
-      <Icono name={icono} className="h-4 w-4" />
-      <input
-        type="search"
-        aria-label={ariaLabel ?? catalogoCompartido.campos.buscar_en_codeplex}
-        className="w-full min-w-0 border-0 bg-transparent text-texto outline-none placeholder:text-[#aaa8b7]"
-        {...rest}
-      />
-    </label>
+    <div className={className}>
+    <CampoTexto
+      anchoCompleto
+      tipo={catalogoCompartido.controles.tipo_busqueda}
+      valor={value}
+      alCambiar={(texto) => onChange?.({ target: { value: texto } } as CampoBusquedaCambio)}
+      marcador={placeholder}
+      name={name}
+      iconoFin={accion}
+      iconoInicio={<Icono name={icono} className="h-4 w-4" />}
+      inputProps={{ [catalogoCompartido.controles.atributo_accesible]: ariaLabel ?? catalogoCompartido.campos.buscar_en_codeplex }}
+    />
+    </div>
   )
 }

@@ -21,6 +21,11 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "ver_resumen": "DASHBOARD_CONSULTAR",
+    "personalizar": "DASHBOARD_PERSONALIZAR",
+    "exportar": "DASHBOARD_EXPORTAR"
+  },
   "rutas": {
     "principal": "/dashboard"
   },

@@ -22,6 +22,11 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "INDICADORES_CONSULTAR",
+    "filtrar_por_modulo": "INDICADORES_FILTRAR",
+    "comparar": "INDICADORES_COMPARAR"
+  },
   "rutas": {
     "clave": "/indicadores"
   },

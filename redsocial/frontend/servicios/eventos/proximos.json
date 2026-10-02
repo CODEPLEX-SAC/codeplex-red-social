@@ -1,0 +1,150 @@
+{
+  "eventos": [
+    {
+      "categoria": "tecnologia",
+      "categoriaEtiqueta": "Tecnología",
+      "nombre": "Codeplex Tech Summit",
+      "descripcion": "Descubre las últimas tendencias en tecnología e innovación de la mano de expertos líderes.",
+      "dia": "15",
+      "mes": "JUN",
+      "fecha": "Jue, 15 Jun 2026",
+      "hora": "9:00 AM",
+      "ubicacion": "Centro de Convenciones Lima",
+      "avatares": 5,
+      "masAsistentes": "+86 asistirán"
+    },
+    {
+      "categoria": "negocios",
+      "categoriaEtiqueta": "Negocios",
+      "nombre": "Networking Empresarial",
+      "descripcion": "Conecta con empresarios, emprendedores y profesionales de diferentes industrias.",
+      "dia": "22",
+      "mes": "JUN",
+      "fecha": "Jue, 22 Jun 2026",
+      "hora": "6:00 PM",
+      "ubicacion": "WeWork San Isidro",
+      "avatares": 4,
+      "masAsistentes": "+42 asistirán"
+    },
+    {
+      "categoria": "educacion",
+      "categoriaEtiqueta": "Educación",
+      "nombre": "Taller de Marketing Digital",
+      "descripcion": "Aprende estrategias efectivas para llevar tu negocio al siguiente nivel.",
+      "dia": "05",
+      "mes": "JUL",
+      "fecha": "Sáb, 5 Jul 2026",
+      "hora": "10:00 AM",
+      "ubicacion": "Online",
+      "avatares": 4,
+      "masAsistentes": "+56 asistirán"
+    },
+    {
+      "categoria": "gastronomia",
+      "categoriaEtiqueta": "Gastronomía",
+      "nombre": "Festival Gastronómico",
+      "descripcion": "Disfruta de lo mejor de la gastronomía local e internacional en un solo lugar.",
+      "dia": "18",
+      "mes": "JUL",
+      "fecha": "Vie, 18 Jul 2026",
+      "hora": "7:00 PM",
+      "ubicacion": "Parque de la Exposición",
+      "avatares": 5,
+      "masAsistentes": "+74 asistirán"
+    },
+    {
+      "categoria": "tecnologia",
+      "categoriaEtiqueta": "Tecnología",
+      "nombre": "Hackathon Codeplex 2026",
+      "descripcion": "Dos días de retos, código y colaboración para construir soluciones innovadoras.",
+      "dia": "25",
+      "mes": "JUL",
+      "fecha": "Vie, 25 Jul 2026",
+      "hora": "8:00 AM",
+      "ubicacion": "Universidad de Lima",
+      "avatares": 5,
+      "masAsistentes": "+63 asistirán"
+    }
+  ],
+  "proximasFechasEventosProximos": [
+    {
+      "dia": "15",
+      "mes": "JUN",
+      "nombre": "Codeplex Tech Summit",
+      "punto": "tecnologia",
+      "detalle": "9:00 AM · Centro de Convenciones Lima"
+    },
+    {
+      "dia": "22",
+      "mes": "JUN",
+      "nombre": "Networking Empresarial",
+      "punto": "negocios",
+      "detalle": "6:00 PM · WeWork San Isidro"
+    },
+    {
+      "dia": "05",
+      "mes": "JUL",
+      "nombre": "Taller de Marketing Digital",
+      "punto": "educacion",
+      "detalle": "10:00 AM · Online"
+    }
+  ],
+  "categoriasLateralEventosProximos": [
+    {
+      "icono": "estrella",
+      "color": "rosa",
+      "nombre": "Música",
+      "conteo": "128"
+    },
+    {
+      "icono": "panel",
+      "color": "violeta",
+      "nombre": "Tecnología",
+      "conteo": "95"
+    },
+    {
+      "icono": "empresa",
+      "color": "naranja",
+      "nombre": "Negocios",
+      "conteo": "86"
+    },
+    {
+      "icono": "calendario",
+      "color": "azul",
+      "nombre": "Educación",
+      "conteo": "74"
+    },
+    {
+      "icono": "carrito",
+      "color": "rojo",
+      "nombre": "Gastronomía",
+      "conteo": "58"
+    },
+    {
+      "icono": "actividad",
+      "color": "verde",
+      "nombre": "Deportes",
+      "conteo": "63"
+    }
+  ],
+  "mesCalendarioProximos": "Junio 2026",
+  "semanasCalendarioProximos": [
+    [
+      { "numero": "29", "otroMes": true }, { "numero": "30", "otroMes": true }, { "numero": "31", "otroMes": true },
+      { "numero": "01" }, { "numero": "02" }, { "numero": "03" }, { "numero": "04" }
+    ],
+    [
+      { "numero": "05" }, { "numero": "06" }, { "numero": "07" }, { "numero": "08" }, { "numero": "09" }, { "numero": "10" }, { "numero": "11" }
+    ],
+    [
+      { "numero": "12" }, { "numero": "13" }, { "numero": "14" }, { "numero": "15", "hoy": true, "conPunto": true }, { "numero": "16" }, { "numero": "17" }, { "numero": "18" }
+    ],
+    [
+      { "numero": "19" }, { "numero": "20" }, { "numero": "21" }, { "numero": "22" }, { "numero": "23" }, { "numero": "24" }, { "numero": "25" }
+    ],
+    [
+      { "numero": "26" }, { "numero": "27" }, { "numero": "28" }, { "numero": "29" }, { "numero": "30" },
+      { "numero": "01", "otroMes": true }, { "numero": "02", "otroMes": true }
+    ]
+  ]
+}

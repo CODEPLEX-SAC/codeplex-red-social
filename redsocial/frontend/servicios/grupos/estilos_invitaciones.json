@@ -1,0 +1,16 @@
+{
+  "clasesIconoInv": {
+    "morado": "bg-morado-categoria",
+    "violeta": "bg-morado-categoria",
+    "naranja": "bg-naranja-categoria",
+    "azul": "bg-azul-categoria",
+    "rosa": "bg-rosa-categoria",
+    "verde": "bg-verde-categoria"
+  },
+  "clasesResumen": {
+    "morado": "bg-t-ede9fe text-morado-categoria",
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "rojo": "bg-t-fee2e2 text-negativo-kpi",
+    "gris": "bg-t-f1f0f4 text-t-9c99ab"
+  }
+}

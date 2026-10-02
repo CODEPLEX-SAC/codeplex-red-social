@@ -1,0 +1,8 @@
+{
+  "clasesIconoColor": {
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "rojo": "bg-t-fee2e2 text-rojo-categoria",
+    "amarillo": "bg-t-fff8e1 text-amarillo-categoria"
+  }
+}

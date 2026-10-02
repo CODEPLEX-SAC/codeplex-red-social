@@ -1,0 +1,142 @@
+{
+  "20260923": {
+    "destacado": {
+      "categoria": "NEGOCIOS",
+      "categoriaColor": "naranja",
+      "nombre": "Reunión de equipo",
+      "descripcion": "Revisión de avances del proyecto y planificación de las próximas tareas.",
+      "horario": "09:00 AM",
+      "lugar": "Sala de reuniones",
+      "asistentes": "+12 asistirán",
+      "avatares": 4
+    },
+    "otros": [
+      {
+        "categoria": "TECNOLOGÍA",
+        "categoriaColor": "morado",
+        "nombre": "Revisión de avances",
+        "descripcion": "",
+        "horario": "11:00 AM – 12:00 PM",
+        "lugar": "Proyecto CodePlex",
+        "asistentes": "+8",
+        "avatares": 3
+      },
+      {
+        "categoria": "EDUCACIÓN",
+        "categoriaColor": "azul",
+        "nombre": "Charla: Nuevas funcionalidades de CodePlex",
+        "descripcion": "",
+        "horario": "02:00 PM – 03:00 PM",
+        "lugar": "Auditorio virtual",
+        "asistentes": "+25",
+        "avatares": 3
+      },
+      {
+        "categoria": "NEGOCIOS",
+        "categoriaColor": "naranja",
+        "nombre": "Capacitación: Módulo de Facturación",
+        "descripcion": "",
+        "horario": "04:00 PM – 05:30 PM",
+        "lugar": "Auditorio virtual",
+        "asistentes": "+18",
+        "avatares": 3
+      }
+    ],
+    "sugeridos": []
+  },
+  "20260924": {
+    "destacado": {
+      "categoria": "TECNOLOGÍA",
+      "categoriaColor": "morado",
+      "nombre": "Revisión de avances",
+      "descripcion": "Seguimiento del proyecto CodePlex y planificación de las siguientes tareas.",
+      "horario": "11:00 AM",
+      "lugar": "Proyecto CodePlex",
+      "asistentes": "+8 asistirán",
+      "avatares": 4
+    },
+    "otros": [
+      {
+        "categoria": "NEGOCIOS",
+        "categoriaColor": "rosa",
+        "nombre": "Reunión de equipo",
+        "descripcion": "",
+        "horario": "09:00 AM – 10:00 AM",
+        "lugar": "Sala de reuniones",
+        "asistentes": "+12",
+        "avatares": 3
+      },
+      {
+        "categoria": "EDUCACIÓN",
+        "categoriaColor": "azul",
+        "nombre": "Charla: Nuevas funcionalidades de CodePlex",
+        "descripcion": "",
+        "horario": "02:00 PM – 03:30 PM",
+        "lugar": "Auditorio virtual",
+        "asistentes": "+25",
+        "avatares": 3
+      },
+      {
+        "categoria": "NEGOCIOS",
+        "categoriaColor": "rosa",
+        "nombre": "Capacitación: Módulo de Facturación",
+        "descripcion": "",
+        "horario": "04:00 PM – 05:30 PM",
+        "lugar": "Auditorio virtual",
+        "asistentes": "+18",
+        "avatares": 3
+      }
+    ],
+    "sugeridos": []
+  },
+  "20260926": {
+    "destacado": null,
+    "otros": [],
+    "sugeridos": [
+      {
+        "dia": "29",
+        "mes": "SEP",
+        "categoria": "TECNOLOGÍA",
+        "categoriaColor": "morado",
+        "nombre": "Taller de React Avanzado",
+        "fecha": "Mar, 29 Sep 2026",
+        "lugar": "Auditorio virtual",
+        "asistentes": "+18",
+        "avatares": 3
+      },
+      {
+        "dia": "30",
+        "mes": "SEP",
+        "categoria": "NEGOCIOS",
+        "categoriaColor": "rosa",
+        "nombre": "Networking Empresarial",
+        "fecha": "Mié, 30 Sep 2026",
+        "lugar": "Centro de Convenciones Lima",
+        "asistentes": "+32",
+        "avatares": 3
+      },
+      {
+        "dia": "01",
+        "mes": "OCT",
+        "categoria": "EDUCACIÓN",
+        "categoriaColor": "azul",
+        "nombre": "Taller de Marketing Digital",
+        "fecha": "Jue, 1 Oct 2026",
+        "lugar": "Auditorio virtual",
+        "asistentes": "+24",
+        "avatares": 3
+      },
+      {
+        "dia": "02",
+        "mes": "OCT",
+        "categoria": "GASTRONOMÍA",
+        "categoriaColor": "naranja",
+        "nombre": "Festival Gastronómico",
+        "fecha": "Vie, 2 Oct 2026",
+        "lugar": "Parque de la Exposición",
+        "asistentes": "+56",
+        "avatares": 3
+      }
+    ]
+  }
+}

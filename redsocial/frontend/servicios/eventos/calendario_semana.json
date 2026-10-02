@@ -1,0 +1,24 @@
+{
+  "rangoFechaSemana": "15 – 21 de Junio 2026",
+  "diasSemanaCal": [
+    { "abrev": "Lun", "numero": 15, "hoy": true },
+    { "abrev": "Mar", "numero": 16 },
+    { "abrev": "Mié", "numero": 17 },
+    { "abrev": "Jue", "numero": 18 },
+    { "abrev": "Vie", "numero": 19 },
+    { "abrev": "Sáb", "numero": 20 },
+    { "abrev": "Dom", "numero": 21 }
+  ],
+  "horasSemana": [
+    "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM",
+    "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM"
+  ],
+  "eventosSemana": [
+    { "dia": 0, "filaInicio": 1, "filas": 1, "hora": "9:00 AM", "nombre": "Reunión de equipo", "color": "empresa" },
+    { "dia": 2, "filaInicio": 2, "filas": 1, "hora": "10:00 AM", "nombre": "Taller de diseño", "color": "negocios" },
+    { "dia": 5, "filaInicio": 4, "filas": 1, "hora": "12:00 PM", "nombre": "Almuerzo con clientes", "color": "negocios" },
+    { "dia": 3, "filaInicio": 8, "filas": 1, "hora": "4:00 PM", "nombre": "Revisión de avances", "color": "empresa" },
+    { "dia": 0, "filaInicio": 10, "filas": 2, "hora": "6:00 PM", "nombre": "Networking Empresarial", "color": "tecnologia" },
+    { "dia": 1, "filaInicio": 11, "filas": 1, "hora": "7:30 PM", "nombre": "Cena Anual", "color": "empresa" }
+  ]
+}

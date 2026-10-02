@@ -1,0 +1,779 @@
+{
+  "capacidad_id": "redsocial",
+  "eventos_auditoria": {
+    "actividad.listar": [
+      "redsocial.actividad.listar"
+    ],
+    "actividad.filtrar": [
+      "redsocial.actividad.filtrar"
+    ],
+    "actividad.ver_detalle": [
+      "redsocial.actividad.ver_detalle"
+    ],
+    "actividad.comentar": [
+      "redsocial.actividad.comentar"
+    ],
+    "amigos.listar": [
+      "redsocial.amigos.listar"
+    ],
+    "amigos.buscar": [
+      "redsocial.amigos.buscar"
+    ],
+    "amigos.solicitar": [
+      "redsocial.amigos.solicitar"
+    ],
+    "amigos.aceptar": [
+      "redsocial.amigos.aceptar"
+    ],
+    "amigos.rechazar": [
+      "redsocial.amigos.rechazar"
+    ],
+    "amigos.crear_lista": [
+      "redsocial.amigos.crear_lista"
+    ],
+    "avisos.listar": [
+      "redsocial.avisos.listar"
+    ],
+    "avisos.filtrar": [
+      "redsocial.avisos.filtrar"
+    ],
+    "avisos.marcar_leida": [
+      "redsocial.avisos.marcar_leida"
+    ],
+    "avisos.marcar_todas_leidas": [
+      "redsocial.avisos.marcar_todas_leidas"
+    ],
+    "colaboradores.listar": [
+      "redsocial.colaboradores.listar"
+    ],
+    "colaboradores.invitar": [
+      "redsocial.colaboradores.invitar"
+    ],
+    "colaboradores.ver_detalle": [
+      "redsocial.colaboradores.ver_detalle"
+    ],
+    "colaboradores.cambiar_rol": [
+      "redsocial.colaboradores.cambiar_rol"
+    ],
+    "colaboradores.dar_de_baja": [
+      "redsocial.colaboradores.dar_de_baja"
+    ],
+    "compartido.navegar": [
+      "redsocial.compartido.navegar"
+    ],
+    "compartido.buscar": [
+      "redsocial.compartido.buscar"
+    ],
+    "dashboard.ver_resumen": [
+      "redsocial.dashboard.ver_resumen"
+    ],
+    "dashboard.personalizar": [
+      "redsocial.dashboard.personalizar"
+    ],
+    "dashboard.exportar": [
+      "redsocial.dashboard.exportar"
+    ],
+    "estadisticas.ver_por_modulo": [
+      "redsocial.estadisticas.ver_por_modulo"
+    ],
+    "estadisticas.comparar": [
+      "redsocial.estadisticas.comparar"
+    ],
+    "estadisticas.exportar": [
+      "redsocial.estadisticas.exportar"
+    ],
+    "eventos.listar": [
+      "redsocial.eventos.listar"
+    ],
+    "eventos.crear": [
+      "redsocial.eventos.crear"
+    ],
+    "eventos.invitar": [
+      "redsocial.eventos.invitar"
+    ],
+    "eventos.aceptar_invitacion": [
+      "redsocial.eventos.aceptar_invitacion"
+    ],
+    "eventos.rechazar_invitacion": [
+      "redsocial.eventos.rechazar_invitacion"
+    ],
+    "grupos.listar": [
+      "redsocial.grupos.listar"
+    ],
+    "grupos.descubrir": [
+      "redsocial.grupos.descubrir"
+    ],
+    "grupos.crear": [
+      "redsocial.grupos.crear"
+    ],
+    "grupos.unirse": [
+      "redsocial.grupos.unirse"
+    ],
+    "grupos.aceptar_invitacion": [
+      "redsocial.grupos.aceptar_invitacion"
+    ],
+    "grupos.rechazar_invitacion": [
+      "redsocial.grupos.rechazar_invitacion"
+    ],
+    "guardados.listar": [
+      "redsocial.guardados.listar"
+    ],
+    "guardados.filtrar": [
+      "redsocial.guardados.filtrar"
+    ],
+    "guardados.guardar": [
+      "redsocial.guardados.guardar"
+    ],
+    "guardados.quitar_guardado": [
+      "redsocial.guardados.quitar_guardado"
+    ],
+    "guardados.crear_coleccion": [
+      "redsocial.guardados.crear_coleccion"
+    ],
+    "indicadores.listar": [
+      "redsocial.indicadores.listar"
+    ],
+    "indicadores.filtrar_por_modulo": [
+      "redsocial.indicadores.filtrar_por_modulo"
+    ],
+    "indicadores.comparar": [
+      "redsocial.indicadores.comparar"
+    ],
+    "inicio.publicar": [
+      "redsocial.inicio.publicar"
+    ],
+    "inicio.reaccionar": [
+      "redsocial.inicio.reaccionar"
+    ],
+    "inicio.comentar": [
+      "redsocial.inicio.comentar"
+    ],
+    "inicio.compartir": [
+      "redsocial.inicio.compartir"
+    ],
+    "marketplace.listar": [
+      "redsocial.marketplace.listar"
+    ],
+    "marketplace.buscar": [
+      "redsocial.marketplace.buscar"
+    ],
+    "marketplace.comprar": [
+      "redsocial.marketplace.comprar"
+    ],
+    "marketplace.publicar_aplicacion": [
+      "redsocial.marketplace.publicar_aplicacion"
+    ],
+    "mensajeria.listar": [
+      "redsocial.mensajeria.listar"
+    ],
+    "mensajeria.enviar_mensaje": [
+      "redsocial.mensajeria.enviar_mensaje"
+    ],
+    "mensajeria.marcar_favorito": [
+      "redsocial.mensajeria.marcar_favorito"
+    ],
+    "mensajeria.iniciar_videollamada": [
+      "redsocial.mensajeria.iniciar_videollamada"
+    ],
+    "reportes.listar": [
+      "redsocial.reportes.listar"
+    ],
+    "reportes.generar": [
+      "redsocial.reportes.generar"
+    ],
+    "reportes.descargar": [
+      "redsocial.reportes.descargar"
+    ],
+    "reportes.compartir": [
+      "redsocial.reportes.compartir"
+    ]
+  },
+  "metricas": {
+    "actividad.listar": [
+      "redsocial_actividad_listar_total"
+    ],
+    "actividad.filtrar": [
+      "redsocial_actividad_filtrar_total"
+    ],
+    "actividad.ver_detalle": [
+      "redsocial_actividad_ver_detalle_total"
+    ],
+    "actividad.comentar": [
+      "redsocial_actividad_comentar_total"
+    ],
+    "amigos.listar": [
+      "redsocial_amigos_listar_total"
+    ],
+    "amigos.buscar": [
+      "redsocial_amigos_buscar_total"
+    ],
+    "amigos.solicitar": [
+      "redsocial_amigos_solicitar_total"
+    ],
+    "amigos.aceptar": [
+      "redsocial_amigos_aceptar_total"
+    ],
+    "amigos.rechazar": [
+      "redsocial_amigos_rechazar_total"
+    ],
+    "amigos.crear_lista": [
+      "redsocial_amigos_crear_lista_total"
+    ],
+    "avisos.listar": [
+      "redsocial_avisos_listar_total"
+    ],
+    "avisos.filtrar": [
+      "redsocial_avisos_filtrar_total"
+    ],
+    "avisos.marcar_leida": [
+      "redsocial_avisos_marcar_leida_total"
+    ],
+    "avisos.marcar_todas_leidas": [
+      "redsocial_avisos_marcar_todas_leidas_total"
+    ],
+    "colaboradores.listar": [
+      "redsocial_colaboradores_listar_total"
+    ],
+    "colaboradores.invitar": [
+      "redsocial_colaboradores_invitar_total"
+    ],
+    "colaboradores.ver_detalle": [
+      "redsocial_colaboradores_ver_detalle_total"
+    ],
+    "colaboradores.cambiar_rol": [
+      "redsocial_colaboradores_cambiar_rol_total"
+    ],
+    "colaboradores.dar_de_baja": [
+      "redsocial_colaboradores_dar_de_baja_total"
+    ],
+    "compartido.navegar": [
+      "redsocial_compartido_navegar_total"
+    ],
+    "compartido.buscar": [
+      "redsocial_compartido_buscar_total"
+    ],
+    "dashboard.ver_resumen": [
+      "redsocial_dashboard_ver_resumen_total"
+    ],
+    "dashboard.personalizar": [
+      "redsocial_dashboard_personalizar_total"
+    ],
+    "dashboard.exportar": [
+      "redsocial_dashboard_exportar_total"
+    ],
+    "estadisticas.ver_por_modulo": [
+      "redsocial_estadisticas_ver_por_modulo_total"
+    ],
+    "estadisticas.comparar": [
+      "redsocial_estadisticas_comparar_total"
+    ],
+    "estadisticas.exportar": [
+      "redsocial_estadisticas_exportar_total"
+    ],
+    "eventos.listar": [
+      "redsocial_eventos_listar_total"
+    ],
+    "eventos.crear": [
+      "redsocial_eventos_crear_total"
+    ],
+    "eventos.invitar": [
+      "redsocial_eventos_invitar_total"
+    ],
+    "eventos.aceptar_invitacion": [
+      "redsocial_eventos_aceptar_invitacion_total"
+    ],
+    "eventos.rechazar_invitacion": [
+      "redsocial_eventos_rechazar_invitacion_total"
+    ],
+    "grupos.listar": [
+      "redsocial_grupos_listar_total"
+    ],
+    "grupos.descubrir": [
+      "redsocial_grupos_descubrir_total"
+    ],
+    "grupos.crear": [
+      "redsocial_grupos_crear_total"
+    ],
+    "grupos.unirse": [
+      "redsocial_grupos_unirse_total"
+    ],
+    "grupos.aceptar_invitacion": [
+      "redsocial_grupos_aceptar_invitacion_total"
+    ],
+    "grupos.rechazar_invitacion": [
+      "redsocial_grupos_rechazar_invitacion_total"
+    ],
+    "guardados.listar": [
+      "redsocial_guardados_listar_total"
+    ],
+    "guardados.filtrar": [
+      "redsocial_guardados_filtrar_total"
+    ],
+    "guardados.guardar": [
+      "redsocial_guardados_guardar_total"
+    ],
+    "guardados.quitar_guardado": [
+      "redsocial_guardados_quitar_guardado_total"
+    ],
+    "guardados.crear_coleccion": [
+      "redsocial_guardados_crear_coleccion_total"
+    ],
+    "indicadores.listar": [
+      "redsocial_indicadores_listar_total"
+    ],
+    "indicadores.filtrar_por_modulo": [
+      "redsocial_indicadores_filtrar_por_modulo_total"
+    ],
+    "indicadores.comparar": [
+      "redsocial_indicadores_comparar_total"
+    ],
+    "inicio.publicar": [
+      "redsocial_inicio_publicar_total"
+    ],
+    "inicio.reaccionar": [
+      "redsocial_inicio_reaccionar_total"
+    ],
+    "inicio.comentar": [
+      "redsocial_inicio_comentar_total"
+    ],
+    "inicio.compartir": [
+      "redsocial_inicio_compartir_total"
+    ],
+    "marketplace.listar": [
+      "redsocial_marketplace_listar_total"
+    ],
+    "marketplace.buscar": [
+      "redsocial_marketplace_buscar_total"
+    ],
+    "marketplace.comprar": [
+      "redsocial_marketplace_comprar_total"
+    ],
+    "marketplace.publicar_aplicacion": [
+      "redsocial_marketplace_publicar_aplicacion_total"
+    ],
+    "mensajeria.listar": [
+      "redsocial_mensajeria_listar_total"
+    ],
+    "mensajeria.enviar_mensaje": [
+      "redsocial_mensajeria_enviar_mensaje_total"
+    ],
+    "mensajeria.marcar_favorito": [
+      "redsocial_mensajeria_marcar_favorito_total"
+    ],
+    "mensajeria.iniciar_videollamada": [
+      "redsocial_mensajeria_iniciar_videollamada_total"
+    ],
+    "reportes.listar": [
+      "redsocial_reportes_listar_total"
+    ],
+    "reportes.generar": [
+      "redsocial_reportes_generar_total"
+    ],
+    "reportes.descargar": [
+      "redsocial_reportes_descargar_total"
+    ],
+    "reportes.compartir": [
+      "redsocial_reportes_compartir_total"
+    ]
+  },
+  "trazas": {
+    "actividad.listar": [
+      "redsocial.actividad.listar"
+    ],
+    "actividad.filtrar": [
+      "redsocial.actividad.filtrar"
+    ],
+    "actividad.ver_detalle": [
+      "redsocial.actividad.ver_detalle"
+    ],
+    "actividad.comentar": [
+      "redsocial.actividad.comentar"
+    ],
+    "amigos.listar": [
+      "redsocial.amigos.listar"
+    ],
+    "amigos.buscar": [
+      "redsocial.amigos.buscar"
+    ],
+    "amigos.solicitar": [
+      "redsocial.amigos.solicitar"
+    ],
+    "amigos.aceptar": [
+      "redsocial.amigos.aceptar"
+    ],
+    "amigos.rechazar": [
+      "redsocial.amigos.rechazar"
+    ],
+    "amigos.crear_lista": [
+      "redsocial.amigos.crear_lista"
+    ],
+    "avisos.listar": [
+      "redsocial.avisos.listar"
+    ],
+    "avisos.filtrar": [
+      "redsocial.avisos.filtrar"
+    ],
+    "avisos.marcar_leida": [
+      "redsocial.avisos.marcar_leida"
+    ],
+    "avisos.marcar_todas_leidas": [
+      "redsocial.avisos.marcar_todas_leidas"
+    ],
+    "colaboradores.listar": [
+      "redsocial.colaboradores.listar"
+    ],
+    "colaboradores.invitar": [
+      "redsocial.colaboradores.invitar"
+    ],
+    "colaboradores.ver_detalle": [
+      "redsocial.colaboradores.ver_detalle"
+    ],
+    "colaboradores.cambiar_rol": [
+      "redsocial.colaboradores.cambiar_rol"
+    ],
+    "colaboradores.dar_de_baja": [
+      "redsocial.colaboradores.dar_de_baja"
+    ],
+    "compartido.navegar": [
+      "redsocial.compartido.navegar"
+    ],
+    "compartido.buscar": [
+      "redsocial.compartido.buscar"
+    ],
+    "dashboard.ver_resumen": [
+      "redsocial.dashboard.ver_resumen"
+    ],
+    "dashboard.personalizar": [
+      "redsocial.dashboard.personalizar"
+    ],
+    "dashboard.exportar": [
+      "redsocial.dashboard.exportar"
+    ],
+    "estadisticas.ver_por_modulo": [
+      "redsocial.estadisticas.ver_por_modulo"
+    ],
+    "estadisticas.comparar": [
+      "redsocial.estadisticas.comparar"
+    ],
+    "estadisticas.exportar": [
+      "redsocial.estadisticas.exportar"
+    ],
+    "eventos.listar": [
+      "redsocial.eventos.listar"
+    ],
+    "eventos.crear": [
+      "redsocial.eventos.crear"
+    ],
+    "eventos.invitar": [
+      "redsocial.eventos.invitar"
+    ],
+    "eventos.aceptar_invitacion": [
+      "redsocial.eventos.aceptar_invitacion"
+    ],
+    "eventos.rechazar_invitacion": [
+      "redsocial.eventos.rechazar_invitacion"
+    ],
+    "grupos.listar": [
+      "redsocial.grupos.listar"
+    ],
+    "grupos.descubrir": [
+      "redsocial.grupos.descubrir"
+    ],
+    "grupos.crear": [
+      "redsocial.grupos.crear"
+    ],
+    "grupos.unirse": [
+      "redsocial.grupos.unirse"
+    ],
+    "grupos.aceptar_invitacion": [
+      "redsocial.grupos.aceptar_invitacion"
+    ],
+    "grupos.rechazar_invitacion": [
+      "redsocial.grupos.rechazar_invitacion"
+    ],
+    "guardados.listar": [
+      "redsocial.guardados.listar"
+    ],
+    "guardados.filtrar": [
+      "redsocial.guardados.filtrar"
+    ],
+    "guardados.guardar": [
+      "redsocial.guardados.guardar"
+    ],
+    "guardados.quitar_guardado": [
+      "redsocial.guardados.quitar_guardado"
+    ],
+    "guardados.crear_coleccion": [
+      "redsocial.guardados.crear_coleccion"
+    ],
+    "indicadores.listar": [
+      "redsocial.indicadores.listar"
+    ],
+    "indicadores.filtrar_por_modulo": [
+      "redsocial.indicadores.filtrar_por_modulo"
+    ],
+    "indicadores.comparar": [
+      "redsocial.indicadores.comparar"
+    ],
+    "inicio.publicar": [
+      "redsocial.inicio.publicar"
+    ],
+    "inicio.reaccionar": [
+      "redsocial.inicio.reaccionar"
+    ],
+    "inicio.comentar": [
+      "redsocial.inicio.comentar"
+    ],
+    "inicio.compartir": [
+      "redsocial.inicio.compartir"
+    ],
+    "marketplace.listar": [
+      "redsocial.marketplace.listar"
+    ],
+    "marketplace.buscar": [
+      "redsocial.marketplace.buscar"
+    ],
+    "marketplace.comprar": [
+      "redsocial.marketplace.comprar"
+    ],
+    "marketplace.publicar_aplicacion": [
+      "redsocial.marketplace.publicar_aplicacion"
+    ],
+    "mensajeria.listar": [
+      "redsocial.mensajeria.listar"
+    ],
+    "mensajeria.enviar_mensaje": [
+      "redsocial.mensajeria.enviar_mensaje"
+    ],
+    "mensajeria.marcar_favorito": [
+      "redsocial.mensajeria.marcar_favorito"
+    ],
+    "mensajeria.iniciar_videollamada": [
+      "redsocial.mensajeria.iniciar_videollamada"
+    ],
+    "reportes.listar": [
+      "redsocial.reportes.listar"
+    ],
+    "reportes.generar": [
+      "redsocial.reportes.generar"
+    ],
+    "reportes.descargar": [
+      "redsocial.reportes.descargar"
+    ],
+    "reportes.compartir": [
+      "redsocial.reportes.compartir"
+    ]
+  },
+  "logs": {
+    "actividad.listar": [
+      "redsocial.actividad.listar"
+    ],
+    "actividad.filtrar": [
+      "redsocial.actividad.filtrar"
+    ],
+    "actividad.ver_detalle": [
+      "redsocial.actividad.ver_detalle"
+    ],
+    "actividad.comentar": [
+      "redsocial.actividad.comentar"
+    ],
+    "amigos.listar": [
+      "redsocial.amigos.listar"
+    ],
+    "amigos.buscar": [
+      "redsocial.amigos.buscar"
+    ],
+    "amigos.solicitar": [
+      "redsocial.amigos.solicitar"
+    ],
+    "amigos.aceptar": [
+      "redsocial.amigos.aceptar"
+    ],
+    "amigos.rechazar": [
+      "redsocial.amigos.rechazar"
+    ],
+    "amigos.crear_lista": [
+      "redsocial.amigos.crear_lista"
+    ],
+    "avisos.listar": [
+      "redsocial.avisos.listar"
+    ],
+    "avisos.filtrar": [
+      "redsocial.avisos.filtrar"
+    ],
+    "avisos.marcar_leida": [
+      "redsocial.avisos.marcar_leida"
+    ],
+    "avisos.marcar_todas_leidas": [
+      "redsocial.avisos.marcar_todas_leidas"
+    ],
+    "colaboradores.listar": [
+      "redsocial.colaboradores.listar"
+    ],
+    "colaboradores.invitar": [
+      "redsocial.colaboradores.invitar"
+    ],
+    "colaboradores.ver_detalle": [
+      "redsocial.colaboradores.ver_detalle"
+    ],
+    "colaboradores.cambiar_rol": [
+      "redsocial.colaboradores.cambiar_rol"
+    ],
+    "colaboradores.dar_de_baja": [
+      "redsocial.colaboradores.dar_de_baja"
+    ],
+    "compartido.navegar": [
+      "redsocial.compartido.navegar"
+    ],
+    "compartido.buscar": [
+      "redsocial.compartido.buscar"
+    ],
+    "dashboard.ver_resumen": [
+      "redsocial.dashboard.ver_resumen"
+    ],
+    "dashboard.personalizar": [
+      "redsocial.dashboard.personalizar"
+    ],
+    "dashboard.exportar": [
+      "redsocial.dashboard.exportar"
+    ],
+    "estadisticas.ver_por_modulo": [
+      "redsocial.estadisticas.ver_por_modulo"
+    ],
+    "estadisticas.comparar": [
+      "redsocial.estadisticas.comparar"
+    ],
+    "estadisticas.exportar": [
+      "redsocial.estadisticas.exportar"
+    ],
+    "eventos.listar": [
+      "redsocial.eventos.listar"
+    ],
+    "eventos.crear": [
+      "redsocial.eventos.crear"
+    ],
+    "eventos.invitar": [
+      "redsocial.eventos.invitar"
+    ],
+    "eventos.aceptar_invitacion": [
+      "redsocial.eventos.aceptar_invitacion"
+    ],
+    "eventos.rechazar_invitacion": [
+      "redsocial.eventos.rechazar_invitacion"
+    ],
+    "grupos.listar": [
+      "redsocial.grupos.listar"
+    ],
+    "grupos.descubrir": [
+      "redsocial.grupos.descubrir"
+    ],
+    "grupos.crear": [
+      "redsocial.grupos.crear"
+    ],
+    "grupos.unirse": [
+      "redsocial.grupos.unirse"
+    ],
+    "grupos.aceptar_invitacion": [
+      "redsocial.grupos.aceptar_invitacion"
+    ],
+    "grupos.rechazar_invitacion": [
+      "redsocial.grupos.rechazar_invitacion"
+    ],
+    "guardados.listar": [
+      "redsocial.guardados.listar"
+    ],
+    "guardados.filtrar": [
+      "redsocial.guardados.filtrar"
+    ],
+    "guardados.guardar": [
+      "redsocial.guardados.guardar"
+    ],
+    "guardados.quitar_guardado": [
+      "redsocial.guardados.quitar_guardado"
+    ],
+    "guardados.crear_coleccion": [
+      "redsocial.guardados.crear_coleccion"
+    ],
+    "indicadores.listar": [
+      "redsocial.indicadores.listar"
+    ],
+    "indicadores.filtrar_por_modulo": [
+      "redsocial.indicadores.filtrar_por_modulo"
+    ],
+    "indicadores.comparar": [
+      "redsocial.indicadores.comparar"
+    ],
+    "inicio.publicar": [
+      "redsocial.inicio.publicar"
+    ],
+    "inicio.reaccionar": [
+      "redsocial.inicio.reaccionar"
+    ],
+    "inicio.comentar": [
+      "redsocial.inicio.comentar"
+    ],
+    "inicio.compartir": [
+      "redsocial.inicio.compartir"
+    ],
+    "marketplace.listar": [
+      "redsocial.marketplace.listar"
+    ],
+    "marketplace.buscar": [
+      "redsocial.marketplace.buscar"
+    ],
+    "marketplace.comprar": [
+      "redsocial.marketplace.comprar"
+    ],
+    "marketplace.publicar_aplicacion": [
+      "redsocial.marketplace.publicar_aplicacion"
+    ],
+    "mensajeria.listar": [
+      "redsocial.mensajeria.listar"
+    ],
+    "mensajeria.enviar_mensaje": [
+      "redsocial.mensajeria.enviar_mensaje"
+    ],
+    "mensajeria.marcar_favorito": [
+      "redsocial.mensajeria.marcar_favorito"
+    ],
+    "mensajeria.iniciar_videollamada": [
+      "redsocial.mensajeria.iniciar_videollamada"
+    ],
+    "reportes.listar": [
+      "redsocial.reportes.listar"
+    ],
+    "reportes.generar": [
+      "redsocial.reportes.generar"
+    ],
+    "reportes.descargar": [
+      "redsocial.reportes.descargar"
+    ],
+    "reportes.compartir": [
+      "redsocial.reportes.compartir"
+    ]
+  },
+  "codigos_error": [
+    "REDSOCIAL_ACTIVIDAD_CARGA_ACTIVIDAD",
+    "REDSOCIAL_AMIGOS_CARGA_AMIGOS",
+    "REDSOCIAL_AVISOS_CARGA_NOTIFICACIONES",
+    "REDSOCIAL_COLABORADORES_CARGA_COLABORADORES",
+    "REDSOCIAL_COLABORADORES_ENVIO_INVITACION",
+    "REDSOCIAL_COMPARTIDO_CARGA_SECCION",
+    "REDSOCIAL_DASHBOARD_CARGA_DASHBOARD",
+    "REDSOCIAL_ESTADISTICAS_CARGA_ESTADISTICAS",
+    "REDSOCIAL_EVENTOS_CARGA_EVENTOS",
+    "REDSOCIAL_EVENTOS_GUARDAR_EVENTO",
+    "REDSOCIAL_GRUPOS_CARGA_GRUPOS",
+    "REDSOCIAL_GUARDADOS_CARGA_GUARDADOS",
+    "REDSOCIAL_INDICADORES_CARGA_INDICADORES",
+    "REDSOCIAL_INICIO_CARGA_MURO",
+    "REDSOCIAL_INICIO_PUBLICAR",
+    "REDSOCIAL_MARKETPLACE_CARGA_MARKETPLACE",
+    "REDSOCIAL_MARKETPLACE_PROCESAR_COMPRA",
+    "REDSOCIAL_MENSAJERIA_CARGA_MENSAJES",
+    "REDSOCIAL_MENSAJERIA_ENVIAR_MENSAJE",
+    "REDSOCIAL_MENSAJERIA_INICIAR_VIDEOLLAMADA",
+    "REDSOCIAL_REPORTES_CARGA_REPORTES",
+    "REDSOCIAL_REPORTES_GENERAR_REPORTE"
+  ]
+}

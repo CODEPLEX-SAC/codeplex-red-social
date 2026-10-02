@@ -1,0 +1,14 @@
+{
+  "clasesIcono": {
+    "verde": "bg-verde-categoria",
+    "azul": "bg-azul-categoria",
+    "naranja": "bg-naranja-categoria",
+    "rosa": "bg-rosa-categoria"
+  },
+  "clasesReferencia": {
+    "verde": "bg-t-e8f5e9 text-t-2e7d32",
+    "azul": "bg-t-e3f2fd text-t-1565c0",
+    "naranja": "bg-t-fff3e0 text-t-e65100",
+    "rosa": "bg-t-fce4ec text-t-c62828"
+  }
+}

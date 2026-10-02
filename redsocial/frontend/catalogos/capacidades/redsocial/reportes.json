@@ -1,5 +1,16 @@
 {
-  "acciones": ["listar", "generar", "descargar", "compartir"],
+  "acciones": [
+    "listar",
+    "generar",
+    "descargar",
+    "compartir"
+  ],
+  "permisos": {
+    "listar": "REPORTES_CONSULTAR",
+    "generar": "REPORTES_GENERAR",
+    "descargar": "REPORTES_DESCARGAR",
+    "compartir": "REPORTES_COMPARTIR"
+  },
   "alertas": {
     "confirmar_compartir_reporte": "Este reporte se compartirá con los colaboradores que selecciones."
   },
@@ -35,18 +46,54 @@
     "principal": "Genera y consulta reportes de tu empresa. Exporta, programa y comparte información clave."
   },
   "selectores": {
-    "periodo": { "etiqueta": "Periodo", "opciones": ["Junio 2026", "Mayo 2026"] },
-    "comparar_con": { "etiqueta": "Comparar con", "opciones": ["Mayo 2026", "Abril 2026"] }
+    "periodo": {
+      "etiqueta": "Periodo",
+      "opciones": [
+        "Junio 2026",
+        "Mayo 2026"
+      ]
+    },
+    "comparar_con": {
+      "etiqueta": "Comparar con",
+      "opciones": [
+        "Mayo 2026",
+        "Abril 2026"
+      ]
+    }
   },
   "modulos_tabs": [
-    { "etiqueta": "Todos los módulos", "icono": "cuadricula" },
-    { "etiqueta": "Ventas", "icono": "ventas" },
-    { "etiqueta": "Contabilidad", "icono": "moneda" },
-    { "etiqueta": "Inventarios", "icono": "caja" },
-    { "etiqueta": "Planillas", "icono": "planillas" },
-    { "etiqueta": "Proyectos", "icono": "maletin" },
-    { "etiqueta": "Compras", "icono": "compras" },
-    { "etiqueta": "Tesorería", "icono": "tarjeta-pago" }
+    {
+      "etiqueta": "Todos los módulos",
+      "icono": "cuadricula"
+    },
+    {
+      "etiqueta": "Ventas",
+      "icono": "ventas"
+    },
+    {
+      "etiqueta": "Contabilidad",
+      "icono": "moneda"
+    },
+    {
+      "etiqueta": "Inventarios",
+      "icono": "caja"
+    },
+    {
+      "etiqueta": "Planillas",
+      "icono": "planillas"
+    },
+    {
+      "etiqueta": "Proyectos",
+      "icono": "maletin"
+    },
+    {
+      "etiqueta": "Compras",
+      "icono": "compras"
+    },
+    {
+      "etiqueta": "Tesorería",
+      "icono": "tarjeta-pago"
+    }
   ],
   "botones": {
     "filtros_avanzados": "Filtros avanzados",
@@ -75,5 +122,28 @@
   "formatos": {
     "pdf": "PDF",
     "excel": "Excel"
+  },
+  "clases_barra_altura": {
+    "30": "h-p30",
+    "35": "h-p35",
+    "40": "h-p40",
+    "45": "h-p45",
+    "50": "h-p50",
+    "55": "h-p55",
+    "60": "h-p60",
+    "65": "h-p65",
+    "70": "h-p70",
+    "75": "h-p75",
+    "80": "h-p80",
+    "85": "h-p85",
+    "90": "h-p90",
+    "95": "h-p95"
+  },
+  "clases_barra_color": {
+    "#7c3aed": "bg-t-7c3aed",
+    "#c4b5fd": "bg-t-c4b5fd",
+    "#ddd6fe": "bg-t-ddd6fe",
+    "#f97316": "bg-t-f97316",
+    "#fed7aa": "bg-t-fed7aa"
   }
 }

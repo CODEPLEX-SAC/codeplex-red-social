@@ -1,0 +1,19 @@
+{
+  "clasesIconoAdmin": {
+    "morado": "bg-morado-categoria",
+    "naranja": "bg-naranja-categoria"
+  },
+  "clasesIconoMis": {
+    "morado": "bg-morado-categoria",
+    "azul": "bg-azul-categoria",
+    "rosa": "bg-rosa-categoria",
+    "verde": "bg-verde-categoria",
+    "amarillo": "bg-amarillo-categoria"
+  },
+  "clasesIconoLateral": {
+    "morado": "bg-morado-categoria",
+    "rosa": "bg-rosa-categoria",
+    "verde": "bg-verde-categoria",
+    "azul": "bg-azul-categoria"
+  }
+}
