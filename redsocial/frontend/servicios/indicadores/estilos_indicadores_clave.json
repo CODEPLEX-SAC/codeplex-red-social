@@ -1,0 +1,36 @@
+{
+  "colorGrafico": {
+    "#3b82f6": "info",
+    "#ef4444": "error",
+    "#7c3aed": "primario",
+    "#06b6d4": "secundario",
+    "#22c55e": "exito",
+    "#eab308": "advertencia",
+    "#f97316": "advertencia",
+    "#ec4899": "secundario"
+  },
+  "clasesIconoKpi": {
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "naranja": "bg-t-ffedd5 text-naranja-categoria"
+  },
+  "clasesEstadoInd": {
+    "optimo": "bg-t-dcfce7 text-positivo-kpi",
+    "regular": "bg-t-fef9c3 text-t-a16207",
+    "bajo": "bg-t-fee2e2 text-negativo-kpi"
+  },
+  "etiquetaEstadoInd": {
+    "optimo": "Óptimo",
+    "regular": "Regular",
+    "bajo": "Bajo"
+  },
+  "clasesIconoModulo": {
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "naranja": "bg-t-ffedd5 text-naranja-categoria",
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "rojo": "bg-t-fee2e2 text-rojo-categoria"
+  },
+  "claseTh": "whitespace-nowrap border-b border-t-f0eef5 py-0 pb-2 pr-1.5 pl-0 text-left text-encabezado-tabla font-semibold uppercase text-texto-suave",
+  "claseTd": "whitespace-nowrap border-b border-t-f7f6fa py-1.75 pr-1.5 pl-0 text-texto"
+}

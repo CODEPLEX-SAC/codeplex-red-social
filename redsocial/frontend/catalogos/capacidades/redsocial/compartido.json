@@ -1,11 +1,19 @@
 {
-  "acciones": ["navegar", "buscar"],
+  "acciones": [
+    "navegar",
+    "buscar"
+  ],
+  "permisos": {
+    "navegar": "COMPARTIDO_NAVEGAR",
+    "buscar": "COMPARTIDO_BUSCAR"
+  },
   "alertas": {
     "confirmar_cerrar_sesion": "Vas a cerrar tu sesión en CODEPLEX."
   },
   "campos": {
     "buscar_en_codeplex": "Buscar en Codeplex",
-    "seleccionar_opcion": "Seleccionar opción"
+    "seleccionar_opcion": "Seleccionar opción",
+    "alt_decorativo": ""
   },
   "errores": {
     "carga_seccion": "No fue posible cargar esta sección."
@@ -15,6 +23,28 @@
   },
   "rutas": {
     "no_encontrada": "/no-encontrada"
+  },
+  "variacion_kpi": {
+    "positiva": { "clase": "text-positivo-kpi", "icono": "flecha-arriba" },
+    "negativa": { "clase": "text-negativo-kpi", "icono": "flecha-abajo" }
+  },
+  "sparkline": {
+    "ancho": 100,
+    "aspecto": "none",
+    "relleno": "none",
+    "extremos": "round",
+    "uniones": "round",
+    "separador": " ",
+    "separador_coordenadas": ",",
+    "radio_punto": 2.2
+  },
+  "colores_graficos": {
+    "primario": "#7c3aed",
+    "secundario": "#06b6d4",
+    "exito": "#22c55e",
+    "error": "#ef4444",
+    "advertencia": "#eab308",
+    "info": "#3b82f6"
   },
   "titulos": {
     "no_encontrada": "Página no encontrada"
@@ -143,5 +173,620 @@
     "periodo_id",
     "usuario_id"
   ],
-  "titulo_menu": "Compartido"
+  "titulo_menu": "Compartido",
+  "nombres_iconos": [
+    "actividad",
+    "adjuntar",
+    "ajustes-sistema",
+    "aviso-critico",
+    "amigos-todos",
+    "amigos",
+    "archivo-hoja",
+    "archivo-pdf",
+    "bloqueado",
+    "buscar",
+    "caja",
+    "calendario",
+    "campana",
+    "carrito",
+    "categoria-evento",
+    "cerrar",
+    "clave",
+    "cohete",
+    "colaborador",
+    "comentario",
+    "compartir",
+    "compras",
+    "configuracion",
+    "contabilidad",
+    "corona",
+    "crear-evento",
+    "cuadricula",
+    "despedida",
+    "editar",
+    "empresa",
+    "encuesta",
+    "enviar",
+    "estadisticas",
+    "estrella",
+    "fijar",
+    "flecha-abajo-izquierda",
+    "flecha-arriba-derecha",
+    "filtro",
+    "filtros",
+    "flecha-abajo",
+    "flecha-derecha",
+    "flecha-izquierda",
+    "fuego",
+    "microfono",
+    "altavoz",
+    "enlace",
+    "actualizar",
+    "escudo",
+    "pantalla-compartida",
+    "microfono-apagado",
+    "video-apagado",
+    "flecha-arriba",
+    "punto-circular",
+    "sin-acceso",
+    "ver",
+    "eliminar",
+    "imprimir",
+    "descargar",
+    "aviso",
+    "correo",
+    "tarjeta-pago",
+    "documento",
+    "guardar",
+    "idea",
+    "grupos",
+    "guardado",
+    "imagen",
+    "indicador",
+    "informacion",
+    "inicio-sesion",
+    "inicio",
+    "intercambio",
+    "inventario",
+    "listas",
+    "llamada",
+    "maletin",
+    "mantenimiento",
+    "mas",
+    "me-gusta",
+    "mensaje",
+    "menu-hamburguesa",
+    "moneda",
+    "mundo",
+    "nuevo-usuario",
+    "panel",
+    "planillas",
+    "puntos",
+    "rapido",
+    "reporte",
+    "reportes-barra",
+    "respaldo",
+    "respetado",
+    "sentimiento",
+    "silenciado",
+    "sistema",
+    "solicitudes",
+    "soporte",
+    "tienda",
+    "ubicacion",
+    "ventas",
+    "verificado",
+    "video",
+    "reloj",
+    "marca-pequena"
+  ],
+  "navegacion": {
+    "navPrincipal": [
+      {
+        "clave": "inicio",
+        "etiqueta": "Inicio",
+        "ruta": "/inicio",
+        "icono": "inicio"
+      },
+      {
+        "clave": "actividad",
+        "etiqueta": "Actividad",
+        "ruta": "/actividad",
+        "icono": "actividad"
+      },
+      {
+        "clave": "avisos",
+        "etiqueta": "Notificaciones",
+        "ruta": "/notificaciones",
+        "insignia": 3,
+        "icono": "campana"
+      },
+      {
+        "clave": "mensajes",
+        "etiqueta": "Mensajes",
+        "ruta": "/mensajes",
+        "insignia": 5,
+        "icono": "mensajes"
+      },
+      {
+        "clave": "amigos",
+        "etiqueta": "Amigos",
+        "ruta": "/amigos",
+        "icono": "amigos"
+      },
+      {
+        "clave": "grupos",
+        "etiqueta": "Grupos",
+        "ruta": "/grupos",
+        "icono": "grupos"
+      },
+      {
+        "clave": "marketplace",
+        "etiqueta": "Marketplace",
+        "ruta": "/marketplace",
+        "icono": "marketplace"
+      },
+      {
+        "clave": "eventos",
+        "etiqueta": "Eventos",
+        "ruta": "/eventos",
+        "icono": "eventos"
+      },
+      {
+        "clave": "guardados",
+        "etiqueta": "Guardados",
+        "ruta": "/guardados",
+        "icono": "guardados"
+      }
+    ],
+    "espacioTrabajo": [
+      {
+        "clave": "colaboradores",
+        "etiqueta": "Colaboradores",
+        "ruta": "/colaboradores",
+        "icono": "colaboradores"
+      },
+      {
+        "clave": "dashboard",
+        "etiqueta": "Dashboard",
+        "ruta": "/dashboard",
+        "icono": "dashboard"
+      },
+      {
+        "clave": "estadisticas",
+        "etiqueta": "Estadísticas",
+        "ruta": "/estadisticas",
+        "icono": "estadisticas"
+      },
+      {
+        "clave": "reportes",
+        "etiqueta": "Reportes",
+        "ruta": "/reportes",
+        "icono": "reportes"
+      },
+      {
+        "clave": "indicadores",
+        "etiqueta": "Indicadores clave",
+        "ruta": "/indicadores",
+        "icono": "indicadores"
+      }
+    ],
+    "modulosDisponibles": [
+      {
+        "etiqueta": "Planillas",
+        "descripcion": "RRHH y nómina",
+        "color": "verde",
+        "icono": "colaboradores"
+      },
+      {
+        "etiqueta": "Contabilidad",
+        "descripcion": "Finanzas y registros",
+        "color": "azul",
+        "icono": "moneda"
+      },
+      {
+        "etiqueta": "Inventario",
+        "descripcion": "Almacén y stock",
+        "color": "naranja",
+        "icono": "caja"
+      },
+      {
+        "etiqueta": "Ventas",
+        "descripcion": "Facturación y clientes",
+        "color": "teal",
+        "icono": "marketplace"
+      },
+      {
+        "etiqueta": "Proyectos",
+        "descripcion": "Gestión de proyectos",
+        "color": "rojo",
+        "icono": "maletin"
+      },
+      {
+        "etiqueta": "Reportes",
+        "descripcion": "Análisis e informes",
+        "color": "violeta",
+        "icono": "reportes"
+      }
+    ],
+    "avisosSidebar": [
+      {
+        "severidad": "peligro",
+        "titulo": "3 facturas por vencer",
+        "detalle": "Por cobrar S/ 45,000"
+      },
+      {
+        "severidad": "advertencia",
+        "titulo": "Stock bajo en 5 productos",
+        "detalle": "Requieren reposición"
+      },
+      {
+        "severidad": "neutro",
+        "titulo": "2 pagos pendientes",
+        "detalle": "Vencen en los próximos 7 días"
+      }
+    ]
+  },
+  "sesion_actual": {
+    "usuario": "Pedro Lozano",
+    "empresa": "Constructora del Norte SAC",
+    "ruc": "RUC 20501234567"
+  },
+  "paleta_superficie": {
+    "azul": "bg-azul-categoria",
+    "verde": "bg-verde-categoria",
+    "morado": "bg-morado-categoria",
+    "naranja": "bg-naranja-categoria",
+    "rosa": "bg-rosa-categoria",
+    "rojo": "bg-rojo-categoria",
+    "gris": "bg-gris-categoria",
+    "amarillo": "bg-amarillo-categoria",
+    "cian": "bg-cian-categoria",
+    "cyan": "bg-cian-categoria",
+    "teal": "bg-teal-categoria",
+    "violeta": "bg-violeta-categoria",
+    "azul-claro": "bg-azul-claro-categoria",
+    "musica": "bg-verde-categoria",
+    "tecnologia": "bg-violeta-categoria",
+    "negocios": "bg-amarillo-categoria",
+    "empresa": "bg-naranja-categoria",
+    "educacion": "bg-azul-categoria",
+    "reuniones": "bg-rosa-categoria",
+    "otros": "bg-gris-categoria",
+    "gastronomia": "bg-naranja-categoria"
+  },
+  "paleta_texto": {
+    "azul": "text-azul-categoria",
+    "verde": "text-verde-categoria",
+    "morado": "text-morado-categoria",
+    "naranja": "text-naranja-categoria",
+    "rosa": "text-rosa-categoria",
+    "rojo": "text-rojo-categoria",
+    "gris": "text-gris-categoria",
+    "amarillo": "text-amarillo-categoria",
+    "cian": "text-cian-categoria",
+    "cyan": "text-cian-categoria",
+    "teal": "text-teal-categoria",
+    "violeta": "text-violeta-categoria",
+    "azul-claro": "text-azul-claro-categoria",
+    "tecnologia": "text-violeta-categoria",
+    "negocios": "text-rosa-categoria",
+    "educacion": "text-azul-categoria",
+    "gastronomia": "text-naranja-categoria"
+  },
+  "paleta_degradado": {
+    "morado": "degradado-morado",
+    "azul": "degradado-azul",
+    "calido": "degradado-calido",
+    "verde": "degradado-verde",
+    "rosa": "degradado-rosa",
+    "nocturno": "degradado-nocturno",
+    "rosa-suave": "degradado-rosa-suave",
+    "violeta-suave": "degradado-violeta-suave",
+    "teal": "degradado-teal",
+    "tecnologia": "degradado-violeta-suave",
+    "negocios": "degradado-rosa-suave",
+    "educacion": "degradado-educativo",
+    "gastronomia": "degradado-gastronomico",
+    "primario": "degradado-primario"
+  },
+  "publicidad": {
+    "anunciosPublicidad": [
+      {
+        "titulo": "Automatiza tu empresa",
+        "subtitulo": "y ahorra tiempo",
+        "descripcion": "Con las soluciones de Codeplex",
+        "textoBoton": "Conoce más"
+      },
+      {
+        "titulo": "Lleva tu negocio al siguiente nivel",
+        "descripcion": "con nuestras herramientas",
+        "textoBoton": "Empieza ahora"
+      },
+      {
+        "titulo": "Todo tu negocio en un solo lugar",
+        "descripcion": "Soluciones integradas para hacer crecer tu empresa",
+        "textoBoton": "Conoce más"
+      }
+    ],
+    "anuncioPublicidadDestacado": {
+      "titulo": "Gestiona tu empresa",
+      "subtitulo": "de forma inteligente",
+      "marca": "con Codeplex",
+      "beneficios": [
+        "Más control",
+        "Más productividad",
+        "Mejores resultados",
+        "Todo en un solo lugar"
+      ],
+      "textoBoton": "Conoce más"
+    }
+  },
+  "clases_boton_mini": "inline-flex min-h-7.5 items-center justify-center gap-sm whitespace-nowrap rounded-7 border px-2.5 text-xs no-underline",
+  "boton_variantes": {
+    "primario": "border-transparent bg-primario text-white hover:bg-primario-oscuro",
+    "secundario": "border-gris-borde bg-white text-t-5d5a70",
+    "oscuro": "border-transparent bg-t-25203b text-white",
+    "peligro": "border-transparent bg-peligro text-white",
+    "exito": "border-transparent bg-exito text-white",
+    "contorno": "border-primario bg-white text-primario hover:bg-primario hover:text-white",
+    "peligro_contorno": "border-t-fca5a5 bg-white text-negativo-kpi hover:bg-t-fef2f2",
+    "filtro": "border-borde bg-white text-texto-suave hover:border-primario hover:text-primario",
+    "enlace": "border-transparent bg-transparent text-primario hover:underline",
+    "fantasma": "border-transparent bg-transparent text-texto-suave hover:bg-t-f8f7fc hover:text-primario"
+  },
+  "boton_activo": {
+    "filtro": "border-primario bg-t-f3f0ff text-primario"
+  },
+  "boton_tamanos": {
+    "mini": "min-h-7.5 px-2.5 text-xs rounded-7",
+    "default": "min-h-8.5 px-3.25 rounded-7 text-boton font-semibold max-600:min-h-7.5 max-600:px-2.5",
+    "md": "min-h-9.5 px-4.5 rounded-lg text-3.25 font-semibold max-600:min-h-8.5 max-600:px-3.25 max-600:rounded-7",
+    "filtro": "h-8 px-3 rounded-lg text-boton font-medium",
+    "enlace": "text-boton font-semibold"
+  },
+  "boton_icono_variantes": {
+    "default": "rounded-7 border-0 bg-transparent text-t-6d6a7c hover:bg-t-f2f1f6",
+    "primario": "rounded-7 border-0 bg-primario text-white hover:bg-primario-oscuro",
+    "suave": "rounded-7 border-0 bg-transparent text-primario hover:bg-t-f5f3ff",
+    "discreto": "rounded-full border-0 bg-transparent text-t-b3b0c2 hover:bg-t-f5f3fa hover:text-texto",
+    "contorno": "rounded-lg border border-borde bg-white text-texto-suave hover:bg-t-f5f3ff",
+    "sutil": "rounded-md border-0 bg-transparent text-texto-suave hover:bg-t-f5f3ff hover:text-primario",
+    "flotante": "rounded-full border border-t-e0dce8 bg-white text-texto shadow-t8"
+  },
+  "boton_icono_tamanos": {
+    "default": {
+      "boton": "h-8 w-8 max-600:h-7 max-600:w-7",
+      "icono": "w-4.5 h-4.5 max-600:h-4 max-600:w-4"
+    },
+    "sm": {
+      "boton": "h-6 w-6",
+      "icono": "w-3.5 h-3.5"
+    },
+    "md": {
+      "boton": "h-7 w-7",
+      "icono": "w-3.5 h-3.5"
+    }
+  },
+  "colores_icono_actividad": {
+    "morado": "bg-t-ede9fe text-morado-categoria",
+    "violeta": "bg-t-ede9fe text-morado-categoria",
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "naranja": "bg-t-ffedd5 text-naranja-categoria",
+    "rosa": "bg-t-fce7f3 text-rosa-categoria"
+  },
+  "insignia_privacidad": {
+    "publico": "bg-t-e3f2fd text-t-1565c0",
+    "privado": "bg-t-fce4ec text-t-c62828"
+  },
+  "controles": {
+    "casilla_tamano": "pequeno",
+    "texto_vacio": "",
+    "campo_texto": { "anchoCompleto": true, "sx": { "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "campo_numero": { "anchoCompleto": true, "sx": { "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "interruptor": { "color": "primario", "tamano": "pequeno" },
+    "radio": { "colorTema": "primario" },
+    "selector_fecha": { "anchoCompleto": true, "slotProps": { "textField": { "size": "small" } } },
+    "selector_hora": { "anchoCompleto": true, "slotProps": { "textField": { "size": "small" } } },
+    "tipo_busqueda": "search",
+    "atributo_accesible": "aria-label"
+  },
+  "selector_atributo_accesible": "aria-label",
+  "icono_libreria": {
+    "id_fuente": "fuente-iconos-libreria",
+    "url_fuente": "https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block",
+    "fuente_carga": "1em \"Material Symbols Rounded\"",
+    "clase_lista": "iconos-listos",
+    "css_oculto": ".material-symbols-rounded{visibility:hidden}.iconos-listos .material-symbols-rounded{visibility:visible}",
+    "tamano_predeterminado": "1.0625rem",
+    "factor_unidad": 0.25,
+    "estilos": {
+      "display": "inline-flex",
+      "flex": "0 0 auto",
+      "width": "1em",
+      "height": "1em",
+      "fontVariationSettings": "'FILL' 0, 'wght' 500",
+      "transform": "scale(1.1)"
+    }
+  },
+  "iconos_libreria": {
+    "actividad": "format_list_bulleted",
+    "actualizar": "autorenew",
+    "adjuntar": "attach_file",
+    "ajustes-sistema": "settings",
+    "altavoz": "volume_up",
+    "archivo-hoja": "description",
+    "aviso": "error",
+    "aviso-critico": "warning",
+    "bloqueado": "block",
+    "buscar": "search",
+    "calendario": "calendar_today",
+    "campana": "notifications",
+    "carrito": "shopping_cart",
+    "cerrar": "close",
+    "clave": "key",
+    "cohete": "rocket_launch",
+    "colaborador": "manage_accounts",
+    "comentario": "chat_bubble",
+    "compartir": "share",
+    "compras": "shopping_bag",
+    "configuracion": "settings",
+    "contabilidad": "calculate",
+    "corona": "crown",
+    "correo": "mail",
+    "descargar": "download",
+    "despedida": "logout",
+    "documento": "description",
+    "eliminar": "delete",
+    "empresa": "business",
+    "enlace": "link",
+    "enviar": "send",
+    "escudo": "shield",
+    "estrella": "star",
+    "fijar": "push_pin",
+    "filtro": "filter_alt",
+    "filtros": "filter_list",
+    "flecha-abajo": "keyboard_arrow_down",
+    "flecha-abajo-izquierda": "south_west",
+    "flecha-arriba": "keyboard_arrow_up",
+    "flecha-arriba-derecha": "north_east",
+    "flecha-derecha": "chevron_right",
+    "flecha-izquierda": "chevron_left",
+    "fuego": "local_fire_department",
+    "guardado": "bookmark",
+    "guardar": "save",
+    "idea": "lightbulb",
+    "imagen": "image",
+    "imprimir": "print",
+    "indicador": "speed",
+    "informacion": "info",
+    "inicio": "home",
+    "inicio-sesion": "login",
+    "llamada": "call",
+    "maletin": "work",
+    "mantenimiento": "build",
+    "marca-pequena": "check",
+    "mas": "add",
+    "me-gusta": "favorite",
+    "mensaje": "chat_bubble_outline",
+    "menu-hamburguesa": "menu",
+    "microfono": "mic",
+    "microfono-apagado": "mic_off",
+    "moneda": "paid",
+    "mundo": "language",
+    "nuevo-usuario": "person_add",
+    "panel": "dashboard",
+    "pantalla-compartida": "screen_share",
+    "planillas": "table_chart",
+    "punto-circular": "adjust",
+    "puntos": "more_horiz",
+    "rapido": "bolt",
+    "reloj": "schedule",
+    "reporte": "description",
+    "respaldo": "database",
+    "sentimiento": "sentiment_satisfied",
+    "silenciado": "notifications_off",
+    "sin-acceso": "block",
+    "sistema": "memory",
+    "soporte": "headphones",
+    "tarjeta-pago": "credit_card",
+    "tienda": "storefront",
+    "ubicacion": "location_on",
+    "ventas": "trending_up",
+    "ver": "visibility",
+    "verificado": "check_circle",
+    "video": "videocam",
+    "video-apagado": "videocam_off"
+  },
+  "barra_lateral": {
+    "ancho": 240,
+    "puntos_quiebre": { "md": 801 },
+    "desplazamiento": { "expandido": "pl-60", "colapsado": "pl-20" },
+    "tipos": { "divisor": "divisor", "seccion": "seccion" },
+    "ids": {
+      "ver_mas": "ver_mas",
+      "divisor_principal": "divisor_principal",
+      "seccion_trabajo": "seccion_trabajo",
+      "divisor_trabajo": "divisor_trabajo",
+      "seccion_modulos": "seccion_modulos",
+      "ver_modulos": "ver_modulos",
+      "divisor_modulos": "divisor_modulos",
+      "seccion_alertas": "seccion_alertas"
+    },
+    "iconos": { "ver_mas": "puntos", "ver_modulos": "cuadricula", "flecha_modulo": "flecha-derecha" },
+    "clases_severidad": { "peligro": "bg-peligro", "advertencia": "bg-t-e0972a", "neutro": "bg-t-9c99ab" },
+    "clase_punto": "mt-1 h-1.75 w-1.75 flex-none rounded-full",
+    "clase_encabezado_seccion": "flex items-center justify-between",
+    "clase_modulo": "flex w-full items-center gap-2",
+    "clase_icono_modulo": "flex h-7.5 w-7.5 flex-none items-center justify-center rounded-control text-white"
+  },
+  "pestanas": {
+    "contenedor": { "variant": "scrollable", "scrollButtons": "auto", "allowScrollButtonsMobile": true, "sx": { "& .MuiTabScrollButton-root.Mui-disabled": { "width": 0 } } },
+    "pestana": { "iconPosition": "start" },
+    "enlace": { "component": "a" },
+    "clase_icono": "h-3.5 w-3.5",
+    "clase_etiqueta": "inline-flex items-center gap-1.5"
+  },
+  "fuente_heredada": { "fontFamily": "inherit" },
+  "pestanas_tema": {
+    "fontFamily": "inherit",
+    "textTransform": "none",
+    "minHeight": "2.5rem",
+    "minWidth": 0,
+    "fontSize": "var(--text-navegacion)",
+    "fontWeight": 500
+  },
+  "menu": {
+    "contenedor": {
+      "anchorOrigin": { "vertical": "bottom", "horizontal": "right" },
+      "transformOrigin": { "vertical": "top", "horizontal": "right" },
+      "disableScrollLock": true
+    },
+    "clase_icono": "h-3.5 w-3.5",
+    "peligro": { "color": "error.main" }
+  },
+  "paginacion": { "color": "primary" },
+  "selector_libreria": {
+    "default": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "colaboradores": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": true, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "mini": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "integrado": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "sx": { "& fieldset": { "border": 0 }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } }
+  },
+  "selector_envoltorio": {
+    "default": "relative inline-flex max-900:flex-1",
+    "colaboradores": "relative flex w-full",
+    "mini": "relative inline-flex",
+    "integrado": "relative inline-flex"
+  },
+  "selector_label": {
+    "default": "text-2.75 font-semibold text-texto-suave max-900:flex-1",
+    "colaboradores": "text-xs font-medium text-gris-texto-secundario"
+  },
+  "tarjeta_indicador_icono_color": {
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "rojo": "bg-t-fee2e2 text-rojo-categoria",
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "cian": "bg-t-cffafe text-cian-categoria",
+    "naranja": "bg-t-ffedd5 text-naranja-categoria"
+  },
+  "radio_campos": "12px",
+  "modal": {
+    "clase_fondo": "fixed inset-0 flex items-center justify-center bg-black/45 p-4 max-600:p-0",
+    "clase_dialogo": "flex max-h-full w-full flex-col overflow-hidden bg-white shadow-t13 outline-none",
+    "clase_cabecera": "grid grid-cols-[2rem_1fr_2rem] items-center border-b border-borde px-5 py-3.5",
+    "clase_titulo": "m-0 text-center text-titulo-banner font-bold text-texto",
+    "tecla_cerrar": "Escape",
+    "tecla_tabulador": "Tab",
+    "selector_foco_inicial": "[data-foco-inicial]",
+    "selectores_enfocables": [
+      "a[href]",
+      "button:not([disabled])",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      "[tabindex]:not([tabindex=\"-1\"])"
+    ]
+  }
 }

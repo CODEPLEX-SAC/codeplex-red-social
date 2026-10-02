@@ -1,0 +1,112 @@
+{
+  "modulos": [
+    {
+      "icono": "planillas",
+      "clase": "bg-t-ede9fe text-morado-categoria",
+      "nombre": "Planillas",
+      "descripcion": "Empleados, planillas, cálculos y pagos",
+      "activo": true
+    },
+    {
+      "icono": "contabilidad",
+      "clase": "bg-t-d1fae5 text-t-059669",
+      "nombre": "Contabilidad",
+      "descripcion": "Asientos, libros y reportes contables"
+    },
+    {
+      "icono": "inventario",
+      "clase": "bg-t-ffedd5 text-t-ea580c",
+      "nombre": "Inventario",
+      "descripcion": "Productos, almacenes y movimientos"
+    },
+    {
+      "icono": "ventas",
+      "clase": "bg-t-dbeafe text-t-2563eb",
+      "nombre": "Ventas",
+      "descripcion": "Cotizaciones, pedidos y facturación"
+    },
+    {
+      "icono": "compras",
+      "clase": "bg-t-fee2e2 text-negativo-kpi",
+      "nombre": "Compras",
+      "descripcion": "Proveedores, órdenes y compras"
+    },
+    {
+      "icono": "proyectos",
+      "clase": "bg-t-cffafe text-t-0891b2",
+      "nombre": "Proyectos",
+      "descripcion": "Tareas, avances y costos"
+    },
+    {
+      "icono": "reportes",
+      "clase": "bg-t-fef9c3 text-t-ca8a04",
+      "nombre": "Reportes",
+      "descripcion": "Dashboards y tableros"
+    },
+    {
+      "icono": "configuracion",
+      "clase": "bg-t-f3f4f6 text-gris-texto-secundario",
+      "nombre": "Configuración",
+      "descripcion": "Parámetros y configuración del sistema"
+    }
+  ],
+  "perfilesNivelRapido": [
+    "Supervisor de Planillas",
+    "Operador de Planillas",
+    "Consultor de Planillas",
+    "Solo lectura",
+    "Sin permisos"
+  ],
+  "perfilAplicado": "Supervisor de Planillas",
+  "filas": [
+    {
+      "nombre": "Empleados",
+      "descripcion": "Ver y gestionar información de empleados",
+      "activos": [
+        "ver"
+      ]
+    },
+    {
+      "nombre": "Planillas",
+      "descripcion": "Crear y editar planillas",
+      "activos": [
+        "ver",
+        "crear",
+        "editar"
+      ]
+    },
+    {
+      "nombre": "Cálculos",
+      "descripcion": "Realizar cálculos de planillas",
+      "activos": [
+        "ver",
+        "crear",
+        "editar"
+      ]
+    },
+    {
+      "nombre": "Pagos",
+      "descripcion": "Registrar y gestionar pagos",
+      "activos": [
+        "ver",
+        "crear",
+        "editar"
+      ]
+    },
+    {
+      "nombre": "Reportes",
+      "descripcion": "Generar reportes de planillas",
+      "activos": [
+        "ver",
+        "exportar"
+      ]
+    },
+    {
+      "nombre": "Configuración del módulo",
+      "descripcion": "Configurar parámetros de planillas",
+      "activos": [
+        "sin-acceso"
+      ]
+    }
+  ]
+}

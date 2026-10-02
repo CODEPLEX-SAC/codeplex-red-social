@@ -1,0 +1,118 @@
+{
+  "acciones": [
+    "listar",
+    "filtrar",
+    "guardar",
+    "quitar_guardado",
+    "crear_coleccion"
+  ],
+  "permisos": {
+    "listar": "GUARDADOS_CONSULTAR",
+    "filtrar": "GUARDADOS_FILTRAR",
+    "guardar": "GUARDADOS_GUARDAR",
+    "quitar_guardado": "GUARDADOS_QUITAR",
+    "crear_coleccion": "GUARDADOS_CREAR"
+  },
+  "alertas": {
+    "confirmar_quitar_guardado": "Vas a quitar este elemento de tus guardados."
+  },
+  "campos": {
+    "buscar_guardados": "Buscar en grupos guardados"
+  },
+  "errores": {
+    "carga_guardados": "No fue posible cargar tus guardados."
+  },
+  "mensajes": {
+    "sin_guardados": "No tienes elementos guardados todavia."
+  },
+  "toast": {
+    "guardado_quitado": "Se quito de tus guardados."
+  },
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "principal": "/guardados"
+  },
+  "titulo_menu": "Guardados",
+  "titulos": {
+    "principal": "Guardados"
+  },
+  "subtitulos": {
+    "principal": "Todo lo que guardaste en un solo lugar"
+  },
+  "placeholders": {
+    "buscar_guardados": "Buscar en grupos guardados..."
+  },
+  "pestanas": [
+    {"clave": "todo", "etiqueta": "Todo", "ruta": "#"},
+    {"clave": "publicaciones", "etiqueta": "Publicaciones", "ruta": "#"},
+    {"clave": "eventos", "etiqueta": "Eventos", "ruta": "#"},
+    {"clave": "grupos", "etiqueta": "Grupos", "ruta": "/guardados"},
+    {"clave": "recursos", "etiqueta": "Recursos", "ruta": "#"}
+  ],
+  "titulos_pestanas": {
+    "todo": "Todo",
+    "publicaciones": "Publicaciones",
+    "eventos": "Eventos",
+    "grupos": "Grupos",
+    "recursos": "Recursos"
+  },
+  "filtros": {
+    "todos": "Todos",
+    "mis_grupos": "Mis grupos",
+    "tecnologia": "Tecnologia",
+    "diseno": "Diseno",
+    "negocios": "Negocios",
+    "desarrollo_profesional": "Desarrollo profesional",
+    "mas": "Mas"
+  },
+  "categorias": {
+    "tecnologia": "Tecnologia",
+    "diseno": "Diseno",
+    "negocios": "Negocios",
+    "productividad": "Productividad",
+    "impacto": "Impacto",
+    "trabajo_remoto": "Trabajo remoto"
+  },
+  "categorias_clases": {
+    "tecnologia": "bg-t-ede9fe text-morado-categoria",
+    "diseno": "bg-t-fce4ec text-rosa-categoria",
+    "negocios": "bg-t-dbeafe text-azul-categoria",
+    "productividad": "bg-t-f3f4f6 text-gris-categoria",
+    "impacto": "bg-t-dcfce7 text-verde-categoria",
+    "trabajo_remoto": "bg-t-ffedd5 text-naranja-categoria"
+  },
+  "botones": {
+    "mas_opciones": "Mas opciones",
+    "mas_recientes": "Mas recientes",
+    "nueva_coleccion": "Nueva coleccion",
+    "ver_todas": "Ver todas",
+    "ver_todos": "Ver todos",
+    "explorar_grupos": "Explorar grupos",
+    "quitar_guardado": "Quitar de guardados",
+    "guardar_grupo": "Guardar grupo"
+  },
+  "secciones": {
+    "mis_colecciones": "Mis colecciones",
+    "grupos_recomendados": "Grupos recomendados"
+  },
+  "campos_lista": {
+    "actividad_reciente": "Actividad reciente"
+  },
+  "banner_lateral": {
+    "titulo": "Las buenas conexiones siempre suman",
+    "descripcion": "Aqui encuentras los grupos que guardaste para volver cuando quieras, seguir aprendiendo y estar al dia."
+  },
+  "banner_cta": {
+    "titulo": "Descubre mas comunidades",
+    "descripcion": "Explora grupos, conectate con personas con tus mismos intereses y se parte de conversaciones que importan."
+  },
+  "unidades": {
+    "grupo_singular": "grupo",
+    "grupo_plural": "grupos"
+  }
+}

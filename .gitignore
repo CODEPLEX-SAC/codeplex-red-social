@@ -29,4 +29,12 @@ PLAN_VALIDADOR_REDSOCIAL.md
 
 # Validacion local con herramientas/validacion/validar_capacidad.ps1
 _validacion/
-herramientas/validacion/__pycache__/
+herramientas/validacion/
+
+.vercel
+vercel.json
+
+.env.ftp
+
+# Despliegue FTP local
+scripts/subir_ftp.mjs

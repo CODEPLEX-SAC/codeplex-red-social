@@ -1,0 +1,46 @@
+{
+  "colorGrafico": {
+    "#3b82f6": "info",
+    "#ef4444": "error",
+    "#7c3aed": "primario",
+    "#06b6d4": "secundario",
+    "#22c55e": "exito",
+    "#eab308": "advertencia"
+  },
+  "colorGraficoNombre": {
+    "azul": "info",
+    "morado": "primario",
+    "violeta": "primario",
+    "cian": "secundario",
+    "teal": "secundario",
+    "verde": "exito",
+    "rojo": "error",
+    "amarillo": "advertencia",
+    "naranja": "advertencia"
+  },
+  "clasesIconoKpi": {
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "rojo": "bg-t-fee2e2 text-rojo-categoria",
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "cian": "bg-t-cffafe text-cian-categoria"
+  },
+  "clasesEstadoDash": {
+    "optimo": "bg-t-dcfce7 text-positivo-kpi",
+    "aceptable": "bg-t-fef9c3 text-t-a16207",
+    "bajo": "bg-t-fef3c7 text-t-b45309",
+    "riesgo": "bg-t-fee2e2 text-negativo-kpi"
+  },
+  "clasesIconoModulo": {
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "naranja": "bg-t-ffedd5 text-naranja-categoria",
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "cian": "bg-t-cffafe text-cian-categoria"
+  },
+  "etiquetaRatio": {
+    "optimo": "Óptimo",
+    "aceptable": "Aceptable",
+    "bajo": "Bajo",
+    "riesgo": "Riesgo"
+  }
+}

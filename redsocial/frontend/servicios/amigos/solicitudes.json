@@ -1,0 +1,92 @@
+{
+  "recibidas": [
+    {
+      "nombre": "Valeria Quispe",
+      "tiempo": "Hace 2 horas",
+      "descripcion": "Contadora en Estudio Contable Quispe & Asociados",
+      "comunes": "5 amigos en común",
+      "masAvatares": "+3"
+    },
+    {
+      "nombre": "Andrés Salazar",
+      "tiempo": "Ayer",
+      "descripcion": "Analista de Sistemas en TechSolutions SAC",
+      "comunes": "7 amigos en común",
+      "masAvatares": "+5"
+    },
+    {
+      "nombre": "Paola Martínez",
+      "tiempo": "Hace 2 días",
+      "descripcion": "Abogada en Legal Solutions",
+      "comunes": "3 amigos en común",
+      "masAvatares": ""
+    }
+  ],
+  "personasConocerSolicitudes": [
+    {
+      "nombre": "Sofía Huamán",
+      "comunes": "4 amigos en común"
+    },
+    {
+      "nombre": "Ricardo Guerrero",
+      "comunes": "3 amigos en común"
+    },
+    {
+      "nombre": "Daniela Vargas",
+      "comunes": "6 amigos en común"
+    },
+    {
+      "nombre": "Roberto Silva",
+      "comunes": "2 amigos en común"
+    }
+  ],
+  "tusListasSolicitudes": [
+    {
+      "icono": "amigos",
+      "color": "morado",
+      "nombre": "Mejores amigos",
+      "miembros": "24 amigos"
+    },
+    {
+      "icono": "amigos",
+      "color": "naranja",
+      "nombre": "Familia",
+      "miembros": "16 amigos"
+    },
+    {
+      "icono": "colaborador",
+      "color": "azul",
+      "nombre": "Trabajo",
+      "miembros": "38 amigos"
+    },
+    {
+      "icono": "inicio",
+      "color": "verde",
+      "nombre": "Universidad",
+      "miembros": "22 amigos"
+    }
+  ],
+  "solicitudEnviadaEjemplo": {
+    "nombre": "Miguel Ángel Vargas",
+    "estado": "Pendiente",
+    "descripcion": "Desarrollador en Codeplex Tech",
+    "comunes": "2 amigos en común"
+  },
+  "actividadRecienteSolicitudes": [
+    {
+      "nombre": "Valeria Quispe",
+      "accion": "te envió una solicitud de amistad.",
+      "tiempo": "Hace 2 horas"
+    },
+    {
+      "nombre": "Andrés Salazar",
+      "accion": "te envió una solicitud de amistad.",
+      "tiempo": "Ayer"
+    },
+    {
+      "nombre": "Paola Martínez",
+      "accion": "te envió una solicitud de amistad.",
+      "tiempo": "Hace 2 días"
+    }
+  ]
+}

@@ -23,6 +23,14 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "AMIGOS_CONSULTAR",
+    "buscar": "AMIGOS_BUSCAR",
+    "solicitar": "AMIGOS_SOLICITAR",
+    "aceptar": "AMIGOS_ACEPTAR",
+    "rechazar": "AMIGOS_RECHAZAR",
+    "crear_lista": "AMIGOS_CREAR"
+  },
   "rutas": {
     "todos": "/amigos",
     "solicitudes": "/amigos/solicitudes",
@@ -30,6 +38,12 @@
     "listas": "/amigos/listas"
   },
   "titulo_menu": "Amigos",
+  "pestanas": [
+    {"clave": "todos", "etiqueta": "Todos", "ruta": "/amigos"},
+    {"clave": "solicitudes", "etiqueta": "Solicitudes", "ruta": "/amigos/solicitudes"},
+    {"clave": "sugerencias", "etiqueta": "Sugerencias", "ruta": "/amigos/sugerencias"},
+    {"clave": "listas", "etiqueta": "Listas", "ruta": "/amigos/listas"}
+  ],
   "titulos_pestanas": {
     "todos": "Todos",
     "solicitudes": "Solicitudes",

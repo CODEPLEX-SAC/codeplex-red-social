@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @source "../redsocial/frontend";
 
+@utility scrollbar-oculto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 
 @theme {
 
@@ -36,6 +44,13 @@
   --color-positivo-kpi: #16a34a;
   --color-negativo-kpi: #dc2626;
 
+  /* Acento del borde izquierdo de un evento en la vista Día del calendario, por categoría de evento. */
+  --color-acento-evento-musica: #166534;
+  --color-acento-evento-tecnologia: #7c3aed;
+  --color-acento-evento-negocios: #f59e0b;
+  --color-acento-evento-educacion: #1e40af;
+  --color-acento-evento-empresa: #166534;
+
 
   --color-gris-oscuro-texto: #1f2937;
   --color-gris-texto: #374151;
@@ -51,6 +66,359 @@
   --spacing-xl: 32px;
 
   --radius-control: 10px;
+  --radius-3: 3px;
+  --radius-5: 5px;
+  --radius-7: 7px;
+  --radius-9: 9px;
+  --radius-14: 14px;
+  --radius-20: 20px;
+
+  --breakpoint-380: 380px;
+  --breakpoint-480: 480px;
+  --breakpoint-560: 560px;
+  --breakpoint-600: 600px;
+  --breakpoint-768: 768px;
+  --breakpoint-780: 780px;
+  --breakpoint-800: 800px;
+  --breakpoint-900: 900px;
+  --breakpoint-950: 950px;
+  --breakpoint-960: 960px;
+  --breakpoint-1000: 1000px;
+  --breakpoint-1100: 1100px;
+  --breakpoint-1101: 1101px;
+  --breakpoint-1150: 1150px;
+  --breakpoint-1250: 1250px;
+  --breakpoint-1350: 1350px;
+  --breakpoint-1400: 1400px;
+  --breakpoint-1600: 1600px;
+
+  /* Paso 7 — tokens exactos generados desde los hex/rgba usados como clases arbitrarias de Tailwind. */
+  --color-t-059669: #059669;
+  --color-t-065f46: #065f46;
+  --color-t-0f0c1e: #0f0c1e;
+  --color-t-10b981: #10b981;
+  --color-t-1565c0: #1565c0;
+  --color-t-166534: #166534;
+  --color-t-16845a: #16845a;
+  --color-t-1b8a3e: #1b8a3e;
+  --color-t-1c1735: #1c1735;
+  --color-t-1d4ed8: #1d4ed8;
+  --color-t-1e3a5f: #1e3a5f;
+  --color-t-1e40af: #1e40af;
+  --color-t-2563eb: #2563eb;
+  --color-t-2c2059: #2c2059;
+  --color-t-2e7d32: #2e7d32;
+  --color-t-362a63: #362a63;
+  --color-t-3730a3: #3730a3;
+  --color-t-3c394f: #3c394f;
+  --color-t-4a35d4: #4a35d4;
+  --color-t-4c1d95: #4c1d95;
+  --color-t-5b21b6: #5b21b6;
+  --color-t-5d5a70: #5d5a70;
+  --color-t-6366f1: #6366f1;
+  --color-t-6c3ce0: #6c3ce0;
+  --color-t-6d6a7c: #6d6a7c;
+  --color-t-7662fa: #7662fa;
+  --color-t-854d0e: #854d0e;
+  --color-t-858295: #858295;
+  --color-t-86efac: #86efac;
+  --color-t-8f7dff: #8f7dff;
+  --color-t-92400e: #92400e;
+  --color-t-9693a5: #9693a5;
+  --color-t-9892a6: #9892a6;
+  --color-t-9b99a9: #9b99a9;
+  --color-t-9c99ab: #9c99ab;
+  --color-t-9d174d: #9d174d;
+  --color-t-9f1239: #9f1239;
+  --color-t-a7f3d0: #a7f3d0;
+  --color-t-a855f7: #a855f7;
+  --color-t-aaa7b5: #aaa7b5;
+  --color-t-aaa8b7: #aaa8b7;
+  --color-t-b3b0c2: #b3b0c2;
+  --color-t-bbf7d0: #bbf7d0;
+  --color-t-bfdbfe: #bfdbfe;
+  --color-t-c0b8ff: #c0b8ff;
+  --color-t-c2410c: #c2410c;
+  --color-t-c4c0d3: #c4c0d3;
+  --color-t-c62828: #c62828;
+  --color-t-c7c4d6: #c7c4d6;
+  --color-t-cbc5e4: #cbc5e4;
+  --color-t-d0cdd9: #d0cdd9;
+  --color-t-d1d5db: #d1d5db;
+  --color-t-d1fae5: #d1fae5;
+  --color-t-d4d0e0: #d4d0e0;
+  --color-t-d5ccff: #d5ccff;
+  --color-t-d5d0e5: #d5d0e5;
+  --color-t-d8d5e6: #d8d5e6;
+  --color-t-d92228: #d92228;
+  --color-t-d97706: #d97706;
+  --color-t-db2777: #db2777;
+  --color-t-dbeafe: #dbeafe;
+  --color-t-dcd6ff: #dcd6ff;
+  --color-t-dcfce7: #dcfce7;
+  --color-t-e08a1e: #e08a1e;
+  --color-t-e0972a: #e0972a;
+  --color-t-e0dce8: #e0dce8;
+  --color-t-e0e0ff: #e0e0ff;
+  --color-t-e0e7ff: #e0e7ff;
+  --color-t-e3f2fd: #e3f2fd;
+  --color-t-e4defb: #e4defb;
+  --color-t-e4dfff: #e4dfff;
+  --color-t-e4e0ff: #e4e0ff;
+  --color-t-e65100: #e65100;
+  --color-t-e8e0ff: #e8e0ff;
+  --color-t-e8e5f0: #e8e5f0;
+  --color-t-e8f5e9: #e8f5e9;
+  --color-t-e8f9ee: #e8f9ee;
+  --color-t-ea580c: #ea580c;
+  --color-t-eaf8f1: #eaf8f1;
+  --color-t-ecfdf5: #ecfdf5;
+  --color-t-ede9fe: #ede9fe;
+  --color-t-eeeeee: #eeeeee;
+  --color-t-efe9ff: #efe9ff;
+  --color-t-efedf7: #efedf7;
+  --color-t-eff6ff: #eff6ff;
+  --color-t-f0eef5: #f0eef5;
+  --color-t-f0f0f0: #f0f0f0;
+  --color-t-f0f0ff: #f0f0ff;
+  --color-t-f0f7ff: #f0f7ff;
+  --color-t-f0fdf4: #f0fdf4;
+  --color-t-f1f0f4: #f1f0f4;
+  --color-t-f2a0a0: #f2a0a0;
+  --color-t-f2f1f6: #f2f1f6;
+  --color-t-f3e8ff: #f3e8ff;
+  --color-t-f3f0ff: #f3f0ff;
+  --color-t-f3f2f7: #f3f2f7;
+  --color-t-f3f4f6: #f3f4f6;
+  --color-t-f59e0b: #f59e0b;
+  --color-t-f5f0ff: #f5f0ff;
+  --color-t-f5f3fa: #f5f3fa;
+  --color-t-f5f3ff: #f5f3ff;
+  --color-t-f5f5f5: #f5f5f5;
+  --color-t-f6f4ff: #f6f4ff;
+  --color-t-f7f6fa: #f7f6fa;
+  --color-t-f8f7fc: #f8f7fc;
+  --color-t-f9f8fc: #f9f8fc;
+  --color-t-f9fafb: #f9fafb;
+  --color-t-faf9fc: #faf9fc;
+  --color-t-faf9fd: #faf9fd;
+  --color-t-fafafa: #fafafa;
+  --color-t-fafafe: #fafafe;
+  --color-t-fbfaff: #fbfaff;
+  --color-t-fca5a5: #fca5a5;
+  --color-t-fce4ec: #fce4ec;
+  --color-t-fce7f3: #fce7f3;
+  --color-t-fcfbfe: #fcfbfe;
+  --color-t-fdeceb: #fdeceb;
+  --color-t-fdecec: #fdecec;
+  --color-t-fdfcff: #fdfcff;
+  --color-t-fecaca: #fecaca;
+  --color-t-fee2e2: #fee2e2;
+  --color-t-fef2f2: #fef2f2;
+  --color-t-fef3c7: #fef3c7;
+  --color-t-fef9c3: #fef9c3;
+  --color-t-ffcc00: #ffcc00;
+  --color-t-ffedd5: #ffedd5;
+  --color-t-fff3e0: #fff3e0;
+  --color-t-fff7ed: #fff7ed;
+  --color-t-fff8e1: #fff8e1;
+  --color-t-c4b5fd: #c4b5fd;
+  --color-t-fed7aa: #fed7aa;
+  --color-t-ddd6fe: #ddd6fe;
+  --color-t-7c3aed: #7c3aed;
+  --color-t-f97316: #f97316;
+  --color-t-cffafe: #cffafe;
+  --color-t-a16207: #a16207;
+  --color-t-b45309: #b45309;
+  --color-t-0891b2: #0891b2;
+  --color-t-ca8a04: #ca8a04;
+  --color-t-34c759: #34c759;
+  --color-t-007aff: #007aff;
+  --color-t-5856d6: #5856d6;
+  --color-t-ff9500: #ff9500;
+  --color-t-ff2d55: #ff2d55;
+  --color-t-25203b: #25203b;
+
+  --color-overlay-1: rgba(15,12,30,.35);
+  --color-overlay-2: rgba(15,12,30,.4);
+  --color-overlay-3: rgba(15,12,30,.45);
+  --color-overlay-4: rgba(15,12,30,.55);
+  --color-overlay-5: rgba(15,12,30,.9);
+  --color-overlay-6: rgba(22,163,74,0.12);
+  --color-overlay-7: rgba(255,107,53,0.15);
+  --color-overlay-8: rgba(255,204,0,0.2);
+  --color-overlay-9: rgba(30,154,104,.9);
+  --color-overlay-10: rgba(52,199,89,0.15);
+  --color-overlay-11: rgba(77,60,197,0.08);
+  --color-overlay-12: rgba(77,60,197,0.1);
+  --color-overlay-13: rgba(77,60,197,0.12);
+  --color-overlay-14: rgba(20,15,40,0.55);
+  --color-overlay-15: rgba(108,60,224,.06);
+
+  --shadow-t1: 0 12px 30px rgba(20,15,40,.18);
+  --shadow-t2: 0 1px 3px rgba(0,0,0,0.15);
+  --shadow-t3: 0 2px 8px rgba(0,0,0,.06);
+  --shadow-t4: 0 2px 8px rgba(0,0,0,.1);
+  --shadow-t5: 0 2px 8px rgba(0,0,0,.12);
+  --shadow-t6: 0 2px 8px rgba(0,0,0,.15);
+  --shadow-t7: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-t8: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-t9: 0 2px 8px rgba(108,60,224,.08);
+  --shadow-t10: 0 4px 16px rgba(0,0,0,.08);
+  --shadow-t11: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-t12: 0 8px 24px rgba(15,15,35,0.12);
+  --shadow-t13: 0 8px 32px rgba(0,0,0,0.12);
+
+  /* Escala tipográfica responsive — valores Desktop (>=1024px). Tablet/Mobile en @layer base. */
+  --text-titulo-pagina: 2rem;
+  --text-titulo-seccion: 1.5rem;
+  --text-titulo-banner: 1rem;
+  --text-subtitulo: 0.875rem;
+  --text-cuerpo-grande: 1.125rem;
+  --text-valor-destacado: 1.25rem;
+  --text-nombre-entidad: 1rem;
+  --text-cuerpo: 1rem;
+  --text-auxiliar: 0.75rem;
+  --text-etiqueta-estado: 0.75rem;
+  --text-contador: 0.875rem;
+  --text-boton: 0.875rem;
+  --text-enlace-accion: 0.75rem;
+  --text-navegacion: 0.875rem;
+  --text-encabezado-tabla: 0.75rem;
+  --text-fecha-abreviada: 0.75rem;
+  --text-campo-formulario: 0.875rem;
+  --text-dia-evento: 1.125rem;
+  --text-mes-evento: 0.6875rem;
+
+  --text-7: 7px;
+  --text-8: 8px;
+  --text-9: 9px;
+  --text-9.5: 9.5px;
+  --text-10: 10px;
+  --text-10.5: 10.5px;
+  --text-11: 11px;
+  --text-11.5: 11.5px;
+  --text-12.5: 12.5px;
+  --text-13: 13px;
+  --text-13.5: 13.5px;
+  --text-15: 15px;
+  --text-20: 20px;
+  --text-22: 22px;
+  --text-23: 23px;
+  --text-r65: 0.65rem;
+  --text-r7: 0.7rem;
+  --text-r72: 0.72rem;
+  --text-r75: 0.75rem;
+  --text-r78: 0.78rem;
+  --text-r8: 0.8rem;
+  --text-r8125: 0.8125rem;
+  --text-r82: 0.82rem;
+  --text-r85: 0.85rem;
+  --text-r875: 0.875rem;
+  --text-r9: 0.9rem;
+  --text-r9375: 0.9375rem;
+  --text-r95: 0.95rem;
+  --text-r105: 1.05rem;
+  --text-r11: 1.1rem;
+  --text-r115: 1.15rem;
+  --text-r12: 1.2rem;
+  --text-r135: 1.35rem;
+
+  --width-minlista: min(320px,88vw);
+
+  --leading-1.1: 1.1;
+  --leading-1.3: 1.3;
+  --leading-1.35: 1.35;
+  --leading-1.4: 1.4;
+  --leading-1.45: 1.45;
+  --leading-1.55: 1.55;
+
+  --tracking-n01: -.01em;
+  --tracking-n02: -0.02em;
+  --tracking-n03: -0.03em;
+  --tracking-04: 0.04em;
+  --tracking-12: 0.12em;
+
+  --content-vacio: '';
+  --content-punto: '·';
+  --content-mas8: '+8';
+
+  --width-p55: 55%;
+  --width-p60: 60%;
+  --width-p70: 70%;
+  --width-p75: 75%;
+  --width-p84: 84%;
+  --width-p92: 92%;
+  --width-p30: 30%;
+  --width-p37: 37%;
+  --width-p49: 49%;
+  --width-p56: 56%;
+  --width-p58: 58%;
+  --width-p66: 66%;
+  --width-p68: 68%;
+  --width-p78: 78%;
+  --height-p60: 60%;
+  --height-p30: 30%;
+  --height-p35: 35%;
+  --height-p40: 40%;
+  --height-p45: 45%;
+  --height-p50: 50%;
+  --height-p55: 55%;
+  --height-p65: 65%;
+  --height-p70: 70%;
+  --height-p75: 75%;
+  --height-p80: 80%;
+  --height-p85: 85%;
+  --height-p90: 90%;
+  --height-p95: 95%;
+  --max-width-p75: 75%;
+
+  --border-width-1.5: 1.5px;
+  --border-width-3: 3px;
+
+  --grid-template-columns-52-1fr: 52px 1fr;
+  --grid-template-columns-minmax400-900-minmax260-300-minmax300-340: minmax(400px,900px) minmax(260px,300px) minmax(300px,340px);
+  --grid-template-columns-minmax400-1fr-minmax230-300: minmax(400px,1fr) minmax(230px,300px);
+  --grid-template-columns-minmax0-1fr-360-minmax260-300: minmax(0,1fr) 360px minmax(260px,300px);
+  --grid-template-columns-minmax400-1fr-minmax260-300: minmax(400px,1fr) minmax(260px,300px);
+  --grid-template-rows-auto-auto-1fr-auto: auto auto 1fr auto;
+  --grid-template-columns-1fr-300: 1fr 300px;
+  --grid-template-columns-240-1fr: 240px 1fr;
+  --grid-template-columns-1.6fr-1fr-1fr: 1.6fr 1fr 1fr;
+  --grid-template-columns-140-1fr-44-76: 140px 1fr 44px 76px;
+  --grid-template-columns-110-1fr-40-66: 110px 1fr 40px 66px;
+  --grid-template-columns-2fr-1fr: 2fr 1fr;
+  --grid-template-columns-120-1fr-62: 120px 1fr 62px;
+  --grid-template-columns-64-1fr: 64px 1fr;
+  --grid-template-columns-140-1fr-auto: 140px 1fr auto;
+  --grid-template-columns-100-1fr-auto-auto: 100px 1fr auto auto;
+  --grid-template-columns-90-1fr: 90px 1fr;
+  --grid-template-columns-120-1fr-auto: 120px 1fr auto;
+  --grid-template-columns-140-1fr: 140px 1fr;
+  --grid-template-columns-120-1fr: 120px 1fr;
+  --flex-1-1-240: 1 1 240px;
+  --grid-template-columns-repeatauto-fill-minmax180-1fr: repeat(auto-fill,minmax(180px,1fr));
+  --grid-template-columns-280-1fr: 280px 1fr;
+  --grid-template-columns-260-1fr: 260px 1fr;
+  --grid-auto-rows-minmax120-1fr: minmax(120px,1fr);
+  --grid-template-columns-repeatauto-fill-minmax170-1fr: repeat(auto-fill,minmax(170px,1fr));
+  --grid-template-columns-repeatauto-fill-minmax130-1fr: repeat(auto-fill,minmax(130px,1fr));
+  --grid-template-columns-repeatauto-fill-minmax105-1fr: repeat(auto-fill,minmax(105px,1fr));
+  --grid-template-columns-minmax400-720-minmax320-400: minmax(400px,720px) minmax(320px,400px);
+  --grid-template-columns-minmax260-300-minmax420-1fr-minmax280-340: minmax(260px,300px) minmax(420px,1fr) minmax(280px,340px);
+
+  --height-vh-navbar: calc(100vh - 64px);
+  --height-dvh-navbar: calc(100dvh - 64px);
+  --height-vh-mensajes: calc(100vh - 340px);
+  --height-control: var(--control-height);
+  --inset-tooltip: calc(100% + 4px);
+  --inset-p42: 42%;
+  --inset-p44: 44%;
+  --inset-p46: 46%;
+  --inset-p58: 58%;
+  --inset-p62: 62%;
+  --inset-p80: 80%;
+  --width-lista: calc(100% - 32px);
 }
 
 @layer base {
@@ -87,6 +455,56 @@ body {
 html {
   scrollbar-gutter: stable;
 }
+
+/* Escala tipográfica responsive — Tablet (768px–1023px). Breakpoints exclusivos de tipografía, independientes de --breakpoint-*. */
+@media (width < 1024px) {
+  :root {
+    --text-titulo-pagina: 1.75rem;
+    --text-titulo-seccion: 1.25rem;
+    --text-titulo-banner: 0.9375rem;
+    --text-subtitulo: 0.875rem;
+    --text-cuerpo-grande: 1.0625rem;
+    --text-valor-destacado: 1.125rem;
+    --text-nombre-entidad: 0.9375rem;
+    --text-cuerpo: 0.9375rem;
+    --text-auxiliar: 0.75rem;
+    --text-etiqueta-estado: 0.75rem;
+    --text-contador: 0.8125rem;
+    --text-boton: 0.875rem;
+    --text-enlace-accion: 0.75rem;
+    --text-navegacion: 0.875rem;
+    --text-encabezado-tabla: 0.75rem;
+    --text-fecha-abreviada: 0.75rem;
+    --text-campo-formulario: 0.875rem;
+    --text-dia-evento: 1rem;
+    --text-mes-evento: 0.6875rem;
+  }
+}
+
+/* Escala tipográfica responsive — Mobile (<768px). */
+@media (width < 768px) {
+  :root {
+    --text-titulo-pagina: 1.5rem;
+    --text-titulo-seccion: 1.125rem;
+    --text-titulo-banner: 0.875rem;
+    --text-subtitulo: 0.875rem;
+    --text-cuerpo-grande: 1rem;
+    --text-valor-destacado: 1.125rem;
+    --text-nombre-entidad: 0.875rem;
+    --text-cuerpo: 0.875rem;
+    --text-auxiliar: 0.75rem;
+    --text-etiqueta-estado: 0.6875rem;
+    --text-contador: 0.75rem;
+    --text-boton: 0.875rem;
+    --text-enlace-accion: 0.75rem;
+    --text-navegacion: 0.875rem;
+    --text-encabezado-tabla: 0.6875rem;
+    --text-fecha-abreviada: 0.6875rem;
+    --text-campo-formulario: 0.875rem;
+    --text-dia-evento: 1rem;
+    --text-mes-evento: 0.625rem;
+  }
+}
 }
 
 
@@ -103,6 +521,60 @@ html {
 .degradado-educativo { background-image: linear-gradient(135deg, #4facfe, #00f2fe); }
 .degradado-gastronomico { background-image: linear-gradient(135deg, #fa709a, #fee140); }
 .degradado-primario { background-image: linear-gradient(45deg, #8f7cf3, var(--primario), var(--primario-oscuro)); }
+.degradado-violeta-claro { background-image: linear-gradient(#7662fa,#c0b8ff); }
+.degradado-azul-oscuro { background-image: linear-gradient(135deg,#1e3a5f,#2563eb); }
+.degradado-violeta-oscuro { background-image: linear-gradient(135deg,#2c2059,#4630d7); }
+.degradado-violeta-intenso { background-image: linear-gradient(135deg,#4c1d95,#7c3aed); }
+.degradado-rosa-oscuro { background-image: linear-gradient(135deg,#9f1239,#ec4899); }
+.degradado-naranja-oscuro { background-image: linear-gradient(135deg,#c2410c,#f97316); }
+.degradado-lavanda-suave { background-image: linear-gradient(135deg,#dcd6ff,#efe9ff); }
+.degradado-lavanda-clara { background-image: linear-gradient(135deg,#f0edff,#e4e0ff); }
+.degradado-lavanda-media { background-image: linear-gradient(135deg,#f3f0ff 0%,#e8e0ff 100%); }
+.degradado-lavanda-triple { background-image: linear-gradient(135deg,#f3f0ff 0%,#e8e0ff 50%,#d5ccff 100%); }
+.degradado-nocturno-profundo { background-image: linear-gradient(155deg,#362a63,#1c1735); }
+.degradado-bandera { background-image: linear-gradient(180deg,#d92228 33%,#fff 33% 66%,#d92228 66%); }
+
+.grid-fila-grupo {
+  grid-template-columns: auto minmax(0,1fr) auto auto;
+  grid-template-areas: "icon nombre actividades flecha" "icon miembros miembros miembros" "icon actividad actividad actividad";
+}
+@media (width < 600px) {
+  .grid-fila-grupo {
+    grid-template-columns: auto minmax(0,1fr) auto;
+    grid-template-areas: "icon nombre flecha" "icon badge badge" "icon meta meta" "actividad actividad actividad";
+  }
+}
+.area-icon { grid-area: icon; }
+.area-nombre { grid-area: nombre; }
+.area-actividades { grid-area: actividades; }
+.area-badge { grid-area: badge; }
+.area-meta { grid-area: meta; }
+.area-miembros { grid-area: miembros; }
+.area-actividad { grid-area: actividad; }
+.area-flecha { grid-area: flecha; }
+.area-colaboradores { grid-area: colaboradores; }
+.area-detalle { grid-area: detalle; }
+.area-comofunciona { grid-area: comofunciona; }
+.area-publicidad { grid-area: publicidad; }
+
+.panel-colaboradores-abierto {
+  grid-template-areas: "colaboradores" "detalle" "comofunciona";
+}
+.panel-colaboradores-cerrado {
+  grid-template-areas: "colaboradores" "comofunciona";
+}
+@media (width >= 1101px) {
+  .panel-colaboradores-abierto {
+    grid-template-columns: minmax(0,1fr) 360px minmax(260px,300px);
+    grid-template-areas: "colaboradores detalle publicidad" "comofunciona detalle publicidad";
+  }
+  .panel-colaboradores-cerrado {
+    grid-template-columns: minmax(400px,1fr) minmax(260px,300px);
+    grid-template-areas: "colaboradores publicidad" "comofunciona publicidad";
+  }
+}
+
+.tabla-ultima-fila-sin-borde tbody tr:last-child td { border-bottom-width: 0; }
 
 .icono {
   width: 17px;
@@ -113,5 +585,19 @@ html {
   stroke-linecap: round;
   stroke-linejoin: round;
   flex: 0 0 auto;
+}
+
+.panel-hoja-movil {
+  max-height: none;
+}
+@media (width < 600px) {
+  .panel-hoja-movil {
+    max-height: 85dvh;
+  }
+}
+@media (width < 600px) {
+  .panel-hoja-movil-fija {
+    height: 85dvh;
+  }
 }
 }

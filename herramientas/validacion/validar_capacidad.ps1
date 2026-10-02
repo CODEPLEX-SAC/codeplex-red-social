@@ -44,8 +44,14 @@ function Partes-Detalle([string]$detalle, [string]$raizCopia) {
     $partes = @($detalle -split '\s*\|\s*')
     $archivo = ''
     $motivo = '(sin detalle adicional)'
-    if ($partes.Count -ge 2) { $archivo = $partes[1] }
-    if ($partes.Count -ge 3) { $motivo = ($partes[2..($partes.Count - 1)] -join ' | ') }
+    if ($partes.Count -eq 2) {
+        # Formato de empaquetar: "ruta | regla"
+        $archivo = $partes[0]
+        $motivo = $partes[1]
+    } else {
+        if ($partes.Count -ge 2) { $archivo = $partes[1] }
+        if ($partes.Count -ge 3) { $motivo = ($partes[2..($partes.Count - 1)] -join ' | ') }
+    }
     $relativo = $archivo -replace '\\', '/'
     $prefijo = (($raizCopia -replace '\\', '/').TrimEnd('/')) + '/'
     if ($relativo.StartsWith($prefijo, [System.StringComparison]::OrdinalIgnoreCase)) {

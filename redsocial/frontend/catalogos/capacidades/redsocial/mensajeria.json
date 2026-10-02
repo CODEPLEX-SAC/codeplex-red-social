@@ -24,6 +24,12 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "MENSAJERIA_CONSULTAR",
+    "enviar_mensaje": "MENSAJERIA_ENVIAR",
+    "marcar_favorito": "MENSAJERIA_MARCAR",
+    "iniciar_videollamada": "MENSAJERIA_INICIAR"
+  },
   "rutas": {
     "todos": "/mensajes",
     "no_leidos": "/mensajes/no-leidos",

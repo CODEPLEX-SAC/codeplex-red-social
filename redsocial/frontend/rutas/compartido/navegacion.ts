@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react'
-import type { Escucha } from '@/tipos/enrutamiento/navegacion'
+import type { Escucha } from '@/tipos/enrutamiento/contrato_navegacion'
 
 const escuchas = new Set<Escucha>()
 

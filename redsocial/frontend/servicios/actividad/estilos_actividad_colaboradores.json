@@ -1,0 +1,7 @@
+{
+  "clasesBadge": {
+    "verde": "bg-verde-categoria",
+    "azul": "bg-azul-categoria",
+    "rojo": "bg-rojo-categoria"
+  }
+}

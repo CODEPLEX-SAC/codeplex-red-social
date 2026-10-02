@@ -1,0 +1,16 @@
+{
+  "colorEventoCal": {
+    "musica": "bg-t-dcfce7 text-t-166534",
+    "tecnologia": "bg-t-ede9fe text-t-5b21b6",
+    "negocios": "bg-t-fef9c3 text-t-854d0e",
+    "educacion": "bg-t-dbeafe text-t-1e40af",
+    "empresa": "bg-t-dcfce7 text-t-166534"
+  },
+  "colorEventoDia": {
+    "musica": "border-l-4 border-l-acento-evento-musica bg-t-dcfce7 text-t-166534",
+    "tecnologia": "border-l-4 border-l-acento-evento-tecnologia bg-t-ede9fe text-t-5b21b6",
+    "negocios": "border-l-4 border-l-acento-evento-negocios bg-t-fef3c7 text-t-d97706",
+    "educacion": "border-l-4 border-l-acento-evento-educacion bg-t-dbeafe text-t-1e40af",
+    "empresa": "border-l-4 border-l-acento-evento-empresa bg-t-dcfce7 text-t-166534"
+  }
+}

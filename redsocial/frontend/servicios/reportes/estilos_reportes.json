@@ -1,0 +1,23 @@
+{
+  "colorGrafico": {
+    "#3b82f6": "info",
+    "#93c5fd": "info",
+    "#22c55e": "exito",
+    "#7c3aed": "primario",
+    "#c4b5fd": "primario",
+    "#ddd6fe": "primario",
+    "#f97316": "advertencia",
+    "#fed7aa": "advertencia"
+  },
+  "clasesIconoPlantilla": {
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "verde": "bg-t-dcfce7 text-verde-categoria",
+    "naranja": "bg-t-ffedd5 text-naranja-categoria",
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "rojo": "bg-t-fee2e2 text-rojo-categoria"
+  },
+  "clasesFormato": {
+    "pdf": "text-negativo-kpi",
+    "excel": "text-positivo-kpi"
+  }
+}

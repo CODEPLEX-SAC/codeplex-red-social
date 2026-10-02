@@ -1,0 +1,6 @@
+export * from './bloques/bloque_mensaje'
+export * from './bloques/encabezado_amigos'
+export * from './bloques/panel_lateral_amigos'
+export * from './bloques/pestanas_amigos'
+export * from './bloques/seccion_solicitudes_amistad_lateral'
+export * from './bloques/seccion_tus_amigos'

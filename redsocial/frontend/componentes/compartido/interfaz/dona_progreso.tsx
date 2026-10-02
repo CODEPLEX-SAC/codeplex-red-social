@@ -20,13 +20,13 @@ export function DonaProgreso({
   return (
     <svg viewBox={`0 0 ${tamano} ${tamano}`} width={tamano} height={tamano} className={className}>
       <g transform={`rotate(-90 ${tamano / 2} ${tamano / 2})`}>
-        {segmentos.map((segmento, indice) => {
+        {segmentos.map((segmento) => {
           const largo = (segmento.porcentaje / 100) * circunferencia
           const desplazamiento = -((acumulado / 100) * circunferencia)
           acumulado += segmento.porcentaje
           return (
             <circle
-              key={indice}
+              key={[segmento.color, segmento.porcentaje].join('')}
               cx={tamano / 2}
               cy={tamano / 2}
               r={radio}

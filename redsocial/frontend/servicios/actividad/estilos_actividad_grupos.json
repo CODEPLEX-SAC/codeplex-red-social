@@ -1,0 +1,9 @@
+{
+  "clasesIconoGrupo": {
+    "morado": "bg-morado-categoria",
+    "azul": "bg-azul-categoria",
+    "naranja": "bg-naranja-categoria",
+    "rosa": "bg-rosa-categoria",
+    "teal": "bg-teal-categoria"
+  }
+}

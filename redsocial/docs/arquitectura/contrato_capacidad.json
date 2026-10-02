@@ -1,0 +1,454 @@
+{
+  "capacidad_id": "redsocial",
+  "subcapacidades": [
+    "actividad",
+    "amigos",
+    "avisos",
+    "colaboradores",
+    "compartido",
+    "dashboard",
+    "estadisticas",
+    "eventos",
+    "grupos",
+    "guardados",
+    "indicadores",
+    "inicio",
+    "marketplace",
+    "mensajeria",
+    "reportes"
+  ],
+  "acciones": {
+    "actividad": [
+      "listar",
+      "filtrar",
+      "ver_detalle",
+      "comentar"
+    ],
+    "amigos": [
+      "listar",
+      "buscar",
+      "solicitar",
+      "aceptar",
+      "rechazar",
+      "crear_lista"
+    ],
+    "avisos": [
+      "listar",
+      "filtrar",
+      "marcar_leida",
+      "marcar_todas_leidas"
+    ],
+    "colaboradores": [
+      "listar",
+      "invitar",
+      "ver_detalle",
+      "cambiar_rol",
+      "dar_de_baja"
+    ],
+    "compartido": [
+      "navegar",
+      "buscar"
+    ],
+    "dashboard": [
+      "ver_resumen",
+      "personalizar",
+      "exportar"
+    ],
+    "estadisticas": [
+      "ver_por_modulo",
+      "comparar",
+      "exportar"
+    ],
+    "eventos": [
+      "listar",
+      "crear",
+      "invitar",
+      "aceptar_invitacion",
+      "rechazar_invitacion"
+    ],
+    "grupos": [
+      "listar",
+      "descubrir",
+      "crear",
+      "unirse",
+      "aceptar_invitacion",
+      "rechazar_invitacion"
+    ],
+    "guardados": [
+      "listar",
+      "filtrar",
+      "guardar",
+      "quitar_guardado",
+      "crear_coleccion"
+    ],
+    "indicadores": [
+      "listar",
+      "filtrar_por_modulo",
+      "comparar"
+    ],
+    "inicio": [
+      "publicar",
+      "reaccionar",
+      "comentar",
+      "compartir"
+    ],
+    "marketplace": [
+      "listar",
+      "buscar",
+      "comprar",
+      "publicar_aplicacion"
+    ],
+    "mensajeria": [
+      "listar",
+      "enviar_mensaje",
+      "marcar_favorito",
+      "iniciar_videollamada"
+    ],
+    "reportes": [
+      "listar",
+      "generar",
+      "descargar",
+      "compartir"
+    ]
+  },
+  "permisos": {
+    "actividad": {
+      "listar": "ACTIVIDAD_CONSULTAR",
+      "filtrar": "ACTIVIDAD_FILTRAR",
+      "ver_detalle": "ACTIVIDAD_CONSULTAR",
+      "comentar": "ACTIVIDAD_COMENTAR"
+    },
+    "amigos": {
+      "listar": "AMIGOS_CONSULTAR",
+      "buscar": "AMIGOS_BUSCAR",
+      "solicitar": "AMIGOS_SOLICITAR",
+      "aceptar": "AMIGOS_ACEPTAR",
+      "rechazar": "AMIGOS_RECHAZAR",
+      "crear_lista": "AMIGOS_CREAR"
+    },
+    "avisos": {
+      "listar": "AVISOS_CONSULTAR",
+      "filtrar": "AVISOS_FILTRAR",
+      "marcar_leida": "AVISOS_MARCAR",
+      "marcar_todas_leidas": "AVISOS_MARCAR"
+    },
+    "colaboradores": {
+      "listar": "COLABORADORES_CONSULTAR",
+      "invitar": "COLABORADORES_INVITAR",
+      "ver_detalle": "COLABORADORES_CONSULTAR",
+      "cambiar_rol": "COLABORADORES_CAMBIAR",
+      "dar_de_baja": "COLABORADORES_DAR"
+    },
+    "compartido": {
+      "navegar": "COMPARTIDO_NAVEGAR",
+      "buscar": "COMPARTIDO_BUSCAR"
+    },
+    "dashboard": {
+      "ver_resumen": "DASHBOARD_CONSULTAR",
+      "personalizar": "DASHBOARD_PERSONALIZAR",
+      "exportar": "DASHBOARD_EXPORTAR"
+    },
+    "estadisticas": {
+      "ver_por_modulo": "ESTADISTICAS_CONSULTAR",
+      "comparar": "ESTADISTICAS_COMPARAR",
+      "exportar": "ESTADISTICAS_EXPORTAR"
+    },
+    "eventos": {
+      "listar": "EVENTOS_CONSULTAR",
+      "crear": "EVENTOS_CREAR",
+      "invitar": "EVENTOS_INVITAR",
+      "aceptar_invitacion": "EVENTOS_ACEPTAR",
+      "rechazar_invitacion": "EVENTOS_RECHAZAR"
+    },
+    "grupos": {
+      "listar": "GRUPOS_CONSULTAR",
+      "descubrir": "GRUPOS_DESCUBRIR",
+      "crear": "GRUPOS_CREAR",
+      "unirse": "GRUPOS_UNIRSE",
+      "aceptar_invitacion": "GRUPOS_ACEPTAR",
+      "rechazar_invitacion": "GRUPOS_RECHAZAR"
+    },
+    "guardados": {
+      "listar": "GUARDADOS_CONSULTAR",
+      "filtrar": "GUARDADOS_FILTRAR",
+      "guardar": "GUARDADOS_GUARDAR",
+      "quitar_guardado": "GUARDADOS_QUITAR",
+      "crear_coleccion": "GUARDADOS_CREAR"
+    },
+    "indicadores": {
+      "listar": "INDICADORES_CONSULTAR",
+      "filtrar_por_modulo": "INDICADORES_FILTRAR",
+      "comparar": "INDICADORES_COMPARAR"
+    },
+    "inicio": {
+      "publicar": "INICIO_PUBLICAR",
+      "reaccionar": "INICIO_REACCIONAR",
+      "comentar": "INICIO_COMENTAR",
+      "compartir": "INICIO_COMPARTIR"
+    },
+    "marketplace": {
+      "listar": "MARKETPLACE_CONSULTAR",
+      "buscar": "MARKETPLACE_BUSCAR",
+      "comprar": "MARKETPLACE_COMPRAR",
+      "publicar_aplicacion": "MARKETPLACE_PUBLICAR"
+    },
+    "mensajeria": {
+      "listar": "MENSAJERIA_CONSULTAR",
+      "enviar_mensaje": "MENSAJERIA_ENVIAR",
+      "marcar_favorito": "MENSAJERIA_MARCAR",
+      "iniciar_videollamada": "MENSAJERIA_INICIAR"
+    },
+    "reportes": {
+      "listar": "REPORTES_CONSULTAR",
+      "generar": "REPORTES_GENERAR",
+      "descargar": "REPORTES_DESCARGAR",
+      "compartir": "REPORTES_COMPARTIR"
+    }
+  },
+  "rutas_frontend": {
+    "actividad": {
+      "todas": "/actividad",
+      "publicaciones": "/actividad/publicaciones",
+      "menciones": "/actividad/menciones",
+      "colaboradores": "/actividad/colaboradores",
+      "grupos": "/actividad/grupos",
+      "modulos": "/actividad/modulos",
+      "sistema": "/actividad/sistema"
+    },
+    "amigos": {
+      "todos": "/amigos",
+      "solicitudes": "/amigos/solicitudes",
+      "sugerencias": "/amigos/sugerencias",
+      "listas": "/amigos/listas"
+    },
+    "avisos": {
+      "todas": "/notificaciones",
+      "no_leidas": "/notificaciones/no-leidas",
+      "menciones": "/notificaciones/menciones",
+      "solicitudes": "/notificaciones/solicitudes",
+      "eventos": "/notificaciones/eventos",
+      "sistema": "/notificaciones/sistema"
+    },
+    "colaboradores": {
+      "listado": "/colaboradores",
+      "perfil": "/colaboradores/perfil",
+      "invitar": "/colaboradores/invitar",
+      "invitar_rol_permisos": "/colaboradores/invitar/rol-permisos",
+      "invitar_vigencia": "/colaboradores/invitar/vigencia",
+      "invitar_resumen": "/colaboradores/invitar/resumen"
+    },
+    "compartido": {
+      "no_encontrada": "/no-encontrada"
+    },
+    "dashboard": {
+      "principal": "/dashboard"
+    },
+    "estadisticas": {
+      "todos_modulos": "/estadisticas",
+      "ventas": "/estadisticas/ventas",
+      "contabilidad": "/estadisticas/contabilidad",
+      "planillas": "/estadisticas/planillas"
+    },
+    "eventos": {
+      "para_ti": "/eventos",
+      "proximos": "/eventos/proximos",
+      "populares": "/eventos/populares",
+      "mis_eventos": "/eventos/mis-eventos",
+      "invitaciones": "/eventos/invitaciones",
+      "invitaciones_pendientes": "/eventos/invitaciones/pendientes",
+      "invitaciones_aceptadas": "/eventos/invitaciones/aceptadas",
+      "invitaciones_rechazadas": "/eventos/invitaciones/rechazadas",
+      "calendario": "/eventos/calendario"
+    },
+    "grupos": {
+      "mis_grupos": "/grupos",
+      "descubrir": "/grupos/descubrir",
+      "invitaciones": "/grupos/invitaciones"
+    },
+    "guardados": {
+      "principal": "/guardados"
+    },
+    "indicadores": {
+      "clave": "/indicadores"
+    },
+    "inicio": {
+      "principal": "/inicio"
+    },
+    "marketplace": {
+      "principal": "/marketplace"
+    },
+    "mensajeria": {
+      "todos": "/mensajes",
+      "no_leidos": "/mensajes/no-leidos",
+      "favoritos": "/mensajes/favoritos",
+      "videollamadas": "/mensajes/videollamadas",
+      "videollamada_iniciar": "/mensajes/videollamadas/iniciar",
+      "videollamada_en_curso": "/mensajes/videollamadas/en-curso"
+    },
+    "reportes": {
+      "principal": "/reportes"
+    }
+  },
+  "procedimientos": {
+    "actividad.listar": "fn_redsocial_actividad_listar",
+    "actividad.filtrar": "fn_redsocial_actividad_filtrar",
+    "actividad.ver_detalle": "fn_redsocial_actividad_ver_detalle",
+    "actividad.comentar": "fn_redsocial_actividad_comentar",
+    "amigos.listar": "fn_redsocial_amigos_listar",
+    "amigos.buscar": "fn_redsocial_amigos_buscar",
+    "amigos.solicitar": "fn_redsocial_amigos_solicitar",
+    "amigos.aceptar": "fn_redsocial_amigos_aceptar",
+    "amigos.rechazar": "fn_redsocial_amigos_rechazar",
+    "amigos.crear_lista": "fn_redsocial_amigos_crear_lista",
+    "avisos.listar": "fn_redsocial_avisos_listar",
+    "avisos.filtrar": "fn_redsocial_avisos_filtrar",
+    "avisos.marcar_leida": "fn_redsocial_avisos_marcar_leida",
+    "avisos.marcar_todas_leidas": "fn_redsocial_avisos_marcar_todas_leidas",
+    "colaboradores.listar": "fn_redsocial_colaboradores_listar",
+    "colaboradores.invitar": "fn_redsocial_colaboradores_invitar",
+    "colaboradores.ver_detalle": "fn_redsocial_colaboradores_ver_detalle",
+    "colaboradores.cambiar_rol": "fn_redsocial_colaboradores_cambiar_rol",
+    "colaboradores.dar_de_baja": "fn_redsocial_colaboradores_dar_de_baja",
+    "compartido.navegar": "fn_redsocial_compartido_navegar",
+    "compartido.buscar": "fn_redsocial_compartido_buscar",
+    "dashboard.ver_resumen": "fn_redsocial_dashboard_ver_resumen",
+    "dashboard.personalizar": "fn_redsocial_dashboard_personalizar",
+    "dashboard.exportar": "fn_redsocial_dashboard_exportar",
+    "estadisticas.ver_por_modulo": "fn_redsocial_estadisticas_ver_por_modulo",
+    "estadisticas.comparar": "fn_redsocial_estadisticas_comparar",
+    "estadisticas.exportar": "fn_redsocial_estadisticas_exportar",
+    "eventos.listar": "fn_redsocial_eventos_listar",
+    "eventos.crear": "fn_redsocial_eventos_crear",
+    "eventos.invitar": "fn_redsocial_eventos_invitar",
+    "eventos.aceptar_invitacion": "fn_redsocial_eventos_aceptar_invitacion",
+    "eventos.rechazar_invitacion": "fn_redsocial_eventos_rechazar_invitacion",
+    "grupos.listar": "fn_redsocial_grupos_listar",
+    "grupos.descubrir": "fn_redsocial_grupos_descubrir",
+    "grupos.crear": "fn_redsocial_grupos_crear",
+    "grupos.unirse": "fn_redsocial_grupos_unirse",
+    "grupos.aceptar_invitacion": "fn_redsocial_grupos_aceptar_invitacion",
+    "grupos.rechazar_invitacion": "fn_redsocial_grupos_rechazar_invitacion",
+    "guardados.listar": "fn_redsocial_guardados_listar",
+    "guardados.filtrar": "fn_redsocial_guardados_filtrar",
+    "guardados.guardar": "fn_redsocial_guardados_guardar",
+    "guardados.quitar_guardado": "fn_redsocial_guardados_quitar_guardado",
+    "guardados.crear_coleccion": "fn_redsocial_guardados_crear_coleccion",
+    "indicadores.listar": "fn_redsocial_indicadores_listar",
+    "indicadores.filtrar_por_modulo": "fn_redsocial_indicadores_filtrar_por_modulo",
+    "indicadores.comparar": "fn_redsocial_indicadores_comparar",
+    "inicio.publicar": "fn_redsocial_inicio_publicar",
+    "inicio.reaccionar": "fn_redsocial_inicio_reaccionar",
+    "inicio.comentar": "fn_redsocial_inicio_comentar",
+    "inicio.compartir": "fn_redsocial_inicio_compartir",
+    "marketplace.listar": "fn_redsocial_marketplace_listar",
+    "marketplace.buscar": "fn_redsocial_marketplace_buscar",
+    "marketplace.comprar": "fn_redsocial_marketplace_comprar",
+    "marketplace.publicar_aplicacion": "fn_redsocial_marketplace_publicar_aplicacion",
+    "mensajeria.listar": "fn_redsocial_mensajeria_listar",
+    "mensajeria.enviar_mensaje": "fn_redsocial_mensajeria_enviar_mensaje",
+    "mensajeria.marcar_favorito": "fn_redsocial_mensajeria_marcar_favorito",
+    "mensajeria.iniciar_videollamada": "fn_redsocial_mensajeria_iniciar_videollamada",
+    "reportes.listar": "fn_redsocial_reportes_listar",
+    "reportes.generar": "fn_redsocial_reportes_generar",
+    "reportes.descargar": "fn_redsocial_reportes_descargar",
+    "reportes.compartir": "fn_redsocial_reportes_compartir"
+  },
+  "tablas": {
+    "actividad": [],
+    "amigos": [],
+    "avisos": [],
+    "colaboradores": [],
+    "compartido": [],
+    "dashboard": [],
+    "estadisticas": [],
+    "eventos": [],
+    "grupos": [],
+    "guardados": [],
+    "indicadores": [],
+    "inicio": [],
+    "marketplace": [],
+    "mensajeria": [],
+    "reportes": []
+  },
+  "eventos": {
+    "actividad": [],
+    "amigos": [],
+    "avisos": [],
+    "colaboradores": [],
+    "compartido": [],
+    "dashboard": [],
+    "estadisticas": [],
+    "eventos": [],
+    "grupos": [],
+    "guardados": [],
+    "indicadores": [],
+    "inicio": [],
+    "marketplace": [],
+    "mensajeria": [],
+    "reportes": []
+  },
+  "pruebas": [
+    "frontend:actividad:listar",
+    "frontend:actividad:filtrar",
+    "frontend:actividad:ver_detalle",
+    "frontend:actividad:comentar",
+    "frontend:amigos:listar",
+    "frontend:amigos:buscar",
+    "frontend:amigos:solicitar",
+    "frontend:amigos:aceptar",
+    "frontend:amigos:rechazar",
+    "frontend:amigos:crear_lista",
+    "frontend:avisos:listar",
+    "frontend:avisos:filtrar",
+    "frontend:avisos:marcar_leida",
+    "frontend:avisos:marcar_todas_leidas",
+    "frontend:colaboradores:listar",
+    "frontend:colaboradores:invitar",
+    "frontend:colaboradores:ver_detalle",
+    "frontend:colaboradores:cambiar_rol",
+    "frontend:colaboradores:dar_de_baja",
+    "frontend:compartido:navegar",
+    "frontend:compartido:buscar",
+    "frontend:dashboard:ver_resumen",
+    "frontend:dashboard:personalizar",
+    "frontend:dashboard:exportar",
+    "frontend:estadisticas:ver_por_modulo",
+    "frontend:estadisticas:comparar",
+    "frontend:estadisticas:exportar",
+    "frontend:eventos:listar",
+    "frontend:eventos:crear",
+    "frontend:eventos:invitar",
+    "frontend:eventos:aceptar_invitacion",
+    "frontend:eventos:rechazar_invitacion",
+    "frontend:grupos:listar",
+    "frontend:grupos:descubrir",
+    "frontend:grupos:crear",
+    "frontend:grupos:unirse",
+    "frontend:grupos:aceptar_invitacion",
+    "frontend:grupos:rechazar_invitacion",
+    "frontend:guardados:listar",
+    "frontend:guardados:filtrar",
+    "frontend:guardados:guardar",
+    "frontend:guardados:quitar_guardado",
+    "frontend:guardados:crear_coleccion",
+    "frontend:indicadores:listar",
+    "frontend:indicadores:filtrar_por_modulo",
+    "frontend:indicadores:comparar",
+    "frontend:inicio:publicar",
+    "frontend:inicio:reaccionar",
+    "frontend:inicio:comentar",
+    "frontend:inicio:compartir",
+    "frontend:marketplace:listar",
+    "frontend:marketplace:buscar",
+    "frontend:marketplace:comprar",
+    "frontend:marketplace:publicar_aplicacion",
+    "frontend:mensajeria:listar",
+    "frontend:mensajeria:enviar_mensaje",
+    "frontend:mensajeria:marcar_favorito",
+    "frontend:mensajeria:iniciar_videollamada",
+    "frontend:reportes:listar",
+    "frontend:reportes:generar",
+    "frontend:reportes:descargar",
+    "frontend:reportes:compartir"
+  ]
+}

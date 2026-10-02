@@ -1,0 +1,282 @@
+{
+  "colaboradores": [
+    {
+      "nombre": "Carlos Mendoza",
+      "correo": "carlos.mendoza@gmail.com",
+      "telefono": "+51 987 654 321",
+      "rol": "Administrador",
+      "rolClase": "administrador",
+      "descripcionRol": "Acceso total",
+      "aplicaciones": [
+        {
+          "icono": "calendario",
+          "clase": "bg-t-6c3ce0",
+          "nombre": "Calendario"
+        },
+        {
+          "icono": "mensaje",
+          "clase": "bg-azul-categoria",
+          "nombre": "Mensajes"
+        },
+        {
+          "icono": "actividad",
+          "clase": "bg-verde-categoria",
+          "nombre": "Actividad"
+        }
+      ],
+      "masApps": 5,
+      "estado": "activo",
+      "vigencia": {
+        "tipo": "rango",
+        "desde": "01/06/2026",
+        "hasta": "01/06/2027"
+      },
+      "acciones": "menu",
+      "fechaInvitacion": "28/05/2026",
+      "ultimoAcceso": "Hoy, 10:24 AM",
+      "historial": [
+        { "texto": "Invitación aceptada", "hora": "28/05/2026 09:15 AM" },
+        { "texto": "Rol asignado: Administrador", "hora": "28/05/2026 09:16 AM" },
+        { "texto": "Acceso activado", "hora": "28/05/2026 09:16 AM" }
+      ]
+    },
+    {
+      "nombre": "María López",
+      "correo": "maria.lopez@gmail.com",
+      "telefono": "+51 954 123 456",
+      "rol": "Contador",
+      "rolClase": "contador",
+      "descripcionRol": "Contabilidad",
+      "aplicaciones": [
+        {
+          "icono": "estadisticas",
+          "clase": "bg-cian-categoria",
+          "nombre": "Estadísticas"
+        },
+        {
+          "icono": "marketplace",
+          "clase": "bg-naranja-categoria",
+          "nombre": "Marketplace"
+        },
+        {
+          "icono": "reportes-barra",
+          "clase": "bg-violeta-categoria",
+          "nombre": "Reportes"
+        }
+      ],
+      "masApps": 3,
+      "estado": "activo",
+      "vigencia": {
+        "tipo": "rango",
+        "desde": "15/05/2026",
+        "hasta": "15/05/2027"
+      },
+      "acciones": "menu"
+    },
+    {
+      "nombre": "Jorge Ramírez",
+      "correo": "jorge.ramirez@gmail.com",
+      "telefono": "+51 912 345 678",
+      "rol": "Vendedor",
+      "rolClase": "vendedor",
+      "descripcionRol": "Ventas",
+      "aplicaciones": [
+        {
+          "icono": "mensaje",
+          "clase": "bg-azul-categoria",
+          "nombre": "Mensajes"
+        },
+        {
+          "icono": "marketplace",
+          "clase": "bg-naranja-categoria",
+          "nombre": "Marketplace"
+        },
+        {
+          "icono": "actividad",
+          "clase": "bg-verde-categoria",
+          "nombre": "Actividad"
+        }
+      ],
+      "estado": "activo",
+      "vigencia": {
+        "tipo": "rango",
+        "desde": "10/04/2026",
+        "hasta": "10/04/2027"
+      },
+      "acciones": "menu"
+    },
+    {
+      "nombre": "Ana Torres",
+      "correo": "ana.torres@gmail.com",
+      "telefono": "+51 944 556 789",
+      "rol": "Almacenero",
+      "rolClase": "almacenero",
+      "descripcionRol": "Inventario",
+      "aplicaciones": [
+        {
+          "icono": "calendario",
+          "clase": "bg-t-6c3ce0",
+          "nombre": "Calendario"
+        },
+        {
+          "icono": "marketplace",
+          "clase": "bg-naranja-categoria",
+          "nombre": "Marketplace"
+        },
+        {
+          "icono": "actividad",
+          "clase": "bg-verde-categoria",
+          "nombre": "Actividad"
+        }
+      ],
+      "estado": "invitado",
+      "vigencia": {
+        "tipo": "simple",
+        "etiqueta": "Invitación enviada",
+        "fecha": "20/05/2026"
+      },
+      "acciones": "reenviar"
+    },
+    {
+      "nombre": "Luis Fernández",
+      "correo": "luis.fernandez@gmail.com",
+      "telefono": "+51 933 221 144",
+      "rol": "Analista",
+      "rolClase": "analista",
+      "descripcionRol": "Reportes",
+      "aplicaciones": [
+        {
+          "icono": "estadisticas",
+          "clase": "bg-cian-categoria",
+          "nombre": "Estadísticas"
+        },
+        {
+          "icono": "reportes-barra",
+          "clase": "bg-violeta-categoria",
+          "nombre": "Reportes"
+        }
+      ],
+      "estado": "inactivo",
+      "vigencia": {
+        "tipo": "rango",
+        "desde": "01/03/2026",
+        "hasta": "01/03/2027"
+      },
+      "acciones": "menu"
+    },
+    {
+      "nombre": "Rosa Jiménez",
+      "correo": "rosa.jimenez@gmail.com",
+      "telefono": "+51 987 111 222",
+      "rol": "Asistente",
+      "rolClase": "asistente",
+      "descripcionRol": "Soporte",
+      "aplicaciones": [
+        {
+          "icono": "estadisticas",
+          "clase": "bg-cian-categoria",
+          "nombre": "Estadísticas"
+        },
+        {
+          "icono": "marketplace",
+          "clase": "bg-naranja-categoria",
+          "nombre": "Marketplace"
+        }
+      ],
+      "estado": "baja",
+      "vigencia": {
+        "tipo": "simple",
+        "etiqueta": "Dado de baja",
+        "fecha": "05/05/2026"
+      },
+      "acciones": "menu"
+    }
+  ],
+  "filtrosEstadoColaboradores": [
+    {
+      "etiqueta": "Todos",
+      "total": 24,
+      "activa": true
+    },
+    {
+      "etiqueta": "Activos",
+      "total": 18,
+      "activa": false
+    },
+    {
+      "etiqueta": "Invitados",
+      "total": 3,
+      "activa": false
+    },
+    {
+      "etiqueta": "Inactivos",
+      "total": 3,
+      "activa": false
+    },
+    {
+      "etiqueta": "Baja",
+      "total": 2,
+      "activa": false
+    }
+  ],
+  "pasosFuncionaColaboradores": [
+    {
+      "icono": "correo",
+      "clase": "bg-t-dbeafe text-azul-categoria",
+      "numero": "1. Invitas",
+      "descripcion": "Invita a una persona por correo electrónico o WhatsApp."
+    },
+    {
+      "icono": "nuevo-usuario",
+      "clase": "bg-t-dcfce7 text-verde-categoria",
+      "numero": "2. Se registra",
+      "descripcion": "Si no está en la red, se registra y acepta la invitación."
+    },
+    {
+      "icono": "escudo",
+      "clase": "bg-t-e0e7ff text-t-6366f1",
+      "numero": "3. Asignas",
+      "descripcion": "Asigna un rol / perfil y las aplicaciones que podrá usar."
+    },
+    {
+      "icono": "usuarios",
+      "clase": "bg-t-f5f3ff text-morado-categoria",
+      "numero": "4. Colabora",
+      "descripcion": "Ya forma parte de tu equipo y puede usar los sistemas."
+    }
+  ],
+  "aplicacionesDisponibles": [
+    { "icono": "calendario", "clase": "bg-t-6c3ce0", "nombre": "Calendario" },
+    { "icono": "mensaje", "clase": "bg-azul-categoria", "nombre": "Mensajes" },
+    { "icono": "actividad", "clase": "bg-verde-categoria", "nombre": "Actividad" },
+    { "icono": "marketplace", "clase": "bg-naranja-categoria", "nombre": "Marketplace" },
+    { "icono": "estadisticas", "clase": "bg-cian-categoria", "nombre": "Estadísticas" },
+    { "icono": "reportes-barra", "clase": "bg-violeta-categoria", "nombre": "Reportes" }
+  ],
+  "fechaBajaEjemplo": "28/09/2026",
+  "detalleColaboradorEjemplo": {
+    "nombre": "Carlos Mendoza",
+    "rol": "Administrador",
+    "correo": "carlos.mendoza@gmail.com",
+    "telefono": "+51 987 654 321",
+    "estado": "Activo",
+    "descripcionRol": "Acceso total a los sistemas y configuración.",
+    "vigencia": "01/06/2026 al 01/06/2027",
+    "fechaInvitacion": "28/05/2026",
+    "ultimoAcceso": "Hoy, 10:24 AM"
+  },
+  "historialActividadColaboradorEjemplo": [
+    {
+      "texto": "Invitación aceptada",
+      "hora": "28/05/2026 09:15 AM"
+    },
+    {
+      "texto": "Rol asignado: Administrador",
+      "hora": "28/05/2026 09:16 AM"
+    },
+    {
+      "texto": "Acceso activado",
+      "hora": "28/05/2026 09:16 AM"
+    }
+  ]
+}

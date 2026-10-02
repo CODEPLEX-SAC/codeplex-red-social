@@ -18,8 +18,10 @@ export function MedidaDinamica({
   as?: ElementType
   children?: ReactNode
 }) {
+  const clases = [ancho, alto, color, className].filter(Boolean).join(' ')
+
   return (
-    <Tag className={[ancho, alto, color, className].filter(Boolean).join(' ')}>
+    <Tag className={clases}>
       {children}
     </Tag>
   )

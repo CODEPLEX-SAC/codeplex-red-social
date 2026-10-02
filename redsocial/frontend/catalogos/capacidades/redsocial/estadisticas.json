@@ -22,6 +22,11 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "ver_por_modulo": "ESTADISTICAS_CONSULTAR",
+    "comparar": "ESTADISTICAS_COMPARAR",
+    "exportar": "ESTADISTICAS_EXPORTAR"
+  },
   "rutas": {
     "todos_modulos": "/estadisticas",
     "ventas": "/estadisticas/ventas",

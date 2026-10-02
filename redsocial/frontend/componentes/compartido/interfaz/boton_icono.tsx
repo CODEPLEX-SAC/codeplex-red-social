@@ -1,18 +1,9 @@
 import { Icono } from '../icono'
-import type { BotonIconoVariant, BotonIconoSize, BotonIconoProps } from '@/tipos/compartido/boton_icono'
+import type { BotonIconoVariant, BotonIconoSize, BotonIconoProps } from '@/tipos/compartido/contrato_boton_icono'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
-void catalogoCompartido
-
-const CLASES_VARIANTE: Record<BotonIconoVariant, string> = {
-  default: 'bg-transparent text-[#6d6a7c] hover:bg-[#f2f1f6]',
-  primario: 'bg-primario text-white hover:bg-primario-oscuro',
-}
-
-const CLASES_TAMANO: Record<BotonIconoSize, { boton: string; icono: string }> = {
-  default: { boton: 'h-8 w-8', icono: 'w-[18px] h-[18px]' },
-  sm: { boton: 'h-6 w-6', icono: 'w-[14px] h-[14px]' },
-}
+const mapaVariante: Record<BotonIconoVariant, string> = catalogoCompartido.boton_icono_variantes
+const mapaTamano: Record<BotonIconoSize, { boton: string; icono: string }> = catalogoCompartido.boton_icono_tamanos
 
 export function BotonIcono({
   icono,
@@ -21,11 +12,11 @@ export function BotonIcono({
   className,
   ...rest
 }: BotonIconoProps) {
-  const tamano = CLASES_TAMANO[size]
+  const tamano = mapaTamano[size]
   const clases = [
-    'relative inline-grid place-items-center rounded-[7px] border-0 p-0',
+    'inline-grid place-items-center p-0',
     tamano.boton,
-    CLASES_VARIANTE[variant],
+    mapaVariante[variant],
     className ?? '',
   ]
     .filter(Boolean)

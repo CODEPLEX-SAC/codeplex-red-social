@@ -1,0 +1,273 @@
+{
+  "acciones": [
+    "listar",
+    "filtrar",
+    "marcar_leida",
+    "marcar_todas_leidas"
+  ],
+  "permisos": {
+    "listar": "AVISOS_CONSULTAR",
+    "filtrar": "AVISOS_FILTRAR",
+    "marcar_leida": "AVISOS_MARCAR",
+    "marcar_todas_leidas": "AVISOS_MARCAR"
+  },
+  "alertas": {
+    "confirmar_marcar_todas_leidas": "Vas a marcar todas tus notificaciones como leidas."
+  },
+  "campos": {
+    "buscar_notificacion": "Buscar en notificaciones"
+  },
+  "errores": {
+    "carga_notificaciones": "No fue posible cargar las notificaciones."
+  },
+  "mensajes": {
+    "sin_notificaciones": "No hay notificaciones para mostrar todavia."
+  },
+  "toast": {
+    "todas_marcadas_leidas": "Todas las notificaciones se marcaron como leidas."
+  },
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "todas": "/notificaciones",
+    "no_leidas": "/notificaciones/no-leidas",
+    "menciones": "/notificaciones/menciones",
+    "solicitudes": "/notificaciones/solicitudes",
+    "eventos": "/notificaciones/eventos",
+    "sistema": "/notificaciones/sistema"
+  },
+  "titulo_menu": "Notificaciones",
+  "titulos": {
+    "principal": "Notificaciones"
+  },
+  "subtitulos": {
+    "principal": "Mantente al dia con lo que ocurre en tu red y en tu empresa"
+  },
+  "pestanas": [
+    {"clave": "todas", "etiqueta": "Todas", "ruta": "/notificaciones"},
+    {"clave": "no_leidas", "etiqueta": "No leidas", "ruta": "/notificaciones/no-leidas"},
+    {"clave": "menciones", "etiqueta": "Menciones", "ruta": "/notificaciones/menciones"},
+    {"clave": "solicitudes", "etiqueta": "Solicitudes", "ruta": "/notificaciones/solicitudes"},
+    {"clave": "eventos", "etiqueta": "Eventos", "ruta": "/notificaciones/eventos"},
+    {"clave": "sistema", "etiqueta": "Sistema", "ruta": "#"}
+  ],
+  "pestanas_panel_topbar": [
+    {"clave": "todas", "etiqueta": "Todas", "insignia": 12},
+    {"clave": "no_leidas", "etiqueta": "No leidas", "insignia": 8}
+  ],
+  "menu_panel_topbar": [
+    {"icono": "verificado", "etiqueta": "Marcar todas como leidas"},
+    {"icono": "configuracion", "etiqueta": "Configuracion de notificaciones"},
+    {"icono": "flecha-arriba-derecha", "etiqueta": "Ver todas las notificaciones", "ruta": "/notificaciones"}
+  ],
+  "titulos_pestanas": {
+    "todas": "Todas",
+    "no_leidas": "No leidas",
+    "menciones": "Menciones",
+    "solicitudes": "Solicitudes",
+    "eventos": "Eventos",
+    "sistema": "Sistema"
+  },
+  "grupos_fecha": {
+    "hoy": "Hoy",
+    "ayer": "Ayer"
+  },
+  "botones": {
+    "marcar_todas_leidas": "Marcar todas como leidas",
+    "mas_opciones": "Mas opciones",
+    "me_gusta": "Me gusta",
+    "responder": "Responder",
+    "ver_conversacion_completa": "Ver conversacion completa",
+    "confirmar": "Confirmar",
+    "eliminar": "Eliminar",
+    "aceptar": "Aceptar",
+    "rechazar": "Rechazar",
+    "aprobar": "Aprobar",
+    "ver_evento": "Ver evento",
+    "ver_todas": "Ver todas",
+    "buscar_personas": "Buscar personas",
+    "ver_mas": "Ver mas"
+  },
+  "secciones": {
+    "comentaron_en_tu_publicacion": "Comentaron en tu publicacion",
+    "personas_que_comentaron": "Personas que comentaron",
+    "solicitudes_amistad": "Solicitudes de amistad",
+    "solicitudes_grupo": "Solicitudes de grupo",
+    "solicitudes_evento": "Solicitudes de evento",
+    "solicitudes_colaboracion": "Solicitudes de colaboracion"
+  },
+  "banner_solicitudes": {
+    "titulo": "Solicitudes pendientes",
+    "descripcion": "Aqui puedes gestionar todas las solicitudes de amistad, grupos, eventos y colaboraciones."
+  },
+  "mensajes_solicitudes": {
+    "sin_colaboracion_titulo": "No tienes solicitudes de colaboracion",
+    "sin_colaboracion_descripcion": "Cuando alguien te invite a colaborar en un proyecto, aparecera aqui."
+  },
+  "panel_lateral_solicitudes": {
+    "titulo": "Nuevas oportunidades de conexion",
+    "descripcion": "Revisa y gestiona tus solicitudes para grandes colaboraciones."
+  },
+  "consejos_solicitudes": {
+    "titulo": "Consejos",
+    "items": [
+      { "icono": "escudo", "titulo": "Verifica los perfiles", "descripcion": "Revisa la informacion antes de aceptar." },
+      { "icono": "amigos", "titulo": "Conecta con profesionales", "descripcion": "Amplia tu red con personas de tu sector." },
+      { "icono": "estrella", "titulo": "Unete a grupos de interes", "descripcion": "Descubre comunidades que impulsen tu crecimiento." }
+    ]
+  },
+  "cta_lateral_solicitudes": {
+    "titulo": "Haz crecer tu red",
+    "descripcion": "Las conexiones correctas pueden abrir nuevas oportunidades profesionales."
+  },
+  "cita_lateral_solicitudes": {
+    "texto": "Las grandes oportunidades nacen de una buena conexion.",
+    "autor": "CodePlex"
+  },
+  "campos_lista": {
+    "seleccionar_todas": "Seleccionar todas",
+    "mas_recientes": "Mas recientes"
+  },
+  "banner_menciones": {
+    "titulo": "Te mencionaron",
+    "descripcion": "Aqui veras todas las veces que te mencionaron en publicaciones, comentarios, grupos o eventos."
+  },
+  "acciones_mencion": {
+    "publicacion": "te mencionó en una publicación",
+    "comentario": "te mencionó en un comentario",
+    "grupo": "te mencionó en un grupo",
+    "evento": "te mencionó en un evento"
+  },
+  "menu_mencion": {
+    "ver_publicacion": "Ver publicacion",
+    "responder": "Responder",
+    "dar_me_gusta": "Dar me gusta",
+    "compartir": "Compartir",
+    "marcar_como_leida": "Marcar como leida",
+    "silenciar_menciones_de": "Silenciar menciones de",
+    "reportar": "Reportar"
+  },
+  "botones_lista": {
+    "cargar_mas_notificaciones": "Cargar mas notificaciones"
+  },
+  "banner_eventos": {
+    "titulo": "Notificaciones de eventos",
+    "descripcion": "Aqui veras invitaciones, recordatorios, actualizaciones y toda la actividad relacionada con eventos."
+  },
+  "menu_evento": {
+    "ver_evento": "Ver evento",
+    "marcar_como_leida": "Marcar como leida",
+    "silenciar_este_tipo": "Silenciar este tipo",
+    "eliminar_notificacion": "Eliminar notificacion"
+  },
+  "panel_topbar": {
+    "ver_mas": "Ver mas",
+    "ver_todas_las_notificaciones": "Ver todas las notificaciones",
+    "configuracion_de_notificaciones": "Configuracion de notificaciones",
+    "conteo_todas": 12,
+    "conteo_no_leidas": 8
+  },
+  "clases_icono_color": {
+    "morado": "bg-t-f3e8ff text-morado-categoria",
+    "azul": "bg-t-dbeafe text-azul-categoria",
+    "rojo": "bg-t-fee2e2 text-rojo-categoria",
+    "amarillo": "bg-t-fff8e1 text-amarillo-categoria"
+  },
+  "panel_topbar_hoy": [
+    {
+      "id": "1",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "nombreUsuario": "Ana García y 4 personas más",
+      "accion": "comentaron en tu publicación",
+      "detalle": "\"Excelente iniciativa! Me encantaría participar\"",
+      "tiempo": "Hace 10 min",
+      "leida": false
+    },
+    {
+      "id": "2",
+      "tipo": "icono",
+      "icono": "grupos",
+      "colorIcono": "azul",
+      "nombreUsuario": "Nuevos miembros en tu grupo",
+      "nombreGrupo": "\"Ingenieros Civiles\"",
+      "detalle": "3 personas se unieron a tu grupo",
+      "tiempo": "Hace 25 min",
+      "leida": false
+    },
+    {
+      "id": "3",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "conInsigniaIcono": true,
+      "nombreUsuario": "Luis Rodríguez",
+      "accion": "te mencionó en un comentario",
+      "detalle": "\"@Pedro Lozano revisa esta propuesta\"",
+      "tiempo": "Hace 1 hora",
+      "leida": false
+    },
+    {
+      "id": "4",
+      "tipo": "icono",
+      "icono": "calendario",
+      "colorIcono": "rojo",
+      "nombreUsuario": "Recordatorio de evento",
+      "detalle": "\"Reunión de Proyectos\" comienza en 30 minutos",
+      "tiempo": "Hace 2 horas",
+      "leida": false
+    },
+    {
+      "id": "5",
+      "tipo": "icono",
+      "icono": "me-gusta",
+      "colorIcono": "azul",
+      "nombreUsuario": "María Fernández",
+      "accion": "reaccionó a tu publicación",
+      "detalle": "\"Nuevo diseño del dashboard de la comunidad\" ✨",
+      "tiempo": "Hace 3 horas",
+      "leida": false
+    }
+  ],
+  "panel_topbar_ayer": [
+    {
+      "id": "1",
+      "tipo": "avatar",
+      "icono": "amigos",
+      "colorIcono": "azul",
+      "nombreUsuario": "Carlos Mendoza",
+      "accion": "te envió una solicitud de amistad",
+      "tiempo": "Ayer, 4:20 p. m.",
+      "leida": false
+    },
+    {
+      "id": "2",
+      "tipo": "avatar",
+      "icono": "comentario",
+      "colorIcono": "morado",
+      "conInsigniaIcono": true,
+      "nombreUsuario": "Sofía Torres",
+      "accion": "te mencionó en un comentario",
+      "detalle": "\"Totalmente de acuerdo contigo 👍\"",
+      "tiempo": "Ayer, 2:15 p. m.",
+      "leida": false
+    },
+    {
+      "id": "3",
+      "tipo": "icono",
+      "icono": "grupos",
+      "colorIcono": "morado",
+      "nombreUsuario": "Tu grupo",
+      "nombreGrupo": "\"Diseño UX/UI LATAM\"",
+      "accion": "tiene nuevas publicaciones",
+      "detalle": "5 publicaciones nuevas",
+      "tiempo": "Ayer, 11:30 a. m.",
+      "leida": false
+    }
+  ]
+}

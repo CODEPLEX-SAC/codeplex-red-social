@@ -22,6 +22,12 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "MARKETPLACE_CONSULTAR",
+    "buscar": "MARKETPLACE_BUSCAR",
+    "comprar": "MARKETPLACE_COMPRAR",
+    "publicar_aplicacion": "MARKETPLACE_PUBLICAR"
+  },
   "rutas": {
     "principal": "/marketplace"
   },

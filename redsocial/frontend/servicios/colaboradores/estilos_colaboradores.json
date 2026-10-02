@@ -1,0 +1,16 @@
+{
+  "rolClases": {
+    "administrador": "bg-t-ede9fe text-t-5b21b6",
+    "contador": "bg-t-dbeafe text-t-1d4ed8",
+    "vendedor": "bg-t-fef3c7 text-t-92400e",
+    "almacenero": "bg-t-d1fae5 text-t-065f46",
+    "analista": "bg-t-e0e7ff text-t-3730a3",
+    "asistente": "bg-t-fce7f3 text-t-9d174d"
+  },
+  "estadoClases": {
+    "activo": { "texto": "text-positivo-kpi", "punto": "bg-verde-categoria", "etiqueta": "Activo", "insignia": "bg-t-dcfce7 text-t-166534" },
+    "invitado": { "texto": "text-t-d97706", "punto": "bg-t-f59e0b", "etiqueta": "Invitado", "insignia": "bg-t-fef3c7 text-t-92400e" },
+    "inactivo": { "texto": "text-gris-texto-secundario", "punto": "bg-gris-categoria", "etiqueta": "Inactivo", "insignia": "bg-t-f3f4f6 text-t-5d5a70" },
+    "baja": { "texto": "text-negativo-kpi", "punto": "bg-rojo-categoria", "etiqueta": "Baja", "insignia": "bg-t-fee2e2 text-t-9f1239" }
+  }
+}

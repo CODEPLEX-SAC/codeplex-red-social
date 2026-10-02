@@ -22,6 +22,12 @@
     "periodo_id",
     "usuario_id"
   ],
+  "permisos": {
+    "listar": "ACTIVIDAD_CONSULTAR",
+    "filtrar": "ACTIVIDAD_FILTRAR",
+    "ver_detalle": "ACTIVIDAD_CONSULTAR",
+    "comentar": "ACTIVIDAD_COMENTAR"
+  },
   "rutas": {
     "todas": "/actividad",
     "publicaciones": "/actividad/publicaciones",
@@ -32,6 +38,15 @@
     "sistema": "/actividad/sistema"
   },
   "titulo_menu": "Actividad",
+  "pestanas": [
+    {"clave": "todas", "etiqueta": "Todas", "ruta": "/actividad"},
+    {"clave": "publicaciones", "etiqueta": "Publicaciones", "ruta": "/actividad/publicaciones"},
+    {"clave": "menciones", "etiqueta": "Menciones", "ruta": "/actividad/menciones"},
+    {"clave": "colaboradores", "etiqueta": "Colaboradores", "ruta": "/actividad/colaboradores"},
+    {"clave": "grupos", "etiqueta": "Grupos", "ruta": "/actividad/grupos"},
+    {"clave": "modulos", "etiqueta": "Módulos", "ruta": "/actividad/modulos"},
+    {"clave": "sistema", "etiqueta": "Sistema", "ruta": "/actividad/sistema"}
+  ],
   "titulos_pestanas": {
     "todas": "Todas",
     "publicaciones": "Publicaciones",

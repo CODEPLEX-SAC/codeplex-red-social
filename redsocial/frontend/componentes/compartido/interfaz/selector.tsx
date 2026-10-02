@@ -1,51 +1,50 @@
-import { Icono } from '../icono'
-import type { SelectorVariant, SelectorProps } from '@/tipos/compartido/selector'
+import { Children, isValidElement } from 'react'
+import type { OptionHTMLAttributes } from 'react'
+import { CodeplexSelector } from '@codeplex-sac/formularios'
+import { ProveedorTemaGraficos } from '../proveedor_tema_graficos'
+import type { ManejadorSelectorLibreria, SelectorConfiguracionLibreria, SelectorVariant, SelectorProps } from '@/tipos/compartido/contrato_selector'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
-const CLASES_SELECT: Record<SelectorVariant, string> = {
-  default:
-    'h-[38px] rounded-lg border border-gris-borde bg-white pl-3 pr-[30px] text-[13px] font-semibold text-texto min-w-[150px] max-[900px]:w-full max-[900px]:min-w-0',
-  colaboradores:
-    'w-full rounded-lg border border-[#d1d5db] bg-white py-2 pl-3 pr-8 text-[0.85rem] font-medium text-gris-oscuro-texto cursor-pointer',
-  mini: 'h-[30px] rounded-md border border-gris-borde bg-white pl-[10px] pr-[26px] text-xs font-semibold text-texto',
-}
+const mapaEnvoltorio: Record<SelectorVariant, string> = catalogoCompartido.selector_envoltorio
+const mapaLabel: Record<string, string> = catalogoCompartido.selector_label
+const mapaLibreria = catalogoCompartido.selector_libreria as Record<SelectorVariant, SelectorConfiguracionLibreria>
 
-const CLASES_ENVOLTORIO: Record<SelectorVariant, string> = {
-  default: 'relative inline-flex max-[900px]:flex-1',
-  colaboradores: 'relative flex w-full',
-  mini: 'relative inline-flex',
-}
+export function Selector({ variant = 'default', label, className, children, 'aria-label': ariaLabel, value, defaultValue, onChange, disabled, name, placeholder }: SelectorProps) {
+  const opciones = Children.toArray(children)
+    .filter(isValidElement<OptionHTMLAttributes<HTMLOptionElement>>)
+    .map((opcion) => {
+      const etiqueta = opcion.props.children as string
+      return { valor: (opcion.props.value ?? etiqueta) as string, etiqueta, deshabilitado: opcion.props.disabled }
+    })
+  const valorInicial = value === undefined ? (defaultValue ?? opciones[0]?.valor) as string : undefined
+  const configuracion = mapaLibreria[variant]
+  const propiedadesVisibles = { [catalogoCompartido.selector_atributo_accesible]: label ?? ariaLabel ?? catalogoCompartido.campos.seleccionar_opcion }
 
-const CLASES_LABEL: Record<Exclude<SelectorVariant, 'mini'>, string> = {
-  default: 'text-[11px] font-semibold text-texto-suave max-[900px]:flex-1',
-  colaboradores: 'text-xs font-medium text-gris-texto-secundario',
-}
+  const propiedadesLibreria = {
+    opciones,
+    tamano: configuracion.tamano,
+    anchoCompleto: configuracion.anchoCompleto,
+    sx: configuracion.sx,
+    valor: value === undefined ? undefined : (value as string),
+    defaultValue: valorInicial,
+    disabled,
+    name,
+    marcador: placeholder,
+    alCambiar: onChange as ManejadorSelectorLibreria,
+    SelectDisplayProps: propiedadesVisibles,
+  }
 
-export function Selector({ variant = 'default', label, className, children, 'aria-label': ariaLabel, ...rest }: SelectorProps) {
   const select = (
-    <div className={CLASES_ENVOLTORIO[variant]}>
-      <select
-        aria-label={label ? undefined : (ariaLabel ?? catalogoCompartido.campos.seleccionar_opcion)}
-        className={`appearance-none ${CLASES_SELECT[variant]} ${className ?? ''}`}
-        {...rest}
-      >
-        {children}
-      </select>
-      <Icono
-        name="flecha-abajo"
-        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-texto-suave"
-      />
+    <div className={[mapaEnvoltorio[variant], className].filter(Boolean).join(' ')}>
+      <ProveedorTemaGraficos>
+        <CodeplexSelector {...propiedadesLibreria} />
+      </ProveedorTemaGraficos>
     </div>
   )
 
-  if (variant === 'mini' || !label) {
+  if (!label || !configuracion.conEtiqueta) {
     return select
   }
 
-  return (
-    <label className={`flex flex-col gap-1 ${CLASES_LABEL[variant]}`}>
-      {label}
-      {select}
-    </label>
-  )
+  return <label className={`flex flex-col gap-1 ${mapaLabel[variant]}`}>{label}{select}</label>
 }

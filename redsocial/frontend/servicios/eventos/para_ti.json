@@ -1,0 +1,478 @@
+{
+  "destacados": [
+    {
+      "categoriaEtiqueta": "Música",
+      "gradiente": "nocturno",
+      "dia": "24",
+      "mes": "AGO",
+      "nombre": "Concierto Codeplex Live 2026",
+      "descripcion": "Una noche increíble con los mejores artistas.\n¡No te lo pierdas!",
+      "fecha": "Sáb, 24 Ago 2026",
+      "hora": "7:00 PM",
+      "ubicacion": "Arena 1, Lima",
+      "asistentes": "+128 asistirán",
+      "detalle": {
+        "diaSemana": "Sábado",
+        "fechaLarga": "24 de agosto de 2026",
+        "horario": "7:00 PM – 11:00 PM",
+        "duracion": "4 horas",
+        "lugar": "Arena 1, Lima",
+        "direccion": "Av. Javier Prado Este 4200, Lima",
+        "lat": -12.0872,
+        "lng": -76.9772,
+        "categoria": "Música",
+        "descripcionLarga": "Codeplex Live 2026 es un concierto imperdible donde se reunirán grandes artistas en un mismo escenario. Vive una experiencia única llena de música, luces y energía junto a la comunidad de CodePlex. ¡No te lo pierdas!",
+        "agenda": [
+          {
+            "hora": "7:00 PM",
+            "actividad": "Apertura de puertas"
+          },
+          {
+            "hora": "8:00 PM",
+            "actividad": "Artista invitado 1"
+          },
+          {
+            "hora": "9:00 PM",
+            "actividad": "Artista invitado 2"
+          },
+          {
+            "hora": "10:00 PM",
+            "actividad": "Artista principal"
+          },
+          {
+            "hora": "11:00 PM",
+            "actividad": "Cierre del evento"
+          }
+        ],
+        "organizador": {
+          "nombre": "CodePlex",
+          "detalle": "Comunidad de eventos"
+        },
+        "totalAsistentes": "128 asistentes"
+      }
+    },
+    {
+      "categoriaEtiqueta": "Negocios",
+      "gradiente": "rosa-suave",
+      "dia": "10",
+      "mes": "SEP",
+      "nombre": "Feria de Emprendimiento Codeplex",
+      "descripcion": "Conecta con inversionistas y emprendedores de todo el país.\nCupos limitados.",
+      "fecha": "Jue, 10 Sep 2026",
+      "hora": "9:00 AM",
+      "ubicacion": "Centro de Convenciones Lima",
+      "asistentes": "+95 asistirán",
+      "detalle": {
+        "diaSemana": "Jueves",
+        "fechaLarga": "10 de septiembre de 2026",
+        "horario": "9:00 AM – 5:00 PM",
+        "duracion": "8 horas",
+        "lugar": "Centro de Convenciones Lima",
+        "direccion": "Av. Aviación 2500, San Borja, Lima",
+        "lat": -12.0895,
+        "lng": -77.0002,
+        "categoria": "Negocios",
+        "descripcionLarga": "La Feria de Emprendimiento Codeplex reúne a inversionistas, emprendedores y mentores de todo el país para compartir ideas, generar alianzas y descubrir nuevas oportunidades de negocio. Cupos limitados.",
+        "agenda": [
+          {
+            "hora": "9:00 AM",
+            "actividad": "Registro y bienvenida"
+          },
+          {
+            "hora": "10:00 AM",
+            "actividad": "Charla inaugural"
+          },
+          {
+            "hora": "12:00 PM",
+            "actividad": "Rondas de networking"
+          },
+          {
+            "hora": "3:00 PM",
+            "actividad": "Pitch de emprendedores"
+          },
+          {
+            "hora": "5:00 PM",
+            "actividad": "Cierre del evento"
+          }
+        ],
+        "organizador": {
+          "nombre": "CodePlex",
+          "detalle": "Comunidad de emprendedores"
+        },
+        "totalAsistentes": "95 asistentes"
+      }
+    },
+    {
+      "categoriaEtiqueta": "Tecnología",
+      "gradiente": "violeta-suave",
+      "dia": "03",
+      "mes": "OCT",
+      "nombre": "Congreso de Innovación Tecnológica",
+      "descripcion": "Las últimas tendencias en IA, nube y transformación digital.\nCon expositores internacionales.",
+      "fecha": "Sáb, 3 Oct 2026",
+      "hora": "8:30 AM",
+      "ubicacion": "Universidad de Lima",
+      "asistentes": "+150 asistirán",
+      "detalle": {
+        "diaSemana": "Sábado",
+        "fechaLarga": "3 de octubre de 2026",
+        "horario": "8:30 AM – 6:00 PM",
+        "duracion": "9 horas",
+        "lugar": "Universidad de Lima",
+        "direccion": "Av. Javier Prado Este 4600, Santiago de Surco, Lima",
+        "lat": -12.0844,
+        "lng": -76.9707,
+        "categoria": "Tecnología",
+        "descripcionLarga": "El Congreso de Innovación Tecnológica presenta las últimas tendencias en inteligencia artificial, nube y transformación digital con expositores internacionales.",
+        "agenda": [
+          {
+            "hora": "8:30 AM",
+            "actividad": "Acreditación"
+          },
+          {
+            "hora": "9:30 AM",
+            "actividad": "Conferencia magistral"
+          },
+          {
+            "hora": "11:30 AM",
+            "actividad": "Panel de inteligencia artificial"
+          },
+          {
+            "hora": "2:30 PM",
+            "actividad": "Talleres prácticos"
+          },
+          {
+            "hora": "6:00 PM",
+            "actividad": "Cierre del congreso"
+          }
+        ],
+        "organizador": {
+          "nombre": "CodePlex",
+          "detalle": "Comunidad de tecnología"
+        },
+        "totalAsistentes": "150 asistentes"
+      }
+    },
+    {
+      "categoriaEtiqueta": "Deportes",
+      "gradiente": "teal",
+      "dia": "15",
+      "mes": "NOV",
+      "nombre": "Maratón Codeplex 10K",
+      "descripcion": "Corre por la ciudad y forma parte de la comunidad fitness.\nInscripciones abiertas.",
+      "fecha": "Dom, 15 Nov 2026",
+      "hora": "6:00 AM",
+      "ubicacion": "Circuito de Playas, Lima",
+      "asistentes": "+210 asistirán",
+      "detalle": {
+        "diaSemana": "Domingo",
+        "fechaLarga": "15 de noviembre de 2026",
+        "horario": "6:00 AM – 12:00 PM",
+        "duracion": "6 horas",
+        "lugar": "Circuito de Playas, Lima",
+        "direccion": "Costa Verde, Miraflores, Lima",
+        "lat": -12.1219,
+        "lng": -77.0297,
+        "categoria": "Deportes",
+        "descripcionLarga": "La Maratón Codeplex 10K recorre la costa de Lima y reúne a corredores de todos los niveles. Corre por la ciudad y forma parte de la comunidad fitness. Inscripciones abiertas.",
+        "agenda": [
+          {
+            "hora": "6:00 AM",
+            "actividad": "Entrega de kits y calentamiento"
+          },
+          {
+            "hora": "6:30 AM",
+            "actividad": "Salida de la carrera"
+          },
+          {
+            "hora": "8:30 AM",
+            "actividad": "Llegada de los últimos corredores"
+          },
+          {
+            "hora": "9:30 AM",
+            "actividad": "Hidratación y actividades"
+          },
+          {
+            "hora": "12:00 PM",
+            "actividad": "Premiación y cierre"
+          }
+        ],
+        "organizador": {
+          "nombre": "CodePlex",
+          "detalle": "Comunidad deportiva"
+        },
+        "totalAsistentes": "210 asistentes"
+      }
+    }
+  ],
+  "proximos": [
+    {
+      "categoria": "tecnologia",
+      "categoriaEtiqueta": "Tecnología",
+      "nombre": "Codeplex Tech Summit",
+      "dia": "15",
+      "mes": "JUN",
+      "fecha": "Jue, 15 Jun 2026",
+      "ubicacion": "Centro de Convenciones Lima",
+      "masAsistentes": "+86"
+    },
+    {
+      "categoria": "negocios",
+      "categoriaEtiqueta": "Negocios",
+      "nombre": "Networking Empresarial",
+      "dia": "22",
+      "mes": "JUN",
+      "fecha": "Jue, 22 Jun 2026",
+      "ubicacion": "WeWork San Isidro",
+      "masAsistentes": "+42"
+    },
+    {
+      "categoria": "educacion",
+      "categoriaEtiqueta": "Educación",
+      "nombre": "Taller de Marketing Digital",
+      "dia": "05",
+      "mes": "JUL",
+      "fecha": "Sáb, 5 Jul 2026",
+      "ubicacion": "Online",
+      "masAsistentes": "+56"
+    },
+    {
+      "categoria": "gastronomia",
+      "categoriaEtiqueta": "Gastronomía",
+      "nombre": "Festival Gastronómico",
+      "dia": "18",
+      "mes": "JUL",
+      "fecha": "Vie, 18 Jul 2026",
+      "ubicacion": "Parque de la Exposición",
+      "masAsistentes": "+74"
+    },
+    {
+      "categoria": "tecnologia",
+      "categoriaEtiqueta": "Tecnología",
+      "nombre": "Hackathon Codeplex 2026",
+      "dia": "25",
+      "mes": "JUL",
+      "fecha": "Vie, 25 Jul 2026",
+      "ubicacion": "Universidad de Lima",
+      "masAsistentes": "+63"
+    }
+  ],
+  "proximosLateralParaTi": [
+    {
+      "dia": "15",
+      "mes": "JUN",
+      "nombre": "Codeplex Tech Summit",
+      "linea1": "Jue, 15 Jun 2026 - 9:00 AM",
+      "linea2": "Centro de Convenciones Lima",
+      "asistentes": "86"
+    },
+    {
+      "dia": "22",
+      "mes": "JUN",
+      "nombre": "Networking Empresarial",
+      "linea1": "Jue, 22 Jun 2026 - 6:00 PM",
+      "linea2": "WeWork San Isidro",
+      "asistentes": "42"
+    },
+    {
+      "dia": "24",
+      "mes": "AGO",
+      "nombre": "Concierto Codeplex Live 2026",
+      "linea1": "Sáb, 24 Ago 2026 - 7:00 PM",
+      "linea2": "Arena 1, Lima",
+      "asistentes": "128"
+    },
+    {
+      "dia": "05",
+      "mes": "JUL",
+      "nombre": "Taller de Marketing Digital",
+      "linea1": "Sáb, 5 Jul 2026 - 10:00 AM",
+      "linea2": "Online",
+      "asistentes": "56"
+    }
+  ],
+  "categoriasLateralParaTi": [
+    {
+      "icono": "estrella",
+      "color": "rosa",
+      "nombre": "Música",
+      "conteo": "128"
+    },
+    {
+      "icono": "panel",
+      "color": "violeta",
+      "nombre": "Tecnología",
+      "conteo": "95"
+    },
+    {
+      "icono": "empresa",
+      "color": "naranja",
+      "nombre": "Negocios",
+      "conteo": "86"
+    },
+    {
+      "icono": "calendario",
+      "color": "azul",
+      "nombre": "Educación",
+      "conteo": "74"
+    },
+    {
+      "icono": "actividad",
+      "color": "verde",
+      "nombre": "Deportes",
+      "conteo": "63"
+    },
+    {
+      "icono": "carrito",
+      "color": "rojo",
+      "nombre": "Gastronomía",
+      "conteo": "58"
+    },
+    {
+      "icono": "imagen",
+      "color": "violeta",
+      "nombre": "Arte y cultura",
+      "conteo": "42"
+    },
+    {
+      "icono": "configuracion",
+      "color": "cian",
+      "nombre": "Salud y bienestar",
+      "conteo": "38"
+    }
+  ],
+  "categoriasFiltroParaTi": [
+    {
+      "icono": "estrella",
+      "color": "rosa",
+      "nombre": "Música",
+      "conteo": "124"
+    },
+    {
+      "icono": "maletin",
+      "color": "naranja",
+      "nombre": "Negocios",
+      "conteo": "98"
+    },
+    {
+      "icono": "idea",
+      "color": "azul",
+      "nombre": "Educación",
+      "conteo": "76"
+    },
+    {
+      "icono": "panel",
+      "color": "morado",
+      "nombre": "Tecnología",
+      "conteo": "64"
+    },
+    {
+      "icono": "carrito",
+      "color": "rojo",
+      "nombre": "Gastronomía",
+      "conteo": "52"
+    },
+    {
+      "icono": "escudo",
+      "color": "rosa",
+      "nombre": "Salud y bienestar",
+      "conteo": "48"
+    },
+    {
+      "icono": "imagen",
+      "color": "violeta",
+      "nombre": "Arte y cultura",
+      "conteo": "42"
+    },
+    {
+      "icono": "actividad",
+      "color": "verde",
+      "nombre": "Deportes",
+      "conteo": "38"
+    },
+    {
+      "icono": "grupos",
+      "color": "cian",
+      "nombre": "Comunidad",
+      "conteo": "30"
+    },
+    {
+      "icono": "mas",
+      "color": "gris",
+      "nombre": "Otros",
+      "conteo": "24"
+    }
+  ],
+  "ciudadesFiltroParaTi": [
+    {
+      "nombre": "Lima",
+      "conteo": 245,
+      "lat": -12.0464,
+      "lng": -77.0428
+    },
+    {
+      "nombre": "Arequipa",
+      "conteo": 48,
+      "lat": -16.409,
+      "lng": -71.5375
+    },
+    {
+      "nombre": "Trujillo",
+      "conteo": 36,
+      "lat": -8.1116,
+      "lng": -79.0288
+    },
+    {
+      "nombre": "Cusco",
+      "conteo": 28,
+      "lat": -13.532,
+      "lng": -71.9675
+    },
+    {
+      "nombre": "Piura",
+      "conteo": 24,
+      "lat": -5.1945,
+      "lng": -80.6328
+    }
+  ],
+  "marcadoresMapaParaTi": [
+    {
+      "id": "1",
+      "lat": -11.98,
+      "lng": -77.06,
+      "conteo": 8,
+      "nombreLugar": "Centro de Convenciones Lima"
+    },
+    {
+      "id": "2",
+      "lat": -12.02,
+      "lng": -77.03,
+      "conteo": 12,
+      "nombreLugar": "Arena 1"
+    },
+    {
+      "id": "3",
+      "lat": -12.05,
+      "lng": -77.03,
+      "conteo": 32,
+      "nombreLugar": "Universidad de Lima"
+    },
+    {
+      "id": "4",
+      "lat": -12.09,
+      "lng": -77.02,
+      "conteo": 8,
+      "nombreLugar": "Parque de la Exposición"
+    },
+    {
+      "id": "5",
+      "lat": -12.13,
+      "lng": -77.0,
+      "conteo": 6,
+      "nombreLugar": "WeWork San Isidro"
+    }
+  ],
+  "ciudadesConEventos": [
+    "Lima"
+  ]
+}
