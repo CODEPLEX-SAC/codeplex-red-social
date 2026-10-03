@@ -1,0 +1,6 @@
+export * from './bloques/bloque_acceso_alternativo'
+export * from './bloques/campo_contrasena'
+export * from './bloques/formulario_inicio_sesion'
+export * from './bloques/panel_formulario_acceso'
+export * from './bloques/panel_visual_acceso'
+export * from './bloques/selector_modo_acceso'

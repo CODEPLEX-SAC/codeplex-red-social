@@ -1,0 +1,141 @@
+{
+  "acciones": ["iniciar_sesion", "crear_cuenta", "cerrar_sesion"],
+  "permisos": {
+    "iniciar_sesion": "ACCESO_INICIAR",
+    "crear_cuenta": "ACCESO_CREAR_CUENTA",
+    "cerrar_sesion": "ACCESO_CERRAR_SESION"
+  },
+  "alertas": {
+    "credenciales_incorrectas": "Correo o contraseña incorrectos."
+  },
+  "campos": {
+    "nombre": "Nombre completo",
+    "correo": "Correo electrónico"
+  },
+  "errores": {
+    "nombre_obligatorio": "Ingresa tu nombre completo.",
+    "correo_obligatorio": "Ingresa tu correo electrónico.",
+    "correo_invalido": "Ingresa un correo electrónico válido.",
+    "contrasena_obligatoria": "Ingresa tu contraseña.",
+    "contrasena_corta": "La contraseña debe tener mínimo :minimo caracteres.",
+    "confirmacion_obligatoria": "Confirma tu contraseña.",
+    "contrasenas_distintas": "Las contraseñas no coinciden."
+  },
+  "mensajes": {
+    "google_proximamente": "El acceso con Google estará disponible próximamente.",
+    "demo_proximamente": "El escenario de demostración estará disponible próximamente.",
+    "acceso_concedido": "✓ Acceso concedido",
+    "validando_acceso": "Validando acceso",
+    "cuenta_creada": "✓ Cuenta creada",
+    "creando_cuenta": "Creando cuenta",
+    "terminos": "Al crear tu cuenta aceptas los términos de uso y la política de privacidad.",
+    "revisa_correo_titulo": "Revisa tu correo",
+    "revisa_correo_descripcion": "Te enviamos instrucciones para continuar."
+  },
+  "demostracion": {
+    "correo": "pedro.lozano@codeplex.pe",
+    "contrasena": "demo"
+  },
+  "toast": {
+    "acceso_concedido": "Acceso concedido."
+  },
+  "rutas": {
+    "principal": "/acceso"
+  },
+  "titulo_menu": "Acceso",
+  "titulos": {
+    "principal": "Acceso a Codeplex Red Social"
+  },
+  "placeholders": {
+    "nombre": "Tu nombre completo",
+    "correo": "correo@ejemplo.com"
+  },
+  "botones": {
+    "iniciar_sesion": "Iniciar sesión",
+    "crear_cuenta": "Crear cuenta",
+    "continuar_con_google": "Continuar con Google",
+    "volver_al_demo": "Volver al demo",
+    "volver_a_iniciar_sesion": "Volver a iniciar sesión"
+  },
+  "panel_usuario": {
+    "id": "panel-usuario-topbar",
+    "titulo": "Mi cuenta",
+    "cerrar": "Cerrar panel de cuenta",
+    "abrir": "Cuenta de :nombre",
+    "cerrar_sesion": "Cerrar sesión",
+    "proximamente": "Disponible próximamente.",
+    "etiqueta_opciones": "Opciones de la cuenta",
+    "opciones": [
+      { "clave": "perfil", "etiqueta": "Mi perfil", "icono": "usuario" },
+      { "clave": "empresa", "etiqueta": "Información de la empresa", "icono": "empresa" },
+      { "clave": "configuracion", "etiqueta": "Configuración", "icono": "configuracion" }
+    ]
+  },
+  "separador": "o con correo",
+  "etiqueta_modos": "Modo de acceso",
+  "modos": [
+    { "clave": "iniciar_sesion", "id": "pestana-iniciar-sesion", "etiqueta": "Iniciar sesión" },
+    { "clave": "crear_cuenta", "id": "pestana-crear-cuenta", "etiqueta": "Crear cuenta" }
+  ],
+  "teclas": {
+    "anterior": "ArrowLeft",
+    "siguiente": "ArrowRight",
+    "primera": "Home",
+    "ultima": "End"
+  },
+  "ids": {
+    "panel": "panel-acceso",
+    "nombre": "campo-nombre-acceso",
+    "correo": "campo-correo-acceso"
+  },
+  "autocompletar": {
+    "nombre": "name",
+    "correo": "email"
+  },
+  "campos_contrasena": {
+    "acceso": {
+      "etiqueta": "Contraseña",
+      "id": "campo-contrasena-acceso",
+      "marcador": "••••••••",
+      "autocompletar": "current-password",
+      "mostrar": "Mostrar contraseña",
+      "ocultar": "Ocultar contraseña"
+    },
+    "nueva": {
+      "etiqueta": "Contraseña",
+      "id": "campo-contrasena-nueva",
+      "marcador": "Mínimo 6 caracteres",
+      "autocompletar": "new-password",
+      "mostrar": "Mostrar contraseña",
+      "ocultar": "Ocultar contraseña"
+    },
+    "confirmacion": {
+      "etiqueta": "Confirmar contraseña",
+      "id": "campo-confirmacion-contrasena",
+      "marcador": "Repite tu contraseña",
+      "autocompletar": "new-password",
+      "mostrar": "Mostrar confirmación de contraseña",
+      "ocultar": "Ocultar confirmación de contraseña"
+    }
+  },
+  "contrasena_longitud_minima": 6,
+  "patron_correo": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+  "tiempos": {
+    "carga_ms": 900,
+    "exito_ms": 700
+  },
+  "carrusel": {
+    "etiqueta": "Novedades de Codeplex",
+    "anterior": "Imagen anterior",
+    "siguiente": "Imagen siguiente",
+    "ir_a_imagen": "Ir a la imagen :numero",
+    "contador": ":actual / :total",
+    "intervalo_ms": 5000,
+    "consulta_movimiento_reducido": "(prefers-reduced-motion: reduce)",
+    "imagenes": [
+      { "archivo": "carrusel1.jpg", "descripcion": "Anuncio del sistema contable en la nube" },
+      { "archivo": "carrusel2.jpg", "descripcion": "Anuncio del sistema logístico empresarial completo" },
+      { "archivo": "carrusel3.jpg", "descripcion": "Anuncio del sistema de facturación electrónica" }
+    ]
+  }
+}

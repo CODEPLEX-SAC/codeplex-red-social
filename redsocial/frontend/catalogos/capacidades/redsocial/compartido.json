@@ -278,7 +278,8 @@
     "verificado",
     "video",
     "reloj",
-    "marca-pequena"
+    "marca-pequena",
+    "usuario"
   ],
   "navegacion": {
     "navPrincipal": [
@@ -430,7 +431,8 @@
   "sesion_actual": {
     "usuario": "Pedro Lozano",
     "empresa": "Constructora del Norte SAC",
-    "ruc": "RUC 20501234567"
+    "ruc": "RUC 20501234567",
+    "rol": "Administrador"
   },
   "paleta_superficie": {
     "azul": "bg-azul-categoria",
@@ -694,6 +696,7 @@
     "tienda": "storefront",
     "ubicacion": "location_on",
     "ventas": "trending_up",
+    "usuario": "person",
     "ver": "visibility",
     "verificado": "check_circle",
     "video": "videocam",

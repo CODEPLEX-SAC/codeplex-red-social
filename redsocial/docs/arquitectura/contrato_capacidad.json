@@ -1,6 +1,7 @@
 {
   "capacidad_id": "redsocial",
   "subcapacidades": [
+    "acceso",
     "actividad",
     "amigos",
     "avisos",
@@ -18,6 +19,11 @@
     "reportes"
   ],
   "acciones": {
+    "acceso": [
+      "iniciar_sesion",
+      "crear_cuenta",
+      "cerrar_sesion"
+    ],
     "actividad": [
       "listar",
       "filtrar",
@@ -112,6 +118,11 @@
     ]
   },
   "permisos": {
+    "acceso": {
+      "iniciar_sesion": "ACCESO_INICIAR",
+      "crear_cuenta": "ACCESO_CREAR_CUENTA",
+      "cerrar_sesion": "ACCESO_CERRAR_SESION"
+    },
     "actividad": {
       "listar": "ACTIVIDAD_CONSULTAR",
       "filtrar": "ACTIVIDAD_FILTRAR",
@@ -206,6 +217,9 @@
     }
   },
   "rutas_frontend": {
+    "acceso": {
+      "principal": "/acceso"
+    },
     "actividad": {
       "todas": "/actividad",
       "publicaciones": "/actividad/publicaciones",
@@ -354,6 +368,7 @@
     "reportes.compartir": "fn_redsocial_reportes_compartir"
   },
   "tablas": {
+    "acceso": [],
     "actividad": [],
     "amigos": [],
     "avisos": [],
@@ -371,6 +386,7 @@
     "reportes": []
   },
   "eventos": {
+    "acceso": [],
     "actividad": [],
     "amigos": [],
     "avisos": [],
@@ -388,6 +404,9 @@
     "reportes": []
   },
   "pruebas": [
+    "frontend:acceso:iniciar_sesion",
+    "frontend:acceso:crear_cuenta",
+    "frontend:acceso:cerrar_sesion",
     "frontend:actividad:listar",
     "frontend:actividad:filtrar",
     "frontend:actividad:ver_detalle",

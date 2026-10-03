@@ -1,4 +1,5 @@
 ﻿import type { RutaApp } from '@/tipos/enrutamiento/contrato_rutas'
+import catalogoAcceso from '../../catalogos/capacidades/redsocial/acceso.json'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
@@ -13,6 +14,7 @@ import catalogoReportes from '../../catalogos/capacidades/redsocial/reportes.jso
 import catalogoIndicadores from '../../catalogos/capacidades/redsocial/indicadores.json'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
 import catalogoGuardados from '../../catalogos/capacidades/redsocial/guardados.json'
+import { PaginaAcceso } from '@/paginas/acceso/pagina_acceso'
 import { PaginaInicio } from '@/paginas/inicio/pagina_inicio'
 import { PaginaActividadTodas } from '@/paginas/actividad/pagina_actividad_todas'
 import { PaginaActividadPublicaciones } from '@/paginas/actividad/pagina_actividad_publicaciones'
@@ -65,6 +67,8 @@ import { PaginaGuardados } from '@/paginas/guardados/pagina_guardados'
 export const RUTA_INICIAL = catalogoInicio.rutas.principal
 
 export const RUTAS: readonly RutaApp[] = [
+  { path: catalogoAcceso.rutas.principal, render: () => <PaginaAcceso /> },
+
   { path: catalogoInicio.rutas.principal, render: () => <PaginaInicio /> },
 
   { path: catalogoAvisos.rutas.todas, render: () => <PaginaAvisos /> },

@@ -1,6 +1,15 @@
 {
   "capacidad_id": "redsocial",
   "eventos_auditoria": {
+    "acceso.iniciar_sesion": [
+      "redsocial.acceso.iniciar_sesion"
+    ],
+    "acceso.crear_cuenta": [
+      "redsocial.acceso.crear_cuenta"
+    ],
+    "acceso.cerrar_sesion": [
+      "redsocial.acceso.cerrar_sesion"
+    ],
     "actividad.listar": [
       "redsocial.actividad.listar"
     ],
@@ -189,6 +198,15 @@
     ]
   },
   "metricas": {
+    "acceso.iniciar_sesion": [
+      "redsocial_acceso_iniciar_sesion_total"
+    ],
+    "acceso.crear_cuenta": [
+      "redsocial_acceso_crear_cuenta_total"
+    ],
+    "acceso.cerrar_sesion": [
+      "redsocial_acceso_cerrar_sesion_total"
+    ],
     "actividad.listar": [
       "redsocial_actividad_listar_total"
     ],
@@ -377,6 +395,15 @@
     ]
   },
   "trazas": {
+    "acceso.iniciar_sesion": [
+      "redsocial.acceso.iniciar_sesion"
+    ],
+    "acceso.crear_cuenta": [
+      "redsocial.acceso.crear_cuenta"
+    ],
+    "acceso.cerrar_sesion": [
+      "redsocial.acceso.cerrar_sesion"
+    ],
     "actividad.listar": [
       "redsocial.actividad.listar"
     ],
@@ -565,6 +592,15 @@
     ]
   },
   "logs": {
+    "acceso.iniciar_sesion": [
+      "redsocial.acceso.iniciar_sesion"
+    ],
+    "acceso.crear_cuenta": [
+      "redsocial.acceso.crear_cuenta"
+    ],
+    "acceso.cerrar_sesion": [
+      "redsocial.acceso.cerrar_sesion"
+    ],
     "actividad.listar": [
       "redsocial.actividad.listar"
     ],
@@ -753,6 +789,9 @@
     ]
   },
   "codigos_error": [
+    "REDSOCIAL_ACCESO_CERRAR_SESION",
+    "REDSOCIAL_ACCESO_CREAR_CUENTA",
+    "REDSOCIAL_ACCESO_INICIAR_SESION",
     "REDSOCIAL_ACTIVIDAD_CARGA_ACTIVIDAD",
     "REDSOCIAL_AMIGOS_CARGA_AMIGOS",
     "REDSOCIAL_AVISOS_CARGA_NOTIFICACIONES",

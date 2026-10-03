@@ -1,3 +1,3 @@
-import datos from './sesion_actual.json'
+import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 
-export const SESION_ACTUAL = datos.sesionActual
+export const SESION_ACTUAL = catalogoCompartido.sesion_actual
