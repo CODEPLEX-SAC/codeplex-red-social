@@ -40,8 +40,8 @@ AUDITORIA_ICONOS_LIBRERIA_2026_capturas
 
 # Validacion local con herramientas/validacion/validar_capacidad.ps1
 _validacion/
-herramientas/validacion/*
-!herramientas/validacion/linea_base_visual/
+herramientas/
+montaje_local/
 
 .vercel
 vercel.json
