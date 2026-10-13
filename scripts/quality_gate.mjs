@@ -63,7 +63,16 @@ function validarCapacidadReal() {
   const artefactos = artefactosEnLaCapacidad()
   bloque.push(artefactos.length === 0 ? 'Estado: OK (sin node_modules, cachés ni salidas dentro de la capacidad)' : `Estado: FALLO (artefactos dentro de la capacidad: ${artefactos.join(', ')})`)
   bloque.push('Fuente: proyecto actual (' + RAIZ + ')')
-  const r = ejecutar('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', path.join(RAIZ, 'herramientas', 'validacion', 'validar_capacidad.ps1')])
+  const validador = path.join(RAIZ, 'herramientas', 'validacion', 'validar_capacidad.ps1')
+  if (!existsSync(validador)) {
+    const nota = 'herramienta local no disponible: herramientas/validacion/validar_capacidad.ps1 (no se versiona)'
+    bloque.push('Validador externo: NO DETERMINADO (' + nota + ')')
+    marcar('Capacidad real', artefactos.length === 0 ? 'NO DETERMINADO' : 'FALLO', nota)
+    marcar('Validador', 'NO DETERMINADO', nota)
+    marcar('Fronteras 3DD', 'NO DETERMINADO', nota)
+    return bloque
+  }
+  const r = ejecutar('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', validador])
   const copia = /Copia validada:\s*(.+)/.exec(r.salida)?.[1]?.trim()
   const errores = Number(/Errores:\s*(\d+)/.exec(r.salida)?.[1] ?? NaN)
   const fronteras = (r.salida.match(/ERROR_FRONTERA_3DD_VIOLADA/g) ?? []).length

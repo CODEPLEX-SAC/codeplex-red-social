@@ -38,13 +38,9 @@ INVENTARIO_ICONOGRAFIA_CODEPLEX_2026.md
 AUDITORIA_ICONOS_LIBRERIA_2026_capturas
 .vitest
 
-# Validacion: se versionan el validador y la linea base visual del Quality Gate
+# Herramientas personales de validacion (solo locales)
 _validacion/
-herramientas/validacion/*
-!herramientas/validacion/validar_capacidad.ps1
-!herramientas/validacion/linea_base_visual/
-herramientas/validacion/linea_base_visual/*
-!herramientas/validacion/linea_base_visual/roles.json
+herramientas/
 
 .vercel
 vercel.json
