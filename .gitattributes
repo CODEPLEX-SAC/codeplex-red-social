@@ -8,7 +8,6 @@
 
 # Binarios: git no los toca
 *.pdf binary
-*.zip binary
 *.png binary
 *.jpg binary
 *.xlsx binary
