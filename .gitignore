@@ -50,3 +50,6 @@ vercel.json
 
 # Despliegue FTP local
 scripts/subir_ftp.mjs
+
+# Instrucciones locales
+CLAUDE.md
