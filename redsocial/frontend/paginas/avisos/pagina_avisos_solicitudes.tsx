@@ -1,4 +1,7 @@
-import { BotonIcono, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
+import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
+import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
+import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
+import { BotonIcono, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
 import { PestanasAvisos, BannerInfoAviso, FilaSolicitudAviso, PanelLateralSolicitudesAviso } from '../../componentes/avisos'
 import { CONTEOS_AVISOS, SOLICITUDES_AMISTAD, SOLICITUDES_GRUPO, SOLICITUDES_EVENTO, SOLICITUDES_COLABORACION } from '../../rutas/avisos/rutas_avisos'
@@ -11,7 +14,7 @@ export function PaginaAvisosSolicitudes() {
           <section>
             <div className="mb-5 flex items-start justify-between gap-5 max-600:flex-col max-600:items-stretch">
               <div>
-                <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoAvisos.titulos.principal}</h1>
+                <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoAvisos.titulos.principal}</h1>
                 <p className="m-0 text-subtitulo text-texto-suave">{catalogoAvisos.subtitulos.principal}</p>
               </div>
               <div className="flex flex-none items-center gap-2">
@@ -32,10 +35,10 @@ export function PaginaAvisosSolicitudes() {
             />
 
             <div className="mb-2.5 flex items-center justify-between">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">
+              <h2 className="m-0 text-titulo-seccion text-texto">
                 {catalogoAvisos.secciones.solicitudes_amistad} ({SOLICITUDES_AMISTAD.length})
               </h2>
-              <a href="#" className="text-enlace-accion font-semibold text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
+              <a href={catalogoAmigos.rutas.solicitudes} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_AMISTAD.map((s) => (
@@ -53,10 +56,10 @@ export function PaginaAvisosSolicitudes() {
             </section>
 
             <div className="mb-2.5 flex items-center justify-between">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">
+              <h2 className="m-0 text-titulo-seccion text-texto">
                 {catalogoAvisos.secciones.solicitudes_grupo} ({SOLICITUDES_GRUPO.length})
               </h2>
-              <a href="#" className="text-enlace-accion font-semibold text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
+              <a href={catalogoGrupos.rutas.invitaciones} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_GRUPO.map((s) => (
@@ -65,7 +68,7 @@ export function PaginaAvisosSolicitudes() {
                   miniatura={{ tipo: 'icono', icono: s.iconoMiniatura, color: s.colorMiniatura }}
                   titulo={s.nombreGrupo}
                   lineaSecundaria={s.miembros}
-                  lineaTerciaria={<><strong className="font-semibold text-texto">{s.solicitanteNombre}</strong> {s.solicitanteTexto}</>}
+                  lineaTerciaria={<><strong className="font-titulo text-texto">{s.solicitanteNombre}</strong> {s.solicitanteTexto}</>}
                   tiempo={s.tiempo}
                   accionPrimaria={catalogoAvisos.botones.aprobar}
                   accionSecundaria={catalogoAvisos.botones.rechazar}
@@ -74,10 +77,10 @@ export function PaginaAvisosSolicitudes() {
             </section>
 
             <div className="mb-2.5 flex items-center justify-between">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">
+              <h2 className="m-0 text-titulo-seccion text-texto">
                 {catalogoAvisos.secciones.solicitudes_evento} ({SOLICITUDES_EVENTO.length})
               </h2>
-              <a href="#" className="text-enlace-accion font-semibold text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
+              <a href={catalogoEventos.rutas.invitaciones} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_EVENTO.map((s) => (
@@ -86,7 +89,7 @@ export function PaginaAvisosSolicitudes() {
                   miniatura={{ tipo: 'calendario', dia: s.dia, mes: s.mes, color: s.colorMiniatura }}
                   titulo={s.nombreEvento}
                   lineaSecundaria={s.organizador}
-                  lineaTerciaria={<><strong className="font-semibold text-texto">{s.solicitanteNombre}</strong> {s.solicitanteTexto}</>}
+                  lineaTerciaria={<><strong className="font-titulo text-texto">{s.solicitanteNombre}</strong> {s.solicitanteTexto}</>}
                   tiempo={s.tiempo}
                   accionPrimaria={catalogoAvisos.botones.aprobar}
                   accionSecundaria={catalogoAvisos.botones.rechazar}
@@ -94,13 +97,12 @@ export function PaginaAvisosSolicitudes() {
               ))}
             </section>
 
-            <h2 className="mb-2.5 text-titulo-seccion font-bold text-texto">
+            <h2 className="mb-2.5 text-titulo-seccion text-texto">
               {catalogoAvisos.secciones.solicitudes_colaboracion} ({SOLICITUDES_COLABORACION.length})
             </h2>
             <section className="rounded-control border border-borde bg-white px-6 py-10 text-center">
-              <Icono name="amigos-todos" className="mx-auto mb-3 h-8 w-8 text-t-c7c2d9" />
-              <p className="m-0 mb-1 text-subtitulo font-bold text-texto">{catalogoAvisos.mensajes_solicitudes.sin_colaboracion_titulo}</p>
-              <p className="m-0 text-cuerpo text-texto-suave">{catalogoAvisos.mensajes_solicitudes.sin_colaboracion_descripcion}</p>
+              <Icono name="amigos-todos" className="mx-auto mb-3 h-8 w-8 text-texto-icono-discreto" />
+              <MensajeVacio titulo={catalogoAvisos.mensajes_solicitudes.sin_colaboracion_titulo} texto={catalogoAvisos.mensajes_solicitudes.sin_colaboracion_descripcion} />
             </section>
           </section>
         }

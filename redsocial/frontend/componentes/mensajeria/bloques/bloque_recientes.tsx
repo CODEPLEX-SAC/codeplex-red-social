@@ -27,31 +27,31 @@ export function BloqueRecientes({
           <article key={c.nombre} className="flex items-center gap-2.5 rounded-lg px-2 py-2.5">
             {c.esGrupo ? (
               <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-primario text-white">
-                <Icono name="usuarios" className="h-4 w-4" />
+                <Icono name="grupo" className="h-4 w-4" />
               </span>
             ) : (
               <AvatarImagen src={usuarioImg} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
             )}
             <span className="min-w-0 flex-1">
-              <strong className="block truncate text-nombre-entidad font-semibold text-texto">{c.nombre}</strong>
+              <strong className="block truncate text-nombre-entidad text-texto">{c.nombre}</strong>
               <small className="mt-0.5 flex items-center gap-1 truncate text-auxiliar text-texto-suave">
                 {c.direccion && (
                   <>
-                    <Icono name={c.direccion === 'entrante' ? 'flecha-abajo-izquierda' : 'flecha-arriba-derecha'} className="h-2.75 w-2.75" />
+                    <Icono name={c.direccion === 'entrante' ? 'flecha-abajo-izquierda' : 'flecha-arriba-derecha'} className="h-3 w-3" />
                     {c.direccion === 'entrante' ? catalogoMensajeria.leyendas.videollamada_entrante : catalogoMensajeria.leyendas.videollamada_saliente}
                   </>
                 )}
                 {c.miembros}
               </small>
             </span>
-            <span className="flex-none text-fecha-abreviada text-t-aaa7b5">{c.hora}</span>
+            <span className="flex-none text-fecha-abreviada text-texto-suave">{c.hora}</span>
             <BotonIcono icono="video" type="button" aria-label={catalogoMensajeria.botones.videollamar} variant="contorno" size="default" className="flex-none" />
           </article>
         ))}
       </div>
 
       <div className="px-3.5 py-2.5 text-center">
-        <a href="#" className="text-enlace-accion font-medium text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_mas_llamadas}</a>
+        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_mas_llamadas}</a>
       </div>
     </section>
   )

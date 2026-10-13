@@ -23,7 +23,7 @@
     "carga_guardados": "No fue posible cargar tus guardados."
   },
   "mensajes": {
-    "sin_guardados": "No tienes elementos guardados todavia."
+    "sin_guardados": "No tienes elementos guardados todavía."
   },
   "toast": {
     "guardado_quitado": "Se quito de tus guardados."
@@ -64,32 +64,32 @@
   "filtros": {
     "todos": "Todos",
     "mis_grupos": "Mis grupos",
-    "tecnologia": "Tecnologia",
-    "diseno": "Diseno",
+    "tecnologia": "Tecnología",
+    "diseno": "Diseño",
     "negocios": "Negocios",
     "desarrollo_profesional": "Desarrollo profesional",
-    "mas": "Mas"
+    "mas": "Más"
   },
   "categorias": {
-    "tecnologia": "Tecnologia",
-    "diseno": "Diseno",
+    "tecnologia": "Tecnología",
+    "diseno": "Diseño",
     "negocios": "Negocios",
     "productividad": "Productividad",
     "impacto": "Impacto",
     "trabajo_remoto": "Trabajo remoto"
   },
   "categorias_clases": {
-    "tecnologia": "bg-t-ede9fe text-morado-categoria",
-    "diseno": "bg-t-fce4ec text-rosa-categoria",
-    "negocios": "bg-t-dbeafe text-azul-categoria",
-    "productividad": "bg-t-f3f4f6 text-gris-categoria",
-    "impacto": "bg-t-dcfce7 text-verde-categoria",
-    "trabajo_remoto": "bg-t-ffedd5 text-naranja-categoria"
+    "tecnologia": "bg-fondo-categoria-morado text-morado-categoria",
+    "diseno": "bg-fondo-categoria-rosa text-rosa-categoria-texto",
+    "negocios": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "productividad": "bg-fondo-hover-neutro text-texto-suave",
+    "impacto": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "trabajo_remoto": "bg-fondo-categoria-naranja text-naranja-categoria-texto"
   },
   "botones": {
-    "mas_opciones": "Mas opciones",
+    "mas_opciones": "Más opciones",
     "mas_recientes": "Mas recientes",
-    "nueva_coleccion": "Nueva coleccion",
+    "nueva_coleccion": "Nueva colección",
     "ver_todas": "Ver todas",
     "ver_todos": "Ver todos",
     "explorar_grupos": "Explorar grupos",
@@ -105,10 +105,10 @@
   },
   "banner_lateral": {
     "titulo": "Las buenas conexiones siempre suman",
-    "descripcion": "Aqui encuentras los grupos que guardaste para volver cuando quieras, seguir aprendiendo y estar al dia."
+    "descripcion": "Aquí encuentras los grupos que guardaste para volver cuando quieras, seguir aprendiendo y estar al día."
   },
   "banner_cta": {
-    "titulo": "Descubre mas comunidades",
+    "titulo": "Descubre más comunidades",
     "descripcion": "Explora grupos, conectate con personas con tus mismos intereses y se parte de conversaciones que importan."
   },
   "unidades": {

@@ -11,7 +11,7 @@ export function PaginaActividadTodas() {
         principal={
           <section>
             <div className="mb-5">
-              <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoActividad.titulos.todas}</h1>
+              <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoActividad.titulos.todas}</h1>
               <p className="m-0 text-subtitulo text-texto-suave">{catalogoActividad.subtitulos.todas}</p>
             </div>
 
@@ -27,8 +27,8 @@ export function PaginaActividadTodas() {
                 interacciones={{ reacciones: 128, comentarios: 24 }}
               >
                 <div className="mb-1.5 mt-0.5 flex items-start gap-3">
-                  <p className="m-0 flex-1 text-cuerpo leading-1.45 text-texto">{PUBLICACION_GRUPO_TODAS.texto}</p>
-                  <div className="ml-auto h-17 w-25 flex-none rounded-md bg-t-e8e5f0" />
+                  <p className="m-0 flex-1 text-cuerpo leading-texto text-texto">{PUBLICACION_GRUPO_TODAS.texto}</p>
+                  <div className="ml-auto h-17 w-25 flex-none rounded-md bg-fondo-miniatura" />
                 </div>
               </TarjetaActividad>
 
@@ -40,10 +40,10 @@ export function PaginaActividadTodas() {
                 interacciones={{ reacciones: 45, comentarios: 12 }}
               >
                 <div className="mb-1.5 mt-0.5 flex items-start gap-3">
-                  <p className="m-0 flex-1 text-cuerpo leading-1.45 text-texto">
-                    <span className="font-semibold text-primario">@{SESION_ACTUAL.usuario}</span> {MENCION_TODAS.texto}
+                  <p className="m-0 flex-1 text-cuerpo leading-texto text-texto">
+                    <span className="font-titulo text-primario">@{SESION_ACTUAL.usuario}</span> {MENCION_TODAS.texto}
                   </p>
-                  <div className="ml-auto h-17 w-25 flex-none rounded-md bg-t-e8e5f0" />
+                  <div className="ml-auto h-17 w-25 flex-none rounded-md bg-fondo-miniatura" />
                 </div>
               </TarjetaActividad>
 
@@ -54,12 +54,12 @@ export function PaginaActividadTodas() {
                 visibilidad
                 interacciones={{ reacciones: 28, comentarios: 9 }}
               >
-                <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-1.45 text-texto">{COMENTARIO_TODAS.texto}</p>
+                <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-texto text-texto">{COMENTARIO_TODAS.texto}</p>
               </TarjetaActividad>
 
               <TarjetaActividad iconoSistema="sistema" nombreUsuario={EVENTO_SISTEMA_TODAS.nombreUsuario} tiempo={EVENTO_SISTEMA_TODAS.tiempo}>
-                <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-1.45 text-texto">{EVENTO_SISTEMA_TODAS.texto}</p>
-                <span className="inline-block rounded-control bg-t-e8f5e9 px-2 py-0.5 text-etiqueta-estado font-semibold text-t-2e7d32">{EVENTO_SISTEMA_TODAS.estado}</span>
+                <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-texto text-texto">{EVENTO_SISTEMA_TODAS.texto}</p>
+                <span className="inline-block rounded-control bg-fondo-categoria-verde px-2 py-0.5 text-badge text-verde-categoria-texto">{EVENTO_SISTEMA_TODAS.estado}</span>
               </TarjetaActividad>
 
               <TarjetaActividad
@@ -70,15 +70,15 @@ export function PaginaActividadTodas() {
               >
                 <div className="my-1 overflow-hidden rounded-lg border border-borde">
                   {ARCHIVOS_MODULO_TODAS.archivos.map((f) => (
-                    <div key={f.nombre} className="flex items-center gap-2 border-b border-t-f5f3fa px-2.5 py-1.75 last:border-b-0 hover:bg-t-fdfcff">
-                      <div className={'grid h-7.5 w-7.5 flex-none place-items-center rounded-md ' + (f.tipo === 'pdf' ? 'bg-t-fdeceb text-negativo-kpi' : 'bg-t-e8f5e9 text-t-2e7d32')}>
-                        <Icono name={f.tipo === 'pdf' ? 'archivo-pdf' : 'archivo-hoja'} className="h-4 w-4" />
+                    <div key={f.nombre} className="flex items-center gap-2 border-b border-fondo-hover-discreto px-2.5 py-1.75 last:border-b-0 hover:bg-fondo">
+                      <div className={'grid h-7.5 w-7.5 flex-none place-items-center rounded-md ' + (f.tipo === 'pdf' ? 'bg-fondo-categoria-rojo text-negativo-kpi' : 'bg-fondo-categoria-verde text-verde-categoria-texto')}>
+                        <Icono name={f.tipo === 'pdf' ? 'documento' : 'archivo-hoja'} className="h-4 w-4" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <span className="block truncate text-nombre-entidad font-semibold text-texto">{f.nombre}</span>
+                        <span className="block truncate text-nombre-entidad text-texto">{f.nombre}</span>
                         <span className="block text-auxiliar text-texto-suave">{f.tamano}</span>
                       </div>
-                      <div className="grid h-6 w-6 flex-none place-items-center text-t-c4c0d3">
+                      <div className="grid h-6 w-6 flex-none place-items-center text-texto-icono-discreto">
                         <Icono name="flecha-derecha" className="h-3.5 w-3.5" />
                       </div>
                     </div>
@@ -92,12 +92,12 @@ export function PaginaActividadTodas() {
                 nombreGrupo={GRUPO_UNIDO_TODAS.nombreGrupo}
                 tiempo={GRUPO_UNIDO_TODAS.tiempo}
               >
-                <div className="mt-1 flex items-center gap-2.5 rounded-lg border border-borde bg-t-f9f8fc px-3 py-2">
+                <div className="mt-1 flex items-center gap-2.5 rounded-lg border border-borde bg-fondo px-3 py-2">
                   <div className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-naranja-categoria text-white">
-                    <Icono name="grupos" className="h-5 w-5" />
+                    <Icono name="grupo" className="h-5 w-5" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="block text-nombre-entidad font-bold text-texto">{GRUPO_UNIDO_TODAS.nombreGrupo}</span>
+                    <span className="block text-nombre-entidad text-texto">{GRUPO_UNIDO_TODAS.nombreGrupo}</span>
                     <span className="block text-auxiliar text-texto-suave">{GRUPO_UNIDO_TODAS.miembros}</span>
                   </div>
                   <Boton type="button" variant="contorno" size="mini" className="flex-none">

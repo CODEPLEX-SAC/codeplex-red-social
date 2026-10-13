@@ -1,15 +1,15 @@
 {
   "clasesIconoEvento": {
-    "verde": "bg-t-e8f5e9 text-t-2e7d32",
-    "azul": "bg-t-e3f2fd text-t-1565c0",
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "naranja": "bg-t-fff3e0 text-t-e65100",
-    "rojo": "bg-t-fdeceb text-negativo-kpi"
+    "verde": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria-texto",
+    "rojo": "bg-fondo-categoria-rojo text-negativo-kpi"
   },
   "clasesIndicador": {
     "exito": "bg-verde-categoria",
     "info": "bg-azul-categoria",
-    "pendiente": "bg-t-a855f7",
+    "pendiente": "bg-morado-categoria",
     "advertencia": "bg-naranja-categoria",
     "error": "bg-rojo-categoria"
   }

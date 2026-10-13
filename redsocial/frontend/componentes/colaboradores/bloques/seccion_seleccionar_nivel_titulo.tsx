@@ -19,14 +19,14 @@ export function SeccionSeleccionarNivelTitulo({
   return (
     <div className="grid grid-cols-240-1fr min-h-100 max-960:grid-cols-1">
       <aside className="border-r border-gris-borde py-6 max-960:flex max-960:gap-1 max-960:overflow-x-auto max-960:border-b max-960:border-r-0 max-960:px-4 max-960:py-3">
-        <p className="mb-2 px-5 text-subtitulo font-semibold text-gris-texto max-960:hidden">{catalogoColaboradores.campos_rol_permisos.seleccionar_modulo}</p>
+        <p className="mb-2 px-5 text-titulo-subseccion text-texto max-960:hidden">{catalogoColaboradores.campos_rol_permisos.seleccionar_modulo}</p>
         <ul className="m-0 list-none p-0 max-960:flex max-960:gap-1">
           {MODULOS.map((m) => (
             <li
               key={m.nombre}
               className={
-                'relative flex cursor-pointer items-center gap-3 px-5 py-3 hover:bg-t-f9fafb max-960:flex-shrink-0 max-960:px-3 max-960:py-2 ' +
-                (m.activo ? 'bg-t-f0f0ff' : '')
+                'relative flex cursor-pointer items-center gap-3 px-5 py-3 hover:bg-fondo max-960:flex-shrink-0 max-960:px-3 max-960:py-2 ' +
+                (m.activo ? 'bg-primario-suave' : '')
               }
             >
               {m.activo && <span className="absolute inset-y-0 left-0 w-0.75 bg-primario" />}
@@ -34,8 +34,8 @@ export function SeccionSeleccionarNivelTitulo({
                 <Icono name={m.icono} className="w-4.5 h-4.5" />
               </div>
               <div className="flex min-w-0 flex-col">
-                <span className={'text-nombre-entidad font-semibold ' + (m.activo ? 'text-primario' : 'text-gris-oscuro-texto')}>{m.nombre}</span>
-                <span className="truncate text-auxiliar text-gris-texto-terciario max-960:hidden">{m.descripcion}</span>
+                <span className={'text-nombre-entidad ' + (m.activo ? 'text-primario' : 'text-texto')}>{m.nombre}</span>
+                <span className="truncate text-auxiliar text-texto-suave max-960:hidden">{m.descripcion}</span>
               </div>
               {m.activo && (
                 <div className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-primario">
@@ -45,8 +45,8 @@ export function SeccionSeleccionarNivelTitulo({
             </li>
           ))}
         </ul>
-        <div className="mx-4 mt-4 rounded-lg border border-t-bfdbfe bg-t-f0f7ff px-3 py-2.5 max-960:hidden">
-          <p className="m-0 text-auxiliar leading-snug text-t-1e40af">
+        <div className="mx-4 mt-4 rounded-lg border border-borde-info-suave bg-fondo-info-suave px-3 py-2.5 max-960:hidden">
+          <p className="m-0 text-auxiliar leading-texto text-azul-categoria-texto">
             {catalogoColaboradores.campos_rol_permisos.nota_modulo}
           </p>
         </div>

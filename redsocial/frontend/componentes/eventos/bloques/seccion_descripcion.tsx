@@ -29,14 +29,14 @@ export function SeccionDescripcion({
       <SeccionDescripcion2 detalle={detalle} evento={evento} FilaDato={FilaDato} />
 
       <aside className="flex min-w-0 flex-col gap-4">
-        <div className="rounded-14 border border-t-eeeeee bg-white p-4">
-          <div className="mb-4 flex items-center gap-3 rounded-lg bg-t-f5f3ff p-3">
+        <div className="rounded-14 border border-borde-suave bg-white p-4">
+          <div className="mb-4 flex items-center gap-3 rounded-lg bg-fondo-hover-suave p-3">
             <div className="rounded-control bg-white px-3 py-2 text-center shadow-t5">
-              <span className="block text-dia-evento font-extrabold leading-1.1 text-texto">{evento.dia}</span>
-              <span className="block text-mes-evento font-bold uppercase text-texto-suave">{evento.mes}</span>
+              <span className="block text-dia-evento leading-none text-texto">{evento.dia}</span>
+              <span className="block text-mes-evento uppercase text-texto-suave">{evento.mes}</span>
             </div>
             <div>
-              <span className="block text-nombre-entidad font-bold text-texto">{detalle.diaSemana}</span>
+              <span className="block text-nombre-entidad text-texto">{detalle.diaSemana}</span>
               <span className="block text-auxiliar text-texto-suave">{detalle.fechaLarga}</span>
             </div>
           </div>
@@ -49,7 +49,7 @@ export function SeccionDescripcion({
                 {posicionesDe(3).map((posicion) => (
                   <AvatarImagen key={posicion.id} src={imagenUsuario} className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')} />
                 ))}
-                <span className="-ml-1 inline-flex h-7 items-center rounded-2xl border-2 border-white bg-t-ede9fe px-2 text-contador font-bold text-primario">{evento.asistentes.split(textos.espacio)[0]}</span>
+                <span className="-ml-1 inline-flex h-7 items-center rounded-2xl border-2 border-white bg-fondo-categoria-morado px-2 text-conteo text-primario">{evento.asistentes.split(textos.espacio)[0]}</span>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ export function SeccionDescripcion({
           <Boton type="button" variant="secundario" size="md" className="w-full"><Icono name="calendario" className="h-4 w-4" /> {textos.agregar_calendario}</Boton>
         </div>
 
-        <div className="rounded-14 border border-t-eeeeee bg-white p-4">
+        <div className="rounded-14 border border-borde-suave bg-white p-4">
           <BloqueIcono icono="ubicacion" titulo={textos.ubicacion} lineas={[detalle.lugar, detalle.direccion]} />
           <div className="my-3 overflow-hidden rounded-lg">
             <CodeplexMapa centro={posicion} zoom={14} marcadores={marcadores} altura={140} anchoCompleto controlarZoom />
@@ -65,9 +65,9 @@ export function SeccionDescripcion({
           <Boton type="button" variant="secundario" size="md" className="w-full"><Icono name="enlace" className="h-4 w-4" /> {textos.ver_google_maps}</Boton>
         </div>
 
-        <div className="rounded-14 border border-t-eeeeee bg-white p-4">
-          <BloqueIcono icono="categoria-evento" titulo={textos.categoria} lineas={[]} />
-          <span className="ml-13 inline-block rounded-2xl bg-t-ede9fe px-3 py-1 text-contador font-semibold text-primario">{detalle.categoria}</span>
+        <div className="rounded-14 border border-borde-suave bg-white p-4">
+          <BloqueIcono icono="precio" titulo={textos.categoria} lineas={[]} />
+          <span className="ml-13 inline-block rounded-2xl bg-fondo-categoria-morado px-3 py-1 text-conteo text-primario">{detalle.categoria}</span>
         </div>
       </aside>
     </div>

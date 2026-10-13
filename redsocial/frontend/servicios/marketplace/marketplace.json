@@ -1,46 +1,112 @@
 {
   "destacados": [
     {
-      "nombre": "Contabilidad Pro",
-      "icono": "contabilidad",
-      "color": "verde",
-      "puntaje": "4.8",
-      "conteo": "(124)",
-      "descripcion": "Lleva la contabilidad de tu empresa de forma sencilla y eficiente.",
-      "precio": "S/ 49.90"
-    },
-    {
-      "nombre": "Integración SUNAT",
-      "icono": "ventas",
+      "nombre": "ContaPlex",
+      "icono": "contabilidad-propio",
       "color": "azul",
-      "puntaje": "4.9",
-      "conteo": "(89)",
-      "descripcion": "Facturación electrónica, libros y reportes SUNAT automatizados.",
-      "precio": "S/ 39.90"
+      "descripcion": "Sistema contable para independientes y contadores. Hasta 45 empresas, PLE-SIRE incluido y comprobantes ilimitados.",
+      "precio": "Desde S/50",
+      "categoria": "Contabilidad",
+      "publicador": "CodePlex",
+      "gratis": true,
+      "caracteristicas": [
+        "Procesos contables esenciales",
+        "Libros contables + PLE - SIRE",
+        "Reportes + seguridad completa",
+        "Hasta 45 empresas"
+      ],
+      "planes": "conta-plex"
     },
     {
-      "nombre": "Planillas Perú",
-      "icono": "planillas",
-      "color": "morado",
+      "nombre": "GestiónPlex",
+      "icono": "caja",
+      "color": "verde",
       "popular": true,
-      "puntaje": "4.7",
-      "conteo": "(156)",
-      "descripcion": "Gestiona planillas, boletas, AFP, CTS y más en un solo lugar.",
-      "precio": "S/ 59.90"
+      "descripcion": "Sistema completo para empresas comerciales: ventas POS, tesorería y facturación electrónica SUNAT.",
+      "precio": "Desde S/100",
+      "categoria": "Logística",
+      "publicador": "Comercial",
+      "gratis": true,
+      "caracteristicas": [
+        "Ventas POS + SUNAT",
+        "Ventas en Restaurante",
+        "Tesorería",
+        "Soporte + Sistema Contable GRATIS"
+      ],
+      "planes": "gestionplex-comercial"
     },
     {
-      "nombre": "Inventario Avanzado",
-      "icono": "inventario",
+      "nombre": "Facturación Electrónica",
+      "icono": "documento",
+      "color": "morado",
+      "descripcion": "Facturación electrónica para empresas con múltiples sucursales, hasta 2,000 comprobantes y usuarios ilimitados.",
+      "precio": "Desde S/50",
+      "categoria": "Facturación",
+      "publicador": "CodePlex",
+      "gratis": true,
+      "caracteristicas": [
+        "Ventas POS + SUNAT completo",
+        "Guías de remisión",
+        "Web · Android · iOS · Usuarios ilimitados",
+        "Sistema Contable Basic GRATIS"
+      ],
+      "planes": "facturacion-electronica"
+    },
+    {
+      "nombre": "GestiónPlex",
+      "icono": "tienda",
       "color": "naranja",
-      "puntaje": "4.6",
-      "conteo": "(78)",
-      "descripcion": "Control de stock, kardex, lotes y almacenes.",
-      "precio": "S/ 29.90"
+      "descripcion": "Sistema completo para restaurantes: mesas, pedidos, cocina, delivery y facturación electrónica.",
+      "precio": "Desde S/150",
+      "categoria": "Restaurante",
+      "publicador": "Restaurante",
+      "gratis": true,
+      "caracteristicas": [
+        "Facturación electrónica SUNAT",
+        "Contabilidad multi-empresas",
+        "Reportes y Balances",
+        "Declaraciones tributarias"
+      ],
+      "planes": "gestionplex-restaurante"
+    },
+    {
+      "nombre": "Gestión-Plex Transporte",
+      "icono": "envio",
+      "color": "azul",
+      "descripcion": "Software para empresas de transporte con guías electrónicas, módulo transportista y liquidación por chofer.",
+      "precio": "Desde S/150",
+      "categoria": "Transporte",
+      "publicador": "CodePlex",
+      "gratis": true,
+      "caracteristicas": [
+        "Guías electrónicas (Remitente + Transportista)",
+        "Módulo Transportista",
+        "Compras + Liquidación por chofer",
+        "Soporte + Contable GRATIS"
+      ],
+      "planes": "gestionplex-transporte"
+    },
+    {
+      "nombre": "Gestión-Plex Grifo",
+      "icono": "fuego-propio",
+      "color": "rojo",
+      "descripcion": "Software especializado para grifos con comprobantes ilimitados, vales de crédito y liquidación.",
+      "precio": "Desde S/350",
+      "categoria": "Grifo",
+      "publicador": "CodePlex",
+      "gratis": true,
+      "caracteristicas": [
+        "Módulo de Grifo completo",
+        "Vales de crédito + Liquidación",
+        "Producción + Procesos",
+        "Soporte + Contable GRATIS"
+      ],
+      "planes": "gestionplex-grifo"
     }
   ],
   "categorias": [
     {
-      "icono": "contabilidad",
+      "icono": "contabilidad-propio",
       "color": "verde",
       "nombre": "Contabilidad",
       "cantidad": "32 soluciones"
@@ -52,7 +118,7 @@
       "cantidad": "18 soluciones"
     },
     {
-      "icono": "planillas",
+      "icono": "personas",
       "color": "morado",
       "nombre": "RRHH",
       "cantidad": "24 soluciones"
@@ -68,33 +134,51 @@
       "color": "rosa",
       "nombre": "Productividad",
       "cantidad": "22 soluciones"
+    },
+    {
+      "icono": "cohete-propio",
+      "color": "naranja",
+      "nombre": "Marketing",
+      "cantidad": "14 soluciones"
+    },
+    {
+      "icono": "escudo",
+      "color": "morado",
+      "nombre": "Seguridad",
+      "cantidad": "12 soluciones"
+    },
+    {
+      "icono": "cuadricula-oficial",
+      "color": "azul",
+      "nombre": "Otros",
+      "cantidad": "10 soluciones"
     }
   ],
   "compras": [
     {
-      "icono": "contabilidad",
+      "icono": "contabilidad-propio",
       "color": "verde",
-      "nombre": "Contabilidad Pro",
+      "nombre": "ContaPlex",
       "fecha": "Adquirido el 12/06/2026"
     },
     {
       "icono": "planillas",
       "color": "morado",
-      "nombre": "Planillas Perú",
+      "nombre": "GestiónPlex",
       "fecha": "Adquirido el 05/06/2026"
     },
     {
       "icono": "ventas",
       "color": "azul",
-      "nombre": "Integración SUNAT",
+      "nombre": "Facturación Electrónica",
       "fecha": "Adquirido el 01/06/2026"
     }
   ],
   "populares": [
     {
-      "icono": "contabilidad",
+      "icono": "contabilidad-propio",
       "color": "verde",
-      "nombre": "Contabilidad Pro",
+      "nombre": "ContaPlex",
       "puntaje": "4.8",
       "conteo": "(124)",
       "precio": "S/ 49.90"
@@ -102,7 +186,7 @@
     {
       "icono": "planillas",
       "color": "morado",
-      "nombre": "Planillas Perú",
+      "nombre": "GestiónPlex",
       "puntaje": "4.7",
       "conteo": "(156)",
       "precio": "S/ 59.90"
@@ -110,7 +194,7 @@
     {
       "icono": "ventas",
       "color": "azul",
-      "nombre": "Integración SUNAT",
+      "nombre": "Facturación Electrónica",
       "puntaje": "4.9",
       "conteo": "(89)",
       "precio": "S/ 39.90"
@@ -118,7 +202,7 @@
     {
       "icono": "inventario",
       "color": "naranja",
-      "nombre": "Inventario Avanzado",
+      "nombre": "Gestión-Plex Transporte",
       "puntaje": "4.6",
       "conteo": "(78)",
       "precio": "S/ 29.90"

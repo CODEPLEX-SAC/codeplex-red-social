@@ -25,6 +25,7 @@ export function SeccionListado({ datos }: {
     alVerColaborador: (colaborador: Colaborador) => void
     alEditarColaborador: (colaborador: Colaborador) => void
     alConfirmarBaja: (colaborador: Colaborador) => void
+    alInvitarColaborador: () => void
   }
 }) {
   const {
@@ -40,6 +41,7 @@ export function SeccionListado({ datos }: {
     alVerColaborador,
     alEditarColaborador,
     alConfirmarBaja,
+    alInvitarColaborador,
   } = datos
 
   const {
@@ -53,7 +55,7 @@ export function SeccionListado({ datos }: {
 
   return (
     <section className="flex flex-col area-colaboradores">
-      <SeccionListado2 />
+      <SeccionListado2 alInvitar={alInvitarColaborador} />
 
       <Pestanas elementos={elementosPestana} activa={pestanaActiva} alCambiar={cambiarPestana} className="mb-5" />
 
@@ -69,9 +71,9 @@ export function SeccionListado({ datos }: {
 
       <div className="overflow-x-auto rounded-xl border border-gris-borde bg-white">
         <table className="w-full border-collapse text-cuerpo">
-          <thead className="bg-t-f9fafb">
+          <thead className="bg-fondo">
             <tr>
-              <th className="w-10 whitespace-nowrap border-b border-gris-borde p-3.5 text-center text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">
+              <th className="w-10 whitespace-nowrap border-b border-gris-borde p-3.5 text-center text-encabezado-tabla uppercase text-texto-suave">
                 <Casilla
                   seleccionado={tabla.getIsAllPageRowsSelected()}
                   indeterminado={tabla.getIsSomePageRowsSelected() && !tabla.getIsAllPageRowsSelected()}
@@ -79,18 +81,18 @@ export function SeccionListado({ datos }: {
                   inputProps={{ 'aria-label': catalogoColaboradores.botones.seleccionar_todos }}
                 />
               </th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">{catalogoColaboradores.tabla.colaborador}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">{catalogoColaboradores.tabla.rol_perfil}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">{catalogoColaboradores.tabla.aplicaciones}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">{catalogoColaboradores.tabla.estado}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">{catalogoColaboradores.tabla.vigencia}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla font-semibold uppercase text-gris-texto-secundario">{catalogoColaboradores.tabla.acciones}</th>
+              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.colaborador}</th>
+              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.rol_perfil}</th>
+              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.aplicaciones}</th>
+              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.estado}</th>
+              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.vigencia}</th>
+              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.acciones}</th>
             </tr>
           </thead>
           <tbody>
             {filas.length === 0 && (
               <tr>
-                <td colSpan={7} className="p-6 text-center text-cuerpo text-gris-texto-secundario">{catalogoColaboradores.mensajes.sin_colaboradores}</td>
+                <td colSpan={7} className="p-6 text-center text-subtitulo text-texto-suave">{catalogoColaboradores.mensajes.sin_colaboradores}</td>
               </tr>
             )}
             {filas.map((fila, i) => {
@@ -122,7 +124,7 @@ export function SeccionListado({ datos }: {
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3 py-4">
-        <span className="text-auxiliar text-gris-texto-secundario">{resumen}</span>
+        <span className="text-auxiliar text-texto-suave">{resumen}</span>
         <Paginacion total={tabla.getPageCount()} pagina={pageIndex + 1} alCambiar={(nuevaPagina) => tabla.setPageIndex(nuevaPagina - 1)} />
       </div>
     </section>

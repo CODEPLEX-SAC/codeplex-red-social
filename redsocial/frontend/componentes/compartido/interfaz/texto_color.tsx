@@ -16,7 +16,7 @@ export function TextoColor({
   as?: ElementType
 }) {
   return (
-    <Tag className={`${CLASE_TEXTO[variante] ?? 'text-gris-categoria'} ${className}`}>
+    <Tag className={`${CLASE_TEXTO[variante] ?? 'text-texto-suave'} ${className}`}>
       {children}
     </Tag>
   )

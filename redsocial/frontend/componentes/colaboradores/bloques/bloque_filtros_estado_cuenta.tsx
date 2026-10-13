@@ -47,15 +47,15 @@ export function BloqueFiltrosEstadoCuenta({
       </section>
 
       <section>
-        <h4 className="m-0 mb-2 text-nombre-entidad font-semibold text-gris-oscuro-texto">{textos.estado_acceso}</h4>
+        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.estado_acceso}</h4>
         <div className="flex flex-col gap-1">
           <label className="flex cursor-pointer items-center gap-2">
             <Casilla seleccionado={accesoVigente} alCambiar={onCambiarAccesoVigente} />
-            <span className="text-campo-formulario text-gris-oscuro-texto">{textos.acceso_vigente}</span>
+            <span className="text-campo-formulario text-texto">{textos.acceso_vigente}</span>
           </label>
           <label className="flex cursor-pointer items-center gap-2">
             <Casilla seleccionado={accesoVencido} alCambiar={onCambiarAccesoVencido} />
-            <span className="text-campo-formulario text-gris-oscuro-texto">{textos.acceso_vencido}</span>
+            <span className="text-campo-formulario text-texto">{textos.acceso_vencido}</span>
           </label>
         </div>
       </section>
@@ -67,15 +67,15 @@ export function BloqueFiltrosEstadoCuenta({
       </section>
 
       <section>
-        <h4 className="m-0 mb-2 text-nombre-entidad font-semibold text-gris-oscuro-texto">{textos.tipo_cuenta}</h4>
+        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.tipo_cuenta}</h4>
         <div className="flex flex-col gap-1">
           <label className="flex cursor-pointer items-center gap-2">
             <Casilla seleccionado={cuentaCreada} alCambiar={onCambiarCuentaCreada} />
-            <span className="text-campo-formulario text-gris-oscuro-texto">{textos.cuenta_creada}</span>
+            <span className="text-campo-formulario text-texto">{textos.cuenta_creada}</span>
           </label>
           <label className="flex cursor-pointer items-center gap-2">
             <Casilla seleccionado={cuentaInvitada} alCambiar={onCambiarCuentaInvitada} />
-            <span className="text-campo-formulario text-gris-oscuro-texto">{textos.cuenta_invitada}</span>
+            <span className="text-campo-formulario text-texto">{textos.cuenta_invitada}</span>
           </label>
         </div>
       </section>

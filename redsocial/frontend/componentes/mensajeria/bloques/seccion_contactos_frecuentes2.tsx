@@ -13,8 +13,8 @@ export function SeccionContactosFrecuentes2({
   return (
     <section className="min-w-0 rounded-xl border border-borde bg-white p-4">
       <div className="mb-3.5 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoMensajeria.secciones.contactos_frecuentes}</h2>
-        <a href="#" className="text-enlace-accion font-medium text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_todos}</a>
+        <h2 className="m-0 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.contactos_frecuentes}</h2>
+        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_todos}</a>
       </div>
       <div ref={carrusel.pistaRef} className="flex gap-3 overflow-x-auto scroll-smooth scrollbar-oculto">
         {CONTACTOS_FRECUENTES.map((c) => (
@@ -22,8 +22,8 @@ export function SeccionContactosFrecuentes2({
             <div className="relative inline-block">
               {c.esGrupo ? (
                 <span className="relative grid h-13 w-13 place-items-center rounded-full bg-primario-suave text-primario">
-                  <Icono name="usuarios" className="h-5 w-5" />
-                  <span className="absolute -right-1 -top-1 inline-grid h-4.5 min-w-4.5 place-items-center rounded-full border-2 border-white bg-primario px-1 text-contador font-bold text-white">4</span>
+                  <Icono name="grupo" className="h-5 w-5" />
+                  <span className="absolute -right-1 -top-1 inline-grid h-4.5 min-w-4.5 place-items-center rounded-full border-2 border-white bg-primario px-1 text-conteo text-white">4</span>
                 </span>
               ) : (
                 <>
@@ -32,12 +32,12 @@ export function SeccionContactosFrecuentes2({
                 </>
               )}
             </div>
-            <strong className="text-nombre-entidad leading-tight text-texto">{c.nombre}</strong>
+            <strong className="text-nombre-entidad leading-compacto text-texto">{c.nombre}</strong>
             <span className="inline-flex items-center gap-1 text-auxiliar text-texto-suave">
               {!c.esGrupo && <span className="inline-block h-1.5 w-1.5 rounded-full bg-verde-categoria" />}
               {c.esGrupo ? c.miembros : catalogoMensajeria.filtros.en_linea}
             </span>
-            <a href="#" className="mt-0.5 inline-flex items-center gap-1 rounded-md border border-borde bg-white px-2.5 py-1 text-boton font-medium text-primario no-underline hover:border-primario hover:bg-overlay-15">
+            <a href="#" className="mt-0.5 inline-flex items-center gap-1 rounded-md border border-borde bg-white px-2.5 py-1 text-boton text-primario no-underline hover:border-primario hover:bg-overlay-15">
               <Icono name="video" className="h-3 w-3" /> {catalogoMensajeria.botones.videollamar}
             </a>
           </article>

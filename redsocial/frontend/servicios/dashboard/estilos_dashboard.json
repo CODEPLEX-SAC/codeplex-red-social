@@ -19,23 +19,23 @@
     "naranja": "advertencia"
   },
   "clasesIconoKpi": {
-    "azul": "bg-t-dbeafe text-azul-categoria",
-    "rojo": "bg-t-fee2e2 text-rojo-categoria",
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "cian": "bg-t-cffafe text-cian-categoria"
+    "azul": "bg-fondo-categoria-azul text-azul-categoria",
+    "rojo": "bg-fondo-categoria-rojo text-rojo-categoria",
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "cian": "bg-fondo-categoria-cian text-cian-categoria"
   },
   "clasesEstadoDash": {
-    "optimo": "bg-t-dcfce7 text-positivo-kpi",
-    "aceptable": "bg-t-fef9c3 text-t-a16207",
-    "bajo": "bg-t-fef3c7 text-t-b45309",
-    "riesgo": "bg-t-fee2e2 text-negativo-kpi"
+    "optimo": "bg-fondo-categoria-verde text-positivo-kpi",
+    "aceptable": "bg-fondo-categoria-amarillo text-naranja-categoria-texto",
+    "bajo": "bg-fondo-categoria-amarillo text-naranja-categoria-texto",
+    "riesgo": "bg-fondo-categoria-rojo text-negativo-kpi"
   },
   "clasesIconoModulo": {
-    "verde": "bg-t-dcfce7 text-verde-categoria",
-    "azul": "bg-t-dbeafe text-azul-categoria",
-    "naranja": "bg-t-ffedd5 text-naranja-categoria",
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "cian": "bg-t-cffafe text-cian-categoria"
+    "verde": "bg-fondo-categoria-verde text-verde-categoria",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria",
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "cian": "bg-fondo-categoria-cian text-cian-categoria"
   },
   "etiquetaRatio": {
     "optimo": "Óptimo",

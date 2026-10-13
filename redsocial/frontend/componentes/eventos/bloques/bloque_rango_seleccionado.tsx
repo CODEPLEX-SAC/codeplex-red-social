@@ -50,7 +50,7 @@ export function BloqueRangoSeleccionado({ datos }: {
     <div className={'w-77.5 flex-none p-4 max-600:w-full ' + (enCalendarioMovil ? '' : 'max-600:hidden')}>
       <div className="mb-3 flex items-center justify-between">
         <BotonIcono icono="flecha-izquierda" type="button" aria-label={textosRedSocial.ANTERIOR} onClick={() => alCambiarMes(-1)} variant="sutil" size="md" />
-        <span className="text-subtitulo font-bold text-texto">{MESES[mes]} {anio}</span>
+        <span className="text-titulo-subseccion text-texto">{MESES[mes]} {anio}</span>
         <BotonIcono icono="flecha-derecha" type="button" aria-label={textosRedSocial.SIGUIENTE} onClick={() => alCambiarMes(1)} variant="sutil" size="md" />
       </div>
 
@@ -67,16 +67,16 @@ export function BloqueRangoSeleccionado({ datos }: {
       />
 
       {modoRango && (
-        <div className="mt-3 flex items-center gap-2 rounded-lg border border-borde bg-t-faf9fc px-3 py-2.5">
+        <div className="mt-3 flex items-center gap-2 rounded-lg border border-borde bg-fondo px-3 py-2.5">
           <Icono name="calendario" className="h-4 w-4 flex-none text-texto-suave" />
           <div className="min-w-0">
             <span className="block text-auxiliar text-texto-suave">{textos.rango_seleccionado}</span>
-            <span className="block text-campo-formulario font-bold text-texto">{formatearFechaRango(inicioRango)}{finRango === null ? null : textos.separador_rango + formatearFechaRango(finRango)}</span>
+            <span className="block text-campo-formulario text-texto">{formatearFechaRango(inicioRango)}{finRango === null ? null : textos.separador_rango + formatearFechaRango(finRango)}</span>
           </div>
         </div>
       )}
 
-      <div className="mt-4 flex items-center justify-end gap-2 border-t border-t-f0eef5 pt-3 max-600:sticky max-600:bottom-0 max-600:z-10 max-600:bg-white">
+      <div className="mt-4 flex items-center justify-end gap-2 border-t border-borde-suave pt-3 max-600:sticky max-600:bottom-0 max-600:z-10 max-600:bg-white">
         <Boton type="button" onClick={onCerrar} variant="secundario" size="default" className="max-600:flex-1">
           {textos.cancelar}
         </Boton>

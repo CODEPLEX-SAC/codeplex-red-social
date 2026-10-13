@@ -1,5 +1,6 @@
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
+import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import type { SinEventosUbicacionProps } from '@/tipos/eventos/contrato_sin_eventos_ubicacion'
 
@@ -17,8 +18,7 @@ export function SinEventosUbicacion({ ciudad, onCambiar, onVerTodos }: SinEvento
           </span>
         </div>
       </div>
-      <h2 className="m-0 mb-2 text-titulo-seccion font-extrabold text-texto">{[textos.titulo, textos.espacio, ciudad].join('')}</h2>
-      <p className="m-0 mb-6 w-full max-w-150 text-cuerpo text-texto-suave">{textos.texto}</p>
+      <MensajeVacio titulo={[textos.titulo, textos.espacio, ciudad].join('')} texto={textos.texto} className="mb-6 w-full max-w-150" />
       <div className="flex items-center justify-center gap-3 max-600:w-full max-600:flex-col max-600:items-stretch">
         <Boton type="button" variant="primario" size="md" onClick={onCambiar}>{textos.cambiar}</Boton>
         <Boton type="button" variant="secundario" size="md" onClick={onVerTodos} className="border-primario text-primario">{textos.ver_todos}</Boton>

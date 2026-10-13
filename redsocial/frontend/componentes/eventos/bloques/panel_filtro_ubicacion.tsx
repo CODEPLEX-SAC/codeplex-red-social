@@ -28,10 +28,10 @@ function usarAlturaMapaResponsiva() {
 
 function FilaCiudad({ nombre, activa, onElegir }: FilaCiudadProps) {
   return (
-    <div onClick={onElegir} className={'flex cursor-pointer items-center gap-1 rounded-lg pr-3 ' + (activa ? 'bg-t-ede9fe' : 'hover:bg-t-faf9fc')}>
+    <div onClick={onElegir} className={'flex cursor-pointer items-center gap-1 rounded-lg pr-3 ' + (activa ? 'bg-fondo-categoria-morado' : 'hover:bg-fondo')}>
       <Radio checked={activa} onChange={onElegir} inputProps={{ 'aria-label': nombre }} />
       <Icono name="ubicacion" className="h-4 w-4 flex-none text-texto-suave" />
-      <span className={'ml-1.5 min-w-0 flex-1 truncate text-cuerpo ' + (activa ? 'font-medium text-primario' : 'text-texto')}>{nombre}</span>
+      <span className={'ml-1.5 min-w-0 flex-1 truncate text-cuerpo ' + (activa ? 'font-etiqueta text-primario' : 'text-texto')}>{nombre}</span>
     </div>
   )
 }

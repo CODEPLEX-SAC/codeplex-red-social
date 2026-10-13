@@ -39,9 +39,9 @@ export function PanelUsuarioTopbar({ usuario, onCerrar, onCerrarSesion }: PanelU
           <span aria-hidden="true" className="absolute bottom-1 right-1 h-4 w-4 rounded-full border-2 border-white bg-exito" />
         </div>
         <div className="flex min-w-0 flex-col items-start gap-1">
-          <strong className="max-w-full truncate text-valor-destacado font-extrabold leading-tight text-texto">{usuario.usuario}</strong>
+          <strong className="max-w-full truncate text-valor-destacado leading-compacto text-texto">{usuario.usuario}</strong>
           <span className="max-w-full truncate text-subtitulo text-texto-suave">{usuario.empresa}</span>
-          <span className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-primario-suave px-3 py-1 text-etiqueta-estado font-bold text-primario">
+          <span className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-primario-suave px-3 py-1 text-badge text-primario">
             <Icono name="maletin" className="h-3.5 w-3.5" /> {usuario.rol}
           </span>
         </div>
@@ -49,12 +49,12 @@ export function PanelUsuarioTopbar({ usuario, onCerrar, onCerrarSesion }: PanelU
 
       <ul aria-label={textos.etiqueta_opciones} className="m-0 list-none px-4 py-2">
         {opciones.map((opcion) => (
-          <li key={opcion.clave} className="border-b border-t-f0eef5 last:border-b-0">
+          <li key={opcion.clave} className="border-b border-borde-suave last:border-b-0">
             <button type="button" aria-disabled="true" title={textos.proximamente} className="flex w-full cursor-default items-center gap-3 border-0 bg-transparent px-1 py-2.5 text-left">
               <span className="grid h-10 w-10 flex-none place-items-center rounded-control bg-primario-suave text-primario">
                 <Icono name={opcion.icono} className="h-5 w-5" />
               </span>
-              <span className="min-w-0 flex-1 truncate text-cuerpo font-medium text-texto">{opcion.etiqueta}</span>
+              <span className="min-w-0 flex-1 truncate text-cuerpo font-etiqueta text-texto">{opcion.etiqueta}</span>
               <Icono name="flecha-derecha" className="h-4 w-4 flex-none text-texto-suave" />
             </button>
           </li>
@@ -62,8 +62,8 @@ export function PanelUsuarioTopbar({ usuario, onCerrar, onCerrarSesion }: PanelU
       </ul>
 
       <div className="px-4 pb-4 pt-1">
-        <Boton type="button" variant="peligro_contorno" size="enlace" onClick={onCerrarSesion} className="w-full justify-start gap-3 rounded-xl bg-t-fef2f2 p-2 pr-4">
-          <span className="grid h-10 w-10 flex-none place-items-center rounded-control bg-t-fee2e2">
+        <Boton type="button" variant="peligro_contorno" size="enlace" onClick={onCerrarSesion} className="w-full justify-start gap-3 rounded-xl bg-fondo-peligro-suave p-2 pr-4">
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-control bg-fondo-categoria-rojo">
             <Icono name="despedida" className="h-5 w-5" />
           </span>
           {textos.cerrar_sesion}

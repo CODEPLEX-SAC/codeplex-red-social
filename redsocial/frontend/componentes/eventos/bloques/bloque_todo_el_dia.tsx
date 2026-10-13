@@ -24,30 +24,30 @@ export function BloqueTodoElDia({
   return (
     <div className="mt-4 max-h-130 overflow-auto rounded-xl border border-gris-borde bg-fondo">
       <div className="sticky top-0 z-10 bg-fondo">
-        <div className={'grid min-w-175 max-768:min-w-0 border-b border-gris-borde bg-t-f9fafb ' + COLUMNAS_SEMANA}>
+        <div className={'grid border-b border-gris-borde bg-fondo ' + COLUMNAS_SEMANA}>
           <span />
           {DIAS_SEMANA_CAL.map((d) => (
             <div key={d.abrev} className={'flex flex-col items-center gap-1 border-l border-gris-borde py-2.5 ' + (d.hoy ? 'bg-primario-suave' : '')}>
-              <span className="text-encabezado-tabla font-semibold uppercase tracking-wide text-gris-texto-terciario">{d.abrev}</span>
-              <span className={'flex h-6 w-6 items-center justify-center rounded-full text-cuerpo font-semibold ' + (d.hoy ? 'bg-primario font-bold text-white' : 'text-gris-texto')}>
+              <span className="text-encabezado-tabla uppercase tracking-wide text-texto-suave">{d.abrev}</span>
+              <span className={'flex h-6 w-6 items-center justify-center rounded-full text-cuerpo font-control ' + (d.hoy ? 'bg-primario font-titulo text-white' : 'text-texto')}>
                 {d.numero}
               </span>
             </div>
           ))}
         </div>
 
-        <div className={'grid min-w-175 max-768:min-w-0 border-b border-gris-borde bg-fondo ' + COLUMNAS_SEMANA}>
-          <span className="flex items-center px-2.5 py-2 text-encabezado-tabla leading-snug text-gris-texto-terciario">{catalogoEventos.botones.todo_el_dia}</span>
+        <div className={'grid border-b border-gris-borde bg-fondo ' + COLUMNAS_SEMANA}>
+          <span className="flex items-center px-2.5 py-2 text-encabezado-tabla leading-texto text-texto-suave">{catalogoEventos.botones.todo_el_dia}</span>
           {DIAS_SEMANA_CAL.map((d) => (
             <div key={d.abrev} className={'border-l border-gris-borde py-2 ' + (d.hoy ? 'bg-primario-suave' : '')} />
           ))}
         </div>
       </div>
 
-      <div className={'grid min-w-175 max-768:min-w-0 ' + COLUMNAS_SEMANA}>
+      <div className={'grid ' + COLUMNAS_SEMANA}>
         <div className="grid grid-rows-[repeat(14,60px)]">
           {HORAS_SEMANA.map((h) => (
-            <span key={h} className="block pt-1 px-2.5 text-encabezado-tabla leading-snug text-gris-texto-terciario">{h}</span>
+            <span key={h} className="block pt-1 px-2.5 text-encabezado-tabla leading-texto text-texto-suave">{h}</span>
           ))}
         </div>
         {DIAS_SEMANA_CAL.map((d, diaIndex) => (
@@ -58,10 +58,10 @@ export function BloqueTodoElDia({
             {eventosPorDia[diaIndex].map((ev) => (
               <div
                 key={ev.nombre}
-                className={ROW_START[ev.filaInicio] + ' ' + ROW_SPAN[ev.filas] + ' m-1 overflow-hidden rounded px-1.5 py-1 text-etiqueta-estado leading-1.3 ' + COLOR_EVENTO_CAL[ev.color]}
+                className={ROW_START[ev.filaInicio] + ' ' + ROW_SPAN[ev.filas] + ' m-1 overflow-hidden rounded px-1.5 py-1 text-badge leading-compacto ' + COLOR_EVENTO_CAL[ev.color]}
               >
-                <span className="block font-semibold">{ev.hora}</span>
-                <span className="block truncate text-nombre-entidad font-medium">{ev.nombre}</span>
+                <span className="block font-titulo">{ev.hora}</span>
+                <span className="block truncate text-nombre-entidad">{ev.nombre}</span>
               </div>
             ))}
           </div>

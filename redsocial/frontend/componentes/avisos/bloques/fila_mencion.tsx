@@ -24,7 +24,7 @@ export function FilaMencion({ mencion: m }: FilaMencionProps) {
   const [antes, despues] = m.texto.split(':usuario')
 
   return (
-    <article className="flex items-start gap-3 border-b border-t-f0eef5 p-3.5 last:border-b-0 hover:bg-t-fdfcff">
+    <article className="flex items-start gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
       {m.tipo === 'grupo' ? (
         <SuperficieColor variante={m.vistaPrevia.colorSuperficie} className="grid h-10 w-10 flex-none place-items-center rounded-full text-white">
           <Icono name={BADGE_ICONO_POR_TIPO[m.tipo]} className="h-4.5 w-4.5" />
@@ -33,24 +33,24 @@ export function FilaMencion({ mencion: m }: FilaMencionProps) {
         <span className="relative flex-none">
           <AvatarImagen src={usuarioImg} className="h-10 w-10 rounded-full bg-primario-suave" />
           <SuperficieColor variante="morado" className="absolute -bottom-0.5 -right-0.5 grid h-4.5 w-4.5 place-items-center rounded-full border-2 border-white text-white">
-            <Icono name={BADGE_ICONO_POR_TIPO[m.tipo]} className="h-2.5 w-2.5" />
+            <Icono name={BADGE_ICONO_POR_TIPO[m.tipo]} className="h-3 w-3" />
           </SuperficieColor>
         </span>
       )}
 
       <div className="min-w-0 flex-1">
         <p className="m-0 text-cuerpo text-texto">
-          <span className="font-bold text-texto">{m.nombre}</span> <span className="text-texto-suave">{catalogoAvisos.acciones_mencion[m.tipo]}</span>
+          <span className="font-titulo text-texto">{m.nombre}</span> <span className="text-texto-suave">{catalogoAvisos.acciones_mencion[m.tipo]}</span>
         </p>
-        <span className="mt-0.5 block text-fecha-abreviada text-t-aaa7b5">{m.tiempo}</span>
-        <p className="m-0 mt-1 text-cuerpo leading-1.4 text-texto-suave">
+        <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{m.tiempo}</span>
+        <p className="m-0 mt-1 text-cuerpo leading-texto text-texto-suave">
           {antes}
-          <span className="font-semibold text-primario">@{SESION_ACTUAL.usuario}</span>
+          <span className="font-titulo text-primario">@{SESION_ACTUAL.usuario}</span>
           {despues}
         </p>
       </div>
 
-      <div className="flex w-45 flex-none items-center gap-2 rounded-lg border border-borde bg-t-f9f8fc p-2 max-800:hidden">
+      <div className="flex w-45 flex-none items-center gap-2 rounded-lg border border-borde bg-fondo p-2 max-800:hidden">
         {m.vistaPrevia.fecha ? (
           <SuperficieColor variante="rojo" className="grid h-11 w-11 flex-none place-items-center rounded-md text-center text-white">
             <span>

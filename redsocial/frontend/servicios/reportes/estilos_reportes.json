@@ -10,11 +10,11 @@
     "#fed7aa": "advertencia"
   },
   "clasesIconoPlantilla": {
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "verde": "bg-t-dcfce7 text-verde-categoria",
-    "naranja": "bg-t-ffedd5 text-naranja-categoria",
-    "azul": "bg-t-dbeafe text-azul-categoria",
-    "rojo": "bg-t-fee2e2 text-rojo-categoria"
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "verde": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria-texto",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "rojo": "bg-fondo-categoria-rojo text-rojo-categoria-texto"
   },
   "clasesFormato": {
     "pdf": "text-negativo-kpi",

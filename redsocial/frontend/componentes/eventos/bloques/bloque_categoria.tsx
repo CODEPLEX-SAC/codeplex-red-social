@@ -1,4 +1,5 @@
 import { Boton } from '../../compartido/interfaz/boton'
+import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
 import { Icono } from '../../compartido/icono'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { etiquetaFiltroFecha } from '../formato_fecha_filtro'
@@ -73,19 +74,19 @@ export function BloqueCategoria({ datos }: {
         </Boton>
         {filtroFechaAbierto && (
           <>
-            <div className="fixed inset-0 z-19 max-600:bg-black/45" onClick={cerrarFiltroFecha} />
+            <FondoPanelFlotante onCerrar={cerrarFiltroFecha} />
             <PanelFiltroFecha onCerrar={cerrarFiltroFecha} onAplicar={setFiltroFecha} />
           </>
         )}
       </div>
       <div className="relative flex-none">
         <Boton type="button" onClick={alternarFiltroCategoria} variant="filtro" size="filtro" activo={filtroCategoriaAbierto}>
-          <Icono name="categoria-evento" className="h-3.5 w-3.5" /> {catalogoEventos.filtros.categoria}
+          <Icono name="precio" className="h-3.5 w-3.5" /> {catalogoEventos.filtros.categoria}
           <Icono name={filtroCategoriaAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="h-3.5 w-3.5" />
         </Boton>
         {filtroCategoriaAbierto && (
           <>
-            <div className="fixed inset-0 z-19 max-600:bg-black/45" onClick={cerrarFiltroCategoria} />
+            <FondoPanelFlotante onCerrar={cerrarFiltroCategoria} />
             <PanelFiltroCategoria categorias={CATEGORIAS_FILTRO_PARA_TI} onCerrar={cerrarFiltroCategoria} />
           </>
         )}

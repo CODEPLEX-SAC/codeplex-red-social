@@ -9,7 +9,8 @@
     "desplegar": "npm run build && node scripts/subir_ftp.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "calidad": "node scripts/quality_gate.mjs"
   },
   "dependencies": {
     "@codeplex-sac/diseno": "^0.0.20",

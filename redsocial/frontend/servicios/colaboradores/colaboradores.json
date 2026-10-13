@@ -10,7 +10,7 @@
       "aplicaciones": [
         {
           "icono": "calendario",
-          "clase": "bg-t-6c3ce0",
+          "clase": "bg-morado-categoria",
           "nombre": "Calendario"
         },
         {
@@ -115,7 +115,7 @@
       "aplicaciones": [
         {
           "icono": "calendario",
-          "clase": "bg-t-6c3ce0",
+          "clase": "bg-morado-categoria",
           "nombre": "Calendario"
         },
         {
@@ -222,31 +222,31 @@
   "pasosFuncionaColaboradores": [
     {
       "icono": "correo",
-      "clase": "bg-t-dbeafe text-azul-categoria",
+      "clase": "bg-fondo-categoria-azul text-azul-categoria-texto",
       "numero": "1. Invitas",
       "descripcion": "Invita a una persona por correo electrónico o WhatsApp."
     },
     {
       "icono": "nuevo-usuario",
-      "clase": "bg-t-dcfce7 text-verde-categoria",
+      "clase": "bg-fondo-categoria-verde text-verde-categoria-texto",
       "numero": "2. Se registra",
       "descripcion": "Si no está en la red, se registra y acepta la invitación."
     },
     {
       "icono": "escudo",
-      "clase": "bg-t-e0e7ff text-t-6366f1",
+      "clase": "bg-fondo-categoria-azul text-azul-categoria-texto",
       "numero": "3. Asignas",
       "descripcion": "Asigna un rol / perfil y las aplicaciones que podrá usar."
     },
     {
       "icono": "usuarios",
-      "clase": "bg-t-f5f3ff text-morado-categoria",
+      "clase": "bg-fondo-hover-suave text-morado-categoria",
       "numero": "4. Colabora",
       "descripcion": "Ya forma parte de tu equipo y puede usar los sistemas."
     }
   ],
   "aplicacionesDisponibles": [
-    { "icono": "calendario", "clase": "bg-t-6c3ce0", "nombre": "Calendario" },
+    { "icono": "calendario", "clase": "bg-morado-categoria", "nombre": "Calendario" },
     { "icono": "mensaje", "clase": "bg-azul-categoria", "nombre": "Mensajes" },
     { "icono": "actividad", "clase": "bg-verde-categoria", "nombre": "Actividad" },
     { "icono": "marketplace", "clase": "bg-naranja-categoria", "nombre": "Marketplace" },

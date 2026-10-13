@@ -28,6 +28,7 @@ export function Menu({ elementos, ancla, alCerrar }: MenuProps) {
           icono: elemento.icono && <Icono name={elemento.icono} className={configuracion.clase_icono} />,
           sx: elemento.peligro ? configuracion.peligro : undefined,
           divider: elemento.divisor,
+          disabled: elemento.deshabilitado,
           alHacerClick: () => {
             elemento.alHacerClick?.()
             if (elemento.ruta) irARuta(elemento.ruta)

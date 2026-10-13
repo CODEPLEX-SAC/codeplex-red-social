@@ -5,6 +5,7 @@ export interface ElementoMenu {
   icono?: IconName
   ruta?: string
   peligro?: boolean
+  deshabilitado?: boolean
   divisor?: boolean
   alHacerClick?: () => void
 }

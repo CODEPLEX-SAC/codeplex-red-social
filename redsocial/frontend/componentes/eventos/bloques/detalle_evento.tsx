@@ -17,7 +17,7 @@ function BloqueIcono({ icono, titulo, lineas }: { icono: IconName; titulo: strin
         <Icono name={icono} className="h-5 w-5" />
       </div>
       <div className="min-w-0">
-        <h3 className="m-0 text-nombre-entidad font-bold text-texto">{titulo}</h3>
+        <h3 className="m-0 text-nombre-entidad text-texto">{titulo}</h3>
         {lineas.map((linea, i) => (
           <p key={linea} className={'m-0 ' + (i === 0 ? 'text-cuerpo text-texto-suave' : 'text-auxiliar text-texto-suave')}>{linea}</p>
         ))}

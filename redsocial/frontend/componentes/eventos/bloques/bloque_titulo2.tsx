@@ -22,29 +22,29 @@ export function BloqueTitulo2({
   alElegirOpcionMovil: (clave: OpcionRapidaFecha) => void
 }) {
   return (
-    <div className={'w-47.5 flex-none border-r border-t-f0eef5 py-3 max-600:w-full max-600:border-r-0 ' + (enCalendarioMovil ? 'max-600:hidden' : '')}>
-      <h3 className="m-0 mb-2 px-4 text-encabezado-tabla font-bold uppercase tracking-wide text-texto-suave max-600:hidden">{textos.titulo}</h3>
+    <div className={'w-47.5 flex-none border-r border-borde-suave py-3 max-600:w-full max-600:border-r-0 ' + (enCalendarioMovil ? 'max-600:hidden' : '')}>
+      <h3 className="m-0 mb-2 px-4 text-encabezado-tabla uppercase tracking-wide text-texto-suave max-600:hidden">{textos.titulo}</h3>
       <div className="max-600:hidden">
       {OPCIONES_RAPIDAS.map((o) => (
         <button
           key={o.clave}
           type="button"
           onClick={() => setOpcionActiva(o.clave)}
-          className={'flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formulario ' + (o.clave === opcionActiva ? 'bg-t-f3f0ff font-semibold text-primario' : 'text-texto hover:bg-t-faf9fc')}
+          className={'flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formulario ' + (o.clave === opcionActiva ? 'bg-fondo-activo-filtro font-control text-primario' : 'text-texto hover:bg-fondo')}
         >
-          <Icono name="calendario" className="h-3.75 w-3.75" />
+          <Icono name="calendario" className="h-4 w-4" />
           <span className="min-w-0 flex-1">{o.etiqueta}</span>
         </button>
       ))}
-      <div className="my-2 border-t border-t-f0eef5" />
+      <div className="my-2 border-t border-borde-suave" />
       {OPCIONES_AVANZADAS.map((o) => (
         <button
           key={o.clave}
           type="button"
           onClick={() => setOpcionActiva(o.clave)}
-          className={'flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formulario ' + (o.clave === opcionActiva ? 'bg-t-f3f0ff font-semibold text-primario' : 'text-texto hover:bg-t-faf9fc')}
+          className={'flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formulario ' + (o.clave === opcionActiva ? 'bg-fondo-activo-filtro font-control text-primario' : 'text-texto hover:bg-fondo')}
         >
-          <Icono name="calendario" className="h-3.75 w-3.75" /> {o.etiqueta}
+          <Icono name="calendario" className="h-4 w-4" /> {o.etiqueta}
         </button>
       ))}
       </div>
@@ -54,11 +54,11 @@ export function BloqueTitulo2({
             key={o.clave}
             type="button"
             onClick={() => alElegirOpcionMovil(o.clave)}
-            className={'flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-left ' + (o.clave === opcionActiva ? 'bg-t-f3f0ff' : 'bg-transparent')}
+            className={'flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-left ' + (o.clave === opcionActiva ? 'bg-fondo-activo-filtro' : 'bg-transparent')}
           >
             <Icono name="calendario" className={'h-5 w-5 flex-none ' + (o.clave === opcionActiva ? 'text-primario' : 'text-texto')} />
             <span className="min-w-0 flex-1">
-              <span className={'block text-campo-formulario font-medium ' + (o.clave === opcionActiva ? 'text-primario' : 'text-texto')}>{o.etiqueta}</span>
+              <span className={'block text-campo-formulario ' + (o.clave === opcionActiva ? 'text-primario' : 'text-texto')}>{o.etiqueta}</span>
               <span className={'block text-auxiliar ' + (o.clave === opcionActiva ? 'text-primario' : 'text-texto-suave')}>{o.detalle}</span>
             </span>
             <Icono name="flecha-derecha" className={'h-4 w-4 flex-none ' + (o.clave === opcionActiva ? 'text-primario' : 'text-texto-suave')} />

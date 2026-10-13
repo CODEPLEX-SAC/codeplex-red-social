@@ -1,12 +1,9 @@
-import { useRef, useState } from 'react'
 import { BotonIcono, AvatarImagen, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
 import { HISTORIAS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../rutas/inicio/rutas_inicio'
 import { GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS, SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { BloqueFotoVideo, SeccionContactosEnLinea } from '../../componentes/inicio'
-import type { PublicacionTextoInicio } from '@/tipos/inicio/modelo_inicio'
-import type { ContenidoPublicacion } from '@/tipos/inicio/contrato_crear_publicacion'
+import { BloqueFotoVideo, SeccionContactosEnLinea, usarPublicacionesInicio } from '../../componentes/inicio'
 
 
 function Historias() {
@@ -30,9 +27,9 @@ function Historias() {
           {HISTORIAS.map((h) => (
             <div key={h.nombre} className="flex w-27.5 flex-none cursor-pointer flex-col items-center gap-2">
               {h.crear ? (
-                <span className="relative grid h-26 w-26 place-items-center rounded-full bg-borde p-0.88">
+                <span className="relative grid h-26 w-26 place-items-center rounded-full bg-borde">
                   <AvatarImagen src={usuarioImg} className="h-full w-full rounded-full border-3 border-white bg-primario-suave" />
-                  <span className="absolute -bottom-0.5 -right-0.5 grid h-7.5 w-7.5 place-items-center rounded-full border-3 border-white bg-primario text-contador font-bold leading-none text-white">
+                  <span className="absolute -bottom-0.5 -right-0.5 grid h-7.5 w-7.5 place-items-center rounded-full border-3 border-white bg-primario text-conteo leading-none text-white">
                     +
                   </span>
                 </span>
@@ -40,12 +37,12 @@ function Historias() {
                 <SuperficieColor
                   as="span"
                   degradado="primario"
-                  className="relative grid h-26 w-26 place-items-center rounded-full p-0.88"
+                  className="relative grid h-26 w-26 place-items-center rounded-full"
                 >
                   <AvatarImagen src={usuarioImg} className="h-full w-full rounded-full border-3 border-white bg-primario-suave" />
                 </SuperficieColor>
               )}
-              <span className={'w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-auxiliar ' + (h.crear ? 'font-semibold text-texto' : 'text-texto-suave')}>
+              <span className={'w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-auxiliar ' + (h.crear ? 'font-titulo text-texto' : 'text-texto-suave')}>
                 {h.nombre}
               </span>
             </div>
@@ -58,27 +55,13 @@ function Historias() {
 }
 
 export function PaginaInicio() {
-  const [publicaciones, setPublicaciones] = useState<PublicacionTextoInicio[]>([])
-  const contadorPublicaciones = useRef(0)
-
-  function publicar(contenido: ContenidoPublicacion) {
-    if (contenido.tipo !== 'publicacion' || !contenido.texto) return
-    contadorPublicaciones.current += 1
-    const nueva: PublicacionTextoInicio = {
-      id: String(contadorPublicaciones.current),
-      nombre: SESION_ACTUAL.usuario,
-      tiempo: catalogoInicio.publicacion.tiempo_ahora,
-      texto: contenido.texto,
-      reacciones: 0,
-      comentarios: 0,
-    }
-    setPublicaciones((anteriores) => [nueva, ...anteriores])
-  }
+  const { publicaciones, publicar, editar, eliminar } = usarPublicacionesInicio()
 
   const placeholderPublicar = catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', SESION_ACTUAL.usuario.split(' ')[0])
   return (
     <EstructuraApp paginaActiva="inicio">
       <EstructuraTresColumnas
+        distribucion="social"
         principal={
           <BloqueFotoVideo
             placeholderPublicar={placeholderPublicar}
@@ -87,6 +70,8 @@ export function PaginaInicio() {
             PUBLICACION_COMPARTIDA_INICIO={PUBLICACION_COMPARTIDA_INICIO}
             publicaciones={publicaciones}
             onPublicar={publicar}
+            onEditar={editar}
+            onEliminar={eliminar}
           />
         }
         publicidad={<ColumnaPublicidad />}

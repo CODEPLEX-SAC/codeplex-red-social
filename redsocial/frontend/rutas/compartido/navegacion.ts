@@ -11,8 +11,16 @@ function notificar() {
   escuchas.forEach((escucha) => escucha())
 }
 
+function obtenerBusqueda(): string {
+  return window.location.search
+}
+
+function rutaCompleta(): string {
+  return window.location.pathname + window.location.search
+}
+
 export function navegar(ruta: string) {
-  if (ruta === window.location.pathname) return
+  if (ruta === rutaCompleta()) return
   window.history.pushState({}, '', ruta)
   notificar()
 }
@@ -34,4 +42,9 @@ function suscribir(escucha: Escucha) {
 
 export function usarRutaActual(): string {
   return useSyncExternalStore(suscribir, obtenerInstantanea, obtenerInstantanea)
+}
+
+export function usarParametroDeRuta(nombre: string): string | null {
+  const busqueda = useSyncExternalStore(suscribir, obtenerBusqueda, obtenerBusqueda)
+  return new URLSearchParams(busqueda).get(nombre)
 }

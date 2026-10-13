@@ -7,7 +7,7 @@ export function SeccionClave() {
   return (
     <div className="mb-5 flex items-start justify-between gap-5 max-900:flex-col max-900:items-stretch">
       <div>
-        <h1 className="m-0 flex items-center gap-2 text-titulo-pagina font-extrabold text-texto">
+        <h1 className="m-0 flex items-center gap-2 text-titulo-pagina text-texto">
           {catalogoIndicadores.titulos.clave} <Icono name="informacion" className="h-4 w-4 text-texto-suave" />
         </h1>
         <p className="m-0 mt-1 text-subtitulo text-texto-suave">{catalogoIndicadores.subtitulos.clave}</p>
@@ -20,7 +20,7 @@ export function SeccionClave() {
           {catalogoIndicadores.selectores.comparar_con.opciones.map((o) => <option key={o}>{o}</option>)}
         </Selector>
         <Boton type="button" variant="contorno" size="md" className="flex-none max-900:w-full max-900:justify-center">
-          <Icono name="filtro" className="h-3.75 w-3.75" /> {catalogoIndicadores.botones.filtros_avanzados}
+          <Icono name="filtro" className="h-4 w-4" /> {catalogoIndicadores.botones.filtros_avanzados}
         </Boton>
       </div>
     </div>

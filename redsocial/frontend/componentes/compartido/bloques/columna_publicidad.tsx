@@ -27,7 +27,7 @@ function PuntosCarrusel({ cantidad }: { cantidad: number }) {
   return (
     <div className="flex justify-center gap-1.25">
       {posicionesDe(cantidad).map((posicion) => (
-        <span key={posicion.id} className={'h-1.25 w-1.25 rounded-full ' + (posicion.orden === 0 ? 'bg-primario' : 'bg-t-d8d5e6')} />
+        <span key={posicion.id} className={'h-1.25 w-1.25 rounded-full ' + (posicion.orden === 0 ? 'bg-primario' : 'bg-texto-icono-discreto')} />
       ))}
     </div>
   )
@@ -36,12 +36,12 @@ function PuntosCarrusel({ cantidad }: { cantidad: number }) {
 export function ColumnaPublicidad() {
   return (
     <aside className="grid min-w-0 content-start gap-3.5">
-      <span className="mb-0.5 text-auxiliar font-extrabold uppercase tracking-widest text-t-9c99ab">{textosRedSocial.PUBLICIDAD}</span>
+      <span className="mb-0.5 text-badge uppercase tracking-widest text-texto-suave">{textosRedSocial.PUBLICIDAD}</span>
 
       <article className="relative overflow-hidden rounded-xl border border-borde bg-white p-4 shadow-sombra">
-        <h3 className="m-0 mb-1 text-subtitulo leading-tight tracking-n01 text-texto">
+        <p className="m-0 mb-1 text-subtitulo leading-compacto tracking-n01 text-texto">
           {ANUNCIOS_PUBLICIDAD[0].titulo}<br />{ANUNCIOS_PUBLICIDAD[0].subtitulo}
-        </h3>
+        </p>
         <p className="m-0 mb-3 text-cuerpo text-texto-suave">{ANUNCIOS_PUBLICIDAD[0].descripcion}</p>
         <a href="#" className={claseBotonMini + ' border-transparent bg-primario text-white hover:bg-primario-oscuro'}>{ANUNCIOS_PUBLICIDAD[0].textoBoton}</a>
         <VisualAnuncio />
@@ -49,15 +49,15 @@ export function ColumnaPublicidad() {
       </article>
 
       <article className="relative overflow-hidden rounded-xl border border-borde bg-white p-4 shadow-sombra">
-        <h3 className="m-0 mb-1 text-subtitulo leading-tight tracking-n01 text-texto">{ANUNCIOS_PUBLICIDAD[1].titulo}</h3>
+        <p className="m-0 mb-1 text-subtitulo leading-compacto tracking-n01 text-texto">{ANUNCIOS_PUBLICIDAD[1].titulo}</p>
         <p className="m-0 mb-3 text-cuerpo text-texto-suave">{ANUNCIOS_PUBLICIDAD[1].descripcion}</p>
-        <a href="#" className={claseBotonMini + ' border-transparent bg-exito text-white'}>{ANUNCIOS_PUBLICIDAD[1].textoBoton}</a>
+        <a href="#" className={claseBotonMini + ' border-transparent bg-exito-texto text-white'}>{ANUNCIOS_PUBLICIDAD[1].textoBoton}</a>
         <VisualAnuncio />
         <FlechaAnuncio />
       </article>
 
       <article className="relative overflow-hidden rounded-xl border border-borde bg-white p-4 shadow-sombra">
-        <h3 className="m-0 mb-1 text-subtitulo leading-tight tracking-n01 text-texto">{ANUNCIOS_PUBLICIDAD[2].titulo}</h3>
+        <p className="m-0 mb-1 text-subtitulo leading-compacto tracking-n01 text-texto">{ANUNCIOS_PUBLICIDAD[2].titulo}</p>
         <p className="m-0 mb-3 text-cuerpo text-texto-suave">{ANUNCIOS_PUBLICIDAD[2].descripcion}</p>
         <a href="#" className={claseBotonMini + ' border-transparent bg-primario text-white hover:bg-primario-oscuro'}>{ANUNCIOS_PUBLICIDAD[2].textoBoton}</a>
         <VisualAnuncio />
@@ -66,16 +66,16 @@ export function ColumnaPublicidad() {
 
       <PuntosCarrusel cantidad={3} />
 
-      <article className="relative overflow-hidden rounded-xl bg-t-2c2059 p-4 text-white">
-        <h3 className="m-0 mb-1 text-subtitulo leading-tight tracking-n01">
+      <article className="relative overflow-hidden rounded-xl bg-fondo-anuncio p-4 text-white">
+        <p className="m-0 mb-1 text-subtitulo leading-compacto tracking-n01">
           {ANUNCIO_PUBLICIDAD_DESTACADO.titulo}<br />{ANUNCIO_PUBLICIDAD_DESTACADO.subtitulo}<br />{ANUNCIO_PUBLICIDAD_DESTACADO.marca}
-        </h3>
-        <ul className="m-0 mb-3.5 grid list-none gap-1.5 p-0 text-auxiliar text-t-e4e0ff">
+        </p>
+        <ul className="m-0 mb-3.5 grid list-none gap-1.5 p-0 text-auxiliar text-texto-sobre-oscuro-claro">
           {ANUNCIO_PUBLICIDAD_DESTACADO.beneficios.map((b) => (
             <li key={b}>✓ {b}</li>
           ))}
         </ul>
-        <a href="#" className={claseBotonMini + ' border-gris-borde bg-white text-t-5d5a70'}>{ANUNCIO_PUBLICIDAD_DESTACADO.textoBoton}</a>
+        <a href="#" className={claseBotonMini + ' border-gris-borde bg-white text-texto-suave'}>{ANUNCIO_PUBLICIDAD_DESTACADO.textoBoton}</a>
         <VisualAnuncio oscuro />
       </article>
 

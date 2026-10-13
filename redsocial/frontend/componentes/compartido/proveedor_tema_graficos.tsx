@@ -6,6 +6,8 @@ import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido
 
 const temaGraficos = createTheme({
   components: {
+    MuiInputBase: { styleOverrides: { input: catalogoCompartido.placeholder_tema } },
+    MuiMenuItem: { styleOverrides: { root: catalogoCompartido.elemento_menu_tema } },
     MuiPaginationItem: { styleOverrides: { root: catalogoCompartido.fuente_heredada } },
     MuiListItemText: { styleOverrides: { primary: catalogoCompartido.fuente_heredada } },
     MuiTab: { styleOverrides: { root: catalogoCompartido.pestanas_tema } },
@@ -20,6 +22,7 @@ const temaGraficos = createTheme({
     },
   },
   palette: {
+    text: catalogoCompartido.texto_tema,
     primary: { main: catalogoCompartido.colores_graficos.primario },
     secondary: { main: catalogoCompartido.colores_graficos.secundario },
     success: { main: catalogoCompartido.colores_graficos.exito },

@@ -12,16 +12,21 @@
 
 @theme {
 
+  /* Familia tipográfica única de la aplicación. DECISIÓN PENDIENTE — FUENTE: Inter se declara pero no se entrega (sin archivo, sin regla de carga y sin dependencia autorizada).
+     Cuando se proporcione, se cambia solo aquí (más su regla de carga y typography.fontFamily "inherit" en el tema MUI). */
+  --fuente-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
   --color-primario: #5a43f4;
   --color-primario-oscuro: #4630d7;
   --color-primario-suave: #f0edff;
 
 
   --color-texto: #26243a;
-  --color-texto-suave: #77758a;
+  --color-texto-suave: #6c6a80;
   --color-borde: #e9e7f1;
   --color-fondo: #f8f8fc;
   --color-superficie: #fff;
+  --color-foco: var(--color-primario);
 
   --color-exito: #1e9a68;
   --color-peligro: #e5484d;
@@ -41,22 +46,87 @@
   --color-teal-categoria: #14b8a6;
   --color-violeta-categoria: #8b5cf6;
   --color-azul-claro-categoria: #60a5fa;
-  --color-positivo-kpi: #16a34a;
-  --color-negativo-kpi: #dc2626;
+  --color-positivo-kpi: var(--color-exito-texto);
+  --color-negativo-kpi: var(--color-peligro-texto);
 
   /* Acento del borde izquierdo de un evento en la vista Día del calendario, por categoría de evento. */
   --color-acento-evento-musica: #166534;
-  --color-acento-evento-tecnologia: #7c3aed;
+  --color-acento-evento-tecnologia: var(--color-morado-categoria);
   --color-acento-evento-negocios: #f59e0b;
   --color-acento-evento-educacion: #1e40af;
-  --color-acento-evento-empresa: #166534;
+  --color-acento-evento-empresa: var(--color-acento-evento-musica);
 
 
-  --color-gris-oscuro-texto: #1f2937;
-  --color-gris-texto: #374151;
-  --color-gris-texto-secundario: #6b7280;
-  --color-gris-texto-terciario: #9ca3af;
   --color-gris-borde: #e5e7eb;
+
+  /* Texto accesible (WCAG AA, 4,5:1) sobre blanco y sobre el tinte del 15 % de su propio color.
+     Cada uno es el token de categoría oscurecido lo mínimo necesario para cumplir; conserva el tono.
+     Se usan para estados y badges de texto pequeño. */
+  --color-exito-texto: #177851;
+  --color-peligro-texto: #ca2323;
+  --color-azul-categoria-texto: #2e66c1;
+  --color-naranja-categoria-texto: #a94e0f;
+  --color-verde-categoria-texto: #157839;
+  --color-rosa-categoria-texto: #c9156e;
+  --color-rojo-categoria-texto: #d11212;
+  --color-violeta-categoria-texto: #7142e0;
+
+  /* Alias semánticos de los colores que los botones consumían con nombre hexadecimal (valor idéntico). */
+  --color-texto-boton-secundario: #5d5a70;
+  --color-texto-icono: #6d6a7c;
+  --color-texto-icono-discreto: #b3b0c2;
+  --color-texto-icono-control: #8a87a0;
+  --color-fondo-boton-oscuro: #25203b;
+  --color-fondo-peligro-suave: #fef2f2;
+  --color-borde-peligro-suave: #fca5a5;
+  --color-borde-flotante: #e0dce8;
+  --color-fondo-activo-filtro: #f3f0ff;
+  --color-fondo-hover-suave: #f5f3ff;
+  --color-fondo-hover-neutro: #f2f1f6;
+  --color-fondo-hover-discreto: #f5f3fa;
+
+  /* Fondos de categoría (tinta suave) y borde de separación: sustituyen a los tonos con nombre hexadecimal que se repetían en los módulos. */
+  --color-borde-suave: #f0eef5;
+  --color-fondo-categoria-morado: #ede9fe;
+  --color-fondo-categoria-azul: #dbeafe;
+  --color-fondo-categoria-verde: #dcfce7;
+  --color-fondo-categoria-rojo: #fee2e2;
+  --color-fondo-categoria-naranja: #ffedd5;
+  --color-fondo-categoria-rosa: #fce7f3;
+  --color-fondo-categoria-amarillo: #fef3c7;
+  --color-fondo-categoria-cian: #cffafe;
+  --color-t-007aff: #007aff;
+  --color-t-34c759: #34c759;
+  --color-t-5856d6: #5856d6;
+  --color-t-c4b5fd: #c4b5fd;
+  --color-t-ddd6fe: #ddd6fe;
+  --color-t-e4defb: #e4defb;
+  --color-t-ea580c: #ea580c;
+  --color-t-fed7aa: #fed7aa;
+  --color-t-ff2d55: #ff2d55;
+  --color-t-ff9500: #ff9500;
+  --color-fondo-insignia-neutra: #efedf7;
+  --color-fondo-miniatura: #e8e5f0;
+  --color-fondo-exito-suave: #ecfdf5;
+  --color-borde-exito-suave: #a7f3d0;
+  --color-fondo-info-suave: #eff6ff;
+  --color-borde-info-suave: #bfdbfe;
+  --color-borde-primario-suave: #e4dfff;
+  --color-fondo-anuncio: #2c2059;
+  --color-fondo-escenario: #0f0c1e;
+  --color-texto-sobre-oscuro-acento: #9486ff;
+  --color-texto-sobre-oscuro: #cbc5e4;
+  --color-texto-sobre-oscuro-claro: #e4e0ff;
+  --color-texto-sobre-oscuro-peligro: #f2a0a0;
+
+  /* Pesos tipográficos por función (REG-08). Generan las utilidades font-etiqueta, font-control, font-titulo y font-pagina.
+     400 texto (por defecto) · font-etiqueta 500: etiquetas (REG-04) e interactivos ligeros · font-control 600: botones y cabeceras de tabla (REG-05)
+     font-titulo 700: título de sección, de tarjeta/entidad y de ventana o panel (REG-02) · font-pagina 800: solo el h1 de página (REG-01).
+     font-medium/semibold/bold/extrabold siguen válidas hasta migrar los módulos (Fase C). */
+  --font-weight-etiqueta: 500;
+  --font-weight-control: 600;
+  --font-weight-titulo: 700;
+  --font-weight-pagina: 800;
 
 
   --spacing-xs: 4px;
@@ -91,155 +161,10 @@
   --breakpoint-1350: 1350px;
   --breakpoint-1400: 1400px;
   --breakpoint-1600: 1600px;
+  --breakpoint-2130: 2130px;
 
   /* Paso 7 — tokens exactos generados desde los hex/rgba usados como clases arbitrarias de Tailwind. */
-  --color-t-059669: #059669;
-  --color-t-065f46: #065f46;
-  --color-t-0f0c1e: #0f0c1e;
-  --color-t-10b981: #10b981;
-  --color-t-1565c0: #1565c0;
-  --color-t-166534: #166534;
-  --color-t-16845a: #16845a;
-  --color-t-1b8a3e: #1b8a3e;
-  --color-t-1c1735: #1c1735;
-  --color-t-1d4ed8: #1d4ed8;
-  --color-t-1e3a5f: #1e3a5f;
-  --color-t-1e40af: #1e40af;
-  --color-t-2563eb: #2563eb;
-  --color-t-2c2059: #2c2059;
-  --color-t-2e7d32: #2e7d32;
-  --color-t-362a63: #362a63;
-  --color-t-3730a3: #3730a3;
-  --color-t-3c394f: #3c394f;
-  --color-t-4a35d4: #4a35d4;
-  --color-t-4c1d95: #4c1d95;
-  --color-t-5b21b6: #5b21b6;
-  --color-t-5d5a70: #5d5a70;
-  --color-t-6366f1: #6366f1;
-  --color-t-6c3ce0: #6c3ce0;
-  --color-t-6d6a7c: #6d6a7c;
-  --color-t-7662fa: #7662fa;
-  --color-t-854d0e: #854d0e;
-  --color-t-858295: #858295;
-  --color-t-86efac: #86efac;
-  --color-t-8f7dff: #8f7dff;
-  --color-t-92400e: #92400e;
-  --color-t-9693a5: #9693a5;
-  --color-t-9892a6: #9892a6;
-  --color-t-9b99a9: #9b99a9;
-  --color-t-9c99ab: #9c99ab;
-  --color-t-9d174d: #9d174d;
-  --color-t-9f1239: #9f1239;
-  --color-t-a7f3d0: #a7f3d0;
-  --color-t-a855f7: #a855f7;
-  --color-t-aaa7b5: #aaa7b5;
-  --color-t-aaa8b7: #aaa8b7;
-  --color-t-b3b0c2: #b3b0c2;
-  --color-t-bbf7d0: #bbf7d0;
-  --color-t-bfdbfe: #bfdbfe;
-  --color-t-c0b8ff: #c0b8ff;
-  --color-t-c2410c: #c2410c;
-  --color-t-c4c0d3: #c4c0d3;
-  --color-t-c62828: #c62828;
-  --color-t-c7c4d6: #c7c4d6;
-  --color-t-cbc5e4: #cbc5e4;
-  --color-t-d0cdd9: #d0cdd9;
-  --color-t-d1d5db: #d1d5db;
-  --color-t-d1fae5: #d1fae5;
-  --color-t-d4d0e0: #d4d0e0;
-  --color-t-d5ccff: #d5ccff;
-  --color-t-d5d0e5: #d5d0e5;
-  --color-t-d8d5e6: #d8d5e6;
-  --color-t-d92228: #d92228;
-  --color-t-d97706: #d97706;
-  --color-t-db2777: #db2777;
-  --color-t-dbeafe: #dbeafe;
-  --color-t-dcd6ff: #dcd6ff;
-  --color-t-dcfce7: #dcfce7;
-  --color-t-e08a1e: #e08a1e;
-  --color-t-e0972a: #e0972a;
-  --color-t-e0dce8: #e0dce8;
-  --color-t-e0e0ff: #e0e0ff;
-  --color-t-e0e7ff: #e0e7ff;
-  --color-t-e3f2fd: #e3f2fd;
-  --color-t-e4defb: #e4defb;
-  --color-t-e4dfff: #e4dfff;
-  --color-t-e4e0ff: #e4e0ff;
-  --color-t-e65100: #e65100;
-  --color-t-e8e0ff: #e8e0ff;
-  --color-t-e8e5f0: #e8e5f0;
-  --color-t-e8f5e9: #e8f5e9;
-  --color-t-e8f9ee: #e8f9ee;
-  --color-t-ea580c: #ea580c;
-  --color-t-eaf8f1: #eaf8f1;
-  --color-t-ecfdf5: #ecfdf5;
-  --color-t-ede9fe: #ede9fe;
-  --color-t-eeeeee: #eeeeee;
-  --color-t-efe9ff: #efe9ff;
-  --color-t-efedf7: #efedf7;
-  --color-t-eff6ff: #eff6ff;
-  --color-t-f0eef5: #f0eef5;
-  --color-t-f0f0f0: #f0f0f0;
-  --color-t-f0f0ff: #f0f0ff;
-  --color-t-f0f7ff: #f0f7ff;
-  --color-t-f0fdf4: #f0fdf4;
-  --color-t-f1f0f4: #f1f0f4;
-  --color-t-f2a0a0: #f2a0a0;
-  --color-t-f2f1f6: #f2f1f6;
-  --color-t-f3e8ff: #f3e8ff;
-  --color-t-f3f0ff: #f3f0ff;
-  --color-t-f3f2f7: #f3f2f7;
-  --color-t-f3f4f6: #f3f4f6;
-  --color-t-f59e0b: #f59e0b;
-  --color-t-f5f0ff: #f5f0ff;
-  --color-t-f5f3fa: #f5f3fa;
-  --color-t-f5f3ff: #f5f3ff;
-  --color-t-f5f5f5: #f5f5f5;
-  --color-t-f6f4ff: #f6f4ff;
-  --color-t-f7f6fa: #f7f6fa;
-  --color-t-f8f7fc: #f8f7fc;
-  --color-t-f9f8fc: #f9f8fc;
-  --color-t-f9fafb: #f9fafb;
-  --color-t-faf9fc: #faf9fc;
-  --color-t-faf9fd: #faf9fd;
-  --color-t-fafafa: #fafafa;
-  --color-t-fafafe: #fafafe;
-  --color-t-fbfaff: #fbfaff;
-  --color-t-fca5a5: #fca5a5;
-  --color-t-fce4ec: #fce4ec;
-  --color-t-fce7f3: #fce7f3;
-  --color-t-fcfbfe: #fcfbfe;
-  --color-t-fdeceb: #fdeceb;
-  --color-t-fdecec: #fdecec;
-  --color-t-fdfcff: #fdfcff;
-  --color-t-fecaca: #fecaca;
-  --color-t-fee2e2: #fee2e2;
-  --color-t-fef2f2: #fef2f2;
-  --color-t-fef3c7: #fef3c7;
-  --color-t-fef9c3: #fef9c3;
-  --color-t-ffcc00: #ffcc00;
-  --color-t-ffedd5: #ffedd5;
-  --color-t-fff3e0: #fff3e0;
-  --color-t-fff7ed: #fff7ed;
-  --color-t-fff8e1: #fff8e1;
-  --color-t-c4b5fd: #c4b5fd;
-  --color-t-fed7aa: #fed7aa;
-  --color-t-ddd6fe: #ddd6fe;
-  --color-t-7c3aed: #7c3aed;
-  --color-t-f97316: #f97316;
-  --color-t-cffafe: #cffafe;
-  --color-t-a16207: #a16207;
-  --color-t-b45309: #b45309;
-  --color-t-0891b2: #0891b2;
-  --color-t-ca8a04: #ca8a04;
-  --color-t-34c759: #34c759;
-  --color-t-007aff: #007aff;
-  --color-t-5856d6: #5856d6;
-  --color-t-ff9500: #ff9500;
-  --color-t-ff2d55: #ff2d55;
-  --color-t-25203b: #25203b;
 
-  --color-overlay-1: rgba(15,12,30,.35);
   --color-overlay-2: rgba(15,12,30,.4);
   --color-overlay-3: rgba(15,12,30,.45);
   --color-overlay-4: rgba(15,12,30,.55);
@@ -279,59 +204,61 @@
   --text-nombre-entidad: 1rem;
   --text-cuerpo: 1rem;
   --text-auxiliar: 0.75rem;
-  --text-etiqueta-estado: 0.75rem;
+  --text-etiqueta: 0.75rem;
+  --text-badge: 0.75rem;
+  --text-estado: 0.75rem;
   --text-contador: 0.875rem;
+  --text-conteo: 0.875rem;
+  --text-titulo-subseccion: 0.875rem;
+  --text-boton-mini: 0.75rem;
+  --text-chip: 0.875rem;
   --text-boton: 0.875rem;
   --text-enlace-accion: 0.75rem;
   --text-navegacion: 0.875rem;
   --text-encabezado-tabla: 0.75rem;
   --text-fecha-abreviada: 0.75rem;
   --text-campo-formulario: 0.875rem;
+  --text-nombre-fila: 0.875rem;
   --text-dia-evento: 1.125rem;
   --text-mes-evento: 0.6875rem;
 
-  --text-7: 7px;
-  --text-8: 8px;
-  --text-9: 9px;
-  --text-9.5: 9.5px;
-  --text-10: 10px;
-  --text-10.5: 10.5px;
-  --text-11: 11px;
-  --text-11.5: 11.5px;
-  --text-12.5: 12.5px;
-  --text-13: 13px;
-  --text-13.5: 13.5px;
-  --text-15: 15px;
-  --text-20: 20px;
-  --text-22: 22px;
-  --text-23: 23px;
-  --text-r65: 0.65rem;
-  --text-r7: 0.7rem;
-  --text-r72: 0.72rem;
-  --text-r75: 0.75rem;
-  --text-r78: 0.78rem;
-  --text-r8: 0.8rem;
-  --text-r8125: 0.8125rem;
-  --text-r82: 0.82rem;
-  --text-r85: 0.85rem;
-  --text-r875: 0.875rem;
-  --text-r9: 0.9rem;
-  --text-r9375: 0.9375rem;
-  --text-r95: 0.95rem;
-  --text-r105: 1.05rem;
-  --text-r11: 1.1rem;
-  --text-r115: 1.15rem;
-  --text-r12: 1.2rem;
-  --text-r135: 1.35rem;
+  /* Roles tipográficos globales (REG-01…REG-08). Cada utilidad text-<rol> aporta tamaño (con su escala responsive) y peso.
+     Una clase font-* junto a un rol solo se admite como excepción semántica documentada y la prueba de la Fase B la rechaza en el resto.
+       titulo-pagina 800 · titulo-seccion 700 · titulo-banner 700 (ventana, panel y tarjeta con cabecera) · nombre-entidad 700 · valor-destacado 800
+       titulo-subseccion 600 · nombre-fila 700 (dato principal de una fila: nombre en una tabla, precio en una lista, 14 px) · cuerpo-grande 700 (título destacado) · campo-formulario 600 (valor u opción de formulario) · etiqueta 500 (etiqueta de campo)
+       boton 600 · boton-mini 600 · chip 500 (chip de filtro) · enlace-accion 600 · encabezado-tabla 600
+       badge 700 (insignia o rótulo) · estado 500 (texto de estado) · conteo 700 (burbuja o cifra de conteo) · fecha-abreviada 400 · dia-evento 800 · mes-evento 700
+     Sin peso propio, porque el peso lo decide la función del texto: subtitulo, cuerpo, auxiliar, contador (metadato numérico), navegacion. */
+  --text-titulo-pagina--font-weight: 800;
+  --text-titulo-seccion--font-weight: 700;
+  --text-titulo-banner--font-weight: 700;
+  --text-nombre-entidad--font-weight: 700;
+  --text-valor-destacado--font-weight: 800;
+  --text-titulo-subseccion--font-weight: 600;
+  --text-cuerpo-grande--font-weight: 700;
+  --text-campo-formulario--font-weight: 600;
+  --text-nombre-fila--font-weight: 700;
+  --text-etiqueta--font-weight: 500;
+  --text-boton--font-weight: 600;
+  --text-boton-mini--font-weight: 600;
+  --text-chip--font-weight: 500;
+  --text-enlace-accion--font-weight: 600;
+  --text-encabezado-tabla--font-weight: 600;
+  --text-badge--font-weight: 700;
+  --text-estado--font-weight: 500;
+  --text-conteo--font-weight: 700;
+  --text-fecha-abreviada--font-weight: 400;
+  --text-dia-evento--font-weight: 800;
+  --text-mes-evento--font-weight: 700;
+
+  /* Interlineado global: 1,5 heredado por defecto; compacto para títulos y nombres que se parten en varias líneas; texto para párrafos de varias líneas.
+     leading-none queda para cifras dentro de cajas de alto fijo. */
+  --leading-compacto: 1.25;
+  --leading-texto: 1.45;
+
 
   --width-minlista: min(320px,88vw);
 
-  --leading-1.1: 1.1;
-  --leading-1.3: 1.3;
-  --leading-1.35: 1.35;
-  --leading-1.4: 1.4;
-  --leading-1.45: 1.45;
-  --leading-1.55: 1.55;
 
   --tracking-n01: -.01em;
   --tracking-n02: -0.02em;
@@ -378,17 +305,20 @@
 
   --grid-template-columns-52-1fr: 52px 1fr;
   --grid-template-columns-minmax400-900-minmax260-300-minmax300-340: minmax(400px,900px) minmax(260px,300px) minmax(300px,340px);
+  --grid-template-columns-minmax400-1fr-minmax260-300-minmax300-340: minmax(400px,1fr) minmax(260px,300px) minmax(300px,340px);
   --grid-template-columns-minmax400-1fr-minmax230-300: minmax(400px,1fr) minmax(230px,300px);
+  --grid-template-columns-minmax400-1200-minmax230-300: minmax(400px,1200px) minmax(230px,300px);
   --grid-template-columns-minmax0-1fr-360-minmax260-300: minmax(0,1fr) 360px minmax(260px,300px);
   --grid-template-columns-minmax400-1fr-minmax260-300: minmax(400px,1fr) minmax(260px,300px);
   --grid-template-rows-auto-auto-1fr-auto: auto auto 1fr auto;
+  --grid-template-columns-minmax0-100-minmax0-1fr-auto: minmax(0,100px) minmax(0,1fr) auto;
+  --grid-template-columns-minmax0-1fr-auto: minmax(0,1fr) auto;
+  --grid-template-columns-minmax0-140-minmax0-1fr-auto-auto: minmax(0,140px) minmax(0,1fr) auto auto;
+  --grid-template-columns-minmax0-1fr-auto-auto: minmax(0,1fr) auto auto;
   --grid-template-columns-1fr-300: 1fr 300px;
   --grid-template-columns-240-1fr: 240px 1fr;
   --grid-template-columns-1.6fr-1fr-1fr: 1.6fr 1fr 1fr;
-  --grid-template-columns-140-1fr-44-76: 140px 1fr 44px 76px;
-  --grid-template-columns-110-1fr-40-66: 110px 1fr 40px 66px;
   --grid-template-columns-2fr-1fr: 2fr 1fr;
-  --grid-template-columns-120-1fr-62: 120px 1fr 62px;
   --grid-template-columns-64-1fr: 64px 1fr;
   --grid-template-columns-140-1fr-auto: 140px 1fr auto;
   --grid-template-columns-100-1fr-auto-auto: 100px 1fr auto auto;
@@ -397,6 +327,7 @@
   --grid-template-columns-140-1fr: 140px 1fr;
   --grid-template-columns-120-1fr: 120px 1fr;
   --flex-1-1-240: 1 1 240px;
+  --grid-template-columns-repeatauto-fill-minmax260-1fr: repeat(auto-fill,minmax(260px,1fr));
   --grid-template-columns-repeatauto-fill-minmax180-1fr: repeat(auto-fill,minmax(180px,1fr));
   --grid-template-columns-280-1fr: 280px 1fr;
   --grid-template-columns-260-1fr: 260px 1fr;
@@ -428,14 +359,7 @@
   --primario-suave: var(--color-primario-suave);
 
  
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    sans-serif;
+  font-family: var(--fuente-base);
   color: var(--color-texto);
   background: var(--color-fondo);
 
@@ -449,6 +373,12 @@
 
 body {
   font-size: 14px;
+}
+
+/* Una lista en cuadrícula es una columna que puede encogerse: sin esto, un nombre largo sin salto de línea ensancha toda la página. */
+ul.grid,
+ol.grid {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 
@@ -468,14 +398,21 @@ html {
     --text-nombre-entidad: 0.9375rem;
     --text-cuerpo: 0.9375rem;
     --text-auxiliar: 0.75rem;
-    --text-etiqueta-estado: 0.75rem;
+    --text-etiqueta: 0.75rem;
+    --text-badge: 0.75rem;
+    --text-estado: 0.75rem;
     --text-contador: 0.8125rem;
+    --text-conteo: 0.8125rem;
+    --text-titulo-subseccion: 0.875rem;
+    --text-boton-mini: 0.75rem;
+    --text-chip: 0.875rem;
     --text-boton: 0.875rem;
     --text-enlace-accion: 0.75rem;
     --text-navegacion: 0.875rem;
     --text-encabezado-tabla: 0.75rem;
     --text-fecha-abreviada: 0.75rem;
     --text-campo-formulario: 0.875rem;
+    --text-nombre-fila: 0.875rem;
     --text-dia-evento: 1rem;
     --text-mes-evento: 0.6875rem;
   }
@@ -493,14 +430,21 @@ html {
     --text-nombre-entidad: 0.875rem;
     --text-cuerpo: 0.875rem;
     --text-auxiliar: 0.75rem;
-    --text-etiqueta-estado: 0.6875rem;
+    --text-etiqueta: 0.75rem;
+    --text-badge: 0.6875rem;
+    --text-estado: 0.6875rem;
     --text-contador: 0.75rem;
+    --text-conteo: 0.75rem;
+    --text-titulo-subseccion: 0.875rem;
+    --text-boton-mini: 0.75rem;
+    --text-chip: 0.875rem;
     --text-boton: 0.875rem;
     --text-enlace-accion: 0.75rem;
     --text-navegacion: 0.875rem;
     --text-encabezado-tabla: 0.6875rem;
     --text-fecha-abreviada: 0.6875rem;
     --text-campo-formulario: 0.875rem;
+    --text-nombre-fila: 0.875rem;
     --text-dia-evento: 1rem;
     --text-mes-evento: 0.625rem;
   }
@@ -509,6 +453,9 @@ html {
 
 
 @layer components {
+.text-enlace-accion {
+  white-space: nowrap;
+}
 .degradado-morado { background-image: linear-gradient(135deg, #6c3ce0, #a855f7); }
 .degradado-azul { background-image: linear-gradient(135deg, #3b82f6, #06b6d4); }
 .degradado-calido { background-image: linear-gradient(135deg, #f59e0b, #ef4444); }
@@ -565,6 +512,15 @@ html {
 }
 @media (width >= 1101px) {
   .panel-colaboradores-abierto {
+    grid-template-columns: minmax(0,1fr) 360px;
+    grid-template-areas: "colaboradores detalle" "comofunciona detalle";
+  }
+  .panel-colaboradores-cerrado {
+    grid-template-columns: minmax(0,1fr);
+  }
+}
+@media (width >= theme(--breakpoint-2130)) {
+  .panel-colaboradores-abierto {
     grid-template-columns: minmax(0,1fr) 360px minmax(260px,300px);
     grid-template-areas: "colaboradores detalle publicidad" "comofunciona detalle publicidad";
   }
@@ -600,4 +556,22 @@ html {
     height: 85dvh;
   }
 }
+}
+
+/* Foco de teclado visible (REG-15). Fuera de las capas para imponerse al "outline: 0" de MUI y a las utilidades.
+   Los campos de MUI marcan el foco con su borde; los contenedores con tabindex="-1" reciben el foco por código, no por teclado. */
+:focus-visible:not(.MuiInputBase-input):not([tabindex="-1"]) {
+  outline: 2px solid var(--color-foco);
+  outline-offset: 2px;
+}
+/* Controles de MUI cuyo input real tiene opacidad 0 (casilla, radio, interruptor) y pestañas con tabindex="-1" (foco con flechas): el anillo se dibuja en la envoltura. */
+[role="tab"]:focus-visible,
+.MuiCheckbox-root:has(> input:focus-visible),
+.MuiRadio-root:has(> input:focus-visible),
+.MuiSwitch-root:has(input:focus-visible) {
+  outline: 2px solid var(--color-foco);
+  outline-offset: 2px;
+}
+.MuiSwitch-root:has(input:focus-visible) {
+  border-radius: 9999px;
 }

@@ -10,6 +10,7 @@
     "carga_amigos": "No fue posible cargar tus amigos."
   },
   "mensajes": {
+    "sin_amigos": "Aún no tienes amigos agregados.",
     "sin_solicitudes": "No tienes solicitudes de amistad pendientes.",
     "sin_sugerencias": "No hay sugerencias de amigos por ahora."
   },

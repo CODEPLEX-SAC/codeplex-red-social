@@ -37,9 +37,7 @@
   },
   "secciones": {
     "historias": "Historias",
-    "contactos_en_linea": "Contactos en línea",
-    "grupos_recomendados": "Grupos recomendados",
-    "eventos_proximos": "Eventos próximos"
+    "grupos_recomendados": "Grupos recomendados"
   },
   "placeholders": {
     "que_estas_pensando": "¿Qué estás pensando, :nombre?"
@@ -60,22 +58,65 @@
     "reaccion_singular": "reacción",
     "reaccion_plural": "reacciones",
     "comentario_singular": "comentario",
-    "comentario_plural": "comentarios"
+    "comentario_plural": "comentarios",
+    "compartido_singular": "compartido",
+    "compartido_plural": "compartidos"
   },
   "publicacion": {
-    "tiempo_ahora": "Ahora"
+    "tiempo_ahora": "Ahora",
+    "mensaje_ejemplo": "¡Gran trabajo equipo! 💪🎉",
+    "clase_marco": "mb-4 overflow-hidden rounded-xl border border-borde/60 bg-white shadow-sombra",
+    "acciones": [
+      { "clave": "me_gusta", "icono": "me-gusta" },
+      { "clave": "comentar", "icono": "comentario" },
+      { "clave": "compartir", "icono": "compartir" }
+    ],
+    "menu": [
+      { "clave": "editar", "etiqueta": "Editar", "icono": "editar-oficial" },
+      { "clave": "eliminar", "etiqueta": "Eliminar", "icono": "eliminar", "peligro": true }
+    ],
+    "eliminar": {
+      "titulo": "¿Eliminar publicación?",
+      "cerrar": "Cerrar",
+      "mensaje": "Esta acción no se puede deshacer. La publicación dejará de mostrarse en tu muro.",
+      "cancelar": "Cancelar",
+      "confirmar": "Eliminar"
+    },
+    "compartir": {
+      "titulo": "Compartir publicación",
+      "cerrar": "Cerrar",
+      "contexto": "Compartiendo en tu red",
+      "marcador": "Di algo sobre esto...",
+      "etiqueta_campo": "Comentario opcional",
+      "etiqueta_vista_previa": "Publicación original",
+      "confirmar": "Compartir ahora",
+      "exito_titulo": "Publicación compartida",
+      "exito_mensaje": "Tu red ya puede ver esta publicación.",
+      "listo": "Listo"
+    },
+    "comentarios": {
+      "etiqueta_seccion": "Comentarios",
+      "etiqueta_lista": "Lista de comentarios",
+      "vacio": "Aún no hay comentarios. Sé el primero en comentar.",
+      "marcador": "Comenta aquí...",
+      "etiqueta_campo": "Escribe un comentario",
+      "publicar": "Publicar"
+    }
   },
   "leyendas": {
-    "colaborador": "(COLABORADOR)",
     "compartio_una_publicacion": "compartió una publicación."
   },
   "modal_crear_publicacion": {
     "titulo": "Crear publicación",
+    "editar": {
+      "titulo": "Editar publicación",
+      "guardar": "Guardar cambios"
+    },
     "cerrar": "Cerrar",
     "marcador_editor": "¿Qué estás pensando, :nombre?",
     "etiqueta_editor": "Contenido de la publicación",
     "filas_minimas": 4,
-    "clase_editor": "m-0 block w-full resize-none overflow-hidden border-0 bg-transparent p-0 text-cuerpo leading-1.55 text-texto shadow-none outline-none placeholder:text-texto-suave",
+    "clase_editor": "m-0 block w-full resize-none overflow-hidden border-0 bg-transparent p-0 text-cuerpo leading-texto text-texto shadow-none outline-none placeholder:text-texto-suave",
     "etiqueta_tipos": "Tipo de publicación",
     "tipos": [
       { "valor": "publicacion", "etiqueta": "Publicación" },

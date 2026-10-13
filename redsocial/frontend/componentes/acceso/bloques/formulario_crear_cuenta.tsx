@@ -17,7 +17,7 @@ export function FormularioCrearCuenta({ onVolverAIniciarSesion }: FormularioCrea
   return (
     <form noValidate onSubmit={formulario.enviar} aria-busy={cargando} className="flex flex-col gap-3.5">
       <div>
-        <label htmlFor={textos.ids.nombre} className="mb-1.5 block text-auxiliar font-bold text-texto">
+        <label htmlFor={textos.ids.nombre} className="mb-1.5 block text-etiqueta text-texto">
           {textos.campos.nombre}
         </label>
         <CampoTexto
@@ -32,7 +32,7 @@ export function FormularioCrearCuenta({ onVolverAIniciarSesion }: FormularioCrea
       </div>
 
       <div>
-        <label htmlFor={textos.ids.correo} className="mb-1.5 block text-auxiliar font-bold text-texto">
+        <label htmlFor={textos.ids.correo} className="mb-1.5 block text-etiqueta text-texto">
           {textos.campos.correo}
         </label>
         <CampoTexto
@@ -50,7 +50,7 @@ export function FormularioCrearCuenta({ onVolverAIniciarSesion }: FormularioCrea
       <CampoContrasena variante="nueva" valor={formulario.contrasena} error={errores.contrasena} onCambiar={formulario.cambiarContrasena} />
       <CampoContrasena variante="confirmacion" valor={formulario.confirmacion} error={errores.confirmacion} onCambiar={formulario.cambiarConfirmacion} />
 
-      <p className="m-0 text-center text-auxiliar leading-1.55 text-texto-suave">{textos.mensajes.terminos}</p>
+      <p className="m-0 text-center text-auxiliar leading-texto text-texto-suave">{textos.mensajes.terminos}</p>
 
       <Boton type="submit" variant={exitoso ? 'exito' : 'primario'} size="md" disabled={cargando || exitoso} aria-live="polite" className="w-full disabled:cursor-not-allowed disabled:opacity-80">
         {cargando && <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />}

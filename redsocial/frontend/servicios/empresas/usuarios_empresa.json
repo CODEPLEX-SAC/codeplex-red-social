@@ -1,0 +1,124 @@
+{
+  "usuariosBase": [
+    {
+      "nombre": "Juan Pérez",
+      "correoLocal": "juan.perez",
+      "rol": "administrador",
+      "estado": "activo",
+      "fecha": "15/09/2026",
+      "hora": "10:24"
+    },
+    {
+      "nombre": "María López",
+      "correoLocal": "maria.lopez",
+      "rol": "contador",
+      "estado": "activo",
+      "fecha": "14/09/2026",
+      "hora": "18:20"
+    },
+    {
+      "nombre": "Carlos Rojas",
+      "correoLocal": "carlos.rojas",
+      "rol": "supervisor",
+      "estado": "activo",
+      "fecha": "12/09/2026",
+      "hora": "09:15"
+    },
+    {
+      "nombre": "Ana Pérez",
+      "correoLocal": "ana.perez",
+      "rol": "usuario",
+      "estado": "activo",
+      "fecha": "10/09/2026",
+      "hora": "11:30"
+    },
+    {
+      "nombre": "Diego Luna",
+      "correoLocal": "diego.luna",
+      "rol": "usuario",
+      "estado": "inactivo",
+      "fecha": "05/09/2026",
+      "hora": "14:12"
+    },
+    {
+      "nombre": "Lucía Torres",
+      "correoLocal": "lucia.torres",
+      "rol": "contador",
+      "estado": "activo",
+      "fecha": "04/09/2026",
+      "hora": "16:45"
+    },
+    {
+      "nombre": "Pedro Salazar",
+      "correoLocal": "pedro.salazar",
+      "rol": "usuario",
+      "estado": "activo",
+      "fecha": "03/09/2026",
+      "hora": "08:50"
+    },
+    {
+      "nombre": "Rosa Medina",
+      "correoLocal": "rosa.medina",
+      "rol": "supervisor",
+      "estado": "activo",
+      "fecha": "02/09/2026",
+      "hora": "13:05"
+    },
+    {
+      "nombre": "Luis Quispe",
+      "correoLocal": "luis.quispe",
+      "rol": "usuario",
+      "estado": "inactivo",
+      "fecha": "28/08/2026",
+      "hora": "17:40"
+    },
+    {
+      "nombre": "Marta Vega",
+      "correoLocal": "marta.vega",
+      "rol": "usuario",
+      "estado": "activo",
+      "fecha": "27/08/2026",
+      "hora": "09:30"
+    },
+    {
+      "nombre": "Jorge Campos",
+      "correoLocal": "jorge.campos",
+      "rol": "contador",
+      "estado": "activo",
+      "fecha": "26/08/2026",
+      "hora": "12:10"
+    },
+    {
+      "nombre": "Sofía Ramos",
+      "correoLocal": "sofia.ramos",
+      "rol": "usuario",
+      "estado": "activo",
+      "fecha": "25/08/2026",
+      "hora": "15:25"
+    },
+    {
+      "nombre": "Andrés Paredes",
+      "correoLocal": "andres.paredes",
+      "rol": "supervisor",
+      "estado": "activo",
+      "fecha": "24/08/2026",
+      "hora": "10:00"
+    },
+    {
+      "nombre": "Elena Castro",
+      "correoLocal": "elena.castro",
+      "rol": "usuario",
+      "estado": "inactivo",
+      "fecha": "22/08/2026",
+      "hora": "11:55"
+    },
+    {
+      "nombre": "Raúl Mendoza",
+      "correoLocal": "raul.mendoza",
+      "rol": "usuario",
+      "estado": "activo",
+      "fecha": "20/08/2026",
+      "hora": "14:35"
+    }
+  ]
+}

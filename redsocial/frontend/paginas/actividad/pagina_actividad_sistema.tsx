@@ -1,4 +1,4 @@
-import { BotonIcono, Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio } from '../../componentes/compartido'
+import { BotonIcono, Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio } from '../../componentes/compartido'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import { PestanasActividad } from '../../componentes/actividad'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
@@ -12,7 +12,7 @@ export function PaginaActividadSistema() {
         principal={
           <section>
             <div className="mb-5">
-              <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoActividad.titulos.sistema}</h1>
+              <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoActividad.titulos.sistema}</h1>
               <p className="m-0 text-subtitulo text-texto-suave">{catalogoActividad.subtitulos.sistema}</p>
             </div>
 
@@ -20,12 +20,12 @@ export function PaginaActividadSistema() {
 
             <section className="rounded-control border border-borde bg-white">
               <div className="flex items-start justify-between gap-3 border-b border-borde p-4 pb-3">
-                <div className="flex items-start gap-3">
-                  <div className="grid h-10 w-10 flex-none place-items-center rounded-control bg-t-f5f3fa text-texto-suave">
-                    <Icono name="configuracion" className="h-5.5 w-5.5" />
+                <div className="flex min-w-0 items-start gap-3">
+                  <div className="grid h-10 w-10 flex-none place-items-center rounded-control bg-fondo-hover-discreto text-texto-suave">
+                    <Icono name="configuracion" className="h-5 w-5" />
                   </div>
-                  <div>
-                    <h2 className="m-0 mb-0.5 text-titulo-seccion font-bold text-texto">{catalogoActividad.secciones.sistema.titulo}</h2>
+                  <div className="min-w-0">
+                    <h2 className="m-0 mb-0.5 text-titulo-seccion text-texto">{catalogoActividad.secciones.sistema.titulo}</h2>
                     <p className="m-0 text-auxiliar text-texto-suave">{catalogoActividad.secciones.sistema.descripcion}</p>
                   </div>
                 </div>
@@ -36,34 +36,31 @@ export function PaginaActividadSistema() {
               </div>
 
               {EVENTOS_SISTEMA.map((e) => (
-                <article key={e.titulo} className="flex items-center gap-3 border-b border-t-f0eef5 p-3.5 last:border-b-0 hover:bg-t-fdfcff">
+                <article key={e.titulo} className="flex items-center gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
                   <div className={`grid h-10 w-10 flex-none place-items-center rounded-control ${CLASES_ICONO_EVENTO[e.color]}`}>
                     <Icono name={e.icono} className="h-5 w-5" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="mb-0.5 block text-subtitulo font-bold text-texto">{e.titulo}</span>
+                    <span className="mb-0.5 block text-titulo-subseccion text-texto">{e.titulo}</span>
                     <span className="mb-0.75 block text-auxiliar text-texto-suave">{e.descripcion}</span>
-                    <div className="flex flex-wrap items-center gap-1 text-auxiliar text-t-9892a6">
+                    <div className="flex flex-wrap items-center gap-1 text-auxiliar text-texto-suave">
                       {e.detalles.map((d, i) => (
                         <span key={d} className="flex items-center gap-1">
-                          {i > 0 && <span className="text-t-d4d0e0">·</span>}
+                          {i > 0 && <span aria-hidden="true">·</span>}
                           {d}
                         </span>
                       ))}
                     </div>
                   </div>
                   <div className="flex flex-none items-center gap-2">
-                    <span className="whitespace-nowrap text-fecha-abreviada text-t-aaa7b5">{e.tiempo}</span>
+                    <span className="whitespace-nowrap text-fecha-abreviada text-texto-suave">{e.tiempo}</span>
                     <span className={`h-2 w-2 flex-none rounded-full ${CLASES_INDICADOR[e.estado]}`} />
                     <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="discreto" size="md" className="flex-none" />
                   </div>
                 </article>
               ))}
 
-              <button type="button" className="flex w-full items-center justify-center gap-1.5 border-t border-t-f0eef5 bg-transparent p-3.5 text-boton font-semibold text-primario hover:bg-t-fdfcff">
-                {textosRedSocial.CARGAR_MAS}
-                <Icono name="flecha-abajo" className="h-4 w-4" />
-              </button>
+              <BotonPieLista>{textosRedSocial.CARGAR_MAS}</BotonPieLista>
             </section>
           </section>
         }

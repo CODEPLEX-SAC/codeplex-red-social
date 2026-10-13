@@ -12,9 +12,9 @@ export function SeccionRatiosFinancieros({
 }) {
   return (
     <article className="min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra">
-      <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-        <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.ratios_financieros}</h2>
-        <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
+      <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+        <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.ratios_financieros}</h2>
+        <a href="#" className="text-enlace-accion text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-cuerpo">

@@ -6,7 +6,7 @@ const TIPO_RANGO = catalogoColaboradores.celda_vigencia.tipo_rango as TipoVigenc
 export function BloqueColaboradores3({ c }: { c: Colaborador }) {
   return (
     <td className="p-3.5 align-middle">
-      <div className="whitespace-nowrap text-auxiliar leading-snug text-gris-texto-secundario">
+      <div className="whitespace-nowrap text-auxiliar leading-texto text-texto-suave">
         {c.vigencia.tipo === TIPO_RANGO ? (
           <span className="block text-auxiliar">
             {c.vigencia.desde}
@@ -15,7 +15,7 @@ export function BloqueColaboradores3({ c }: { c: Colaborador }) {
           </span>
         ) : (
           <>
-            <span className="block text-auxiliar text-gris-texto-terciario">{c.vigencia.etiqueta}</span>
+            <span className="block text-auxiliar text-texto-suave">{c.vigencia.etiqueta}</span>
             <span className="block text-fecha-abreviada">{c.vigencia.fecha}</span>
           </>
         )}

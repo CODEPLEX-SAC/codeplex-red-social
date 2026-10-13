@@ -22,14 +22,14 @@ export function BloqueTodoElDia2({
   return (
     <div className="mt-4 max-h-130 overflow-auto rounded-xl border border-gris-borde bg-fondo">
       <div className={'sticky top-0 z-10 grid min-w-100 max-768:min-w-0 border-b border-gris-borde bg-fondo ' + COLUMNAS_DIA}>
-        <span className="px-2.5 py-2 text-encabezado-tabla leading-snug text-gris-texto-terciario">{catalogoEventos.botones.todo_el_dia}</span>
+        <span className="px-2.5 py-2 text-encabezado-tabla leading-texto text-texto-suave">{catalogoEventos.botones.todo_el_dia}</span>
         <div className="border-l border-gris-borde" />
       </div>
 
       <div className={'grid min-w-100 max-768:min-w-0 ' + COLUMNAS_DIA}>
         <div>
           {HORAS_DIA.map((h) => (
-            <span key={h} className="block h-15 pt-1 px-2.5 text-encabezado-tabla leading-snug text-gris-texto-terciario">{h}</span>
+            <span key={h} className="block h-15 pt-1 px-2.5 text-encabezado-tabla leading-texto text-texto-suave">{h}</span>
           ))}
         </div>
         <div className="relative border-l border-gris-borde">
@@ -44,10 +44,10 @@ export function BloqueTodoElDia2({
               {ev.virtual && (
                 <Icono name="video" className="absolute right-3 top-2.5 h-4 w-4" />
               )}
-              <span className="block text-fecha-abreviada font-semibold">{ev.horaTexto}</span>
-              <h4 className="m-0 mt-0.5 text-nombre-entidad font-bold text-gris-oscuro-texto">{ev.nombre}</h4>
-              <span className="mt-1 flex items-center gap-1 text-auxiliar text-gris-texto-secundario">
-                <Icono name="ubicacion" className="h-3.25 w-3.25" /> {ev.ubicacion}
+              <span className="block text-fecha-abreviada">{ev.horaTexto}</span>
+              <h4 className="m-0 mt-0.5 text-nombre-entidad text-texto">{ev.nombre}</h4>
+              <span className="mt-1 flex items-center gap-1 text-auxiliar text-texto-suave">
+                <Icono name="ubicacion" className="h-3.5 w-3.5" /> {ev.ubicacion}
               </span>
             </div>
           ))}

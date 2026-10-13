@@ -1,4 +1,5 @@
 import { Boton } from '../../compartido/interfaz/boton'
+import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
 import { Icono } from '../../compartido/icono'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { PanelFiltroEstado } from './panel_filtro_estado'
@@ -77,24 +78,24 @@ export function SeccionEventosOrganizas({ datos }: {
     <div className="mb-6 flex items-center gap-3 border-b border-gris-borde py-3 max-600:flex-nowrap max-600:overflow-x-auto max-600:scrollbar-oculto">
       <div className="relative flex-none">
         <Boton type="button" onClick={alternarFiltroEstado} variant="filtro" size="filtro" activo={filtroEstadoAbierto}>
-          <Icono name="calendario" className="h-3.75 w-3.75" /> {catalogoEventos.botones.estado}
-          <Icono name={filtroEstadoAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="ml-1 h-3.5 w-3.5 text-gris-texto-terciario" />
+          <Icono name="calendario" className="h-4 w-4" /> {catalogoEventos.botones.estado}
+          <Icono name={filtroEstadoAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="ml-1 h-3.5 w-3.5 text-texto-suave" />
         </Boton>
         {filtroEstadoAbierto && (
           <>
-            <div className="fixed inset-0 z-19 max-600:bg-black/45" onClick={cerrarFiltroEstado} />
+            <FondoPanelFlotante onCerrar={cerrarFiltroEstado} />
             <PanelFiltroEstado onCerrar={cerrarFiltroEstado} />
           </>
         )}
       </div>
       <div className="relative flex-none">
         <Boton type="button" onClick={alternarFiltroFecha} variant="filtro" size="filtro" activo={filtroFechaAbierto || filtroFecha !== null}>
-          <Icono name="calendario" className="h-3.75 w-3.75" /> {filtroFecha === null ? catalogoEventos.filtros.fecha : etiquetaFiltroFecha(filtroFecha)}
-          <Icono name={filtroFechaAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="ml-1 h-3.5 w-3.5 text-gris-texto-terciario" />
+          <Icono name="calendario" className="h-4 w-4" /> {filtroFecha === null ? catalogoEventos.filtros.fecha : etiquetaFiltroFecha(filtroFecha)}
+          <Icono name={filtroFechaAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="ml-1 h-3.5 w-3.5 text-texto-suave" />
         </Boton>
         {filtroFechaAbierto && (
           <>
-            <div className="fixed inset-0 z-19 max-600:bg-black/45" onClick={cerrarFiltroFecha} />
+            <FondoPanelFlotante onCerrar={cerrarFiltroFecha} />
             <PanelFiltroFecha onCerrar={cerrarFiltroFecha} onAplicar={setFiltroFecha} />
           </>
         )}

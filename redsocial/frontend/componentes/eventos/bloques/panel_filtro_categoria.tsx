@@ -29,9 +29,9 @@ export function PanelFiltroCategoria({ categorias, onCerrar }: PanelFiltroCatego
       className="absolute left-0 top-tooltip z-20 flex w-72.5 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 panel-hoja-movil max-600:w-full max-600:rounded-b-none max-600:rounded-t-2xl max-600:border-0 max-600:p-0"
     >
       <div className="hidden max-600:flex max-600:flex-none max-600:flex-col max-600:bg-white max-600:pt-2.5">
-        <div className="mx-auto mb-1 h-1 w-10 flex-none rounded-full bg-t-e0dce8" />
-        <div className="flex items-center justify-between border-b border-t-f0eef5 px-4 pb-3">
-          <h3 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoEventos.filtros.categoria}</h3>
+        <div className="mx-auto mb-1 h-1 w-10 flex-none rounded-full bg-borde-flotante" />
+        <div className="flex items-center justify-between border-b border-borde-suave px-4 pb-3">
+          <h3 className="m-0 text-titulo-banner text-texto">{catalogoEventos.filtros.categoria}</h3>
           <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={onCerrar} variant="discreto" size="md" />
         </div>
       </div>
@@ -46,21 +46,21 @@ export function PanelFiltroCategoria({ categorias, onCerrar }: PanelFiltroCatego
 
       <div className="max-h-75 overflow-y-auto max-600:max-h-none max-600:flex-1 max-600:px-4">
         {categoriasVisibles.map((c) => (
-          <label key={c.nombre} className="flex cursor-pointer items-center gap-2.5 rounded-lg px-1.5 py-2 hover:bg-t-faf9fc">
+          <label key={c.nombre} className="flex cursor-pointer items-center gap-2.5 rounded-lg px-1.5 py-2 hover:bg-fondo">
             <Casilla seleccionado={seleccionadas.has(c.nombre)} alCambiar={() => alAlternar(c.nombre)} />
             <SuperficieColor variante={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-7 text-white">
               <Icono name={c.icono} className="h-3.5 w-3.5" />
             </SuperficieColor>
             <span className="min-w-0 flex-1 truncate text-campo-formulario text-texto">{c.nombre}</span>
-            <span className="flex-none text-contador font-semibold text-texto-suave">{c.conteo}</span>
+            <span className="flex-none text-conteo text-texto-suave">{c.conteo}</span>
           </label>
         ))}
       </div>
 
-      <div className="mt-2 flex items-center justify-between border-t border-t-f0eef5 pt-3 max-600:m-0 max-600:flex-none max-600:bg-white max-600:px-4 max-600:pb-4">
-        <button type="button" onClick={() => setSeleccionadas(new Set())} className="text-boton font-semibold text-primario hover:underline">
+      <div className="mt-2 flex items-center justify-between border-t border-borde-suave pt-3 max-600:m-0 max-600:flex-none max-600:bg-white max-600:px-4 max-600:pb-4">
+        <Boton type="button" variant="enlace" size="enlace" onClick={() => setSeleccionadas(new Set())}>
           {catalogoEventos.botones.limpiar_seleccion}
-        </button>
+        </Boton>
         <Boton type="button" onClick={onCerrar} variant="primario" size="default">
           {catalogoEventos.panel_filtro_fecha.aplicar}
         </Boton>

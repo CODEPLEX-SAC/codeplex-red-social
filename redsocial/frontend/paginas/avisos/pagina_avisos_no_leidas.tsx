@@ -11,7 +11,7 @@ export function PaginaAvisosNoLeidas() {
           <section>
             <div className="mb-5 flex items-start justify-between gap-5 max-600:flex-col max-600:items-stretch">
               <div>
-                <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoAvisos.titulos.principal}</h1>
+                <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoAvisos.titulos.principal}</h1>
                 <p className="m-0 text-subtitulo text-texto-suave">{catalogoAvisos.subtitulos.principal}</p>
               </div>
               <div className="flex flex-none items-center gap-2">
@@ -25,7 +25,7 @@ export function PaginaAvisosNoLeidas() {
             <PestanasAvisos activa="no_leidas" conteos={CONTEOS_AVISOS} />
 
             <div className="mb-3 flex items-center justify-between gap-3">
-              <label className="flex items-center gap-2 text-campo-formulario font-medium text-texto">
+              <label className="flex items-center gap-2 text-etiqueta text-texto">
                 <Casilla />
                 {catalogoAvisos.campos_lista.seleccionar_todas} ({AVISOS_NO_LEIDAS.length})
               </label>

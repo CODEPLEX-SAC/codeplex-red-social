@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import type { IconName } from './contrato_icono'
 
 export interface UsuarioSesion {
+  id: string
   usuario: string
   empresa: string
   ruc: string

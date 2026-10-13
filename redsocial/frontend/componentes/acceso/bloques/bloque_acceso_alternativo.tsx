@@ -13,7 +13,7 @@ export function BloqueAccesoAlternativo() {
       </Boton>
       <div className="mt-1 flex items-center gap-2.5 text-texto-suave">
         <div className="h-px flex-1 bg-borde" />
-        <span className="text-auxiliar font-bold uppercase">{catalogoAcceso.separador}</span>
+        <span className="text-badge uppercase">{catalogoAcceso.separador}</span>
         <div className="h-px flex-1 bg-borde" />
       </div>
     </div>

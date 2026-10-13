@@ -9,11 +9,11 @@ function esMedioValido(archivo: File) {
   return tipoAceptado && textos.medios.tamano_maximo >= archivo.size
 }
 
-export function usarBorradorPublicacion(tipoInicial: TipoPublicacion) {
+export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInicial: string) {
   const contadorIds = useRef(0)
   const urlsActivas = useRef(new Set<string>())
   const [tipo, setTipo] = useState<TipoPublicacion>(tipoInicial)
-  const [contenido, setContenido] = useState('')
+  const [contenido, setContenido] = useState(textoInicial)
   const [opciones, setOpciones] = useState<OpcionEncuestaPublicacion[]>(() => Array.from({ length: textos.encuesta.opciones_iniciales }, () => nuevaOpcion()))
   const [prioridad, setPrioridad] = useState<PrioridadPublicacion>(textos.prioridad.inicial as PrioridadPublicacion)
   const [medios, setMedios] = useState<MedioLocalPublicacion[]>([])

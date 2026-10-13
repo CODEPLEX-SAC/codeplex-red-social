@@ -9,7 +9,7 @@ export function SeccionOrganizadorEvento() {
   return (
     <TarjetaFormularioEvento icono="grupos" titulo={textos.organizador}>
       <div>
-        <span className="block text-nombre-entidad font-bold text-texto">{textos.organizador_nombre}</span>
+        <span className="block text-nombre-entidad text-texto">{textos.organizador_nombre}</span>
         <span className="block text-auxiliar text-texto-suave">{textos.organizador_detalle}</span>
       </div>
       <AvisoFormularioEvento texto={textos.organizador_aviso} />
@@ -25,13 +25,13 @@ export function SeccionConfiguracionEvento({ valores, asignar }: { valores: Valo
         <FilaInterruptorEvento etiqueta={textos.mostrar_calendario} activo={valores.calendarioPublico} onCambiar={asignar.calendarioPublico} />
         <FilaInterruptorEvento etiqueta={textos.permitir_comentarios} activo={valores.comentarios} onCambiar={asignar.comentarios} />
       </div>
-      <div className="mt-4 border-t border-t-f0eef5 pt-4">
-        <h4 className="m-0 mb-2 text-nombre-entidad font-bold text-texto">{textos.enlace} <span className="font-normal text-texto-suave">{textos.opcional}</span></h4>
+      <div className="mt-4 border-t border-borde-suave pt-4">
+        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.enlace} <span className="font-normal text-texto-suave">{textos.opcional}</span></h4>
         <CampoTexto anchoCompleto valor={valores.enlace} alCambiar={asignar.enlace} marcador={textos.enlace_marcador} />
         <span className="mt-1 block text-auxiliar text-texto-suave">{textos.enlace_ayuda}</span>
       </div>
-      <div className="mt-4 border-t border-t-f0eef5 pt-4">
-        <h4 className="m-0 mb-2 text-nombre-entidad font-bold text-texto">{textos.etiquetas} <span className="font-normal text-texto-suave">{textos.opcional}</span></h4>
+      <div className="mt-4 border-t border-borde-suave pt-4">
+        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.etiquetas} <span className="font-normal text-texto-suave">{textos.opcional}</span></h4>
         <CampoTexto anchoCompleto valor={valores.etiquetas} alCambiar={asignar.etiquetas} marcador={textos.etiquetas_marcador} />
         <span className="mt-1 block text-auxiliar text-texto-suave">{textos.etiquetas_ayuda}</span>
       </div>

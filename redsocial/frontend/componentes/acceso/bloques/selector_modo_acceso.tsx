@@ -36,7 +36,7 @@ export function SelectorModoAcceso({ modo, onCambiar }: SelectorModoAccesoProps)
             aria-controls={catalogoAcceso.ids.panel}
             tabIndex={activa ? 0 : -1}
             onClick={() => onCambiar(opcion.clave as ModoAcceso)}
-            className={`flex-1 cursor-pointer rounded-lg border-0 py-2 text-boton font-bold transition-colors ${
+            className={`flex-1 cursor-pointer rounded-lg border-0 py-2 text-boton transition-colors ${
               activa ? 'bg-white text-primario shadow-sombra' : 'bg-transparent text-texto-suave hover:text-texto'
             }`}
           >

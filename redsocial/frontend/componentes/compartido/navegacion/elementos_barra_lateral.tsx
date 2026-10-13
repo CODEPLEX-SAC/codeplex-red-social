@@ -53,7 +53,7 @@ export function elementosDeLaBarra(paginaActiva?: string): CodeplexElementoMenuL
             <strong className="block truncate text-navegacion">{modulo.etiqueta}</strong>
             <small className="block truncate text-auxiliar text-texto-suave">{modulo.descripcion}</small>
           </span>
-          <Icono name={ICONO_POR_ACCION.flecha_modulo} className="flex-none text-texto-suave w-3.25 h-3.25" />
+          <Icono name={ICONO_POR_ACCION.flecha_modulo} className="flex-none text-texto-suave w-3.5 h-3.5" />
         </span>
       ),
       icono: (

@@ -13,7 +13,8 @@
     "envio_invitacion": "No fue posible enviar la invitación."
   },
   "mensajes": {
-    "sin_colaboradores": "No hay colaboradores para mostrar con estos filtros."
+    "sin_colaboradores": "No hay colaboradores para mostrar con estos filtros.",
+    "invitacion_completada_demostracion": "Invitación completada en la demostración. No se envió ningún correo."
   },
   "toast": {
     "invitacion_enviada": "Invitación enviada.",
@@ -38,24 +39,16 @@
   },
   "rutas": {
     "listado": "/colaboradores",
-    "perfil": "/colaboradores/perfil",
-    "invitar": "/colaboradores/invitar",
-    "invitar_rol_permisos": "/colaboradores/invitar/rol-permisos",
-    "invitar_vigencia": "/colaboradores/invitar/vigencia",
-    "invitar_resumen": "/colaboradores/invitar/resumen"
+    "perfil": "/colaboradores/perfil"
   },
   "titulo_menu": "Colaboradores",
   "titulos": {
     "listado": "Colaboradores",
     "perfil": "Perfil del colaborador",
-    "invitar": "Invitar colaborador",
-    "invitar_rol_permisos": "Invitar colaborador",
-    "invitar_vigencia": "Invitar colaborador",
-    "invitar_resumen": "Invitar colaborador"
+    "invitar": "Invitar colaborador"
   },
   "subtitulos": {
-    "listado": "Gestiona a las personas que forman parte de tu equipo y acceden a los sistemas.",
-    "invitar_asistente": "Envía una invitación para que sea una a tu equipo y pueda usar los sistemas según el rol asignado."
+    "listado": "Gestiona a las personas que forman parte de tu equipo y acceden a los sistemas."
   },
   "stepper_invitar": ["Información", "Rol y permisos", "Vigencia", "Resumen"],
   "secciones": {
@@ -69,7 +62,6 @@
     "aplicaciones_asignadas": "Aplicaciones asignadas (7)",
     "aplicaciones_titulo": "Aplicaciones asignadas",
     "vigencia_y_acceso": "Vigencia y acceso",
-    "acciones_rapidas": "Acciones rápidas",
     "historial_actividad": "Historial de actividad",
     "datos_del_colaborador": "Datos del colaborador",
     "metodo_de_invitacion": "Método de invitación",
@@ -107,9 +99,9 @@
     "si_boton_no_funciona": "Si el botón no funciona, copia y pega este enlace en tu navegador:",
     "no_esperabas_invitacion": "¿No esperabas esta invitación? Puedes ignorar este correo.",
     "nota_aceptacion": "El colaborador deberá aceptar la invitación para poder acceder a los sistemas según los permisos asignados.",
-    "guardar_borrador": "Guardar borrador",
     "enviar_invitacion": "Enviar invitación",
-    "se_enviara_por_correo": "Se enviará por correo",
+    "editar_rol": "Editar rol y permisos",
+    "editar_vigencia": "Editar vigencia",
     "enlace_invitacion_preview": "https://codeplex.com/invitacion/abc123def456"
   },
   "celda_vigencia": {
@@ -161,7 +153,7 @@
     { "clave": "sin-acceso", "icono": "sin-acceso", "color": "rojo", "etiqueta": "Sin acceso" },
     { "clave": "ver", "icono": "ver", "color": "azul", "etiqueta": "Ver" },
     { "clave": "crear", "icono": "mas", "color": "verde", "etiqueta": "Crear" },
-    { "clave": "editar", "icono": "editar", "color": "naranja", "etiqueta": "Editar" },
+    { "clave": "editar", "icono": "editar-oficial", "color": "naranja", "etiqueta": "Editar" },
     { "clave": "eliminar", "icono": "eliminar", "color": "rojo", "etiqueta": "Eliminar" },
     { "clave": "imprimir", "icono": "imprimir", "color": "violeta", "etiqueta": "Imprimir" },
     { "clave": "exportar", "icono": "descargar", "color": "verde", "etiqueta": "Exportar" }
@@ -173,6 +165,7 @@
     "correo_ayuda": "Se enviará la invitación a este correo.",
     "telefono_whatsapp": "Teléfono / WhatsApp",
     "telefono_ayuda": "Opcional. Se puede invitar por WhatsApp.",
+    "codigo_pais": "Código de país",
     "documento_identidad": "Documento de identidad",
     "cargo_puesto": "Cargo / Puesto",
     "cargo_ayuda": "Opcional. Ej: Contador, Analista, Asistente, etc.",
@@ -195,7 +188,6 @@
     "reenviar": "Reenviar",
     "ver_colaborador": "Ver colaborador",
     "editar_colaborador": "Editar colaborador",
-    "cambiar_rol_perfil": "Cambiar rol / perfil",
     "dar_de_baja": "Dar de baja",
     "desactivar_acceso": "Desactivar acceso",
     "ver_todo": "Ver todo",
@@ -292,6 +284,18 @@
       "fecha_invitacion": "Fecha de invitación",
       "ultimo_acceso": "Último acceso"
     }
+  },
+  "clases_celda_permiso": {
+    "sin-acceso": { "bg": "bg-fondo-peligro-suave border-rojo-categoria", "punto": "bg-rojo-categoria" },
+    "ver": { "bg": "bg-fondo-info-suave border-azul-categoria", "punto": "bg-azul-categoria" },
+    "crear": { "bg": "bg-fondo-exito-suave border-exito", "punto": "bg-exito" },
+    "editar": { "bg": "bg-fondo-categoria-naranja border-naranja-categoria", "punto": "bg-naranja-categoria" },
+    "eliminar": { "bg": "bg-fondo-peligro-suave border-rojo-categoria", "punto": "bg-rojo-categoria" },
+    "imprimir": { "bg": "bg-fondo-hover-suave border-violeta-categoria", "punto": "bg-violeta-categoria" },
+    "exportar": { "bg": "bg-fondo-exito-suave border-exito", "punto": "bg-exito" }
+  },
+  "asistente_invitacion": {
+    "etiqueta_pasos": "Pasos de la invitación"
   },
   "paginacion": {
     "resumen": "Mostrando {desde} a {hasta} de {total} colaboradores"

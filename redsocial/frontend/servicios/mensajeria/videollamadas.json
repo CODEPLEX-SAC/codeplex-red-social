@@ -158,29 +158,35 @@
   ],
   "reunionesProgramadas": [
     {
+      "id": "seguimiento-puerto-central",
       "dia": "15",
       "mes": "AGO",
       "titulo": "Reunión de seguimiento del proyecto Puerto Central",
       "hora": "10:00 AM - 11:00 AM",
       "participantes": "4 participantes",
+      "totalParticipantes": 4,
       "avatares": 3,
       "extra": "+1"
     },
     {
+      "id": "avances-modulo-inventario",
       "dia": "16",
       "mes": "AGO",
       "titulo": "Presentación de avances - Módulo Inventario",
       "hora": "02:00 PM - 03:00 PM",
       "participantes": "5 participantes",
+      "totalParticipantes": 5,
       "avatares": 3,
       "extra": "+2"
     },
     {
+      "id": "capacitacion-seguridad-informacion",
       "dia": "18",
       "mes": "AGO",
       "titulo": "Capacitación en seguridad de la información",
       "hora": "04:00 PM - 05:00 PM",
       "participantes": "6 participantes",
+      "totalParticipantes": 6,
       "avatares": 3,
       "extra": "+3"
     }
@@ -190,6 +196,7 @@
     "horario": "10:00 AM - 11:00 AM",
     "duracion": "00:35:42"
   },
+  "rolInvitado": "Invitado",
   "conteoParticipantesEnCurso": {
     "total": 15,
     "todos": 15,

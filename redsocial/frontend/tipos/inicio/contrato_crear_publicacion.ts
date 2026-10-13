@@ -18,8 +18,12 @@ export interface ContenidoPublicacion {
   texto: string
 }
 
+export type ModoModalPublicacion = 'crear' | 'editar'
+
 export interface ModalCrearPublicacionProps {
+  modo?: ModoModalPublicacion
   tipoInicial?: TipoPublicacion
+  textoInicial?: string
   onPublicar: (contenido: ContenidoPublicacion) => void
   onCerrar: () => void
 }
@@ -37,6 +41,7 @@ export interface BloqueOpcionesEncuestaProps {
 }
 
 export interface BloqueUsuarioTipoPublicacionProps {
+  mostrarTipos: boolean
   tipo: TipoPublicacion
   onCambiar: (tipo: TipoPublicacion) => void
 }
@@ -47,6 +52,8 @@ export interface BloquePrioridadPublicacionProps {
 }
 
 export interface BloquePiePublicacionProps {
+  etiquetaPublicar: string
+  mostrarMedios: boolean
   puedeAgregarMedios: boolean
   contenidoValido: boolean
   onAgregarMedios: (archivos: File[]) => void

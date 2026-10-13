@@ -29,16 +29,18 @@ export function PanelFiltrosAvanzados({ onCerrar }: { onCerrar: () => void }) {
 
   return (
     <div
+      role="dialog"
+      aria-label={textos.titulo}
       onClick={detenerPropagacion}
       className="absolute right-0 top-tooltip z-20 flex max-h-150 w-125 flex-col overflow-hidden rounded-xl border border-gris-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 max-600:w-full max-600:max-w-none max-600:rounded-b-none max-600:rounded-t-2xl panel-hoja-movil"
     >
       <div className="hidden flex-none pt-2.5 max-600:block">
-        <div className="mx-auto h-1 w-10 rounded-full bg-t-e0dce8" />
+        <div className="mx-auto h-1 w-10 rounded-full bg-borde-flotante" />
       </div>
 
-      <div className="flex-none border-b border-t-f3f4f6 p-4 pb-3 max-600:border-b-0">
+      <div className="flex-none border-b border-borde-suave p-4 pb-3 max-600:border-b-0">
         <div className="flex items-center justify-between">
-          <h3 className="m-0 text-titulo-seccion font-bold text-gris-oscuro-texto">{textos.titulo}</h3>
+          <h3 className="m-0 text-titulo-banner text-texto">{textos.titulo}</h3>
           <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={onCerrar} variant="discreto" size="sm" />
         </div>
       </div>
@@ -80,7 +82,7 @@ export function PanelFiltrosAvanzados({ onCerrar }: { onCerrar: () => void }) {
         </div>
       </CodeplexProveedorFechas>
 
-      <div className="grid flex-none grid-cols-2 gap-2 border-t border-t-f3f4f6 p-4">
+      <div className="grid flex-none grid-cols-2 gap-2 border-t border-borde-suave p-4">
         <Boton type="button" variant="secundario" onClick={limpiar}>{textos.limpiar}</Boton>
         <Boton type="button" variant="primario" onClick={onCerrar}>{textos.aplicar}</Boton>
       </div>

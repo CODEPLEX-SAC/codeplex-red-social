@@ -1,4 +1,5 @@
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { FondoPanelFlotante } from '../interfaz/fondo_panel_flotante'
 import { CampoBusqueda } from '../interfaz/campo_busqueda'
 import { useState } from 'react'
 import { Icono } from '../icono'
@@ -31,7 +32,7 @@ export function BarraSuperior() {
             <strong className="block truncate text-nombre-entidad">{SESION_ACTUAL.empresa}</strong>
             <span className="block truncate text-auxiliar text-texto-suave">{SESION_ACTUAL.ruc}</span>
           </span>
-          <Icono name="flecha-abajo" className="flex-none text-texto-suave w-3.25 h-3.25" />
+          <Icono name="flecha-abajo" className="flex-none text-texto-suave w-3.5 h-3.5" />
         </button>
       </div>
 
@@ -47,11 +48,11 @@ export function BarraSuperior() {
             className="relative flex h-9 w-9 items-center justify-center rounded-control border-0 bg-transparent text-texto"
           >
             <Icono name="campana" />
-            <span className="absolute right-0 top-0 rounded-full bg-primario px-1 text-contador font-extrabold text-white">{INSIGNIA_AVISOS}</span>
+            <span className="absolute right-0 top-0 rounded-full bg-primario px-1 text-conteo text-white">{INSIGNIA_AVISOS}</span>
           </button>
           {panelAvisosAbierto && (
             <>
-              <div className="fixed inset-0 z-19" onClick={() => setPanelAvisosAbierto(false)} />
+              <FondoPanelFlotante onCerrar={() => setPanelAvisosAbierto(false)} atenuarMovil={false} />
               <PanelNotificacionesTopbar onCerrar={() => setPanelAvisosAbierto(false)} />
             </>
           )}

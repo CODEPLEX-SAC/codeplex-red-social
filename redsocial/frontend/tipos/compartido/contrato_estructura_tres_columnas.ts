@@ -5,4 +5,5 @@ export interface EstructuraTresColumnasProps {
   publicidad: ReactNode
   lateral: ReactNode
   alturaCompleta?: boolean
+  distribucion?: 'amplia' | 'social'
 }

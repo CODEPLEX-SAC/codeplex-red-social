@@ -9,7 +9,7 @@ import type { FilaSolicitudAvisoProps } from '@/tipos/avisos/contrato_solicitud_
 
 export function FilaSolicitudAviso({ miniatura: m, titulo, lineaSecundaria, lineaTerciaria, tiempo, accionPrimaria, accionSecundaria }: FilaSolicitudAvisoProps) {
   return (
-    <article className="flex items-center gap-3 border-b border-t-f0eef5 p-3.5 last:border-b-0 hover:bg-t-fdfcff max-800:flex-wrap">
+    <article className="flex items-center gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo max-800:flex-wrap">
       {m.tipo === 'avatar' && <AvatarImagen src={usuarioImg} className="h-12 w-12 flex-none rounded-full bg-primario-suave" />}
       {m.tipo === 'icono' && (
         <SuperficieColor degradado={m.color} className="grid h-12 w-12 flex-none place-items-center rounded-lg text-white">
@@ -19,8 +19,8 @@ export function FilaSolicitudAviso({ miniatura: m, titulo, lineaSecundaria, line
       {m.tipo === 'calendario' && (
         <SuperficieColor degradado={m.color} className="grid h-12 w-12 flex-none place-items-center rounded-lg text-white">
           <div className="text-center leading-none">
-            <span className="block text-dia-evento font-extrabold">{m.dia}</span>
-            <span className="mt-0.5 block text-mes-evento font-bold uppercase">{m.mes}</span>
+            <span className="block text-dia-evento">{m.dia}</span>
+            <span className="mt-0.5 block text-mes-evento uppercase">{m.mes}</span>
           </div>
         </SuperficieColor>
       )}

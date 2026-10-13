@@ -1,0 +1,80 @@
+{
+  "vip": {
+    "precio": 500,
+    "precio_antes": 1000,
+    "beneficios": [
+      {
+        "n": "01",
+        "titulo": "Servidor",
+        "desc": "AMD EPYC GENOA 9354 · 32C/64T · 3.25/3.75 GHz"
+      },
+      {
+        "n": "02",
+        "titulo": "Memoria",
+        "desc": "DDR5 256 GB ECC 4800 MHz"
+      },
+      {
+        "n": "03",
+        "titulo": "Transferencia",
+        "desc": "Hasta 10 GB/s"
+      },
+      {
+        "n": "04",
+        "titulo": "Base de Datos",
+        "desc": "SQL Server Enterprise · Backup automático y redundante"
+      },
+      {
+        "n": "05",
+        "titulo": "Dominio",
+        "desc": "Personalizado"
+      },
+      {
+        "n": "06",
+        "titulo": "Código de Sistema",
+        "desc": "Personalizado"
+      },
+      {
+        "n": "07",
+        "titulo": "Máxima Velocidad",
+        "desc": "Sin mensajes de tiempo de conexión agotado"
+      },
+      {
+        "n": "08",
+        "titulo": "Comprobantes",
+        "desc": "Ilimitados · Actualizaciones SUNAT y SIRE"
+      }
+    ]
+  },
+  "paises": [
+    {
+      "id": "peru",
+      "nombre": "Perú",
+      "prefijo": "+51"
+    },
+    {
+      "id": "colombia",
+      "nombre": "Colombia",
+      "prefijo": "+57"
+    },
+    {
+      "id": "ecuador",
+      "nombre": "Ecuador",
+      "prefijo": "+593"
+    },
+    {
+      "id": "bolivia",
+      "nombre": "Bolivia",
+      "prefijo": "+591"
+    },
+    {
+      "id": "chile",
+      "nombre": "Chile",
+      "prefijo": "+56"
+    },
+    {
+      "id": "argentina",
+      "nombre": "Argentina",
+      "prefijo": "+54"
+    }
+  ]
+}

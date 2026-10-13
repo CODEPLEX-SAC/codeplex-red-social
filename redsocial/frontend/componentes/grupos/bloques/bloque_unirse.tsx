@@ -27,9 +27,9 @@ export function BloqueUnirse({
             </span>
           </div>
           <div className="p-3.5 pb-3.5 pt-6">
-            <h3 className="m-0 mb-0.5 text-nombre-entidad font-bold text-texto">{g.nombre}</h3>
+            <h3 className="m-0 mb-0.5 text-nombre-entidad text-texto">{g.nombre}</h3>
             <div className="mb-2 text-auxiliar text-texto-suave">{g.tipo}</div>
-            <p className="m-0 mb-3.5 text-cuerpo leading-normal text-texto-suave">{g.descripcion}</p>
+            <p className="m-0 mb-3.5 text-cuerpo leading-texto text-texto-suave">{g.descripcion}</p>
             <Boton type="button" variant="secundario" size="default" className="w-full">
               <Icono name="mas" className="h-3.5 w-3.5" /> {catalogoGrupos.botones.unirse}
             </Boton>

@@ -26,10 +26,22 @@ dist-ssr
 #local
 CodePlex_RedSocial_HTML_nativo
 PLAN_VALIDADOR_REDSOCIAL.md
+AUDITORIA_ICONOS_LIBRERIA_2026_oficiales_sin_uso.csv
+AUDITORIA_ICONOS_LIBRERIA_2026_propuestas.csv
+AUDITORIA_ICONOS_LIBRERIA_2026_revision_visual_CON_CUMPLIMIENTO.xlsx
+AUDITORIA_ICONOS_LIBRERIA_2026_revision_visual.xlsx
+AUDITORIA_ICONOS_LIBRERIA_2026_usos.csv
+AUDITORIA_ICONOS_LIBRERIA_2026.md
+INFORME_EMPRESAS_2026-10-05.md
+INFORME_SISTEMA_VISUAL_GLOBAL_2026.md
+INVENTARIO_ICONOGRAFIA_CODEPLEX_2026.md
+AUDITORIA_ICONOS_LIBRERIA_2026_capturas
+.vitest
 
 # Validacion local con herramientas/validacion/validar_capacidad.ps1
 _validacion/
-herramientas/validacion/
+herramientas/validacion/*
+!herramientas/validacion/linea_base_visual/
 
 .vercel
 vercel.json

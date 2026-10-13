@@ -11,7 +11,7 @@ const textos = catalogoInicio.modal_crear_publicacion.encuesta
 export function BloqueOpcionesEncuesta({ opciones, onActualizar, onAgregar, onQuitar }: BloqueOpcionesEncuestaProps) {
   return (
     <fieldset className="m-0 flex min-w-0 flex-col gap-2 border-0 p-0">
-      <legend className="mb-2 p-0 text-auxiliar font-semibold text-texto-suave">
+      <legend className="mb-2 p-0 text-etiqueta text-texto-suave">
         {textos.titulo} <span className="font-normal">{textos.minimo}</span>
       </legend>
       {opciones.map((opcion, indice) => {
@@ -37,7 +37,7 @@ export function BloqueOpcionesEncuesta({ opciones, onActualizar, onAgregar, onQu
               disabled={opciones.length <= textos.opciones_minimas}
               variant="contorno"
               size="default"
-              className="flex-none disabled:cursor-not-allowed disabled:opacity-40"
+              className="flex-none"
             />
           </div>
         )

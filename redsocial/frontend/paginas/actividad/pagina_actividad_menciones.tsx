@@ -11,7 +11,7 @@ export function PaginaActividadMenciones() {
         principal={
           <section>
             <div className="mb-5">
-              <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoActividad.titulos.menciones}</h1>
+              <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoActividad.titulos.menciones}</h1>
               <p className="m-0 text-subtitulo text-texto-suave">{catalogoActividad.subtitulos.menciones}</p>
             </div>
 
@@ -30,14 +30,14 @@ export function PaginaActividadMenciones() {
                 >
                   {m.conImagen ? (
                     <div className="mb-1.5 mt-0.5 flex items-start gap-3">
-                      <p className="m-0 flex-1 text-cuerpo leading-1.45 text-texto">
-                        <span className="font-semibold text-primario">@{SESION_ACTUAL.usuario}</span> {m.texto}
+                      <p className="m-0 flex-1 text-cuerpo leading-texto text-texto">
+                        <span className="font-titulo text-primario">@{SESION_ACTUAL.usuario}</span> {m.texto}
                       </p>
-                      <div className="ml-auto h-17 w-25 flex-none rounded-md bg-t-e8e5f0" />
+                      <div className="ml-auto h-17 w-25 flex-none rounded-md bg-fondo-miniatura" />
                     </div>
                   ) : (
-                    <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-1.45 text-texto">
-                      <span className="font-semibold text-primario">@{SESION_ACTUAL.usuario}</span> {m.texto}
+                    <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-texto text-texto">
+                      <span className="font-titulo text-primario">@{SESION_ACTUAL.usuario}</span> {m.texto}
                     </p>
                   )}
                 </TarjetaActividad>

@@ -27,15 +27,15 @@ export function SeccionTusAmigos({
         />
         <Boton type="button" variant="secundario" size="default" className="min-w-47.5 flex-none max-800:w-full">
           {catalogoAmigos.botones.todos_los_amigos}
-          <Icono name="flecha-abajo" className="h-3.25 w-3.25" />
+          <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
         </Boton>
       </div>
 
       <div className="mb-5 grid grid-cols-4 gap-3 max-900:grid-cols-2">
         {RESUMEN.map((r) => (
           <article key={r.etiqueta} className="flex items-center gap-2.5 rounded-control border border-borde bg-white p-3.5">
-            <span className={'grid h-8.5 w-8.5 flex-none place-items-center rounded-9 ' + (r.peligro ? 'bg-t-fdeceb text-peligro' : 'bg-primario-suave text-primario')}>
-              <Icono name={r.icono} className="h-4.25 w-4.25" />
+            <span className={'grid h-8.5 w-8.5 flex-none place-items-center rounded-9 ' + (r.peligro ? 'bg-fondo-categoria-rojo text-peligro-texto' : 'bg-primario-suave text-primario')}>
+              <Icono name={r.icono} className="h-4 w-4" />
             </span>
             <div>
               <span className="block text-auxiliar text-texto-suave">{r.etiqueta}</span>
@@ -45,10 +45,10 @@ export function SeccionTusAmigos({
         ))}
       </div>
 
-      <h2 className="mb-3.5 text-titulo-seccion font-bold text-texto">{catalogoAmigos.secciones.tus_amigos}</h2>
+      <h2 className="mb-3.5 text-titulo-seccion text-texto">{catalogoAmigos.secciones.tus_amigos}</h2>
       <BloqueMensaje AMIGOS={AMIGOS} />
-      <a href="#" className="flex items-center justify-center gap-1.5 border-t border-borde p-3.5 text-enlace-accion text-texto-suave no-underline hover:bg-t-faf9fc">
-        {catalogoAmigos.botones.ver_mas_amigos} <Icono name="flecha-abajo" className="h-3.25 w-3.25" />
+      <a href="#" className="flex items-center justify-center gap-1.5 border-t border-borde p-3.5 text-enlace-accion text-texto-suave no-underline hover:bg-fondo">
+        {catalogoAmigos.botones.ver_mas_amigos} <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
       </a>
     </section>
   )

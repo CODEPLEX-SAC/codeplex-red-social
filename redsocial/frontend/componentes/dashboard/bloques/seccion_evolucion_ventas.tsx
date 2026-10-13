@@ -28,10 +28,10 @@ export function SeccionEvolucionVentas({
   ETIQUETA_RATIO: Record<'optimo' | 'bajo' | 'aceptable' | 'riesgo', string>
 }) {
   return (
-    <div className="mb-5 grid grid-cols-1.6fr-1fr-1fr items-stretch gap-4 max-1250:grid-cols-2 max-900:grid-cols-1">
-      <article className="relative min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra max-1250:col-span-2 max-900:col-span-1">
-        <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.evolucion_ventas}</h2>
+    <div className="mb-5 grid grid-cols-1.6fr-1fr-1fr items-stretch gap-4 max-1400:grid-cols-2 max-900:grid-cols-1">
+      <article className="relative min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra max-1400:col-span-2 max-900:col-span-1">
+        <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.evolucion_ventas}</h2>
           <div className="flex items-center gap-2">
             <Selector variant="mini">
               {catalogoDashboard.selectores.mensual_semanal.opciones.map((o) => <option key={o}>{o}</option>)}
@@ -55,8 +55,8 @@ export function SeccionEvolucionVentas({
       </article>
 
       <article className="min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra">
-        <div className="mb-3.5 border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.composicion_ingresos}</h2>
+        <div className="mb-3.5 border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.composicion_ingresos}</h2>
         </div>
         <div className="relative mx-auto mb-4 grid h-32.5 w-32.5 place-items-center rounded-full">
           <DonaProgreso
@@ -67,7 +67,7 @@ export function SeccionEvolucionVentas({
           />
           <div className="absolute inset-5 rounded-full bg-white" />
           <span className="relative z-1 flex flex-col items-center text-center">
-            <strong className="text-valor-destacado font-extrabold text-texto">{VENTAS_TOTAL_CHART}</strong>
+            <strong className="text-valor-destacado text-texto">{VENTAS_TOTAL_CHART}</strong>
             <span className="text-auxiliar text-texto-suave">{catalogoDashboard.leyendas.total}</span>
           </span>
         </div>
@@ -75,7 +75,7 @@ export function SeccionEvolucionVentas({
           {DONA_SEGMENTOS.map((s) => (
             <li key={s.etiqueta} className="flex items-center gap-2 text-auxiliar text-texto">
               <SuperficieColor as="i" variante={s.color} className="h-2.5 w-2.5 flex-none rounded-full not-italic" />
-              {s.etiqueta} <b className="ml-auto font-bold">{s.porcentaje}</b>
+              {s.etiqueta} <b className="ml-auto font-titulo">{s.porcentaje}</b>
               <small className="min-w-17 text-right text-texto-suave">{s.monto}</small>
             </li>
           ))}

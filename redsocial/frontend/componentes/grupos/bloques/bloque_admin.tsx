@@ -18,16 +18,16 @@ export function BloqueAdmin({
       {GRUPOS_ADMIN.map((g) => (
         <article key={g.nombre} className="flex min-w-0 gap-3.5 rounded-control border border-borde bg-white p-5">
           <div className={`grid h-13 w-13 flex-none place-items-center rounded-xl text-white ${CLASES_ICONO_ADMIN[g.color]}`}>
-            <Icono name={g.icono} className="h-6.5 w-6.5" />
+            <Icono name={g.icono} className="h-6 w-6" />
           </div>
           <div className="min-w-0 flex-1">
             <div className="mb-0.5 flex items-center gap-2">
-              <h3 className="m-0 text-nombre-entidad font-bold text-texto">{g.nombre}</h3>
-              <span className="inline-block whitespace-nowrap rounded bg-t-ede9fe px-2 py-px text-etiqueta-estado font-semibold text-morado-categoria">{catalogoGrupos.leyendas.admin}</span>
+              <h3 className="m-0 text-nombre-entidad text-texto">{g.nombre}</h3>
+              <span className="inline-block whitespace-nowrap rounded bg-fondo-categoria-morado px-2 py-px text-badge text-morado-categoria">{catalogoGrupos.leyendas.admin}</span>
               <BotonIcono icono="puntos" type="button" aria-label={catalogoGrupos.botones.opciones} variant="discreto" size="sm" className="ml-auto flex-none" />
             </div>
             <div className="mb-1.5 text-auxiliar text-texto-suave">{g.tipo}</div>
-            <p className="m-0 mb-2.5 text-cuerpo leading-normal text-texto-suave">{g.descripcion}</p>
+            <p className="m-0 mb-2.5 text-cuerpo leading-texto text-texto-suave">{g.descripcion}</p>
             <div className="mb-0 flex items-center">
               {posicionesDe(4).map((posicion) => (
                 <AvatarImagen
@@ -36,7 +36,7 @@ export function BloqueAdmin({
                   className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
                 />
               ))}
-              <span className="-ml-1 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-t-ede9fe text-contador font-bold text-primario">{g.masAvatares}</span>
+              <span className="-ml-1 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-fondo-categoria-morado text-conteo text-primario">{g.masAvatares}</span>
             </div>
           </div>
         </article>

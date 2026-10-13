@@ -1,4 +1,5 @@
 import { Boton } from '../../compartido/interfaz/boton'
+import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
 import { Icono } from '../../compartido/icono'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { PanelFiltroUbicacion } from './panel_filtro_ubicacion'
@@ -45,7 +46,7 @@ export function BloqueEventosParaTi1({
       </Boton>
       {filtroUbicacionAbierto && (
         <>
-          <div className="fixed inset-0 z-19 max-600:bg-black/45" onClick={() => setFiltroUbicacionAbierto(false)} />
+          <FondoPanelFlotante onCerrar={() => setFiltroUbicacionAbierto(false)} />
           <PanelFiltroUbicacion ciudades={CIUDADES_FILTRO_PARA_TI} marcadores={MARCADORES_MAPA_PARA_TI} ciudadActual={filtroUbicacion} onAplicar={setFiltroUbicacion} onCerrar={() => setFiltroUbicacionAbierto(false)} />
         </>
       )}

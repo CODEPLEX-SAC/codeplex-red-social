@@ -21,8 +21,8 @@ export function TarjetaGrupoGuardado({ grupo: g }: TarjetaGrupoGuardadoProps) {
       >
         {g.tituloPortada && (
           <div className="max-600:hidden">
-            <strong className="text-subtitulo font-extrabold leading-tight">{g.tituloPortada}</strong>
-            {g.subtituloPortada && <span className="mt-1 block text-auxiliar text-white/80">{g.subtituloPortada}</span>}
+            <strong className="text-titulo-subseccion leading-compacto">{g.tituloPortada}</strong>
+            {g.subtituloPortada && <span className="mt-1 block text-auxiliar text-white">{g.subtituloPortada}</span>}
           </div>
         )}
         <BotonIcono icono="guardado" type="button" aria-pressed={guardado} aria-label={guardado ? catalogoGuardados.botones.quitar_guardado : catalogoGuardados.botones.guardar_grupo} onClick={() => setGuardado((actual) => !actual)} variant="sutil" size="md" className="absolute right-2.5 top-2.5 max-600:hidden" />
@@ -30,14 +30,14 @@ export function TarjetaGrupoGuardado({ grupo: g }: TarjetaGrupoGuardadoProps) {
 
       <div className="p-3.5 max-600:flex max-600:min-w-0 max-600:flex-1 max-600:flex-col max-600:justify-between max-600:p-0">
         <div>
-          <h3 className="m-0 mb-1 truncate text-nombre-entidad font-bold text-texto">{g.nombre}</h3>
+          <h2 className="m-0 mb-1 truncate text-nombre-entidad text-texto">{g.nombre}</h2>
           <div className="mb-1.5 flex flex-wrap items-center gap-1.5 max-600:mb-0">
             <span className="text-auxiliar text-texto-suave">{g.miembros}</span>
-            <span className={'rounded px-1.5 py-px text-etiqueta-estado font-semibold max-600:hidden ' + claseCategoria}>{etiquetaCategoria}</span>
+            <span className={'rounded px-1.5 py-px text-badge max-600:hidden ' + claseCategoria}>{etiquetaCategoria}</span>
           </div>
         </div>
-        <span className={'hidden self-start rounded px-1.5 py-px text-etiqueta-estado font-semibold max-600:inline-block ' + claseCategoria}>{etiquetaCategoria}</span>
-        <p className="m-0 mb-2.5 text-cuerpo leading-1.4 text-texto-suave max-600:hidden">{g.descripcion}</p>
+        <span className={'hidden self-start rounded px-1.5 py-px text-badge max-600:inline-block ' + claseCategoria}>{etiquetaCategoria}</span>
+        <p className="m-0 mb-2.5 text-cuerpo leading-texto text-texto-suave max-600:hidden">{g.descripcion}</p>
         <div className="flex items-center gap-1.5 max-600:hidden">
           <div className="flex flex-none items-center">
             {posicionesDe(3).map((posicion) => (

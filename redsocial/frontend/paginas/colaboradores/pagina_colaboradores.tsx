@@ -3,8 +3,9 @@ import { useState } from 'react'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import type { Colaborador } from '../../tipos/colaboradores/modelo_colaboradores'
-import { COLABORADORES, FILTROS_ESTADO_COLABORADORES, PASOS_FUNCIONA_COLABORADORES, ROL_CLASES, ESTADO_CLASES, APLICACIONES_DISPONIBLES, FECHA_BAJA_EJEMPLO } from '../../rutas/colaboradores/rutas_colaboradores'
-import { SeccionListado, SeccionDetalleColaborador, SeccionEditarColaborador, SeccionComoFunciona, BloqueConfirmarBajaColaborador } from '../../componentes/colaboradores'
+import type { EstadoInvitacion } from '../../tipos/colaboradores/contrato_invitar_colaborador'
+import { COLABORADORES, FILTROS_ESTADO_COLABORADORES, PASOS_FUNCIONA_COLABORADORES, ROL_CLASES, ESTADO_CLASES, APLICACIONES_DISPONIBLES, FECHA_BAJA_EJEMPLO, DATOS_ASISTENTE_INVITACION } from '../../rutas/colaboradores/rutas_colaboradores'
+import { SeccionListado, SeccionDetalleColaborador, SeccionEditarColaborador, SeccionComoFunciona, BloqueConfirmarBajaColaborador, ModalInvitarColaborador, AvisoInvitacionEnviada } from '../../componentes/colaboradores'
 
 
 const PASOS_FUNCIONA: { icono: IconName; clase: string; numero: string; descripcion: string }[] = [...PASOS_FUNCIONA_COLABORADORES]
@@ -14,6 +15,7 @@ export function PaginaColaboradores() {
   const [colaboradorAbierto, setColaboradorAbierto] = useState<Colaborador | null>(null)
   const [modoPanel, setModoPanel] = useState<'ver' | 'editar'>('ver')
   const [colaboradorABaja, setColaboradorABaja] = useState<Colaborador | null>(null)
+  const [invitacion, setInvitacion] = useState<EstadoInvitacion>('cerrada')
   const panelAbierto = colaboradorAbierto !== null
 
   function abrirParaVer(colaborador: Colaborador | null) {
@@ -26,6 +28,18 @@ export function PaginaColaboradores() {
     setModoPanel('editar')
   }
 
+  function abrirInvitacion() {
+    setInvitacion('abierta')
+  }
+
+  function cerrarInvitacion() {
+    setInvitacion('cerrada')
+  }
+
+  function enviarInvitacion() {
+    setInvitacion('enviada')
+  }
+
   const [anclaMenu, setAnclaMenu] = useState<HTMLElement | null>(null)
   const cerrarMenus = () => {
     setMenuAbierto(null)
@@ -34,6 +48,7 @@ export function PaginaColaboradores() {
 
   return (
     <EstructuraApp paginaActiva={catalogoColaboradores.claves.modulo}>
+      {invitacion === 'enviada' && <AvisoInvitacionEnviada alCerrar={cerrarInvitacion} />}
       <div
         onClick={cerrarMenus}
         className={
@@ -55,6 +70,7 @@ export function PaginaColaboradores() {
             alVerColaborador: abrirParaVer,
             alEditarColaborador: abrirParaEditar,
             alConfirmarBaja: setColaboradorABaja,
+            alInvitarColaborador: abrirInvitacion,
           }}
         />
 
@@ -77,7 +93,7 @@ export function PaginaColaboradores() {
         />
       )}
 
-        <div className="hidden 1101:block area-publicidad">
+        <div className="hidden 2130:block area-publicidad">
           <ColumnaPublicidad />
         </div>
 
@@ -91,6 +107,7 @@ export function PaginaColaboradores() {
           alCerrar={() => setColaboradorABaja(null)}
         />
       )}
+      {invitacion === 'abierta' && <ModalInvitarColaborador datos={DATOS_ASISTENTE_INVITACION} alCerrar={cerrarInvitacion} alEnviar={enviarInvitacion} />}
     </EstructuraApp>
   )
 }

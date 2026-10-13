@@ -23,8 +23,8 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
     <div
       className="fixed right-md top-17 z-20 w-95 rounded-xl border border-borde bg-white shadow-t13 max-600:left-3 max-600:right-3 max-600:w-auto"
     >
-      <div className="flex items-center justify-between border-b border-t-f0eef5 p-3.5">
-        <strong className="text-titulo-seccion font-extrabold text-texto">{catalogoAvisos.titulos.principal}</strong>
+      <div className="flex items-center justify-between border-b border-borde-suave p-3.5">
+        <strong className="text-titulo-banner text-texto">{catalogoAvisos.titulos.principal}</strong>
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={onCerrar} variant="discreto" size="sm" className="flex-none" />
       </div>
 
@@ -42,21 +42,21 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
       </div>
 
       <div className="max-h-125 overflow-y-auto p-3.5">
-        <div className="mb-1 text-subtitulo font-bold text-texto">{catalogoAvisos.grupos_fecha.hoy}</div>
+        <div className="mb-1 text-titulo-subseccion text-texto">{catalogoAvisos.grupos_fecha.hoy}</div>
         {avisosPanelHoy.map((n) => (
           <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} />
         ))}
-        <a href={catalogoAvisos.rutas.todas} className="mt-2 flex items-center justify-center rounded-lg border border-borde py-2 text-enlace-accion font-semibold text-primario no-underline hover:bg-t-f5f3ff">
+        <a href={catalogoAvisos.rutas.todas} className="mt-2 flex items-center justify-center rounded-lg border border-borde py-2 text-enlace-accion text-primario no-underline hover:bg-fondo-hover-suave">
           {catalogoAvisos.panel_topbar.ver_mas}
         </a>
 
-        <div className="mb-1 mt-3.5 text-subtitulo font-bold text-texto">{catalogoAvisos.grupos_fecha.ayer}</div>
+        <div className="mb-1 mt-3.5 text-titulo-subseccion text-texto">{catalogoAvisos.grupos_fecha.ayer}</div>
         {avisosPanelAyer.map((n) => (
           <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} />
         ))}
       </div>
 
-      <a href={catalogoAvisos.rutas.todas} className="flex items-center justify-center border-t border-t-f0eef5 p-3 text-enlace-accion font-semibold text-primario no-underline hover:bg-t-f5f3ff">
+      <a href={catalogoAvisos.rutas.todas} className="flex items-center justify-center border-t border-borde-suave p-3 text-enlace-accion text-primario no-underline hover:bg-fondo-hover-suave">
         {catalogoAvisos.panel_topbar.ver_todas_las_notificaciones}
       </a>
     </div>

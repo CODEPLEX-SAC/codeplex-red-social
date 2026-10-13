@@ -15,16 +15,16 @@ export function PaginaAmigosListas() {
 
             <div className="mb-5.5 mt-4.5 flex items-start gap-3.5 rounded-control bg-primario-suave p-4.5">
               <span className="grid h-10 w-10 flex-none place-items-center rounded-control bg-white/60 text-primario">
-                <Icono name="usuarios" className="h-5 w-5" />
+                <Icono name="grupo" className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
                 <strong className="mb-0.75 block text-subtitulo text-texto">{catalogoAmigos.secciones.organiza_contactos_titulo}</strong>
-                <p className="m-0 text-cuerpo leading-1.4 text-texto-suave">{catalogoAmigos.secciones.organiza_contactos_desc}</p>
+                <p className="m-0 text-cuerpo leading-texto text-texto-suave">{catalogoAmigos.secciones.organiza_contactos_desc}</p>
               </div>
               <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} variant="discreto" size="sm" className="flex-none" />
             </div>
 
-            <h2 className="mb-3.5 text-titulo-seccion font-bold text-texto">{catalogoAmigos.secciones.mis_listas}</h2>
+            <h2 className="mb-3.5 text-titulo-seccion text-texto">{catalogoAmigos.secciones.mis_listas}</h2>
             <div className="mb-4.5 grid grid-cols-3 gap-3.5 max-900:grid-cols-2 max-600:grid-cols-1">
               {MIS_LISTAS.map((l) => (
                 <article key={l.nombre} className="relative flex flex-col rounded-control border border-borde bg-white p-4 pb-4 pt-4.5">
@@ -46,20 +46,20 @@ export function PaginaAmigosListas() {
                         />
                       ))}
                     </div>
-                    <span className="text-contador font-bold text-texto-suave">{l.masAvatares}</span>
+                    <span className="text-conteo text-texto-suave">{l.masAvatares}</span>
                   </div>
-                  <p className="m-0 mt-auto text-cuerpo leading-1.4 text-texto-suave">{l.descripcion}</p>
+                  <p className="m-0 mt-auto text-cuerpo leading-texto text-texto-suave">{l.descripcion}</p>
                 </article>
               ))}
             </div>
 
-            <button type="button" className="mb-7 flex w-full items-center justify-center gap-2 rounded-control border-2 border-dashed border-borde bg-transparent p-3.5 text-boton font-semibold text-primario hover:bg-t-faf9fc hover:border-primario">
+            <button type="button" className="mb-7 flex w-full items-center justify-center gap-2 rounded-control border-2 border-dashed border-borde bg-transparent p-3.5 text-boton text-primario hover:bg-fondo hover:border-primario">
               <Icono name="mas" className="h-4 w-4" /> {catalogoAmigos.botones.crear_nueva_lista}
             </button>
 
             <div className="mb-3.5 flex items-center justify-between">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoAmigos.secciones.listas_sugeridas}</h2>
-              <a href="#" className="text-enlace-accion font-semibold text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
+              <h2 className="m-0 text-titulo-seccion text-texto">{catalogoAmigos.secciones.listas_sugeridas}</h2>
+              <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
             </div>
             <div className="grid grid-cols-4 gap-3 max-900:grid-cols-2 max-600:grid-cols-2 max-380:grid-cols-1">
               {LISTAS_SUGERIDAS.map((l) => (
@@ -80,12 +80,12 @@ export function PaginaAmigosListas() {
         publicidad={<ColumnaPublicidad />}
         lateral={
           <aside className="grid gap-4">
-            <PanelLateralAmigos titulo={catalogoAmigos.secciones.personas_conocer}>
+            <PanelLateralAmigos titulo={catalogoAmigos.secciones.personas_conocer} ruta={catalogoAmigos.rutas.sugerencias}>
               {PERSONAS_CONOCER.map((p) => (
                 <FilaPersonaConocer key={p.nombre} nombre={p.nombre} comunes={p.comunes} />
               ))}
             </PanelLateralAmigos>
-            <PanelLateralAmigos titulo={catalogoAmigos.secciones.tus_listas}>
+            <PanelLateralAmigos titulo={catalogoAmigos.secciones.tus_listas} ruta={catalogoAmigos.rutas.listas}>
               {TUS_LISTAS_LATERAL.map((l) => (
                 <FilaListaLateral key={l.nombre} icono={l.icono} color={l.color} nombre={l.nombre} miembros={l.miembros} />
               ))}

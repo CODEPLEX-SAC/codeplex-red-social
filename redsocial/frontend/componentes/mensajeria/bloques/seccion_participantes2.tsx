@@ -15,21 +15,21 @@ export function SeccionParticipantes2({
   return (
     <section className="rounded-xl border border-borde bg-white p-4">
       <div className="mb-2.5 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoMensajeria.botones.participantes} ({PARTICIPANTES_INICIAR.length})</h2>
-        <Icono name="flecha-abajo" className="h-3.75 w-3.75 text-texto-suave" />
+        <h2 className="m-0 text-titulo-banner text-texto">{catalogoMensajeria.botones.participantes} ({PARTICIPANTES_INICIAR.length})</h2>
+        <Icono name="flecha-abajo" className="h-4 w-4 text-texto-suave" />
       </div>
       {PARTICIPANTES_INICIAR.map((p) => (
         <article key={p.nombre} className="flex items-center gap-2.5 py-2">
           <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full bg-primario-suave" />
           <div className="min-w-0 flex-1">
             <strong className="block truncate text-nombre-entidad text-texto">{p.nombre}</strong>
-            <span className="block text-etiqueta-estado text-exito">{p.rol}</span>
+            <span className="block text-estado text-exito-texto">{p.rol}</span>
           </div>
-          <Icono name="microfono" className="h-3.75 w-3.75 flex-none text-exito" />
+          <Icono name="microfono" className="h-4 w-4 flex-none text-exito-texto" />
         </article>
       ))}
 
-      <h3 className="mb-2 mt-3.5 text-titulo-seccion font-bold text-texto">{catalogoMensajeria.secciones.invitar_mas_personas}</h3>
+      <h3 className="mb-2 mt-3.5 text-titulo-banner text-texto">{catalogoMensajeria.secciones.invitar_mas_personas}</h3>
       <CampoBusqueda placeholder={catalogoMensajeria.placeholders.buscar_contactos_o_correo} className="mb-1.5 w-full" />
 
       <div className="flex flex-col">

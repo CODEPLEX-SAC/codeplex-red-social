@@ -1,10 +1,4 @@
 {
-  "resumenColaborador": {
-    "iniciales": "JM",
-    "nombreCompleto": "Juan Pérez Martínez",
-    "correo": "juan.perez@email.com",
-    "telefono": "+51 987 654 321"
-  },
   "resumenRol": {
     "rolAsignado": "Analista Contable",
     "modulosTexto": "4 módulos con permisos asignados"

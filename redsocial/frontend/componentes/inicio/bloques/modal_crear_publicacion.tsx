@@ -13,8 +13,9 @@ import type { ModalCrearPublicacionProps } from '@/tipos/inicio/contrato_crear_p
 const textos = catalogoInicio.modal_crear_publicacion
 const primerNombre = catalogoCompartido.sesion_actual.usuario.split(' ')[0]
 
-export function ModalCrearPublicacion({ tipoInicial = 'publicacion', onPublicar, onCerrar }: ModalCrearPublicacionProps) {
-  const borrador = usarBorradorPublicacion(tipoInicial)
+export function ModalCrearPublicacion({ modo = 'crear', tipoInicial = 'publicacion', textoInicial = '', onPublicar, onCerrar }: ModalCrearPublicacionProps) {
+  const borrador = usarBorradorPublicacion(tipoInicial, textoInicial)
+  const editando = modo === 'editar'
 
   function publicar() {
     onPublicar({ tipo: borrador.tipo, texto: borrador.contenido.trim() })
@@ -22,9 +23,9 @@ export function ModalCrearPublicacion({ tipoInicial = 'publicacion', onPublicar,
   }
 
   return (
-    <Modal titulo={textos.titulo} etiquetaCerrar={textos.cerrar} onCerrar={onCerrar} className="max-w-130 rounded-2xl max-600:h-full max-600:rounded-none">
+    <Modal titulo={editando ? textos.editar.titulo : textos.titulo} etiquetaCerrar={textos.cerrar} onCerrar={onCerrar} className="max-w-130 rounded-2xl max-600:h-full max-600:rounded-none">
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-5 py-4">
-        <BloqueUsuarioTipoPublicacion tipo={borrador.tipo} onCambiar={borrador.setTipo} />
+        <BloqueUsuarioTipoPublicacion mostrarTipos={!editando} tipo={borrador.tipo} onCambiar={borrador.setTipo} />
 
         <EditorPublicacion
           valor={borrador.contenido}
@@ -44,6 +45,8 @@ export function ModalCrearPublicacion({ tipoInicial = 'publicacion', onPublicar,
       </div>
 
       <BloquePiePublicacion
+        etiquetaPublicar={editando ? textos.editar.guardar : textos.publicar}
+        mostrarMedios={!editando}
         puedeAgregarMedios={borrador.puedeAgregarMedios}
         contenidoValido={borrador.contenidoValido}
         onAgregarMedios={borrador.agregarMedios}

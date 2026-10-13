@@ -14,30 +14,32 @@ export function SeccionTopProductos({
   FLUJO_CAJA_MENSUAL: { etiqueta: string; valor: number; }[]
 }) {
   return (
-    <div className="mb-5 grid grid-cols-3 items-stretch gap-4 max-1250:grid-cols-2 max-900:grid-cols-1">
+    <div className="mb-5 grid grid-cols-3 items-stretch gap-4 max-1400:grid-cols-2 max-900:grid-cols-1">
       <article className="min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra">
-        <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.top_productos}</h2>
-          <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{catalogoDashboard.botones.ver_reporte}</a>
+        <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.top_productos}</h2>
+          <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoDashboard.botones.ver_reporte}</a>
         </div>
-        <ul className="m-0 grid list-none gap-3 p-0">
-          {RANKING.map((p) => (
-            <li key={p.nombre} className="grid grid-cols-140-1fr-44-76 items-center gap-2.5 max-900:grid-cols-110-1fr-40-66">
-              <span className="overflow-hidden text-ellipsis whitespace-nowrap text-nombre-entidad text-texto">{p.nombre}</span>
-              <div className="h-2 overflow-hidden rounded bg-t-f0eef5">
-                <MedidaDinamica as="span" ancho={p.ancho} className="block h-full rounded bg-primario" />
-              </div>
-              <span className="text-right text-contador text-texto-suave">{p.cantidad}</span>
-              <span className="whitespace-nowrap text-right text-valor-destacado font-bold text-texto">{p.valor}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="@container">
+          <ul className="m-0 grid list-none grid-cols-minmax0-140-minmax0-1fr-auto-auto items-center gap-x-2.5 gap-y-3 p-0 @max-md:grid-cols-minmax0-1fr-auto-auto">
+            {RANKING.map((p) => (
+              <li key={p.nombre} className="col-span-full grid grid-cols-subgrid items-center gap-y-1.5">
+                <span className="overflow-hidden text-ellipsis whitespace-nowrap text-nombre-entidad text-texto">{p.nombre}</span>
+                <div className="h-2 overflow-hidden rounded bg-borde-suave @max-md:order-last @max-md:col-span-full">
+                  <MedidaDinamica as="span" ancho={p.ancho} className="block h-full rounded bg-primario" />
+                </div>
+                <span className="text-right text-contador text-texto-suave">{p.cantidad}</span>
+                <span className="whitespace-nowrap text-right text-valor-destacado text-texto">{p.valor}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </article>
 
       <article className="min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra">
-        <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.proyeccion_ventas}</h2>
-          <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{catalogoDashboard.botones.ver_detalle}</a>
+        <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.proyeccion_ventas}</h2>
+          <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoDashboard.botones.ver_detalle}</a>
         </div>
         <div className="relative">
           <ProveedorTemaGraficos>
@@ -55,9 +57,9 @@ export function SeccionTopProductos({
       </article>
 
       <article className="min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra">
-        <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.flujo_caja}</h2>
-          <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{catalogoDashboard.botones.ver_detalle}</a>
+        <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.flujo_caja}</h2>
+          <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoDashboard.botones.ver_detalle}</a>
         </div>
         <div className="relative">
           <ProveedorTemaGraficos>

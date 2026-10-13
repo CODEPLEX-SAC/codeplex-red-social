@@ -1,0 +1,554 @@
+{
+  "acciones": [
+    "listar",
+    "filtrar",
+    "crear",
+    "desactivar",
+    "ver_detalle",
+    "listar_usuarios",
+    "ver_historial",
+    "editar"
+  ],
+  "alertas": {
+    "filtros_sin_resultados": "Ninguna empresa coincide con los filtros aplicados."
+  },
+  "errores": {
+    "carga_empresas": "No fue posible cargar las empresas."
+  },
+  "mensajes": {
+    "sin_empresas": "No hay empresas para mostrar con estos filtros."
+  },
+  "contexto_requerido": [
+    "empresa_id",
+    "usuario_id"
+  ],
+  "permisos": {
+    "listar": "EMPRESAS_CONSULTAR",
+    "filtrar": "EMPRESAS_FILTRAR",
+    "crear": "EMPRESAS_CREAR",
+    "desactivar": "EMPRESAS_DESACTIVAR",
+    "ver_detalle": "EMPRESAS_CONSULTAR",
+    "listar_usuarios": "EMPRESAS_CONSULTAR",
+    "ver_historial": "EMPRESAS_CONSULTAR",
+    "editar": "EMPRESAS_EDITAR"
+  },
+  "rutas": {
+    "listado": "/empresas"
+  },
+  "titulo_menu": "Empresas",
+  "titulos": {
+    "listado": "Empresas"
+  },
+  "subtitulos": {
+    "listado": "Administra todas las empresas registradas en tu plataforma."
+  },
+  "migas": {
+    "etiqueta": "Ruta de navegación",
+    "espacio_trabajo": "Espacio de trabajo",
+    "empresas": "Empresas",
+    "sx": {
+      "& .MuiTypography-root, & .MuiLink-root": {
+        "fontSize": "var(--text-auxiliar)"
+      }
+    }
+  },
+  "botones": {
+    "nueva_empresa": "Nueva empresa",
+    "filtros_avanzados": "Filtros avanzados",
+    "editar": "Editar :nombre",
+    "mas_opciones": "Más opciones de :nombre",
+    "ver_detalle": "Ver detalle de :nombre",
+    "desactivar": "Desactivar :nombre"
+  },
+  "placeholders": {
+    "buscar_empresa": "Buscar por RUC, nombre o email..."
+  },
+  "campos": {
+    "buscar_empresa": "Buscar empresas",
+    "seleccionar_todas": "Seleccionar todas las empresas visibles",
+    "seleccionar_empresa": "Seleccionar :nombre",
+    "tamano_pagina": "Empresas por página"
+  },
+  "selectores": {
+    "estado": {
+      "etiqueta": "Estado",
+      "opciones": [
+        "Todos",
+        "Activa",
+        "Inactiva"
+      ]
+    },
+    "rubro": {
+      "etiqueta": "Rubro",
+      "opciones": [
+        "Todos",
+        "Agroindustria",
+        "Comercio",
+        "Construcción",
+        "Consultoría",
+        "Educación",
+        "Energía",
+        "Importaciones",
+        "Inmobiliaria",
+        "Manufactura",
+        "Minería",
+        "Pesca",
+        "Salud",
+        "Servicios",
+        "Tecnología",
+        "Transportes",
+        "Turismo"
+      ]
+    },
+    "tipo_plan": {
+      "etiqueta": "Tipo de plan",
+      "opciones": [
+        "Todos",
+        "Avanzado",
+        "Intermedio",
+        "Básico"
+      ]
+    }
+  },
+  "tamanos_pagina": [
+    {
+      "valor": "10",
+      "etiqueta": "10 por página"
+    },
+    {
+      "valor": "20",
+      "etiqueta": "20 por página"
+    },
+    {
+      "valor": "50",
+      "etiqueta": "50 por página"
+    }
+  ],
+  "tabla": {
+    "logo": "Logo",
+    "empresa": "Empresa",
+    "ruc": "RUC",
+    "rubro": "Rubro",
+    "plan": "Plan",
+    "usuarios": "Usuarios",
+    "estado": "Estado",
+    "fecha_registro": "Fecha registro",
+    "acciones": "Acciones"
+  },
+  "planes": {
+    "avanzado": "Avanzado",
+    "intermedio": "Intermedio",
+    "basico": "Básico"
+  },
+  "estados": {
+    "activa": "Activa",
+    "inactiva": "Inactiva"
+  },
+  "paginacion": {
+    "resumen": "Mostrando {desde} a {hasta} de {total} empresas"
+  },
+  "claves": {
+    "modulo": "empresas"
+  },
+  "clases": {
+    "celda": "border-b border-borde px-2 py-3 text-left align-middle",
+    "encabezado": "whitespace-nowrap border-b border-gris-borde px-2 py-3.5 text-left text-encabezado-tabla text-texto-suave",
+    "plan": {
+      "avanzado": "bg-azul-categoria/15 text-azul-categoria-texto",
+      "intermedio": "bg-primario-suave text-primario",
+      "basico": "bg-exito/15 text-exito-texto"
+    },
+    "estado": {
+      "activa": {
+        "texto": "text-exito-texto",
+        "punto": "bg-verde-categoria",
+        "insignia": "bg-exito/15 text-exito-texto"
+      },
+      "inactiva": {
+        "texto": "text-peligro-texto",
+        "punto": "bg-rojo-categoria",
+        "insignia": "bg-peligro/15 text-peligro-texto"
+      }
+    },
+    "fila": "hover:bg-fondo",
+    "editar": "bg-primario-suave",
+    "encabezado_seccion": {
+      "icono": "mt-0.5 h-6 w-6 flex-none text-primario",
+      "titulo": "m-0 text-nombre-entidad text-texto",
+      "subtitulo": "m-0 text-subtitulo text-texto-suave"
+    },
+    "etiqueta_campo": "text-etiqueta text-texto-suave",
+    "texto_auxiliar": "text-auxiliar text-texto-suave",
+    "texto_celda": "text-subtitulo text-texto",
+    "mensaje_vacio": "p-6 text-center text-subtitulo text-texto-suave",
+    "nombre_fila": "whitespace-nowrap text-nombre-fila text-texto",
+    "texto_error": "text-auxiliar font-control text-negativo-kpi",
+    "boton_icono_peligro": "border-peligro text-peligro-texto",
+    "titulo_ventana": "m-0 text-titulo-banner text-texto",
+    "texto_descriptivo": "m-0 text-subtitulo leading-texto text-texto-suave"
+  },
+  "toast": {
+    "listado_actualizado": "Listado de empresas actualizado."
+  },
+  "modal_empresa": {
+    "titulo": "Nueva empresa",
+    "subtitulo": "Registra una nueva empresa en la plataforma.",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar",
+    "validar": "Validar",
+    "ruc_valido": "RUC válido.",
+    "ruc_invalido": "El RUC debe tener 11 dígitos.",
+    "seccion_informacion": "Información",
+    "campos": {
+      "ruc": "RUC",
+      "nombre_comercial": "Nombre comercial",
+      "razon_social": "Nombre / razón social",
+      "direccion": "Dirección",
+      "ubigeo": "Buscar ubigeo",
+      "codigo_pais": "Código de país",
+      "telefono": "Teléfono",
+      "email": "Correo electrónico",
+      "web": "Página web",
+      "rubro": "Seleccionar rubro",
+      "tipo_plan_cuenta": "Tipo de plan de cuenta",
+      "activa": "Empresa activa"
+    },
+    "logo": {
+      "etiqueta": "Logo de la empresa",
+      "cambiar": "Cambiar logo",
+      "vista_previa": "Vista previa del logo",
+      "formatos": "Formatos: PNG, JPG. Tamaño máximo 2MB.",
+      "tipos_aceptados": "image/png,image/jpeg",
+      "tamano_maximo_bytes": 2097152,
+      "error_tipo": "El logo debe ser una imagen PNG o JPG.",
+      "error_tamano": "El logo no puede superar los 2MB."
+    },
+    "opciones": {
+      "ubigeos": [
+        "Lima / Lima / San Isidro",
+        "Lima / Lima / Miraflores",
+        "Lima / Lima / Santiago de Surco",
+        "Arequipa / Arequipa / Cercado",
+        "Cusco / Cusco / Cusco"
+      ],
+      "codigos_pais": [
+        "+51",
+        "+52",
+        "+54",
+        "+56",
+        "+57"
+      ],
+      "tipos_plan_cuenta": [
+        "Completo (Estándar)",
+        "Simplificado",
+        "Personalizado"
+      ]
+    },
+    "registro": {
+      "prefijo_codigo": "TEN-",
+      "formato_fecha": "DD/MM/YYYY",
+      "digitos_codigo": 6,
+      "longitud_ruc": 11
+    },
+    "clases": {
+      "cabecera": "flex items-center gap-3 degradado-primario px-5 py-4 text-white",
+      "icono_cabecera": "grid h-11 w-11 flex-none place-items-center rounded-xl bg-white/15",
+      "cerrar": "ml-auto bg-white/15 text-white hover:bg-white/25",
+      "seccion": "m-0 border-b border-borde pb-1.5 text-nombre-entidad text-texto",
+      "logo": "grid h-20 w-20 flex-none place-items-center overflow-hidden rounded-xl bg-primario-suave text-primario"
+    }
+  },
+  "menu_fila": [
+    {
+      "clave": "ver_detalle",
+      "etiqueta": "Ver detalle"
+    },
+    {
+      "clave": "editar",
+      "etiqueta": "Editar empresa"
+    },
+    {
+      "clave": "desactivar",
+      "etiqueta": "Desactivar empresa",
+      "peligro": true
+    }
+  ],
+  "modal_desactivar": {
+    "titulo": "¿Desactivar empresa?",
+    "pregunta_antes": "¿Estás seguro de que deseas desactivar",
+    "comilla_abre": "“",
+    "comilla_cierra": "”",
+    "pregunta_despues": "?",
+    "detalle": "La empresa dejará de estar activa en Codeplex, pero sus datos se conservarán.",
+    "cancelar": "Cancelar",
+    "confirmar": "Desactivar empresa",
+    "accion_menu": "desactivar"
+  },
+  "detalle_empresa": {
+    "titulo": "Detalle de empresa",
+    "subtitulo": "Información completa de la empresa en la plataforma.",
+    "cerrar": "Cerrar",
+    "etiqueta_plan": "Plan :plan",
+    "ver_logo": "Ver logo",
+    "logo_alt": "Logo de :nombre",
+    "abrir_web": "Abrir el sitio web de la empresa",
+    "pestanas": {
+      "informacion": "Información general",
+      "usuarios": "Usuarios",
+      "historial": "Historial"
+    },
+    "secciones": {
+      "general": "Información general",
+      "contacto": "Información de contacto"
+    },
+    "campos": {
+      "razon_social": "Razón social",
+      "nombre_comercial": "Nombre comercial",
+      "ruc": "RUC",
+      "rubro": "Rubro",
+      "tipo_plan": "Tipo de plan",
+      "estado": "Estado",
+      "fecha_registro": "Fecha de registro",
+      "logo": "Logo",
+      "direccion": "Dirección",
+      "ubigeo": "Ubigeo",
+      "telefono": "Teléfono",
+      "email": "Correo electrónico",
+      "web": "Página web"
+    },
+    "clases": {
+      "valor": "min-w-0 flex-1 break-words rounded-lg bg-fondo px-3 py-2 text-subtitulo text-texto",
+      "tarjeta": "rounded-xl border border-borde p-4",
+      "fila_dato": "grid grid-cols-3 items-center gap-3 max-480:grid-cols-1 max-480:gap-1",
+      "valor_dato": "col-span-2 flex min-w-0 items-center gap-3 max-480:col-span-1"
+    },
+    "iconos_pestana": {
+      "informacion": "empresa",
+      "usuarios": "usuarios",
+      "historial": "reloj"
+    }
+  },
+  "usuarios_empresa": {
+    "titulo": "Usuarios de la empresa",
+    "subtitulo": "Personas que tienen acceso a esta empresa en la plataforma.",
+    "placeholder_busqueda": "Buscar por nombre, correo o rol...",
+    "etiquetas": {
+      "busqueda": "Buscar usuarios",
+      "rol": "Filtrar por rol",
+      "estado": "Filtrar por estado",
+      "avatar": "Foto de :nombre",
+      "mas_opciones": "Más opciones de :nombre"
+    },
+    "filtros": {
+      "roles": [
+        "Todos los roles",
+        "Administrador",
+        "Contador",
+        "Supervisor",
+        "Usuario"
+      ],
+      "estados": [
+        "Todos los estados",
+        "Activo",
+        "Inactivo"
+      ]
+    },
+    "tabla": {
+      "usuario": "Usuario",
+      "correo": "Correo electrónico",
+      "rol": "Rol",
+      "estado": "Estado",
+      "fecha_acceso": "Fecha de acceso"
+    },
+    "roles": {
+      "administrador": "Administrador",
+      "contador": "Contador",
+      "supervisor": "Supervisor",
+      "usuario": "Usuario"
+    },
+    "estados": {
+      "activo": "Activo",
+      "inactivo": "Inactivo"
+    },
+    "resumen": "Mostrando {mostrados} de {total} usuarios",
+    "vacio": "Esta empresa aún no tiene usuarios.",
+    "sin_resultados": "No hay usuarios que coincidan con los filtros.",
+    "tamano_pagina": 5,
+    "clases": {
+      "rol": {
+        "administrador": "bg-primario-suave text-primario",
+        "contador": "bg-azul-categoria/15 text-azul-categoria-texto",
+        "supervisor": "bg-naranja-categoria/15 text-naranja-categoria-texto",
+        "usuario": "bg-gris-categoria/15 text-texto"
+      },
+      "estado": {
+        "activo": {
+          "texto": "text-exito-texto",
+          "punto": "bg-verde-categoria"
+        },
+        "inactivo": {
+          "texto": "text-peligro-texto",
+          "punto": "bg-rojo-categoria"
+        }
+      },
+      "avatar_iniciales": "inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primario-suave text-auxiliar font-titulo text-primario",
+      "tabla": "w-full min-w-208 border-collapse text-cuerpo"
+    },
+    "agregar": "Agregar usuario",
+    "columna_acciones": "Acciones",
+    "menu": [
+      {
+        "clave": "editar",
+        "etiqueta": "Editar usuario"
+      },
+      {
+        "clave": "desactivar",
+        "etiqueta": "Desactivar usuario",
+        "peligro": true,
+        "estado": "activo"
+      },
+      {
+        "clave": "activar",
+        "etiqueta": "Activar usuario",
+        "estado": "inactivo"
+      }
+    ],
+    "edicion": {
+      "nombre": "Nombre del usuario",
+      "correo": "Correo del usuario",
+      "rol": "Rol del usuario",
+      "estado": "Estado del usuario",
+      "guardar": "Guardar usuario",
+      "cancelar": "Cancelar edición del usuario",
+      "clases": {
+        "fila": "bg-primario-suave/40",
+        "guardar": "bg-primario-suave",
+        "acciones": "sticky right-0 bg-white shadow-sombra"
+      },
+      "tecla_guardar": "Enter"
+    },
+    "sin_acceso": "Sin acceso aún",
+    "agregar_usuario": {
+      "volver": "Volver a usuarios",
+      "titulo": "Agregar usuario",
+      "subtitulo": "Registra un nuevo usuario y asígnale un rol dentro de esta empresa.",
+      "cancelar": "Cancelar",
+      "confirmar": "Agregar usuario",
+      "notas_maximo": 300,
+      "campos": {
+        "nombres": "Nombres",
+        "apellidos": "Apellidos",
+        "correo": "Correo electrónico",
+        "telefono": "Teléfono",
+        "rol": "Rol",
+        "estado": "Estado",
+        "notas": "Notas (opcional)"
+      },
+      "marcadores": {
+        "nombres": "Ingrese los nombres",
+        "apellidos": "Ingrese los apellidos",
+        "correo": "usuario@correo.com",
+        "telefono": "+51 987 654 321",
+        "rol": "Selecciona un rol",
+        "notas": "Agrega una nota sobre el usuario..."
+      },
+      "contador_notas": "Caracteres usados en las notas"
+    }
+  },
+  "historial_empresa": {
+    "titulo": "Historial de actividades",
+    "subtitulo": "Registro de cambios y acciones realizadas en esta empresa.",
+    "placeholder_busqueda": "Buscar por acción, usuario o detalle...",
+    "etiquetas": {
+      "busqueda": "Buscar en el historial",
+      "desde": "Desde",
+      "hasta": "Hasta",
+      "tipo": "Filtrar por tipo",
+      "avatar": "Foto de :nombre"
+    },
+    "fecha": {
+      "marcador": "dd/mm/aaaa",
+      "formato": "DD/MM/YYYY",
+      "idioma": "es"
+    },
+    "filtros_tipo": [
+      "Todos los tipos",
+      "Usuario",
+      "Empresa",
+      "Plan"
+    ],
+    "tipos": {
+      "usuario": "Usuario",
+      "empresa": "Empresa",
+      "plan": "Plan"
+    },
+    "tabla": {
+      "fecha_hora": "Fecha y hora",
+      "usuario": "Usuario",
+      "accion": "Acción",
+      "detalle": "Detalle",
+      "tipo": "Tipo"
+    },
+    "resumen": "Mostrando {mostrados} de {total} registros",
+    "vacio": "Esta empresa aún no tiene actividad registrada.",
+    "sin_resultados": "No hay registros que coincidan con los filtros.",
+    "por_pagina": 6,
+    "registros_por_usuario": 2,
+    "clases": {
+      "tipo": {
+        "usuario": "bg-primario-suave text-primario",
+        "empresa": "bg-azul-categoria/15 text-azul-categoria-texto",
+        "plan": "bg-exito/15 text-exito-texto"
+      },
+      "encabezado": "bg-fondo"
+    }
+  },
+  "edicion_empresa": {
+    "titulo": "Editar empresa",
+    "subtitulo": "Modifica la información de la empresa en la plataforma.",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar cambios",
+    "quitar_logo": "Quitar logo",
+    "formatos": "Formatos aceptados: PNG, JPG. Tamaño máx. 2MB.",
+    "separador_ubigeo": " / ",
+    "etiquetas": {
+      "departamento": "Departamento",
+      "provincia": "Provincia",
+      "distrito": "Distrito",
+      "fecha_registro": "Fecha de registro (no editable)"
+    },
+    "clases": {
+      "contacto_ubigeo": "grid min-w-0 grid-cols-3 gap-3 max-480:grid-cols-1",
+      "seccion": "flex flex-col gap-4",
+      "divisor": "border-b border-borde pb-6",
+      "cuadricula": "grid grid-cols-2 items-start gap-x-6 gap-y-4 max-768:grid-cols-1",
+      "ancho_completo": "col-span-2 max-768:col-span-1",
+      "logo_fila": "flex min-w-0 items-center gap-4 max-480:flex-col max-480:items-start",
+      "logo_miniatura": "grid h-16 w-16 flex-none place-items-center overflow-hidden rounded-xl bg-primario-suave",
+      "logo_acciones": "flex min-w-0 flex-col gap-2",
+      "logo_botones": "flex flex-wrap items-center gap-2",
+      "titulo_seccion": "m-0 flex items-center gap-2 text-nombre-entidad text-texto",
+      "icono_seccion": "h-6 w-6 flex-none text-primario"
+    },
+    "pestanas": [
+      "informacion",
+      "usuarios"
+    ]
+  },
+  "acciones_fila": {
+    "ver_detalle": "ver_detalle",
+    "editar": "editar",
+    "desactivar": "desactivar"
+  },
+  "filtros_avanzados": {
+    "titulo": "Filtros avanzados",
+    "fecha_registro": "Fecha de registro",
+    "desde": "Desde",
+    "hasta": "Hasta",
+    "limpiar": "Limpiar filtros",
+    "aplicar": "Aplicar filtros",
+    "idioma": "es",
+    "marcador": "dd/mm/aaaa",
+    "formato": "DD/MM/YYYY"
+  }
+}

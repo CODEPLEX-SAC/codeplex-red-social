@@ -8,6 +8,7 @@ import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
+import catalogoEmpresas from '../../catalogos/capacidades/redsocial/empresas.json'
 import catalogoDashboard from '../../catalogos/capacidades/redsocial/dashboard.json'
 import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadisticas.json'
 import catalogoReportes from '../../catalogos/capacidades/redsocial/reportes.json'
@@ -47,11 +48,8 @@ import { PaginaEventosInvitacionesAceptadas } from '@/paginas/eventos/pagina_eve
 import { PaginaEventosInvitacionesRechazadas } from '@/paginas/eventos/pagina_eventos_invitaciones_rechazadas'
 import { PaginaEventosCalendario } from '@/paginas/eventos/pagina_eventos_calendario'
 import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradores'
+import { PaginaEmpresas } from '@/paginas/empresas/pagina_empresas'
 import { PaginaColaboradorPerfil } from '@/paginas/colaboradores/pagina_colaborador_perfil'
-import { PaginaInvitarColaboradorInformacion } from '@/paginas/colaboradores/pagina_invitar_colaborador_informacion'
-import { PaginaInvitarColaboradorRolPermisos } from '@/paginas/colaboradores/pagina_invitar_colaborador_rol_permisos'
-import { PaginaInvitarColaboradorVigencia } from '@/paginas/colaboradores/pagina_invitar_colaborador_vigencia'
-import { PaginaInvitarColaboradorResumen } from '@/paginas/colaboradores/pagina_invitar_colaborador_resumen'
 import { PaginaDashboard } from '@/paginas/dashboard/pagina_dashboard'
 import { PaginaEstadisticasTodosModulos } from '@/paginas/estadisticas/pagina_estadisticas_todos_modulos'
 import { PaginaEstadisticasModulo } from '@/paginas/estadisticas/pagina_estadisticas_modulo'
@@ -117,10 +115,6 @@ export const RUTAS: readonly RutaApp[] = [
 
   { path: catalogoColaboradores.rutas.listado, render: () => <PaginaColaboradores /> },
   { path: catalogoColaboradores.rutas.perfil, render: () => <PaginaColaboradorPerfil /> },
-  { path: catalogoColaboradores.rutas.invitar, render: () => <PaginaInvitarColaboradorInformacion /> },
-  { path: catalogoColaboradores.rutas.invitar_rol_permisos, render: () => <PaginaInvitarColaboradorRolPermisos /> },
-  { path: catalogoColaboradores.rutas.invitar_vigencia, render: () => <PaginaInvitarColaboradorVigencia /> },
-  { path: catalogoColaboradores.rutas.invitar_resumen, render: () => <PaginaInvitarColaboradorResumen /> },
 
   { path: catalogoDashboard.rutas.principal, render: () => <PaginaDashboard /> },
 
@@ -131,6 +125,7 @@ export const RUTAS: readonly RutaApp[] = [
 
   { path: catalogoReportes.rutas.principal, render: () => <PaginaReportes /> },
   { path: catalogoIndicadores.rutas.clave, render: () => <PaginaIndicadoresClave /> },
+  { path: catalogoEmpresas.rutas.listado, render: () => <PaginaEmpresas /> },
 ]
 
 const POR_PATH = new Map(RUTAS.map((r) => [r.path, r]))

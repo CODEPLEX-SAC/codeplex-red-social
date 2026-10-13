@@ -14,6 +14,7 @@ export function SeccionProyeccionVentas({
   TH,
   RENTABILIDAD_PROYECTO,
   TD,
+  TD_NOMBRE,
   EstadoBadge,
   ETIQUETA_ESTADO,
 }: {
@@ -23,18 +24,19 @@ export function SeccionProyeccionVentas({
   TH: string
   RENTABILIDAD_PROYECTO: { nombre: string; margen: string; estado: EstadoRatio; }[]
   TD: string
+  TD_NOMBRE: string
   EstadoBadge: ({ estado, children }: { estado: EstadoRatio; children: string; }) => React.JSX.Element
   ETIQUETA_ESTADO: Record<EstadoRatio, string>
 }) {
   return (
-    <div className="mb-4 grid grid-cols-1.6fr-1fr-1fr gap-4 max-1250:grid-cols-2 max-900:grid-cols-1">
+    <div className="mb-4 grid grid-cols-3 gap-4 max-1400:grid-cols-2 max-1000:grid-cols-1">
       <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
-        <div className="mb-3.5 border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoEstadisticas.secciones.proyeccion_ventas}</h2>
+        <div className="mb-3.5 border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.proyeccion_ventas}</h2>
         </div>
         <div className="pt-2.5">
           <ProveedorTemaGraficos>
-            <CodeplexGraficoBarras datos={PROYECCION_VENTAS_DATOS} conTooltip mostrarValores alto={160} />
+            <CodeplexGraficoBarras datos={PROYECCION_VENTAS_DATOS} conTooltip mostrarValores alto={264} />
           </ProveedorTemaGraficos>
         </div>
         <div className="mt-3 flex gap-4.5 text-auxiliar text-texto-suave">
@@ -44,8 +46,8 @@ export function SeccionProyeccionVentas({
       </article>
 
       <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
-        <div className="mb-3.5 border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoEstadisticas.secciones.flujo_caja}</h2>
+        <div className="mb-3.5 border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.flujo_caja}</h2>
         </div>
         <div className="relative">
           <ProveedorTemaGraficos>
@@ -55,9 +57,9 @@ export function SeccionProyeccionVentas({
       </article>
 
       <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
-        <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoEstadisticas.secciones.rentabilidad_proyecto}</h2>
-          <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
+        <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+          <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.rentabilidad_proyecto}</h2>
+          <a href="#" className="text-enlace-accion text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
         </div>
         <TablaEst>
           <thead>
@@ -68,7 +70,7 @@ export function SeccionProyeccionVentas({
           <tbody>
             {RENTABILIDAD_PROYECTO.map((p) => (
               <tr key={p.nombre}>
-                <td className={TD}>{p.nombre}</td>
+                <td className={TD_NOMBRE}>{p.nombre}</td>
                 <td className={TD}>{p.margen}</td>
                 <td className={TD}><EstadoBadge estado={p.estado}>{ETIQUETA_ESTADO[p.estado]}</EstadoBadge></td>
               </tr>

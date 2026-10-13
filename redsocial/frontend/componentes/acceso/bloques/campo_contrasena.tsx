@@ -12,7 +12,7 @@ export function CampoContrasena({ variante, valor, error, onCambiar }: CampoCont
 
   return (
     <div>
-      <label htmlFor={configuracion.id} className="mb-1.5 block text-auxiliar font-bold text-texto">
+      <label htmlFor={configuracion.id} className="mb-1.5 block text-etiqueta text-texto">
         {configuracion.etiqueta}
       </label>
       <CampoTexto

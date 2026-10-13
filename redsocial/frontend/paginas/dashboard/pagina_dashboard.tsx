@@ -22,11 +22,11 @@ function EstadoBadge({ estado, children }: { estado: keyof typeof CLASES_ESTADO_
 export function PaginaDashboard() {
   return (
     <EstructuraApp paginaActiva="dashboard">
-      <div className="mx-auto max-w-420">
+      <div>
         <div className="mb-5 flex flex-wrap items-start justify-between gap-5 max-900:flex-col max-900:items-stretch">
           <div>
-            <h1 className="m-0 text-titulo-pagina font-extrabold text-texto">
-              ¡Buenos días, {SESION_ACTUAL.usuario.split(' ')[0]}! <span className="text-5">👋</span>
+            <h1 className="m-0 text-titulo-pagina text-texto">
+              ¡Buenos días, {SESION_ACTUAL.usuario.split(' ')[0]}! <span>👋</span>
             </h1>
             <p className="m-0 mt-1 text-subtitulo text-texto-suave">Aquí tienes el resumen de tu empresa al {RESUMEN_DASHBOARD.fecha}.</p>
           </div>
@@ -57,24 +57,24 @@ export function PaginaDashboard() {
         />
 
         <div className="mb-3.5">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoDashboard.secciones.resumen_por_modulo}</h2>
+          <h2 className="m-0 text-titulo-seccion text-texto">{catalogoDashboard.secciones.resumen_por_modulo}</h2>
         </div>
         <div className="mb-5 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1">
           {MODULOS.map((m) => (
             <article key={m.nombre} className="flex min-w-0 flex-col gap-2.5 rounded-xl border border-gris-borde bg-white p-4">
               <div className="flex items-center gap-2.5">
                 <span className={`grid h-9 w-9 flex-none place-items-center rounded-control ${CLASES_ICONO_MODULO[m.color]}`}>
-                  <Icono name={m.icono} className="w-4.25 h-4.25" />
+                  <Icono name={m.icono} className="w-4 h-4" />
                 </span>
-                <strong className="text-nombre-entidad font-bold text-texto">{m.nombre}</strong>
+                <strong className="text-nombre-entidad text-texto">{m.nombre}</strong>
               </div>
               {m.filas.map((f) => (
                 <div key={f.etiqueta} className="flex items-center justify-between text-auxiliar text-texto-suave">
                   <span>{f.etiqueta}</span>
-                  {f.badge ? <EstadoBadge estado={f.badge.estado}>{f.badge.texto}</EstadoBadge> : <b className="font-bold text-texto">{f.valor}</b>}
+                  {f.badge ? <EstadoBadge estado={f.badge.estado}>{f.badge.texto}</EstadoBadge> : <b className="font-titulo text-texto">{f.valor}</b>}
                 </div>
               ))}
-              <a href="#" className="mt-0.5 text-enlace-accion font-semibold text-primario no-underline">{catalogoDashboard.botones.ver_detalles}</a>
+              <a href="#" className="mt-0.5 text-enlace-accion text-primario no-underline">{catalogoDashboard.botones.ver_detalles}</a>
             </article>
           ))}
         </div>

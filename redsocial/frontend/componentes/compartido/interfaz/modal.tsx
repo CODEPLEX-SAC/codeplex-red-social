@@ -13,12 +13,16 @@ export function Modal({
   onCerrar,
   children,
   className = '',
+  cabecera,
+  suave = false,
 }: {
   titulo: string
   etiquetaCerrar: string
   onCerrar: () => void
   children: ReactNode
   className?: string
+  cabecera?: ReactNode
+  suave?: boolean
 }) {
   const { dialogoRef, mantenerFoco } = usarModal(onCerrar)
 
@@ -36,13 +40,15 @@ export function Modal({
           aria-label={titulo}
           tabIndex={-1}
           onKeyDown={mantenerFoco}
-          className={`${clases.clase_dialogo} ${className}`}
+          className={`${suave ? clases.clase_dialogo_suave : clases.clase_dialogo} ${className}`}
         >
-          <div className={clases.clase_cabecera}>
-            <span />
-            <h2 className={clases.clase_titulo}>{titulo}</h2>
-            <BotonIcono icono="cerrar" type="button" aria-label={etiquetaCerrar} onClick={onCerrar} variant="discreto" size="default" />
-          </div>
+          {cabecera ?? (
+            <div className={clases.clase_cabecera}>
+              <span />
+              <h2 className={clases.clase_titulo}>{titulo}</h2>
+              <BotonIcono icono="cerrar" type="button" aria-label={etiquetaCerrar} onClick={onCerrar} variant="discreto" size="default" />
+            </div>
+          )}
           {children}
         </div>
       </Box>

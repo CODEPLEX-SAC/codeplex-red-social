@@ -1,8 +1,8 @@
 {
   "estadoEstilo": {
-    "publicado": "bg-t-ede9fe text-t-6c3ce0",
-    "borrador": "bg-t-fef3c7 text-t-d97706",
-    "colaborador": "bg-t-d1fae5 text-t-059669"
+    "publicado": "bg-fondo-categoria-morado text-morado-categoria",
+    "borrador": "bg-fondo-categoria-amarillo text-naranja-categoria-texto",
+    "colaborador": "bg-fondo-categoria-verde text-verde-categoria-texto"
   },
   "estadoEtiqueta": {
     "publicado": "PUBLICADO",

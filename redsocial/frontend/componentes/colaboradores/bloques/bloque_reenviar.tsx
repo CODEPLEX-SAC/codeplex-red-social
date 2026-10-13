@@ -43,7 +43,7 @@ export function BloqueReenviar({ datos }: {
     alCambiarSeleccion,
   } = datos
   return (
-    <tr className="border-b border-t-f3f4f6 last:border-b-0 hover:bg-t-fafafe">
+    <tr className="border-b border-borde-suave last:border-b-0 hover:bg-fondo">
       <td className="p-3.5 text-center align-middle">
         <Casilla seleccionado={seleccionado} alCambiar={alCambiarSeleccion} inputProps={{ 'aria-label': c.nombre }} />
       </td>
@@ -51,18 +51,18 @@ export function BloqueReenviar({ datos }: {
         <div className="flex w-44 items-center gap-3">
           <img src={usuarioImg} alt={c.nombre} className="h-10 w-10 flex-none rounded-full bg-gris-borde object-cover" />
           <div className="flex min-w-0 flex-col">
-            <span className="truncate text-nombre-entidad font-semibold text-gris-oscuro-texto">{c.nombre}</span>
-            <span className="truncate text-auxiliar text-gris-texto-terciario">{c.correo}</span>
-            <span className="truncate text-auxiliar text-gris-texto-terciario">{c.telefono}</span>
+            <span className="truncate text-nombre-entidad text-texto">{c.nombre}</span>
+            <span className="truncate text-auxiliar text-texto-suave">{c.correo}</span>
+            <span className="truncate text-auxiliar text-texto-suave">{c.telefono}</span>
           </div>
         </div>
       </td>
       <td className="p-3.5 align-middle">
         <div className="flex flex-col gap-0.5">
-          <span className={`inline-block whitespace-nowrap rounded-md px-2.5 py-0.75 text-etiqueta-estado font-semibold ${ROL_CLASES[c.rolClase]}`}>
+          <span className={`inline-block whitespace-nowrap rounded-md px-2.5 py-0.75 text-badge ${ROL_CLASES[c.rolClase]}`}>
             {c.rol}
           </span>
-          <span className="text-auxiliar text-gris-texto-terciario">{c.descripcionRol}</span>
+          <span className="text-auxiliar text-texto-suave">{c.descripcionRol}</span>
         </div>
       </td>
       <td className="p-3.5 align-middle">
@@ -72,11 +72,11 @@ export function BloqueReenviar({ datos }: {
               <Icono name={app.icono} className="w-3.5 h-3.5 text-white" />
             </span>
           ))}
-          {c.masApps && <span className="ml-0.5 text-contador font-semibold text-primario">+{c.masApps}</span>}
+          {c.masApps && <span className="ml-0.5 text-conteo text-primario">+{c.masApps}</span>}
         </div>
       </td>
       <td className="p-3.5 align-middle">
-        <span className={`inline-flex items-center gap-1.25 whitespace-nowrap text-etiqueta-estado font-medium ${estado.texto}`}>
+        <span className={`inline-flex items-center gap-1.25 whitespace-nowrap text-estado ${estado.texto}`}>
           <span className={`h-1.75 w-1.75 flex-none rounded-full ${estado.punto}`} />
           {estado.etiqueta}
         </span>

@@ -13,7 +13,7 @@ export function PanelFormularioAcceso({ modo, onCambiarModo, onAcceder }: PanelF
 
   return (
     <div className="flex w-105 flex-none flex-col gap-4 overflow-y-auto border-r border-borde px-9 py-9 max-800:w-full max-800:border-r-0 max-560:px-5 max-560:py-6">
-      <p className="m-0 text-titulo-banner font-extrabold tracking-12 text-texto">{textosRedSocial.MARCA}</p>
+      <p className="m-0 text-titulo-banner tracking-12 text-texto">{textosRedSocial.MARCA}</p>
       <SelectorModoAcceso modo={modo} onCambiar={onCambiarModo} />
       <div role="tabpanel" id={catalogoAcceso.ids.panel} aria-labelledby={pestanaActiva?.id} className="flex flex-col gap-4">
         {modo === 'iniciar_sesion' && (

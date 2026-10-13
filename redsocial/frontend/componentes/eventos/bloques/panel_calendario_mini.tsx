@@ -6,15 +6,15 @@ import type { DiaCalendarioMini } from '@/tipos/eventos/modelo_calendario_mini'
 
 export function PanelCalendarioMini({ mes, semanas, textoEnlace = catalogoEventos.botones.ver_calendario }: { mes: string; semanas: DiaCalendarioMini[][]; textoEnlace?: string }) {
   return (
-    <section className="overflow-hidden rounded-xl border border-t-eeeeee bg-white">
+    <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
       <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
-        <h3 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoEventos.secciones.calendario}</h3>
-        <a href={catalogoEventos.rutas.calendario} className="text-enlace-accion font-semibold text-primario no-underline hover:underline">{textoEnlace}</a>
+        <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.calendario}</h2>
+        <a href={catalogoEventos.rutas.calendario} className="text-enlace-accion text-primario no-underline hover:underline">{textoEnlace}</a>
       </div>
       <div className="px-4 pb-3">
         <div className="mb-2.5 flex items-center justify-between px-1">
           <BotonIcono type="button" icono="flecha-izquierda" variant="suave" size="sm" aria-label={textosRedSocial.ANTERIOR} />
-          <span className="text-subtitulo font-bold text-texto">{mes}</span>
+          <span className="text-titulo-subseccion text-texto">{mes}</span>
           <BotonIcono type="button" icono="flecha-derecha" variant="suave" size="sm" aria-label={textosRedSocial.SIGUIENTE} />
         </div>
         <TablaCalendarioMini semanas={semanas} />

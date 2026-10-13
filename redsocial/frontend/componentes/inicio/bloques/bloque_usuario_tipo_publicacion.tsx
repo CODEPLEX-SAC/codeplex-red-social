@@ -7,12 +7,13 @@ import type { BloqueUsuarioTipoPublicacionProps, TipoPublicacion } from '@/tipos
 
 const textos = catalogoInicio.modal_crear_publicacion
 
-export function BloqueUsuarioTipoPublicacion({ tipo, onCambiar }: BloqueUsuarioTipoPublicacionProps) {
+export function BloqueUsuarioTipoPublicacion({ mostrarTipos, tipo, onCambiar }: BloqueUsuarioTipoPublicacionProps) {
   return (
     <div className="flex items-center gap-3">
       <AvatarImagen src={imagenUsuarioPredeterminada} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
       <div className="flex min-w-0 flex-col gap-1.5">
         <strong className="text-nombre-entidad text-texto">{catalogoCompartido.sesion_actual.usuario}</strong>
+        {mostrarTipos && (
         <div role="group" aria-label={textos.etiqueta_tipos} className="flex flex-wrap gap-1.5">
           {textos.tipos.map((opcion) => (
             <Boton
@@ -29,6 +30,7 @@ export function BloqueUsuarioTipoPublicacion({ tipo, onCambiar }: BloqueUsuarioT
             </Boton>
           ))}
         </div>
+        )}
       </div>
     </div>
   )

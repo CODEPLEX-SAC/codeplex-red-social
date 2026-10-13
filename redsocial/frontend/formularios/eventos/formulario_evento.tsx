@@ -20,12 +20,12 @@ const textos = catalogoEventos.modal_crear_evento
 
 export function TarjetaFormularioEvento({ icono, titulo, opcional, accion, children }: TarjetaFormularioEventoProps) {
   return (
-    <section className="rounded-14 border border-t-eeeeee bg-white p-4">
+    <section className="rounded-14 border border-borde-suave bg-white p-4">
       <div className="mb-3.5 flex items-center gap-2.5">
         <div className="grid h-9 w-9 flex-none place-items-center rounded-control bg-primario-suave text-primario">
           <Icono name={icono} className="h-4.5 w-4.5" />
         </div>
-        <h3 className="m-0 min-w-0 flex-1 text-nombre-entidad font-bold text-texto">
+        <h3 className="m-0 min-w-0 flex-1 text-nombre-entidad text-texto">
           {titulo} {opcional && <span className="font-normal text-texto-suave">{opcional}</span>}
         </h3>
         {accion}
@@ -38,8 +38,8 @@ export function TarjetaFormularioEvento({ icono, titulo, opcional, accion, child
 export function CampoFormularioEvento({ texto, requerido, ayuda, className, children }: CampoFormularioEventoProps) {
   return (
     <div className={'min-w-0 ' + (className ?? '')}>
-      <span className="mb-1.5 block text-cuerpo font-medium text-texto">
-        {texto} {requerido && <span className="text-t-e11d48">*</span>}
+      <span className="mb-1.5 block text-etiqueta text-texto">
+        {texto} {requerido && <span className="text-peligro-texto">*</span>}
       </span>
       {children}
       {ayuda && <span className="mt-1 block text-right text-auxiliar text-texto-suave">{ayuda}</span>}
@@ -55,8 +55,8 @@ export function OpcionModalidadEvento({ icono, etiqueta, activa, onElegir }: Opc
       aria-checked={activa}
       onClick={onElegir}
       className={
-        'flex h-12 min-w-0 cursor-pointer items-center justify-center gap-2.5 rounded-lg border text-cuerpo font-medium ' +
-        (activa ? 'border-primario bg-t-f5f3ff text-primario' : 'border-borde bg-white text-texto hover:border-primario')
+        'flex h-12 min-w-0 cursor-pointer items-center justify-center gap-2.5 rounded-lg border text-cuerpo font-etiqueta ' +
+        (activa ? 'border-primario bg-fondo-hover-suave text-primario' : 'border-borde bg-white text-texto hover:border-primario')
       }
     >
       <Icono name={icono} className="h-5 w-5 flex-none" /> {etiqueta}
@@ -89,7 +89,7 @@ export function FilaInterruptorEvento({ etiqueta, activo, onCambiar }: FilaInter
 
 export function AvisoFormularioEvento({ texto }: AvisoFormularioEventoProps) {
   return (
-    <div className="mt-3 flex items-start gap-2.5 rounded-lg bg-t-f5f3ff p-3 text-auxiliar text-primario">
+    <div className="mt-3 flex items-start gap-2.5 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-primario">
       <Icono name="informacion" className="mt-0.5 h-4 w-4 flex-none" />
       <span>{texto}</span>
     </div>

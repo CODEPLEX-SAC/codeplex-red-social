@@ -20,12 +20,12 @@ export function BloqueIdentidadColaborador({
         <AvatarImagen src={usuarioImg} className="h-14 w-14 flex-none rounded-full bg-gris-borde" />
         <div className="flex min-w-0 flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="m-0 text-cuerpo-grande font-extrabold text-gris-oscuro-texto">{colaborador.nombre}</h3>
+            <h3 className="m-0 text-cuerpo-grande text-texto">{colaborador.nombre}</h3>
             <Insignia variant="status" className={estado.insignia}>{estado.etiqueta}</Insignia>
           </div>
-          <span className="text-campo-formulario font-medium text-gris-texto-secundario">{colaborador.rol}</span>
-          <span className="text-auxiliar text-gris-texto-secundario">{colaborador.correo}</span>
-          <span className="text-auxiliar text-gris-texto-secundario">{colaborador.telefono}</span>
+          <span className="text-campo-formulario text-texto-suave">{colaborador.rol}</span>
+          <span className="text-auxiliar text-texto-suave">{colaborador.correo}</span>
+          <span className="text-auxiliar text-texto-suave">{colaborador.telefono}</span>
         </div>
       </div>
       <Boton type="button" variant="primario" size="md" className="w-full" onClick={alEditar}>{catalogoColaboradores.botones.editar_colaborador}</Boton>

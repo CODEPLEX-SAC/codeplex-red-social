@@ -9,3 +9,4 @@ export const ETIQUETA_ESTADO_IND = datos.etiquetaEstadoInd as Record<EstadoInd, 
 export const CLASES_ICONO_MODULO = datos.clasesIconoModulo as Record<TarjetaModulo['color'], string>
 export const TH = datos.claseTh
 export const TD = datos.claseTd
+export const TD_NOMBRE = datos.claseTdNombre

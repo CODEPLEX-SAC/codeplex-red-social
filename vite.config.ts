@@ -39,5 +39,7 @@ export default defineConfig({
     globals: true,
     setupFiles: [path.resolve(raiz, 'montaje_local/configuracion_pruebas.ts')],
     include: ['redsocial/frontend/pruebas/**/*.test.{ts,tsx}'],
+    maxWorkers: '50%',
+    testTimeout: 10000,
   },
 })

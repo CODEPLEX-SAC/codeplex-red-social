@@ -4,14 +4,17 @@ export interface Historia {
 }
 
 export interface PublicacionInicio {
+  autorId: string
   nombre: string
   tiempo: string
   texto: string
-  reacciones: string
-  comentarios: string
+  iconosReacciones: string
+  totalReacciones: number
+  totalComentarios: number
 }
 
 export interface PublicacionCompartidaInicio {
+  autorId: string
   nombre: string
   tiempoCompartio: string
   origenNombre: string
@@ -21,6 +24,7 @@ export interface PublicacionCompartidaInicio {
 
 export interface PublicacionTextoInicio {
   id: string
+  autorId: string
   nombre: string
   tiempo: string
   texto: string

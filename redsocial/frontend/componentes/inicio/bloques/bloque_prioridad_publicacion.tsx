@@ -7,7 +7,7 @@ const textos = catalogoInicio.modal_crear_publicacion.prioridad
 export function BloquePrioridadPublicacion({ prioridad, onCambiar }: BloquePrioridadPublicacionProps) {
   return (
     <div role="group" aria-label={textos.titulo} className="flex flex-wrap items-center gap-2">
-      <span className="text-auxiliar font-semibold text-texto-suave">{textos.titulo}</span>
+      <span className="text-etiqueta text-texto-suave">{textos.titulo}</span>
       {textos.opciones.map((opcion) => (
         <Boton
           key={opcion.valor}

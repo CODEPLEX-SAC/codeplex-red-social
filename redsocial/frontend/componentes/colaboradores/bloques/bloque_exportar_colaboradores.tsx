@@ -23,7 +23,7 @@ export function BloqueExportarColaboradores() {
   return (
     <div className="relative max-900:w-full">
       <Boton type="button" variant="secundario" size="md" onClick={alternar} activo={Boolean(ancla)} className="max-900:w-full max-900:justify-center">
-        <Icono name="adjuntar" className="w-3.5 h-3.5" /> {catalogoColaboradores.botones.exportar}
+        <Icono name="descargar" className="w-3.5 h-3.5" /> {catalogoColaboradores.botones.exportar}
       </Boton>
       {ancla && <Menu ancla={ancla} alCerrar={cerrar} elementos={OPCIONES_EXPORTAR} />}
     </div>

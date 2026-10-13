@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { FondoPanelFlotante } from '../interfaz/fondo_panel_flotante'
 import { imagenUsuarioPredeterminada, Icono } from '../icono'
 import { AvatarImagen } from '../interfaz/avatar_imagen'
 import { irARuta } from '../interfaz/menu'
@@ -40,11 +41,11 @@ export function MenuUsuarioTopbar() {
       >
         <AvatarImagen src={imagenUsuarioPredeterminada} className="h-8 w-8 rounded-full bg-borde" />
         <strong className="text-nombre-entidad max-800:hidden">{usuario.usuario}</strong>
-        <Icono name="flecha-abajo" className="flex-none text-texto-suave max-800:hidden w-3.25 h-3.25" />
+        <Icono name="flecha-abajo" className="flex-none text-texto-suave max-800:hidden w-3.5 h-3.5" />
       </button>
       {abierto && (
         <>
-          <div className="fixed inset-0 z-19" onClick={cerrarPanel} />
+          <FondoPanelFlotante onCerrar={cerrarPanel} atenuarMovil={false} />
           <PanelUsuarioTopbar usuario={usuario} onCerrar={cerrarPanel} onCerrarSesion={salir} />
         </>
       )}

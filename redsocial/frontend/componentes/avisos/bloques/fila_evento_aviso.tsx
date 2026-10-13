@@ -13,13 +13,13 @@ export function FilaEventoAviso({ evento: e, claseIcono }: FilaEventoAvisoProps)
   const [ancla, setAncla] = useState<HTMLElement | null>(null)
 
   return (
-    <article className="flex items-start gap-3 border-b border-t-f0eef5 p-3.5 last:border-b-0 hover:bg-t-fdfcff">
+    <article className="flex items-start gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
       {e.avatar ? (
         <span className="relative flex-none">
           <AvatarImagen src={usuarioImg} className="h-10 w-10 rounded-full bg-primario-suave" />
           {e.conInsigniaIcono && (
             <span className={`absolute -bottom-0.5 -right-0.5 grid h-4.5 w-4.5 place-items-center rounded-full border-2 border-white ${claseIcono}`}>
-              <Icono name={e.icono} className="h-2.5 w-2.5" />
+              <Icono name={e.icono} className="h-3 w-3" />
             </span>
           )}
         </span>
@@ -30,10 +30,10 @@ export function FilaEventoAviso({ evento: e, claseIcono }: FilaEventoAvisoProps)
       )}
 
       <div className="min-w-0 flex-1">
-        <p className="m-0 text-nombre-entidad font-bold text-texto">{e.titulo}</p>
+        <p className="m-0 text-nombre-entidad text-texto">{e.titulo}</p>
         <p className="m-0 mt-0.5 truncate text-auxiliar text-texto-suave">{e.detalle}</p>
         {e.detalleSecundario && <p className="m-0 mt-0.5 truncate text-auxiliar text-texto-suave">{e.detalleSecundario}</p>}
-        <span className="mt-1 block text-fecha-abreviada text-t-aaa7b5">{e.tiempo}</span>
+        <span className="mt-1 block text-fecha-abreviada text-texto-suave">{e.tiempo}</span>
       </div>
 
       {e.accion === 'invitacion' && (

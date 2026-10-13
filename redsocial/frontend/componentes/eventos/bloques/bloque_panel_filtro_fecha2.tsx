@@ -26,7 +26,7 @@ export function BloquePanelFiltroFecha2({
   return (
     <div className="grid grid-cols-7 gap-y-1">
       {DIAS_CORTOS.map((d) => (
-        <span key={d} className="grid h-7 place-items-center text-encabezado-tabla font-semibold uppercase text-texto-suave">{d}</span>
+        <span key={d} className="grid h-7 place-items-center text-encabezado-tabla uppercase text-texto-suave">{d}</span>
       ))}
       {modoRango
         ? celdas.map((c) => {
@@ -40,14 +40,14 @@ export function BloquePanelFiltroFecha2({
                 key={c.fecha.toISOString()}
                 type="button"
                 onClick={() => alSeleccionarDiaRango(c.fecha)}
-                className={'relative grid h-7.5 place-items-center justify-self-stretch border-0 p-0 ' + (enRango ? 'bg-t-ede9fe' : 'bg-transparent')}
+                className={'relative grid h-7.5 place-items-center justify-self-stretch border-0 p-0 ' + (enRango ? 'bg-fondo-categoria-morado' : 'bg-transparent')}
               >
-                {esInicio && rangoDeVariosDias && <div className="absolute inset-y-0 right-0 w-1/2 bg-t-ede9fe" />}
-                {esFin && rangoDeVariosDias && <div className="absolute inset-y-0 left-0 w-1/2 bg-t-ede9fe" />}
+                {esInicio && rangoDeVariosDias && <div className="absolute inset-y-0 right-0 w-1/2 bg-fondo-categoria-morado" />}
+                {esFin && rangoDeVariosDias && <div className="absolute inset-y-0 left-0 w-1/2 bg-fondo-categoria-morado" />}
                 <span
                   className={
                     'relative grid h-7.5 w-7.5 place-items-center rounded-full text-cuerpo ' +
-                    (esInicio || esFin ? 'bg-primario font-bold text-white' : 'text-texto')
+                    (esInicio || esFin ? 'bg-primario font-titulo text-white' : 'text-texto')
                   }
                 >
                   {c.numero}
@@ -63,7 +63,7 @@ export function BloquePanelFiltroFecha2({
                 onClick={() => alSeleccionarDia(c.fecha)}
                 className={
                   'grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full text-cuerpo ' +
-                  (esMismoDia(diaSeleccionado, c.fecha) ? 'bg-primario font-bold text-white' : 'text-texto hover:bg-t-f5f3fa')
+                  (esMismoDia(diaSeleccionado, c.fecha) ? 'bg-primario font-titulo text-white' : 'text-texto hover:bg-fondo-hover-discreto')
                 }
               >
                 {c.numero}

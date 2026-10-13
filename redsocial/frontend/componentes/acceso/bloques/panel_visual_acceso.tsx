@@ -47,7 +47,7 @@ export function PanelVisualAcceso({ obtenerUrlImagen }: PanelVisualAccesoProps) 
               />
             ))}
           </div>
-          <span className="text-auxiliar font-semibold text-white/80">{contador}</span>
+          <span className="text-auxiliar font-control text-white/80">{contador}</span>
         </div>
         <div className="flex gap-2">
           <BotonIcono icono="flecha-izquierda" type="button" aria-label={textos.anterior} onClick={carrusel.anterior} variant="flotante" size="default" />

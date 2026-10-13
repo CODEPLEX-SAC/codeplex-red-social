@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
@@ -23,7 +24,7 @@ export function BloqueFiltrosAvanzados() {
       </Boton>
       {abierto && (
         <>
-          <div className="fixed inset-0 z-19 max-600:bg-black/45" onClick={cerrar} />
+          <FondoPanelFlotante onCerrar={cerrar} />
           <PanelFiltrosAvanzados onCerrar={cerrar} />
         </>
       )}

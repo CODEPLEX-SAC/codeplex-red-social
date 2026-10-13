@@ -19,15 +19,15 @@ export function BloqueInformacionGeneral({ colaborador }: { colaborador: Colabor
   ]
 
   return (
-    <section className="mt-4 border-t border-t-f3f4f6 pt-4">
-      <h4 className="m-0 mb-2.5 text-nombre-entidad font-semibold text-gris-oscuro-texto">{catalogoColaboradores.secciones.vigencia_y_acceso}</h4>
+    <section className="mt-4 border-t border-borde-suave pt-4">
+      <h4 className="m-0 mb-2.5 text-nombre-entidad text-texto">{catalogoColaboradores.secciones.vigencia_y_acceso}</h4>
       <ul className="m-0 grid list-none gap-3 p-0">
         {filas.map((item) => (
           <li key={item.etiqueta} className="flex items-start gap-2.5">
-            <Icono name={item.icono} className="mt-0.5 w-4 h-4 flex-none text-gris-categoria" />
+            <Icono name={item.icono} className="mt-0.5 w-4 h-4 flex-none text-texto-suave" />
             <div>
-              <span className="block text-auxiliar text-gris-texto-secundario">{item.etiqueta}</span>
-              <strong className="mt-px block text-campo-formulario font-medium text-gris-oscuro-texto">{item.valor}</strong>
+              <span className="block text-auxiliar text-texto-suave">{item.etiqueta}</span>
+              <strong className="mt-px block text-campo-formulario text-texto">{item.valor}</strong>
             </div>
           </li>
         ))}

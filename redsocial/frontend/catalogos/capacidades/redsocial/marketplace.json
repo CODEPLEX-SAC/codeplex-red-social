@@ -1,5 +1,10 @@
 {
-  "acciones": ["listar", "buscar", "comprar", "publicar_aplicacion"],
+  "acciones": [
+    "listar",
+    "buscar",
+    "comprar",
+    "publicar_aplicacion"
+  ],
   "alertas": {
     "confirmar_compra": "Se agregará este cargo a tu próxima facturación."
   },
@@ -54,7 +59,15 @@
   "filtros": {
     "todas": "Todas",
     "mas": "Más",
-    "pestanas": ["Contabilidad", "Ventas", "RRHH", "Inventario", "Productividad", "Marketing", "Seguridad"]
+    "pestanas": [
+      "Contabilidad",
+      "Ventas",
+      "RRHH",
+      "Inventario",
+      "Productividad",
+      "Marketing",
+      "Seguridad"
+    ]
   },
   "secciones": {
     "destacados": "Destacados",
@@ -68,15 +81,440 @@
     "ir_a_mis_compras": "Ir a mis compras",
     "publicar_mi_aplicacion": "Publicar mi aplicación",
     "anterior": "Anterior",
-    "siguiente": "Siguiente"
+    "siguiente": "Siguiente",
+    "ver_planes": "Ver planes"
   },
   "leyendas": {
     "popular": "Popular",
     "activo": "Activo",
-    "por_mes": "/mes"
+    "por_mes": "/mes",
+    "gratis": "Gratis"
   },
   "desarrollador": {
     "titulo": "¿Eres desarrollador?",
     "texto": "Publica tus aplicaciones en Codeplex y llega a miles de empresas."
+  },
+  "planes": {
+    "titulo": "Planes y precios",
+    "moneda": "S/",
+    "sufijo_mensual": "/mes",
+    "sufijo_anual": "/año",
+    "periodo": {
+      "mensual": "Mensual",
+      "anual": "Anual"
+    },
+    "mas_popular": "Más popular",
+    "elegir": "Elegir plan",
+    "seleccionado": "Seleccionado",
+    "continuar": "Continuar con el plan",
+    "incluido": "Incluido",
+    "no_incluido": "No incluido",
+    "plan_seleccionado": "Plan seleccionado",
+    "asistente": {
+      "abrir": "¿Tienes dudas sobre los planes?",
+      "cerrar": "Cerrar asistente",
+      "demostracion": "Demostración",
+      "placeholder": "Escribe tu pregunta…",
+      "campo": "Pregunta al asistente",
+      "por_defecto": "Gracias por tu consulta. Un asesor te contactará pronto para brindarte más información.",
+      "catalogo_ver": "Ver",
+      "respuestas_rapidas": "Preguntas frecuentes",
+      "en_linea": "En línea · Catálogo cargado",
+      "formato_hora": {
+        "locale": "es-PE",
+        "opciones": {
+          "hour": "2-digit",
+          "minute": "2-digit"
+        }
+      },
+      "catalogo_ayuda": "Catálogo completo de planes",
+      "catalogo_ver_etiqueta": "Ver catálogo"
+    },
+    "visor": {
+      "cerrar": "Cerrar catálogo",
+      "marco": "Catálogo de planes en PDF",
+      "abrir_nueva": "Abrir en una pestaña nueva",
+      "cargando": "Cargando catálogo…"
+    },
+    "etiquetas": "Características generales",
+    "lista": "Planes disponibles",
+    "no_disponible": "Los planes de esta aplicación aún no están disponibles",
+    "detalle": {
+      "cerrar": "Cerrar detalle"
+    },
+    "modalidad": "Modalidad del plan",
+    "ventana_detalle": "dialog",
+    "clases": {
+      "excluida": "line-through",
+      "enfasis": "font-titulo",
+      "detalle": "cursor-pointer border-0 bg-transparent p-0 text-auxiliar text-inherit underline decoration-dotted underline-offset-3",
+      "fila": "cursor-grab overflow-x-auto pb-2.5",
+      "rejilla": "grid grid-cols-2 gap-4 max-600:grid-cols-1",
+      "tarjeta_fila": "w-43 flex-none",
+      "texto": "min-w-0 text-left",
+      "tarjeta_fila_amplia": "w-53 flex-none",
+      "paquetes_fila": "flex items-center justify-between gap-3 rounded-lg border border-borde bg-fondo px-3.5 py-2.5",
+      "paquetes_bloque": "grid gap-2 rounded-xl border border-borde bg-fondo p-3.5",
+      "fila_interior": "flex w-fit min-w-full justify-center gap-3.5",
+      "respuestas_rapidas": "flex flex-none cursor-grab gap-1.5 overflow-x-auto border-t border-borde bg-white px-3 py-2 scrollbar-oculto"
+    }
+  },
+  "destacados_fila": {
+    "avance": 0.9,
+    "contenedor": "relative",
+    "pista": "flex cursor-grab gap-3.5 overflow-x-auto scroll-smooth pb-2.5 scrollbar-oculto",
+    "tarjeta": "w-80 flex-none",
+    "flecha_izquierda": "absolute -left-4 top-1/2 z-10 -translate-y-1/2 max-900:-left-2",
+    "flecha_derecha": "absolute -right-4 top-1/2 z-10 -translate-y-1/2 max-900:-right-2"
+  },
+  "pago": {
+    "titulo": "Información de pago",
+    "paso1": {
+      "titulo": "Datos de la tarjeta",
+      "detalle": "El cobro es recurrente y se hace por adelantado."
+    },
+    "campos": {
+      "numero": "Número de la tarjeta",
+      "numero_ph": "1234 5678 9012 3456",
+      "vencimiento": "Fecha de vencimiento",
+      "vencimiento_ph": "MM/AA",
+      "cvv": "CVV",
+      "cvv_ph": "123",
+      "propietario": "Nombre del propietario",
+      "propietario_ph": "Como aparece en tu tarjeta",
+      "documento": "RUC / DNI",
+      "documento_ph": "Ej: 20123456789",
+      "razon": "Razón social / nombre completo",
+      "razon_ph": "Ej: Inversiones Digitales S.A.C",
+      "pais": "País o región",
+      "direccion": "Dirección fiscal",
+      "direccion_ph": "Ej: Av. La Marina 2000, San Miguel, Lima",
+      "correo": "Correo electrónico",
+      "correo_ph": "correo@tuempresa.com",
+      "celular": "Número de celular (:prefijo)",
+      "celular_ph": "987 654 321"
+    },
+    "aviso_renovacion": "Tu suscripción se renovará automáticamente el :fecha. Se te cobrará :total + impuestos.",
+    "paso2": {
+      "titulo": "Datos de facturación",
+      "detalle": "Se usarán para emitir tu comprobante electrónico"
+    },
+    "vip": {
+      "etiqueta": "Servicio adicional",
+      "titulo": "Super VIP",
+      "extra": "+ Almacenamiento",
+      "subtitulo": "Soporte preferencial · Infraestructura dedicada",
+      "actualizaciones": "Actualizaciones: SUNAT y SIRE · Tráfico independiente de información",
+      "agregar": "Agregar Super VIP a mi plan",
+      "antes": "Antes",
+      "mes": "/mes",
+      "descuento": "50 % de descuento",
+      "cupos": "Cupos limitados",
+    "mostrar": "Mostrar beneficios del Super VIP",
+    "ocultar": "Ocultar beneficios del Super VIP",
+    "clases": {
+      "tarjeta": "overflow-hidden rounded-xl border border-borde bg-white shadow-sombra",
+      "cabecera": "flex items-start justify-between gap-3 bg-fondo-boton-oscuro p-4 text-white max-600:p-3",
+      "cabecera_texto": "grid min-w-0 gap-1",
+      "titulo_fila": "flex flex-wrap items-center gap-2",
+      "lista": "m-0 grid list-none gap-2.5 p-4 pb-3 max-600:p-3 max-600:pb-2",
+      "item": "flex items-start gap-3 text-auxiliar",
+      "numero": "grid h-7 w-9 flex-none place-items-center rounded-control bg-primario-suave text-conteo text-primario",
+      "descripcion": "min-w-0 pt-1.5 leading-texto text-texto",
+      "nota": "mx-4 mb-3 border-t border-borde-suave pt-3 text-auxiliar text-texto-suave max-600:mx-3",
+      "pie": "px-4 py-3 max-600:px-3",
+      "pie_abierto": "border-t border-borde-suave",
+      "precios": "mt-1 flex flex-wrap items-center gap-2 pl-8"
+    }
+    },
+    "paso3": {
+      "titulo": "¿Cuándo se emiten tus facturas?",
+      "detalle": "Conoce tu calendario: todo pago es por adelantado",
+      "hoy": {
+        "titulo": "Hoy · activación",
+        "detalle": "Se registra tu tarjeta y empieza el período de prueba",
+        "valor": "S/0.00 sin cobro"
+      },
+      "hoy_vip": {
+      "detalle": "Se registra tu tarjeta y el plan empieza su período de prueba. El Super VIP no incluye mes gratis y se cobra hoy"
+    },
+    "primer": {
+        "titulo": ":fecha · primer cobro real",
+        "detalle": "Primer cobro al vencer la prueba de 30 días"
+      },
+      "siguientes": {
+        "titulo": "Meses siguientes",
+        "detalle": "Mismo día cada período. Cobro anticipado y aviso 3 días antes",
+        "valor": "Recurrente"
+      }
+    },
+    "paso4": {
+      "titulo": "Autorización y políticas",
+      "detalle": "Confirmaciones de tu suscripción",
+      "acepto": "Acepto que CodePlex cobrará en mi tarjeta el importe indicado de forma recurrente hasta que cancele el acuerdo con los términos. Puedo cancelar en cualquier momento desde Datos de facturación."
+    },
+    "resumen": {
+      "titulo": "Resumen de pedido",
+      "plan": "Plan",
+      "prueba": "Período de prueba",
+      "prueba_valor": "1 mes gratis",
+      "cobro_hoy": "Cobro hoy",
+      "cobro_hoy_valor": "S/0.00",
+      "total_mensual": "Total mensual",
+      "total_anual": "Total anual",
+      "desde": "A partir del :fecha",
+      "addon": "Add-on incluido",
+      "activar": "Activar período de prueba",
+      "seguro": "Pago seguro · Tu tarjeta no se cobra hoy",
+      "addon_signo": "+",
+      "addon_union": "",
+    "addon_varios": "Super VIP × :n",
+    "seguro_vip": "Pago seguro · Hoy solo se cobra el Super VIP"
+    },
+    "exito": {
+      "titulo": "¡Suscripción activada!",
+      "detalle": "Tu aplicación ha sido activada correctamente",
+      "primer_cobro": "Primer cobro",
+      "renovacion": "Renovación",
+      "renovacion_mensual": "Automática mensual",
+      "renovacion_anual": "Automática anual",
+      "tarjeta": "Tarjeta",
+      "volver": "Volver al Marketplace",
+      "servicio_adicional": "Servicio adicional",
+      "detalle_varias": "Tus aplicaciones han sido activadas correctamente"
+    },
+    "formato_fecha": {
+      "locale": "es-PE",
+      "opciones": {
+        "day": "2-digit",
+        "month": "short",
+        "year": "numeric"
+      }
+    },
+    "marcas": {
+      "visa": "Visa",
+      "mastercard": "Mastercard",
+      "amex": "Amex",
+      "otra": "Tarjeta"
+    },
+    "clases": {
+      "tarjeta": "rounded-xl border border-borde bg-white p-5 max-600:p-4",
+      "dos_columnas": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
+      "encabezado": "mb-4 flex items-start gap-3",
+      "numero": "grid h-7 w-7 flex-none place-items-center rounded-full bg-primario text-conteo text-white",
+      "cuerpo": "grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-5 max-600:p-4",
+      "columnas": "grid items-start gap-4 grid-cols-minmax400-1fr-minmax230-300 max-768:grid-cols-1"
+    },
+    "formato": {
+      "separador_tarjeta": " ",
+      "separador_vencimiento": "/"
+    },
+    "canales": {
+      "titulo": "Canales adicionales de notificación",
+      "whatsapp": {
+        "etiqueta": "WhatsApp · Recibe tus comprobantes por WhatsApp"
+      },
+      "sms": {
+        "etiqueta": "SMS / teléfono · Avisos de cobro y renovación por mensaje"
+      }
+    },
+    "prefijos": {
+      "visa": [
+        "4"
+      ],
+      "mastercard": [
+        "5"
+      ],
+      "amex": [
+        "34",
+        "37"
+      ]
+    },
+    "guardados": {
+      "usar_guardada": "Usar tarjeta guardada",
+      "ver_todas": "Ver todas mis tarjetas (:n)",
+      "cambiar": "Cambiar",
+      "cvv_aviso": "Por seguridad, ingresa el CVV cada vez",
+      "titulo_tarjetas": "Cambiar medio de pago",
+      "nueva_tarjeta": "Agregar nueva tarjeta",
+      "vence": "Vence :fecha",
+      "enmascarada": "•••• •••• •••• :ultimos",
+      "titulo_perfiles": "Datos de facturación",
+      "nuevo_perfil": "Agregar nuevos datos",
+      "usar_perfil": "Usar datos de facturación guardados",
+      "ver_otras": "Ver otras empresas (:n)",
+      "documento": "RUC / DNI :documento",
+      "aviso_sesion": "Los datos guardados solo viven en esta sesión y no incluyen el número completo de la tarjeta.",
+      "separador": " · "
+    },
+    "formato_fecha_corta": {
+      "locale": "es-PE",
+      "opciones": {
+        "day": "2-digit",
+        "month": "2-digit",
+        "year": "numeric"
+      }
+    }
+  },
+  "mis_compras": {
+    "titulo": "Mis compras",
+    "subtitulo": "Gestiona tus aplicaciones activas, revisa tu suscripción y accede a servicios adicionales.",
+    "pestanas": [
+      {
+        "clave": "aplicaciones",
+        "etiqueta": "Aplicaciones (:n)"
+      },
+      {
+        "clave": "servicios",
+        "etiqueta": "Servicios adicionales (:n)"
+      }
+    ],
+    "estados": {
+      "prueba": { "etiqueta": "En prueba", "clase": "bg-fondo-info-suave text-azul-categoria-texto" },
+      "limitado": { "etiqueta": "Modo limitado", "clase": "bg-fondo-categoria-naranja text-naranja-categoria-texto" }
+    },
+    "estado_activo": "Activo",
+    "metas": [
+      {
+        "id": "plan",
+        "etiqueta": "Plan",
+        "acento": true
+      },
+      {
+        "id": "inicio",
+        "etiqueta": "Inicio de prueba",
+        "acento": false
+      },
+      {
+        "id": "vence",
+        "etiqueta": "Vence prueba",
+        "acento": false
+      },
+      {
+        "id": "dias",
+        "etiqueta": "Días restantes",
+        "acento": false
+      }
+    ],
+    "dias_valor": ":n días",
+    "meta_dias": "dias",
+    "aviso": "Al terminar la prueba pasarás a modo limitado si no migras a un plan de pago.",
+    "mejorar": "Mejorar plan",
+    "detalles": "Ver detalles",
+    "abrir_aria": "Abrir :nombre",
+    "menu": [
+      { "accion": "contratarVip", "etiqueta": "Contratar Super VIP", "grupo": 1, "solo_sin_vip": true },
+      { "accion": "abrir", "etiqueta": "Abrir aplicación", "grupo": 2, "requiere_ruta": true },
+      { "accion": "desinstalar", "etiqueta": "Desinstalar", "grupo": 2, "peligro": true }
+    ],
+    "vacio_titulo": "No tienes aplicaciones activas",
+    "vacio_detalle": "Explora el catálogo y adquiere tu primera aplicación",
+    "ver_catalogo": "Ver catálogo",
+    "servicios_vacio_titulo": "No tienes servicios adicionales",
+    "servicios_vacio_detalle": "Contrata el Super VIP desde el menú de cualquiera de tus aplicaciones.",
+    "servicio": {
+      "titulo": "Super VIP",
+      "para": "Servicio adicional para :nombre",
+      "metas": [
+        {
+          "id": "aplicacion",
+          "etiqueta": "Aplicación"
+        },
+        {
+          "id": "contratado",
+          "etiqueta": "Contratado el"
+        },
+        {
+          "id": "costo",
+          "etiqueta": "Costo"
+        }
+      ]
+    },
+    "detalle": {
+      "titulo": "Detalles de la suscripción",
+      "metas": [
+        { "id": "estado", "etiqueta": "Estado" },
+        {
+          "id": "plan",
+          "etiqueta": "Plan"
+        },
+        {
+          "id": "precio",
+          "etiqueta": "Precio"
+        },
+        {
+          "id": "inicio",
+          "etiqueta": "Inicio de prueba"
+        },
+        {
+          "id": "vence",
+          "etiqueta": "Vence prueba"
+        },
+        {
+          "id": "dias",
+          "etiqueta": "Días restantes"
+        }
+      ],
+      "incluye": "Incluye"
+    },
+    "confirmar_titulo": "¿Desinstalar :nombre?",
+    "confirmar_detalle": "Se quitará :nombre de Mis compras. Podrás volver a contratarlo desde el catálogo.",
+    "confirmar_vip": "También se quitará su servicio adicional Super VIP.",
+    "confirmar_si": "Sí, desinstalar",
+    "cancelar": "Cancelar",
+    "milisegundos_dia": 86400000,
+    "clases": {
+      "seccion": "mb-7",
+      "cabecera": "mb-0.5 flex flex-wrap items-center justify-between gap-2",
+      "pestanas": "mb-4",
+      "lista": "grid gap-3",
+      "vacio": "py-10",
+      "tarjeta": "@container grid gap-4 rounded-xl border border-borde bg-white p-4 shadow-sombra",
+      "cabecera_tarjeta": "flex items-start justify-between gap-3",
+      "identidad": "flex min-w-0 items-center gap-3",
+      "texto_identidad": "grid min-w-0 gap-0.5",
+      "nombre_fila": "flex min-w-0 items-center gap-1",
+      "estado_fila": "flex flex-none items-center gap-1.5",
+      "cuerpo": "grid gap-4 @xl:grid-cols-minmax0-1fr-auto @xl:items-center",
+      "izquierda": "grid min-w-0 gap-3",
+      "metas": "grid grid-cols-2 gap-x-4 gap-y-3 @xl:grid-cols-4",
+      "metas_servicio": "grid grid-cols-2 gap-x-4 gap-y-3 @xl:grid-cols-3",
+      "meta": "grid gap-0.5 @xl:border-l @xl:border-borde-suave @xl:pl-4 @xl:first:border-l-0 @xl:first:pl-0",
+      "etiqueta": "text-auxiliar text-texto-suave",
+      "valor": "text-nombre-fila text-texto",
+      "valor_acento": "text-nombre-fila text-primario",
+      "aviso": "flex items-start gap-2 rounded-lg bg-primario-suave px-3 py-2 text-auxiliar text-texto",
+      "acciones": "grid grid-cols-2 gap-2 @xl:w-36 @xl:grid-cols-1",
+      "icono_servicio": "grid h-11 w-11 flex-none place-items-center rounded-xl bg-fondo-boton-oscuro",
+      "detalle_cuerpo": "grid min-h-0 gap-4 overflow-y-auto p-5 max-600:p-4",
+      "detalle_metas": "grid gap-2.5",
+      "detalle_fila": "flex items-center justify-between gap-3 border-b border-borde-suave pb-2.5 text-cuerpo last:border-b-0",
+      "detalle_lista": "m-0 grid list-none gap-2 p-0",
+      "detalle_item": "flex items-start gap-2 text-cuerpo text-texto",
+      "confirmar": "grid justify-items-center gap-4 p-6 text-center",
+      "confirmar_botones": "grid w-full grid-cols-2 gap-3"
+    }
+  },
+  "carrito": {
+    "boton": "Carrito",
+    "titulo": "Tu carrito",
+    "seleccionadas": "Aplicaciones seleccionadas",
+    "una": ":n aplicación",
+    "varias": ":n aplicaciones",
+    "vacio_titulo": "No has agregado ninguna aplicación aún",
+    "vacio_detalle": "Explora el catálogo y agrega las aplicaciones que necesitas",
+    "explorar": "Explorar aplicaciones",
+    "plan": "Plan :plan",
+    "mes_gratis": "1 mes gratis incluido",
+    "cambiar_plan": "Cambiar plan",
+    "quitar": "Quitar :nombre del carrito",
+    "resumen": "Resumen del pedido",
+    "total": "Total del pedido",
+    "prueba": "1 mes gratis activado — hoy pagas S/0.00",
+    "proceder": "Proceder al pago",
+    "seguro": "Pago seguro · Cancela cuando quieras",
+    "volver": "Volver al carrito",
+    "adquirido": "Adquirido el :fecha",
+    "caracteristicas_visibles": 2
   }
 }

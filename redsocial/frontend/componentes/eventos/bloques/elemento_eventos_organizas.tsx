@@ -32,8 +32,8 @@ export function ElementoEventosOrganizas({
       <div className={catalogoEventos.tarjeta_evento_organizado.miniatura}>
         <AvatarImagen src={imagenEvento} className="h-full w-full" />
         <div className="absolute left-3.5 top-3.5 rounded-control bg-white px-3 py-2 text-center shadow-t5">
-          <span className="block text-dia-evento font-extrabold leading-1.1 text-texto">{ev.dia}</span>
-          <span className="mt-px block text-mes-evento font-bold uppercase text-texto-suave">{ev.mes}</span>
+          <span className="block text-dia-evento leading-none text-texto">{ev.dia}</span>
+          <span className="mt-px block text-mes-evento uppercase text-texto-suave">{ev.mes}</span>
         </div>
       </div>
       <InformacionEventoOrganizado ev={ev} ESTADO_ESTILO={ESTADO_ESTILO} ESTADO_ETIQUETA={ESTADO_ETIQUETA} />

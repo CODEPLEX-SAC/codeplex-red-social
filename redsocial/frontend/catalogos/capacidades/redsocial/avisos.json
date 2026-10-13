@@ -12,7 +12,7 @@
     "marcar_todas_leidas": "AVISOS_MARCAR"
   },
   "alertas": {
-    "confirmar_marcar_todas_leidas": "Vas a marcar todas tus notificaciones como leidas."
+    "confirmar_marcar_todas_leidas": "Vas a marcar todas tus notificaciones como leídas."
   },
   "campos": {
     "buscar_notificacion": "Buscar en notificaciones"
@@ -21,10 +21,10 @@
     "carga_notificaciones": "No fue posible cargar las notificaciones."
   },
   "mensajes": {
-    "sin_notificaciones": "No hay notificaciones para mostrar todavia."
+    "sin_notificaciones": "No hay notificaciones para mostrar todavía."
   },
   "toast": {
-    "todas_marcadas_leidas": "Todas las notificaciones se marcaron como leidas."
+    "todas_marcadas_leidas": "Todas las notificaciones se marcaron como leídas."
   },
   "contexto_requerido": [
     "empresa_id",
@@ -45,7 +45,7 @@
     "principal": "Notificaciones"
   },
   "subtitulos": {
-    "principal": "Mantente al dia con lo que ocurre en tu red y en tu empresa"
+    "principal": "Mantente al día con lo que ocurre en tu red y en tu empresa"
   },
   "pestanas": [
     {"clave": "todas", "etiqueta": "Todas", "ruta": "/notificaciones"},
@@ -66,7 +66,7 @@
   ],
   "titulos_pestanas": {
     "todas": "Todas",
-    "no_leidas": "No leidas",
+    "no_leidas": "No leídas",
     "menciones": "Menciones",
     "solicitudes": "Solicitudes",
     "eventos": "Eventos",
@@ -77,8 +77,8 @@
     "ayer": "Ayer"
   },
   "botones": {
-    "marcar_todas_leidas": "Marcar todas como leidas",
-    "mas_opciones": "Mas opciones",
+    "marcar_todas_leidas": "Marcar todas como leídas",
+    "mas_opciones": "Más opciones",
     "me_gusta": "Me gusta",
     "responder": "Responder",
     "ver_conversacion_completa": "Ver conversacion completa",
@@ -93,23 +93,23 @@
     "ver_mas": "Ver mas"
   },
   "secciones": {
-    "comentaron_en_tu_publicacion": "Comentaron en tu publicacion",
+    "comentaron_en_tu_publicacion": "Comentaron en tu publicación",
     "personas_que_comentaron": "Personas que comentaron",
     "solicitudes_amistad": "Solicitudes de amistad",
     "solicitudes_grupo": "Solicitudes de grupo",
     "solicitudes_evento": "Solicitudes de evento",
-    "solicitudes_colaboracion": "Solicitudes de colaboracion"
+    "solicitudes_colaboracion": "Solicitudes de colaboración"
   },
   "banner_solicitudes": {
     "titulo": "Solicitudes pendientes",
-    "descripcion": "Aqui puedes gestionar todas las solicitudes de amistad, grupos, eventos y colaboraciones."
+    "descripcion": "Aquí puedes gestionar todas las solicitudes de amistad, grupos, eventos y colaboraciones."
   },
   "mensajes_solicitudes": {
-    "sin_colaboracion_titulo": "No tienes solicitudes de colaboracion",
-    "sin_colaboracion_descripcion": "Cuando alguien te invite a colaborar en un proyecto, aparecera aqui."
+    "sin_colaboracion_titulo": "No tienes solicitudes de colaboración",
+    "sin_colaboracion_descripcion": "Cuando alguien te invite a colaborar en un proyecto, aparecerá aquí."
   },
   "panel_lateral_solicitudes": {
-    "titulo": "Nuevas oportunidades de conexion",
+    "titulo": "Nuevas oportunidades de conexión",
     "descripcion": "Revisa y gestiona tus solicitudes para grandes colaboraciones."
   },
   "consejos_solicitudes": {
@@ -125,7 +125,7 @@
     "descripcion": "Las conexiones correctas pueden abrir nuevas oportunidades profesionales."
   },
   "cita_lateral_solicitudes": {
-    "texto": "Las grandes oportunidades nacen de una buena conexion.",
+    "texto": "Las grandes oportunidades nacen de una buena conexión.",
     "autor": "CodePlex"
   },
   "campos_lista": {
@@ -134,7 +134,7 @@
   },
   "banner_menciones": {
     "titulo": "Te mencionaron",
-    "descripcion": "Aqui veras todas las veces que te mencionaron en publicaciones, comentarios, grupos o eventos."
+    "descripcion": "Aquí verás todas las veces que te mencionaron en publicaciones, comentarios, grupos o eventos."
   },
   "acciones_mencion": {
     "publicacion": "te mencionó en una publicación",
@@ -143,39 +143,36 @@
     "evento": "te mencionó en un evento"
   },
   "menu_mencion": {
-    "ver_publicacion": "Ver publicacion",
+    "ver_publicacion": "Ver publicación",
     "responder": "Responder",
     "dar_me_gusta": "Dar me gusta",
     "compartir": "Compartir",
-    "marcar_como_leida": "Marcar como leida",
+    "marcar_como_leida": "Marcar como leída",
     "silenciar_menciones_de": "Silenciar menciones de",
     "reportar": "Reportar"
   },
   "botones_lista": {
-    "cargar_mas_notificaciones": "Cargar mas notificaciones"
+    "cargar_mas_notificaciones": "Cargar más notificaciones"
   },
   "banner_eventos": {
     "titulo": "Notificaciones de eventos",
-    "descripcion": "Aqui veras invitaciones, recordatorios, actualizaciones y toda la actividad relacionada con eventos."
+    "descripcion": "Aquí verás invitaciones, recordatorios, actualizaciones y toda la actividad relacionada con eventos."
   },
   "menu_evento": {
     "ver_evento": "Ver evento",
-    "marcar_como_leida": "Marcar como leida",
+    "marcar_como_leida": "Marcar como leída",
     "silenciar_este_tipo": "Silenciar este tipo",
-    "eliminar_notificacion": "Eliminar notificacion"
+    "eliminar_notificacion": "Eliminar notificación"
   },
   "panel_topbar": {
     "ver_mas": "Ver mas",
-    "ver_todas_las_notificaciones": "Ver todas las notificaciones",
-    "configuracion_de_notificaciones": "Configuracion de notificaciones",
-    "conteo_todas": 12,
-    "conteo_no_leidas": 8
+    "ver_todas_las_notificaciones": "Ver todas las notificaciones"
   },
   "clases_icono_color": {
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "azul": "bg-t-dbeafe text-azul-categoria",
-    "rojo": "bg-t-fee2e2 text-rojo-categoria",
-    "amarillo": "bg-t-fff8e1 text-amarillo-categoria"
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "rojo": "bg-fondo-categoria-rojo text-rojo-categoria-texto",
+    "amarillo": "bg-fondo-categoria-amarillo text-amarillo-categoria"
   },
   "panel_topbar_hoy": [
     {

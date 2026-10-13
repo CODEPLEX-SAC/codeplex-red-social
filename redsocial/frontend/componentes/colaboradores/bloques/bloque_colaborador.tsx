@@ -2,6 +2,7 @@ import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import { BloqueColaborador2 } from './bloque_colaborador2'
+import type { PasoInvitacion } from '@/tipos/colaboradores/contrato_invitar_colaborador'
 import { BloqueVistaPreviaCorreo } from './bloque_vista_previa_correo'
 
 export function BloqueColaborador({
@@ -12,6 +13,7 @@ export function BloqueColaborador({
   INICIAL_MARCA,
   CORREO_PREVIEW,
   FilaCorreo,
+  alEditar,
 }: {
   RESUMEN_COLABORADOR: { iniciales: string; nombreCompleto: string; correo: string; telefono: string; }
   RESUMEN_ROL: { rolAsignado: string; modulosTexto: string; }
@@ -20,30 +22,43 @@ export function BloqueColaborador({
   INICIAL_MARCA: string
   CORREO_PREVIEW: { nombrePila: string; invitadoPor: string; empresa: string; vigenciaTexto: string; expiraEnDias: string; }
   FilaCorreo: ({ icono, etiqueta, valor }: { icono: string; etiqueta: string; valor: string; }) => React.JSX.Element
+  alEditar: (paso: PasoInvitacion) => void
 }) {
+  function editarColaborador() {
+    alEditar(1)
+  }
+
+  function editarRol() {
+    alEditar(2)
+  }
+
+  function editarVigencia() {
+    alEditar(3)
+  }
+
   return (
     <div className="grid grid-cols-2 gap-6 p-7 max-960:grid-cols-1 max-960:p-4">
       <div>
-        <BloqueColaborador2 RESUMEN_COLABORADOR={RESUMEN_COLABORADOR} />
+        <BloqueColaborador2 RESUMEN_COLABORADOR={RESUMEN_COLABORADOR} alEditar={editarColaborador} />
 
         <div className="mb-4 rounded-xl border border-gris-borde px-5 py-4.5">
           <div className="mb-3.5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Icono name="escudo" className="w-5 h-5 text-primario" />
-              <h4 className="m-0 text-titulo-seccion font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_resumen.rol_y_permisos}</h4>
+              <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_resumen.rol_y_permisos}</h4>
             </div>
-            <Boton type="button" variant="secundario" size="mini">
+            <Boton type="button" variant="secundario" size="mini" onClick={editarRol} aria-label={catalogoColaboradores.campos_resumen.editar_rol}>
               {catalogoColaboradores.campos_resumen.editar}
             </Boton>
           </div>
           <div className="flex flex-col gap-2.5">
             <div className="flex items-center gap-2">
-              <span className="min-w-32.5 text-auxiliar text-gris-texto-secundario">{catalogoColaboradores.campos_resumen.rol_asignado}</span>
-              <span className="inline-block rounded-md bg-t-ede9fe px-2.5 py-0.75 text-etiqueta-estado font-semibold text-t-5b21b6">{RESUMEN_ROL.rolAsignado}</span>
+              <span className="min-w-32.5 text-auxiliar text-texto-suave">{catalogoColaboradores.campos_resumen.rol_asignado}</span>
+              <span className="inline-block rounded-md bg-fondo-categoria-morado px-2.5 py-0.75 text-badge text-morado-categoria">{RESUMEN_ROL.rolAsignado}</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="min-w-32.5 text-auxiliar text-gris-texto-secundario">{catalogoColaboradores.campos_resumen.modulos_y_permisos}</span>
-              <a href="#" className="text-enlace-accion font-medium text-primario no-underline hover:underline">{RESUMEN_ROL.modulosTexto}</a>
+              <span className="min-w-32.5 text-auxiliar text-texto-suave">{catalogoColaboradores.campos_resumen.modulos_y_permisos}</span>
+              <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{RESUMEN_ROL.modulosTexto}</a>
             </div>
           </div>
         </div>
@@ -52,9 +67,9 @@ export function BloqueColaborador({
           <div className="mb-3.5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Icono name="calendario" className="w-5 h-5 text-primario" />
-              <h4 className="m-0 text-titulo-seccion font-bold text-gris-oscuro-texto">{catalogoColaboradores.campos_resumen.vigencia}</h4>
+              <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_resumen.vigencia}</h4>
             </div>
-            <Boton type="button" variant="secundario" size="mini">
+            <Boton type="button" variant="secundario" size="mini" onClick={editarVigencia} aria-label={catalogoColaboradores.campos_resumen.editar_vigencia}>
               {catalogoColaboradores.campos_resumen.editar}
             </Boton>
           </div>

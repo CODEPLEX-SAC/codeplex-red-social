@@ -10,14 +10,14 @@
     "#ec4899": "secundario"
   },
   "clasesIconoKpi": {
-    "verde": "bg-t-dcfce7 text-verde-categoria",
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "naranja": "bg-t-ffedd5 text-naranja-categoria"
+    "verde": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria-texto"
   },
   "clasesEstadoInd": {
-    "optimo": "bg-t-dcfce7 text-positivo-kpi",
-    "regular": "bg-t-fef9c3 text-t-a16207",
-    "bajo": "bg-t-fee2e2 text-negativo-kpi"
+    "optimo": "bg-fondo-categoria-verde text-positivo-kpi",
+    "regular": "bg-fondo-categoria-amarillo text-naranja-categoria-texto",
+    "bajo": "bg-fondo-categoria-rojo text-negativo-kpi"
   },
   "etiquetaEstadoInd": {
     "optimo": "Óptimo",
@@ -25,12 +25,13 @@
     "bajo": "Bajo"
   },
   "clasesIconoModulo": {
-    "verde": "bg-t-dcfce7 text-verde-categoria",
-    "azul": "bg-t-dbeafe text-azul-categoria",
-    "naranja": "bg-t-ffedd5 text-naranja-categoria",
-    "morado": "bg-t-f3e8ff text-morado-categoria",
-    "rojo": "bg-t-fee2e2 text-rojo-categoria"
+    "verde": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria-texto",
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "rojo": "bg-fondo-categoria-rojo text-rojo-categoria-texto"
   },
-  "claseTh": "whitespace-nowrap border-b border-t-f0eef5 py-0 pb-2 pr-1.5 pl-0 text-left text-encabezado-tabla font-semibold uppercase text-texto-suave",
-  "claseTd": "whitespace-nowrap border-b border-t-f7f6fa py-1.75 pr-1.5 pl-0 text-texto"
+  "claseTh": "border-b border-borde-suave py-0 pb-2 pr-1.5 max-380:pr-1 pl-0 text-left text-encabezado-tabla uppercase text-texto-suave",
+  "claseTd": "whitespace-nowrap border-b border-borde-suave py-1.75 pr-1.5 max-380:pr-1 pl-0 text-texto",
+  "claseTdNombre": "border-b border-borde-suave py-1.75 pr-1.5 max-380:pr-1 pl-0 text-texto"
 }

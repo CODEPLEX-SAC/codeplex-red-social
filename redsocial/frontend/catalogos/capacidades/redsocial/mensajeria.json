@@ -118,8 +118,7 @@
     "completada": "Completada",
     "organizador": "Organizador",
     "en_llamada": "En llamada",
-    "colaborador": "Colaborador",
-    "colaborador_badge": "(COLABORADOR)"
+    "colaborador": "Colaborador"
   },
   "placeholders": {
     "buscar_videollamadas": "Buscar videollamadas...",
@@ -128,6 +127,8 @@
     "buscar_mensajes": "Buscar mensajes...",
     "escribe_un_mensaje": "Escribe un mensaje..."
   },
+  "panel_lateral": { "contenedor": "grid gap-4" },
+  "parametros_ruta": { "reunion": "reunion" },
   "conversacion": {
     "en_linea": "En línea",
     "volver_a_la_lista": "Volver a la lista de conversaciones",

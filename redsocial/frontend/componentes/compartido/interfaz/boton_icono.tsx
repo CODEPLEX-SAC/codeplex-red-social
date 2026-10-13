@@ -14,7 +14,7 @@ export function BotonIcono({
 }: BotonIconoProps) {
   const tamano = mapaTamano[size]
   const clases = [
-    'inline-grid place-items-center p-0',
+    'inline-grid place-items-center p-0 disabled:cursor-not-allowed disabled:opacity-40',
     tamano.boton,
     mapaVariante[variant],
     className ?? '',

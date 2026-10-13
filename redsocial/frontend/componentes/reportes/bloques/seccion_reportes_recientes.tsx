@@ -5,8 +5,8 @@ import { Icono } from '../../compartido/icono'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import type { ReporteReciente } from '@/tipos/reportes/modelo_reportes'
 
-const TH = 'whitespace-nowrap border-b border-t-f0eef5 py-0 pb-2.5 pr-2.5 pl-0 text-left text-encabezado-tabla font-semibold uppercase text-texto-suave'
-const TD = 'whitespace-nowrap border-b border-t-f7f6fa py-2.5 pr-2.5 pl-0 text-texto'
+const TH = 'whitespace-nowrap border-b border-borde-suave py-0 pb-2.5 pr-2.5 pl-0 text-left text-encabezado-tabla uppercase text-texto-suave'
+const TD = 'whitespace-nowrap border-b border-borde-suave py-2.5 pr-2.5 pl-0 text-texto'
 
 export function SeccionReportesRecientes({
   REPORTES_RECIENTES,
@@ -17,8 +17,8 @@ export function SeccionReportesRecientes({
 }) {
   return (
     <div className="rounded-xl border border-borde bg-white p-5">
-      <div className="mb-3.5 border-b border-t-f0eef5 pb-3.5">
-        <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoReportes.secciones.reportes_recientes}</h2>
+      <div className="mb-3.5 border-b border-borde-suave pb-3.5">
+        <h2 className="m-0 text-titulo-banner text-texto">{catalogoReportes.secciones.reportes_recientes}</h2>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse text-cuerpo tabla-ultima-fila-sin-borde">
@@ -47,8 +47,8 @@ export function SeccionReportesRecientes({
                 </td>
                 <td className={TD}>{r.fecha}</td>
                 <td className={TD}>
-                  <span className={`inline-flex items-center gap-1.5 text-etiqueta-estado font-bold ${CLASES_FORMATO[r.formato]}`}>
-                    <Icono name="documento" className="h-3.25 w-3.25" /> {r.formato === 'pdf' ? catalogoReportes.formatos.pdf : catalogoReportes.formatos.excel}
+                  <span className={`inline-flex items-center gap-1.5 text-estado ${CLASES_FORMATO[r.formato]}`}>
+                    <Icono name="documento" className="h-3.5 w-3.5" /> {r.formato === 'pdf' ? catalogoReportes.formatos.pdf : catalogoReportes.formatos.excel}
                   </span>
                 </td>
                 <td className={TD}>
@@ -64,7 +64,7 @@ export function SeccionReportesRecientes({
           </tbody>
         </table>
       </div>
-      <a href="#" className="mt-3.5 block text-center text-enlace-accion font-semibold text-primario no-underline">{catalogoReportes.botones.ver_todos_los_reportes}</a>
+      <a href="#" className="mt-3.5 block text-center text-enlace-accion text-primario no-underline">{catalogoReportes.botones.ver_todos_los_reportes}</a>
     </div>
   )
 }

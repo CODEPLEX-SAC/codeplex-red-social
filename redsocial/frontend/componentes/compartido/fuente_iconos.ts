@@ -23,6 +23,15 @@ export function tamanoDeClases(clases: string): string {
   return coincidencia ? `${Number(coincidencia[1]) * CONFIGURACION_LIBRERIA.factor_unidad}rem` : CONFIGURACION_LIBRERIA.tamano_predeterminado
 }
 
+export function tamanosResponsivosDeClases(clases: string): Record<string, { fontSize: string }> {
+  const reglas: Record<string, { fontSize: string }> = {}
+  for (const clase of clases.split(/\s+/)) {
+    const coincidencia = clase.match(/^max-(\d+):h-([\d.]+)$/)
+    if (coincidencia) reglas[`@media (width < ${coincidencia[1]}px)`] = { fontSize: `${Number(coincidencia[2]) * CONFIGURACION_LIBRERIA.factor_unidad}rem` }
+  }
+  return reglas
+}
+
 export function clasesSinTamano(clases: string): string {
-  return clases.split(/\s+/).filter((clase) => !/^(h|w)-[\d.]+$/.test(clase)).join(' ')
+  return clases.split(/\s+/).filter((clase) => !/^(max-\d+:)?(h|w)-[\d.]+$/.test(clase)).join(' ')
 }

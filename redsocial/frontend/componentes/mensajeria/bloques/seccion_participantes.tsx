@@ -27,23 +27,23 @@ export function SeccionParticipantes({
       }
     >
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoMensajeria.botones.participantes} ({CONTEO_PARTICIPANTES_EN_CURSO.total})</h2>
+        <h2 className="m-0 text-titulo-banner text-texto">{catalogoMensajeria.botones.participantes} ({CONTEO_PARTICIPANTES_EN_CURSO.total})</h2>
         <BotonIcono icono="cerrar" type="button" aria-label={catalogoMensajeria.botones.cerrar} onClick={() => setParticipantesAbiertos(false)} variant="sutil" size="md" />
       </div>
 
       <CampoBusqueda placeholder={catalogoMensajeria.placeholders.buscar_participantes} className="mb-2.5 w-full" />
 
       <div className="mb-2.5 flex gap-1.5 overflow-x-auto">
-        <button type="button" className="inline-flex flex-none items-center gap-1 whitespace-nowrap rounded-20 border border-primario bg-primario px-2.75 py-1.25 text-boton font-medium text-white">
+        <Boton type="button" variant="filtro" size="filtro" activo>
           {catalogoMensajeria.filtros.todos} <span className="text-contador">{CONTEO_PARTICIPANTES_EN_CURSO.todos}</span>
-        </button>
-        <button type="button" className="inline-flex flex-none items-center gap-1 whitespace-nowrap rounded-20 border border-borde bg-white px-2.75 py-1.25 text-boton font-medium text-texto-suave">
+        </Boton>
+        <Boton type="button" variant="filtro" size="filtro">
           {catalogoMensajeria.filtros.en_linea} <span className="text-contador">{CONTEO_PARTICIPANTES_EN_CURSO.enLinea}</span>
-        </button>
-        <button type="button" className="inline-flex flex-none items-center gap-1 whitespace-nowrap rounded-20 border border-borde bg-white px-2.75 py-1.25 text-boton font-medium text-texto-suave">
+        </Boton>
+        <Boton type="button" variant="filtro" size="filtro">
           {catalogoMensajeria.filtros.invitados} <span className="text-contador">{CONTEO_PARTICIPANTES_EN_CURSO.invitados}</span>
-        </button>
-        <button type="button" aria-label={catalogoMensajeria.botones.mas_filtros} className="grid h-6.5 w-6.5 flex-none place-items-center rounded-20 border border-borde bg-white text-boton font-medium text-texto-suave">+</button>
+        </Boton>
+        <BotonIcono icono="mas" type="button" aria-label={catalogoMensajeria.botones.mas_filtros} variant="contorno" size="default" className="flex-none" />
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
@@ -54,11 +54,9 @@ export function SeccionParticipantes({
               <strong className="block truncate text-nombre-entidad text-texto">{p.nombre}</strong>
               <span className="block text-auxiliar text-texto-suave">{p.rol}</span>
             </div>
-            <Icono name={p.micActivo ? 'microfono' : 'microfono-apagado'} className={'h-3.75 w-3.75 flex-none ' + (p.micActivo ? 'text-exito' : 'text-peligro')} />
-            <Icono name={p.videoActivo ? 'video' : 'video-apagado'} className={'h-3.75 w-3.75 flex-none ' + (p.videoActivo ? 'text-exito' : 'text-peligro')} />
-            <button type="button" aria-label={catalogoMensajeria.botones.mas_opciones} className="grid h-5.5 w-5.5 flex-none place-items-center border-0 bg-transparent text-texto-suave">
-              <Icono name="puntos" className="h-3.5 w-3.5" />
-            </button>
+            <Icono name={p.micActivo ? 'microfono' : 'microfono-apagado'} className={'h-4 w-4 flex-none ' + (p.micActivo ? 'text-exito-texto' : 'text-peligro-texto')} />
+            <Icono name={p.videoActivo ? 'video' : 'video-apagado'} className={'h-4 w-4 flex-none ' + (p.videoActivo ? 'text-exito-texto' : 'text-peligro-texto')} />
+            <BotonIcono icono="puntos" type="button" aria-label={catalogoMensajeria.botones.mas_opciones} variant="discreto" size="sm" className="flex-none" />
           </article>
         ))}
       </div>

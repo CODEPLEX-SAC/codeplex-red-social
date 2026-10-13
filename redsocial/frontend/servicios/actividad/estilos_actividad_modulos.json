@@ -6,9 +6,9 @@
     "rosa": "bg-rosa-categoria"
   },
   "clasesReferencia": {
-    "verde": "bg-t-e8f5e9 text-t-2e7d32",
-    "azul": "bg-t-e3f2fd text-t-1565c0",
-    "naranja": "bg-t-fff3e0 text-t-e65100",
-    "rosa": "bg-t-fce4ec text-t-c62828"
+    "verde": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria-texto",
+    "rosa": "bg-fondo-categoria-rosa text-rojo-categoria-texto"
   }
 }

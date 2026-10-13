@@ -17,7 +17,7 @@ export function PaginaGuardados() {
           <section>
             <div className="mb-5 flex items-start justify-between gap-5 max-600:flex-col max-600:items-stretch">
               <div>
-                <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoGuardados.titulos.principal}</h1>
+                <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoGuardados.titulos.principal}</h1>
                 <p className="m-0 text-subtitulo text-texto-suave">{catalogoGuardados.subtitulos.principal}</p>
               </div>
               <CampoBusqueda
@@ -40,8 +40,8 @@ export function PaginaGuardados() {
               </div>
               <div className="flex flex-none items-center justify-end gap-2">
                 <div className="flex items-center gap-1 rounded-lg border border-borde bg-white p-0.5">
-                  <BotonIcono icono="cuadricula" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('cuadricula')} variant={vista === 'cuadricula' ? 'primario' : 'sutil'} size="md" />
-                  <BotonIcono icono="listas" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('listas')} variant={vista === 'listas' ? 'primario' : 'sutil'} size="md" />
+                  <BotonIcono icono="cuadricula-oficial" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('cuadricula')} variant={vista === 'cuadricula' ? 'primario' : 'sutil'} size="md" />
+                  <BotonIcono icono="vista-lista" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('listas')} variant={vista === 'listas' ? 'primario' : 'sutil'} size="md" />
                 </div>
                 <Selector variant="mini" defaultValue="mas_recientes" aria-label={catalogoGuardados.botones.mas_recientes}>
                   <option value="mas_recientes">{catalogoGuardados.botones.mas_recientes}</option>

@@ -10,7 +10,7 @@ export function PaginaMensajesFavoritos() {
         principal={
           <section>
             <div className="mb-5 flex items-start justify-between gap-5">
-              <h1 className="m-0 text-titulo-pagina font-extrabold tracking-n02 text-texto">{catalogoMensajeria.titulos.favoritos}</h1>
+              <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{catalogoMensajeria.titulos.favoritos}</h1>
               <div className="flex items-center gap-2.5">
                 <BotonIcono icono="mensaje" aria-label={catalogoMensajeria.botones.nuevo_mensaje} />
               </div>
@@ -38,24 +38,24 @@ export function PaginaMensajesFavoritos() {
                   <button
                     key={c.nombre}
                     type="button"
-                    className="flex w-full items-center gap-2.5 rounded-control border-b border-t-f5f3fa px-3 py-3.5 text-left last:border-b-0 hover:bg-t-f9f8fc"
+                    className="flex w-full items-center gap-2.5 rounded-control border-b border-fondo-hover-discreto px-3 py-3.5 text-left last:border-b-0 hover:bg-fondo"
                   >
                     <AvatarImagen src={usuarioImg} className="h-11 w-11 flex-none rounded-full bg-primario-suave" />
                     <span className="min-w-0 flex-1">
-                      <strong className="mb-0.75 block text-nombre-entidad font-bold text-texto">{c.nombre}</strong>
+                      <strong className="mb-0.75 block text-nombre-entidad text-texto">{c.nombre}</strong>
                       <span className="mb-1.25 block truncate text-cuerpo text-texto-suave">{c.preview}</span>
-                      <span className="inline-block max-w-full truncate rounded text-ellipsis bg-t-e8f5e9 px-2 py-0.5 text-etiqueta-estado font-medium text-t-2e7d32">{c.contexto}</span>
+                      <span className="inline-block max-w-full truncate rounded text-ellipsis bg-fondo-categoria-verde px-2 py-0.5 text-badge text-verde-categoria-texto">{c.contexto}</span>
                     </span>
                     <span className="flex flex-none flex-col items-end gap-2">
-                      <time className="whitespace-nowrap text-fecha-abreviada text-t-aaa7b5">{c.hora}</time>
-                      <span className="grid h-5.5 w-5.5 flex-none place-items-center text-t-f59e0b">
+                      <time className="whitespace-nowrap text-fecha-abreviada text-texto-suave">{c.hora}</time>
+                      <span className="grid h-5.5 w-5.5 flex-none place-items-center text-amarillo-categoria">
                         <Icono name="estrella" className="h-4.5 w-4.5" />
                       </span>
                     </span>
                   </button>
                 ))}
               </div>
-              <div className="border-t border-t-f0eef5 p-3.5 text-center text-auxiliar text-texto-suave">
+              <div className="border-t border-borde-suave p-3.5 text-center text-auxiliar text-texto-suave">
                 {MOSTRANDO_FAVORITOS}
               </div>
             </section>

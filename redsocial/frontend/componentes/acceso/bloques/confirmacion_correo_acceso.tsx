@@ -17,7 +17,7 @@ export function ConfirmacionCorreoAcceso({ correo, onVolver }: ConfirmacionCorre
         <Icono name="correo" className="h-7 w-7" />
       </div>
       <div className="flex flex-col gap-1">
-        <h2 className="m-0 text-nombre-entidad font-bold text-texto">{mensajes.revisa_correo_titulo}</h2>
+        <h2 className="m-0 text-nombre-entidad text-texto">{mensajes.revisa_correo_titulo}</h2>
         <p className="m-0 text-subtitulo text-texto-suave">{mensajes.revisa_correo_descripcion}</p>
         <strong className="break-all text-subtitulo text-texto">{correo}</strong>
       </div>

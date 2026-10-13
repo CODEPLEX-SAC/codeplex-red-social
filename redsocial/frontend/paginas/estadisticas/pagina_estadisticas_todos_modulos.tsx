@@ -4,7 +4,7 @@ import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadist
 import type { PuntoCategoria } from '@codeplex-sac/graficos'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import type { EstadoRatio } from '@/tipos/estadisticas/modelo_estadisticas_todos_modulos'
-import { KPIS, COMPOSICION_INGRESOS, GASTOS_CATEGORIA, TOP_CLIENTES, ESTADO_RESULTADOS, RATIOS_FINANCIEROS, PROYECCION_VENTAS, RENTABILIDAD_PROYECTO, COMPARATIVO_KPI, ESCALA_TOP_CLIENTES, VENTAS_MENSUALES, FLUJO_CAJA_MENSUAL, CLASES_ICONO_KPI, CLASES_ESTADO_EST, ETIQUETA_ESTADO, TH, TD } from '../../rutas/estadisticas/rutas_estadisticas'
+import { KPIS, COMPOSICION_INGRESOS, GASTOS_CATEGORIA, TOP_CLIENTES, ESTADO_RESULTADOS, RATIOS_FINANCIEROS, PROYECCION_VENTAS, RENTABILIDAD_PROYECTO, COMPARATIVO_KPI, ESCALA_TOP_CLIENTES, VENTAS_MENSUALES, FLUJO_CAJA_MENSUAL, CLASES_ICONO_KPI, CLASES_ESTADO_EST, ETIQUETA_ESTADO, TH, TD, TD_NOMBRE } from '../../rutas/estadisticas/rutas_estadisticas'
 import { BloqueEstadisticasTodosModulos1, SeccionEvolucionVentas2, SeccionGastosCategoria, SeccionProyeccionVentas } from '../../componentes/estadisticas'
 
 const PROYECCION_VENTAS_DATOS: PuntoCategoria[] = PROYECCION_VENTAS.map((b) => ({
@@ -25,7 +25,7 @@ function EstadoBadge({ estado, children }: { estado: EstadoRatio; children: stri
 
 function TablaEst({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto max-380:-mx-2">
       <table className={'w-full border-collapse text-cuerpo tabla-ultima-fila-sin-borde ' + className}>
         {children}
       </table>
@@ -38,10 +38,10 @@ export function PaginaEstadisticasTodosModulos() {
 
   return (
     <EstructuraApp paginaActiva="estadisticas">
-      <div className="mx-auto max-w-420">
+      <div>
         <div className="mb-5 flex items-start justify-between gap-5 max-900:flex-col max-900:items-stretch">
           <div>
-            <h1 className="m-0 text-titulo-pagina font-extrabold text-texto">{catalogoEstadisticas.titulos.todos_modulos}</h1>
+            <h1 className="m-0 text-titulo-pagina text-texto">{catalogoEstadisticas.titulos.todos_modulos}</h1>
             <p className="m-1 mt-1 mb-0 text-subtitulo text-texto-suave">{catalogoEstadisticas.subtitulos.todos_modulos}</p>
           </div>
           <div className="flex flex-wrap items-end gap-3.5 max-480:flex-col max-480:items-stretch">
@@ -52,7 +52,7 @@ export function PaginaEstadisticasTodosModulos() {
               {catalogoEstadisticas.selectores.comparar_con.opciones.map((o) => <option key={o}>{o}</option>)}
             </Selector>
             <Boton type="button" variant="contorno" size="md" className="flex-none max-900:w-full max-900:justify-center">
-              <Icono name="filtro" className="h-3.75 w-3.75" /> {catalogoEstadisticas.botones.filtros_avanzados}
+              <Icono name="filtro" className="h-4 w-4" /> {catalogoEstadisticas.botones.filtros_avanzados}
             </Boton>
           </div>
         </div>
@@ -63,7 +63,7 @@ export function PaginaEstadisticasTodosModulos() {
         >
           {MODULOS_TABS.map((m, i) => (
             <Boton key={m.etiqueta} type="button" variant="filtro" size="md" activo={i === 0}>
-              <Icono name={m.icono} className="h-3.75 w-3.75" /> {m.etiqueta}
+              <Icono name={m.icono} className="h-4 w-4" /> {m.etiqueta}
             </Boton>
           ))}
         </div>
@@ -87,6 +87,7 @@ export function PaginaEstadisticasTodosModulos() {
           TH={TH}
           ESTADO_RESULTADOS={ESTADO_RESULTADOS}
           TD={TD}
+          TD_NOMBRE={TD_NOMBRE}
           RATIOS_FINANCIEROS={RATIOS_FINANCIEROS}
           EstadoBadge={EstadoBadge}
           ETIQUETA_ESTADO={ETIQUETA_ESTADO}
@@ -99,6 +100,7 @@ export function PaginaEstadisticasTodosModulos() {
           TH={TH}
           RENTABILIDAD_PROYECTO={RENTABILIDAD_PROYECTO}
           TD={TD}
+          TD_NOMBRE={TD_NOMBRE}
           EstadoBadge={EstadoBadge}
           ETIQUETA_ESTADO={ETIQUETA_ESTADO}
         />

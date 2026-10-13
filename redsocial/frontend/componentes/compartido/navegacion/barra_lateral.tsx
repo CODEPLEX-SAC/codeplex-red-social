@@ -1,4 +1,5 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles'
 import { CodeplexBarraLateral } from '@codeplex-sac/diseno'
 import { irARuta } from '../interfaz/menu'
 import { ProveedorTemaGraficos } from '../proveedor_tema_graficos'
@@ -12,7 +13,7 @@ const CONFIGURACION = catalogoCompartido.barra_lateral
 export function BarraLateral({ paginaActiva, colapsado = false, alAlternarColapsado }: BarraLateralProps) {
   return (
     <ProveedorTemaGraficos>
-      <ThemeProvider theme={(temaExterno) => createTheme(temaExterno, { breakpoints: { values: CONFIGURACION.puntos_quiebre } })}>
+      <ThemeProvider theme={(temaExterno: Theme) => createTheme({ ...temaExterno, breakpoints: { values: { ...temaExterno.breakpoints.values, ...CONFIGURACION.puntos_quiebre } } })}>
         <CodeplexBarraLateral
           elementos={elementosDeLaBarra(paginaActiva)}
           ancho={CONFIGURACION.ancho}

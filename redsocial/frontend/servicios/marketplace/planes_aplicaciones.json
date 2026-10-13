@@ -1,0 +1,1696 @@
+{
+  "conta-plex": {
+    "id": "conta-plex",
+    "nombre": "ContaPlex",
+    "lema": "Gestión contable para tu negocio",
+    "descripcion": "Sistema contable integral · Comprobantes ilimitados",
+    "icono": "contabilidad-propio",
+    "color": "azul",
+    "etiquetas": [
+      "1 mes gratis",
+      "IGV incluido",
+      "Actualizaciones"
+    ],
+    "tipos": [
+      {
+        "id": "independiente",
+        "nombre": "Independiente",
+        "detalle": "Para contadores y gestores",
+        "catalogo": {
+          "nombre": "Brochure ContaPlex Independientes 2026",
+          "url": "/catalogos/contaplex-independientes-2026.pdf"
+        },
+        "planes": [
+          {
+            "id": "gratis",
+            "nombre": "Gratis",
+            "precio": {
+              "mensual": "0",
+              "anual": "0"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración básica",
+                "estado": "neutro"
+              },
+              {
+                "texto": "Procesos contables esenciales",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libros contables",
+                "estado": "incluido"
+              },
+              {
+                "texto": "PLE - SIRE incluido",
+                "estado": "incluido"
+              }
+            ],
+            "etiquetas": [
+              "1 empresa"
+            ]
+          },
+          {
+            "id": "basico",
+            "nombre": "Básico",
+            "precio": {
+              "mensual": "50",
+              "anual": "500"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración básica",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Procesos contables esenciales",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libros contables",
+                "estado": "incluido"
+              },
+              {
+                "texto": "PLE - SIRE incluido",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Reportes + seguridad completa",
+                "estado": "incluido"
+              }
+            ],
+            "etiquetas": [
+              "5 empresas"
+            ]
+          },
+          {
+            "id": "estandar",
+            "nombre": "Estándar",
+            "precio": {
+              "mensual": "100",
+              "anual": "1,000"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Básico incluido",
+                "estado": "incluido"
+              },
+              {
+                "texto": "x3 veces más empresas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Procesos + diario automático",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Todos los libros y reportes",
+                "estado": "incluido"
+              }
+            ],
+            "etiquetas": [
+              "15 empresas"
+            ]
+          },
+          {
+            "id": "premium1",
+            "nombre": "Premium 1",
+            "precio": {
+              "mensual": "150",
+              "anual": "1,500"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Estándar +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Activos fijos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Centro de costos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Registro de letras",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Asientos por dif. de TC",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Liquidación IGV y RTA",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compensaciones",
+                "estado": "excluido"
+              }
+            ],
+            "etiquetas": [
+              "25 empresas"
+            ]
+          },
+          {
+            "id": "premium2",
+            "nombre": "Premium 2",
+            "precio": {
+              "mensual": "200",
+              "anual": "2,000"
+            },
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Premium 1 +",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Compensaciones",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Hasta 35 empresas",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Reportes + seguridad",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Flujo de efectivo",
+                "estado": "excluido"
+              }
+            ],
+            "etiquetas": [
+              "35 empresas"
+            ],
+            "cinta": "Más popular"
+          },
+          {
+            "id": "premium3",
+            "nombre": "Premium 3",
+            "precio": {
+              "mensual": "250",
+              "anual": "2,500"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Premium 2 +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Estado de flujo de efectivo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Estado de cambios en patrimonio",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libro de retenciones",
+                "estado": "excluido"
+              }
+            ],
+            "etiquetas": [
+              "45 empresas"
+            ]
+          },
+          {
+            "id": "gold",
+            "nombre": "Gold",
+            "precio": {
+              "mensual": "300",
+              "anual": "3,000"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Premium 3 +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libro de reclamaciones",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libro de activos fijos SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "App móvil gerencial",
+                "estado": "incluido"
+              }
+            ],
+            "etiquetas": [
+              "55 empresas"
+            ]
+          }
+        ],
+        "disposicion": "fila",
+        "ancho": "compacta"
+      },
+      {
+        "id": "empresarial",
+        "nombre": "Empresarial",
+        "detalle": "Para empresas propias",
+        "catalogo": {
+          "nombre": "Brochure ContaPlex Empresariales 2026",
+          "url": "/catalogos/contaplex-empresariales-2026.pdf"
+        },
+        "planes": [
+          {
+            "id": "basico",
+            "nombre": "Básico",
+            "precio": {
+              "mensual": "150",
+              "anual": "1,500"
+            },
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuraciones completas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Procesos contables esenciales",
+                "estado": "incluido"
+              },
+              {
+                "texto": "PLE - SIRE incluido",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Reportes contables",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libros contables completos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "App móvil gerencial",
+                "estado": "excluido"
+              }
+            ],
+            "etiquetas": [
+              "5 empresas"
+            ]
+          },
+          {
+            "id": "premium2",
+            "nombre": "Premium 2",
+            "precio": {
+              "mensual": "300",
+              "anual": "3,000"
+            },
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Básico +",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "App móvil gerencial",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Resumen de ingresos y egresos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Saldo de bancos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "CxC y CxP - detalle y resumen",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Flujo de caja móvil",
+                "estado": "incluido"
+              }
+            ],
+            "etiquetas": [
+              "35 empresas"
+            ],
+            "cinta": "Más popular"
+          }
+        ],
+        "disposicion": "rejilla",
+        "ancho": "compacta"
+      }
+    ],
+    "asistente": {
+      "titulo": "Asistente de ContaPlex",
+      "saludo": "¡Hola! Soy el asistente de ContaPlex. Puedo responder tus dudas sobre planes y precios.\n¿En qué te ayudo?",
+      "rapidas": [
+        "¿Cuál plan si tengo 20 empresas?",
+        "¿Qué incluye el Gold?",
+        "¿Puedo cambiar de plan?",
+        "¿Qué son los activos fijos?",
+        "¿Hay prueba gratis?"
+      ],
+      "respuestas": {
+        "¿Cuál plan si tengo 20 empresas?": "Para 20 empresas te recomendamos el plan Estándar (15 empresas) o Premium 1 (25 empresas). Puedes escalar en cualquier momento.",
+        "¿Qué incluye el Gold?": "El plan Gold incluye todo lo del Premium 3 más: Libro de reclamaciones, Libro de activos fijos SUNAT y App móvil gerencial.",
+        "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio se aplica inmediatamente.",
+        "¿Qué son los activos fijos?": "Los activos fijos son bienes que la empresa posee a largo plazo (equipos, mobiliario, vehículos). El módulo te permite registrarlos y depreciarlos automáticamente.",
+        "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo y te permite probar con 1 empresa. Además, el primer mes del plan Básico es gratis."
+      }
+    },
+    "detalles": {
+      "Configuración básica": {
+        "titulo": "Configuración básica",
+        "descripcion": "Configuración inicial de la empresa contable: datos fiscales, plan de cuentas, parámetros del sistema."
+      },
+      "Procesos contables esenciales": {
+        "titulo": "Procesos contables esenciales",
+        "descripcion": "Registro de asientos contables, diario general, mayor general y balances básicos."
+      },
+      "Libros contables": {
+        "titulo": "Libros contables",
+        "descripcion": "Generación automática de todos los libros contables exigidos por SUNAT: diario, mayor, inventarios y balances."
+      },
+      "PLE - SIRE incluido": {
+        "titulo": "PLE - SIRE incluido",
+        "descripcion": "Programa de Libros Electrónicos y Sistema Integrado de Registros Electrónicos incluido sin costo adicional."
+      },
+      "Reportes + seguridad completa": {
+        "titulo": "Reportes + seguridad completa",
+        "descripcion": "Reportes financieros avanzados (ESF, ERI, EEFE) con control de acceso por usuario y auditoría de cambios."
+      },
+      "Todo lo del Básico incluido": {
+        "titulo": "Todo lo del Básico incluido",
+        "descripcion": "Incluye todas las funcionalidades del plan Básico más las características adicionales del plan Estándar."
+      },
+      "x3 veces más empresas": {
+        "titulo": "x3 veces más empresas",
+        "descripcion": "Gestiona hasta 15 empresas con una sola suscripción, ideal para contadores independientes con varios clientes."
+      },
+      "Procesos + diario automático": {
+        "titulo": "Procesos + diario automático",
+        "descripcion": "Generación automática de asientos contables desde documentos de compra, venta y bancos."
+      },
+      "Todos los libros y reportes": {
+        "titulo": "Todos los libros y reportes",
+        "descripcion": "Acceso completo a todos los libros contables, reportes fiscales y estados financieros."
+      },
+      "Todo lo del Estándar +": {
+        "titulo": "Todo lo del Estándar +",
+        "descripcion": "Incluye todo el plan Estándar más módulos avanzados de contabilidad financiera."
+      },
+      "Activos fijos": {
+        "titulo": "Activos fijos",
+        "descripcion": "Registro, depreciación automática y control de activos fijos según normas SUNAT y NIIF."
+      },
+      "Centro de costos": {
+        "titulo": "Centro de costos",
+        "descripcion": "Distribución de gastos e ingresos por centros de costos, proyectos o áreas de negocio."
+      },
+      "Registro de letras": {
+        "titulo": "Registro de letras",
+        "descripcion": "Gestión completa de letras por cobrar y por pagar, protestos, renovaciones y estados de cuenta."
+      },
+      "Asientos por dif. de TC": {
+        "titulo": "Asientos por diferencia de TC",
+        "descripcion": "Generación automática de asientos por diferencia de tipo de cambio al cierre del período."
+      },
+      "Liquidación IGV y RTA": {
+        "titulo": "Liquidación IGV y RTA",
+        "descripcion": "Cálculo y declaración automática del IGV mensual y del Impuesto a la Renta anual."
+      },
+      "Compensaciones": {
+        "titulo": "Compensaciones",
+        "descripcion": "Registro y control de compensaciones entre cuentas por cobrar y cuentas por pagar."
+      },
+      "Todo lo del Premium 1 +": {
+        "titulo": "Todo lo del Premium 1 +",
+        "descripcion": "Incluye todas las funcionalidades del plan Premium 1 más las características del Premium 2."
+      },
+      "Hasta 35 empresas": {
+        "titulo": "Hasta 35 empresas",
+        "descripcion": "Capacidad ampliada para gestionar hasta 35 empresas simultáneamente."
+      },
+      "Reportes + seguridad": {
+        "titulo": "Reportes + seguridad",
+        "descripcion": "Reportes avanzados con niveles de seguridad por perfil de usuario."
+      },
+      "Flujo de efectivo": {
+        "titulo": "Flujo de efectivo",
+        "descripcion": "Estado de Flujos de Efectivo (método directo e indirecto) según NIC 7."
+      },
+      "Todo lo del Premium 2 +": {
+        "titulo": "Todo lo del Premium 2 +",
+        "descripcion": "Incluye todas las funcionalidades del plan Premium 2 más el Estado de Flujo de Efectivo."
+      },
+      "Estado de flujo de efectivo": {
+        "titulo": "Estado de flujo de efectivo",
+        "descripcion": "Estado de Flujos de Efectivo completo con análisis por actividades de operación, inversión y financiamiento."
+      },
+      "Estado de cambios en patrimonio": {
+        "titulo": "Estado de cambios en patrimonio",
+        "descripcion": "Estado de Cambios en el Patrimonio Neto según NIIF, con análisis de variaciones."
+      },
+      "Libro de retenciones": {
+        "titulo": "Libro de retenciones",
+        "descripcion": "Registro oficial del Libro de Retenciones para agentes de retención según exigencia SUNAT."
+      },
+      "Todo lo del Premium 3 +": {
+        "titulo": "Todo lo del Premium 3 +",
+        "descripcion": "Incluye todas las funcionalidades del plan Premium 3 más características exclusivas Gold."
+      },
+      "Libro de reclamaciones": {
+        "titulo": "Libro de reclamaciones",
+        "descripcion": "Libro digital de reclamaciones integrado al sistema para registro y seguimiento de quejas."
+      },
+      "Libro de activos fijos SUNAT": {
+        "titulo": "Libro de activos fijos SUNAT",
+        "descripcion": "Libro de Activos Fijos en formato SUNAT con control de depreciación y exportación a PLE."
+      },
+      "App móvil gerencial": {
+        "titulo": "App móvil gerencial",
+        "descripcion": "Aplicación móvil para gerentes y socios: visualización de KPIs, balances y flujo de caja en tiempo real."
+      },
+      "Configuraciones completas": {
+        "titulo": "Configuraciones completas",
+        "descripcion": "Configuración completa de todas las cuentas contables, centros de costos, tipos de cambio y parámetros del sistema."
+      },
+      "Reportes contables": {
+        "titulo": "Reportes contables",
+        "descripcion": "Estados financieros completos: Balance General, Estado de Resultados, Flujo de Caja y reportes personalizados."
+      },
+      "Libros contables completos": {
+        "titulo": "Libros contables completos",
+        "descripcion": "Todos los libros contables oficiales con exportación directa a PLE/SIRE y validación automática."
+      },
+      "Todo lo del Básico +": {
+        "titulo": "Todo lo del Básico +",
+        "descripcion": "Incluye todo el plan Básico más las funcionalidades del plan Premium 2 empresarial."
+      },
+      "Resumen de ingresos y egresos": {
+        "titulo": "Resumen de ingresos y egresos",
+        "descripcion": "Panel gerencial con resumen visual de ingresos y egresos del período."
+      },
+      "Saldo de bancos": {
+        "titulo": "Saldo de bancos",
+        "descripcion": "Visualización en tiempo real del saldo de todas las cuentas bancarias registradas."
+      },
+      "CxC y CxP - detalle y resumen": {
+        "titulo": "CxC y CxP - detalle y resumen",
+        "descripcion": "Cuentas por cobrar y por pagar con detalle por cliente/proveedor y resumen ejecutivo."
+      },
+      "Flujo de caja móvil": {
+        "titulo": "Flujo de caja móvil",
+        "descripcion": "Flujo de caja proyectado accesible desde la app móvil con alertas de liquidez."
+      }
+    }
+  },
+  "gestionplex-comercial": {
+    "id": "gestionplex-comercial",
+    "nombre": "Gestión-Plex Comercial",
+    "lema": "Gestiona tus ventas y clientes",
+    "descripcion": "Elige el plan perfecto para ti con comprobantes ilimitados",
+    "icono": "caja",
+    "color": "verde",
+    "etiquetas": [
+      "1 mes gratis",
+      "IGV incluido",
+      "Actualizaciones"
+    ],
+    "tipos": [
+      {
+        "id": "unico",
+        "nombre": "",
+        "detalle": "",
+        "disposicion": "fila",
+        "ancho": "compacta",
+        "catalogo": {
+          "url": "/catalogos/gestionplex-comercial-2025.pdf",
+          "nombre": "Catálogo GestiónPlex Comercial 2025"
+        },
+        "planes": [
+          {
+            "id": "gratis",
+            "nombre": "Gratis",
+            "precio": {
+              "mensual": "0",
+              "anual": "0"
+            },
+            "etiquetas": [
+              "1 empresa"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración básica",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras + almacén",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas POS + SUNAT completo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Inventarios + reportes",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + contable gratis",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Transferencias de mercadería",
+                "estado": "excluido"
+              },
+              {
+                "texto": "Cuentas corrientes",
+                "estado": "excluido"
+              },
+              {
+                "texto": "Producción",
+                "estado": "excluido"
+              }
+            ]
+          },
+          {
+            "id": "basico",
+            "nombre": "Básico",
+            "precio": {
+              "mensual": "100",
+              "anual": "1,000"
+            },
+            "etiquetas": [
+              "5 empresas"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración básica",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras + almacén",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas POS + SUNAT completo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Inventarios + reportes",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + contable gratis",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Transferencias de mercadería",
+                "estado": "excluido"
+              },
+              {
+                "texto": "Cuentas corrientes",
+                "estado": "excluido"
+              },
+              {
+                "texto": "Producción",
+                "estado": "excluido"
+              }
+            ]
+          },
+          {
+            "id": "estandar",
+            "nombre": "Estándar",
+            "precio": {
+              "mensual": "150",
+              "anual": "1,500"
+            },
+            "etiquetas": [
+              "25 empresas"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Básico +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Transferencia de mercadería",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Inventarios + completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Inventarios + reportes completos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Cuentas corrientes",
+                "estado": "excluido"
+              },
+              {
+                "texto": "Producción",
+                "estado": "excluido"
+              }
+            ]
+          },
+          {
+            "id": "profesional",
+            "nombre": "Profesional",
+            "precio": {
+              "mensual": "200",
+              "anual": "2,000"
+            },
+            "etiquetas": [
+              "2 empresas"
+            ],
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Premium 1 +",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Cuentas corrientes completas",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Transferencias de mercadería",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Tesorería + cuentas por cobrar/pagar",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Producción",
+                "estado": "excluido"
+              }
+            ],
+            "cinta": "Más popular"
+          },
+          {
+            "id": "gold",
+            "nombre": "Gold",
+            "precio": {
+              "mensual": "300",
+              "anual": "3,000"
+            },
+            "etiquetas": [
+              "2 empresas"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Profesional +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras avanzadas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Producción",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Cuentas corrientes completas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Absolutamente todo incluido",
+                "estado": "incluido"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "detalles": {
+      "Configuración básica": {
+        "titulo": "Configuración básica",
+        "descripcion": "Configuración inicial del sistema: datos de la empresa, almacenes, categorías de productos y parámetros generales."
+      },
+      "Compras + almacén": {
+        "titulo": "Compras + almacén",
+        "descripcion": "Módulo completo de compras: órdenes de compra, recepción de mercadería, control de stock y kardex de almacén."
+      },
+      "Ventas POS + SUNAT completo": {
+        "titulo": "Ventas POS + SUNAT completo",
+        "descripcion": "Punto de venta integrado con emisión de facturas, boletas y notas de crédito electrónicas directamente a SUNAT."
+      },
+      "Inventarios + reportes": {
+        "titulo": "Inventarios + reportes",
+        "descripcion": "Control de inventario en tiempo real con reportes de stock, rotación de productos y valorización."
+      },
+      "Tesorería": {
+        "titulo": "Tesorería",
+        "descripcion": "Gestión de caja y bancos: ingresos, egresos, transferencias y conciliación bancaria básica."
+      },
+      "Soporte + contable gratis": {
+        "titulo": "Soporte + sistema contable gratis",
+        "descripcion": "Soporte técnico incluido y módulo contable básico sin costo adicional."
+      },
+      "Transferencias de mercadería": {
+        "titulo": "Transferencias de mercadería",
+        "descripcion": "Traslado de mercadería entre almacenes o sucursales con guías de remisión electrónicas."
+      },
+      "Cuentas corrientes": {
+        "titulo": "Cuentas corrientes",
+        "descripcion": "Gestión de créditos con clientes y proveedores: líneas de crédito, estados de cuenta y cobranza."
+      },
+      "Producción": {
+        "titulo": "Producción",
+        "descripcion": "Módulo de producción: órdenes de fabricación, listas de materiales (BOM) y control de insumos."
+      },
+      "Todo lo del Básico +": {
+        "titulo": "Todo lo del Básico +",
+        "descripcion": "Incluye todas las funcionalidades del plan Básico más las características del plan Estándar."
+      },
+      "Transferencia de mercadería": {
+        "titulo": "Transferencia de mercadería",
+        "descripcion": "Traslado interno de mercadería entre almacenes con seguimiento en tiempo real."
+      },
+      "Tesorería completa": {
+        "titulo": "Tesorería completa",
+        "descripcion": "Tesorería avanzada: flujo de caja proyectado, conciliación bancaria automática y gestión de cheques."
+      },
+      "Inventarios + completa": {
+        "titulo": "Inventarios completa",
+        "descripcion": "Gestión completa de inventarios con múltiples métodos de valorización (PEPS, promedio) y auditoría."
+      },
+      "Inventarios + reportes completos": {
+        "titulo": "Inventarios + reportes completos",
+        "descripcion": "Reportes avanzados de inventario: antigüedad de stock, punto de reorden y análisis ABC."
+      },
+      "Todo lo del Premium 1 +": {
+        "titulo": "Todo lo del Premium 1 +",
+        "descripcion": "Incluye todas las funcionalidades del plan Profesional más las características del plan Gold."
+      },
+      "Cuentas corrientes completas": {
+        "titulo": "Cuentas corrientes completas",
+        "descripcion": "Gestión integral de créditos: scoring, límites por cliente, estados de cuenta automáticos y cobranza."
+      },
+      "Tesorería + cuentas por cobrar/pagar": {
+        "titulo": "Tesorería + cuentas por cobrar/pagar",
+        "descripcion": "Tesorería integrada con módulo de cuentas por cobrar y por pagar con alertas de vencimiento."
+      },
+      "Todo lo del Profesional +": {
+        "titulo": "Todo lo del Profesional +",
+        "descripcion": "Incluye todo el plan Profesional más el módulo de Producción y funcionalidades avanzadas."
+      },
+      "Compras avanzadas": {
+        "titulo": "Compras avanzadas",
+        "descripcion": "Compras con múltiples proveedores, comparación de cotizaciones, aprobaciones y órdenes de importación."
+      },
+      "Absolutamente todo incluido": {
+        "titulo": "Absolutamente todo incluido",
+        "descripcion": "Acceso completo a todos los módulos del sistema sin restricciones ni cargos adicionales."
+      }
+    },
+    "asistente": {
+      "titulo": "Asistente de Gestión-Plex Comercial",
+      "saludo": "¡Hola! Soy el asistente de Gestión-Plex Comercial. Puedo responder tus dudas sobre planes y precios.\n¿En qué te ayudo?",
+      "rapidas": [
+        "¿Qué plan para 10 empresas?",
+        "¿Qué incluye el Gold?",
+        "¿Qué son Cuentas Corrientes?",
+        "¿Puedo cambiar de plan?",
+        "¿Hay prueba gratis?"
+      ],
+      "respuestas": {
+        "¿Qué plan para 10 empresas?": "Para 10 empresas te recomendamos el plan Básico (5 empresas) o Estándar (25 empresas). Puedes escalar en cualquier momento.",
+        "¿Qué incluye el Gold?": "El plan Gold incluye todo lo del Profesional más: Compras Avanzadas, Producción completa, Cuentas Corrientes Completas y absolutamente todo incluido.",
+        "¿Qué son Cuentas Corrientes?": "Las cuentas corrientes te permiten gestionar créditos y cobranzas con tus clientes y proveedores, llevar el control de saldos pendientes y emitir estados de cuenta.",
+        "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio se aplica inmediatamente.",
+        "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo y te permite probar con 1 empresa. Además, el primer mes del plan Básico es gratis."
+      }
+    }
+  },
+  "gestionplex-restaurante": {
+    "id": "gestionplex-restaurante",
+    "nombre": "Gestión-Plex Restaurantes",
+    "lema": "Gestión para tu restaurante",
+    "descripcion": "Elige el plan perfecto para ti con comprobantes ilimitados",
+    "icono": "tienda",
+    "color": "naranja",
+    "etiquetas": [
+      "1 mes gratis",
+      "IGV incluido"
+    ],
+    "tipos": [
+      {
+        "id": "unico",
+        "nombre": "",
+        "detalle": "",
+        "disposicion": "fila",
+        "ancho": "amplia",
+        "catalogo": {
+          "url": "/catalogos/gestionplex-restaurante-2025.pdf",
+          "nombre": "Catálogo GestiónPlex Restaurantes 2025"
+        },
+        "planes": [
+          {
+            "id": "gratis",
+            "nombre": "Gratis",
+            "precio": {
+              "mensual": "0",
+              "anual": "0"
+            },
+            "etiquetas": [
+              "1 empresa"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuraciones completas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas POS + SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas en restaurante",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + sistema contable gratis",
+                "estado": "incluido"
+              },
+              {
+                "texto": "3 sucursales (solo 2)",
+                "estado": "excluido"
+              }
+            ]
+          },
+          {
+            "id": "basico",
+            "nombre": "Básico",
+            "precio": {
+              "mensual": "150",
+              "anual": "1,500"
+            },
+            "etiquetas": [
+              "2 empresas",
+              "1 mes gratis"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuraciones completas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas POS + SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas en restaurante",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + sistema contable gratis",
+                "estado": "incluido"
+              },
+              {
+                "texto": "3 sucursales (solo 2)",
+                "estado": "excluido"
+              }
+            ]
+          },
+          {
+            "id": "gold",
+            "nombre": "Gold",
+            "precio": {
+              "mensual": "300",
+              "anual": "3,000"
+            },
+            "etiquetas": [
+              "3 empresas",
+              "1 mes gratis"
+            ],
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Básico +",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Transferencia entre caja y bancos",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Carga de constancias JPG/PDF/DOC",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Mayor capacidad operativa",
+                "estado": "incluido",
+                "enfasis": true
+              },
+              {
+                "texto": "Soporte prioritario preferencial",
+                "estado": "incluido",
+                "enfasis": true
+              }
+            ],
+            "cinta": "Más popular"
+          }
+        ]
+      }
+    ],
+    "detalles": {
+      "Configuraciones completas": {
+        "titulo": "Configuración completa",
+        "descripcion": "Comprobantes con logo y datos de tu empresa, impresiones A4/A45/80mm/57mm, importación de productos con varias presentaciones, importación de precios, registro de vendedores e inventarios."
+      },
+      "Ventas POS + SUNAT": {
+        "titulo": "Ventas POS + SUNAT",
+        "descripcion": "Emite boletas, facturas y notas de crédito electrónicas validadas por SUNAT en tiempo real desde el punto de venta, compatible con impresoras térmicas y fiscales."
+      },
+      "Ventas en restaurante": {
+        "titulo": "Ventas en restaurante",
+        "descripcion": "Gestiona mesas, pedidos por mesa o delivery, comanda a cocina en tiempo real, control de mozos y estado de cada mesa desde un panel visual intuitivo."
+      },
+      "Tesorería": {
+        "titulo": "Tesorería",
+        "descripcion": "Controla el flujo de caja diario, registra ingresos y egresos, concilia pagos en efectivo, tarjeta y transferencia, y genera reportes de cierre por turno."
+      },
+      "Soporte + sistema contable gratis": {
+        "titulo": "Soporte + sistema contable gratis",
+        "descripcion": "Accede a soporte técnico por chat y correo incluido en tu plan. Además, el sistema contable básico está incluido sin costo adicional para llevar tu contabilidad al día."
+      },
+      "3 sucursales (solo 2)": {
+        "titulo": "Límite de sucursales",
+        "descripcion": "Este plan permite gestionar hasta 2 sucursales. Si necesitas manejar 3 o más, considera actualizar al plan Básico o Gold."
+      },
+      "Todo lo del Básico +": {
+        "titulo": "Todo lo del Plan Básico",
+        "descripcion": "Incluye todas las funcionalidades del plan Básico más beneficios exclusivos del plan Gold: mayor capacidad operativa, transferencias entre cajas y soporte prioritario."
+      },
+      "Transferencia entre caja y bancos": {
+        "titulo": "Transferencia entre caja y bancos",
+        "descripcion": "Registra y concilia automáticamente las transferencias entre tu caja física y las cuentas bancarias, con trazabilidad completa de cada movimiento."
+      },
+      "Carga de constancias JPG/PDF/DOC": {
+        "titulo": "Carga de constancias",
+        "descripcion": "Adjunta y almacena comprobantes de pago, constancias de depósito y documentos en formatos JPG, PDF o DOC directamente en cada transacción."
+      },
+      "Mayor capacidad operativa": {
+        "titulo": "Mayor capacidad operativa",
+        "descripcion": "Procesa un mayor volumen de transacciones diarias, usuarios simultáneos y productos en catálogo sin limitaciones, ideal para restaurantes con alto flujo de clientes."
+      },
+      "Soporte prioritario preferencial": {
+        "titulo": "Soporte prioritario preferencial",
+        "descripcion": "Atención preferencial con tiempo de respuesta garantizado, acceso a un asesor dedicado y soporte telefónico disponible en horario extendido."
+      }
+    },
+    "asistente": {
+      "titulo": "Asistente de Gestión-Plex Restaurantes",
+      "saludo": "¡Hola! Soy el asistente de Gestión-Plex Restaurantes. Puedo responder tus dudas sobre planes y precios.\n¿En qué te ayudo?",
+      "rapidas": [
+        "¿Cuál plan si tengo 20 empresas?",
+        "¿Qué incluye el Gold?",
+        "¿Puedo cambiar de plan?",
+        "¿Qué son Activos Fijos?",
+        "¿Hay prueba gratis?"
+      ],
+      "respuestas": {
+        "¿Cuál plan si tengo 20 empresas?": "Para 20 empresas, el plan Gold es ideal ya que incluye mayor capacidad operativa y soporte prioritario. Contáctanos para un plan corporativo personalizado.",
+        "¿Qué incluye el Gold?": "El plan Gold incluye todo lo del Básico más: Transferencia entre caja y Bancos, carga de constancias JPG/PDF/DOC, mayor capacidad operativa y soporte prioritario preferencial.",
+        "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio se aplica de forma inmediata.",
+        "¿Qué son Activos Fijos?": "Los activos fijos son bienes que la empresa posee y usa en sus operaciones a largo plazo (equipos, mobiliario, vehículos). El módulo te permite registrarlos y depreciarlos.",
+        "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo y te permite probar la plataforma con 1 empresa. Además, el plan Básico incluye 1 mes gratis."
+      }
+    }
+  },
+  "gestionplex-transporte": {
+    "id": "gestionplex-transporte",
+    "nombre": "Gestión-Plex Transporte",
+    "lema": "Gestión para tu empresa de transporte",
+    "descripcion": "Software especializado para empresas de transporte, elige el plan perfecto para ti con comprobantes ilimitados",
+    "icono": "envio",
+    "color": "azul",
+    "etiquetas": [
+      "1 mes gratis",
+      "IGV incluido",
+      "Actualizaciones",
+      "Usuarios ilimitados"
+    ],
+    "tipos": [
+      {
+        "id": "unico",
+        "nombre": "",
+        "detalle": "",
+        "disposicion": "fila",
+        "ancho": "amplia",
+        "catalogo": {
+          "url": "/catalogos/gestionplex-transporte-2025.pdf",
+          "nombre": "Catálogo GestiónPlex Transporte 2025"
+        },
+        "planes": [
+          {
+            "id": "gratis",
+            "nombre": "Gratis",
+            "precio": {
+              "mensual": "0",
+              "anual": "0"
+            },
+            "etiquetas": [
+              "1 empresa",
+              "1 sede/transp."
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Guías electrónicas (remitente + transportista)",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Modulo transportista",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras + liquidación por chofer",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas + POS + SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería + liquidación de viajes",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + contable gratis",
+                "estado": "incluido"
+              }
+            ]
+          },
+          {
+            "id": "transporte",
+            "nombre": "Plan Transporte",
+            "precio": {
+              "mensual": "150",
+              "anual": "1,500"
+            },
+            "etiquetas": [
+              "1 empresa",
+              "3 sedes/transp."
+            ],
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Configuración completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Guías electrónicas (remitente + transportista)",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Modulo transportista",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras + liquidación por chofer",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas + POS + SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería + liquidación de viajes",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + contable gratis",
+                "estado": "incluido"
+              }
+            ],
+            "cinta": "Todo incluido"
+          }
+        ]
+      }
+    ],
+    "detalles": {
+      "Configuración completa": {
+        "titulo": "Configuración completa",
+        "descripcion": "Configura tu empresa con logo, datos fiscales, múltiples sedes, unidades de transporte, conductores y tarifas. Incluye importación masiva de datos y personalización de documentos."
+      },
+      "Guías electrónicas (remitente + transportista)": {
+        "titulo": "Guías electrónicas SUNAT",
+        "descripcion": "Emite guías de remisión electrónicas tanto como Remitente como Transportista, validadas en tiempo real por SUNAT. Compatible con impresoras térmicas y A4."
+      },
+      "Modulo transportista": {
+        "titulo": "Módulo transportista",
+        "descripcion": "Gestiona tu flota de vehículos, asigna choferes a rutas, registra kilómetros recorridos, combustible y mantenimientos. Control completo de cada viaje."
+      },
+      "Compras + liquidación por chofer": {
+        "titulo": "Compras y liquidación por chofer",
+        "descripcion": "Registra compras de combustible, peajes y gastos de ruta por chofer. Genera liquidaciones automáticas por viaje o período, con aprobación digital."
+      },
+      "Ventas + POS + SUNAT": {
+        "titulo": "Ventas POS + SUNAT",
+        "descripcion": "Emite facturas, boletas y notas de crédito electrónicas desde el POS validadas por SUNAT. Compatible con múltiples formas de pago y puntos de emisión."
+      },
+      "Tesorería + liquidación de viajes": {
+        "titulo": "Tesorería y liquidación de viajes",
+        "descripcion": "Controla el flujo de caja, concilia pagos de fletes, anticipa a choferes y genera reportes de rentabilidad por viaje, ruta o unidad de transporte."
+      },
+      "Soporte + contable gratis": {
+        "titulo": "Soporte + sistema contable gratis",
+        "descripcion": "Accede a soporte técnico por chat y correo incluido en tu plan. El sistema contable básico está incluido sin costo adicional para llevar tu contabilidad al día."
+      }
+    },
+    "asistente": {
+      "titulo": "Asistente de Gestión-Plex Transporte",
+      "saludo": "¡Hola! Soy el asistente de Gestión-Plex Transporte. Puedo responder tus dudas sobre planes y precios.\n¿En qué te ayudo?",
+      "rapidas": [
+        "¿Qué incluye el Plan Transporte?",
+        "¿Cuántas sedes puedo tener?",
+        "¿Qué son las guías electrónicas?",
+        "¿Puedo cambiar de plan?",
+        "¿Hay prueba gratis?"
+      ],
+      "respuestas": {
+        "¿Qué incluye el Plan Transporte?": "El Plan Transporte incluye todo lo del plan Gratis más: 3 sedes/transportistas, mayor capacidad operativa y todas las funciones activas con soporte prioritario.",
+        "¿Cuántas sedes puedo tener?": "El plan Gratis permite 1 sede/transportista. El Plan Transporte (S/150/mes) permite hasta 3 sedes o unidades de transporte.",
+        "¿Qué son las guías electrónicas?": "Las guías de remisión electrónicas son documentos SUNAT que amparan el traslado de bienes. Puedes emitirlas como Remitente o Transportista desde el sistema.",
+        "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio se aplica inmediatamente.",
+        "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo y te permite probar con 1 empresa y 1 sede. Además, el primer mes del Plan Transporte es gratis."
+      }
+    }
+  },
+  "gestionplex-grifo": {
+    "id": "gestionplex-grifo",
+    "nombre": "Gestión-Plex Grifo",
+    "lema": "Gestión para tu grifo",
+    "descripcion": "Software especializado para grifos, elige el plan perfecto para ti con comprobantes ilimitados",
+    "icono": "fuego-propio",
+    "color": "rojo",
+    "etiquetas": [
+      "1 mes gratis",
+      "IGV incluido",
+      "Actualizaciones",
+      "S/3,000 implementación"
+    ],
+    "tipos": [
+      {
+        "id": "unico",
+        "nombre": "",
+        "detalle": "",
+        "disposicion": "fila",
+        "ancho": "amplia",
+        "catalogo": {
+          "url": "/catalogos/gestionplex-grifo-2025.pdf",
+          "nombre": "Catálogo GestiónPlex Grifo 2025"
+        },
+        "planes": [
+          {
+            "id": "gratis",
+            "nombre": "Gratis",
+            "precio": {
+              "mensual": "0",
+              "anual": "0"
+            },
+            "etiquetas": [
+              "1 empresa",
+              "Ilimitados"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Modulo de grifo completo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Vales de crédito + liquidación",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas + POS + SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras avanzadas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Cuentas corrientes",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Producción + procesos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Reportes + inventarios",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + contable gratis",
+                "estado": "incluido"
+              }
+            ]
+          },
+          {
+            "id": "grifo",
+            "nombre": "Plan Grifo",
+            "precio": {
+              "mensual": "350",
+              "anual": "3,500"
+            },
+            "etiquetas": [
+              "1 empresa",
+              "Ilimitados"
+            ],
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Modulo de grifo completo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Vales de crédito + liquidación",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas + POS + SUNAT",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Compras avanzadas",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Tesorería completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Cuentas corrientes",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Producción + procesos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Reportes + inventarios",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte + contable gratis",
+                "estado": "incluido"
+              }
+            ],
+            "cinta": "Todo incluido"
+          }
+        ]
+      }
+    ],
+    "detalles": {
+      "Modulo de grifo completo": {
+        "titulo": "Módulo de grifo completo",
+        "descripcion": "Gestiona despachos de combustible por isla, surtidor y producto (gasohol, diesel, GLP). Controla turnos, aforos de tanques, lecturas de medidores y emite tickets automáticos por cada despacho."
+      },
+      "Vales de crédito + liquidación": {
+        "titulo": "Vales de crédito y liquidación",
+        "descripcion": "Emite y controla vales de crédito para clientes frecuentes y empresas. Genera liquidaciones diarias por turno, operador y surtidor con conciliación automática de pagos."
+      },
+      "Ventas + POS + SUNAT": {
+        "titulo": "Ventas POS + SUNAT",
+        "descripcion": "Emite facturas, boletas y notas de crédito electrónicas validadas por SUNAT en tiempo real. Compatible con impresoras térmicas, surtidores electrónicos y lectores de placa."
+      },
+      "Compras avanzadas": {
+        "titulo": "Compras avanzadas",
+        "descripcion": "Registra órdenes de compra a proveedores de combustible, controla guías de remisión, recepciones de tanques y concilia automáticamente con las facturas de los distribuidores."
+      },
+      "Tesorería completa": {
+        "titulo": "Tesorería completa",
+        "descripcion": "Controla el flujo de caja diario, concilia pagos en efectivo, tarjeta, POS y transferencias. Genera cierres de caja por turno y reportes de ingresos por tipo de combustible."
+      },
+      "Cuentas corrientes": {
+        "titulo": "Cuentas corrientes",
+        "descripcion": "Gestiona créditos y cobros a clientes corporativos. Lleva el saldo de cada cuenta, emite estados de cuenta mensuales y controla límites de crédito por cliente o empresa."
+      },
+      "Producción + procesos": {
+        "titulo": "Producción y procesos",
+        "descripcion": "Registra mermas, trasvases y ajustes de inventario de combustible. Controla el aforo real de tanques vs. aforo teórico y genera alertas de abastecimiento automáticas."
+      },
+      "Reportes + inventarios": {
+        "titulo": "Reportes e inventarios",
+        "descripcion": "Genera reportes de ventas por combustible, turno, operador y surtidor. Incluye inventario valorizado, análisis de rentabilidad y exportación a Excel/PDF."
+      },
+      "Soporte + contable gratis": {
+        "titulo": "Soporte + sistema contable gratis",
+        "descripcion": "Accede a soporte técnico por chat y correo incluido en tu plan. El sistema contable básico está incluido sin costo adicional para llevar tu contabilidad al día."
+      }
+    },
+    "asistente": {
+      "titulo": "Asistente de Gestión-Plex Grifo",
+      "saludo": "¡Hola! Soy el asistente de Gestión-Plex Grifo. Puedo responder tus dudas sobre planes y precios.\n¿En qué te ayudo?",
+      "rapidas": [
+        "¿Qué incluye el Plan Grifo?",
+        "¿Qué son los vales de crédito?",
+        "¿Qué es la liquidación de turno?",
+        "¿Puedo cambiar de plan?",
+        "¿Hay prueba gratis?"
+      ],
+      "respuestas": {
+        "¿Qué incluye el Plan Grifo?": "El Plan Grifo (S/350/mes) incluye todas las funciones del plan Gratis activadas al 100%, usuarios ilimitados, mayor capacidad operativa y soporte prioritario.",
+        "¿Qué son los vales de crédito?": "Los vales de crédito permiten despachar combustible a clientes frecuentes o empresas sin pago inmediato. Se lleva un registro de deuda y se cobra al final del período acordado.",
+        "¿Qué es la liquidación de turno?": "La liquidación de turno es el resumen de todos los despachos, pagos y diferencias al cierre de cada turno de trabajo. Se genera automáticamente por operador y surtidor.",
+        "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio se aplica inmediatamente.",
+        "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo. Además, el primer mes del Plan Grifo es gratis para que puedas probarlo sin compromiso."
+      }
+    }
+  },
+  "facturacion-electronica": {
+    "id": "facturacion-electronica",
+    "nombre": "Facturación Electrónica",
+    "lema": "Facturación electrónica para tu empresa",
+    "descripcion": "Software empresarial, elige el plan perfecto para ti con hasta 2,000 comprobantes",
+    "icono": "documento",
+    "color": "morado",
+    "etiquetas": [
+      "1 mes gratis",
+      "IGV incluido",
+      "Multiusuario",
+      "Actualizaciones"
+    ],
+    "tipos": [
+      {
+        "id": "unico",
+        "nombre": "",
+        "detalle": "",
+        "disposicion": "fila",
+        "ancho": "amplia",
+        "catalogo": {
+          "url": "/catalogos/facturacion-electronica-2025.pdf",
+          "nombre": "Catálogo Facturación Electrónica 2025"
+        },
+        "planes": [
+          {
+            "id": "gratis",
+            "nombre": "Gratis",
+            "precio": {
+              "mensual": "0",
+              "anual": "0"
+            },
+            "etiquetas": [
+              "1 sucursal o almacén"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas POS + SUNAT completo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Guías de remisión",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Web · Android · iOS · Usuarios ilimitados",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte personalizado",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Sistema contable Basic gratis",
+                "estado": "incluido"
+              }
+            ],
+            "textoElegir": "Comenzar gratis",
+            "paquetes": true
+          },
+          {
+            "id": "basico",
+            "nombre": "Básico",
+            "precio": {
+              "mensual": "50",
+              "anual": "500"
+            },
+            "etiquetas": [
+              "1 sucursal o almacén"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Configuración completa",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ventas POS + SUNAT completo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Guías de remisión",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Web · Android · iOS · Usuarios ilimitados",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Soporte personalizado",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Sistema contable Basic gratis",
+                "estado": "incluido"
+              }
+            ],
+            "paquetes": true
+          },
+          {
+            "id": "premium",
+            "nombre": "Premium",
+            "precio": {
+              "mensual": "150",
+              "anual": "1,500"
+            },
+            "etiquetas": [
+              "3 sucursales o almacénes"
+            ],
+            "destacado": true,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Plan Básico incluido +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Gestión de 3 sucursales o almacenes desde un solo sistema",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Ideal para empresas con múltiples puntos de venta en crecimiento",
+                "estado": "incluido"
+              }
+            ],
+            "cinta": "Más popular",
+            "paquetes": true
+          },
+          {
+            "id": "gold",
+            "nombre": "Gold",
+            "precio": {
+              "mensual": "200",
+              "anual": "2,000"
+            },
+            "etiquetas": [
+              "4 sucursales o almacénes"
+            ],
+            "destacado": false,
+            "caracteristicas": [
+              {
+                "texto": "Todo lo del Plan Premium +",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Gestión de 4 sucursales o almacenes — máxima capacidad",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Para empresas con mayor presencia y volumen de operaciones",
+                "estado": "incluido"
+              }
+            ],
+            "cinta": "Mayor capacidad",
+            "paquetes": true
+          }
+        ]
+      }
+    ],
+    "detalles": {
+      "Configuración completa": {
+        "titulo": "Configuración completa",
+        "descripcion": "Configura tu empresa, sucursales, series de comprobantes, usuarios y permisos desde un panel centralizado. Incluye configuración de impresoras térmicas y conexión con SUNAT."
+      },
+      "Ventas POS + SUNAT completo": {
+        "titulo": "Ventas POS + SUNAT",
+        "descripcion": "Emite facturas, boletas, notas de crédito y débito electrónicas validadas por SUNAT en tiempo real. Incluye POS táctil para ventas rápidas en mostrador, compatible con lector de código de barras."
+      },
+      "Guías de remisión": {
+        "titulo": "Guías de remisión electrónicas",
+        "descripcion": "Genera y envía guías de remisión electrónicas (remitente y transportista) directamente a SUNAT. Controla el traslado de mercancías con validación automática y seguimiento de estado."
+      },
+      "Web · Android · iOS · Usuarios ilimitados": {
+        "titulo": "Multiplataforma · Usuarios ilimitados",
+        "descripcion": "Accede desde cualquier dispositivo: navegador web, app Android o iOS. Agrega todos los usuarios que necesites sin costo adicional, cada uno con sus propios permisos y roles."
+      },
+      "Soporte personalizado": {
+        "titulo": "Soporte personalizado",
+        "descripcion": "Accede a soporte técnico por chat, correo electrónico y videollamada. Nuestro equipo te ayuda con configuración, dudas operativas y resolución de incidencias con SUNAT."
+      },
+      "Sistema contable Basic gratis": {
+        "titulo": "Sistema contable Básico gratis",
+        "descripcion": "Incluido sin costo adicional: libro de compras, libro de ventas y reportes básicos de contabilidad. Ideal para llevar al día tus obligaciones tributarias sin contratar un sistema aparte."
+      },
+      "Todo lo del Plan Básico incluido +": {
+        "titulo": "Todo lo del Plan Básico +",
+        "descripcion": "El Plan Premium incluye absolutamente todas las funciones del Plan Básico, más las capacidades adicionales de gestión multisucursal y beneficios exclusivos para empresas en crecimiento."
+      },
+      "Gestión de 3 sucursales o almacenes desde un solo sistema": {
+        "titulo": "Gestión multisucursal (3 sedes)",
+        "descripcion": "Administra hasta 3 sucursales o almacenes desde un único panel. Visualiza ventas, inventario y comprobantes por sede en tiempo real, sin necesidad de cambiar de sistema o sesión."
+      },
+      "Ideal para empresas con múltiples puntos de venta en crecimiento": {
+        "titulo": "Para empresas en crecimiento",
+        "descripcion": "Diseñado para negocios con múltiples puntos de venta que buscan escalar. Consolida la información de todas tus sedes, simplifica la gestión y toma decisiones basadas en datos unificados."
+      },
+      "Todo lo del Plan Premium +": {
+        "titulo": "Todo lo del Plan Premium +",
+        "descripcion": "El Plan Gold incluye todas las funciones del Plan Premium más la máxima capacidad operativa: hasta 4 sucursales, mayor volumen de comprobantes y prioridad en soporte y actualizaciones."
+      },
+      "Gestión de 4 sucursales o almacenes — máxima capacidad": {
+        "titulo": "Gestión multisucursal (4 sedes)",
+        "descripcion": "Gestiona hasta 4 sucursales o almacenes desde un solo sistema. Ideal para cadenas de tiendas y empresas con presencia regional que necesitan consolidar toda su operación en una sola plataforma."
+      },
+      "Para empresas con mayor presencia y volumen de operaciones": {
+        "titulo": "Máxima escala operativa",
+        "descripcion": "El plan ideal para empresas con alto volumen de transacciones, múltiples sedes y equipos numerosos. Incluye reportes avanzados, consolidación contable y acceso a funciones empresariales exclusivas."
+      }
+    },
+    "paquetes": {
+      "pregunta": "¿Más de 2,000 comprobantes?",
+      "ver": "Ver paquetes",
+      "titulo": "Paquetes adicionales",
+      "descripcion": "Al superar los 2,000 comprobantes electrónicos en el plan",
+      "filas": [
+        {
+          "rango": "1 - 1,000 comprobantes",
+          "tarifa": "S/0.030 c/u",
+          "total": "S/30.00"
+        },
+        {
+          "rango": "1,000 - 5,000 comprobantes",
+          "tarifa": "S/0.030 c/u",
+          "total": "S/30.00"
+        },
+        {
+          "rango": "5,000 - 10,000 comprobantes",
+          "tarifa": "S/0.030 c/u",
+          "total": "S/30.00"
+        },
+        {
+          "rango": "10,001 - 50,000 comprobantes",
+          "tarifa": "S/0.030 c/u",
+          "total": "S/30.00"
+        }
+      ],
+      "base_datos": {
+        "titulo": "Base de datos privada",
+        "items": [
+          "Alojamiento exclusivo de la información de tus clientes",
+          "Mayor velocidad y tiempo de respuesta",
+          "Canal directo a RENIEC y SUNAT"
+        ],
+        "pago_unico": {
+          "etiqueta": "Pago único",
+          "valor": "S/1,000.00"
+        }
+      }
+    },
+    "asistente": {
+      "titulo": "Asistente de Facturación Electrónica",
+      "saludo": "¡Hola! Soy el asistente de Facturación Electrónica. Puedo responder tus dudas sobre planes y precios.\n¿En qué te ayudo?",
+      "rapidas": [
+        "¿Qué incluye el Plan Premium?",
+        "¿Qué son los comprobantes adicionales?",
+        "¿Puedo tener varias sucursales?",
+        "¿Puedo cambiar de plan?",
+        "¿Hay prueba gratis?"
+      ],
+      "respuestas": {
+        "¿Qué incluye el Plan Premium?": "El Plan Premium (S/150/mes) incluye todo lo del Plan Básico más gestión de hasta 3 sucursales o almacenes desde un solo sistema, con usuarios ilimitados y soporte prioritario.",
+        "¿Qué son los comprobantes adicionales?": "Todos los planes incluyen hasta 2,000 comprobantes. Si necesitas más, puedes adquirir paquetes adicionales desde S/0.030 por comprobante, según el rango que necesites.",
+        "¿Puedo tener varias sucursales?": "Sí. El Plan Básico incluye 1 sucursal, Premium hasta 3 y Gold hasta 4 sucursales o almacenes, todos gestionados desde un solo sistema.",
+        "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio aplica de inmediato.",
+        "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo. Además, el primer mes de cualquier plan de pago es gratis para que lo pruebes sin compromiso."
+      }
+    }
+  }
+}

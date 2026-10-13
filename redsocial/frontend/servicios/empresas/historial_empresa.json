@@ -1,0 +1,244 @@
+{
+  "historialBase": [
+    {
+      "fecha": "15/09/2026",
+      "hora": "10:24",
+      "usuario": "Juan Pérez",
+      "accion": "Usuario agregado",
+      "detalle": "Se agregó el usuario María López con rol Contador.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "12/09/2026",
+      "hora": "16:30",
+      "usuario": "María López",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se modificó el número de teléfono.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "10/09/2026",
+      "hora": "11:20",
+      "usuario": "Carlos Rojas",
+      "accion": "Plan actualizado",
+      "detalle": "Se cambió al plan Avanzado.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "05/09/2026",
+      "hora": "14:10",
+      "usuario": "Ana Pérez",
+      "accion": "Usuario desactivado",
+      "detalle": "Se desactivó el usuario Diego Luna.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "01/09/2026",
+      "hora": "09:15",
+      "usuario": "Diego Luna",
+      "accion": "Usuario agregado",
+      "detalle": "Se agregó el usuario Diego Luna con rol Usuario.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "28/08/2026",
+      "hora": "17:45",
+      "usuario": "Juan Pérez",
+      "accion": "Empresa creada",
+      "detalle": "Se registró la empresa en la plataforma.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "25/08/2026",
+      "hora": "09:40",
+      "usuario": "Carlos Rojas",
+      "accion": "Rol actualizado",
+      "detalle": "Se cambió el rol de Ana Pérez a Supervisor.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "22/08/2026",
+      "hora": "15:05",
+      "usuario": "María López",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se modificó la dirección fiscal.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "19/08/2026",
+      "hora": "11:35",
+      "usuario": "Juan Pérez",
+      "accion": "Plan renovado",
+      "detalle": "Se renovó el plan por 12 meses.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "16/08/2026",
+      "hora": "17:10",
+      "usuario": "Ana Pérez",
+      "accion": "Usuario agregado",
+      "detalle": "Se agregó el usuario Lucía Torres con rol Contador.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "13/08/2026",
+      "hora": "08:55",
+      "usuario": "Diego Luna",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se actualizó el correo de contacto.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "10/08/2026",
+      "hora": "13:20",
+      "usuario": "Lucía Torres",
+      "accion": "Usuario activado",
+      "detalle": "Se activó el usuario Pedro Salazar.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "07/08/2026",
+      "hora": "09:40",
+      "usuario": "Carlos Rojas",
+      "accion": "Plan actualizado",
+      "detalle": "Se cambió al plan Intermedio.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "04/08/2026",
+      "hora": "15:05",
+      "usuario": "Juan Pérez",
+      "accion": "Logo actualizado",
+      "detalle": "Se cambió el logo de la empresa.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "01/08/2026",
+      "hora": "11:35",
+      "usuario": "Carlos Rojas",
+      "accion": "Rol actualizado",
+      "detalle": "Se cambió el rol de Ana Pérez a Supervisor.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "29/07/2026",
+      "hora": "17:10",
+      "usuario": "María López",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se modificó la dirección fiscal.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "26/07/2026",
+      "hora": "08:55",
+      "usuario": "Juan Pérez",
+      "accion": "Plan renovado",
+      "detalle": "Se renovó el plan por 12 meses.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "23/07/2026",
+      "hora": "13:20",
+      "usuario": "Ana Pérez",
+      "accion": "Usuario agregado",
+      "detalle": "Se agregó el usuario Lucía Torres con rol Contador.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "20/07/2026",
+      "hora": "09:40",
+      "usuario": "Diego Luna",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se actualizó el correo de contacto.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "17/07/2026",
+      "hora": "15:05",
+      "usuario": "Lucía Torres",
+      "accion": "Usuario activado",
+      "detalle": "Se activó el usuario Pedro Salazar.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "14/07/2026",
+      "hora": "11:35",
+      "usuario": "Carlos Rojas",
+      "accion": "Plan actualizado",
+      "detalle": "Se cambió al plan Intermedio.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "11/07/2026",
+      "hora": "17:10",
+      "usuario": "Juan Pérez",
+      "accion": "Logo actualizado",
+      "detalle": "Se cambió el logo de la empresa.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "08/07/2026",
+      "hora": "08:55",
+      "usuario": "Carlos Rojas",
+      "accion": "Rol actualizado",
+      "detalle": "Se cambió el rol de Ana Pérez a Supervisor.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "05/07/2026",
+      "hora": "13:20",
+      "usuario": "María López",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se modificó la dirección fiscal.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "02/07/2026",
+      "hora": "09:40",
+      "usuario": "Juan Pérez",
+      "accion": "Plan renovado",
+      "detalle": "Se renovó el plan por 12 meses.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "29/06/2026",
+      "hora": "15:05",
+      "usuario": "Ana Pérez",
+      "accion": "Usuario agregado",
+      "detalle": "Se agregó el usuario Lucía Torres con rol Contador.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "26/06/2026",
+      "hora": "11:35",
+      "usuario": "Diego Luna",
+      "accion": "Datos de empresa actualizados",
+      "detalle": "Se actualizó el correo de contacto.",
+      "tipo": "empresa"
+    },
+    {
+      "fecha": "23/06/2026",
+      "hora": "17:10",
+      "usuario": "Lucía Torres",
+      "accion": "Usuario activado",
+      "detalle": "Se activó el usuario Pedro Salazar.",
+      "tipo": "usuario"
+    },
+    {
+      "fecha": "20/06/2026",
+      "hora": "08:55",
+      "usuario": "Carlos Rojas",
+      "accion": "Plan actualizado",
+      "detalle": "Se cambió al plan Intermedio.",
+      "tipo": "plan"
+    },
+    {
+      "fecha": "17/06/2026",
+      "hora": "13:20",
+      "usuario": "Juan Pérez",
+      "accion": "Logo actualizado",
+      "detalle": "Se cambió el logo de la empresa.",
+      "tipo": "empresa"
+    }
+  ]
+}

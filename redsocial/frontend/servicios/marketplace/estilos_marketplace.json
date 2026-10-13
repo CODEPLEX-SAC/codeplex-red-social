@@ -3,7 +3,8 @@
     "verde": "bg-t-34c759",
     "azul": "bg-t-007aff",
     "morado": "bg-t-5856d6",
-    "naranja": "bg-t-ff9500"
+    "naranja": "bg-t-ff9500",
+    "rojo": "bg-rojo-categoria"
   },
   "clasesCategoriaColor": {
     "verde": "bg-t-34c759",
@@ -11,5 +12,55 @@
     "morado": "bg-t-5856d6",
     "naranja": "bg-t-ff9500",
     "rosa": "bg-t-ff2d55"
+  },
+  "clasesInsigniaCategoria": {
+    "verde": "bg-fondo-categoria-verde text-verde-categoria-texto",
+    "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
+    "morado": "bg-fondo-categoria-morado text-morado-categoria",
+    "naranja": "bg-fondo-categoria-naranja text-naranja-categoria-texto",
+    "rojo": "bg-fondo-categoria-rojo text-rojo-categoria-texto"
+  },
+  "clasesSelectorPlanes": {
+    "azul": {
+      "texto": "text-azul-categoria-texto",
+      "relleno": "bg-azul-categoria-texto text-white",
+      "tinte": "bg-fondo-categoria-azul",
+      "pildora": "border border-borde-info-suave text-azul-categoria-texto",
+      "seleccion": "ring-azul-categoria-texto"
+    },
+    "verde": {
+      "texto": "text-verde-categoria-texto",
+      "relleno": "bg-verde-categoria-texto text-white",
+      "tinte": "bg-fondo-categoria-verde",
+      "pildora": "border border-borde-exito-suave text-verde-categoria-texto",
+      "seleccion": "ring-verde-categoria-texto"
+    },
+    "morado": {
+      "texto": "text-morado-categoria",
+      "relleno": "bg-morado-categoria text-white",
+      "tinte": "bg-fondo-categoria-morado",
+      "pildora": "border border-borde-primario-suave text-morado-categoria",
+      "seleccion": "ring-morado-categoria"
+    },
+    "naranja": {
+      "texto": "text-naranja-categoria-texto",
+      "relleno": "bg-naranja-categoria-texto text-white",
+      "tinte": "bg-fondo-categoria-naranja",
+      "pildora": "border border-borde text-naranja-categoria-texto",
+      "seleccion": "ring-naranja-categoria-texto"
+    },
+    "rojo": {
+      "texto": "text-rojo-categoria-texto",
+      "relleno": "bg-rojo-categoria-texto text-white",
+      "tinte": "bg-fondo-categoria-rojo",
+      "pildora": "border border-borde-peligro-suave text-rojo-categoria-texto",
+      "seleccion": "ring-rojo-categoria-texto"
+    }
+  },
+  "clasesPlanDestacado": {
+    "fondo": "bg-fondo-boton-oscuro text-white",
+    "auxiliar": "text-texto-sobre-oscuro-claro",
+    "pildora": "bg-white/15 text-white",
+    "icono": "text-white"
   }
 }

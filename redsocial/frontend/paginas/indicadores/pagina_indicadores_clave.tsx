@@ -2,7 +2,7 @@ import { Boton, Icono, EstructuraApp, Insignia, usarCarrusel } from '../../compo
 import catalogoIndicadores from '../../catalogos/capacidades/redsocial/indicadores.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import type { EstadoInd, FilaTabla } from '@/tipos/indicadores/modelo_indicadores_clave'
-import { KPIS, RENTABILIDAD, LIQUIDEZ, GESTION, UTILIDAD_NETA_COMBO, VENTAS_PROYECCION_MENSUAL, COSTOS, MODULOS_IND, COMPARATIVO_KPI, CLASES_ICONO_KPI, CLASES_ESTADO_IND, ETIQUETA_ESTADO_IND, CLASES_ICONO_MODULO, TH, TD } from '../../rutas/indicadores/rutas_indicadores'
+import { KPIS, RENTABILIDAD, LIQUIDEZ, GESTION, UTILIDAD_NETA_COMBO, VENTAS_PROYECCION_MENSUAL, COSTOS, MODULOS_IND, COMPARATIVO_KPI, CLASES_ICONO_KPI, CLASES_ESTADO_IND, ETIQUETA_ESTADO_IND, CLASES_ICONO_MODULO, TH, TD, TD_NOMBRE } from '../../rutas/indicadores/rutas_indicadores'
 import { SeccionClave, BloqueIndicadoresClave1, SeccionEvolucionUtilidadNeta, BloqueIndicadoresClave2 } from '../../componentes/indicadores'
 
 const MODULOS_TABS: { etiqueta: string; icono: IconName }[] = catalogoIndicadores.modulos_tabs as { etiqueta: string; icono: IconName }[]
@@ -13,7 +13,7 @@ function EstadoIndBadge({ estado }: { estado: EstadoInd }) {
 
 function TablaIndicador({ filas }: { filas: FilaTabla[] }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto max-380:-mx-2">
       <table className="w-full border-collapse text-cuerpo tabla-ultima-fila-sin-borde">
         <thead>
           <tr>
@@ -26,10 +26,10 @@ function TablaIndicador({ filas }: { filas: FilaTabla[] }) {
         <tbody>
           {filas.map((f) => (
             <tr key={f.indicador}>
-              <td className={TD}>{f.indicador}</td>
+              <td className={TD_NOMBRE}>{f.indicador}</td>
               <td className={TD}>{f.valor}</td>
               <td className={TD}><EstadoIndBadge estado={f.estado} /></td>
-              <td className={TD + ' font-semibold ' + (f.tipo === 'positiva' ? 'text-positivo-kpi' : 'text-negativo-kpi')}>{f.variacion}</td>
+              <td className={TD + ' font-titulo ' + (f.tipo === 'positiva' ? 'text-positivo-kpi' : 'text-negativo-kpi')}>{f.variacion}</td>
             </tr>
           ))}
         </tbody>
@@ -43,7 +43,7 @@ export function PaginaIndicadoresClave() {
 
   return (
     <EstructuraApp paginaActiva="indicadores">
-      <div className="mx-auto max-w-420">
+      <div>
         <SeccionClave />
 
         <div
@@ -52,7 +52,7 @@ export function PaginaIndicadoresClave() {
         >
           {MODULOS_TABS.map((m, i) => (
             <Boton key={m.etiqueta} type="button" variant="filtro" size="md" activo={i === 0}>
-              <Icono name={m.icono} className="h-3.75 w-3.75" /> {m.etiqueta}
+              <Icono name={m.icono} className="h-4 w-4" /> {m.etiqueta}
             </Boton>
           ))}
         </div>
@@ -63,27 +63,27 @@ export function PaginaIndicadoresClave() {
           COMPARATIVO_KPI={COMPARATIVO_KPI}
         />
 
-        <div className="mb-5 grid grid-cols-3 gap-4 max-1250:grid-cols-2 max-900:grid-cols-1">
+        <div className="mb-5 grid grid-cols-3 gap-4 max-1400:grid-cols-2 max-1000:grid-cols-1">
           <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
-            <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoIndicadores.secciones.rentabilidad}</h2>
-              <a href="#" className="whitespace-nowrap text-enlace-accion font-semibold text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
+            <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+              <h2 className="m-0 text-titulo-banner text-texto">{catalogoIndicadores.secciones.rentabilidad}</h2>
+              <a href="#" className="whitespace-nowrap text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
             </div>
             <TablaIndicador filas={RENTABILIDAD} />
           </article>
 
           <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
-            <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoIndicadores.secciones.liquidez}</h2>
-              <a href="#" className="whitespace-nowrap text-enlace-accion font-semibold text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
+            <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+              <h2 className="m-0 text-titulo-banner text-texto">{catalogoIndicadores.secciones.liquidez}</h2>
+              <a href="#" className="whitespace-nowrap text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
             </div>
             <TablaIndicador filas={LIQUIDEZ} />
           </article>
 
-          <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5 max-1250:col-span-2 max-900:col-span-1">
-            <div className="mb-3.5 flex items-center justify-between border-b border-t-f0eef5 pb-3.5">
-              <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoIndicadores.secciones.gestion}</h2>
-              <a href="#" className="whitespace-nowrap text-enlace-accion font-semibold text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
+          <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5 max-1400:col-span-2 max-1000:col-span-1">
+            <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
+              <h2 className="m-0 text-titulo-banner text-texto">{catalogoIndicadores.secciones.gestion}</h2>
+              <a href="#" className="whitespace-nowrap text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
             </div>
             <TablaIndicador filas={GESTION} />
           </article>
@@ -96,8 +96,8 @@ export function PaginaIndicadoresClave() {
         />
 
         <div className="mb-3.5 flex items-center justify-between">
-          <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoIndicadores.secciones.indicadores_por_modulo}</h2>
-          <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{catalogoIndicadores.botones.ver_todos_los_indicadores}</a>
+          <h2 className="m-0 text-titulo-seccion text-texto">{catalogoIndicadores.secciones.indicadores_por_modulo}</h2>
+          <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos_los_indicadores}</a>
         </div>
         <BloqueIndicadoresClave2
           MODULOS_IND={MODULOS_IND}

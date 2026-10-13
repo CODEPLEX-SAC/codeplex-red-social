@@ -7,9 +7,9 @@ const textosMas = catalogoColaboradores.perfil.mas_aplicaciones
 
 export function BloqueAplicacionesAsignadas({ aplicaciones, masApps }: { aplicaciones: Aplicacion[]; masApps?: number }) {
   return (
-    <section className="mt-4 border-t border-t-f3f4f6 pt-4">
+    <section className="mt-4 border-t border-borde-suave pt-4">
       <div className="mb-2.5 flex items-center gap-2">
-        <h4 className="m-0 text-nombre-entidad font-semibold text-gris-oscuro-texto">{catalogoColaboradores.secciones.aplicaciones_titulo}</h4>
+        <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.secciones.aplicaciones_titulo}</h4>
         <Insignia variant="counter">{aplicaciones.length + (masApps ?? 0)}</Insignia>
       </div>
       <ul className="m-0 grid list-none gap-2 p-0">
@@ -18,11 +18,11 @@ export function BloqueAplicacionesAsignadas({ aplicaciones, masApps }: { aplicac
             <span className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${app.clase}`}>
               <Icono name={app.icono} className="w-3.5 h-3.5 text-white" />
             </span>
-            <span className="text-campo-formulario text-gris-oscuro-texto">{app.nombre}</span>
+            <span className="text-campo-formulario text-texto">{app.nombre}</span>
           </li>
         ))}
         {masApps ? (
-          <li className="text-campo-formulario font-medium text-gris-texto-secundario">{[textosMas.prefijo, masApps, textosMas.sufijo].join(' ')}</li>
+          <li className="text-campo-formulario text-texto-suave">{[textosMas.prefijo, masApps, textosMas.sufijo].join(' ')}</li>
         ) : null}
       </ul>
     </section>

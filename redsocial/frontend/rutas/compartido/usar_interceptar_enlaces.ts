@@ -10,7 +10,7 @@ export function usarInterceptarEnlaces() {
       if (!esClicSimpleDeEnlace(evento)) return
       const ruta = obtenerRutaDelEnlaceClicado(evento)
       if (!ruta) return
-      if (!resolverRuta(ruta)) return
+      if (!resolverRuta(ruta.split('?')[0])) return
       evento.preventDefault()
       navegar(ruta)
     }

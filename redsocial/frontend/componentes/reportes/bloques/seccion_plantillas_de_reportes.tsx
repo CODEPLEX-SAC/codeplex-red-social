@@ -25,10 +25,10 @@ export function SeccionPlantillasDeReportes({
   CLASES_FORMATO: Record<'pdf' | 'excel', string>
 }) {
   return (
-    <div className="mx-auto max-w-420">
+    <div>
       <div className="mb-5 flex items-start justify-between gap-5 max-900:flex-col max-900:items-stretch">
         <div>
-          <h1 className="m-0 text-titulo-pagina font-extrabold text-texto">{catalogoReportes.titulos.principal}</h1>
+          <h1 className="m-0 text-titulo-pagina text-texto">{catalogoReportes.titulos.principal}</h1>
           <p className="m-0 mt-1 text-subtitulo text-texto-suave">{catalogoReportes.subtitulos.principal}</p>
         </div>
         <div className="flex flex-wrap items-end gap-3.5 max-480:flex-col max-480:items-stretch">
@@ -39,7 +39,7 @@ export function SeccionPlantillasDeReportes({
             {catalogoReportes.selectores.comparar_con.opciones.map((o) => <option key={o}>{o}</option>)}
           </Selector>
           <Boton type="button" variant="contorno" size="md" className="flex-none max-900:w-full max-900:justify-center">
-            <Icono name="filtro" className="h-3.75 w-3.75" /> {catalogoReportes.botones.filtros_avanzados}
+            <Icono name="filtro" className="h-4 w-4" /> {catalogoReportes.botones.filtros_avanzados}
           </Boton>
         </div>
       </div>
@@ -50,14 +50,14 @@ export function SeccionPlantillasDeReportes({
       >
         {MODULOS_TABS.map((m, i) => (
           <Boton key={m.etiqueta} type="button" variant="filtro" size="md" activo={i === 0}>
-            <Icono name={m.icono} className="h-3.75 w-3.75" /> {m.etiqueta}
+            <Icono name={m.icono} className="h-4 w-4" /> {m.etiqueta}
           </Boton>
         ))}
       </div>
 
       <div className="mb-3.5 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-seccion font-bold text-texto">{catalogoReportes.secciones.plantillas_de_reportes}</h2>
-        <a href="#" className="text-enlace-accion font-semibold text-primario no-underline">{catalogoReportes.botones.ver_todas_las_plantillas}</a>
+        <h2 className="m-0 text-titulo-seccion text-texto">{catalogoReportes.secciones.plantillas_de_reportes}</h2>
+        <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoReportes.botones.ver_todas_las_plantillas}</a>
       </div>
       <div className="mb-7 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1">
         {PLANTILLAS.map((p) => (
@@ -66,12 +66,12 @@ export function SeccionPlantillasDeReportes({
               <span className={`grid h-8.5 w-8.5 flex-none place-items-center rounded-9 ${CLASES_ICONO_PLANTILLA[p.color]}`}>
                 <Icono name={p.icono} className="h-4 w-4" />
               </span>
-              <strong className="text-nombre-entidad font-bold leading-tight text-texto">{p.nombre}</strong>
+              <strong className="text-nombre-entidad leading-compacto text-texto">{p.nombre}</strong>
             </div>
-            <p className="m-0 min-h-8 text-cuerpo leading-1.45 text-texto-suave">{p.descripcion}</p>
-            <span className="text-auxiliar font-semibold text-texto-suave">{p.modulo}</span>
+            <p className="m-0 min-h-8 text-cuerpo leading-texto text-texto-suave">{p.descripcion}</p>
+            <span className="text-etiqueta text-texto-suave">{p.modulo}</span>
             <MiniGraficoPlantilla grafico={p.grafico} />
-            <div className="mt-1 flex items-center justify-between border-t border-t-f5f3fa pt-2">
+            <div className="mt-1 flex items-center justify-between border-t border-fondo-hover-discreto pt-2">
               <BotonIcono icono="estrella" type="button" aria-label={catalogoReportes.botones.favorito} variant="sutil" size="md" />
               <BotonIcono icono="puntos" type="button" aria-label={catalogoReportes.botones.mas_opciones} variant="sutil" size="md" />
             </div>

@@ -52,6 +52,7 @@ export function PaginaEventosProximos() {
             SEMANAS_CALENDARIO_POPULARES={SEMANAS_CALENDARIO_PROXIMOS}
             PROXIMAS_FECHAS={PROXIMAS_FECHAS}
             CATEGORIAS_LATERAL={CATEGORIAS_LATERAL}
+            conEnlaceVerTodas={false}
           />
         }
       />

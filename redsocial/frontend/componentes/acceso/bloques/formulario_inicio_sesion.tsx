@@ -12,7 +12,7 @@ export function FormularioInicioSesion({ onAcceder, credencialesIniciales }: For
   return (
     <form noValidate onSubmit={formulario.enviar} aria-busy={cargando} className="flex flex-col gap-3.5">
       <div>
-        <label htmlFor={catalogoAcceso.ids.correo} className="mb-1.5 block text-auxiliar font-bold text-texto">
+        <label htmlFor={catalogoAcceso.ids.correo} className="mb-1.5 block text-etiqueta text-texto">
           {catalogoAcceso.campos.correo}
         </label>
         <CampoTexto

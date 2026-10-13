@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { TarjetaPublicacion } from '@/componentes/inicio'
 import { PaginaInicio } from '@/paginas/inicio/pagina_inicio'
+import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import type { PublicacionTextoInicio } from '@/tipos/inicio/modelo_inicio'
 
@@ -9,6 +10,7 @@ const marcador = catalogoInicio.placeholders.que_estas_pensando.replace(':nombre
 
 const base: PublicacionTextoInicio = {
   id: '1',
+  autorId: catalogoCompartido.sesion_actual.id,
   nombre: 'Pedro Lozano',
   tiempo: catalogoInicio.publicacion.tiempo_ahora,
   texto: 'Primera linea\nSegunda linea',
@@ -26,7 +28,7 @@ function publicarDesdeModal(texto: string, tipo?: string) {
 
 describe('TarjetaPublicacion', () => {
   it('muestra autor, tiempo, texto, contadores y acciones', () => {
-    render(<TarjetaPublicacion publicacion={base} />)
+    render(<TarjetaPublicacion publicacion={base} onEditar={vi.fn()} onEliminar={vi.fn()} />)
     expect(screen.getByText('Pedro Lozano')).toBeInTheDocument()
     expect(screen.getByText(catalogoInicio.publicacion.tiempo_ahora)).toBeInTheDocument()
     expect(screen.getByText(/Primera linea/)).toBeInTheDocument()
@@ -39,7 +41,7 @@ describe('TarjetaPublicacion', () => {
   })
 
   it('usa el singular cuando hay una sola reaccion o un solo comentario', () => {
-    render(<TarjetaPublicacion publicacion={{ ...base, reacciones: 1, comentarios: 1 }} />)
+    render(<TarjetaPublicacion publicacion={{ ...base, reacciones: 1, comentarios: 1 }} onEditar={vi.fn()} onEliminar={vi.fn()} />)
     expect(screen.getByText('1 reacción')).toBeInTheDocument()
     expect(screen.getByText('1 comentario')).toBeInTheDocument()
   })

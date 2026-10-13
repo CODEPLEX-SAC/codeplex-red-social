@@ -7,7 +7,7 @@ const mapaTamano: Record<BotonSize, string> = catalogoCompartido.boton_tamanos
 
 export function Boton({ variant, size = 'default', activo, className, children, ...rest }: BotonProps) {
   const clases = [
-    'inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline',
+    'inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40',
     mapaTamano[size],
     variant ? (activo && mapaActivo[variant]) || mapaVariante[variant] : 'border-transparent',
     className ?? '',

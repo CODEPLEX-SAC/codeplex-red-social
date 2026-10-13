@@ -14,9 +14,9 @@ export function PaginaMensajesTodos() {
         principal={
           <section className="flex h-full flex-col">
             <div className="mb-5 flex items-start justify-between gap-5">
-              <h1 className="m-0 text-titulo-pagina font-extrabold tracking-n02 text-texto">{catalogoMensajeria.titulos.todos}</h1>
+              <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{catalogoMensajeria.titulos.todos}</h1>
               <div className="flex items-center gap-2.5">
-                <BotonIcono icono="editar" type="button" aria-label={catalogoMensajeria.botones.nuevo_mensaje} variant="contorno" size="default" />
+                <BotonIcono icono="editar-oficial" type="button" aria-label={catalogoMensajeria.botones.nuevo_mensaje} variant="contorno" size="default" />
               </div>
             </div>
 

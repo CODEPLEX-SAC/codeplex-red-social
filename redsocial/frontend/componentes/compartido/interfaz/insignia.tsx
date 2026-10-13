@@ -7,28 +7,28 @@ export function Insignia(props: InsigniaProps) {
   switch (props.variant) {
     case 'counter':
       return (
-        <span className="inline-grid h-4.5 min-w-4.5 place-items-center rounded-full bg-primario px-1.25 text-contador font-bold text-white">
+        <span className="inline-grid h-4.5 min-w-4.5 place-items-center rounded-full bg-primario px-1.25 text-conteo text-white">
           {props.children}
         </span>
       )
 
     case 'status':
       return (
-        <span className={`inline-block whitespace-nowrap rounded-xl px-2 py-0.5 text-etiqueta-estado font-bold ${props.className}`}>
+        <span className={`inline-block whitespace-nowrap rounded-xl px-2 py-0.5 text-badge ${props.className}`}>
           {props.children}
         </span>
       )
 
     case 'privacy':
       return (
-        <span className={`inline-block rounded px-2 py-0.5 text-etiqueta-estado font-semibold ${mapaPrivacidad[props.tone]}`}>
+        <span className={`inline-block rounded px-2 py-0.5 text-badge ${mapaPrivacidad[props.tone]}`}>
           {props.children}
         </span>
       )
 
     case 'privado':
       return (
-        <span className="inline-block rounded-3 bg-t-ede9fe px-1.5 py-px text-etiqueta-estado font-semibold text-morado-categoria">
+        <span className="inline-block rounded-3 bg-fondo-categoria-morado px-1.5 py-px text-badge text-morado-categoria">
           {props.children}
         </span>
       )

@@ -11,7 +11,7 @@ export function PaginaActividadPublicaciones() {
         principal={
           <section>
             <div className="mb-5">
-              <h1 className="m-0 mb-1 text-titulo-pagina font-extrabold text-texto">{catalogoActividad.titulos.publicaciones}</h1>
+              <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoActividad.titulos.publicaciones}</h1>
               <p className="m-0 text-subtitulo text-texto-suave">{catalogoActividad.subtitulos.publicaciones}</p>
             </div>
 
@@ -30,11 +30,11 @@ export function PaginaActividadPublicaciones() {
                 >
                   {p.conImagen ? (
                     <div className="mb-1.5 mt-0.5 flex items-start gap-3">
-                      <p className="m-0 flex-1 text-cuerpo leading-1.45 text-texto">{p.texto}</p>
-                      <div className="ml-auto h-17 w-25 flex-none rounded-md bg-t-e8e5f0" />
+                      <p className="m-0 flex-1 text-cuerpo leading-texto text-texto">{p.texto}</p>
+                      <div className="ml-auto h-17 w-25 flex-none rounded-md bg-fondo-miniatura" />
                     </div>
                   ) : (
-                    <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-1.45 text-texto">{p.texto}</p>
+                    <p className="m-0 mb-1.5 mt-0.5 text-cuerpo leading-texto text-texto">{p.texto}</p>
                   )}
                 </TarjetaActividad>
               ))}

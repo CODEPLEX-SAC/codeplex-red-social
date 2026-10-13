@@ -21,8 +21,8 @@ export function SeccionInvitaciones({
 }) {
   return (
     <section>
-      <div className="mb-4 flex items-start justify-between gap-5">
-        <h1 className="m-0 text-titulo-pagina font-extrabold text-texto">{catalogoGrupos.titulos.invitaciones}</h1>
+      <div className="mb-4 flex flex-wrap items-start justify-between gap-x-5 gap-y-3">
+        <h1 className="m-0 text-titulo-pagina text-texto">{catalogoGrupos.titulos.invitaciones}</h1>
         <div className="flex flex-none items-center gap-2.5">
           <Boton type="button" variant="secundario" size="md">
             <Icono name="mas" className="h-4 w-4" /> {catalogoGrupos.botones.invitar_a_grupo}
@@ -35,19 +35,19 @@ export function SeccionInvitaciones({
 
       <div className="mb-4 flex flex-wrap gap-1.5 max-600:flex-nowrap max-600:overflow-x-auto max-600:scrollbar-oculto">
         <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-primario bg-primario px-3.5 text-navegacion text-white no-underline">
-          {catalogoGrupos.filtros.todas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-white/25 px-1 text-contador font-bold">{CONTEO.todas}</span>
+          {catalogoGrupos.filtros.todas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-white px-1 text-conteo text-primario">{CONTEO.todas}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-t-f7f6fa">
-          {catalogoGrupos.filtros.pendientes} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-t-efedf7 px-1 text-contador font-bold text-texto-suave">{CONTEO.pendientes}</span>
+        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
+          {catalogoGrupos.filtros.pendientes} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.pendientes}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-t-f7f6fa">
-          {catalogoGrupos.filtros.aceptadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-t-efedf7 px-1 text-contador font-bold text-texto-suave">{CONTEO.aceptadas}</span>
+        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
+          {catalogoGrupos.filtros.aceptadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.aceptadas}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-t-f7f6fa">
-          {catalogoGrupos.filtros.rechazadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-t-efedf7 px-1 text-contador font-bold text-texto-suave">{CONTEO.rechazadas}</span>
+        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
+          {catalogoGrupos.filtros.rechazadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.rechazadas}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-t-f7f6fa">
-          {catalogoGrupos.filtros.expiradas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-t-efedf7 px-1 text-contador font-bold text-texto-suave">{CONTEO.expiradas}</span>
+        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
+          {catalogoGrupos.filtros.expiradas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.expiradas}</span>
         </a>
       </div>
 

@@ -8,6 +8,7 @@
     "colaboradores",
     "compartido",
     "dashboard",
+    "empresas",
     "estadisticas",
     "eventos",
     "grupos",
@@ -59,6 +60,16 @@
       "ver_resumen",
       "personalizar",
       "exportar"
+    ],
+    "empresas": [
+      "listar",
+      "filtrar",
+      "crear",
+      "desactivar",
+      "ver_detalle",
+      "listar_usuarios",
+      "ver_historial",
+      "editar"
     ],
     "estadisticas": [
       "ver_por_modulo",
@@ -159,6 +170,16 @@
       "personalizar": "DASHBOARD_PERSONALIZAR",
       "exportar": "DASHBOARD_EXPORTAR"
     },
+    "empresas": {
+      "listar": "EMPRESAS_CONSULTAR",
+      "filtrar": "EMPRESAS_FILTRAR",
+      "crear": "EMPRESAS_CREAR",
+      "desactivar": "EMPRESAS_DESACTIVAR",
+      "ver_detalle": "EMPRESAS_CONSULTAR",
+      "listar_usuarios": "EMPRESAS_CONSULTAR",
+      "ver_historial": "EMPRESAS_CONSULTAR",
+      "editar": "EMPRESAS_EDITAR"
+    },
     "estadisticas": {
       "ver_por_modulo": "ESTADISTICAS_CONSULTAR",
       "comparar": "ESTADISTICAS_COMPARAR",
@@ -245,17 +266,16 @@
     },
     "colaboradores": {
       "listado": "/colaboradores",
-      "perfil": "/colaboradores/perfil",
-      "invitar": "/colaboradores/invitar",
-      "invitar_rol_permisos": "/colaboradores/invitar/rol-permisos",
-      "invitar_vigencia": "/colaboradores/invitar/vigencia",
-      "invitar_resumen": "/colaboradores/invitar/resumen"
+      "perfil": "/colaboradores/perfil"
     },
     "compartido": {
       "no_encontrada": "/no-encontrada"
     },
     "dashboard": {
       "principal": "/dashboard"
+    },
+    "empresas": {
+      "listado": "/empresas"
     },
     "estadisticas": {
       "todos_modulos": "/estadisticas",
@@ -328,6 +348,14 @@
     "dashboard.ver_resumen": "fn_redsocial_dashboard_ver_resumen",
     "dashboard.personalizar": "fn_redsocial_dashboard_personalizar",
     "dashboard.exportar": "fn_redsocial_dashboard_exportar",
+    "empresas.listar": "fn_redsocial_empresas_listar",
+    "empresas.filtrar": "fn_redsocial_empresas_filtrar",
+    "empresas.crear": "fn_redsocial_empresas_crear",
+    "empresas.desactivar": "fn_redsocial_empresas_desactivar",
+    "empresas.ver_detalle": "fn_redsocial_empresas_ver_detalle",
+    "empresas.listar_usuarios": "fn_redsocial_empresas_listar_usuarios",
+    "empresas.ver_historial": "fn_redsocial_empresas_ver_historial",
+    "empresas.editar": "fn_redsocial_empresas_editar",
     "estadisticas.ver_por_modulo": "fn_redsocial_estadisticas_ver_por_modulo",
     "estadisticas.comparar": "fn_redsocial_estadisticas_comparar",
     "estadisticas.exportar": "fn_redsocial_estadisticas_exportar",
@@ -375,6 +403,7 @@
     "colaboradores": [],
     "compartido": [],
     "dashboard": [],
+    "empresas": [],
     "estadisticas": [],
     "eventos": [],
     "grupos": [],
@@ -393,6 +422,7 @@
     "colaboradores": [],
     "compartido": [],
     "dashboard": [],
+    "empresas": [],
     "estadisticas": [],
     "eventos": [],
     "grupos": [],
@@ -431,6 +461,14 @@
     "frontend:dashboard:ver_resumen",
     "frontend:dashboard:personalizar",
     "frontend:dashboard:exportar",
+    "frontend:empresas:listar",
+    "frontend:empresas:filtrar",
+    "frontend:empresas:crear",
+    "frontend:empresas:desactivar",
+    "frontend:empresas:ver_detalle",
+    "frontend:empresas:listar_usuarios",
+    "frontend:empresas:ver_historial",
+    "frontend:empresas:editar",
     "frontend:estadisticas:ver_por_modulo",
     "frontend:estadisticas:comparar",
     "frontend:estadisticas:exportar",

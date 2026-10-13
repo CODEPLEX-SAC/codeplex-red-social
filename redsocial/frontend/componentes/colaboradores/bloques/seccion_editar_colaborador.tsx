@@ -27,10 +27,10 @@ export function SeccionEditarColaborador({
   return (
     <aside className="sticky top-22 max-1100:static w-full rounded-xl border border-gris-borde bg-white p-5 area-detalle">
       <div className="mb-1 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-banner font-bold text-gris-oscuro-texto">{textos.titulo}</h2>
+        <h2 className="m-0 text-titulo-banner text-texto">{textos.titulo}</h2>
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={alCerrar} variant="sutil" size="md" />
       </div>
-      <p className="m-0 mb-4 text-auxiliar text-gris-texto-secundario">{textos.subtitulo}</p>
+      <p className="m-0 mb-4 text-auxiliar text-texto-suave">{textos.subtitulo}</p>
 
       <BloqueEditarDatosColaborador colaborador={colaborador} />
       <BloqueEditarRolPerfil colaborador={colaborador} />
@@ -38,7 +38,7 @@ export function SeccionEditarColaborador({
       <BloqueEditarAplicaciones colaborador={colaborador} disponibles={aplicacionesDisponibles} />
       <BloqueEditarEstadoAcceso colaborador={colaborador} etiquetaEstado={etiquetaEstado} />
 
-      <div className="mt-4 grid grid-cols-2 gap-2 border-t border-t-f3f4f6 pt-4">
+      <div className="mt-4 grid grid-cols-2 gap-2 border-t border-borde-suave pt-4">
         <Boton type="button" variant="secundario" onClick={alCancelar}>{textosRedSocial.CANCELAR}</Boton>
         <Boton type="button" variant="primario" onClick={alCancelar}>{textos.guardar_cambios}</Boton>
       </div>

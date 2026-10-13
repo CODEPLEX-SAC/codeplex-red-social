@@ -22,6 +22,8 @@ function montar() {
       PUBLICACION_COMPARTIDA_INICIO={PUBLICACION_COMPARTIDA_INICIO}
       publicaciones={[]}
       onPublicar={alPublicar}
+      onEditar={vi.fn()}
+      onEliminar={vi.fn()}
     />,
   )
 }

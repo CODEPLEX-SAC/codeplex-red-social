@@ -35,7 +35,7 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
         </div>
         <div className="grid flex-1 gap-1.75">
           {ANCHOS_MINI_LINEAS_DONA.map((w) => (
-            <span key={w} className={`block h-1.75 rounded-full bg-t-f0eef5 ${w}`} />
+            <span key={w} className={`block h-1.75 rounded-full bg-borde-suave ${w}`} />
           ))}
         </div>
       </div>
@@ -44,7 +44,7 @@ function MiniGraficoPlantilla({ grafico }: { grafico: MiniGrafico }) {
   return (
     <div className="mt-1 grid gap-1.75">
       {ANCHOS_MINI_LISTA.map((w) => (
-        <span key={w} className={`block h-1.75 rounded-full bg-t-f0eef5 ${w}`} />
+        <span key={w} className={`block h-1.75 rounded-full bg-borde-suave ${w}`} />
       ))}
     </div>
   )

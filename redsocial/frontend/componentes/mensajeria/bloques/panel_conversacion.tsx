@@ -19,9 +19,9 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
         </span>
         <AvatarImagen src={usuarioImg} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
         <div className="min-w-0 flex-1">
-          <strong className="block text-nombre-entidad font-bold text-texto">{conversacion.nombre}</strong>
+          <strong className="block text-nombre-entidad text-texto">{conversacion.nombre}</strong>
           {conversacion.enLinea && (
-            <span className="mt-0.5 flex items-center gap-1.25 text-etiqueta-estado text-exito">
+            <span className="mt-0.5 flex items-center gap-1.25 text-estado text-exito-texto">
               <span className="h-1.5 w-1.5 rounded-full bg-exito" /> {catalogoMensajeria.conversacion.en_linea}
             </span>
           )}
@@ -33,17 +33,17 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
         </div>
       </header>
 
-      <div className="flex items-start gap-2.5 border-b border-borde bg-t-faf9fc px-4.5 py-3">
+      <div className="flex items-start gap-2.5 border-b border-borde bg-fondo px-4.5 py-3">
         <div className="min-w-0 flex-1">
-          <strong className="mb-0.5 flex items-center gap-1.25 text-nombre-entidad font-bold text-texto">
-            <Icono name="fijar" className="h-3.25 w-3.25 text-primario" /> {catalogoMensajeria.conversacion.mensaje_fijado}
+          <strong className="mb-0.5 flex items-center gap-1.25 text-nombre-entidad text-texto">
+            <Icono name="fijar" className="h-3.5 w-3.5 text-primario" /> {catalogoMensajeria.conversacion.mensaje_fijado}
           </strong>
           <p className="m-0 text-cuerpo text-texto-suave">{conversacion.mensajeFijado}</p>
         </div>
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} variant="discreto" size="sm" className="flex-none" />
       </div>
 
-      <div className="min-h-0 min-w-0 overflow-y-auto bg-t-fbfaff p-5">
+      <div className="min-h-0 min-w-0 overflow-y-auto bg-fondo p-5">
         {conversacion.hilo.map((m) => {
           const meta = (m.hora || m.confirmado) && (
             <span className="flex items-center gap-1 text-auxiliar text-texto-suave">
@@ -53,13 +53,13 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
           )
           return (
             <div key={m.id}>
-              {m.fecha && <div className="my-4 mb-2.5 text-center text-fecha-abreviada text-t-aaa7b5">{m.fecha}</div>}
+              {m.fecha && <div className="my-4 mb-2.5 text-center text-fecha-abreviada text-texto-suave">{m.fecha}</div>}
               <div className={'mb-2 flex max-w-p75 flex-col gap-0.5 ' + (m.propio ? 'ml-auto items-end text-right' : 'items-start')}>
                 {m.propio && meta}
                 {m.contenido && (
                   <div
                     className={
-                      'my-1.5 max-w-full rounded-xl px-3.5 py-2.5 text-cuerpo leading-normal ' +
+                      'my-1.5 max-w-full rounded-xl px-3.5 py-2.5 text-cuerpo leading-texto ' +
                       (m.propio ? 'rounded-tr-sm bg-primario text-white' : 'rounded-tl-sm border border-borde bg-white text-texto')
                     }
                   >
@@ -68,11 +68,11 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
                 )}
                 {m.adjunto && (
                   <div className="my-2 flex items-center gap-2.5 rounded-control border border-borde bg-white px-3.5 py-2.5">
-                    <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-t-fdeceb text-negativo-kpi">
+                    <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-fondo-categoria-rojo text-negativo-kpi">
                       <Icono name="caja" className="h-4.5 w-4.5" />
                     </span>
                     <span className="min-w-0 flex-1">
-                      <strong className="block text-auxiliar font-semibold text-texto">{m.adjunto.nombre}</strong>
+                      <strong className="block text-auxiliar font-control text-texto">{m.adjunto.nombre}</strong>
                       <span className="block text-auxiliar text-texto-suave">{m.adjunto.peso}</span>
                     </span>
                     <BotonIcono icono="flecha-abajo" type="button" aria-label={catalogoMensajeria.conversacion.descargar} variant="contorno" size="md" className="flex-none" />
