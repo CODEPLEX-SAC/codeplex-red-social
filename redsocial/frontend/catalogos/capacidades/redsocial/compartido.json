@@ -1,4 +1,10 @@
 {
+  "barra_superior": {
+    "carrito": {
+      "contenedor": "relative",
+      "insignia": "pointer-events-none absolute -right-0.5 -top-0.5"
+    }
+  },
   "acciones": [
     "navegar",
     "buscar"
@@ -99,7 +105,6 @@
     "precio": "precio",
     "editar-oficial": "editar-oficial",
     "contabilidad-propio": "svg:contabilidad",
-    "fuego-propio": "svg:fuego",
     "cohete-propio": "svg:cohete",
     "envio": "envio",
     "grupo": "grupo",
@@ -184,6 +189,14 @@
   ],
   "titulo_menu": "Compartido",
   "nombres_iconos": [
+    "banco",
+    "celular",
+    "copiar",
+    "codigo-qr",
+    "calefaccion",
+    "recibo",
+    "regalo",
+    "candado",
     "actividad",
     "adjuntar",
     "ajustes-sistema",
@@ -539,10 +552,11 @@
       "textoBoton": "Conoce más"
     }
   },
-  "clases_boton_mini": "inline-flex min-h-7.5 items-center justify-center gap-sm whitespace-nowrap rounded-7 border px-2.5 text-boton-mini leading-compacto no-underline",
+  "boton_base": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40",
+  "boton_icono_base": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disabled:opacity-40",
   "boton_variantes": {
     "primario": "border-transparent bg-primario text-white hover:bg-primario-oscuro",
-    "secundario": "border-gris-borde bg-white text-texto-boton-secundario",
+    "secundario": "border-gris-borde bg-white text-texto-boton-secundario hover:bg-fondo-hover-suave",
     "oscuro": "border-transparent bg-fondo-boton-oscuro text-white",
     "peligro": "border-transparent bg-peligro-texto text-white",
     "exito": "border-transparent bg-exito-texto text-white",
@@ -556,10 +570,27 @@
     "filtro": "border-primario bg-fondo-activo-filtro text-primario",
     "fantasma": "border-transparent bg-fondo-hover-suave text-primario"
   },
+  "boton_medio": "px-4.5 rounded-lg text-boton max-600:px-3.25 max-600:rounded-7",
+  "boton_tamanos_medios": ["md", "cta"],
+  "chip_filtro": {
+    "base": "inline-flex h-8 items-center gap-1.25 whitespace-nowrap rounded-20 border px-3.5 text-navegacion no-underline aria-disabled:cursor-not-allowed aria-disabled:opacity-40",
+    "activo": "border-primario bg-primario text-white",
+    "inactivo": "border-borde bg-white text-texto-suave hover:bg-fondo-hover-discreto",
+    "conteo": "grid h-4 min-w-4 place-items-center rounded-lg px-1 text-conteo leading-none",
+    "conteo_activo": "bg-white text-primario",
+    "conteo_inactivo": "bg-fondo-insignia-neutra text-texto-suave",
+    "conteo_destacado": "bg-primario text-white"
+  },
+  "boton_icono_por_tamano": { "md": "16", "cta": "16", "default": "16", "mini": "14", "filtro": "14" },
+  "boton_icono_clases": {
+    "14": "[&_.icono]:h-3.5! [&_.icono]:w-3.5! [&_.material-symbols-rounded]:[font-size:0.875rem]! [&_.material-symbols-rounded]:[transform:none]!",
+    "16": "[&_.icono]:h-4! [&_.icono]:w-4! [&_.material-symbols-rounded]:[font-size:1rem]! [&_.material-symbols-rounded]:[transform:none]!"
+  },
   "boton_tamanos": {
     "mini": "min-h-7.5 px-2.5 text-boton-mini leading-compacto rounded-7",
     "default": "min-h-8.5 px-3.25 rounded-7 text-boton max-600:min-h-7.5 max-600:px-2.5",
-    "md": "min-h-9.5 px-4.5 rounded-lg text-boton max-600:min-h-8.5 max-600:px-3.25 max-600:rounded-7",
+    "md": "min-h-control",
+    "cta": "min-h-10",
     "filtro": "h-8 px-3 rounded-lg text-chip",
     "enlace": "text-boton",
     "enlace_accion": "text-enlace-accion",
@@ -604,12 +635,12 @@
   "controles": {
     "casilla_tamano": "pequeno",
     "texto_vacio": "",
-    "campo_texto": { "anchoCompleto": true, "sx": { "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem", "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } } } },
-    "campo_numero": { "anchoCompleto": true, "sx": { "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem", "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } } } },
+    "campo_texto": { "anchoCompleto": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem", "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } } } },
+    "campo_numero": { "anchoCompleto": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem", "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } } } },
     "interruptor": { "color": "primario", "tamano": "pequeno" },
     "radio": { "colorTema": "primario" },
-    "selector_fecha": { "anchoCompleto": true, "slotProps": { "textField": { "size": "small" } } },
-    "selector_hora": { "anchoCompleto": true, "slotProps": { "textField": { "size": "small" } } },
+    "selector_fecha": { "anchoCompleto": true, "slotProps": { "textField": { "size": "small", "sx": { "& .MuiPickersInputBase-root": { "minHeight": "var(--height-control)" } } } } },
+    "selector_hora": { "anchoCompleto": true, "slotProps": { "textField": { "size": "small", "sx": { "& .MuiPickersInputBase-root": { "minHeight": "var(--height-control)" } } } } },
     "tipo_busqueda": "search",
     "atributo_accesible": "aria-label"
   },
@@ -632,6 +663,13 @@
     }
   },
   "iconos_libreria": {
+    "banco": "account_balance",
+    "celular": "smartphone",
+    "copiar": "content_copy",
+    "codigo-qr": "qr_code_2",
+    "recibo": "receipt",
+    "calefaccion": "mode_heat",
+    "candado": "lock",
     "datos": "bar_chart",
     "cuadricula-oficial": "grid_view",
     "analiticas": "analytics",
@@ -730,6 +768,7 @@
   },
   "barra_lateral": {
     "ancho": 240,
+    "destino_modulos": "marketplace",
     "puntos_quiebre": { "md": 900 },
     "desplazamiento": { "expandido": "pl-60 max-900:pl-0", "colapsado": "pl-20 max-900:pl-0" },
     "tipos": { "divisor": "divisor", "seccion": "seccion" },
@@ -766,6 +805,53 @@
     "titulo": "m-0 text-nombre-entidad text-texto",
     "texto": "m-0 text-subtitulo text-texto-suave"
   },
+  "acordeon": {
+    "sombra": "none",
+    "predeterminado": { "variante": "separado" },
+    "mapeo_tipografia": { "body2": "div" },
+    "clases": {
+      "contenedor": "w-full min-w-0 [&>div]:gap-3! [&_[id^=acordeon-cabecera-]]:w-full! [&_[id^=acordeon-cabecera-]]:justify-between! [&_[id^=acordeon-cabecera-]]:px-3.5! [&_[id^=acordeon-cabecera-]]:py-2.25! [&_[id^=acordeon-cabecera-]]:min-h-[calc(var(--height-control)-2px)]! [&_[role=region]]:min-w-0! [&_[role=region]]:px-3.5! [&_[role=region]]:pb-3.5!",
+      "glifo": "h-4 w-4"
+    }
+  },
+  "campo_etiquetado": {
+    "contenedor": "min-w-0",
+    "etiqueta": "mb-1.5 block text-etiqueta text-texto",
+    "requerido": "text-peligro-texto",
+    "simbolo_requerido": "*"
+  },
+  "selector_buscable": {
+    "contenedor": "relative min-w-0",
+    "disparador": "flex h-control w-full min-w-0 items-center gap-sm rounded-control border border-borde bg-superficie px-3 text-left",
+    "disparador_titulo": "min-w-0 flex-1 truncate text-nombre-entidad",
+    "icono_caja": "flex h-7 w-7 flex-none items-center justify-center rounded-control bg-primario-suave text-primario",
+    "titulo": "block truncate text-nombre-entidad",
+    "subtitulo": "block truncate text-auxiliar text-texto-suave",
+    "flecha": "flex-none text-texto-suave w-3.5 h-3.5",
+    "panel": "absolute left-0 top-full z-20 mt-5 w-90 overflow-hidden rounded-xl border border-borde bg-white shadow-t13 outline-none max-600:fixed max-600:inset-x-3 max-600:top-19 max-600:w-auto",
+    "buscador": "border-b border-borde-suave p-2.5",
+    "lista": "m-0 max-h-80 list-none overflow-y-auto p-1.5",
+    "opcion": "flex w-full items-center gap-sm rounded-control border-0 bg-transparent px-2.5 py-2 text-left hover:bg-fondo",
+    "opcion_seleccionada": "bg-primario-suave",
+    "pie": "m-0 border-t border-borde-suave px-3 py-2 text-auxiliar text-texto-suave",
+    "vacio": "p-4 text-center text-subtitulo text-texto-suave",
+    "tecla_abajo": "ArrowDown",
+    "tecla_arriba": "ArrowUp",
+    "forma_normal": "NFD",
+    "enfocables": "input, ul button",
+    "id_panel": "panel-selector-buscable"
+  },
+  "selector_empresa": {
+    "ruc": "RUC :ruc",
+    "textos": {
+      "buscar": "Buscar por nombre o RUC",
+      "limpiar": "Limpiar búsqueda",
+      "sin_resultados": "No se encontraron empresas con ese nombre o RUC.",
+      "resumen": "Mostrando :mostradas de :total empresas. Escribe para afinar la búsqueda.",
+      "lista": "Empresas",
+      "panel": "Seleccionar empresa"
+    }
+  },
   "fuente_heredada": { "fontFamily": "inherit" },
   "texto_tema": { "primary": "#26243a", "secondary": "#6c6a80" },
   "elemento_menu_tema": { "fontSize": "var(--text-cuerpo)", "&:hover": { "backgroundColor": "var(--color-fondo-hover-neutro)" }, "&.Mui-focusVisible": { "backgroundColor": "var(--color-fondo-hover-neutro)" } },
@@ -787,10 +873,52 @@
     "clase_icono": "h-3.5 w-3.5",
     "peligro": { "color": "error.main" }
   },
+  "reporte_pdf": {
+    "opciones_tabla": {
+    "showHead": "everyPage",
+    "styles": {
+      "fontSize": 8,
+      "cellPadding": 4,
+      "overflow": "linebreak",
+      "textColor": [
+        38,
+        36,
+        58
+      ]
+    },
+    "headStyles": {
+      "fillColor": [
+        90,
+        67,
+        244
+      ],
+      "textColor": [
+        255,
+        255,
+        255
+      ],
+      "fontStyle": "bold"
+    },
+    "alternateRowStyles": {
+      "fillColor": [
+        248,
+        248,
+        252
+      ]
+    }
+  }
+  },
+  "tabla_datos": {
+    "contenedor": "overflow-x-auto rounded-xl border border-gris-borde bg-white",
+    "tabla": "w-full border-collapse text-cuerpo",
+    "encabezado": "whitespace-nowrap border-b border-gris-borde text-left text-encabezado-tabla text-texto-suave",
+    "fila": "border-b border-borde-suave last:border-b-0 hover:bg-fondo",
+    "mensaje_vacio": "p-6 text-center text-subtitulo text-texto-suave"
+  },
   "paginacion": { "color": "primary" },
   "selector_libreria": {
-    "default": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
-    "colaboradores": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": true, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "default": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "colaboradores": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
     "mini": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
     "integrado": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "sx": { "& fieldset": { "border": 0 }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } }
   },

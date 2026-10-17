@@ -1,4 +1,7 @@
 {
+  "super_vip": {
+    "habilitado": false
+  },
   "acciones": [
     "listar",
     "buscar",
@@ -13,7 +16,8 @@
   },
   "errores": {
     "carga_marketplace": "No fue posible cargar el marketplace.",
-    "procesar_compra": "No fue posible procesar la compra."
+    "procesar_compra": "No fue posible procesar la compra.",
+    "carrito_sin_proveedor": "El carrito de Marketplace requiere su proveedor."
   },
   "mensajes": {
     "sin_compras": "Aún no tienes compras en el marketplace."
@@ -85,7 +89,6 @@
     "ver_planes": "Ver planes"
   },
   "leyendas": {
-    "popular": "Popular",
     "activo": "Activo",
     "por_mes": "/mes",
     "gratis": "Gratis"
@@ -109,7 +112,6 @@
     "continuar": "Continuar con el plan",
     "incluido": "Incluido",
     "no_incluido": "No incluido",
-    "plan_seleccionado": "Plan seleccionado",
     "asistente": {
       "abrir": "¿Tienes dudas sobre los planes?",
       "cerrar": "Cerrar asistente",
@@ -148,14 +150,18 @@
       "excluida": "line-through",
       "enfasis": "font-titulo",
       "detalle": "cursor-pointer border-0 bg-transparent p-0 text-auxiliar text-inherit underline decoration-dotted underline-offset-3",
-      "fila": "cursor-grab overflow-x-auto pb-2.5",
-      "rejilla": "grid grid-cols-2 gap-4 max-600:grid-cols-1",
-      "tarjeta_fila": "w-43 flex-none",
+      "fila": "cursor-grab overflow-x-auto overflow-y-hidden px-1 pb-3 pt-1 max-600:cursor-auto max-600:overflow-visible max-600:p-0",
+      "rejilla": "flex flex-wrap justify-center gap-3.5 max-600:flex-col",
+      "tarjeta_fila": "w-53 flex-none max-600:w-full",
       "texto": "min-w-0 text-left",
-      "tarjeta_fila_amplia": "w-53 flex-none",
       "paquetes_fila": "flex items-center justify-between gap-3 rounded-lg border border-borde bg-fondo px-3.5 py-2.5",
       "paquetes_bloque": "grid gap-2 rounded-xl border border-borde bg-fondo p-3.5",
-      "fila_interior": "flex w-fit min-w-full justify-center gap-3.5",
+      "fila_interior": "flex w-fit min-w-full justify-center gap-3.5 max-600:w-full max-600:flex-col",
+      "modal": "relative rounded-2xl max-600:rounded-none",
+      "modal_por_grupo": {
+        "amplio": "w-[min(100%,1164px)]!",
+        "compacto": "w-[min(100%,712px)]!"
+      },
       "respuestas_rapidas": "flex flex-none cursor-grab gap-1.5 overflow-x-auto border-t border-borde bg-white px-3 py-2 scrollbar-oculto"
     }
   },
@@ -169,6 +175,48 @@
   },
   "pago": {
     "titulo": "Información de pago",
+    "metodos": {
+      "titulo": "Método de pago",
+      "detalle": "Selecciona cómo deseas pagar tu suscripción. El primer mes es gratis.",
+      "etiqueta": "Método de pago",
+      "opciones": [
+        { "id": "tarjeta", "titulo": "Tarjeta", "icono": "tarjeta-pago" },
+        { "id": "transferencia", "titulo": "Transferencia bancaria", "icono": "banco" },
+        { "id": "billetera", "titulo": "Billeteras digitales", "icono": "celular" }
+      ],
+      "transferencia": {
+        "titulo": "Transferencia bancaria",
+        "detalle": "Realiza una transferencia por el monto indicado.",
+        "filas": {
+          "banco": "Banco",
+          "tipo_cuenta": "Tipo de cuenta",
+          "numero_cuenta": "Número de cuenta",
+          "cci": "CCI",
+          "titular": "Titular"
+        },
+        "monto": "Monto a transferir",
+        "referencia": "Código de referencia",
+        "copiar": "Copiar :dato",
+        "importante": "Importante: usa el código de referencia para que podamos identificar tu pago. El acceso se activará automáticamente cuando confirmemos la transferencia."
+      },
+      "billetera": {
+        "titulo": "Selecciona tu billetera digital",
+        "opciones": [
+          { "id": "yape", "nombre": "Yape" },
+          { "id": "plin", "nombre": "Plin" }
+        ],
+        "pagar": "Paga con :billetera",
+        "escanea": "Escanea el código QR desde tu aplicación :billetera.",
+        "qr": "Código QR de :billetera",
+        "pasos": [
+          "Abre tu aplicación :billetera.",
+          "Escanea este código QR.",
+          "Confirma el pago por :monto.",
+          "Tu suscripción se activará automáticamente."
+        ],
+        "nota": "Una vez confirmado el pago, te enviaremos un correo con los detalles de tu suscripción."
+      }
+    },
     "paso1": {
       "titulo": "Datos de la tarjeta",
       "detalle": "El cobro es recurrente y se hace por adelantado."
@@ -299,11 +347,37 @@
     },
     "clases": {
       "tarjeta": "rounded-xl border border-borde bg-white p-5 max-600:p-4",
-      "dos_columnas": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
+      "dos_columnas": "grid grid-cols-2 gap-4 max-600:grid-cols-1",
       "encabezado": "mb-4 flex items-start gap-3",
       "numero": "grid h-7 w-7 flex-none place-items-center rounded-full bg-primario text-conteo text-white",
       "cuerpo": "grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-5 max-600:p-4",
-      "columnas": "grid items-start gap-4 grid-cols-minmax400-1fr-minmax230-300 max-768:grid-cols-1"
+      "columnas": "grid items-start gap-4 grid-cols-minmax400-1fr-minmax230-300 max-768:grid-cols-1",
+      "copiar": "flex-none",
+      "metodos_dos": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
+      "metodo": "flex min-w-0 cursor-pointer items-center gap-3 rounded-xl border p-3.5 text-left",
+      "metodo_activo": "border-primario bg-fondo-hover-suave",
+      "metodo_inactivo": "border-borde bg-white hover:border-primario",
+      "metodo_icono": "grid h-9 w-9 flex-none place-items-center rounded-control bg-primario-suave text-primario",
+      "indicador": "grid h-4.5 w-4.5 flex-none place-items-center rounded-full border",
+      "indicador_activo": "border-primario bg-primario text-white",
+      "indicador_inactivo": "border-borde bg-white",
+      "panel": "grid grid-cols-1 gap-4",
+      "panel_titulo": "m-0 text-titulo-subseccion text-texto",
+      "panel_detalle": "m-0 mt-0.5 text-auxiliar text-texto-suave",
+      "datos": "grid grid-cols-1 rounded-xl border border-borde-suave bg-fondo px-3.5",
+      "dato": "flex items-center gap-3 border-t border-borde-suave py-2.5 first:border-t-0",
+      "dato_etiqueta": "w-28 flex-none text-auxiliar text-texto-suave max-600:w-20",
+      "dato_valor": "min-w-0 flex-1 break-words text-nombre-fila text-texto",
+      "destacados": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
+      "destacado": "flex items-center justify-between gap-3 rounded-xl border border-borde-suave bg-fondo p-3.5",
+      "aviso": "flex items-start gap-2.5 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-primario",
+      "aviso_neutro": "flex items-start gap-2.5 rounded-lg bg-fondo p-3 text-auxiliar text-texto-suave",
+      "billetera_fila": "flex gap-4 max-600:flex-col",
+      "qr": "grid h-40 w-40 flex-none place-items-center rounded-xl border border-borde bg-white text-texto max-600:w-full",
+      "pasos": "m-0 grid grid-cols-1 flex-1 list-none content-center gap-2.5 rounded-xl bg-fondo p-4",
+      "paso": "flex items-start gap-2.5 text-auxiliar text-texto",
+      "paso_numero": "grid h-5 w-5 flex-none place-items-center rounded-full bg-primario-suave text-conteo text-primario",
+      "resumen_fijo": "sticky top-0 max-768:static"
     },
     "formato": {
       "separador_tarjeta": " ",
@@ -411,7 +485,7 @@
     "vacio_detalle": "Explora el catálogo y adquiere tu primera aplicación",
     "ver_catalogo": "Ver catálogo",
     "servicios_vacio_titulo": "No tienes servicios adicionales",
-    "servicios_vacio_detalle": "Contrata el Super VIP desde el menú de cualquiera de tus aplicaciones.",
+    "servicios_vacio_detalle": "Los servicios adicionales que contrates para tus aplicaciones aparecerán aquí.",
     "servicio": {
       "titulo": "Super VIP",
       "para": "Servicio adicional para :nombre",
@@ -504,17 +578,39 @@
     "vacio_titulo": "No has agregado ninguna aplicación aún",
     "vacio_detalle": "Explora el catálogo y agrega las aplicaciones que necesitas",
     "explorar": "Explorar aplicaciones",
-    "plan": "Plan :plan",
-    "mes_gratis": "1 mes gratis incluido",
+    "plan_periodo": "Plan :plan · :periodo",
+    "separador_moneda": " ",
     "cambiar_plan": "Cambiar plan",
     "quitar": "Quitar :nombre del carrito",
     "resumen": "Resumen del pedido",
     "total": "Total del pedido",
-    "prueba": "1 mes gratis activado — hoy pagas S/0.00",
+    "primer_mes_titulo": "Tu primer mes es gratis",
+    "primer_mes_detalle": "Hoy pagas S/ 0.00 si se cumplen las condiciones de la promoción.",
     "proceder": "Proceder al pago",
     "seguro": "Pago seguro · Cancela cuando quieras",
     "volver": "Volver al carrito",
     "adquirido": "Adquirido el :fecha",
-    "caracteristicas_visibles": 2
+    "caracteristicas_visibles": 3,
+    "clases": {
+      "cabecera": "flex items-center justify-between gap-3 border-b border-borde px-5 py-3.5 max-600:px-4",
+      "titulo": "m-0 text-titulo-seccion text-texto",
+      "encabezado_lista": "flex items-center justify-between gap-3",
+      "fila": "flex items-start gap-3 rounded-xl border border-borde bg-white p-4 shadow-sombra max-600:p-3",
+      "icono": "grid h-11 w-11 flex-none place-items-center rounded-xl",
+      "contenido": "grid min-w-0 flex-1 gap-2",
+      "cabecera_fila": "flex items-start justify-between gap-3 max-600:flex-wrap",
+      "cobro": "flex flex-none items-center gap-2",
+      "etiquetas": "flex flex-wrap gap-1.5",
+      "pie_fila": "flex justify-end",
+      "resumen": "grid content-start gap-3.5",
+      "encabezado_resumen": "grid gap-0.5",
+      "lineas": "grid gap-3",
+      "linea": "flex items-center gap-2.5",
+      "icono_linea": "grid h-8 w-8 flex-none place-items-center rounded-lg",
+      "total": "flex items-center justify-between gap-3 border-t border-borde-suave pt-3.5",
+      "promocion": "flex items-start gap-3 rounded-xl bg-fondo-categoria-verde px-3.5 py-3",
+      "icono_promocion": "grid h-9 w-9 flex-none place-items-center rounded-lg bg-white text-verde-categoria-texto",
+      "seguro": "m-0 flex items-center justify-center gap-1.5 text-auxiliar text-texto-suave"
+    }
   }
 }

@@ -4,7 +4,6 @@ export interface Destacado {
   nombre: string
   icono: IconName
   color: 'verde' | 'azul' | 'morado' | 'naranja' | 'rojo'
-  popular?: boolean
   planes?: string
   descripcion: string
   precio: string

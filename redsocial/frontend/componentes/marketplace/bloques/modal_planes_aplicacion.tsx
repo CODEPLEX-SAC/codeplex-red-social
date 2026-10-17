@@ -4,6 +4,7 @@ import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Modal } from '../../compartido/interfaz/modal'
 import { AsistenteFlotante } from './asistente_flotante'
 import { CuerpoPlanes } from './cuerpo_planes'
+import { claseModalPlanes } from './logica_carrito_planes'
 import { usarSelectorPlanes } from './usar_selector_planes'
 import { PanelPaquetesPlanes, VentanaCaracteristica, VisorCatalogoPlanes } from './ventanas_planes'
 import type { ConfiguracionPlanes, EstiloPlanDestacado, EstiloSelectorPlanes, SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
@@ -30,7 +31,7 @@ export function ModalPlanesAplicacion({
 
   return (
     <>
-      <Modal titulo={textos.titulo} etiquetaCerrar={textosRedSocial.CERRAR} onCerrar={estado.cerrarPlanes} cabecera={cierre} className={`relative max-w-205 rounded-2xl max-600:rounded-none`}>
+      <Modal titulo={textos.titulo} etiquetaCerrar={textosRedSocial.CERRAR} onCerrar={estado.cerrarPlanes} cabecera={cierre} className={claseModalPlanes(configuracion)}>
         <CuerpoPlanes configuracion={configuracion} claseModulo={claseModulo} estilo={estilo} estiloDestacado={estiloDestacado} estado={estado} />
         <AsistenteFlotante configuracion={configuracion} estado={estado} />
       </Modal>

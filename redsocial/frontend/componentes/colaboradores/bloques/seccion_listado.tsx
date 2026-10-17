@@ -1,54 +1,24 @@
 import { Pestanas } from '../../compartido/interfaz/pestanas'
 import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import { Casilla } from '../../compartido/interfaz/casilla'
 import { Paginacion } from '../../compartido/interfaz/paginacion'
 import { SeccionListado2 } from './seccion_listado2'
 import { BloqueColaboradores1 } from './bloque_colaboradores1'
-import { BloqueReenviar } from './bloque_reenviar'
+import { TablaColaboradores } from './tabla_colaboradores'
 import { BloqueFiltrosAvanzados } from './bloque_filtros_avanzados'
 import { BloqueExportarColaboradores } from './bloque_exportar_colaboradores'
 import { usarTablaColaboradores } from './usar_tabla_colaboradores'
-import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
+import { crearAccionesExportar } from './exportar_colaboradores'
+import type { DatosListadoColaboradores } from '@/tipos/colaboradores/contrato_listado_colaboradores'
 
-export function SeccionListado({ datos }: {
-  datos: {
-    COLABORADORES: Colaborador[]
-    FILTROS_ESTADO_COLABORADORES: readonly { etiqueta: string; total: number; activa?: boolean }[]
-    ESTADO_CLASES: Record<'activo' | 'invitado' | 'inactivo' | 'baja', { texto: string; punto: string; etiqueta: string; }>
-    ROL_CLASES: Record<string, string>
-    setMenuAbierto: (valor: number | null | ((actual: number | null) => number | null)) => void
-    setAnclaMenu: (valor: HTMLElement | null | ((actual: HTMLElement | null) => HTMLElement | null)) => void
-    menuAbierto: number | null
-    anclaMenu: HTMLElement | null
-    cerrarMenus: () => void
-    alVerColaborador: (colaborador: Colaborador) => void
-    alEditarColaborador: (colaborador: Colaborador) => void
-    alConfirmarBaja: (colaborador: Colaborador) => void
-    alInvitarColaborador: () => void
-  }
-}) {
-  const {
-    COLABORADORES,
-    FILTROS_ESTADO_COLABORADORES,
-    ESTADO_CLASES,
-    ROL_CLASES,
-    setMenuAbierto,
-    setAnclaMenu,
-    menuAbierto,
-    anclaMenu,
-    cerrarMenus,
-    alVerColaborador,
-    alEditarColaborador,
-    alConfirmarBaja,
-    alInvitarColaborador,
-  } = datos
+export function SeccionListado({ datos }: { datos: DatosListadoColaboradores }) {
+  const { COLABORADORES, FILTROS_ESTADO_COLABORADORES, alInvitarColaborador, alFalloExportar } = datos
 
   const {
     pestanaActiva, cambiarPestana, elementosPestana,
     busqueda, cambiarBusqueda,
     rol, cambiarRol, aplicacion, cambiarAplicacion, ordenarPor, cambiarOrdenarPor,
-    tabla, filas, resumen,
+    tabla, filas, resumen, colaboradoresFiltrados, colaboradoresVista, criteriosExportacion, hayCriteriosActivos, filtrosAvanzados, aplicarFiltrosAvanzados,
   } = usarTablaColaboradores(COLABORADORES, FILTROS_ESTADO_COLABORADORES)
 
   const { pageIndex } = tabla.getState().pagination
@@ -62,66 +32,14 @@ export function SeccionListado({ datos }: {
       <div className="mb-4 flex flex-wrap items-center gap-3 max-900:flex-col max-900:items-stretch max-900:gap-2">
         <CampoBusqueda placeholder={catalogoColaboradores.placeholders.buscar_colaborador} className="min-w-60 flex-1 max-900:min-w-full" value={busqueda} onChange={cambiarBusqueda} />
         <div className="flex flex-none gap-2 max-900:grid max-900:w-full max-900:grid-cols-2">
-          <BloqueFiltrosAvanzados />
-          <BloqueExportarColaboradores />
+          <BloqueFiltrosAvanzados aplicados={filtrosAvanzados} alAplicar={aplicarFiltrosAvanzados} />
+          <BloqueExportarColaboradores acciones={crearAccionesExportar(colaboradoresVista, colaboradoresFiltrados, criteriosExportacion, hayCriteriosActivos, alFalloExportar)} />
         </div>
       </div>
 
       <BloqueColaboradores1 datos={{ rol, cambiarRol, aplicacion, cambiarAplicacion, ordenarPor, cambiarOrdenarPor }} />
 
-      <div className="overflow-x-auto rounded-xl border border-gris-borde bg-white">
-        <table className="w-full border-collapse text-cuerpo">
-          <thead className="bg-fondo">
-            <tr>
-              <th className="w-10 whitespace-nowrap border-b border-gris-borde p-3.5 text-center text-encabezado-tabla uppercase text-texto-suave">
-                <Casilla
-                  seleccionado={tabla.getIsAllPageRowsSelected()}
-                  indeterminado={tabla.getIsSomePageRowsSelected() && !tabla.getIsAllPageRowsSelected()}
-                  alCambiar={(_, marcado) => tabla.toggleAllPageRowsSelected(marcado)}
-                  inputProps={{ 'aria-label': catalogoColaboradores.botones.seleccionar_todos }}
-                />
-              </th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.colaborador}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.rol_perfil}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.aplicaciones}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.estado}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.vigencia}</th>
-              <th className="whitespace-nowrap border-b border-gris-borde p-3.5 text-left text-encabezado-tabla uppercase text-texto-suave">{catalogoColaboradores.tabla.acciones}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filas.length === 0 && (
-              <tr>
-                <td colSpan={7} className="p-6 text-center text-subtitulo text-texto-suave">{catalogoColaboradores.mensajes.sin_colaboradores}</td>
-              </tr>
-            )}
-            {filas.map((fila, i) => {
-              const c = fila.original
-              const estado = ESTADO_CLASES[c.estado]
-              return (
-                <BloqueReenviar key={fila.id}
-                  datos={{
-                    c,
-                    ROL_CLASES,
-                    estado,
-                    setMenuAbierto,
-                    i,
-                    setAnclaMenu,
-                    menuAbierto,
-                    anclaMenu,
-                    cerrarMenus,
-                    alVerColaborador,
-                    alEditarColaborador,
-                    alConfirmarBaja,
-                    seleccionado: fila.getIsSelected(),
-                    alCambiarSeleccion: (_, marcado) => fila.toggleSelected(marcado),
-                  }}
-                />
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+      <TablaColaboradores datos={datos} tabla={tabla} filas={filas} />
 
       <div className="flex flex-wrap items-center justify-between gap-3 py-4">
         <span className="text-auxiliar text-texto-suave">{resumen}</span>

@@ -50,11 +50,11 @@ export function BloqueFiltrosEstadoCuenta({
         <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.estado_acceso}</h4>
         <div className="flex flex-col gap-1">
           <label className="flex cursor-pointer items-center gap-2">
-            <Casilla seleccionado={accesoVigente} alCambiar={onCambiarAccesoVigente} />
+            <Casilla seleccionado={accesoVigente} alCambiar={onCambiarAccesoVigente} inputProps={{ 'aria-label': textos.acceso_vigente }} />
             <span className="text-campo-formulario text-texto">{textos.acceso_vigente}</span>
           </label>
           <label className="flex cursor-pointer items-center gap-2">
-            <Casilla seleccionado={accesoVencido} alCambiar={onCambiarAccesoVencido} />
+            <Casilla seleccionado={accesoVencido} alCambiar={onCambiarAccesoVencido} inputProps={{ 'aria-label': textos.acceso_vencido }} />
             <span className="text-campo-formulario text-texto">{textos.acceso_vencido}</span>
           </label>
         </div>
@@ -70,18 +70,18 @@ export function BloqueFiltrosEstadoCuenta({
         <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.tipo_cuenta}</h4>
         <div className="flex flex-col gap-1">
           <label className="flex cursor-pointer items-center gap-2">
-            <Casilla seleccionado={cuentaCreada} alCambiar={onCambiarCuentaCreada} />
+            <Casilla seleccionado={cuentaCreada} alCambiar={onCambiarCuentaCreada} inputProps={{ 'aria-label': textos.cuenta_creada }} />
             <span className="text-campo-formulario text-texto">{textos.cuenta_creada}</span>
           </label>
           <label className="flex cursor-pointer items-center gap-2">
-            <Casilla seleccionado={cuentaInvitada} alCambiar={onCambiarCuentaInvitada} />
+            <Casilla seleccionado={cuentaInvitada} alCambiar={onCambiarCuentaInvitada} inputProps={{ 'aria-label': textos.cuenta_invitada }} />
             <span className="text-campo-formulario text-texto">{textos.cuenta_invitada}</span>
           </label>
         </div>
       </section>
 
       <section>
-        <Selector variant="colaboradores" label={textos.metodo_invitacion.etiqueta} value={metodoInvitacion} onChange={onCambiarMetodoInvitacion}>
+        <Selector variant="colaboradores" label={textos.metodo_invitacion.etiqueta} value={metodoInvitacion} onChange={onCambiarMetodoInvitacion} disabled>
           {textos.metodo_invitacion.opciones.map((o) => <option key={o}>{o}</option>)}
         </Selector>
       </section>

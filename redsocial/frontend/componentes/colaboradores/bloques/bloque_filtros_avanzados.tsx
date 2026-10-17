@@ -4,8 +4,9 @@ import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { PanelFiltrosAvanzados } from './panel_filtros_avanzados'
+import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 
-export function BloqueFiltrosAvanzados() {
+export function BloqueFiltrosAvanzados({ aplicados, alAplicar }: { aplicados: FiltrosAvanzadosColaboradores; alAplicar: (valores: FiltrosAvanzadosColaboradores) => void }) {
   const [abierto, setAbierto] = useState(false)
 
   function alternar(evento: { stopPropagation: () => void }) {
@@ -25,7 +26,7 @@ export function BloqueFiltrosAvanzados() {
       {abierto && (
         <>
           <FondoPanelFlotante onCerrar={cerrar} />
-          <PanelFiltrosAvanzados onCerrar={cerrar} />
+          <PanelFiltrosAvanzados aplicados={aplicados} onAplicar={alAplicar} onCerrar={cerrar} />
         </>
       )}
     </div>

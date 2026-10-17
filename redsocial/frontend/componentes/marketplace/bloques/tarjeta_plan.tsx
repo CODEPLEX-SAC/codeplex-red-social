@@ -62,7 +62,7 @@ export function TarjetaPlan({
           <Boton type="button" variant={plan.destacado ? 'secundario' : 'contorno'} size="mini" onClick={alVerPaquetes}>{paquetes.ver}</Boton>
         </div>
       )}
-      <Boton type="button" variant={seleccionado ? 'primario' : plan.destacado ? 'secundario' : 'contorno'} size="md" className="w-full" aria-pressed={seleccionado} onClick={alSeleccionar}>
+      <Boton type="button" variant={seleccionado ? 'primario' : plan.destacado ? 'secundario' : 'contorno'} size="cta" className="w-full" aria-pressed={seleccionado} onClick={alSeleccionar}>
         {seleccionado ? textos.seleccionado : (plan.textoElegir ?? textos.elegir)}
       </Boton>
     </article>

@@ -2,7 +2,6 @@ import type { ReactNode } from 'react'
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
-import { Insignia } from '../../compartido/interfaz/insignia'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { SeccionTituloPre2 } from './seccion_titulo_pre2'
 import { SeccionDestacados3 } from './seccion_destacados3'
@@ -14,7 +13,6 @@ export function SeccionTituloPre({
   DESTACADOS,
   CLASES_MODULO,
   CLASES_INSIGNIA_CATEGORIA,
-  planesSeleccionados,
   alVerPlanes,
   accesos,
   contenidoCompras,
@@ -25,7 +23,6 @@ export function SeccionTituloPre({
   DESTACADOS: Destacado[]
   CLASES_MODULO: Record<'verde' | 'azul' | 'morado' | 'naranja' | 'rojo', string>
   CLASES_INSIGNIA_CATEGORIA: Record<'verde' | 'azul' | 'morado' | 'naranja' | 'rojo', string>
-  planesSeleccionados: Record<string, string>
   alVerPlanes: (idPlanes: string) => void
   accesos: AccesosCabecera
   contenidoCompras: ReactNode
@@ -40,11 +37,7 @@ export function SeccionTituloPre({
           <p className="m-0 mt-0.5 text-subtitulo text-texto-suave">{catalogoMarketplace.subtitulos.principal}</p>
         </div>
         <div className="flex flex-none items-center gap-2">
-          <Boton type="button" variant="secundario" size="default" onClick={accesos.abrirCarrito}>
-            <Icono name="carrito" className="h-4 w-4" /> {catalogoMarketplace.carrito.boton}
-            {accesos.cantidadCarrito > 0 && <Insignia variant="counter">{accesos.cantidadCarrito}</Insignia>}
-          </Boton>
-          <Boton type="button" variant="secundario" size="default" onClick={accesos.abrirCompras}>
+          <Boton type="button" variant="secundario" size="md" onClick={accesos.abrirCompras}>
             <Icono name="compras" className="h-4 w-4" /> {catalogoMarketplace.botones.mis_compras}
           </Boton>
         </div>
@@ -75,7 +68,6 @@ export function SeccionTituloPre({
           DESTACADOS={DESTACADOS}
           CLASES_MODULO={CLASES_MODULO}
           CLASES_INSIGNIA_CATEGORIA={CLASES_INSIGNIA_CATEGORIA}
-          planesSeleccionados={planesSeleccionados}
           alVerPlanes={alVerPlanes}
         />
 

@@ -1,6 +1,6 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
-import { Boton } from '../../compartido/interfaz/boton'
+import { Boton, clasesBoton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 
 export function BloqueEnLlamada({
@@ -35,7 +35,7 @@ export function BloqueEnLlamada({
         </span>
         <BotonIcono icono="puntos" type="button" aria-label={catalogoMensajeria.botones.mas_opciones} variant="default" size="default" className="flex-none" />
       </div>
-      <a href={catalogoMensajeria.rutas.videollamadas} className="inline-flex h-9.5 flex-none items-center gap-1.75 whitespace-nowrap rounded-lg bg-peligro-texto px-4 text-boton text-white no-underline">
+      <a href={catalogoMensajeria.rutas.videollamadas} className={clasesBoton({ variant: 'peligro', size: 'cta', className: 'flex-none' })}>
         <Icono name="llamada" className="h-4 w-4 rotate-135" /> {catalogoMensajeria.botones.salir_de_la_llamada}
       </a>
     </header>

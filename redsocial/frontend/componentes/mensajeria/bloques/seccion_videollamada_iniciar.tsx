@@ -1,4 +1,5 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
+import { clasesBoton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { SeccionDispositivos } from './seccion_dispositivos'
 
@@ -40,7 +41,7 @@ export function SeccionVideollamadaIniciar({
 
       <SeccionDispositivos DISPOSITIVOS={DISPOSITIVOS} CONFIGURACION_LLAMADA={CONFIGURACION_LLAMADA} />
 
-      <a href={catalogoMensajeria.rutas.videollamada_en_curso} className="mt-5 flex w-full items-center justify-center gap-2 rounded-7 border border-transparent bg-primario py-3.25 text-boton text-white no-underline hover:bg-primario-oscuro">
+      <a href={catalogoMensajeria.rutas.videollamada_en_curso} className={clasesBoton({ variant: 'primario', size: 'cta', className: 'mt-5 w-full' })}>
         <Icono name="video" className="h-4 w-4" /> {catalogoMensajeria.botones.iniciar_videollamada}
       </a>
       <a href={catalogoMensajeria.rutas.videollamadas} className="mt-2.5 block text-center text-enlace-accion text-texto-suave no-underline hover:underline">{catalogoMensajeria.botones.cancelar}</a>

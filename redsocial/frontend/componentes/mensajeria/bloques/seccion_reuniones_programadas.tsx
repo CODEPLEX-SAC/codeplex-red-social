@@ -1,4 +1,5 @@
 import { posicionesDe } from '../../compartido/posiciones'
+import { clasesBoton } from '../../compartido/interfaz/boton'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
@@ -45,7 +46,7 @@ export function SeccionReunionesProgramadas({
               </span>
             </div>
 
-            <a href={`${catalogoMensajeria.rutas.videollamada_en_curso}?${catalogoMensajeria.parametros_ruta.reunion}=${r.id}`} className="flex-none whitespace-nowrap rounded-md bg-primario px-3.5 py-1.5 text-boton text-white no-underline hover:opacity-88">{catalogoMensajeria.botones.unirse}</a>
+            <a href={`${catalogoMensajeria.rutas.videollamada_en_curso}?${catalogoMensajeria.parametros_ruta.reunion}=${r.id}`} className={clasesBoton({ variant: 'primario', size: 'default', className: 'flex-none' })}>{catalogoMensajeria.botones.unirse}</a>
           </article>
         ))}
       </div>

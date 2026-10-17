@@ -5,7 +5,8 @@
     "vendedor": "bg-fondo-categoria-amarillo text-naranja-categoria-texto",
     "almacenero": "bg-fondo-categoria-verde text-verde-categoria-texto",
     "analista": "bg-fondo-categoria-azul text-azul-categoria-texto",
-    "asistente": "bg-fondo-categoria-rosa text-rojo-categoria-texto"
+    "asistente": "bg-fondo-categoria-rosa text-rojo-categoria-texto",
+    "predeterminado": "bg-fondo-hover-neutro text-texto-suave"
   },
   "estadoClases": {
     "activo": { "texto": "text-positivo-kpi", "punto": "bg-verde-categoria", "etiqueta": "Activo", "insignia": "bg-fondo-categoria-verde text-verde-categoria-texto" },

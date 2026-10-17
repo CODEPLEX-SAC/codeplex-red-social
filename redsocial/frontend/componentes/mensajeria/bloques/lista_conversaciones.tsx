@@ -1,4 +1,5 @@
 import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
+import { clasesChip, clasesConteoChip } from '../../compartido/interfaz/chip_filtro'
 import { useLayoutEffect, useRef } from 'react'
 import { Icono } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
@@ -32,11 +33,11 @@ export function ListaConversaciones({ conversaciones, activa, onSeleccionar, ocu
       <CampoBusqueda placeholder={catalogoMensajeria.placeholders.buscar_mensajes} aria-label={catalogoMensajeria.placeholders.buscar_mensajes} className="mx-3.5 mb-2.5 mt-3.5" />
 
       <div className="flex flex-shrink-0 gap-1 border-b border-borde px-3.5 pb-3.5 pt-2.5">
-        <a href={catalogoMensajeria.rutas.todos} className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-primario bg-primario px-2 text-chip text-white no-underline">{catalogoMensajeria.titulos_pestanas.todos}</a>
-        <a href={catalogoMensajeria.rutas.no_leidos} className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-borde bg-white px-2 text-chip text-texto-suave no-underline hover:bg-fondo-hover-discreto">
-          {catalogoMensajeria.titulos_pestanas.no_leidos} <span className="inline-grid h-4 min-w-4 place-items-center rounded-lg bg-primario px-1 text-conteo leading-none text-white">{contadorNoLeidos}</span>
+        <a href={catalogoMensajeria.rutas.todos} className={clasesChip({ activo: true, className: 'flex-1 justify-center px-2!' })}>{catalogoMensajeria.titulos_pestanas.todos}</a>
+        <a href={catalogoMensajeria.rutas.no_leidos} className={clasesChip({ className: 'flex-1 justify-center px-2!' })}>
+          {catalogoMensajeria.titulos_pestanas.no_leidos} <span className={clasesConteoChip({ destacado: true })}>{contadorNoLeidos}</span>
         </a>
-        <a href={catalogoMensajeria.rutas.favoritos} className="flex h-7 flex-1 items-center justify-center gap-1 whitespace-nowrap rounded-2xl border border-borde bg-white px-2 text-chip text-texto-suave no-underline hover:bg-fondo-hover-discreto">{catalogoMensajeria.titulos_pestanas.favoritos}</a>
+        <a href={catalogoMensajeria.rutas.favoritos} className={clasesChip({ className: 'flex-1 justify-center px-2!' })}>{catalogoMensajeria.titulos_pestanas.favoritos}</a>
       </div>
 
       <div ref={pistaRef} className="min-h-0 flex-1 overflow-y-auto">

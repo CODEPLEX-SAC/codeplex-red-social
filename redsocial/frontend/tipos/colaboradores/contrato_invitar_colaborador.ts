@@ -3,7 +3,7 @@ import type { FilaPermiso, Modulo } from '@/tipos/colaboradores/modelo_invitar_c
 
 export type PasoInvitacion = 1 | 2 | 3 | 4
 
-export type EstadoInvitacion = 'cerrada' | 'abierta' | 'enviada'
+export type EstadoInvitacion = 'cerrada' | 'abierta'
 
 export interface DatosColaboradorInvitado {
   nombres: string
@@ -52,7 +52,7 @@ export interface DatosAsistenteInvitacion {
 export interface ModalInvitarColaboradorProps {
   datos: DatosAsistenteInvitacion
   alCerrar: () => void
-  alEnviar: () => void
+  alEnviar: (invitado: DatosColaboradorInvitado) => void
 }
 
 export interface PieInvitarColaboradorProps {

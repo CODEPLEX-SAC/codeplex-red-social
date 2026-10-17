@@ -54,13 +54,13 @@ export function TarjetaInvitacion({ inv }: TarjetaInvitacionProps) {
       </div>
       <div
         className={
-          'flex flex-col justify-center gap-2 p-4 max-900:px-4 max-900:pb-4 max-900:pt-0 ' +
+          'flex flex-col justify-center gap-2 p-4 max-900:items-center max-900:px-4 max-900:pb-4 max-900:pt-0 ' +
           (inv.estado === 'aceptada' ? '' : 'max-900:flex-row')
         }
       >
         {inv.estado === 'pendiente' ? (
           <>
-            <Boton type="button" variant="primario" size="md" className="max-900:flex-1">{catalogoEventos.botones.aceptar}</Boton>
+            <Boton type="button" variant="primario" size="default" className="max-900:flex-1">{catalogoEventos.botones.aceptar}</Boton>
             <Boton type="button" variant="secundario" size="default" className="max-900:flex-1">{catalogoEventos.botones.tal_vez}</Boton>
             <Boton type="button" variant="peligro_contorno" size="default" className="max-900:flex-1">{catalogoEventos.botones.rechazar}</Boton>
           </>

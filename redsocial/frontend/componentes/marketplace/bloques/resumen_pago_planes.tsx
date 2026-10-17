@@ -29,7 +29,7 @@ export function ResumenPagoPlanes({
   estado: ReturnType<typeof usarPagoPlanes>
 }) {
   return (
-    <aside className={`${catalogoMarketplace.pago.clases.tarjeta} grid content-start gap-3`}>
+    <aside className={`${catalogoMarketplace.pago.clases.tarjeta} ${catalogoMarketplace.pago.clases.resumen_fijo} grid content-start gap-3`}>
       <h3 className="m-0 text-nombre-entidad text-texto">{textos.titulo}</h3>
       {items.map((item) => (
         <div key={item.aplicacion} className="flex items-center gap-3">
@@ -55,7 +55,7 @@ export function ResumenPagoPlanes({
         </div>
         <span className="text-valor-destacado text-texto">{monto(estado.total)}</span>
       </div>
-      <Boton type="button" variant="primario" size="md" className="w-full" disabled={!estado.terminos} onClick={estado.activar}>
+      <Boton type="button" variant="primario" size="cta" className="w-full" disabled={!estado.terminos} onClick={estado.activar}>
         {textos.activar}
       </Boton>
       <p className="m-0 flex items-center justify-center gap-1.5 text-auxiliar text-texto-suave">

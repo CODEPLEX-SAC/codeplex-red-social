@@ -9,22 +9,46 @@
       "descripcionRol": "Acceso total",
       "aplicaciones": [
         {
-          "icono": "calendario",
-          "clase": "bg-morado-categoria",
-          "nombre": "Calendario"
-        },
-        {
-          "icono": "mensaje",
-          "clase": "bg-azul-categoria",
-          "nombre": "Mensajes"
-        },
-        {
-          "icono": "actividad",
+          "icono": "planillas",
           "clase": "bg-verde-categoria",
-          "nombre": "Actividad"
+          "nombre": "Planillas"
+        },
+        {
+          "icono": "contabilidad",
+          "clase": "bg-azul-categoria",
+          "nombre": "Contabilidad"
+        },
+        {
+          "icono": "inventario",
+          "clase": "bg-naranja-categoria",
+          "nombre": "Inventario"
+        },
+        {
+          "icono": "ventas",
+          "clase": "bg-cian-categoria",
+          "nombre": "Ventas"
+        },
+        {
+          "icono": "compras",
+          "clase": "bg-morado-categoria",
+          "nombre": "Compras"
+        },
+        {
+          "icono": "maletin",
+          "clase": "bg-rojo-categoria",
+          "nombre": "Proyectos"
+        },
+        {
+          "icono": "reportes",
+          "clase": "bg-violeta-categoria",
+          "nombre": "Reportes"
+        },
+        {
+          "icono": "configuracion",
+          "clase": "bg-gris-categoria",
+          "nombre": "Configuración"
         }
       ],
-      "masApps": 5,
       "estado": "activo",
       "vigencia": {
         "tipo": "rango",
@@ -35,9 +59,18 @@
       "fechaInvitacion": "28/05/2026",
       "ultimoAcceso": "Hoy, 10:24 AM",
       "historial": [
-        { "texto": "Invitación aceptada", "hora": "28/05/2026 09:15 AM" },
-        { "texto": "Rol asignado: Administrador", "hora": "28/05/2026 09:16 AM" },
-        { "texto": "Acceso activado", "hora": "28/05/2026 09:16 AM" }
+        {
+          "texto": "Invitación aceptada",
+          "hora": "28/05/2026 09:15 AM"
+        },
+        {
+          "texto": "Rol asignado: Administrador",
+          "hora": "28/05/2026 09:16 AM"
+        },
+        {
+          "texto": "Acceso activado",
+          "hora": "28/05/2026 09:16 AM"
+        }
       ]
     },
     {
@@ -49,22 +82,36 @@
       "descripcionRol": "Contabilidad",
       "aplicaciones": [
         {
-          "icono": "estadisticas",
-          "clase": "bg-cian-categoria",
-          "nombre": "Estadísticas"
+          "icono": "planillas",
+          "clase": "bg-verde-categoria",
+          "nombre": "Planillas"
         },
         {
-          "icono": "marketplace",
+          "icono": "contabilidad",
+          "clase": "bg-azul-categoria",
+          "nombre": "Contabilidad"
+        },
+        {
+          "icono": "inventario",
           "clase": "bg-naranja-categoria",
-          "nombre": "Marketplace"
+          "nombre": "Inventario"
         },
         {
-          "icono": "reportes-barra",
+          "icono": "ventas",
+          "clase": "bg-cian-categoria",
+          "nombre": "Ventas"
+        },
+        {
+          "icono": "compras",
+          "clase": "bg-morado-categoria",
+          "nombre": "Compras"
+        },
+        {
+          "icono": "reportes",
           "clase": "bg-violeta-categoria",
           "nombre": "Reportes"
         }
       ],
-      "masApps": 3,
       "estado": "activo",
       "vigencia": {
         "tipo": "rango",
@@ -82,19 +129,19 @@
       "descripcionRol": "Ventas",
       "aplicaciones": [
         {
-          "icono": "mensaje",
-          "clase": "bg-azul-categoria",
-          "nombre": "Mensajes"
-        },
-        {
-          "icono": "marketplace",
+          "icono": "inventario",
           "clase": "bg-naranja-categoria",
-          "nombre": "Marketplace"
+          "nombre": "Inventario"
         },
         {
-          "icono": "actividad",
-          "clase": "bg-verde-categoria",
-          "nombre": "Actividad"
+          "icono": "ventas",
+          "clase": "bg-cian-categoria",
+          "nombre": "Ventas"
+        },
+        {
+          "icono": "reportes",
+          "clase": "bg-violeta-categoria",
+          "nombre": "Reportes"
         }
       ],
       "estado": "activo",
@@ -114,19 +161,19 @@
       "descripcionRol": "Inventario",
       "aplicaciones": [
         {
-          "icono": "calendario",
-          "clase": "bg-morado-categoria",
-          "nombre": "Calendario"
-        },
-        {
-          "icono": "marketplace",
+          "icono": "inventario",
           "clase": "bg-naranja-categoria",
-          "nombre": "Marketplace"
+          "nombre": "Inventario"
         },
         {
-          "icono": "actividad",
-          "clase": "bg-verde-categoria",
-          "nombre": "Actividad"
+          "icono": "compras",
+          "clase": "bg-morado-categoria",
+          "nombre": "Compras"
+        },
+        {
+          "icono": "reportes",
+          "clase": "bg-violeta-categoria",
+          "nombre": "Reportes"
         }
       ],
       "estado": "invitado",
@@ -146,12 +193,12 @@
       "descripcionRol": "Reportes",
       "aplicaciones": [
         {
-          "icono": "estadisticas",
-          "clase": "bg-cian-categoria",
-          "nombre": "Estadísticas"
+          "icono": "maletin",
+          "clase": "bg-rojo-categoria",
+          "nombre": "Proyectos"
         },
         {
-          "icono": "reportes-barra",
+          "icono": "reportes",
           "clase": "bg-violeta-categoria",
           "nombre": "Reportes"
         }
@@ -173,14 +220,14 @@
       "descripcionRol": "Soporte",
       "aplicaciones": [
         {
-          "icono": "estadisticas",
+          "icono": "ventas",
           "clase": "bg-cian-categoria",
-          "nombre": "Estadísticas"
+          "nombre": "Ventas"
         },
         {
-          "icono": "marketplace",
-          "clase": "bg-naranja-categoria",
-          "nombre": "Marketplace"
+          "icono": "maletin",
+          "clase": "bg-rojo-categoria",
+          "nombre": "Proyectos"
         }
       ],
       "estado": "baja",
@@ -245,14 +292,6 @@
       "descripcion": "Ya forma parte de tu equipo y puede usar los sistemas."
     }
   ],
-  "aplicacionesDisponibles": [
-    { "icono": "calendario", "clase": "bg-morado-categoria", "nombre": "Calendario" },
-    { "icono": "mensaje", "clase": "bg-azul-categoria", "nombre": "Mensajes" },
-    { "icono": "actividad", "clase": "bg-verde-categoria", "nombre": "Actividad" },
-    { "icono": "marketplace", "clase": "bg-naranja-categoria", "nombre": "Marketplace" },
-    { "icono": "estadisticas", "clase": "bg-cian-categoria", "nombre": "Estadísticas" },
-    { "icono": "reportes-barra", "clase": "bg-violeta-categoria", "nombre": "Reportes" }
-  ],
   "fechaBajaEjemplo": "28/09/2026",
   "detalleColaboradorEjemplo": {
     "nombre": "Carlos Mendoza",
@@ -278,5 +317,15 @@
       "texto": "Acceso activado",
       "hora": "28/05/2026 09:16 AM"
     }
-  ]
+  ],
+  "clasesAplicacion": {
+    "Planillas": "bg-verde-categoria",
+    "Contabilidad": "bg-azul-categoria",
+    "Inventario": "bg-naranja-categoria",
+    "Ventas": "bg-cian-categoria",
+    "Compras": "bg-morado-categoria",
+    "Proyectos": "bg-rojo-categoria",
+    "Reportes": "bg-violeta-categoria",
+    "Configuración": "bg-gris-categoria"
+  }
 }

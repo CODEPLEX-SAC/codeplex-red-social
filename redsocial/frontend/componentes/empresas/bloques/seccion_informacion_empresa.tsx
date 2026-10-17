@@ -31,7 +31,7 @@ export function SeccionInformacionEmpresa({ formulario }: FormularioEmpresaProps
         </CampoEtiquetadoEmpresa>
         <CampoEtiquetadoEmpresa etiqueta={campos.telefono} requerido>
           <div className="flex gap-2">
-            <Selector variant="mini" className="flex-none" aria-label={campos.codigo_pais} value={datos.codigo_pais} onChange={formulario.manejarSelector('codigo_pais')}>
+            <Selector variant="default" className="flex-none" aria-label={campos.codigo_pais} value={datos.codigo_pais} onChange={formulario.manejarSelector('codigo_pais')}>
               {opciones.codigos_pais.map((codigo) => <option key={codigo}>{codigo}</option>)}
             </Selector>
             <div className="min-w-0 flex-1">

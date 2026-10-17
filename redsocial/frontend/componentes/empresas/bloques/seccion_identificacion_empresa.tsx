@@ -21,7 +21,7 @@ export function SeccionIdentificacionEmpresa({ formulario }: FormularioEmpresaPr
               <CampoTexto anchoCompleto soloNumeros longitudMaxima={11} valor={datos.ruc} alCambiar={formulario.manejarTexto('ruc')} />
             </CampoEtiquetadoEmpresa>
           </div>
-          <Boton type="button" variant="primario" size="md" onClick={formulario.validarRuc} className="h-10">
+          <Boton type="button" variant="primario" size="md" onClick={formulario.validarRuc}>
             {textos.validar}
           </Boton>
         </div>

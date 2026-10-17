@@ -6,6 +6,8 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import { BloqueFiltrosVigenciaFechas } from './bloque_filtros_vigencia_fechas'
 import { BloqueFiltrosEstadoCuenta } from './bloque_filtros_estado_cuenta'
 import { usarFiltrosAvanzados } from './usar_filtros_avanzados'
+import { crearFiltrosAvanzadosColaboradores } from './logica_filtros_avanzados_colaboradores'
+import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 
 const textos = catalogoColaboradores.panel_filtros_avanzados
 
@@ -13,7 +15,7 @@ function detenerPropagacion(evento: { stopPropagation: () => void }) {
   evento.stopPropagation()
 }
 
-export function PanelFiltrosAvanzados({ onCerrar }: { onCerrar: () => void }) {
+export function PanelFiltrosAvanzados({ aplicados, onAplicar, onCerrar }: { aplicados: FiltrosAvanzadosColaboradores; onAplicar: (valores: FiltrosAvanzadosColaboradores) => void; onCerrar: () => void }) {
   const {
     valores,
     asignar,
@@ -25,14 +27,24 @@ export function PanelFiltrosAvanzados({ onCerrar }: { onCerrar: () => void }) {
     cambiarCuentaCreada,
     cambiarCuentaInvitada,
     cambiarMetodoInvitacion,
-  } = usarFiltrosAvanzados()
+  } = usarFiltrosAvanzados(aplicados)
+
+  function aplicar() {
+    onAplicar(valores)
+    onCerrar()
+  }
+
+  function limpiarTodo() {
+    limpiar()
+    onAplicar(crearFiltrosAvanzadosColaboradores())
+  }
 
   return (
     <div
       role="dialog"
       aria-label={textos.titulo}
       onClick={detenerPropagacion}
-      className="absolute right-0 top-tooltip z-20 flex max-h-150 w-125 flex-col overflow-hidden rounded-xl border border-gris-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 max-600:w-full max-600:max-w-none max-600:rounded-b-none max-600:rounded-t-2xl panel-hoja-movil"
+      className="absolute right-0 top-tooltip z-20 max-900:left-0 max-900:right-auto flex max-h-150 w-125 flex-col overflow-hidden rounded-xl border border-gris-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 max-600:w-full max-600:max-w-none max-600:rounded-b-none max-600:rounded-t-2xl panel-hoja-movil"
     >
       <div className="hidden flex-none pt-2.5 max-600:block">
         <div className="mx-auto h-1 w-10 rounded-full bg-borde-flotante" />
@@ -83,8 +95,8 @@ export function PanelFiltrosAvanzados({ onCerrar }: { onCerrar: () => void }) {
       </CodeplexProveedorFechas>
 
       <div className="grid flex-none grid-cols-2 gap-2 border-t border-borde-suave p-4">
-        <Boton type="button" variant="secundario" onClick={limpiar}>{textos.limpiar}</Boton>
-        <Boton type="button" variant="primario" onClick={onCerrar}>{textos.aplicar}</Boton>
+        <Boton type="button" variant="secundario" onClick={limpiarTodo}>{textos.limpiar}</Boton>
+        <Boton type="button" variant="primario" onClick={aplicar}>{textos.aplicar}</Boton>
       </div>
     </div>
   )

@@ -1,8 +1,10 @@
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
+import { CLASES_TABLA } from '../../compartido/clases_tabla'
 import type { CriteriosEmpresas, FiltrosAvanzadosEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
 import type { Empresa } from '@/tipos/empresas/modelo_empresas'
 import type { OpcionMenuEmpresa } from '@/tipos/empresas/contrato_listado_empresas'
 
+export const CLASE_FILA_EMPRESA = CLASES_TABLA.fila
 export const TODOS = catalogoEmpresas.selectores.estado.opciones[0]
 const ETIQUETAS_ESTADO: Record<string, string> = catalogoEmpresas.estados
 const ETIQUETAS_PLAN: Record<string, string> = catalogoEmpresas.planes

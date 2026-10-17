@@ -1,4 +1,5 @@
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
+import { clasesBoton } from '../../compartido/interfaz/boton'
 import { FilaActividadGrupo } from '../../actividad/bloques/fila_actividad_grupo'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Icono } from '../../compartido/icono'
@@ -38,7 +39,7 @@ export function SeccionActividadRecienteGrupos({
               <span className="block text-nombre-entidad text-texto">{g.nombre}</span>
               <span className="text-auxiliar text-texto-suave">{g.tipo}</span>
             </div>
-            <a href="#" className="flex-none whitespace-nowrap rounded-lg border border-primario bg-white px-3 py-1.5 text-boton text-primario no-underline hover:bg-primario hover:text-white">{catalogoGrupos.botones.unirse}</a>
+            <a href="#" className={clasesBoton({ variant: 'contorno', size: 'default', className: 'flex-none' })}>{catalogoGrupos.botones.unirse}</a>
           </article>
         ))}
       </section>
@@ -50,7 +51,7 @@ export function SeccionActividadRecienteGrupos({
         <div className="flex-1">
           <strong className="mb-1 block text-subtitulo text-texto">{catalogoGrupos.consejo.titulo}</strong>
           <p className="m-0 text-cuerpo leading-texto text-texto-suave">{catalogoGrupos.consejo.texto_mis_grupos}</p>
-          <a href={catalogoGrupos.rutas.descubrir} className="mt-2.5 inline-block rounded-lg border border-borde-exito-suave bg-white px-3.5 py-1.75 text-boton text-positivo-kpi no-underline hover:bg-fondo-categoria-verde">{catalogoGrupos.botones.explorar_grupos}</a>
+          <a href={catalogoGrupos.rutas.descubrir} className={clasesBoton({ variant: 'secundario', size: 'default', className: 'mt-2.5 border-borde-exito-suave! text-positivo-kpi! hover:bg-fondo-categoria-verde!' })}>{catalogoGrupos.botones.explorar_grupos}</a>
         </div>
       </section>
     </aside>

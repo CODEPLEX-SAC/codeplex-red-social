@@ -5,7 +5,7 @@ import { BotonIcono } from '../../componentes/compartido/interfaz/boton_icono'
 import { clasesSinTamano, tamanoDeClases, tamanosResponsivosDeClases } from '../../componentes/compartido/fuente_iconos'
 
 const CSS = await leerCssGlobal()
-const SECCIONES_DE_BOTON = ['clases_boton_mini', 'boton_variantes', 'boton_activo', 'boton_tamanos', 'boton_icono_variantes', 'selector_label']
+const SECCIONES_DE_BOTON = ['boton_base', 'boton_icono_base', 'boton_medio', 'boton_variantes', 'boton_activo', 'boton_tamanos', 'boton_icono_variantes', 'selector_label']
 const AJENAS_A_TOKENS = new Set(['white', 'black', 'transparent', 'current', 'inherit'])
 
 function clasesDeCatalogo(valor: unknown): string[] {
@@ -29,7 +29,8 @@ describe('Catalogo compartido: sin clases muertas ni colores con nombre hexadeci
   })
 
   it('el boton md usa text-boton y las etiquetas del selector usan tokens del sistema (etiqueta de campo global 12 px en ambas variantes)', () => {
-    expect(catalogoCompartido.boton_tamanos.md).toContain('text-boton')
+    expect(catalogoCompartido.boton_medio).toContain('text-boton')
+    expect(catalogoCompartido.boton_tamanos_medios).toEqual(['md', 'cta'])
     expect(catalogoCompartido.selector_label.colaboradores).toContain('text-etiqueta')
     expect(catalogoCompartido.selector_label.default).toContain('text-etiqueta')
   })

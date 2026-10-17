@@ -8,12 +8,10 @@ export function SeccionDestacados3({
   DESTACADOS,
   CLASES_MODULO,
   CLASES_INSIGNIA_CATEGORIA,
-  planesSeleccionados,
   alVerPlanes,
 }: {
   DESTACADOS: Destacado[]
   CLASES_MODULO: Record<'verde' | 'azul' | 'morado' | 'naranja' | 'rojo', string>
-  planesSeleccionados: Record<string, string>
   alVerPlanes: (idPlanes: string) => void
   CLASES_INSIGNIA_CATEGORIA: Record<'verde' | 'azul' | 'morado' | 'naranja' | 'rojo', string>
 }) {
@@ -25,7 +23,7 @@ export function SeccionDestacados3({
       </div>
       <FilaDestacados>
         {DESTACADOS.map((d) => (
-          <TarjetaDestacado key={`${d.nombre}-${d.categoria}`} className={catalogoMarketplace.destacados_fila.tarjeta} d={d} claseModulo={CLASES_MODULO[d.color]} claseInsignia={CLASES_INSIGNIA_CATEGORIA[d.color]} planSeleccionado={d.planes ? planesSeleccionados[d.planes] : undefined} alVerPlanes={d.planes ? () => alVerPlanes(d.planes as string) : undefined} />
+          <TarjetaDestacado key={`${d.nombre}-${d.categoria}`} className={catalogoMarketplace.destacados_fila.tarjeta} d={d} claseModulo={CLASES_MODULO[d.color]} claseInsignia={CLASES_INSIGNIA_CATEGORIA[d.color]} alVerPlanes={d.planes ? () => alVerPlanes(d.planes as string) : undefined} />
         ))}
       </FilaDestacados>
     </section>

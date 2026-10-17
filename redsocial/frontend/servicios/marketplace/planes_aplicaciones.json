@@ -6,6 +6,7 @@
     "descripcion": "Sistema contable integral · Comprobantes ilimitados",
     "icono": "contabilidad-propio",
     "color": "azul",
+    "modal": "amplio",
     "etiquetas": [
       "1 mes gratis",
       "IGV incluido",
@@ -15,7 +16,7 @@
       {
         "id": "independiente",
         "nombre": "Independiente",
-        "detalle": "Para contadores y gestores",
+        "detalle": "Contadores y gestores",
         "catalogo": {
           "nombre": "Brochure ContaPlex Independientes 2026",
           "url": "/catalogos/contaplex-independientes-2026.pdf"
@@ -69,6 +70,10 @@
                 "estado": "incluido"
               },
               {
+                "texto": "Hasta 20 mil comprobantes de venta por empresa",
+                "estado": "incluido"
+              },
+              {
                 "texto": "Libros contables",
                 "estado": "incluido"
               },
@@ -103,12 +108,12 @@
                 "estado": "incluido"
               },
               {
-                "texto": "Procesos + diario automático",
-                "estado": "incluido"
+                "texto": "Activos fijos",
+                "estado": "excluido"
               },
               {
-                "texto": "Todos los libros y reportes",
-                "estado": "incluido"
+                "texto": "Centro de costos",
+                "estado": "excluido"
               }
             ],
             "etiquetas": [
@@ -137,7 +142,15 @@
                 "estado": "incluido"
               },
               {
+                "texto": "Conciliaciones bancarias",
+                "estado": "incluido"
+              },
+              {
                 "texto": "Registro de letras",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Rendiciones",
                 "estado": "incluido"
               },
               {
@@ -149,7 +162,7 @@
                 "estado": "incluido"
               },
               {
-                "texto": "Compensaciones",
+                "texto": "PLE 2",
                 "estado": "excluido"
               }
             ],
@@ -172,11 +185,6 @@
                 "enfasis": true
               },
               {
-                "texto": "Compensaciones",
-                "estado": "incluido",
-                "enfasis": true
-              },
-              {
                 "texto": "Hasta 35 empresas",
                 "estado": "incluido",
                 "enfasis": true
@@ -187,7 +195,7 @@
                 "enfasis": true
               },
               {
-                "texto": "Flujo de efectivo",
+                "texto": "Estado de flujo de efectivo",
                 "estado": "excluido"
               }
             ],
@@ -210,12 +218,12 @@
                 "estado": "incluido"
               },
               {
-                "texto": "Estado de flujo de efectivo",
+                "texto": "Hasta 45 empresas",
                 "estado": "incluido"
               },
               {
-                "texto": "Estado de cambios en patrimonio",
-                "estado": "incluido"
+                "texto": "Estado de flujo de efectivo",
+                "estado": "excluido"
               },
               {
                 "texto": "Libro de retenciones",
@@ -240,30 +248,38 @@
                 "estado": "incluido"
               },
               {
-                "texto": "Libro de reclamaciones",
+                "texto": "Hasta 55 empresas",
                 "estado": "incluido"
               },
               {
-                "texto": "Libro de activos fijos SUNAT",
+                "texto": "PLE 2",
                 "estado": "incluido"
               },
               {
-                "texto": "App móvil gerencial",
+                "texto": "Estado de flujo de efectivo",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Estado de cambios en patrimonio",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Libro de retenciones",
                 "estado": "incluido"
               }
             ],
             "etiquetas": [
               "55 empresas"
-            ]
+            ],
+            "paquetes": true
           }
         ],
-        "disposicion": "fila",
-        "ancho": "compacta"
+        "disposicion": "fila"
       },
       {
         "id": "empresarial",
         "nombre": "Empresarial",
-        "detalle": "Para empresas propias",
+        "detalle": "Empresas propias",
         "catalogo": {
           "nombre": "Brochure ContaPlex Empresariales 2026",
           "url": "/catalogos/contaplex-empresariales-2026.pdf"
@@ -283,7 +299,11 @@
                 "estado": "incluido"
               },
               {
-                "texto": "Procesos contables esenciales",
+                "texto": "Procesos contables completos",
+                "estado": "incluido"
+              },
+              {
+                "texto": "Hasta 50 mil comprobantes de ventas al mes",
                 "estado": "incluido"
               },
               {
@@ -299,17 +319,21 @@
                 "estado": "incluido"
               },
               {
+                "texto": "Seguridad y usuarios sin límite",
+                "estado": "incluido"
+              },
+              {
                 "texto": "App móvil gerencial",
                 "estado": "excluido"
               }
             ],
             "etiquetas": [
-              "5 empresas"
+              "1 empresa"
             ]
           },
           {
-            "id": "premium2",
-            "nombre": "Premium 2",
+            "id": "gold",
+            "nombre": "Gold",
             "precio": {
               "mensual": "300",
               "anual": "3,000"
@@ -320,6 +344,10 @@
                 "texto": "Todo lo del Básico +",
                 "estado": "incluido",
                 "enfasis": true
+              },
+              {
+                "texto": "Hasta 100 mil comprobantes de ventas al mes",
+                "estado": "incluido"
               },
               {
                 "texto": "App móvil gerencial",
@@ -338,18 +366,17 @@
                 "estado": "incluido"
               },
               {
-                "texto": "Flujo de caja móvil",
+                "texto": "Flujo de caja",
                 "estado": "incluido"
               }
             ],
             "etiquetas": [
-              "35 empresas"
+              "1 empresa"
             ],
             "cinta": "Más popular"
           }
         ],
-        "disposicion": "rejilla",
-        "ancho": "compacta"
+        "disposicion": "rejilla"
       }
     ],
     "asistente": {
@@ -363,8 +390,8 @@
         "¿Hay prueba gratis?"
       ],
       "respuestas": {
-        "¿Cuál plan si tengo 20 empresas?": "Para 20 empresas te recomendamos el plan Estándar (15 empresas) o Premium 1 (25 empresas). Puedes escalar en cualquier momento.",
-        "¿Qué incluye el Gold?": "El plan Gold incluye todo lo del Premium 3 más: Libro de reclamaciones, Libro de activos fijos SUNAT y App móvil gerencial.",
+        "¿Cuál plan si tengo 20 empresas?": "Para 20 empresas necesitas el plan Premium 1 (25 empresas); el Estándar cubre hasta 15. Puedes escalar en cualquier momento.",
+        "¿Qué incluye el Gold?": "En Independiente, el Gold (S/300, hasta 55 empresas) incluye todo lo del Premium 3 más PLE 2, Estado de flujo de efectivo, Estado de cambios en el patrimonio y Libro de retenciones. En Empresarial, el Gold (S/300, 1 empresa) incluye todo lo del Básico más hasta 100 mil comprobantes de ventas al mes, App móvil gerencial, resumen de ingresos y egresos, saldo de bancos, CxC y CxP y flujo de caja.",
         "¿Puedo cambiar de plan?": "¡Sí! Puedes cambiar de plan en cualquier momento desde tu panel de administración. El cambio se aplica inmediatamente.",
         "¿Qué son los activos fijos?": "Los activos fijos son bienes que la empresa posee a largo plazo (equipos, mobiliario, vehículos). El módulo te permite registrarlos y depreciarlos automáticamente.",
         "¿Hay prueba gratis?": "¡Sí! El plan Gratis no tiene costo y te permite probar con 1 empresa. Además, el primer mes del plan Básico es gratis."
@@ -399,14 +426,6 @@
         "titulo": "x3 veces más empresas",
         "descripcion": "Gestiona hasta 15 empresas con una sola suscripción, ideal para contadores independientes con varios clientes."
       },
-      "Procesos + diario automático": {
-        "titulo": "Procesos + diario automático",
-        "descripcion": "Generación automática de asientos contables desde documentos de compra, venta y bancos."
-      },
-      "Todos los libros y reportes": {
-        "titulo": "Todos los libros y reportes",
-        "descripcion": "Acceso completo a todos los libros contables, reportes fiscales y estados financieros."
-      },
       "Todo lo del Estándar +": {
         "titulo": "Todo lo del Estándar +",
         "descripcion": "Incluye todo el plan Estándar más módulos avanzados de contabilidad financiera."
@@ -431,10 +450,6 @@
         "titulo": "Liquidación IGV y RTA",
         "descripcion": "Cálculo y declaración automática del IGV mensual y del Impuesto a la Renta anual."
       },
-      "Compensaciones": {
-        "titulo": "Compensaciones",
-        "descripcion": "Registro y control de compensaciones entre cuentas por cobrar y cuentas por pagar."
-      },
       "Todo lo del Premium 1 +": {
         "titulo": "Todo lo del Premium 1 +",
         "descripcion": "Incluye todas las funcionalidades del plan Premium 1 más las características del Premium 2."
@@ -446,10 +461,6 @@
       "Reportes + seguridad": {
         "titulo": "Reportes + seguridad",
         "descripcion": "Reportes avanzados con niveles de seguridad por perfil de usuario."
-      },
-      "Flujo de efectivo": {
-        "titulo": "Flujo de efectivo",
-        "descripcion": "Estado de Flujos de Efectivo (método directo e indirecto) según NIC 7."
       },
       "Todo lo del Premium 2 +": {
         "titulo": "Todo lo del Premium 2 +",
@@ -469,15 +480,7 @@
       },
       "Todo lo del Premium 3 +": {
         "titulo": "Todo lo del Premium 3 +",
-        "descripcion": "Incluye todas las funcionalidades del plan Premium 3 más características exclusivas Gold."
-      },
-      "Libro de reclamaciones": {
-        "titulo": "Libro de reclamaciones",
-        "descripcion": "Libro digital de reclamaciones integrado al sistema para registro y seguimiento de quejas."
-      },
-      "Libro de activos fijos SUNAT": {
-        "titulo": "Libro de activos fijos SUNAT",
-        "descripcion": "Libro de Activos Fijos en formato SUNAT con control de depreciación y exportación a PLE."
+        "descripcion": "Incluye todo el plan Premium 3 más PLE 2, Estado de flujo de efectivo, Estado de cambios en el patrimonio y Libro de retenciones."
       },
       "App móvil gerencial": {
         "titulo": "App móvil gerencial",
@@ -497,7 +500,7 @@
       },
       "Todo lo del Básico +": {
         "titulo": "Todo lo del Básico +",
-        "descripcion": "Incluye todo el plan Básico más las funcionalidades del plan Premium 2 empresarial."
+        "descripcion": "Incluye todo el plan Básico más la App móvil gerencial con resumen de ingresos y egresos, saldo de bancos, cuentas por cobrar y por pagar, y flujo de caja."
       },
       "Resumen de ingresos y egresos": {
         "titulo": "Resumen de ingresos y egresos",
@@ -511,10 +514,123 @@
         "titulo": "CxC y CxP - detalle y resumen",
         "descripcion": "Cuentas por cobrar y por pagar con detalle por cliente/proveedor y resumen ejecutivo."
       },
-      "Flujo de caja móvil": {
-        "titulo": "Flujo de caja móvil",
-        "descripcion": "Flujo de caja proyectado accesible desde la app móvil con alertas de liquidez."
+      "Flujo de caja": {
+        "titulo": "Flujo de caja",
+        "descripcion": "Flujo de caja disponible en la app móvil gerencial."
+      },
+      "Procesos contables completos": {
+        "titulo": "Procesos contables completos",
+        "descripcion": "Importa desde Excel: voucher contable, registro de compras, ventas, caja y bancos, conciliaciones bancarias, registro de letras, diario, SIRE, PLE, rendiciones, saldos iniciales y asientos por diferencia de tipo de cambio."
+      },
+      "Hasta 50 mil comprobantes de ventas al mes": {
+        "titulo": "Hasta 50 mil comprobantes de ventas al mes",
+        "descripcion": "Límite mensual de comprobantes de ventas emitidos en el plan Básico."
+      },
+      "Hasta 100 mil comprobantes de ventas al mes": {
+        "titulo": "Hasta 100 mil comprobantes de ventas al mes",
+        "descripcion": "Límite mensual de comprobantes de ventas emitidos en el plan Gold."
+      },
+      "Seguridad y usuarios sin límite": {
+        "titulo": "Seguridad y usuarios sin límite",
+        "descripcion": "Control de usuarios sin límite de usuarios, cambio de claves con reseteo y recuperación por correo, y parametrización."
+      },
+      "Hasta 20 mil comprobantes de venta por empresa": {
+        "titulo": "Hasta 20 mil comprobantes de venta por empresa",
+        "descripcion": "Cada empresa permite hasta 20 mil comprobantes de venta. En caso de superarlo, se debe adquirir ContaPlex Empresarial."
+      },
+      "Conciliaciones bancarias": {
+        "titulo": "Conciliaciones bancarias",
+        "descripcion": "Conciliaciones bancarias incluidas desde el plan Premium 1."
+      },
+      "Rendiciones": {
+        "titulo": "Rendiciones",
+        "descripcion": "Rendiciones incluidas desde el plan Premium 1."
+      },
+      "PLE 2": {
+        "titulo": "PLE 2",
+        "descripcion": "Libros electrónicos PLE 2 (PLE1, 03XX, 07XX, 040100, 090100, 100100). Incluido solo en el plan Gold."
+      },
+      "Hasta 45 empresas": {
+        "titulo": "Hasta 45 empresas",
+        "descripcion": "Capacidad ampliada para gestionar hasta 45 empresas simultáneamente."
+      },
+      "Hasta 55 empresas": {
+        "titulo": "Hasta 55 empresas",
+        "descripcion": "Capacidad ampliada para gestionar hasta 55 empresas simultáneamente."
       }
+    },
+    "paquetes": {
+      "pregunta": "¿Tienes más empresas?",
+      "ver": "Ver planes por volumen",
+      "titulo": "Planes por volumen",
+      "descripcion": "Tabla de precios de Conta-Plex para quienes superan las 55 empresas del plan Gold. Precios mensuales, IGV incluido.",
+      "filas": [
+        {
+          "rango": "Hasta 100 empresas",
+          "tarifa": "Gold 1",
+          "total": "S/350.00"
+        },
+        {
+          "rango": "Hasta 150 empresas",
+          "tarifa": "Gold 2",
+          "total": "S/400.00"
+        },
+        {
+          "rango": "Hasta 200 empresas",
+          "tarifa": "Gold 3",
+          "total": "S/450.00"
+        },
+        {
+          "rango": "Hasta 250 empresas",
+          "tarifa": "Gold 4",
+          "total": "S/500.00"
+        },
+        {
+          "rango": "Hasta 300 empresas",
+          "tarifa": "Gold 5",
+          "total": "S/550.00"
+        },
+        {
+          "rango": "Hasta 350 empresas",
+          "tarifa": "Gold 6",
+          "total": "S/600.00"
+        },
+        {
+          "rango": "Hasta 400 empresas",
+          "tarifa": "Gold 7",
+          "total": "S/650.00"
+        },
+        {
+          "rango": "Hasta 450 empresas",
+          "tarifa": "Gold 8",
+          "total": "S/700.00"
+        },
+        {
+          "rango": "Hasta 500 empresas",
+          "tarifa": "Gold 9",
+          "total": "S/750.00"
+        },
+        {
+          "rango": "Hasta 550 empresas",
+          "tarifa": "Gold 10",
+          "total": "S/800.00"
+        },
+        {
+          "rango": "Hasta 600 empresas",
+          "tarifa": "Gold 11",
+          "total": "S/850.00"
+        },
+        {
+          "rango": "Hasta 650 empresas",
+          "tarifa": "Gold 12",
+          "total": "S/900.00"
+        },
+        {
+          "rango": "Hasta 700 empresas",
+          "tarifa": "Gold 13",
+          "total": "S/950.00"
+        }
+      ]
     }
   },
   "gestionplex-comercial": {
@@ -524,6 +640,7 @@
     "descripcion": "Elige el plan perfecto para ti con comprobantes ilimitados",
     "icono": "caja",
     "color": "verde",
+    "modal": "amplio",
     "etiquetas": [
       "1 mes gratis",
       "IGV incluido",
@@ -535,7 +652,6 @@
         "nombre": "",
         "detalle": "",
         "disposicion": "fila",
-        "ancho": "compacta",
         "catalogo": {
           "url": "/catalogos/gestionplex-comercial-2025.pdf",
           "nombre": "Catálogo GestiónPlex Comercial 2025"
@@ -867,6 +983,7 @@
     "descripcion": "Elige el plan perfecto para ti con comprobantes ilimitados",
     "icono": "tienda",
     "color": "naranja",
+    "modal": "compacto",
     "etiquetas": [
       "1 mes gratis",
       "IGV incluido"
@@ -877,7 +994,6 @@
         "nombre": "",
         "detalle": "",
         "disposicion": "fila",
-        "ancho": "amplia",
         "catalogo": {
           "url": "/catalogos/gestionplex-restaurante-2025.pdf",
           "nombre": "Catálogo GestiónPlex Restaurantes 2025"
@@ -1076,6 +1192,7 @@
     "descripcion": "Software especializado para empresas de transporte, elige el plan perfecto para ti con comprobantes ilimitados",
     "icono": "envio",
     "color": "azul",
+    "modal": "compacto",
     "etiquetas": [
       "1 mes gratis",
       "IGV incluido",
@@ -1088,7 +1205,6 @@
         "nombre": "",
         "detalle": "",
         "disposicion": "fila",
-        "ancho": "amplia",
         "catalogo": {
           "url": "/catalogos/gestionplex-transporte-2025.pdf",
           "nombre": "Catálogo GestiónPlex Transporte 2025"
@@ -1238,8 +1354,9 @@
     "nombre": "Gestión-Plex Grifo",
     "lema": "Gestión para tu grifo",
     "descripcion": "Software especializado para grifos, elige el plan perfecto para ti con comprobantes ilimitados",
-    "icono": "fuego-propio",
+    "icono": "calefaccion",
     "color": "rojo",
+    "modal": "compacto",
     "etiquetas": [
       "1 mes gratis",
       "IGV incluido",
@@ -1252,7 +1369,6 @@
         "nombre": "",
         "detalle": "",
         "disposicion": "fila",
-        "ancho": "amplia",
         "catalogo": {
           "url": "/catalogos/gestionplex-grifo-2025.pdf",
           "nombre": "Catálogo GestiónPlex Grifo 2025"
@@ -1426,8 +1542,9 @@
     "nombre": "Facturación Electrónica",
     "lema": "Facturación electrónica para tu empresa",
     "descripcion": "Software empresarial, elige el plan perfecto para ti con hasta 2,000 comprobantes",
-    "icono": "documento",
+    "icono": "recibo",
     "color": "morado",
+    "modal": "amplio",
     "etiquetas": [
       "1 mes gratis",
       "IGV incluido",
@@ -1440,7 +1557,6 @@
         "nombre": "",
         "detalle": "",
         "disposicion": "fila",
-        "ancho": "amplia",
         "catalogo": {
           "url": "/catalogos/facturacion-electronica-2025.pdf",
           "nombre": "Catálogo Facturación Electrónica 2025"

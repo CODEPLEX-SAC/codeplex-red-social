@@ -7,23 +7,29 @@ import { BloqueEditarRolPerfil } from './bloque_editar_rol_perfil'
 import { BloqueEditarVigenciaAcceso } from './bloque_editar_vigencia_acceso'
 import { BloqueEditarAplicaciones } from './bloque_editar_aplicaciones'
 import { BloqueEditarEstadoAcceso } from './bloque_editar_estado_acceso'
+import { usarEdicionColaborador } from './usar_edicion_colaborador'
 import type { Colaborador, Aplicacion } from '@/tipos/colaboradores/modelo_colaboradores'
+import type { BorradorColaborador } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 
 const textos = catalogoColaboradores.editar
 
 export function SeccionEditarColaborador({
   colaborador,
-  etiquetaEstado,
+  colaboradores,
   aplicacionesDisponibles,
   alCerrar,
   alCancelar,
+  alGuardar,
 }: {
   colaborador: Colaborador
-  etiquetaEstado: string
+  colaboradores: Colaborador[]
   aplicacionesDisponibles: Aplicacion[]
   alCerrar: () => void
   alCancelar: () => void
+  alGuardar: (borrador: BorradorColaborador) => void
 }) {
+  const { borrador, cambiar, descripcionRol, valido, etiquetaEstado, elegirEstado } = usarEdicionColaborador(colaborador, colaboradores)
+
   return (
     <aside className="sticky top-22 max-1100:static w-full rounded-xl border border-gris-borde bg-white p-5 area-detalle">
       <div className="mb-1 flex items-center justify-between">
@@ -32,15 +38,15 @@ export function SeccionEditarColaborador({
       </div>
       <p className="m-0 mb-4 text-auxiliar text-texto-suave">{textos.subtitulo}</p>
 
-      <BloqueEditarDatosColaborador colaborador={colaborador} />
-      <BloqueEditarRolPerfil colaborador={colaborador} />
-      <BloqueEditarVigenciaAcceso colaborador={colaborador} />
-      <BloqueEditarAplicaciones colaborador={colaborador} disponibles={aplicacionesDisponibles} />
-      <BloqueEditarEstadoAcceso colaborador={colaborador} etiquetaEstado={etiquetaEstado} />
+      <BloqueEditarDatosColaborador borrador={borrador} alCambiar={cambiar} />
+      <BloqueEditarRolPerfil borrador={borrador} descripcionRol={descripcionRol} alCambiar={cambiar} />
+      <BloqueEditarVigenciaAcceso colaborador={colaborador} borrador={borrador} alCambiar={cambiar} />
+      <BloqueEditarAplicaciones borrador={borrador} disponibles={aplicacionesDisponibles} alCambiar={cambiar} />
+      <BloqueEditarEstadoAcceso borrador={borrador} etiquetaEstado={etiquetaEstado} alElegirEstado={elegirEstado} />
 
       <div className="mt-4 grid grid-cols-2 gap-2 border-t border-borde-suave pt-4">
         <Boton type="button" variant="secundario" onClick={alCancelar}>{textosRedSocial.CANCELAR}</Boton>
-        <Boton type="button" variant="primario" onClick={alCancelar}>{textos.guardar_cambios}</Boton>
+        <Boton type="button" variant="primario" disabled={!valido} onClick={() => alGuardar(borrador)}>{textos.guardar_cambios}</Boton>
       </div>
     </aside>
   )

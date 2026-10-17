@@ -178,7 +178,6 @@
   --color-overlay-12: rgba(77,60,197,0.1);
   --color-overlay-13: rgba(77,60,197,0.12);
   --color-overlay-14: rgba(20,15,40,0.55);
-  --color-overlay-15: rgba(108,60,224,.06);
 
   --shadow-t1: 0 12px 30px rgba(20,15,40,.18);
   --shadow-t2: 0 1px 3px rgba(0,0,0,0.15);
@@ -338,8 +337,8 @@
   --grid-template-columns-minmax400-720-minmax320-400: minmax(400px,720px) minmax(320px,400px);
   --grid-template-columns-minmax260-300-minmax420-1fr-minmax280-340: minmax(260px,300px) minmax(420px,1fr) minmax(280px,340px);
 
-  --height-vh-navbar: calc(100vh - 64px);
-  --height-dvh-navbar: calc(100dvh - 64px);
+  --height-vh-navbar: calc(100vh - 72px);
+  --height-dvh-navbar: calc(100dvh - 72px);
   --height-vh-mensajes: calc(100vh - 340px);
   --height-control: var(--control-height);
   --inset-tooltip: calc(100% + 4px);
@@ -366,7 +365,7 @@
   --control-radius: var(--radius-control);
 
 
-  --control-height: 44px;
+  --control-height: 48px;
   --control-padding-x: 20px;
 }
 

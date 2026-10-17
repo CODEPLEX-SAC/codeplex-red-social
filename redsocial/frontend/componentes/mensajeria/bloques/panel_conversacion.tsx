@@ -100,7 +100,7 @@ export function PanelConversacion({ conversacion, onVolver, oculta }: PanelConve
           <BotonIcono icono="adjuntar" type="button" aria-label={catalogoMensajeria.conversacion.adjuntar_archivo} variant="discreto" size="default" />
           <BotonIcono icono="imagen" type="button" aria-label={catalogoMensajeria.conversacion.enviar_imagen} variant="discreto" size="default" />
           <BotonIcono icono={'sentimiento' as IconName} type="button" aria-label={catalogoMensajeria.conversacion.emojis} variant="discreto" size="default" />
-          <Boton type="button" variant="secundario" size="mini">{catalogoMensajeria.conversacion.gif}</Boton>
+          <Boton type="button" variant="secundario" size="mini" className="self-center">{catalogoMensajeria.conversacion.gif}</Boton>
         </div>
         <BotonIcono icono="enviar" type="submit" aria-label={textosRedSocial.ENVIAR} variant="primario" size="default" className="flex-none" />
       </form>

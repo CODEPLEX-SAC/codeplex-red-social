@@ -48,3 +48,6 @@ vercel.json
 # Credenciales (el ejemplo sin secretos si se versiona)
 .env*
 !.env.ftp.ejemplo
+
+# Documentacion interna de componentes (solo local)
+redsocial/frontend/guia/componentes/**/*.md

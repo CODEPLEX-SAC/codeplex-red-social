@@ -21,7 +21,7 @@ export function SinEventosUbicacion({ ciudad, onCambiar, onVerTodos }: SinEvento
       <MensajeVacio titulo={[textos.titulo, textos.espacio, ciudad].join('')} texto={textos.texto} className="mb-6 w-full max-w-150" />
       <div className="flex items-center justify-center gap-3 max-600:w-full max-600:flex-col max-600:items-stretch">
         <Boton type="button" variant="primario" size="md" onClick={onCambiar}>{textos.cambiar}</Boton>
-        <Boton type="button" variant="secundario" size="md" onClick={onVerTodos} className="border-primario text-primario">{textos.ver_todos}</Boton>
+        <Boton type="button" variant="contorno" size="md" onClick={onVerTodos}>{textos.ver_todos}</Boton>
       </div>
     </section>
   )

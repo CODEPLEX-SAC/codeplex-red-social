@@ -1,29 +1,13 @@
 import { useState } from 'react'
-import type { Dayjs } from 'dayjs'
-import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
+import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
+import { crearFiltrosAvanzadosColaboradores } from './logica_filtros_avanzados_colaboradores'
 
-const textos = catalogoColaboradores.panel_filtros_avanzados
-
-const VALORES_VACIOS = {
-  fechaInicio: null as Dayjs | null,
-  fechaFin: null as Dayjs | null,
-  invitacionDesde: null as Dayjs | null,
-  invitacionHasta: null as Dayjs | null,
-  ultimoAcceso: textos.ultimo_acceso.opciones[0],
-  accesoVigente: false,
-  accesoVencido: false,
-  aplicaciones: textos.aplicaciones_asignadas.opciones[0],
-  cuentaCreada: false,
-  cuentaInvitada: false,
-  metodoInvitacion: textos.metodo_invitacion.opciones[0],
-}
-
-export function usarFiltrosAvanzados() {
-  const [valores, setValores] = useState(VALORES_VACIOS)
+export function usarFiltrosAvanzados(aplicados: FiltrosAvanzadosColaboradores) {
+  const [valores, setValores] = useState(aplicados)
 
   const asignar = Object.fromEntries(
-    Object.keys(VALORES_VACIOS).map((campo) => [campo, (valor: unknown) => setValores((actual) => ({ ...actual, [campo]: valor }))]),
-  ) as Record<keyof typeof VALORES_VACIOS, (valor: unknown) => void>
+    Object.keys(valores).map((campo) => [campo, (valor: unknown) => setValores((actual) => ({ ...actual, [campo]: valor }))]),
+  ) as Record<keyof FiltrosAvanzadosColaboradores, (valor: unknown) => void>
 
   function cambiarUltimoAcceso(evento: { target: { value: unknown } }) {
     asignar.ultimoAcceso(String(evento.target.value))
@@ -50,7 +34,7 @@ export function usarFiltrosAvanzados() {
   return {
     valores,
     asignar,
-    limpiar: () => setValores(VALORES_VACIOS),
+    limpiar: () => setValores(crearFiltrosAvanzadosColaboradores()),
     cambiarUltimoAcceso,
     cambiarAccesoVigente,
     cambiarAccesoVencido,

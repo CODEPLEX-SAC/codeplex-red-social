@@ -25,7 +25,7 @@ export function SeccionTusAmigos({
           aria-label={catalogoAmigos.placeholders.buscar_amigos}
           className="min-w-0 flex-1 max-800:w-full max-800:flex-none"
         />
-        <Boton type="button" variant="secundario" size="default" className="min-w-47.5 flex-none max-800:w-full">
+        <Boton type="button" variant="secundario" size="default" className="min-w-47.5 flex-none self-center max-800:w-full">
           {catalogoAmigos.botones.todos_los_amigos}
           <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
         </Boton>

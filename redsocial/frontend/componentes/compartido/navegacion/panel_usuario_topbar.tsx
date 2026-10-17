@@ -30,7 +30,7 @@ export function PanelUsuarioTopbar({ usuario, onCerrar, onCerrarSesion }: PanelU
       role="dialog"
       aria-label={textos.titulo}
       tabIndex={-1}
-      className="fixed right-md top-17 z-20 w-95 overflow-hidden rounded-xl border border-borde bg-white shadow-t13 outline-none max-600:left-3 max-600:right-3 max-600:w-auto"
+      className="fixed right-md top-19 z-20 w-95 overflow-hidden rounded-xl border border-borde bg-white shadow-t13 outline-none max-600:left-3 max-600:right-3 max-600:w-auto"
     >
       <div className="relative flex items-center gap-4 bg-linear-to-br from-primario-suave via-white to-primario-suave p-5 pr-12 max-600:gap-3 max-600:p-4 max-600:pr-11">
         <BotonIcono icono="cerrar" type="button" aria-label={textos.cerrar} onClick={onCerrar} variant="discreto" size="default" className="absolute right-3 top-3" />

@@ -31,7 +31,8 @@ describe('SeccionDetalleColaborador', () => {
     render(<PaginaColaboradores />)
     const detalle = abrirDetalle('Carlos Mendoza')
     expect(detalle.getByRole('heading', { level: 3 }).textContent).toBe('Carlos Mendoza')
-    expect(detalle.getByText('Calendario')).toBeTruthy()
+    expect(detalle.getByText('Planillas')).toBeTruthy()
+    expect(detalle.getByText('Configuración')).toBeTruthy()
     expect(detalle.getByText('Invitación aceptada')).toBeTruthy()
   })
 
@@ -48,12 +49,12 @@ describe('SeccionDetalleColaborador', () => {
 
   it('al confirmar la baja desde el menú de la fila muestra el diálogo con el nombre del colaborador', () => {
     render(<PaginaColaboradores />)
-    buscar('Rosa Jiménez')
-    const fila = screen.getByRole('checkbox', { name: 'Rosa Jiménez' }).closest('tr') as HTMLElement
+    buscar('Carlos Mendoza')
+    const fila = screen.getByRole('checkbox', { name: 'Carlos Mendoza' }).closest('tr') as HTMLElement
     fireEvent.click(within(fila).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones }))
     fireEvent.click(screen.getByText(catalogoColaboradores.botones.dar_de_baja))
     const dialogo = within(screen.getByRole('dialog'))
-    expect(dialogo.getByText('¿Dar de baja a Rosa Jiménez?')).toBeTruthy()
+    expect(dialogo.getByText('¿Dar de baja a Carlos Mendoza?')).toBeTruthy()
     expect(dialogo.getByText(catalogoColaboradores.confirmar_baja.motivo.etiqueta)).toBeTruthy()
   })
 })

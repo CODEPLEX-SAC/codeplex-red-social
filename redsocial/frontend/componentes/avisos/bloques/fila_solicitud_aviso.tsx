@@ -34,10 +34,10 @@ export function FilaSolicitudAviso({ miniatura: m, titulo, lineaSecundaria, line
       <span className="flex-none whitespace-nowrap text-fecha-abreviada text-texto-suave max-800:order-1 max-800:ml-15">{tiempo}</span>
 
       <div className="flex flex-none items-center gap-2 max-800:order-3 max-800:ml-15 max-800:mt-1">
-        <Boton type="button" variant="primario" size="mini">
+        <Boton type="button" variant="primario" size="default">
           {accionPrimaria}
         </Boton>
-        <Boton type="button" variant="secundario" size="mini">
+        <Boton type="button" variant="secundario" size="default">
           {accionSecundaria}
         </Boton>
       </div>

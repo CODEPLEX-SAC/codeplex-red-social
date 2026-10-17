@@ -4,6 +4,7 @@ export const MODALES_PROPIOS_PERMITIDOS: Record<string, { clasificacion: string;
   '/componentes/colaboradores/bloques/panel_filtros_avanzados.tsx': { clasificacion: 'C', motivo: 'panel flotante no modal; su foco y Escape los gestiona FondoPanelFlotante' },
   '/componentes/empresas/bloques/panel_filtros_avanzados_empresas.tsx': { clasificacion: 'C', motivo: 'panel flotante no modal; su foco y Escape los gestiona FondoPanelFlotante' },
   '/componentes/compartido/navegacion/panel_usuario_topbar.tsx': { clasificacion: 'C', motivo: 'panel del menu de usuario; su foco y Escape los gestiona FondoPanelFlotante' },
+  '/componentes/compartido/interfaz/panel_selector_buscable.tsx': { clasificacion: 'C', motivo: 'panel del selector buscable; su foco y Escape los gestiona FondoPanelFlotante' },
 }
 
 export const SECCIONES_DE_CONTRATO_DE_CAPACIDAD: string[] = ['permisos', 'alertas', 'errores', 'toast', 'titulo_menu', 'contexto_requerido', 'acciones', 'mensajes']

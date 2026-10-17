@@ -8,20 +8,17 @@ export function TarjetaDestacado({
   d,
   claseModulo,
   claseInsignia,
-  planSeleccionado,
   alVerPlanes,
   className,
 }: {
   d: Destacado
   claseModulo: string
   claseInsignia: string
-  planSeleccionado?: string
   alVerPlanes?: () => void
   className: string
 }) {
   return (
     <article className={`relative flex min-w-0 flex-col overflow-hidden rounded-xl border border-borde-suave bg-white px-4 pb-4 pt-6 hover:shadow-t11 ${className}`}>
-      {d.popular && <span className="absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap rounded-b-lg bg-primario px-2.5 py-0.5 text-badge text-white">{catalogoMarketplace.leyendas.popular}</span>}
       <div className="mb-3 flex items-start gap-3">
         <div className={`grid h-12 w-12 flex-none place-items-center rounded-xl ${claseModulo}`}>
           <Icono name={d.icono} className="h-6 w-6 text-white" />
@@ -43,11 +40,6 @@ export function TarjetaDestacado({
           </li>
         ))}
       </ul>
-      {planSeleccionado && (
-        <div className="mb-3">
-          <Insignia variant="status" className="bg-fondo-categoria-verde text-verde-categoria-texto">{[catalogoMarketplace.planes.plan_seleccionado, planSeleccionado].join(': ')}</Insignia>
-        </div>
-      )}
       <div className="mt-auto flex items-end justify-between gap-3">
         <div className="grid min-w-0 gap-1">
           {d.gratis && (
@@ -59,7 +51,7 @@ export function TarjetaDestacado({
             {d.precio} <span className="text-auxiliar text-texto-suave">{catalogoMarketplace.leyendas.por_mes}</span>
           </span>
         </div>
-        <Boton type="button" variant="primario" size="md" className="flex-none" disabled={!alVerPlanes} title={alVerPlanes ? undefined : catalogoMarketplace.planes.no_disponible} onClick={alVerPlanes}>
+        <Boton type="button" variant="primario" size="cta" className="flex-none" disabled={!alVerPlanes} title={alVerPlanes ? undefined : catalogoMarketplace.planes.no_disponible} onClick={alVerPlanes}>
           {catalogoMarketplace.botones.ver_planes} <Icono name="flecha-derecha" className="h-3.5 w-3.5" />
         </Boton>
       </div>

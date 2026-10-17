@@ -1,13 +1,17 @@
 import { Icono } from '../../compartido/icono'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
+import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 
-export function AvisoInvitacionEnviada({ alCerrar }: { alCerrar: () => void }) {
+const avisos = catalogoColaboradores.aviso
+
+export function AvisoInvitacionEnviada({ mensaje, error = false, alCerrar }: { mensaje: string; error?: boolean; alCerrar: () => void }) {
+  const estilo = error ? avisos.error : avisos.exito
+
   return (
-    <div role="status" className="mb-4 flex items-center gap-3 rounded-xl border border-borde-exito-suave bg-fondo-exito-suave px-4 py-3">
-      <Icono name="verificado" className="w-5 h-5 flex-none text-verde-categoria-texto" />
-      <p className="m-0 min-w-0 flex-1 text-titulo-subseccion text-verde-categoria-texto">{catalogoColaboradores.mensajes.invitacion_completada_demostracion}</p>
+    <div role={estilo.rol} className={`mb-4 flex items-center gap-3 rounded-xl border px-4 py-3 ${estilo.contenedor}`}>
+      <Icono name={estilo.icono} className={`w-5 h-5 flex-none ${estilo.texto}`} />
+      <p className={`m-0 min-w-0 flex-1 text-titulo-subseccion ${estilo.texto}`}>{mensaje}</p>
       <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={alCerrar} variant="discreto" size="sm" />
     </div>
   )

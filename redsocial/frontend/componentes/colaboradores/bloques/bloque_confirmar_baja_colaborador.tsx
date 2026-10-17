@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
@@ -6,6 +7,8 @@ import { Selector } from '../../compartido/interfaz/selector'
 import { Modal } from '../../compartido/interfaz/modal'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
+import { etiquetarCampo } from './manejadores_campo_colaborador'
+import { fechaValida } from './logica_colaboradores'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 
 const textos = catalogoColaboradores.confirmar_baja
@@ -14,11 +17,14 @@ export function BloqueConfirmarBajaColaborador({
   colaborador,
   fechaEjemplo,
   alCerrar,
+  alConfirmar,
 }: {
   colaborador: Colaborador
   fechaEjemplo: string
   alCerrar: () => void
+  alConfirmar: (fecha: string) => void
 }) {
+  const [fecha, setFecha] = useState(fechaEjemplo)
   const cabecera = (
     <div className="flex items-start justify-between px-5 pb-3 pt-5">
       <h2 className="m-0 text-nombre-entidad text-texto">{textos.titulo}</h2>
@@ -45,12 +51,12 @@ export function BloqueConfirmarBajaColaborador({
 
           <div className="mb-5 flex flex-col gap-1">
             <label className="text-etiqueta text-texto">{textos.fecha_baja} <span className="text-negativo-kpi">*</span></label>
-            <CampoTexto defaultValue={fechaEjemplo} anchoCompleto iconoFin={<Icono name="calendario" className="h-4 w-4" />} />
+            <CampoTexto valor={fecha} alCambiar={setFecha} inputProps={etiquetarCampo(textos.fecha_baja)} anchoCompleto iconoFin={<Icono name="calendario" className="h-4 w-4" />} />
           </div>
 
           <div className="grid grid-cols-2 gap-2">
             <Boton type="button" variant="secundario" onClick={alCerrar}>{textosRedSocial.CANCELAR}</Boton>
-            <Boton type="button" variant="peligro" onClick={alCerrar}>
+            <Boton type="button" variant="peligro" disabled={!fechaValida(fecha)} onClick={() => alConfirmar(fecha)}>
               <Icono name="eliminar" className="h-3.5 w-3.5" /> {catalogoColaboradores.botones.dar_de_baja}
             </Boton>
           </div>

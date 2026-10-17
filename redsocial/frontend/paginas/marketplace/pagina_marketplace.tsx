@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel } from '../../componentes/compartido'
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
-import { DESTACADOS, CATEGORIAS, COMPRAS, POPULARES, PLANES_APLICACIONES, PAGO_PLANES, CLASES_SELECTOR_PLANES, CLASES_PLAN_DESTACADO, CLASES_MODULO, CLASES_INSIGNIA_CATEGORIA, CLASES_CATEGORIA_COLOR } from '../../rutas/marketplace/rutas_marketplace'
-import { SeccionTituloPre, SeccionPopularEstaSemana, ModalPlanesAplicacion, ModalCarritoPlanes, ModalPagoPlanes, PanelMisCompras, SeccionMisCompras, usarCarritoMarketplace } from '../../componentes/marketplace'
+import { DESTACADOS, CATEGORIAS, COMPRAS, POPULARES, PAGO_PLANES, CLASES_MODULO, CLASES_INSIGNIA_CATEGORIA, CLASES_CATEGORIA_COLOR } from '../../rutas/marketplace/rutas_marketplace'
+import { ContextoCarritoMarketplace, SeccionTituloPre, SeccionPopularEstaSemana, PanelMisCompras, SeccionMisCompras, usarCarritoCompartido } from '../../componentes/marketplace'
+import { ProveedorCarritoMarketplace } from './proveedor_carrito_marketplace'
 
-export function PaginaMarketplace() {
+function ContenidoMarketplace() {
   const carrusel = usarCarrusel()
-  const carrito = usarCarritoMarketplace(PLANES_APLICACIONES)
+  const carrito = usarCarritoCompartido()
   const comprasVista = [...carrito.compras.map((c) => ({ nombre: c.nombre, icono: c.icono, color: c.tema, fecha: catalogoMarketplace.carrito.adquirido.replace(':fecha', c.fecha) })), ...COMPRAS]
   const seccionCompras = carrito.comprasAbiertas ? (
     <SeccionMisCompras compras={carrito.compras} servicios={carrito.servicios} vip={PAGO_PLANES.vip} clasesModulo={CLASES_MODULO} desinstalacion={carrito.desinstalacion} alVolver={carrito.cerrarCompras} alMejorar={carrito.abrirPlanes} alContratarVip={carrito.contratarVip} />
@@ -19,9 +21,8 @@ export function PaginaMarketplace() {
             DESTACADOS={DESTACADOS}
             CLASES_MODULO={CLASES_MODULO}
             CLASES_INSIGNIA_CATEGORIA={CLASES_INSIGNIA_CATEGORIA}
-            planesSeleccionados={carrito.elegidos}
             alVerPlanes={carrito.abrirPlanes}
-            accesos={{ cantidadCarrito: carrito.items.length, abrirCarrito: carrito.abrirCarrito, abrirCompras: carrito.alternarCompras }}
+            accesos={{ abrirCompras: carrito.alternarCompras }}
             contenidoCompras={seccionCompras}
             CATEGORIAS={CATEGORIAS}
             CLASES_CATEGORIA_COLOR={CLASES_CATEGORIA_COLOR}
@@ -45,15 +46,16 @@ export function PaginaMarketplace() {
           </aside>
         }
       />
-      {carrito.configuracionPlanes && (
-        <ModalPlanesAplicacion configuracion={carrito.configuracionPlanes} claseModulo={CLASES_MODULO[carrito.configuracionPlanes.color]} estilo={CLASES_SELECTOR_PLANES[carrito.configuracionPlanes.color]} estiloDestacado={CLASES_PLAN_DESTACADO} alCerrar={carrito.cerrarPlanes} alConfirmar={carrito.agregar} />
-      )}
-      {carrito.carritoAbierto && (
-        <ModalCarritoPlanes items={carrito.items} clasesModulo={CLASES_MODULO} alCerrar={carrito.cerrarCarrito} alQuitar={carrito.quitar} alCambiarPlan={carrito.cambiarPlan} alProceder={carrito.proceder} />
-      )}
-      {carrito.pagoAbierto && (
-        <ModalPagoPlanes items={carrito.items} pago={PAGO_PLANES} historial={carrito.historial} servicios={carrito.servicios} clasesModulo={CLASES_MODULO} alCerrar={carrito.volverAlCarrito} alFinalizar={carrito.finalizar} />
-      )}
     </EstructuraApp>
+  )
+}
+
+export function PaginaMarketplace() {
+  const carritoExistente = useContext(ContextoCarritoMarketplace)
+  if (carritoExistente) return <ContenidoMarketplace />
+  return (
+    <ProveedorCarritoMarketplace>
+      <ContenidoMarketplace />
+    </ProveedorCarritoMarketplace>
   )
 }

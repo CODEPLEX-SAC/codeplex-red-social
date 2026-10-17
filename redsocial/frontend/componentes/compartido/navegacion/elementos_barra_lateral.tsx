@@ -1,5 +1,6 @@
 import type { CodeplexElementoMenuLateral } from '@codeplex-sac/diseno'
 import { BotonIcono } from '../interfaz/boton_icono'
+import { irARuta } from '../interfaz/menu'
 import { SuperficieColor } from '../interfaz/superficie_color'
 import { Icono } from '../icono'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
@@ -12,6 +13,7 @@ const ESPACIO_TRABAJO = catalogoCompartido.navegacion.espacioTrabajo as readonly
 const MODULOS_DISPONIBLES = catalogoCompartido.navegacion.modulosDisponibles as readonly ModuloDisponible[]
 const AVISOS_SIDEBAR = catalogoCompartido.navegacion.avisosSidebar as readonly AvisoBarraLateral[]
 const CONFIGURACION = catalogoCompartido.barra_lateral
+const RUTA_MARKETPLACE = NAV_PRINCIPAL.find((item) => item.clave === CONFIGURACION.destino_modulos)?.ruta ?? undefined
 const TIPOS = CONFIGURACION.tipos as Record<string, CodeplexElementoMenuLateral['tipo']>
 const PUNTO_POR_SEVERIDAD = CONFIGURACION.clases_severidad as Record<string, string>
 const ICONO_POR_ACCION = CONFIGURACION.iconos as Record<string, IconName>
@@ -41,7 +43,7 @@ export function elementosDeLaBarra(paginaActiva?: string): CodeplexElementoMenuL
       etiqueta: (
         <span className={CONFIGURACION.clase_encabezado_seccion}>
           {textosRedSocial.MODULOS_DISPONIBLES}
-          <BotonIcono icono="mas" type="button" aria-label={textosRedSocial.AGREGAR_MODULO} variant="sutil" size="sm" />
+          <BotonIcono icono="mas" type="button" aria-label={textosRedSocial.AGREGAR_MODULO} variant="sutil" size="sm" onClick={() => RUTA_MARKETPLACE && irARuta(RUTA_MARKETPLACE)} />
         </span>
       ),
     },

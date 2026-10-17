@@ -5,11 +5,10 @@ import type { ReactNode } from 'react'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 
 const temaGraficos = createTheme({
+  typography: catalogoCompartido.fuente_heredada,
   components: {
     MuiInputBase: { styleOverrides: { input: catalogoCompartido.placeholder_tema } },
     MuiMenuItem: { styleOverrides: { root: catalogoCompartido.elemento_menu_tema } },
-    MuiPaginationItem: { styleOverrides: { root: catalogoCompartido.fuente_heredada } },
-    MuiListItemText: { styleOverrides: { primary: catalogoCompartido.fuente_heredada } },
     MuiTab: { styleOverrides: { root: catalogoCompartido.pestanas_tema } },
     MuiPickersOutlinedInput: {
       styleOverrides: {

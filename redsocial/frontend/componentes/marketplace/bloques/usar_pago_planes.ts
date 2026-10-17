@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
-import { fechaPrimerCobro, formatearTarjeta, formatearVencimiento, marcaTarjeta, sumarPrecios } from './logica_pago_planes'
+import { fechaPrimerCobro, formatearTarjeta, formatearVencimiento, marcaTarjeta, sumarPrecios, SUPER_VIP_HABILITADO } from './logica_pago_planes'
 import type { HistorialPago, ItemCarrito, PerfilFacturacion, TarjetaGuardada } from '@/tipos/marketplace/modelo_carrito'
-import type { ConfiguracionPago, DatosFacturacion, DatosTarjeta, ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
+import type { BilleteraDigital, ConfiguracionPago, DatosFacturacion, DatosTarjeta, ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
 
 const VACIO = catalogoCompartido.controles.texto_vacio
 const tarjetaInicial: DatosTarjeta = { numero: VACIO, vencimiento: VACIO, cvv: VACIO, propietario: VACIO }
@@ -28,10 +28,11 @@ export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], hi
   const [ventana, setVentana] = useState<'tarjetas' | 'perfiles' | null>(null)
   const [vip, setVip] = useState(false)
   const [terminos, setTerminos] = useState(false)
+  const [billetera, setBilletera] = useState<BilleteraDigital>('yape')
   const [resumen, setResumen] = useState<ResumenActivacion | null>(null)
 
   const fechaCobro = fechaPrimerCobro()
-  const elegibles = items.filter((i) => !aplicacionesConVip.includes(i.aplicacion)).length
+  const elegibles = SUPER_VIP_HABILITADO ? items.filter((i) => !aplicacionesConVip.includes(i.aplicacion)).length : 0
   const vipTotal = pago.vip.precio * elegibles
   const vipActivo = vip && elegibles > 0
   const total = sumarPrecios(items.map((i) => i.precio)) + (vipActivo ? vipTotal : 0)
@@ -84,6 +85,7 @@ export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], hi
     vipTotal,
     hoy,
     terminos,
+    billetera,
     resumen,
     fechaCobro,
     total,
@@ -101,6 +103,7 @@ export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], hi
     nuevoPerfil,
     alternarVip: setVip,
     alternarTerminos: setTerminos,
+    elegirBilletera: setBilletera,
     activar,
   }
 }

@@ -48,7 +48,7 @@ export function ModalCrearEvento({ onCerrar }: ModalCrearEventoProps) {
 
         <div className="flex items-center justify-end gap-3 px-6 py-4 max-600:flex-col-reverse max-600:items-stretch max-600:px-4">
           <Boton type="button" variant="secundario" size="md" onClick={onCerrar}>{textos.cancelar}</Boton>
-          <Boton type="button" variant="secundario" size="md" onClick={onCerrar} className="border-primario text-primario">{textos.borrador}</Boton>
+          <Boton type="button" variant="contorno" size="md" onClick={onCerrar}>{textos.borrador}</Boton>
           <Boton type="button" variant="primario" size="md" onClick={onCerrar}>{textos.publicar}</Boton>
         </div>
       </Modal>

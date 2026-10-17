@@ -21,7 +21,6 @@
       "nombre": "GestiónPlex",
       "icono": "caja",
       "color": "verde",
-      "popular": true,
       "descripcion": "Sistema completo para empresas comerciales: ventas POS, tesorería y facturación electrónica SUNAT.",
       "precio": "Desde S/100",
       "categoria": "Logística",
@@ -37,7 +36,7 @@
     },
     {
       "nombre": "Facturación Electrónica",
-      "icono": "documento",
+      "icono": "recibo",
       "color": "morado",
       "descripcion": "Facturación electrónica para empresas con múltiples sucursales, hasta 2,000 comprobantes y usuarios ilimitados.",
       "precio": "Desde S/50",
@@ -88,7 +87,7 @@
     },
     {
       "nombre": "Gestión-Plex Grifo",
-      "icono": "fuego-propio",
+      "icono": "calefaccion",
       "color": "rojo",
       "descripcion": "Software especializado para grifos con comprobantes ilimitados, vales de crédito y liquidación.",
       "precio": "Desde S/350",
@@ -168,7 +167,7 @@
       "fecha": "Adquirido el 05/06/2026"
     },
     {
-      "icono": "ventas",
+      "icono": "recibo",
       "color": "azul",
       "nombre": "Facturación Electrónica",
       "fecha": "Adquirido el 01/06/2026"
@@ -192,7 +191,7 @@
       "precio": "S/ 59.90"
     },
     {
-      "icono": "ventas",
+      "icono": "recibo",
       "color": "azul",
       "nombre": "Facturación Electrónica",
       "puntaje": "4.9",
@@ -200,7 +199,7 @@
       "precio": "S/ 39.90"
     },
     {
-      "icono": "inventario",
+      "icono": "envio",
       "color": "naranja",
       "nombre": "Gestión-Plex Transporte",
       "puntaje": "4.6",

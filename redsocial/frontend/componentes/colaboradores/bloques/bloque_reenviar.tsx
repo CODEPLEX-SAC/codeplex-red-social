@@ -6,6 +6,9 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Menu } from '../../compartido/interfaz/menu'
 import { BloqueColaboradores3 } from './bloque_colaboradores3'
+import { CLASES_TABLA } from '../../compartido/clases_tabla'
+import { opcionesMenuFila } from './reglas_estado_colaboradores'
+import { resumirAplicaciones } from './logica_colaboradores'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 
 export function BloqueReenviar({ datos }: {
@@ -22,6 +25,7 @@ export function BloqueReenviar({ datos }: {
     alVerColaborador: (colaborador: Colaborador) => void
     alEditarColaborador: (colaborador: Colaborador) => void
     alConfirmarBaja: (colaborador: Colaborador) => void
+    alReenviar: (colaborador: Colaborador) => void
     seleccionado: boolean
     alCambiarSeleccion: (_: unknown, marcado: boolean) => void
   }
@@ -39,11 +43,13 @@ export function BloqueReenviar({ datos }: {
     alVerColaborador,
     alEditarColaborador,
     alConfirmarBaja,
+    alReenviar,
     seleccionado,
     alCambiarSeleccion,
   } = datos
+  const aplicaciones = resumirAplicaciones(c, catalogoColaboradores.celda_aplicaciones.max_iconos)
   return (
-    <tr className="border-b border-borde-suave last:border-b-0 hover:bg-fondo">
+    <tr className={CLASES_TABLA.fila}>
       <td className="p-3.5 text-center align-middle">
         <Casilla seleccionado={seleccionado} alCambiar={alCambiarSeleccion} inputProps={{ 'aria-label': c.nombre }} />
       </td>
@@ -59,7 +65,7 @@ export function BloqueReenviar({ datos }: {
       </td>
       <td className="p-3.5 align-middle">
         <div className="flex flex-col gap-0.5">
-          <span className={`inline-block whitespace-nowrap rounded-md px-2.5 py-0.75 text-badge ${ROL_CLASES[c.rolClase]}`}>
+          <span className={`inline-block whitespace-nowrap rounded-md px-2.5 py-0.75 text-badge ${ROL_CLASES[c.rolClase] ?? ROL_CLASES.predeterminado}`}>
             {c.rol}
           </span>
           <span className="text-auxiliar text-texto-suave">{c.descripcionRol}</span>
@@ -67,12 +73,12 @@ export function BloqueReenviar({ datos }: {
       </td>
       <td className="p-3.5 align-middle">
         <div className="flex items-center gap-1">
-          {c.aplicaciones.map((app) => (
-            <span key={[app.icono, app.clase].join()} className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${app.clase}`}>
+          {aplicaciones.visibles.map((app) => (
+            <span key={app.nombre} title={app.nombre} className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${app.clase}`}>
               <Icono name={app.icono} className="w-3.5 h-3.5 text-white" />
             </span>
           ))}
-          {c.masApps && <span className="ml-0.5 text-conteo text-primario">+{c.masApps}</span>}
+          {aplicaciones.ocultas > 0 && <span className="ml-0.5 text-conteo text-primario">+{aplicaciones.ocultas}</span>}
         </div>
       </td>
       <td className="p-3.5 align-middle">
@@ -84,7 +90,7 @@ export function BloqueReenviar({ datos }: {
       <BloqueColaboradores3 c={c} />
       <td className="p-3.5 text-center align-middle">
         {c.acciones === 'reenviar' ? (
-          <Boton type="button" variant="secundario" size="mini">
+          <Boton type="button" variant="secundario" size="mini" onClick={() => alReenviar(c)}>
             {catalogoColaboradores.botones.reenviar}
           </Boton>
         ) : (
@@ -94,11 +100,7 @@ export function BloqueReenviar({ datos }: {
               <Menu
                 ancla={anclaMenu}
                 alCerrar={cerrarMenus}
-                elementos={[
-                  { etiqueta: catalogoColaboradores.botones.ver_colaborador, alHacerClick: () => alVerColaborador(c) },
-                  { etiqueta: catalogoColaboradores.botones.editar_colaborador, alHacerClick: () => alEditarColaborador(c) },
-                  { etiqueta: catalogoColaboradores.botones.dar_de_baja, peligro: true, alHacerClick: () => alConfirmarBaja(c) },
-                ]}
+                elementos={opcionesMenuFila(c, { alVer: () => alVerColaborador(c), alEditar: () => alEditarColaborador(c), alDarDeBaja: () => alConfirmarBaja(c) })}
               />
             )}
           </>

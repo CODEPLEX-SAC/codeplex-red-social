@@ -1,4 +1,5 @@
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
+import { clasesChip, clasesConteoChip } from '../../compartido/interfaz/chip_filtro'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
@@ -34,20 +35,20 @@ export function SeccionInvitaciones({
       <PestanasGrupos activa="invitaciones" />
 
       <div className="mb-4 flex flex-wrap gap-1.5 max-600:flex-nowrap max-600:overflow-x-auto max-600:scrollbar-oculto">
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-primario bg-primario px-3.5 text-navegacion text-white no-underline">
-          {catalogoGrupos.filtros.todas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-white px-1 text-conteo text-primario">{CONTEO.todas}</span>
+        <a href="#" className={clasesChip({ activo: true, className: 'flex-none' })}>
+          {catalogoGrupos.filtros.todas} <span className={clasesConteoChip({ activo: true })}>{CONTEO.todas}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
-          {catalogoGrupos.filtros.pendientes} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.pendientes}</span>
+        <a href="#" className={clasesChip({ className: 'flex-none' })}>
+          {catalogoGrupos.filtros.pendientes} <span className={clasesConteoChip({})}>{CONTEO.pendientes}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
-          {catalogoGrupos.filtros.aceptadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.aceptadas}</span>
+        <a href="#" className={clasesChip({ className: 'flex-none' })}>
+          {catalogoGrupos.filtros.aceptadas} <span className={clasesConteoChip({})}>{CONTEO.aceptadas}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
-          {catalogoGrupos.filtros.rechazadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.rechazadas}</span>
+        <a href="#" className={clasesChip({ className: 'flex-none' })}>
+          {catalogoGrupos.filtros.rechazadas} <span className={clasesConteoChip({})}>{CONTEO.rechazadas}</span>
         </a>
-        <a href="#" className="inline-flex h-8 flex-none items-center gap-1.25 whitespace-nowrap rounded-20 border border-borde bg-white px-3.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
-          {catalogoGrupos.filtros.expiradas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">{CONTEO.expiradas}</span>
+        <a href="#" className={clasesChip({ className: 'flex-none' })}>
+          {catalogoGrupos.filtros.expiradas} <span className={clasesConteoChip({})}>{CONTEO.expiradas}</span>
         </a>
       </div>
 

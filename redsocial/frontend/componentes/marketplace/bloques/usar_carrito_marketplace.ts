@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { crearCompras, crearItem, planesElegidos } from './logica_carrito_planes'
+import { irARuta } from '../../compartido/interfaz/menu'
+import { crearCompras, crearItem, reemplazarOAgregar, RUTA_MARKETPLACE } from './logica_carrito_planes'
 import { diasPrueba, fechaCorta } from './logica_pago_planes'
 import type { CompraRealizada, HistorialPago, ItemCarrito, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
 import type { ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
@@ -19,7 +20,7 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
 
   function agregar(seleccion: SeleccionPlan) {
     const item = crearItem(aplicaciones[seleccion.aplicacion], seleccion)
-    if (item) setItems((previos) => [...previos.filter((i) => i.aplicacion !== item.aplicacion), item])
+    if (item) setItems((previos) => reemplazarOAgregar(previos, item))
     setPlanesAbiertos(null)
     setCarritoAbierto(true)
   }
@@ -60,16 +61,16 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
     servicios,
     contratarVip: (aplicacion: string) => contratarVip(aplicacion, compras.find((c) => c.aplicacion === aplicacion)?.nombre ?? aplicacion),
     historial,
-    elegidos: planesElegidos(compras, items),
     abrirPlanes: setPlanesAbiertos,
     cerrarPlanes: () => setPlanesAbiertos(null),
     abrirCarrito: () => setCarritoAbierto(true),
     cerrarCarrito: () => setCarritoAbierto(false),
-    quitar: (aplicacion: string) => setItems((previos) => previos.filter((i) => i.aplicacion !== aplicacion)),
-    cambiarPlan: (aplicacion: string) => {
+    seguirComprando: () => {
       setCarritoAbierto(false)
-      setPlanesAbiertos(aplicacion)
+      if (window.location.pathname !== RUTA_MARKETPLACE) irARuta(RUTA_MARKETPLACE)
     },
+    quitar: (aplicacion: string) => setItems((previos) => previos.filter((i) => i.aplicacion !== aplicacion)),
+    cambiarPlan: setPlanesAbiertos,
     proceder: () => {
       setCarritoAbierto(false)
       setPagoAbierto(true)

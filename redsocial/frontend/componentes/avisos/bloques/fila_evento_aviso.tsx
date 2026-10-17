@@ -38,17 +38,17 @@ export function FilaEventoAviso({ evento: e, claseIcono }: FilaEventoAvisoProps)
 
       {e.accion === 'invitacion' && (
         <div className="flex flex-none items-center gap-2">
-          <Boton type="button" variant="primario" size="mini">
+          <Boton type="button" variant="primario" size="default">
             {catalogoAvisos.botones.aceptar}
           </Boton>
-          <Boton type="button" variant="secundario" size="mini">
+          <Boton type="button" variant="secundario" size="default">
             {catalogoAvisos.botones.rechazar}
           </Boton>
         </div>
       )}
 
       {e.accion === 'ver_evento' && (
-        <Boton type="button" variant="secundario" size="mini" className="flex-none">
+        <Boton type="button" variant="secundario" size="default" className="flex-none">
           {catalogoAvisos.botones.ver_evento}
         </Boton>
       )}

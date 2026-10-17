@@ -28,7 +28,7 @@ export function PaginaActividadGrupos() {
                     <p className="m-0 text-auxiliar text-texto-suave">{catalogoActividad.secciones.grupos.descripcion}</p>
                   </div>
                 </div>
-                <Boton type="button" variant="contorno" size="default" className="flex-none">
+                <Boton type="button" variant="contorno" size="cta" className="flex-none">
                   <Icono name="mas" className="h-3.5 w-3.5" /> {catalogoActividad.botones.grupos_crear}
                 </Boton>
               </div>

@@ -1,11 +1,11 @@
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { EncabezadoPasoPago } from './encabezado_paso_pago'
-import { etiquetaTotal, monto } from './logica_pago_planes'
+import { etiquetaTotal } from './logica_pago_planes'
 import { ResumenPagoPlanes } from './resumen_pago_planes'
 import { SeccionPagoCalendario } from './seccion_pago_calendario'
 import { SeccionPagoFacturacion } from './seccion_pago_facturacion'
-import { SeccionPagoTarjeta } from './seccion_pago_tarjeta'
+import { SeccionPagoMetodo } from './seccion_pago_metodo'
 import { SeccionPagoVip } from './seccion_pago_vip'
 import type { usarPagoPlanes } from './usar_pago_planes'
 import type { HistorialPago, ItemCarrito } from '@/tipos/marketplace/modelo_carrito'
@@ -30,8 +30,7 @@ export function CuerpoPagoPlanes({
     <div className={textos.clases.cuerpo}>
       <div className={textos.clases.columnas}>
         <div className="grid min-w-0 gap-4">
-          <SeccionPagoTarjeta estado={estado} cantidadGuardadas={historial.tarjetas.length} />
-          <p className="m-0 text-auxiliar text-texto-suave">{textos.aviso_renovacion.replace(':fecha', estado.fechaCobro).replace(':total', monto(estado.total))}</p>
+          <SeccionPagoMetodo estado={estado} pago={pago} cantidadGuardadas={historial.tarjetas.length} />
           <SeccionPagoFacturacion estado={estado} paises={pago.paises} cantidadGuardados={historial.perfiles.length} />
           {estado.elegibles > 0 && <SeccionPagoVip vip={pago.vip} seleccionado={estado.vip} alCambiar={estado.alternarVip} />}
           <SeccionPagoCalendario fechaCobro={estado.fechaCobro} total={estado.total} hoy={estado.hoy} />

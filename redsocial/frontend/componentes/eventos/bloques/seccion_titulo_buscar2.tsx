@@ -48,7 +48,7 @@ export function SeccionTituloBuscar2({
         {textos.mas_ubicaciones} <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
       </Boton>
       <div className="mt-3 hidden max-600:block">
-        <Boton type="button" variant="secundario" size="md" onClick={() => setEnMapa(true)} className="w-full justify-between border-primario text-primario">
+        <Boton type="button" variant="contorno" size="md" onClick={() => setEnMapa(true)} className="w-full justify-between">
           <span className="inline-flex items-center gap-2"><Icono name="mundo" className="h-4 w-4" /> {textos.ver_en_el_mapa}</span>
           <Icono name="flecha-derecha" className="h-3.5 w-3.5" />
         </Boton>

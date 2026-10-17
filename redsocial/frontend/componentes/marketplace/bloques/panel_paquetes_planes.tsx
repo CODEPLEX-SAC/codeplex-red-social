@@ -21,18 +21,20 @@ export function PanelPaquetesPlanes({ paquetes, alCerrar }: { paquetes: Paquetes
             </div>
           ))}
         </div>
-        <div className={clases.paquetes_bloque}>
-          <h4 className="m-0 text-titulo-subseccion text-texto">{paquetes.base_datos.titulo}</h4>
-          <ul className="m-0 grid list-none gap-1 p-0">
-            {paquetes.base_datos.items.map((item) => (
-              <li key={item} className="text-auxiliar text-texto-suave">{item}</li>
-            ))}
-          </ul>
-          <div className="flex items-center justify-between gap-3">
-            <span className="text-etiqueta text-texto-suave">{paquetes.base_datos.pago_unico.etiqueta}</span>
-            <span className="text-valor-destacado text-texto">{paquetes.base_datos.pago_unico.valor}</span>
+        {paquetes.base_datos && (
+          <div className={clases.paquetes_bloque}>
+            <h4 className="m-0 text-titulo-subseccion text-texto">{paquetes.base_datos.titulo}</h4>
+            <ul className="m-0 grid list-none gap-1 p-0">
+              {paquetes.base_datos.items.map((item) => (
+                <li key={item} className="text-auxiliar text-texto-suave">{item}</li>
+              ))}
+            </ul>
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-etiqueta text-texto-suave">{paquetes.base_datos.pago_unico.etiqueta}</span>
+              <span className="text-valor-destacado text-texto">{paquetes.base_datos.pago_unico.valor}</span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </Modal>
   )

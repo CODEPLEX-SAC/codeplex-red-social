@@ -1,17 +1,16 @@
 import { Casilla } from '../../compartido/interfaz/casilla'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
+import { CLASES_TABLA, claseEncabezadoTabla } from '../../compartido/clases_tabla'
 import { FilaEmpresa } from './fila_empresa'
 import type { TablaEmpresasProps } from '@/tipos/empresas/contrato_listado_empresas'
 
 const ENCABEZADOS = Object.values(catalogoEmpresas.tabla)
-const encabezado = catalogoEmpresas.clases.encabezado
-
-const mensajeVacio = catalogoEmpresas.clases.mensaje_vacio
+const encabezado = claseEncabezadoTabla(catalogoEmpresas.clases.relleno_encabezado)
 
 export function TablaEmpresas({ listado, alElegirAccion }: TablaEmpresasProps) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-gris-borde bg-white">
-      <table className="w-full border-collapse text-cuerpo">
+    <div className={CLASES_TABLA.contenedor}>
+      <table className={CLASES_TABLA.tabla}>
         <thead>
           <tr>
             <th className={`${encabezado} w-10 text-center`}>
@@ -30,7 +29,7 @@ export function TablaEmpresas({ listado, alElegirAccion }: TablaEmpresasProps) {
         <tbody>
           {listado.filas.length === 0 ? (
             <tr>
-              <td colSpan={ENCABEZADOS.length + 1} className={mensajeVacio}>{catalogoEmpresas.mensajes.sin_empresas}</td>
+              <td colSpan={ENCABEZADOS.length + 1} className={CLASES_TABLA.mensajeVacio}>{catalogoEmpresas.mensajes.sin_empresas}</td>
             </tr>
           ) : (
             listado.filas.map((empresa) => (

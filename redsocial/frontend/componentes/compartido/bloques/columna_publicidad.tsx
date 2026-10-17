@@ -1,11 +1,11 @@
 import { posicionesDe } from '../posiciones'
+import { clasesBoton } from '../interfaz/boton'
 import { Icono } from '../icono'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 
 const ANUNCIOS_PUBLICIDAD = catalogoCompartido.publicidad.anunciosPublicidad
 const ANUNCIO_PUBLICIDAD_DESTACADO = catalogoCompartido.publicidad.anuncioPublicidadDestacado
-const claseBotonMini = catalogoCompartido.clases_boton_mini
 
 function VisualAnuncio({ oscuro }: { oscuro?: boolean }) {
   return (
@@ -43,7 +43,7 @@ export function ColumnaPublicidad() {
           {ANUNCIOS_PUBLICIDAD[0].titulo}<br />{ANUNCIOS_PUBLICIDAD[0].subtitulo}
         </p>
         <p className="m-0 mb-3 text-cuerpo text-texto-suave">{ANUNCIOS_PUBLICIDAD[0].descripcion}</p>
-        <a href="#" className={claseBotonMini + ' border-transparent bg-primario text-white hover:bg-primario-oscuro'}>{ANUNCIOS_PUBLICIDAD[0].textoBoton}</a>
+        <a href="#" className={clasesBoton({ variant: 'primario', size: 'mini' })}>{ANUNCIOS_PUBLICIDAD[0].textoBoton}</a>
         <VisualAnuncio />
         <FlechaAnuncio />
       </article>
@@ -51,7 +51,7 @@ export function ColumnaPublicidad() {
       <article className="relative overflow-hidden rounded-xl border border-borde bg-white p-4 shadow-sombra">
         <p className="m-0 mb-1 text-subtitulo leading-compacto tracking-n01 text-texto">{ANUNCIOS_PUBLICIDAD[1].titulo}</p>
         <p className="m-0 mb-3 text-cuerpo text-texto-suave">{ANUNCIOS_PUBLICIDAD[1].descripcion}</p>
-        <a href="#" className={claseBotonMini + ' border-transparent bg-exito-texto text-white'}>{ANUNCIOS_PUBLICIDAD[1].textoBoton}</a>
+        <a href="#" className={clasesBoton({ variant: 'exito', size: 'mini' })}>{ANUNCIOS_PUBLICIDAD[1].textoBoton}</a>
         <VisualAnuncio />
         <FlechaAnuncio />
       </article>
@@ -59,7 +59,7 @@ export function ColumnaPublicidad() {
       <article className="relative overflow-hidden rounded-xl border border-borde bg-white p-4 shadow-sombra">
         <p className="m-0 mb-1 text-subtitulo leading-compacto tracking-n01 text-texto">{ANUNCIOS_PUBLICIDAD[2].titulo}</p>
         <p className="m-0 mb-3 text-cuerpo text-texto-suave">{ANUNCIOS_PUBLICIDAD[2].descripcion}</p>
-        <a href="#" className={claseBotonMini + ' border-transparent bg-primario text-white hover:bg-primario-oscuro'}>{ANUNCIOS_PUBLICIDAD[2].textoBoton}</a>
+        <a href="#" className={clasesBoton({ variant: 'primario', size: 'mini' })}>{ANUNCIOS_PUBLICIDAD[2].textoBoton}</a>
         <VisualAnuncio />
         <FlechaAnuncio />
       </article>
@@ -75,7 +75,7 @@ export function ColumnaPublicidad() {
             <li key={b}>✓ {b}</li>
           ))}
         </ul>
-        <a href="#" className={claseBotonMini + ' border-gris-borde bg-white text-texto-suave'}>{ANUNCIO_PUBLICIDAD_DESTACADO.textoBoton}</a>
+        <a href="#" className={clasesBoton({ variant: 'secundario', size: 'mini', className: 'text-texto-suave!' })}>{ANUNCIO_PUBLICIDAD_DESTACADO.textoBoton}</a>
         <VisualAnuncio oscuro />
       </article>
 

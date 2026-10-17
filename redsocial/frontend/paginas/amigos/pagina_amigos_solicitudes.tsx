@@ -1,4 +1,4 @@
-import { MensajeVacio, Boton, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CampoBusqueda, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg, posicionesDe } from '../../componentes/compartido'
+import { MensajeVacio, Boton, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CampoBusqueda, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg, posicionesDe, clasesChip, clasesConteoChip } from '../../componentes/compartido'
 import { EncabezadoAmigos, PestanasAmigos, PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import { RECIBIDAS, PERSONAS_CONOCER_SOLICITUDES as PERSONAS_CONOCER, TUS_LISTAS_SOLICITUDES as TUS_LISTAS, ACTIVIDAD_RECIENTE_SOLICITUDES as ACTIVIDAD_RECIENTE, SOLICITUD_ENVIADA_EJEMPLO } from '../../rutas/amigos/rutas_amigos'
@@ -17,13 +17,13 @@ export function PaginaAmigosSolicitudes() {
             <h2 className="mb-3.5 mt-4.5 text-titulo-seccion text-texto">{catalogoAmigos.secciones.solicitudes_amistad}</h2>
 
             <div className="mb-4.5 flex flex-wrap items-center gap-2">
-              <a href="#" className="inline-flex h-7 flex-none items-center gap-1 whitespace-nowrap rounded-20 border border-primario bg-primario px-2.5 text-navegacion text-white no-underline">
-                {catalogoAmigos.pestanas_solicitudes.recibidas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-white px-1 text-conteo text-primario">3</span>
+              <a href="#" className={clasesChip({ activo: true, className: 'flex-none' })}>
+                {catalogoAmigos.pestanas_solicitudes.recibidas} <span className={clasesConteoChip({ activo: true })}>3</span>
               </a>
-              <a href="#" className="inline-flex h-7 flex-none items-center gap-1 whitespace-nowrap rounded-20 border border-borde bg-white px-2.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
-                {catalogoAmigos.pestanas_solicitudes.enviadas} <span className="grid h-4 min-w-4 place-items-center rounded-lg bg-fondo-insignia-neutra px-1 text-conteo text-texto-suave">1</span>
+              <a href="#" className={clasesChip({ className: 'flex-none' })}>
+                {catalogoAmigos.pestanas_solicitudes.enviadas} <span className={clasesConteoChip({})}>1</span>
               </a>
-              <a href="#" className="inline-flex h-7 flex-none items-center gap-1 whitespace-nowrap rounded-20 border border-borde bg-white px-2.5 text-navegacion text-texto-suave no-underline hover:bg-fondo-hover-discreto">
+              <a href="#" className={clasesChip({ className: 'flex-none' })}>
                 {catalogoAmigos.pestanas_solicitudes.ignoradas}
               </a>
               <CampoBusqueda

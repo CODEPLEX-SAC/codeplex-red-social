@@ -1,10 +1,8 @@
-import dayjs from 'dayjs'
 import type { LegacyColumnDef, LegacyRow } from '@tanstack/react-table/legacy'
 import type { SortingState } from '@tanstack/table-core'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { Colaborador, Vigencia } from '@/tipos/colaboradores/modelo_colaboradores'
-
-const FORMATO_FECHA = catalogoColaboradores.panel_filtros_avanzados.formato_fecha
+import { fechaDeTexto, inicioDeVigencia } from './logica_colaboradores'
 
 export const TAMANO_PAGINA_COLABORADORES = 3
 
@@ -17,8 +15,7 @@ export const ESTADO_POR_ETIQUETA_PESTANA: Record<string, Colaborador['estado'] |
 }
 
 function fechaOrdenable(vigencia: Vigencia): number {
-  const texto = vigencia.tipo === 'rango' ? vigencia.desde : vigencia.fecha
-  return dayjs(texto, FORMATO_FECHA).valueOf()
+  return fechaDeTexto(inicioDeVigencia(vigencia))
 }
 
 export const COLUMNAS_TABLA_COLABORADORES: LegacyColumnDef<Colaborador>[] = [

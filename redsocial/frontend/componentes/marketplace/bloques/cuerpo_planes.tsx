@@ -33,7 +33,6 @@ export function CuerpoPlanes({
     estiloDestacado,
     detalles: configuracion.detalles,
     etiqueta: textos.lista,
-    ancho: tipo.ancho,
     paquetes: configuracion.paquetes,
     alVerPaquetes: estado.abrirPaquetes,
     alSeleccionar: estado.seleccionarPlan,
@@ -41,7 +40,7 @@ export function CuerpoPlanes({
   }
 
   return (
-    <div className="grid min-h-0 flex-1 content-start justify-items-stretch gap-4 overflow-y-auto p-5 pb-20 max-600:p-4 max-600:pb-20">
+    <div className="grid min-h-0 flex-1 auto-rows-max content-start justify-items-stretch gap-4 overflow-y-auto p-5 pb-20 max-600:p-4 max-600:pb-20">
       <CabeceraPlanes configuracion={configuracion} claseModulo={claseModulo} estilo={estilo} />
       <div className="grid justify-items-center gap-3">
         {configuracion.tipos.length > 1 && <TabsTipoPlanes tipos={configuracion.tipos} activo={tipo.id} alCambiar={estado.cambiarTipo} />}
@@ -54,7 +53,7 @@ export function CuerpoPlanes({
         </Boton>
       </div>
       {plan && (
-        <Boton type="button" variant="primario" size="md" className="w-full" onClick={estado.confirmar}>
+        <Boton type="button" variant="primario" size="md" className="justify-self-end max-600:w-full" onClick={estado.confirmar}>
           {[textos.continuar, plan.nombre].join(' ')} <Icono name="flecha-derecha" className="h-3.5 w-3.5" />
         </Boton>
       )}

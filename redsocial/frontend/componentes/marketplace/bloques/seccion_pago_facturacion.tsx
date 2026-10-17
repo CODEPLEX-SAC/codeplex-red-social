@@ -2,6 +2,7 @@ import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compart
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Casilla } from '../../compartido/interfaz/casilla'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { Icono } from '../../compartido/icono'
 import { Selector } from '../../compartido/interfaz/selector'
@@ -33,11 +34,16 @@ export function SeccionPagoFacturacion({ estado, paises, cantidadGuardados }: { 
   const datos = estado.facturacion
   const cambiar = estado.cambiarFacturacion
   const guardado = estado.perfilGuardado
-  const campoCorreo = <CampoTexto anchoCompleto etiqueta={campos.correo} marcador={campos.correo_ph} tipo="email" valor={datos.correo} alCambiar={(valor) => cambiar('correo', valor)} />
+  const campoCorreo = (
+    <CampoEtiquetado etiqueta={campos.correo}>
+      <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.correo }} marcador={campos.correo_ph} tipo="email" valor={datos.correo} alCambiar={(valor) => cambiar('correo', valor)} />
+    </CampoEtiquetado>
+  )
+  const etiquetaCelular = campos.celular.replace(':prefijo', estado.prefijo)
   return (
     <section className={textos.clases.tarjeta}>
       <EncabezadoPasoPago numero={2} titulo={textos.paso2.titulo} detalle={textos.paso2.detalle} />
-      <div className="grid gap-3">
+      <div className="grid gap-4">
         {guardado ? (
           <>
             <PerfilElegido perfil={guardado} alCambiar={estado.nuevoPerfil} />
@@ -46,15 +52,25 @@ export function SeccionPagoFacturacion({ estado, paises, cantidadGuardados }: { 
           </>
         ) : (
           <>
-            <CampoTexto anchoCompleto etiqueta={campos.documento} marcador={campos.documento_ph} valor={datos.documento} alCambiar={(valor) => cambiar('documento', valor.replace(/\D/g, VACIO).slice(0, 11))} />
-            <CampoTexto anchoCompleto etiqueta={campos.razon} marcador={campos.razon_ph} valor={datos.razon} alCambiar={(valor) => cambiar('razon', valor)} />
-            <Selector label={campos.pais} value={datos.pais} onChange={(evento) => cambiar('pais', String(evento.target.value))}>
-              {paises.map((p) => <option key={p.id} value={p.id}>{p.nombre}</option>)}
-            </Selector>
-            <CampoTexto anchoCompleto etiqueta={campos.direccion} marcador={campos.direccion_ph} valor={datos.direccion} alCambiar={(valor) => cambiar('direccion', valor)} />
+            <CampoEtiquetado etiqueta={campos.documento}>
+              <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.documento }} marcador={campos.documento_ph} valor={datos.documento} alCambiar={(valor) => cambiar('documento', valor.replace(/\D/g, VACIO).slice(0, 11))} />
+            </CampoEtiquetado>
+            <CampoEtiquetado etiqueta={campos.razon}>
+              <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.razon }} marcador={campos.razon_ph} valor={datos.razon} alCambiar={(valor) => cambiar('razon', valor)} />
+            </CampoEtiquetado>
+            <CampoEtiquetado etiqueta={campos.pais}>
+              <Selector variant="colaboradores" aria-label={campos.pais} value={datos.pais} onChange={(evento) => cambiar('pais', String(evento.target.value))}>
+                {paises.map((p) => <option key={p.id} value={p.id}>{p.nombre}</option>)}
+              </Selector>
+            </CampoEtiquetado>
+            <CampoEtiquetado etiqueta={campos.direccion}>
+              <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.direccion }} marcador={campos.direccion_ph} valor={datos.direccion} alCambiar={(valor) => cambiar('direccion', valor)} />
+            </CampoEtiquetado>
             <div className={textos.clases.dos_columnas}>
               {campoCorreo}
-              <CampoTexto anchoCompleto etiqueta={campos.celular.replace(':prefijo', estado.prefijo)} marcador={campos.celular_ph} valor={datos.celular} alCambiar={(valor) => cambiar('celular', valor.replace(/\D/g, VACIO).slice(0, 9))} />
+              <CampoEtiquetado etiqueta={etiquetaCelular}>
+                <CampoTexto anchoCompleto inputProps={{ 'aria-label': etiquetaCelular }} marcador={campos.celular_ph} valor={datos.celular} alCambiar={(valor) => cambiar('celular', valor.replace(/\D/g, VACIO).slice(0, 9))} />
+              </CampoEtiquetado>
             </div>
             {cantidadGuardados > 0 && <Boton type="button" variant="enlace" size="enlace_accion" onClick={() => estado.abrirVentana('perfiles')}>{guardados.usar_perfil}</Boton>}
           </>

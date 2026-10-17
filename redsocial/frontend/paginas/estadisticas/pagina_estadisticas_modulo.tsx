@@ -1,4 +1,4 @@
-import { Selector, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, Boton, ContactosPanel, BloqueAnuncio } from '../../componentes/compartido'
+import { Selector, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, Boton, Icono, ContactosPanel, BloqueAnuncio } from '../../componentes/compartido'
 import { CONTACTOS_SUGERIDOS } from '../../rutas/compartido/rutas_compartido'
 import { METRICAS, BARRAS, RESUMEN, DETALLE } from '../../rutas/estadisticas/rutas_estadisticas'
 import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadisticas.json'
@@ -18,7 +18,7 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
                 <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{titulo}</h1>
               </div>
               <div className="flex items-center gap-2.5 max-560:hidden">
-                <Boton variant="primario">{catalogoEstadisticas.botones.crear}</Boton>
+                <Boton variant="primario" size="md"><Icono name="mas" className="h-4 w-4" /> {catalogoEstadisticas.botones.crear}</Boton>
               </div>
             </div>
 

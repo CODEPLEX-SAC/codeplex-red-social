@@ -60,8 +60,8 @@ export function SeccionPendientes({
             <span className={'text-estado ' + (p.expiraColor === 'verde' ? 'text-positivo-kpi' : 'text-naranja-categoria-texto')}>{p.expiraTexto}</span>
           </div>
           <div className="flex flex-none items-center gap-2 max-900:w-full max-900:justify-between">
-            <Boton type="button" variant="primario" size="mini" className="max-900:flex-1">{catalogoGrupos.botones.aceptar}</Boton>
-            <Boton type="button" variant="peligro_contorno" size="mini" className="max-900:flex-1">{catalogoGrupos.botones.rechazar}</Boton>
+            <Boton type="button" variant="primario" size="default" className="max-900:flex-1">{catalogoGrupos.botones.aceptar}</Boton>
+            <Boton type="button" variant="peligro_contorno" size="default" className="max-900:flex-1">{catalogoGrupos.botones.rechazar}</Boton>
             <BotonIcono icono="puntos" type="button" aria-label={catalogoGrupos.botones.opciones} variant="contorno" size="default" className="flex-none" />
           </div>
         </article>

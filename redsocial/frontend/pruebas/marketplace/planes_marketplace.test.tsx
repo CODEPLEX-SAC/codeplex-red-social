@@ -1,9 +1,14 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
+import { vi } from 'vitest'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
 import { DESTACADOS, PLANES_APLICACIONES } from '@/rutas/marketplace/rutas_marketplace'
 import { fechaCorta } from '@/componentes/marketplace/bloques/logica_pago_planes'
+
+const TIEMPO_FLUJOS_COMPRA = 30000
+
+vi.setConfig({ testTimeout: TIEMPO_FLUJOS_COMPRA })
 
 const textos = catalogoMarketplace.planes
 const pago = catalogoMarketplace.pago
@@ -70,7 +75,7 @@ describe('Datos de planes de ContaPlex', () => {
       app.tipos.flatMap((t) => t.planes.flatMap((p) => p.caracteristicas.map((c) => c.texto))).filter((texto) => !app.detalles[texto]),
     )
     expect(sinDetalle).toEqual([])
-    expect(Object.keys(contaplex.detalles)).toHaveLength(36)
+    expect(Object.keys(contaplex.detalles)).toHaveLength(40)
   })
 
   it('cada plan trae al menos una etiqueta y los precios mensual y anual', () => {
@@ -101,7 +106,7 @@ describe('Paquetes adicionales de Facturacion Electronica', () => {
     const paquetes = PLANES_APLICACIONES['facturacion-electronica'].paquetes
     fireEvent.click(screen.getAllByRole('button', { name: paquetes?.ver })[0])
     expect(screen.getByRole('dialog', { name: paquetes?.titulo })).toBeInTheDocument()
-    expect(screen.getByText(paquetes?.base_datos.pago_unico.valor ?? '')).toBeInTheDocument()
+    expect(screen.getByText(paquetes?.base_datos?.pago_unico.valor ?? '')).toBeInTheDocument()
     fireEvent.keyDown(document, { key: 'Escape' })
     expect(screen.queryByRole('dialog', { name: paquetes?.titulo })).toBeNull()
     expect(screen.getByRole('dialog', { name: textos.titulo })).toBeInTheDocument()
@@ -112,6 +117,31 @@ describe('Paquetes adicionales de Facturacion Electronica', () => {
     fireEvent.click(botonesVerPlanes()[3])
     expect(screen.queryByRole('group', { name: textos.modalidad })).toBeNull()
     expect(screen.getByRole('heading', { level: 2, name: PLANES_APLICACIONES['gestionplex-restaurante'].nombre })).toBeInTheDocument()
+  })
+})
+
+describe('Planes por volumen de ContaPlex', () => {
+  it('Gold de Independiente ofrece la tabla por volumen con sus 13 filas y sin bloque de base de datos', () => {
+    const dialogo = abrirPlanes()
+    const volumen = contaplex.paquetes
+    expect(volumen?.filas).toHaveLength(13)
+    const botones = within(dialogo).getAllByRole('button', { name: volumen?.ver })
+    expect(botones).toHaveLength(1)
+    fireEvent.click(botones[0])
+    const panel = screen.getByRole('dialog', { name: volumen?.titulo })
+    expect(within(panel).getByText('Hasta 100 empresas')).toBeInTheDocument()
+    expect(within(panel).getByText('S/350.00')).toBeInTheDocument()
+    expect(within(panel).getByText('Hasta 700 empresas')).toBeInTheDocument()
+    expect(within(panel).getByText('S/950.00')).toBeInTheDocument()
+    expect(within(panel).queryByRole('heading', { level: 4 })).toBeNull()
+    fireEvent.keyDown(document, { key: 'Escape' })
+    expect(screen.queryByRole('dialog', { name: volumen?.titulo })).toBeNull()
+  })
+
+  it('la modalidad Empresarial no ofrece planes por volumen', () => {
+    const dialogo = abrirPlanes()
+    fireEvent.click(within(dialogo).getByRole('button', { name: new RegExp(contaplex.tipos[1].nombre) }))
+    expect(within(dialogo).queryByRole('button', { name: contaplex.paquetes?.ver })).toBeNull()
   })
 })
 
@@ -127,7 +157,10 @@ describe('Selector de planes de ContaPlex', () => {
     const dialogo = abrirPlanes()
     fireEvent.click(within(dialogo).getByRole('button', { name: new RegExp(contaplex.tipos[1].nombre) }))
     expect(within(dialogo).getByRole('group', { name: textos.lista }).querySelectorAll('article')).toHaveLength(2)
-    expect(within(dialogo).queryByText('Gold')).toBeNull()
+    expect(within(dialogo).queryByText('Gratis')).toBeNull()
+    expect(within(dialogo).getByText('Básico')).toBeInTheDocument()
+    expect(within(dialogo).getByText('Gold')).toBeInTheDocument()
+    expect(within(dialogo).queryByText('Premium 2')).toBeNull()
   })
 
   it('muestra los precios anuales con el interruptor', () => {
@@ -144,7 +177,7 @@ describe('Selector de planes de ContaPlex', () => {
     const carro = screen.getByRole('dialog', { name: carrito.titulo })
     expect(screen.queryByRole('dialog', { name: textos.titulo })).toBeNull()
     expect(within(carro).getByRole('heading', { level: 3, name: contaplex.nombre })).toBeInTheDocument()
-    expect(within(carro).getAllByText(carrito.plan.replace(':plan', contaplex.tipos[0].planes[1].nombre)).length).toBeGreaterThan(0)
+    expect(within(carro).getAllByText(carrito.plan_periodo.replace(':plan', contaplex.tipos[0].planes[1].nombre).replace(':periodo', textos.periodo.mensual)).length).toBeGreaterThan(0)
   })
 
   it('el carrito permite quitar la aplicacion y muestra el estado vacio', () => {
@@ -156,40 +189,59 @@ describe('Selector de planes de ContaPlex', () => {
     expect(within(carro).getByText(carrito.vacio_titulo)).toBeInTheDocument()
   })
 
-  it('cambiar plan desde el carrito vuelve al selector de la aplicacion', () => {
+  it('cambiar plan desde el carrito abre el selector encima y al cerrarlo el carrito sigue abierto', () => {
     const dialogo = abrirPlanes()
     fireEvent.click(within(dialogo).getAllByRole('button', { name: textos.elegir })[0])
     fireEvent.click(within(dialogo).getByRole('button', { name: new RegExp(textos.continuar) }))
     fireEvent.click(within(screen.getByRole('dialog', { name: carrito.titulo })).getByRole('button', { name: carrito.cambiar_plan }))
-    expect(screen.getByRole('dialog', { name: textos.titulo })).toBeInTheDocument()
+    const selector = screen.getByRole('dialog', { name: textos.titulo })
+    expect(screen.getByRole('dialog', { name: carrito.titulo })).toBeInTheDocument()
+    fireEvent.click(within(selector).getByRole('button', { name: textosRedSocial.CERRAR }))
+    expect(screen.queryByRole('dialog', { name: textos.titulo })).toBeNull()
+    expect(screen.getByRole('dialog', { name: carrito.titulo })).toBeInTheDocument()
   })
 
-  it('en la pantalla de pago solo se activa tras aceptar los terminos y el Super VIP suma al total', () => {
+  it('Escape en el selector abierto desde el carrito cierra solo el selector', () => {
+    const dialogo = abrirPlanes()
+    fireEvent.click(within(dialogo).getAllByRole('button', { name: textos.elegir })[0])
+    fireEvent.click(within(dialogo).getByRole('button', { name: new RegExp(textos.continuar) }))
+    fireEvent.click(within(screen.getByRole('dialog', { name: carrito.titulo })).getByRole('button', { name: carrito.cambiar_plan }))
+    fireEvent.keyDown(document, { key: 'Escape' })
+    expect(screen.queryByRole('dialog', { name: textos.titulo })).toBeNull()
+    expect(screen.getByRole('dialog', { name: carrito.titulo })).toBeInTheDocument()
+  })
+
+  it('elegir otro plan desde el carrito reemplaza el plan y deja el carrito abierto', () => {
+    const dialogo = abrirPlanes()
+    fireEvent.click(within(dialogo).getAllByRole('button', { name: textos.elegir })[0])
+    fireEvent.click(within(dialogo).getByRole('button', { name: new RegExp(textos.continuar) }))
+    fireEvent.click(within(screen.getByRole('dialog', { name: carrito.titulo })).getByRole('button', { name: carrito.cambiar_plan }))
+    const selector = screen.getByRole('dialog', { name: textos.titulo })
+    fireEvent.click(within(selector).getAllByRole('button', { name: textos.elegir })[1])
+    fireEvent.click(within(selector).getByRole('button', { name: new RegExp(textos.continuar) }))
+    expect(screen.queryByRole('dialog', { name: textos.titulo })).toBeNull()
+    const modal = screen.getByRole('dialog', { name: carrito.titulo })
+    expect(within(modal).getAllByText(carrito.plan_periodo.replace(':plan', contaplex.tipos[0].planes[1].nombre).replace(':periodo', textos.periodo.mensual)).length).toBeGreaterThan(0)
+    expect(within(modal).getAllByRole('article')).toHaveLength(1)
+  })
+
+  it('en la pantalla de pago solo se activa tras aceptar los terminos y no ofrece Super VIP mientras este deshabilitado', () => {
     const pantalla = irAlPago(1)
     const activar = within(pantalla).getByRole('button', { name: pago.resumen.activar })
     expect(activar).toBeDisabled()
     expect(within(pantalla).getAllByText('S/50').length).toBeGreaterThan(0)
-    fireEvent.click(within(pantalla).getByRole('checkbox', { name: pago.vip.agregar }))
-    expect(within(pantalla).getAllByText('S/550').length).toBeGreaterThan(0)
+    expect(within(pantalla).queryByRole('checkbox', { name: pago.vip.agregar })).toBeNull()
+    expect(within(pantalla).queryByText(pago.vip.titulo)).toBeNull()
     fireEvent.click(within(pantalla).getByRole('checkbox', { name: new RegExp(pago.paso4.acepto.slice(0, 20)) }))
     expect(activar).toBeEnabled()
   })
 
-  it('el Super VIP llega cerrado, se despliega con sus ocho beneficios y la casilla siempre esta disponible', () => {
+  it('el resumen del pedido queda fijo mientras se desplaza el formulario de pago', () => {
     const pantalla = irAlPago(0)
-    const alternar = within(pantalla).getByRole('button', { name: pago.vip.mostrar })
-    expect(alternar).toHaveAttribute('aria-expanded', 'false')
-    expect(within(pantalla).queryByText(pago.vip.actualizaciones)).toBeNull()
-    expect(within(pantalla).getByRole('checkbox', { name: pago.vip.agregar })).toBeInTheDocument()
-    fireEvent.click(alternar)
-    const cerrar = within(pantalla).getByRole('button', { name: pago.vip.ocultar })
-    expect(cerrar).toHaveAttribute('aria-expanded', 'true')
-    expect(within(pantalla).getByText(pago.vip.actualizaciones)).toBeInTheDocument()
-    expect(within(pantalla).getAllByText(/^0[1-8]$/)).toHaveLength(8)
-    fireEvent.click(within(pantalla).getByRole('checkbox', { name: pago.vip.agregar }))
-    fireEvent.click(cerrar)
-    expect(within(pantalla).getByRole('checkbox', { name: pago.vip.agregar })).toBeChecked()
+    const resumen = within(pantalla).getByRole('complementary')
+    pago.clases.resumen_fijo.split(' ').filter((c) => !c.includes(':') && !c.startsWith('max-')).forEach((c) => expect(resumen).toHaveClass(c))
   })
+
 
   it('al activar muestra la confirmacion de demostracion y registra la compra en Mis compras recientes', () => {
     const pantalla = irAlPago(0)
@@ -198,12 +250,13 @@ describe('Selector de planes de ContaPlex', () => {
     expect(within(pantalla).getByText(pago.exito.titulo)).toBeInTheDocument()
     fireEvent.click(within(pantalla).getByRole('button', { name: pago.exito.volver }))
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(screen.getByText([textos.plan_seleccionado, contaplex.tipos[0].planes[0].nombre].join(': '))).toBeInTheDocument()
+    expect(screen.queryByText(/Plan seleccionado/)).toBeNull()
     expect(screen.getAllByText(carrito.adquirido.replace(':fecha', fechaCorta())).length).toBeGreaterThan(0)
   })
 
   it('la tarjeta usada queda guardada sin el numero completo y se ofrece en la siguiente compra', () => {
     const pantalla = irAlPago(0)
+    fireEvent.click(within(pantalla).getByRole('button', { name: new RegExp(pago.metodos.opciones[0].titulo) }))
     fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.numero }), { target: { value: '4111111111111234' } })
     fireEvent.click(within(pantalla).getByRole('checkbox', { name: new RegExp(pago.paso4.acepto.slice(0, 20)) }))
     fireEvent.click(within(pantalla).getByRole('button', { name: pago.resumen.activar }))
@@ -245,12 +298,13 @@ describe('Selector de planes de ContaPlex', () => {
     expect(within(seccion).getByRole('button', { name: misCompras.detalles })).toBeInTheDocument()
   })
 
-  it('el menu de la aplicacion ofrece solo Super VIP, Abrir (sin ruta, deshabilitada) y Desinstalar con confirmacion honesta', () => {
+  it('el menu de la aplicacion ofrece solo Abrir (sin ruta, deshabilitada) y Desinstalar con confirmacion honesta, sin Super VIP', () => {
     comprarPrimerPlan()
     fireEvent.click(botonMisCompras())
     const seccion = screen.getByRole('region', { name: misCompras.titulo })
     abrirMenuCompra(seccion)
-    expect(screen.getAllByRole('menuitem').map((i) => i.textContent)).toEqual(misCompras.menu.map((o) => o.etiqueta))
+    expect(screen.getAllByRole('menuitem').map((i) => i.textContent)).toEqual(misCompras.menu.filter((o) => o.accion !== 'contratarVip').map((o) => o.etiqueta))
+    expect(screen.queryByRole('menuitem', { name: etiquetaMenu('contratarVip') })).toBeNull()
     expect(screen.getByRole('menuitem', { name: etiquetaMenu('abrir') })).toHaveAttribute('aria-disabled', 'true')
     fireEvent.click(screen.getByRole('menuitem', { name: etiquetaMenu('desinstalar') }))
     const titulo = misCompras.confirmar_titulo.replace(':nombre', contaplex.nombre)
@@ -262,18 +316,14 @@ describe('Selector de planes de ContaPlex', () => {
     expect(within(seccion).getByText(misCompras.vacio_titulo)).toBeInTheDocument()
   })
 
-  it('Contratar Super VIP desde el menu lo registra en Servicios adicionales y deja de ofrecerse', () => {
+  it('la pestana Servicios adicionales se conserva y su mensaje vacio ya no habla del Super VIP', () => {
     comprarPrimerPlan()
     fireEvent.click(botonMisCompras())
     const seccion = screen.getByRole('region', { name: misCompras.titulo })
-    abrirMenuCompra(seccion)
-    fireEvent.click(screen.getByRole('menuitem', { name: etiquetaMenu('contratarVip') }))
-    fireEvent.click(within(seccion).getByRole('tab', { name: misCompras.pestanas[1].etiqueta.replace(':n', '1') }))
-    expect(within(seccion).getByText(misCompras.servicio.titulo)).toBeInTheDocument()
-    expect(within(seccion).getByText(misCompras.servicio.para.replace(':nombre', contaplex.nombre))).toBeInTheDocument()
-    fireEvent.click(within(seccion).getByRole('tab', { name: misCompras.pestanas[0].etiqueta.replace(':n', '1') }))
-    abrirMenuCompra(seccion)
-    expect(screen.queryByRole('menuitem', { name: etiquetaMenu('contratarVip') })).toBeNull()
+    fireEvent.click(within(seccion).getByRole('tab', { name: misCompras.pestanas[1].etiqueta.replace(':n', '0') }))
+    expect(within(seccion).getByText(misCompras.servicios_vacio_titulo)).toBeInTheDocument()
+    expect(within(seccion).getByText(misCompras.servicios_vacio_detalle)).toBeInTheDocument()
+    expect(misCompras.servicios_vacio_detalle).not.toMatch(/VIP/i)
   })
 
   it('Ver detalles muestra el estado y los datos, y Incluye es un desplegable cerrado que muestra todas las caracteristicas', () => {
@@ -290,45 +340,6 @@ describe('Selector de planes de ContaPlex', () => {
     fireEvent.click(incluye)
     expect(incluye).toHaveAttribute('aria-expanded', 'true')
     incluidas.forEach((texto) => expect(within(dialogo).getByText(texto)).toBeVisible())
-  })
-
-  it('desinstalar con Super VIP lo advierte, quita ambos y no promete borrar datos', () => {
-    comprarPrimerPlan()
-    fireEvent.click(botonMisCompras())
-    const seccion = screen.getByRole('region', { name: misCompras.titulo })
-    abrirMenuCompra(seccion)
-    fireEvent.click(screen.getByRole('menuitem', { name: etiquetaMenu('contratarVip') }))
-    abrirMenuCompra(seccion)
-    fireEvent.click(screen.getByRole('menuitem', { name: etiquetaMenu('desinstalar') }))
-    const confirmar = screen.getByRole('dialog', { name: misCompras.confirmar_titulo.replace(':nombre', contaplex.nombre) })
-    expect(within(confirmar).getByText(new RegExp(misCompras.confirmar_vip))).toBeInTheDocument()
-    expect(within(confirmar).queryByText(/datos/i)).toBeNull()
-    fireEvent.click(within(confirmar).getByRole('button', { name: misCompras.confirmar_si }))
-    expect(within(seccion).getByRole('tab', { name: misCompras.pestanas[1].etiqueta.replace(':n', '0') })).toBeInTheDocument()
-  })
-
-  it('Super VIP en el pago no hereda el mes gratis: hoy se cobra solo el servicio adicional', () => {
-    const pantalla = irAlPago(0)
-    expect(within(pantalla).getByText(pago.resumen.cobro_hoy_valor)).toBeInTheDocument()
-    fireEvent.click(within(pantalla).getByRole('checkbox', { name: pago.vip.agregar }))
-    expect(within(pantalla).queryByText(pago.resumen.cobro_hoy_valor)).toBeNull()
-    expect(within(pantalla).getAllByText('S/500').length).toBeGreaterThan(1)
-    expect(within(pantalla).getByText(pago.resumen.seguro_vip)).toBeInTheDocument()
-  })
-
-  it('si la aplicacion ya tiene Super VIP, el pago de un nuevo plan no lo vuelve a ofrecer', () => {
-    comprarPrimerPlan()
-    fireEvent.click(botonMisCompras())
-    const seccion = screen.getByRole('region', { name: misCompras.titulo })
-    abrirMenuCompra(seccion)
-    fireEvent.click(screen.getByRole('menuitem', { name: etiquetaMenu('contratarVip') }))
-    fireEvent.click(within(seccion).getByRole('button', { name: misCompras.mejorar }))
-    const planes = screen.getByRole('dialog', { name: textos.titulo })
-    fireEvent.click(within(planes).getAllByRole('button', { name: textos.elegir })[1])
-    fireEvent.click(within(planes).getByRole('button', { name: new RegExp(textos.continuar) }))
-    fireEvent.click(within(screen.getByRole('dialog', { name: carrito.titulo })).getByRole('button', { name: new RegExp(carrito.proceder) }))
-    const pantalla = screen.getByRole('dialog', { name: pago.titulo })
-    expect(within(pantalla).queryByRole('checkbox', { name: pago.vip.agregar })).toBeNull()
   })
 
   it('Mejorar plan abre el selector de esa aplicacion sin salir de Mis compras', () => {

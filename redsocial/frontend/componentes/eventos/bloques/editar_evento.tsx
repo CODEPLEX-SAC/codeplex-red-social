@@ -43,12 +43,12 @@ export function EditarEvento({ evento, estiloInsignia, etiquetaInsignia, onVolve
           />
 
           <div className="mt-5 flex items-center justify-between gap-3 max-600:flex-col-reverse max-600:items-stretch">
-            <Boton type="button" variant="secundario" size="md" onClick={onVolver} className="border-peligro-texto text-peligro-texto">
+            <Boton type="button" variant="peligro_contorno" size="md" onClick={onVolver} className="border-peligro-texto!">
               <Icono name="eliminar" className="h-4 w-4" /> {textosEditar.eliminar_borrador}
             </Boton>
             <div className="flex items-center gap-3 max-600:flex-col-reverse max-600:items-stretch">
               <Boton type="button" variant="secundario" size="md" onClick={onVolver}>{textos.cancelar}</Boton>
-              <Boton type="button" variant="secundario" size="md" onClick={onVolver} className="border-primario text-primario">{textosEditar.guardar_cambios}</Boton>
+              <Boton type="button" variant="contorno" size="md" onClick={onVolver}>{textosEditar.guardar_cambios}</Boton>
               <Boton type="button" variant="primario" size="md" onClick={onVolver}>{textos.publicar}</Boton>
             </div>
           </div>

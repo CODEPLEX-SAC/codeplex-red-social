@@ -29,7 +29,7 @@ export function SeccionDetalleColaborador({
       <BloqueIdentidadColaborador colaborador={colaborador} estado={estado} alEditar={alEditar} />
       <BloqueRolYPermisos colaborador={colaborador} />
       <BloqueInformacionGeneral colaborador={colaborador} />
-      <BloqueAplicacionesAsignadas aplicaciones={colaborador.aplicaciones} masApps={colaborador.masApps} />
+      <BloqueAplicacionesAsignadas aplicaciones={colaborador.aplicaciones} />
       {colaborador.historial && <BloqueHistorialColaborador historial={colaborador.historial} />}
     </aside>
   )

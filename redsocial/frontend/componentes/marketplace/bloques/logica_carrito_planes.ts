@@ -1,9 +1,32 @@
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
-import { monto, precioNumerico } from './logica_pago_planes'
+import { monto, precioNumerico, SUPER_VIP_HABILITADO } from './logica_pago_planes'
 import type { ElementoMenu } from '@/tipos/compartido/contrato_menu'
-import type { AccionesCompra, CompraRealizada, ItemCarrito, ManejadoresCompra, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
+import type { AccesoCarrito } from '@/tipos/compartido/contrato_acceso_carrito'
+import type { AccionesCarrito, AccionesCompra, CompraRealizada, ItemCarrito, ManejadoresCompra, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
+import type { CarritoMarketplace } from '@/tipos/marketplace/contrato_proveedor_carrito'
 import type { ConfiguracionPago } from '@/tipos/marketplace/modelo_pago'
 import type { ConfiguracionPlanes, SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
+
+export const RUTA_MARKETPLACE = catalogoCompartido.navegacion.navPrincipal.find((item) => item.clave === catalogoCompartido.barra_lateral.destino_modulos)?.ruta ?? ''
+
+export function claseModalPlanes(configuracion: ConfiguracionPlanes) {
+  const { modal, modal_por_grupo: anchos } = catalogoMarketplace.planes.clases
+  return `${modal} ${anchos[configuracion.modal]}`
+}
+
+export function accesoDelCarrito(carrito: CarritoMarketplace, etiqueta: string): AccesoCarrito {
+  return { cantidad: carrito.items.length, etiqueta, abrir: carrito.abrirCarrito }
+}
+
+export function accionesDelCarrito(carrito: CarritoMarketplace): AccionesCarrito {
+  return { cerrar: carrito.configuracionPlanes ? () => undefined : carrito.cerrarCarrito, quitar: carrito.quitar, cambiarPlan: carrito.cambiarPlan, proceder: carrito.proceder, seguirComprando: carrito.seguirComprando }
+}
+
+export function reemplazarOAgregar(items: ItemCarrito[], item: ItemCarrito) {
+  if (!items.some((i) => i.aplicacion === item.aplicacion)) return [...items, item]
+  return items.map((i) => (i.aplicacion === item.aplicacion ? item : i))
+}
 
 export function crearItem(configuracion: ConfiguracionPlanes, seleccion: SeleccionPlan): ItemCarrito | null {
   const tipo = configuracion.tipos.find((t) => t.id === seleccion.tipo)
@@ -78,7 +101,7 @@ export function accionesDeCompra(aplicacion: string, manejadores: ManejadoresCom
 }
 
 export function elementosMenuCompra(compra: CompraRealizada, acciones: AccionesCompra, vipContratado: boolean): ElementoMenu[] {
-  const visibles = catalogoMarketplace.mis_compras.menu.filter((opcion) => !(vipContratado && 'solo_sin_vip' in opcion))
+  const visibles = catalogoMarketplace.mis_compras.menu.filter((opcion) => !('solo_sin_vip' in opcion && (vipContratado || !SUPER_VIP_HABILITADO)))
   return visibles.map((opcion, indice) => ({
     etiqueta: opcion.etiqueta,
     alHacerClick: acciones[opcion.accion as keyof AccionesCompra],
@@ -87,8 +110,4 @@ export function elementosMenuCompra(compra: CompraRealizada, acciones: AccionesC
     peligro: 'peligro' in opcion,
     divisor: indice < visibles.length - 1 && visibles[indice + 1].grupo !== opcion.grupo,
   }))
-}
-
-export function planesElegidos(compras: CompraRealizada[], items: ItemCarrito[]) {
-  return Object.fromEntries([...compras.map((c) => [c.aplicacion, c.planNombre]), ...items.map((i) => [i.aplicacion, i.planNombre])])
 }

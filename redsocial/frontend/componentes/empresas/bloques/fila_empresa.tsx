@@ -7,7 +7,7 @@ import { Casilla } from '../../compartido/interfaz/casilla'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { Menu } from '../../compartido/interfaz/menu'
 import { EstadoEmpresa } from './estado_empresa'
-import { opcionesDeFila } from './logica_listado_empresas'
+import { CLASE_FILA_EMPRESA, opcionesDeFila } from './logica_listado_empresas'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { FilaEmpresaProps } from '@/tipos/empresas/contrato_listado_empresas'
 
@@ -56,7 +56,7 @@ export function FilaEmpresa({ empresa, seleccionada, alAlternar, alElegirAccion 
   }
 
   return (
-    <tr className={catalogoEmpresas.clases.fila}>
+    <tr className={CLASE_FILA_EMPRESA}>
       <td className={`${clases.celda} w-10 text-center`}>
         <Casilla seleccionado={seleccionada} alCambiar={alternar} inputProps={{ 'aria-label': PLANTILLA_SELECCIONAR.replace(':nombre', empresa.nombre) }} />
       </td>

@@ -25,7 +25,6 @@ export interface Colaborador {
   rolClase: string
   descripcionRol: string
   aplicaciones: Aplicacion[]
-  masApps?: number
   estado: 'activo' | 'invitado' | 'inactivo' | 'baja'
   vigencia: Vigencia
   acciones: 'menu' | 'reenviar'

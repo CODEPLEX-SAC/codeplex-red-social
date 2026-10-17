@@ -2,6 +2,7 @@ import { contraste, valorDeToken as valorDe } from './utilidades_color'
 import { leerCssGlobal } from './leer_css'
 import { leerFuentesFrontend } from './leer_fuentes'
 import { BOTONES_NATIVOS_PERMITIDOS, COLORES_NOMBRADOS_PERMITIDOS, ICONOS_DECORATIVOS_PERMITIDOS } from './registro_componentes_permitidos'
+import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
@@ -147,8 +148,10 @@ describe('Prevencion final: estado deshabilitado global', () => {
   const GLOBAL = 'disabled:cursor-not-allowed disabled:opacity-40'
 
   it('Boton y BotonIcono definen una sola vez el estado deshabilitado', () => {
-    expect(textoDe('/componentes/compartido/interfaz/boton.tsx')).toContain(GLOBAL)
-    expect(textoDe('/componentes/compartido/interfaz/boton_icono.tsx')).toContain(GLOBAL)
+    expect(catalogoCompartido.boton_base).toContain(GLOBAL)
+    expect(catalogoCompartido.boton_icono_base).toContain(GLOBAL)
+    expect(textoDe('/componentes/compartido/interfaz/boton.tsx')).toContain('catalogoCompartido.boton_base')
+    expect(textoDe('/componentes/compartido/interfaz/boton_icono.tsx')).toContain('catalogoCompartido.boton_icono_base')
   })
 
   it('ningun componente repite el estado deshabilitado global en una clase local', () => {

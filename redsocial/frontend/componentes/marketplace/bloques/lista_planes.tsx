@@ -5,17 +5,17 @@ import type { PropiedadesListaPlanes as PropiedadesLista } from '@/tipos/marketp
 
 const clases = catalogoMarketplace.planes.clases
 
-function Tarjetas({ planes, periodo, planId, estilo, estiloDestacado, detalles, paquetes, alVerPaquetes, className, alSeleccionar, alAbrirDetalle }: Omit<PropiedadesLista, 'etiqueta' | 'ancho'> & { className: string }) {
+function Tarjetas({ planes, periodo, planId, estilo, estiloDestacado, detalles, paquetes, alVerPaquetes, className, alSeleccionar, alAbrirDetalle }: Omit<PropiedadesLista, 'etiqueta'> & { className: string }) {
   const comunes = { periodo, estilo, estiloDestacado, detalles, paquetes, alVerPaquetes, className, alAbrirDetalle }
   return planes.map((p) => <TarjetaPlan key={p.id} plan={p} seleccionado={planId === p.id} alSeleccionar={() => alSeleccionar(p.id)} {...comunes} />)
 }
 
-export function FilaPlanes({ etiqueta, ancho, ...resto }: PropiedadesLista) {
+export function FilaPlanes({ etiqueta, ...resto }: PropiedadesLista) {
   const { pistaRef } = usarCarrusel()
   return (
     <div ref={pistaRef} role="group" aria-label={etiqueta} className={clases.fila}>
       <div className={clases.fila_interior}>
-        <Tarjetas {...resto} className={ancho === 'amplia' ? clases.tarjeta_fila_amplia : clases.tarjeta_fila} />
+        <Tarjetas {...resto} className={clases.tarjeta_fila} />
       </div>
     </div>
   )
@@ -24,7 +24,7 @@ export function FilaPlanes({ etiqueta, ancho, ...resto }: PropiedadesLista) {
 export function RejillaPlanes({ etiqueta, ...resto }: PropiedadesLista) {
   return (
     <div role="group" aria-label={etiqueta} className={clases.rejilla}>
-      <Tarjetas {...resto} className="" />
+      <Tarjetas {...resto} className={clases.tarjeta_fila} />
     </div>
   )
 }

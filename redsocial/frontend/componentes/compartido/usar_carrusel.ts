@@ -9,14 +9,18 @@ function conectarCarrusel(elemento: HTMLDivElement | null) {
   let inicioX = 0
   let scrollInicial = 0
 
+  function sinDesborde() {
+    return pista.scrollWidth <= pista.clientWidth
+  }
+
   function alUsarRueda(evento: WheelEvent) {
-    if (Math.abs(evento.deltaY) <= Math.abs(evento.deltaX)) return
+    if (sinDesborde() || Math.abs(evento.deltaY) <= Math.abs(evento.deltaX)) return
     evento.preventDefault()
     pista.scrollLeft += evento.deltaY
   }
 
   function alPresionar(evento: PointerEvent) {
-    if (evento.pointerType === 'touch') return
+    if (evento.pointerType === 'touch' || sinDesborde()) return
     arrastrando = true
     seMovio = false
     inicioX = evento.clientX

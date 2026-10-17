@@ -1,4 +1,5 @@
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
+import { clasesBoton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
@@ -74,7 +75,7 @@ export function PanelLateralGuardados({ colecciones, recomendados }: PanelLatera
         <p className="m-0 mb-3 text-cuerpo leading-texto text-white/80">{catalogoGuardados.banner_cta.descripcion}</p>
         <a
           href={catalogoGrupos.rutas.descubrir}
-          className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-1.75 text-boton text-primario no-underline hover:bg-fondo-hover-suave"
+          className={clasesBoton({ variant: 'secundario', size: 'default', className: 'border-transparent! text-primario!' })}
         >
           {catalogoGuardados.botones.explorar_grupos}
         </a>

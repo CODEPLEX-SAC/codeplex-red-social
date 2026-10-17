@@ -9,7 +9,7 @@ export function EncabezadoAmigos({ textoBoton }: { textoBoton: string }) {
     <div className="mb-5 flex flex-wrap items-start justify-between gap-x-5 gap-y-3">
       <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{catalogoAmigos.titulos.todos}</h1>
       <div className="flex flex-none items-center gap-2.5">
-        <Boton variant="primario">
+        <Boton variant="primario" size="md">
           <Icono name="mas" className="h-4.5 w-4.5" /> {textoBoton}
         </Boton>
         <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="sutil" size="default" className="relative" />

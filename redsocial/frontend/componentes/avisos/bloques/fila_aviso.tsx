@@ -52,10 +52,10 @@ export function FilaAviso({ aviso: n, claseIcono, seleccionable }: FilaAvisoProp
 
       {n.solicitud ? (
         <div className="flex flex-none items-center gap-2">
-          <Boton type="button" variant="primario" size="mini">
+          <Boton type="button" variant="primario" size="default">
             {catalogoAvisos.botones.confirmar}
           </Boton>
-          <Boton type="button" variant="secundario" size="mini">
+          <Boton type="button" variant="secundario" size="default">
             {catalogoAvisos.botones.eliminar}
           </Boton>
         </div>

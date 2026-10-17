@@ -23,7 +23,7 @@ export function ModalInvitarColaborador({ datos, alCerrar, alEnviar }: ModalInvi
           alEditarPaso={asistente.irAPaso}
         />
       </div>
-      <PieInvitarColaborador paso={asistente.paso} alCancelar={alCerrar} alAnterior={asistente.anterior} alSiguiente={asistente.siguiente} alEnviar={alEnviar} />
+      <PieInvitarColaborador paso={asistente.paso} alCancelar={alCerrar} alAnterior={asistente.anterior} alSiguiente={asistente.siguiente} alEnviar={() => alEnviar(asistente.colaborador)} />
     </Modal>
   )
 }

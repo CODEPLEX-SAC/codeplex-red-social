@@ -3,6 +3,7 @@ import type { MouseEvent } from 'react'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { Menu } from '../../compartido/interfaz/menu'
+import { CLASES_TABLA } from '../../compartido/clases_tabla'
 import { AvatarUsuarioEmpresa } from './avatar_usuario_empresa'
 import { FilaUsuarioEdicion } from './fila_usuario_edicion'
 import { opcionesDeUsuario } from './logica_usuarios_empresa'
@@ -62,7 +63,7 @@ export function FilaUsuarioEmpresa({ usuario, editable, edicionUsuarios }: FilaU
   }
 
   return (
-    <tr className={catalogoEmpresas.clases.fila}>
+    <tr className={CLASES_TABLA.fila}>
       <td className={clases.celda}>
         <div className="flex items-center gap-3">
           <AvatarUsuarioEmpresa usuario={usuario} />

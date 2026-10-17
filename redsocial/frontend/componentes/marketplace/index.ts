@@ -9,3 +9,5 @@ export * from './bloques/modal_pago_planes'
 export * from './bloques/panel_mis_compras'
 
 export * from './bloques/seccion_mis_compras'
+export * from './contexto_carrito_marketplace'
+export * from './bloques/logica_carrito_planes'

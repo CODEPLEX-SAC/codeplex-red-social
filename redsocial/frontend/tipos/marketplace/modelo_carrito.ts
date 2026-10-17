@@ -90,9 +90,15 @@ export interface DesinstalacionCompra {
 }
 
 export interface AccesosCabecera {
-  cantidadCarrito: number
-  abrirCarrito: () => void
   abrirCompras: () => void
+}
+
+export interface AccionesCarrito {
+  cerrar: () => void
+  quitar: (aplicacion: string) => void
+  cambiarPlan: (aplicacion: string) => void
+  proceder: () => void
+  seguirComprando: () => void
 }
 
 export interface ManejadoresCompra {

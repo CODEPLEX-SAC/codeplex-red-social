@@ -1,4 +1,5 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
+import { clasesBoton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
@@ -37,7 +38,7 @@ export function SeccionContactosFrecuentes2({
               {!c.esGrupo && <span className="inline-block h-1.5 w-1.5 rounded-full bg-verde-categoria" />}
               {c.esGrupo ? c.miembros : catalogoMensajeria.filtros.en_linea}
             </span>
-            <a href="#" className="mt-0.5 inline-flex items-center gap-1 rounded-md border border-borde bg-white px-2.5 py-1 text-boton text-primario no-underline hover:border-primario hover:bg-overlay-15">
+            <a href="#" className={clasesBoton({ variant: 'contorno', size: 'mini', className: 'mt-0.5' })}>
               <Icono name="video" className="h-3 w-3" /> {catalogoMensajeria.botones.videollamar}
             </a>
           </article>

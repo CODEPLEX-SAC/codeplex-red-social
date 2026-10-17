@@ -9,6 +9,8 @@ const prefijos = catalogoMarketplace.pago.prefijos
 
 const VACIO = catalogoCompartido.controles.texto_vacio
 
+export const SUPER_VIP_HABILITADO = catalogoMarketplace.super_vip.habilitado
+
 export function formatearTarjeta(valor: string) {
   return valor.replace(/\D/g, VACIO).slice(0, 16).match(/\d{1,4}/g)?.join(catalogoMarketplace.pago.formato.separador_tarjeta) ?? VACIO
 }
@@ -40,8 +42,16 @@ export function fechaPrimerCobro() {
   return fecha.toLocaleDateString(formato.locale, { day: formato.opciones.day, month: formato.opciones.month, year: formato.opciones.year } as Intl.DateTimeFormatOptions).replace(/\./g, VACIO)
 }
 
-export function monto(valor: number) {
-  return [catalogoMarketplace.planes.moneda, valor.toLocaleString(formato.locale)].join('')
+export function monto(valor: number, separador = '') {
+  return [catalogoMarketplace.planes.moneda, valor.toLocaleString(formato.locale)].join(separador)
+}
+
+export function textoTotal(items: ItemCarrito[]) {
+  const separador = catalogoMarketplace.carrito.separador_moneda
+  const periodos = new Set(items.map((i) => i.periodo))
+  const sufijo = periodos.has('anual') ? catalogoMarketplace.planes.sufijo_anual : catalogoMarketplace.planes.sufijo_mensual
+  const total = monto(sumarPrecios(items.map((i) => i.precio)), separador)
+  return periodos.size > 1 ? total : [total, sufijo].join(separador)
 }
 
 export function fechaCorta(meses = 0) {

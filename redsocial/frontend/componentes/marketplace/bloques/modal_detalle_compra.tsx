@@ -1,9 +1,8 @@
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
-import { CodeplexAcordeon } from '@codeplex-sac/diseno'
 import { Icono } from '../../compartido/icono'
 import { Modal } from '../../compartido/interfaz/modal'
-import { ProveedorTemaGraficos } from '../../compartido/proveedor_tema_graficos'
+import { Acordeon } from '../../compartido/interfaz/acordeon'
 import { metasCompra, valoresDetalle } from './logica_carrito_planes'
 import type { CompraRealizada } from '@/tipos/marketplace/modelo_carrito'
 
@@ -42,9 +41,7 @@ export function ModalDetalleCompra({ compra, claseModulo, alCerrar }: { compra: 
             </div>
           ))}
         </div>
-        <ProveedorTemaGraficos>
-          <CodeplexAcordeon variante="bordeado" elementos={[{ id: textos.detalle.incluye, titulo: textos.detalle.incluye, contenido: incluye }]} />
-        </ProveedorTemaGraficos>
+        <Acordeon variante="bordeado" elementos={[{ id: textos.detalle.incluye, titulo: textos.detalle.incluye, contenido: incluye }]} />
       </div>
     </Modal>
   )

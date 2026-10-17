@@ -3,9 +3,10 @@ import { useState } from 'react'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import type { Colaborador } from '../../tipos/colaboradores/modelo_colaboradores'
-import type { EstadoInvitacion } from '../../tipos/colaboradores/contrato_invitar_colaborador'
+import type { EstadoInvitacion, DatosColaboradorInvitado } from '../../tipos/colaboradores/contrato_invitar_colaborador'
+import type { BorradorColaborador } from '../../tipos/colaboradores/contrato_gestion_colaboradores'
 import { COLABORADORES, FILTROS_ESTADO_COLABORADORES, PASOS_FUNCIONA_COLABORADORES, ROL_CLASES, ESTADO_CLASES, APLICACIONES_DISPONIBLES, FECHA_BAJA_EJEMPLO, DATOS_ASISTENTE_INVITACION } from '../../rutas/colaboradores/rutas_colaboradores'
-import { SeccionListado, SeccionDetalleColaborador, SeccionEditarColaborador, SeccionComoFunciona, BloqueConfirmarBajaColaborador, ModalInvitarColaborador, AvisoInvitacionEnviada } from '../../componentes/colaboradores'
+import { SeccionListado, SeccionDetalleColaborador, SeccionEditarColaborador, SeccionComoFunciona, BloqueConfirmarBajaColaborador, ModalInvitarColaborador, AvisoInvitacionEnviada, usarGestionColaboradores } from '../../componentes/colaboradores'
 
 
 const PASOS_FUNCIONA: { icono: IconName; clase: string; numero: string; descripcion: string }[] = [...PASOS_FUNCIONA_COLABORADORES]
@@ -17,6 +18,7 @@ export function PaginaColaboradores() {
   const [colaboradorABaja, setColaboradorABaja] = useState<Colaborador | null>(null)
   const [invitacion, setInvitacion] = useState<EstadoInvitacion>('cerrada')
   const panelAbierto = colaboradorAbierto !== null
+  const gestion = usarGestionColaboradores(COLABORADORES, APLICACIONES_DISPONIBLES, DATOS_ASISTENTE_INVITACION)
 
   function abrirParaVer(colaborador: Colaborador | null) {
     setColaboradorAbierto(colaborador)
@@ -36,8 +38,20 @@ export function PaginaColaboradores() {
     setInvitacion('cerrada')
   }
 
-  function enviarInvitacion() {
-    setInvitacion('enviada')
+  function enviarInvitacion(invitado: DatosColaboradorInvitado) {
+    gestion.invitar(invitado)
+    cerrarInvitacion()
+  }
+
+  function guardarEdicion(borrador: BorradorColaborador) {
+    if (colaboradorAbierto) abrirParaVer(gestion.guardarEdicion(colaboradorAbierto, borrador))
+  }
+
+  function confirmarBaja(fecha: string) {
+    if (!colaboradorABaja) return
+    const actualizado = gestion.darDeBaja(colaboradorABaja, fecha)
+    if (colaboradorAbierto?.correo === colaboradorABaja.correo) setColaboradorAbierto(actualizado)
+    setColaboradorABaja(null)
   }
 
   const [anclaMenu, setAnclaMenu] = useState<HTMLElement | null>(null)
@@ -48,7 +62,7 @@ export function PaginaColaboradores() {
 
   return (
     <EstructuraApp paginaActiva={catalogoColaboradores.claves.modulo}>
-      {invitacion === 'enviada' && <AvisoInvitacionEnviada alCerrar={cerrarInvitacion} />}
+      {gestion.aviso && <AvisoInvitacionEnviada mensaje={gestion.aviso.texto} error={gestion.aviso.error} alCerrar={gestion.cerrarAviso} />}
       <div
         onClick={cerrarMenus}
         className={
@@ -58,7 +72,7 @@ export function PaginaColaboradores() {
       >
         <SeccionListado
           datos={{
-            COLABORADORES,
+            COLABORADORES: gestion.colaboradores,
             FILTROS_ESTADO_COLABORADORES,
             ESTADO_CLASES,
             ROL_CLASES,
@@ -70,6 +84,8 @@ export function PaginaColaboradores() {
             alVerColaborador: abrirParaVer,
             alEditarColaborador: abrirParaEditar,
             alConfirmarBaja: setColaboradorABaja,
+            alReenviar: gestion.reenviar,
+            alFalloExportar: gestion.avisarFalloExportacion,
             alInvitarColaborador: abrirInvitacion,
           }}
         />
@@ -85,11 +101,13 @@ export function PaginaColaboradores() {
 
       {colaboradorAbierto && modoPanel === 'editar' && (
         <SeccionEditarColaborador
+          key={colaboradorAbierto.correo}
           colaborador={colaboradorAbierto}
-          etiquetaEstado={ESTADO_CLASES[colaboradorAbierto.estado].etiqueta}
+          colaboradores={gestion.colaboradores}
           aplicacionesDisponibles={APLICACIONES_DISPONIBLES}
           alCerrar={() => abrirParaVer(null)}
           alCancelar={() => abrirParaVer(colaboradorAbierto)}
+          alGuardar={guardarEdicion}
         />
       )}
 
@@ -105,6 +123,7 @@ export function PaginaColaboradores() {
           colaborador={colaboradorABaja}
           fechaEjemplo={FECHA_BAJA_EJEMPLO}
           alCerrar={() => setColaboradorABaja(null)}
+          alConfirmar={confirmarBaja}
         />
       )}
       {invitacion === 'abierta' && <ModalInvitarColaborador datos={DATOS_ASISTENTE_INVITACION} alCerrar={cerrarInvitacion} alEnviar={enviarInvitacion} />}

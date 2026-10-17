@@ -3,12 +3,11 @@ import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colabor
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import { CONTACTOS_SUGERIDOS } from '../../rutas/compartido/rutas_compartido'
-import { DETALLE_COLABORADOR_EJEMPLO, HISTORIAL_ACTIVIDAD_COLABORADOR_EJEMPLO } from '../../rutas/colaboradores/rutas_colaboradores'
+import { COLABORADORES, DETALLE_COLABORADOR_EJEMPLO, HISTORIAL_ACTIVIDAD_COLABORADOR_EJEMPLO } from '../../rutas/colaboradores/rutas_colaboradores'
 
-const APP_CALENDARIO = 'bg-morado-categoria'
-const APP_MENSAJES = 'bg-azul-categoria'
-const APP_MARKETPLACE = 'bg-naranja-categoria'
-const APP_ESTADISTICAS = 'bg-cian-categoria'
+const APLICACIONES_ASIGNADAS = COLABORADORES.find((colaborador) => colaborador.nombre === DETALLE_COLABORADOR_EJEMPLO.nombre)?.aplicaciones ?? []
+const MAXIMO_ICONOS = catalogoColaboradores.celda_aplicaciones.max_iconos_perfil
+const OCULTAS = Math.max(0, APLICACIONES_ASIGNADAS.length - MAXIMO_ICONOS)
 
 const INFORMACION_GENERAL: { icono: IconName; etiqueta: string; valor: string }[] = [
   { icono: 'calendario', etiqueta: catalogoColaboradores.perfil.informacion_general.vigencia, valor: DETALLE_COLABORADOR_EJEMPLO.vigencia },
@@ -81,15 +80,12 @@ export function PaginaColaboradorPerfil() {
               </section>
 
               <section className="mb-4">
-                <h2 className="m-0 mb-2.5 text-titulo-seccion text-texto">{catalogoColaboradores.secciones.aplicaciones_asignadas}</h2>
+                <h2 className="m-0 mb-2.5 text-titulo-seccion text-texto">{`${catalogoColaboradores.secciones.aplicaciones_asignadas} (${APLICACIONES_ASIGNADAS.length})`}</h2>
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className={`flex h-7 w-7 items-center justify-center rounded-md ${APP_CALENDARIO}`}><Icono name="calendario" className="w-3.5 h-3.5 text-white" /></span>
-                  <span className={`flex h-7 w-7 items-center justify-center rounded-md ${APP_MENSAJES}`}><Icono name="mensaje" className="w-3.5 h-3.5 text-white" /></span>
-                  <span className={`flex h-7 w-7 items-center justify-center rounded-md ${APP_MARKETPLACE}`}><Icono name="marketplace" className="w-3.5 h-3.5 text-white" /></span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-md bg-violeta-categoria"><Icono name="analiticas" className="w-3.5 h-3.5 text-white" /></span>
-                  <span className="flex h-7 w-7 items-center justify-center rounded-md bg-rosa-categoria"><Icono name="video" className="w-3.5 h-3.5 text-white" /></span>
-                  <span className={`flex h-7 w-7 items-center justify-center rounded-md ${APP_ESTADISTICAS}`}><Icono name="datos" className="w-3.5 h-3.5 text-white" /></span>
-                  <span className="text-conteo text-primario">+1</span>
+                  {APLICACIONES_ASIGNADAS.slice(0, MAXIMO_ICONOS).map((app) => (
+                    <span key={app.nombre} title={app.nombre} className={`flex h-7 w-7 items-center justify-center rounded-md ${app.clase}`}><Icono name={app.icono} className="w-3.5 h-3.5 text-white" /></span>
+                  ))}
+                  {OCULTAS > 0 && <span className="text-conteo text-primario">+{OCULTAS}</span>}
                 </div>
               </section>
 

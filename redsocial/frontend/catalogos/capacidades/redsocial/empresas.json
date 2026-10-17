@@ -151,8 +151,8 @@
     "modulo": "empresas"
   },
   "clases": {
-    "celda": "border-b border-borde px-2 py-3 text-left align-middle",
-    "encabezado": "whitespace-nowrap border-b border-gris-borde px-2 py-3.5 text-left text-encabezado-tabla text-texto-suave",
+    "celda": "px-2 py-3 text-left align-middle",
+    "relleno_encabezado": "px-2 py-3.5",
     "plan": {
       "avanzado": "bg-azul-categoria/15 text-azul-categoria-texto",
       "intermedio": "bg-primario-suave text-primario",
@@ -170,7 +170,6 @@
         "insignia": "bg-peligro/15 text-peligro-texto"
       }
     },
-    "fila": "hover:bg-fondo",
     "editar": "bg-primario-suave",
     "encabezado_seccion": {
       "icono": "mt-0.5 h-6 w-6 flex-none text-primario",
@@ -180,7 +179,6 @@
     "etiqueta_campo": "text-etiqueta text-texto-suave",
     "texto_auxiliar": "text-auxiliar text-texto-suave",
     "texto_celda": "text-subtitulo text-texto",
-    "mensaje_vacio": "p-6 text-center text-subtitulo text-texto-suave",
     "nombre_fila": "whitespace-nowrap text-nombre-fila text-texto",
     "texto_error": "text-auxiliar font-control text-negativo-kpi",
     "boton_icono_peligro": "border-peligro text-peligro-texto",
@@ -421,7 +419,7 @@
       "guardar": "Guardar usuario",
       "cancelar": "Cancelar edición del usuario",
       "clases": {
-        "fila": "bg-primario-suave/40",
+        "fila": "border-b border-borde-suave bg-primario-suave/40",
         "guardar": "bg-primario-suave",
         "acciones": "sticky right-0 bg-white shadow-sombra"
       },

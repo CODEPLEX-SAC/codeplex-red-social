@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, usarCarrusel } from '../../componentes/compartido'
+import { Icono, EstructuraApp, usarCarrusel, clasesBoton } from '../../componentes/compartido'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { PestanasMensajes, SeccionContactosFrecuentes } from '../../componentes/mensajeria'
 import { CONTACTOS_LINEA_MENSAJERIA, GRUPOS_RECIENTES_MENSAJERIA, EVENTOS_PROXIMOS_MENSAJERIA, LLAMADAS_RECIENTES, CONTACTOS_FRECUENTES, REUNIONES_PROGRAMADAS, HISTORIAL } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -27,10 +27,10 @@ export function PaginaMensajesVideollamadas() {
             ]}
           />
           <div className="mb-3 flex max-w-full flex-wrap items-center gap-2.5">
-            <a href="#" className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border border-borde bg-white px-4 py-2 text-boton text-texto no-underline hover:border-primario hover:text-primario">
+            <a href="#" className={clasesBoton({ variant: 'secundario', size: 'md' })}>
               <Icono name="crear-evento" className="h-4 w-4" /> {catalogoMensajeria.botones.nueva_reunion}
             </a>
-            <a href={catalogoMensajeria.rutas.videollamada_iniciar} className="inline-flex min-h-8.5 items-center justify-center gap-1.5 whitespace-nowrap rounded-7 border border-transparent bg-primario px-3.5 text-boton text-white no-underline hover:bg-primario-oscuro">
+            <a href={catalogoMensajeria.rutas.videollamada_iniciar} className={clasesBoton({ variant: 'primario', size: 'md' })}>
               <Icono name="video" className="h-4 w-4" /> {catalogoMensajeria.botones.iniciar_videollamada}
             </a>
           </div>

@@ -1,4 +1,5 @@
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
+import { clasesBoton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
@@ -44,7 +45,7 @@ export function PanelLateralSolicitudesAviso() {
         <p className="m-0 mb-3.5 text-cuerpo leading-texto text-texto-suave">{catalogoAvisos.cta_lateral_solicitudes.descripcion}</p>
         <a
           href={catalogoAmigos.rutas.sugerencias}
-          className="inline-flex w-full items-center justify-center rounded-lg bg-primario px-4 py-2 text-boton text-white no-underline hover:bg-primario-oscuro"
+          className={clasesBoton({ variant: 'primario', size: 'default', className: 'w-full' })}
         >
           {catalogoAvisos.botones.buscar_personas}
         </a>

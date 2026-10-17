@@ -3,14 +3,12 @@ import { Icono } from '../../compartido/icono'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import type { Aplicacion } from '@/tipos/colaboradores/modelo_colaboradores'
 
-const textosMas = catalogoColaboradores.perfil.mas_aplicaciones
-
-export function BloqueAplicacionesAsignadas({ aplicaciones, masApps }: { aplicaciones: Aplicacion[]; masApps?: number }) {
+export function BloqueAplicacionesAsignadas({ aplicaciones }: { aplicaciones: Aplicacion[] }) {
   return (
     <section className="mt-4 border-t border-borde-suave pt-4">
       <div className="mb-2.5 flex items-center gap-2">
         <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.secciones.aplicaciones_titulo}</h4>
-        <Insignia variant="counter">{aplicaciones.length + (masApps ?? 0)}</Insignia>
+        <Insignia variant="counter">{aplicaciones.length}</Insignia>
       </div>
       <ul className="m-0 grid list-none gap-2 p-0">
         {aplicaciones.map((app) => (
@@ -21,9 +19,6 @@ export function BloqueAplicacionesAsignadas({ aplicaciones, masApps }: { aplicac
             <span className="text-campo-formulario text-texto">{app.nombre}</span>
           </li>
         ))}
-        {masApps ? (
-          <li className="text-campo-formulario text-texto-suave">{[textosMas.prefijo, masApps, textosMas.sufijo].join(' ')}</li>
-        ) : null}
       </ul>
     </section>
   )

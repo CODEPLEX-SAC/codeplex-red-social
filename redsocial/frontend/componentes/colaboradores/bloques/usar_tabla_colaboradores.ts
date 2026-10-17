@@ -3,6 +3,9 @@ import { useLegacyTable, getCoreRowModel, getFilteredRowModel, getSortedRowModel
 import type { ColumnFiltersState, SortingState } from '@tanstack/table-core'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
+import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
+import { crearCriteriosExportacion } from './criterios_exportacion_colaboradores'
+import { aplicarFiltrosAvanzadosColaboradores, contarFiltrosAvanzadosColaboradores, crearFiltrosAvanzadosColaboradores } from './logica_filtros_avanzados_colaboradores'
 import {
   COLUMNAS_TABLA_COLABORADORES,
   ESTADO_POR_ETIQUETA_PESTANA,
@@ -25,11 +28,14 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
   const [sorting, setSorting] = useState<SortingState>(ordenPorOpcion(ORDENAR_POR_INICIAL))
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: TAMANO_PAGINA_COLABORADORES })
   const [rowSelection, setRowSelection] = useState({})
+  const [filtrosAvanzados, setFiltrosAvanzados] = useState(crearFiltrosAvanzadosColaboradores)
 
-  const datosPestana = useMemo(() => {
+  const datosVista = useMemo(() => {
     const valorEstado = ESTADO_POR_ETIQUETA_PESTANA[pestanaActiva]
     return valorEstado ? colaboradores.filter((c) => c.estado === valorEstado) : colaboradores
   }, [colaboradores, pestanaActiva])
+
+  const datosPestana = useMemo(() => aplicarFiltrosAvanzadosColaboradores(datosVista, filtrosAvanzados), [datosVista, filtrosAvanzados])
 
   const columnFilters = useMemo<ColumnFiltersState>(() => {
     const filtros: ColumnFiltersState = []
@@ -41,7 +47,7 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
   const tabla = useLegacyTable({
     data: datosPestana,
     columns: COLUMNAS_TABLA_COLABORADORES,
-    getRowId: (c) => c.nombre,
+    getRowId: (c) => c.correo,
     state: { globalFilter: busqueda, columnFilters, sorting, pagination, rowSelection },
     globalFilterFn: filtroGlobalColaboradores,
     enableRowSelection: true,
@@ -54,8 +60,22 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
     getPaginationRowModel: getPaginationRowModel(),
   })
 
+  const tablaVista = useLegacyTable({
+    data: datosVista,
+    columns: COLUMNAS_TABLA_COLABORADORES,
+    getRowId: (c) => c.correo,
+    state: { sorting },
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  })
+
   function cambiarPestana(clave: string) {
     setPestanaActiva(clave)
+    setPagination((actual) => ({ ...actual, pageIndex: 0 }))
+  }
+
+  function aplicarFiltrosAvanzados(valores: FiltrosAvanzadosColaboradores) {
+    setFiltrosAvanzados(valores)
     setPagination((actual) => ({ ...actual, pageIndex: 0 }))
   }
 
@@ -87,9 +107,18 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
   })
 
   const filas = tabla.getRowModel().rows
+  const hayCriteriosActivos = [
+    Boolean(busqueda.trim()),
+    rol !== textos.rol_perfil.opciones[0],
+    aplicacion !== textos.aplicaciones.opciones[0],
+    contarFiltrosAvanzadosColaboradores(filtrosAvanzados) > 0,
+  ].some(Boolean)
+  const colaboradoresFiltrados = tabla.getSortedRowModel().rows.map((fila) => fila.original)
+  const colaboradoresVista = tablaVista.getSortedRowModel().rows.map((fila) => fila.original)
+  const criteriosExportacion = crearCriteriosExportacion(pestanaActiva, busqueda, rol, aplicacion, ordenarPor, filtrosAvanzados)
   const totalFilas = tabla.getFilteredRowModel().rows.length
   const desde = totalFilas === 0 ? 0 : pagination.pageIndex * pagination.pageSize + 1
-  const hasta = Math.min(desde + filas.length - 1, totalFilas)
+  const hasta = totalFilas === 0 ? 0 : Math.min(desde + filas.length - 1, totalFilas)
   const resumen = interpolarPlantilla(catalogoColaboradores.paginacion.resumen, { desde, hasta, total: totalFilas })
 
   return {
@@ -106,6 +135,12 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
     cambiarOrdenarPor,
     tabla,
     filas,
+    colaboradoresFiltrados,
+    colaboradoresVista,
+    criteriosExportacion,
+    hayCriteriosActivos,
+    filtrosAvanzados,
+    aplicarFiltrosAvanzados,
     resumen,
   }
 }

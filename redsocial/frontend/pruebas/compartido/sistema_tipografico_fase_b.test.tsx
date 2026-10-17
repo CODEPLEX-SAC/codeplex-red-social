@@ -185,7 +185,6 @@ describe('Fase B final: roles compartidos de badge, estado, conteo, chip, boton 
   it('el boton mini y el chip de filtro consumen su rol en el catalogo', () => {
     const catalogo = fuenteDe('/catalogos/capacidades/redsocial/compartido.json')?.texto ?? ''
     expect(catalogo).toMatch(/"mini": "[^"]*text-boton-mini/)
-    expect(catalogo).toMatch(/"clases_boton_mini": "[^"]*text-boton-mini/)
     expect(catalogo).toMatch(/"filtro": "[^"]*text-chip/)
   })
 

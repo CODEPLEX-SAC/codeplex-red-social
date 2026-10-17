@@ -14,7 +14,9 @@
   },
   "mensajes": {
     "sin_colaboradores": "No hay colaboradores para mostrar con estos filtros.",
-    "invitacion_completada_demostracion": "Invitación completada en la demostración. No se envió ningún correo."
+    "invitacion_completada_demostracion": "Invitación completada en la demostración. No se envió ningún correo.",
+    "invitacion_reenviada_demostracion": "Invitación reenviada en la demostración. No se envió ningún correo.",
+    "exportacion_fallida": "No se pudo generar el archivo de exportación. Inténtalo de nuevo."
   },
   "toast": {
     "invitacion_enviada": "Invitación enviada.",
@@ -59,7 +61,7 @@
     "rol_y_perfil": "Rol y perfil",
     "rol_perfil_etiqueta": "Rol / Perfil",
     "descripcion": "Descripción",
-    "aplicaciones_asignadas": "Aplicaciones asignadas (7)",
+    "aplicaciones_asignadas": "Aplicaciones asignadas",
     "aplicaciones_titulo": "Aplicaciones asignadas",
     "vigencia_y_acceso": "Vigencia y acceso",
     "historial_actividad": "Historial de actividad",
@@ -106,7 +108,9 @@
   },
   "celda_vigencia": {
     "tipo_rango": "rango",
-    "conector_hasta": "al"
+    "conector_hasta": "al",
+    "etiqueta_baja": "Dado de baja",
+    "etiqueta_invitacion": "Invitación enviada"
   },
   "campos_vigencia": {
     "periodo_de_vigencia": "Período de vigencia",
@@ -200,11 +204,158 @@
     "fecha": "DD/MM/AAAA"
   },
   "menu_exportar": [
-    { "etiqueta": "Exportar a Excel", "icono": "planillas" },
-    { "etiqueta": "Exportar a CSV", "icono": "documento" },
-    { "etiqueta": "Exportar a PDF", "icono": "documento", "divisor": true },
-    { "etiqueta": "Exportar resultados filtrados", "icono": "filtro" }
+    { "clave": "excel", "etiqueta": "Exportar a Excel", "icono": "planillas" },
+    { "clave": "pdf", "etiqueta": "Exportar a PDF", "icono": "documento" },
+    { "clave": "excel_filtrados", "etiqueta": "Exportar filtrados a Excel", "icono": "filtro", "divisor": true },
+    { "clave": "pdf_filtrados", "etiqueta": "Exportar filtrados a PDF", "icono": "filtro" }
   ],
+  "aviso": {
+    "exito": { "rol": "status", "icono": "verificado", "contenedor": "border-borde-exito-suave bg-fondo-exito-suave", "texto": "text-verde-categoria-texto" },
+    "error": { "rol": "alert", "icono": "aviso-critico", "contenedor": "border-rojo-categoria bg-fondo-peligro-suave", "texto": "text-negativo-kpi" }
+  },
+  "celda_aplicaciones": {
+    "max_iconos": 3,
+    "max_iconos_perfil": 6
+  },
+  "clases_tabla": {
+    "relleno_encabezado": "p-3.5 uppercase"
+  },
+  "estados": {
+    "activo": "Activo",
+    "invitado": "Invitado",
+    "inactivo": "Inactivo",
+    "baja": "Baja"
+  },
+  "exportacion": {
+    "titulo": "Reporte de colaboradores",
+    "hoja": "Colaboradores",
+    "formato_fecha_hora": "DD/MM/YYYY HH:mm",
+    "formato_fecha_archivo": "YYYYMMDD",
+    "archivos": { "vista": "colaboradores", "filtrados": "colaboradores_filtrados" },
+    "separador_archivo": "_",
+    "formatos": {
+      "excel": { "extension": ".xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" },
+      "pdf": { "extension": ".pdf", "tipo": "application/pdf" }
+    },
+    "separador_aplicaciones": ", ",
+    "etiquetas": {
+      "generado": "Generado el",
+      "criterios": "Criterios aplicados",
+      "total": "Total de registros",
+      "pagina": "Página {pagina} de {total}"
+    },
+    "columnas": [
+      {
+        "clave": "nombre",
+        "titulo": "Nombre",
+        "ancho": 28,
+        "en_pdf": true
+      },
+      {
+        "clave": "correo",
+        "titulo": "Correo",
+        "ancho": 32,
+        "en_pdf": true
+      },
+      {
+        "clave": "telefono",
+        "titulo": "Teléfono",
+        "ancho": 18,
+        "en_pdf": true
+      },
+      {
+        "clave": "rol",
+        "titulo": "Rol",
+        "ancho": 16,
+        "en_pdf": true
+      },
+      {
+        "clave": "descripcion_rol",
+        "titulo": "Descripción del rol",
+        "ancho": 22,
+        "en_pdf": false
+      },
+      {
+        "clave": "aplicaciones",
+        "titulo": "Aplicaciones",
+        "ancho": 40,
+        "en_pdf": true
+      },
+      {
+        "clave": "estado",
+        "titulo": "Estado",
+        "ancho": 12,
+        "en_pdf": true
+      },
+      {
+        "clave": "vigencia_desde",
+        "titulo": "Vigencia desde",
+        "ancho": 16,
+        "en_pdf": true
+      },
+      {
+        "clave": "vigencia_hasta",
+        "titulo": "Vigencia hasta",
+        "ancho": 16,
+        "en_pdf": true
+      },
+      {
+        "clave": "fecha_invitacion",
+        "titulo": "Fecha de invitación",
+        "ancho": 18,
+        "en_pdf": false
+      },
+      {
+        "clave": "ultimo_acceso",
+        "titulo": "Último acceso",
+        "ancho": 20,
+        "en_pdf": false
+      }
+    ],
+    "estilo_excel": {
+      "fuente": "Calibri",
+      "tamano_titulo": 16,
+      "color_titulo": "FF26243A",
+      "color_encabezado": "FF5A43F4",
+      "color_texto_encabezado": "FFFFFFFF",
+      "color_borde": "FFE5E7EB",
+      "color_filas_alternas": "FFF8F8FC"
+    },
+    "estilo_pdf": {
+      "orientacion": "landscape",
+      "formato": "a4",
+      "unidad": "pt",
+      "margen": 36,
+      "tamano_titulo": 16,
+      "tamano_texto": 9,
+      "tamano_pie": 8,
+      "interlineado": 1.3,
+      "color_texto": [
+        38,
+        36,
+        58
+      ]
+    },
+    "criterios": {
+      "vista": "Vista: pestaña {valor} (todos los registros)",
+      "filtrados": "Resultados filtrados",
+      "pestana": "Estado: {valor}",
+      "busqueda": "Búsqueda: {valor}",
+      "rol": "Rol / Perfil: {valor}",
+      "aplicacion": "Aplicación: {valor}",
+      "orden": "Orden: {valor}",
+      "vigencia_desde": "Vigencia de acceso desde: {valor}",
+      "vigencia_hasta": "Vigencia de acceso hasta: {valor}",
+      "invitacion_desde": "Invitación desde: {valor}",
+      "invitacion_hasta": "Invitación hasta: {valor}",
+      "ultimo_acceso": "Último acceso: {valor}",
+      "acceso_vigente": "Con acceso vigente",
+      "acceso_vencido": "Sin acceso (vencido)",
+      "aplicacion_asignada": "Aplicación asignada: {valor}",
+      "cuenta_creada": "Cuenta creada",
+      "cuenta_invitada": "Cuenta invitada (pendiente)"
+    }
+  },
   "panel_filtros_avanzados": {
     "titulo": "Filtros avanzados",
     "limpiar": "Limpiar filtros",
@@ -216,7 +367,7 @@
     "estado_acceso": "Estado de acceso",
     "acceso_vigente": "Con acceso vigente",
     "acceso_vencido": "Sin acceso (vencido)",
-    "aplicaciones_asignadas": { "etiqueta": "Aplicaciones asignadas", "opciones": ["Todas las aplicaciones", "Calendario", "Mensajes", "Actividad", "Marketplace"] },
+    "aplicaciones_asignadas": { "etiqueta": "Aplicaciones asignadas", "opciones": ["Todas las aplicaciones", "Planillas", "Contabilidad", "Inventario", "Ventas", "Compras", "Proyectos", "Reportes", "Configuración"] },
     "tipo_cuenta": "Tipo de cuenta",
     "cuenta_creada": "Cuenta creada",
     "cuenta_invitada": "Cuenta invitada (pendiente)",
@@ -255,7 +406,7 @@
   "selectores": {
     "estado": { "etiqueta": "Estado", "opciones": ["Todos", "Activo", "Invitado", "Inactivo", "Baja"] },
     "rol_perfil": { "etiqueta": "Rol / Perfil", "opciones": ["Todos", "Administrador", "Contador", "Vendedor", "Almacenero", "Analista", "Asistente"] },
-    "aplicaciones": { "etiqueta": "Aplicaciones", "opciones": ["Todas", "Calendario", "Mensajes", "Actividad", "Marketplace"] },
+    "aplicaciones": { "etiqueta": "Aplicaciones", "opciones": ["Todas", "Planillas", "Contabilidad", "Inventario", "Ventas", "Compras", "Proyectos", "Reportes", "Configuración"] },
     "ordenar_por": { "etiqueta": "Ordenar por", "opciones": ["Más recientes", "Más antiguos", "Nombre A-Z", "Nombre Z-A"] },
     "codigo_pais": { "opciones": ["+51", "+52", "+54", "+57", "+56"] },
     "tipo_documento": { "opciones": ["DNI", "RUC", "C.E."] },
@@ -299,5 +450,8 @@
   },
   "paginacion": {
     "resumen": "Mostrando {desde} a {hasta} de {total} colaboradores"
+  },
+  "filtros_avanzados_reglas": {
+    "ultimo_acceso_reciente": "Hoy"
   }
 }

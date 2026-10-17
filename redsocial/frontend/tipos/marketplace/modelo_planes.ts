@@ -25,7 +25,6 @@ export interface TipoPlanes {
   nombre: string
   detalle: string
   disposicion: 'fila' | 'rejilla'
-  ancho: 'compacta' | 'amplia'
   catalogo: { url: string; nombre: string }
   planes: PlanAplicacion[]
 }
@@ -63,7 +62,7 @@ export interface PaquetesPlanes {
   titulo: string
   descripcion: string
   filas: { rango: string; tarifa: string; total: string }[]
-  base_datos: { titulo: string; items: string[]; pago_unico: { etiqueta: string; valor: string } }
+  base_datos?: { titulo: string; items: string[]; pago_unico: { etiqueta: string; valor: string } }
 }
 
 export interface ConfiguracionPlanes {
@@ -74,6 +73,7 @@ export interface ConfiguracionPlanes {
   descripcion: string
   icono: IconName
   color: 'verde' | 'azul' | 'morado' | 'naranja' | 'rojo'
+  modal: 'amplio' | 'compacto'
   etiquetas: string[]
   tipos: TipoPlanes[]
   detalles: Record<string, DetalleCaracteristica>
@@ -98,7 +98,6 @@ export interface PropiedadesListaPlanes {
   estiloDestacado: EstiloPlanDestacado
   detalles: Record<string, DetalleCaracteristica>
   etiqueta: string
-  ancho: 'compacta' | 'amplia'
   paquetes?: PaquetesPlanes
   alVerPaquetes?: () => void
   alSeleccionar: (id: string) => void
