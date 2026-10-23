@@ -9,14 +9,14 @@ function esMedioValido(archivo: File) {
   return tipoAceptado && textos.medios.tamano_maximo >= archivo.size
 }
 
-export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInicial: string) {
+export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInicial: string, mediosIniciales: MedioLocalPublicacion[] = []) {
   const contadorIds = useRef(0)
   const urlsActivas = useRef(new Set<string>())
   const [tipo, setTipo] = useState<TipoPublicacion>(tipoInicial)
   const [contenido, setContenido] = useState(textoInicial)
   const [opciones, setOpciones] = useState<OpcionEncuestaPublicacion[]>(() => Array.from({ length: textos.encuesta.opciones_iniciales }, () => nuevaOpcion()))
   const [prioridad, setPrioridad] = useState<PrioridadPublicacion>(textos.prioridad.inicial as PrioridadPublicacion)
-  const [medios, setMedios] = useState<MedioLocalPublicacion[]>([])
+  const [medios, setMedios] = useState<MedioLocalPublicacion[]>(mediosIniciales)
 
   function nuevoId() {
     contadorIds.current += 1
@@ -39,9 +39,14 @@ export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInici
     setMedios((anteriores) => [...anteriores, ...creados])
   }
 
+  function entregarMedios() {
+    urlsActivas.current.clear()
+    return medios
+  }
+
   function quitarMedio(id: string) {
     const medio = medios.find((candidato) => candidato.id === id)
-    if (medio) {
+    if (medio && urlsActivas.current.has(medio.url)) {
       URL.revokeObjectURL(medio.url)
       urlsActivas.current.delete(medio.url)
     }
@@ -89,6 +94,7 @@ export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInici
     puedeAgregarMedios: medios.length < textos.medios.maximo_archivos,
     contenidoValido: calcularContenidoValido(),
     agregarMedios,
+    entregarMedios,
     quitarMedio,
     actualizarOpcion,
     agregarOpcion,

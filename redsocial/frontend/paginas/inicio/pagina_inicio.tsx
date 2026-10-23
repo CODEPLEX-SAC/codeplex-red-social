@@ -1,9 +1,10 @@
-import { BotonIcono, AvatarImagen, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
-import { HISTORIAS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../rutas/inicio/rutas_inicio'
+import { BotonIcono, AvatarUsuario, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
+import { ALMACEN_PUBLICACIONES, HISTORIAS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../rutas/inicio/rutas_inicio'
 import { GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS, SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
+import { NO_LEIDOS } from '../../rutas/mensajeria/rutas_mensajeria'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { BloqueFotoVideo, SeccionContactosEnLinea, usarPublicacionesInicio } from '../../componentes/inicio'
+import { BloqueFotoVideo, EstadisticasActividadInicio, MensajesFlotantesInicio, SeccionContactosEnLinea, usarPublicacionesInicio } from '../../componentes/inicio'
 
 
 function Historias() {
@@ -28,10 +29,7 @@ function Historias() {
             <div key={h.nombre} className="flex w-27.5 flex-none cursor-pointer flex-col items-center gap-2">
               {h.crear ? (
                 <span className="relative grid h-26 w-26 place-items-center rounded-full bg-borde">
-                  <AvatarImagen src={usuarioImg} className="h-full w-full rounded-full border-3 border-white bg-primario-suave" />
-                  <span className="absolute -bottom-0.5 -right-0.5 grid h-7.5 w-7.5 place-items-center rounded-full border-3 border-white bg-primario text-conteo leading-none text-white">
-                    +
-                  </span>
+                  <AvatarUsuario tamano="historia" imagen={usuarioImg} className="border-3 border-white" insignia="+" colorInsignia="primario" />
                 </span>
               ) : (
                 <SuperficieColor
@@ -39,7 +37,7 @@ function Historias() {
                   degradado="primario"
                   className="relative grid h-26 w-26 place-items-center rounded-full"
                 >
-                  <AvatarImagen src={usuarioImg} className="h-full w-full rounded-full border-3 border-white bg-primario-suave" />
+                  <AvatarUsuario tamano="historia" imagen={usuarioImg} className="border-3 border-white" />
                 </SuperficieColor>
               )}
               <span className={'w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-auxiliar ' + (h.crear ? 'font-titulo text-texto' : 'text-texto-suave')}>
@@ -55,7 +53,7 @@ function Historias() {
 }
 
 export function PaginaInicio() {
-  const { publicaciones, publicar, editar, eliminar } = usarPublicacionesInicio()
+  const { feed, estadisticas, publicar, acciones } = usarPublicacionesInicio(ALMACEN_PUBLICACIONES)
 
   const placeholderPublicar = catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', SESION_ACTUAL.usuario.split(' ')[0])
   return (
@@ -63,16 +61,18 @@ export function PaginaInicio() {
       <EstructuraTresColumnas
         distribucion="social"
         principal={
-          <BloqueFotoVideo
-            placeholderPublicar={placeholderPublicar}
-            Historias={Historias}
-            PUBLICACION_INICIO={PUBLICACION_INICIO}
-            PUBLICACION_COMPARTIDA_INICIO={PUBLICACION_COMPARTIDA_INICIO}
-            publicaciones={publicaciones}
-            onPublicar={publicar}
-            onEditar={editar}
-            onEliminar={eliminar}
-          />
+          <>
+            <EstadisticasActividadInicio estadisticas={estadisticas} />
+            <BloqueFotoVideo
+              placeholderPublicar={placeholderPublicar}
+              Historias={Historias}
+              PUBLICACION_INICIO={PUBLICACION_INICIO}
+              PUBLICACION_COMPARTIDA_INICIO={PUBLICACION_COMPARTIDA_INICIO}
+              publicaciones={feed}
+              onPublicar={publicar}
+              acciones={acciones}
+            />
+          </>
         }
         publicidad={<ColumnaPublicidad />}
         lateral={
@@ -83,6 +83,7 @@ export function PaginaInicio() {
           />
         }
       />
+      <MensajesFlotantesInicio mensajes={NO_LEIDOS} />
     </EstructuraApp>
   )
 }

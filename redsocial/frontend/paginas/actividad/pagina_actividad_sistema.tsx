@@ -1,11 +1,19 @@
-import { BotonIcono, Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio } from '../../componentes/compartido'
+import { useState } from 'react'
+import { BotonIcono, BotonPieLista, Selector, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio } from '../../componentes/compartido'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import { PestanasActividad } from '../../componentes/actividad'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../rutas/compartido/rutas_compartido'
 import { EVENTOS_SISTEMA, CLASES_ICONO_EVENTO, CLASES_INDICADOR } from '../../rutas/actividad/rutas_actividad'
 
+const TODOS = 'todos'
+
 export function PaginaActividadSistema() {
+  const [estado, setEstado] = useState(TODOS)
+  const estados = [...new Set(EVENTOS_SISTEMA.map((e) => e.estado))]
+  const eventos = EVENTOS_SISTEMA.filter((e) => estado === TODOS || e.estado === estado)
+  const nombresEstado = catalogoActividad.estados_sistema as Record<string, string>
+
   return (
     <EstructuraApp paginaActiva="actividad">
       <EstructuraTresColumnas
@@ -29,13 +37,15 @@ export function PaginaActividadSistema() {
                     <p className="m-0 text-auxiliar text-texto-suave">{catalogoActividad.secciones.sistema.descripcion}</p>
                   </div>
                 </div>
-                <Boton type="button" variant="secundario" size="default" className="flex-none">
-                  {catalogoActividad.botones.sistema_todos}
-                  <Icono name="flecha-abajo" className="h-3.5 w-3.5 text-texto-suave" />
-                </Boton>
+                <Selector variant="mini" value={estado} onChange={(evento) => setEstado(evento.target.value)} aria-label={catalogoActividad.botones.sistema_filtro} className="flex-none">
+                  <option value={TODOS}>{catalogoActividad.botones.sistema_todos}</option>
+                  {estados.map((clave) => (
+                    <option key={clave} value={clave}>{nombresEstado[clave] ?? clave}</option>
+                  ))}
+                </Selector>
               </div>
 
-              {EVENTOS_SISTEMA.map((e) => (
+              {eventos.map((e) => (
                 <article key={e.titulo} className="flex items-center gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
                   <div className={`grid h-10 w-10 flex-none place-items-center rounded-control ${CLASES_ICONO_EVENTO[e.color]}`}>
                     <Icono name={e.icono} className="h-5 w-5" />

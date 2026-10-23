@@ -1,11 +1,15 @@
+import { useState } from 'react'
 import { EncabezadoAmigos } from './encabezado_amigos'
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
 import { PestanasAmigos } from './pestanas_amigos'
 import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
-import { Boton } from '../../compartido/interfaz/boton'
+import { Selector } from '../../compartido/interfaz/selector'
+import { BotonPieLista } from '../../compartido/interfaz/boton_pie_lista'
 import { Icono } from '../../compartido/icono'
 import { BloqueMensaje } from './bloque_mensaje'
 import type { Amigo } from '@/tipos/amigos/modelo_amigos_todos'
+
+const TODOS = 'todos'
 
 export function SeccionTusAmigos({
   RESUMEN,
@@ -14,6 +18,9 @@ export function SeccionTusAmigos({
   RESUMEN: { icono: string; peligro?: boolean | undefined; etiqueta: string; valor: string; }[]
   AMIGOS: Amigo[]
 }) {
+  const [estado, setEstado] = useState(TODOS)
+  const visibles = AMIGOS.filter((a) => estado === TODOS || (estado === 'en_linea' ? a.enLinea === true : a.enLinea !== true))
+
   return (
     <section className="rounded-xl border border-borde bg-white py-4.5 px-5">
       <EncabezadoAmigos textoBoton={catalogoAmigos.botones.agregar_amigos} />
@@ -25,10 +32,11 @@ export function SeccionTusAmigos({
           aria-label={catalogoAmigos.placeholders.buscar_amigos}
           className="min-w-0 flex-1 max-800:w-full max-800:flex-none"
         />
-        <Boton type="button" variant="secundario" size="default" className="min-w-47.5 flex-none self-center max-800:w-full">
-          {catalogoAmigos.botones.todos_los_amigos}
-          <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
-        </Boton>
+        <Selector variant="mini" value={estado} onChange={(evento) => setEstado(evento.target.value)} aria-label={catalogoAmigos.botones.filtrar_amigos} className="min-w-47.5 flex-none self-center max-800:w-full">
+          <option value={TODOS}>{catalogoAmigos.botones.todos_los_amigos}</option>
+          <option value="en_linea">{catalogoAmigos.botones.amigos_en_linea}</option>
+          <option value="desconectados">{catalogoAmigos.botones.amigos_desconectados}</option>
+        </Selector>
       </div>
 
       <div className="mb-5 grid grid-cols-4 gap-3 max-900:grid-cols-2">
@@ -46,10 +54,8 @@ export function SeccionTusAmigos({
       </div>
 
       <h2 className="mb-3.5 text-titulo-seccion text-texto">{catalogoAmigos.secciones.tus_amigos}</h2>
-      <BloqueMensaje AMIGOS={AMIGOS} />
-      <a href="#" className="flex items-center justify-center gap-1.5 border-t border-borde p-3.5 text-enlace-accion text-texto-suave no-underline hover:bg-fondo">
-        {catalogoAmigos.botones.ver_mas_amigos} <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
-      </a>
+      <BloqueMensaje AMIGOS={visibles} />
+      <BotonPieLista>{catalogoAmigos.botones.ver_mas_amigos}</BotonPieLista>
     </section>
   )
 }

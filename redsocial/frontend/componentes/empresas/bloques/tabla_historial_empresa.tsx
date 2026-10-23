@@ -8,8 +8,8 @@ const textos = catalogoEmpresas.historial_empresa
 const ENCABEZADOS = Object.values(textos.tabla)
 const ETIQUETAS_TIPO: Record<string, string> = textos.tipos
 const CLASES_TIPO: Record<string, string> = textos.clases.tipo
-const encabezado = claseEncabezadoTabla(catalogoEmpresas.clases.relleno_encabezado)
-const celda = catalogoEmpresas.clases.celda
+const encabezado = claseEncabezadoTabla()
+const celda = CLASES_TABLA.celda
 
 const textoAuxiliar = catalogoEmpresas.clases.texto_auxiliar
 const textoCelda = catalogoEmpresas.clases.texto_celda
@@ -21,7 +21,7 @@ export function TablaHistorialEmpresa({ listado }: ListadoHistorialProps) {
   return (
     <div className={CLASES_TABLA.contenedor}>
       <table className={CLASES_TABLA.tabla}>
-        <thead className={textos.clases.encabezado}>
+        <thead>
           <tr>
             {ENCABEZADOS.map((texto) => (
               <th key={texto} className={encabezado}>{texto}</th>

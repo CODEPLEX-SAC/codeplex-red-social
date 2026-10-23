@@ -1,14 +1,19 @@
 import { useMemo, useState } from 'react'
-import { aplicarEdiciones } from './logica_listado_empresas'
+import { alternarModulos } from './logica_edicion_empresa'
+import { aplicarEdiciones, estaInactiva } from './logica_listado_empresas'
+import { limiteAlcanzado, limiteDeEmpresas } from './logica_suscripciones_empresas'
+import { usarSuscripciones } from '../../compartido/carrito/contexto_suscripciones'
 import type { AccionesEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
 import type { SolicitudDetalleEmpresa } from '@/tipos/empresas/contrato_detalle_empresa'
-import type { Empresa } from '@/tipos/empresas/modelo_empresas'
+import type { ClaveModuloEmpresa, Empresa } from '@/tipos/empresas/modelo_empresas'
 import type { UsuarioEmpresa } from '@/tipos/empresas/modelo_usuarios_empresa'
 
 export function usarAccionesEmpresas(empresas: Empresa[]): AccionesEmpresas {
+  const suscripciones = usarSuscripciones()
   const [registradas, setRegistradas] = useState<Empresa[]>([])
   const [modalAbierto, setModalAbierto] = useState(false)
-  const [empresaADesactivar, setEmpresaADesactivar] = useState<Empresa | null>(null)
+  const [avisoLimiteAbierto, setAvisoLimiteAbierto] = useState(false)
+  const [empresaACambiar, setEmpresaACambiar] = useState<Empresa | null>(null)
   const [ediciones, setEdiciones] = useState<Record<string, Empresa>>({})
   const [detalle, setDetalle] = useState<SolicitudDetalleEmpresa | null>(null)
   const [edicion, setEdicion] = useState<SolicitudDetalleEmpresa | null>(null)
@@ -18,7 +23,12 @@ export function usarAccionesEmpresas(empresas: Empresa[]): AccionesEmpresas {
   const empresaEdicion = edicion ? todas.find((empresa) => empresa.codigo === edicion.codigo) : undefined
 
   function abrirModal() {
-    setModalAbierto(true)
+    const mostrar = limiteAlcanzado(todas.length, suscripciones) ? setAvisoLimiteAbierto : setModalAbierto
+    mostrar(true)
+  }
+
+  function cerrarAvisoLimite() {
+    setAvisoLimiteAbierto(false)
   }
 
   function cerrarModal() {
@@ -31,22 +41,34 @@ export function usarAccionesEmpresas(empresas: Empresa[]): AccionesEmpresas {
   }
 
   function elegirAccion(clave: string, empresa: Empresa) {
-    if (clave === 'desactivar') setEmpresaADesactivar(empresa)
-    if (clave === 'ver_detalle') setDetalle({ codigo: empresa.codigo, pestana: 'informacion' })
-    if (clave === 'editar') setEdicion({ codigo: empresa.codigo, pestana: 'informacion' })
+    const solicitud: SolicitudDetalleEmpresa = { codigo: empresa.codigo, pestana: 'informacion' }
+    const manejadores: Record<string, () => void> = {
+      desactivar: () => setEmpresaACambiar(empresa),
+      activar: () => setEmpresaACambiar(empresa),
+      ver_detalle: () => setDetalle(solicitud),
+      editar: () => setEdicion(solicitud),
+    }
+    manejadores[clave]?.()
+  }
+
+  function alternarModulo(empresa: Empresa, clave: ClaveModuloEmpresa) {
+    setEdiciones((actuales) => {
+      const vigente = actuales[empresa.codigo] ?? empresa
+      return { ...actuales, [empresa.codigo]: { ...vigente, modulos: alternarModulos(vigente.modulos, clave) } }
+    })
   }
 
   function cerrarDetalle() {
     setDetalle(null)
   }
 
-  function cerrarDesactivacion() {
-    setEmpresaADesactivar(null)
+  function cerrarCambioEstado() {
+    setEmpresaACambiar(null)
   }
 
-  function confirmarDesactivacion() {
-    if (empresaADesactivar) setEdiciones((actuales) => ({ ...actuales, [empresaADesactivar.codigo]: { ...empresaADesactivar, estado: 'inactiva' } }))
-    setEmpresaADesactivar(null)
+  function confirmarCambioEstado() {
+    if (empresaACambiar) setEdiciones((actuales) => ({ ...actuales, [empresaACambiar.codigo]: { ...empresaACambiar, estado: estaInactiva(empresaACambiar) ? 'activa' : 'inactiva' } }))
+    setEmpresaACambiar(null)
   }
 
   function cerrarEdicion() {
@@ -61,20 +83,25 @@ export function usarAccionesEmpresas(empresas: Empresa[]): AccionesEmpresas {
 
   return {
     todas,
+    suscripciones,
     modalAbierto,
+    avisoLimiteAbierto,
+    limiteEmpresas: limiteDeEmpresas(suscripciones),
     detalle,
     empresaDetalle,
-    empresaADesactivar,
+    empresaACambiar,
     edicion,
     empresaEdicion,
     usuariosEditados,
     abrirModal,
     cerrarModal,
+    cerrarAvisoLimite,
     registrar,
     elegirAccion,
+    alternarModulo,
     cerrarDetalle,
-    cerrarDesactivacion,
-    confirmarDesactivacion,
+    cerrarCambioEstado,
+    confirmarCambioEstado,
     cerrarEdicion,
     guardarEdicion,
   }

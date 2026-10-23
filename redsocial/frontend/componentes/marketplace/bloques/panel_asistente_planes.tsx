@@ -53,7 +53,7 @@ export function PanelAsistentePlanes({
         <BotonIcono icono="cerrar" type="button" aria-label={textos.cerrar} variant="flotante" size="sm" onClick={alCerrar} />
       </header>
       <div className="flex flex-none items-center gap-2.5 border-b border-borde bg-fondo px-3.5 py-2.5">
-        <Icono name="archivo-pdf" className="h-5 w-5 flex-none text-rojo-categoria-texto" />
+        <Icono name="documento" className="h-5 w-5 flex-none text-rojo-categoria-texto" />
         <div className="min-w-0 flex-1">
           <strong className="block truncate text-auxiliar font-control text-texto">{nombreCatalogo}</strong>
           <span className="block text-auxiliar text-texto-suave">{textos.catalogo_ayuda}</span>

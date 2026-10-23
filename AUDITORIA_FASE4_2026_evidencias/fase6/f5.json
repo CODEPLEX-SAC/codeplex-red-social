@@ -1,0 +1,406 @@
+{
+ "ubicacion": [
+  {
+   "w": 730,
+   "h": 488,
+   "izq": 518,
+   "der": 1248,
+   "pos": "absolute",
+   "desborde": false,
+   "vw": 1280
+  },
+  {
+   "w": 730,
+   "h": 481,
+   "izq": 154,
+   "der": 884,
+   "pos": "absolute",
+   "desborde": false,
+   "vw": 900
+  },
+  {
+   "w": 440,
+   "h": 600,
+   "izq": 278,
+   "der": 718,
+   "pos": "absolute",
+   "desborde": false,
+   "vw": 820
+  },
+  {
+   "w": 440,
+   "h": 600,
+   "izq": 145,
+   "der": 585,
+   "pos": "absolute",
+   "desborde": false,
+   "vw": 601
+  },
+  {
+   "w": 400,
+   "h": 600,
+   "izq": 0,
+   "der": 400,
+   "pos": "fixed",
+   "desborde": false,
+   "vw": 400
+  },
+  {
+   "w": 320,
+   "h": 600,
+   "izq": 0,
+   "der": 320,
+   "pos": "fixed",
+   "desborde": false,
+   "vw": 320
+  }
+ ],
+ "barra": [
+  {
+   "w": 1280,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 0,
+    "y": 0,
+    "r": 0,
+    "b": 0
+   },
+   "buscador": {
+    "x": 256,
+    "y": 7.5,
+    "r": 504.9,
+    "b": 55.5
+   },
+   "solapa": false,
+   "desborde": false
+  },
+  {
+   "w": 1000,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 0,
+    "y": 0,
+    "r": 0,
+    "b": 0
+   },
+   "buscador": {
+    "x": 256,
+    "y": 7.5,
+    "r": 543.3,
+    "b": 55.5
+   },
+   "solapa": false,
+   "desborde": false
+  },
+  {
+   "w": 900,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 0,
+    "y": 0,
+    "r": 0,
+    "b": 0
+   },
+   "buscador": {
+    "x": 256,
+    "y": 7.5,
+    "r": 443.3,
+    "b": 55.5
+   },
+   "solapa": false,
+   "desborde": false
+  },
+  {
+   "w": 820,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 4,
+    "y": 12,
+    "r": 44,
+    "b": 52
+   },
+   "buscador": {
+    "x": 64,
+    "y": 7.5,
+    "r": 363.3,
+    "b": 55.5
+   },
+   "solapa": false,
+   "desborde": false
+  },
+  {
+   "w": 800,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 4,
+    "y": 12,
+    "r": 44,
+    "b": 52
+   },
+   "buscador": {
+    "x": 64,
+    "y": 7.5,
+    "r": 343.3,
+    "b": 55.5
+   },
+   "solapa": false,
+   "desborde": false
+  },
+  {
+   "w": 400,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 4,
+    "y": 12,
+    "r": 44,
+    "b": 52
+   },
+   "buscador": null,
+   "solapa": false,
+   "desborde": false
+  },
+  {
+   "w": 320,
+   "alturaHeader": 64,
+   "menu": {
+    "x": 4,
+    "y": 12,
+    "r": 44,
+    "b": 52
+   },
+   "buscador": null,
+   "solapa": false,
+   "desborde": false
+  }
+ ],
+ "sistema": [
+  {
+   "w": 1280,
+   "titulo": "Notificaciones",
+   "tabActiva": "Sistema",
+   "hrefSistema": "/notificaciones/sistema",
+   "es404": false,
+   "desborde": false,
+   "vacio": true
+  },
+  {
+   "w": 820,
+   "titulo": "Notificaciones",
+   "tabActiva": "Sistema",
+   "hrefSistema": "/notificaciones/sistema",
+   "es404": false,
+   "desborde": false,
+   "vacio": true
+  },
+  {
+   "w": 400,
+   "titulo": "Notificaciones",
+   "tabActiva": "Sistema",
+   "hrefSistema": "/notificaciones/sistema",
+   "es404": false,
+   "desborde": false,
+   "vacio": true
+  },
+  {
+   "w": 320,
+   "titulo": "Notificaciones",
+   "tabActiva": "Sistema",
+   "hrefSistema": "/notificaciones/sistema",
+   "es404": false,
+   "desborde": false,
+   "vacio": true
+  }
+ ],
+ "banners": [
+  {
+   "ruta": "/notificaciones/eventos",
+   "w": 1280,
+   "banners": [
+    {
+     "w": 653,
+     "h": 99.4,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  },
+  {
+   "ruta": "/notificaciones/menciones",
+   "w": 1280,
+   "banners": [
+    {
+     "w": 653,
+     "h": 99.4,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  },
+  {
+   "ruta": "/notificaciones/solicitudes",
+   "w": 1280,
+   "banners": [
+    {
+     "w": 653,
+     "h": 99.4,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  },
+  {
+   "ruta": "/grupos",
+   "w": 1280,
+   "banners": [
+    {
+     "w": 653,
+     "h": 99.4,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  },
+  {
+   "ruta": "/grupos/descubrir",
+   "w": 1280,
+   "banners": [
+    {
+     "w": 653,
+     "h": 76.2,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  },
+  {
+   "ruta": "/notificaciones/eventos",
+   "w": 400,
+   "banners": [
+    {
+     "w": 376,
+     "h": 113.9,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  },
+  {
+   "ruta": "/grupos",
+   "w": 400,
+   "banners": [
+    {
+     "w": 376,
+     "h": 134.9,
+     "pad": "14px",
+     "radio": "12px",
+     "icono": "36x36",
+     "cierre": true
+    }
+   ]
+  }
+ ],
+ "selectores": [
+  {
+   "ruta": "/actividad/modulos",
+   "selectores": [
+    {
+     "nombre": "Filtrar actividad por módulo",
+     "valor": "Todos los módulos",
+     "h": 40,
+     "w": 182
+    }
+   ]
+  },
+  {
+   "ruta": "/actividad/sistema",
+   "selectores": [
+    {
+     "nombre": "Filtrar eventos del sistema por estado",
+     "valor": "Todos los eventos",
+     "h": 40,
+     "w": 175
+    }
+   ]
+  },
+  {
+   "ruta": "/amigos",
+   "selectores": [
+    {
+     "nombre": "Filtrar amigos por estado",
+     "valor": "Todos los amigos",
+     "h": 40,
+     "w": 171
+    }
+   ]
+  },
+  {
+   "ruta": "/grupos/invitaciones",
+   "selectores": [
+    {
+     "nombre": "Ordenar invitaciones",
+     "valor": "Más recientes",
+     "h": 40,
+     "w": 145
+    }
+   ]
+  },
+  {
+   "ruta": "/guardados",
+   "selectores": [
+    {
+     "nombre": "Más recientes",
+     "valor": "Más recientes",
+     "h": 40,
+     "w": 145
+    }
+   ]
+  },
+  {
+   "ruta": "/notificaciones/no-leidas",
+   "selectores": [
+    {
+     "nombre": "Más recientes",
+     "valor": "Más recientes",
+     "h": 40,
+     "w": 145
+    }
+   ]
+  }
+ ],
+ "ubicacionAplicada": {
+  "disparador": "Ubicación: Arequipa",
+  "anidados": 0,
+  "quitar": true,
+  "quitarDentro": false,
+  "expanded": "false"
+ },
+ "teclado": [
+  {
+   "foco": "F",
+   "exp": "false",
+   "contorno": "none 3px rgb(108, 106, 128)"
+  },
+  {
+   "abierto": true,
+   "exp": "true",
+   "foco": "BUTTON Cualquier fecha"
+  },
+  {
+   "cerrado": true,
+   "foco": "F",
+   "exp": "false"
+  }
+ ]
+}

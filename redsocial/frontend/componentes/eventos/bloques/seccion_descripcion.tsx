@@ -1,6 +1,5 @@
-import { posicionesDe } from '../../compartido/posiciones'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { imagenUsuarioPredeterminada as imagenUsuario, Icono } from '../../compartido/icono'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
+import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { CodeplexMapa } from '@codeplex-sac/mapas'
 import { SeccionDescripcion2 } from './seccion_descripcion2'
@@ -45,12 +44,7 @@ export function SeccionDescripcion({
             <BloqueIcono icono="ubicacion" titulo={textos.lugar} lineas={[detalle.lugar, detalle.direccion]} />
             <div className="flex items-center justify-between gap-2">
               <BloqueIcono icono="grupos" titulo={textos.asistentes} lineas={[detalle.totalAsistentes]} />
-              <div className="flex flex-none items-center">
-                {posicionesDe(3).map((posicion) => (
-                  <AvatarImagen key={posicion.id} src={imagenUsuario} className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')} />
-                ))}
-                <span className="-ml-1 inline-flex h-7 items-center rounded-2xl border-2 border-white bg-fondo-categoria-morado px-2 text-conteo text-primario">{evento.asistentes.split(textos.espacio)[0]}</span>
-              </div>
+              <GrupoAvatares avatares={3} tamano="sm" resto={evento.asistentes.split(textos.espacio)[0]} className="flex-none" />
             </div>
           </div>
           <Boton type="button" variant="primario" size="md" className="mb-2 w-full">{textos.quiero_asistir}</Boton>

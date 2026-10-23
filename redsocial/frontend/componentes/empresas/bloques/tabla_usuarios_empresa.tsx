@@ -5,7 +5,7 @@ import type { TablaUsuariosEmpresaProps } from '@/tipos/empresas/contrato_usuari
 
 const textos = catalogoEmpresas.usuarios_empresa
 const ENCABEZADOS = Object.values(textos.tabla)
-const encabezado = claseEncabezadoTabla(catalogoEmpresas.clases.relleno_encabezado)
+const encabezado = claseEncabezadoTabla()
 
 export function TablaUsuariosEmpresa({ listado, editable, edicionUsuarios }: TablaUsuariosEmpresaProps) {
   const mensaje = listado.hayUsuarios ? textos.sin_resultados : textos.vacio

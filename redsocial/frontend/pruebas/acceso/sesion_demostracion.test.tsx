@@ -5,6 +5,7 @@ import { SESION_ACTUAL } from '@/rutas/compartido/rutas_compartido'
 import catalogoAcceso from '../../catalogos/capacidades/redsocial/acceso.json'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
+import catalogoPerfil from '../../catalogos/capacidades/redsocial/perfil.json'
 
 const textos = catalogoAcceso
 const panel = textos.panel_usuario
@@ -76,9 +77,11 @@ describe('Sesion de demostracion', () => {
     const dialogo = abrirPanel()
     expect(dialogo.getByText(SESION_ACTUAL.rol)).toBeInTheDocument()
     expect(screen.getByRole('dialog').querySelector('img')?.getAttribute('src')).toContain('usuario')
-    const opciones = within(dialogo.getByRole('list', { name: panel.etiqueta_opciones })).getAllByRole('button')
-    expect(opciones.map((opcion) => opcion.textContent)).toEqual(expect.arrayContaining(panel.opciones.map((o) => expect.stringContaining(o.etiqueta))))
-    expect(opciones).toHaveLength(panel.opciones.length)
+    const lista = within(dialogo.getByRole('list', { name: panel.etiqueta_opciones }))
+    const opciones = lista.getAllByRole('button')
+    const sinPerfil = panel.opciones.filter((opcion) => opcion.clave !== panel.clave_perfil)
+    expect(opciones.map((opcion) => opcion.textContent)).toEqual(expect.arrayContaining(sinPerfil.map((o) => expect.stringContaining(o.etiqueta))))
+    expect(opciones).toHaveLength(sinPerfil.length)
     for (const opcion of opciones) {
       expect(opcion).toHaveAttribute('aria-disabled', 'true')
       expect(opcion).toHaveAttribute('title', panel.proximamente)
@@ -86,6 +89,18 @@ describe('Sesion de demostracion', () => {
     }
     expect(screen.getByRole('dialog', { name: panel.titulo })).toBeInTheDocument()
     expect(window.location.pathname).toBe(rutaInicio)
+  })
+
+  it('Mi perfil abre el perfil propio de la sesion y cierra el panel', () => {
+    render(<AplicacionRedSocial />)
+    const opcion = panel.opciones.find((candidata) => candidata.clave === panel.clave_perfil)
+    fireEvent.click(abrirPanel().getByRole('link', { name: new RegExp(opcion?.etiqueta ?? '') }))
+
+    expect(screen.queryByRole('dialog', { name: panel.titulo })).toBeNull()
+    expect(window.location.pathname).toBe(catalogoPerfil.rutas.principal)
+    expect(window.location.search).toBe('')
+    expect(screen.getByRole('heading', { level: 1, name: SESION_ACTUAL.usuario })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: catalogoPerfil.botones.editar_perfil })).toBeInTheDocument()
   })
 
   it('cierra el panel con el boton, con Escape y devuelve el foco al boton de usuario', () => {

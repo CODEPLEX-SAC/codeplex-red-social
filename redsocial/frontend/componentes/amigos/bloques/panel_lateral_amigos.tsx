@@ -1,4 +1,5 @@
 import { Boton } from '../../compartido/interfaz/boton'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import type { ReactNode } from 'react'
 import { Icono } from '../../compartido/icono'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
@@ -22,7 +23,7 @@ export function PanelLateralAmigos({ titulo, ruta, children }: { titulo: string;
 export function FilaPersonaConocer({ nombre, comunes }: { nombre: string; comunes: string }) {
   return (
     <article className="flex items-center gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
-      <img className="h-9 w-9 flex-none rounded-full object-cover" src={usuarioImg} alt="" />
+      <AvatarUsuario tamano="sm" imagen={usuarioImg} />
       <div className="min-w-0 flex-1">
         <span className="block text-nombre-entidad text-texto">{nombre}</span>
         <span className="text-auxiliar text-texto-suave">{comunes}</span>
@@ -51,7 +52,7 @@ export function FilaListaLateral({ icono, color, nombre, miembros }: { icono: Ic
 export function FilaActividadReciente({ nombre, accion, tiempo }: { nombre: string; accion: string; tiempo: string }) {
   return (
     <article className="flex items-start gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
-      <img className="h-8 w-8 flex-none rounded-full object-cover" src={usuarioImg} alt="" />
+      <AvatarUsuario tamano="sm" imagen={usuarioImg} />
       <div className="min-w-0 flex-1 text-cuerpo leading-texto text-texto">
         <strong className="font-titulo">{nombre}</strong> {accion}
         <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{tiempo}</span>

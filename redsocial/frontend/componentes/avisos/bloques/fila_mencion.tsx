@@ -2,13 +2,16 @@ import { Menu } from '../../compartido/interfaz/menu'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { useState } from 'react'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
+import { CLASE_SUPERFICIE } from '../../compartido/paleta_colores'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { FilaMencionProps } from '@/tipos/avisos/contrato_mencion'
+
+const claseInsigniaMencion = CLASE_SUPERFICIE.morado + ' text-white'
 
 const SESION_ACTUAL = catalogoCompartido.sesion_actual
 
@@ -30,12 +33,7 @@ export function FilaMencion({ mencion: m }: FilaMencionProps) {
           <Icono name={BADGE_ICONO_POR_TIPO[m.tipo]} className="h-4.5 w-4.5" />
         </SuperficieColor>
       ) : (
-        <span className="relative flex-none">
-          <AvatarImagen src={usuarioImg} className="h-10 w-10 rounded-full bg-primario-suave" />
-          <SuperficieColor variante="morado" className="absolute -bottom-0.5 -right-0.5 grid h-4.5 w-4.5 place-items-center rounded-full border-2 border-white text-white">
-            <Icono name={BADGE_ICONO_POR_TIPO[m.tipo]} className="h-3 w-3" />
-          </SuperficieColor>
-        </span>
+        <AvatarUsuario tamano="md" imagen={usuarioImg} insignia={<Icono name={BADGE_ICONO_POR_TIPO[m.tipo]} className="h-3 w-3" />} claseInsignia={claseInsigniaMencion} />
       )}
 
       <div className="min-w-0 flex-1">

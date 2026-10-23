@@ -1,6 +1,5 @@
 import { Boton } from '../../compartido/interfaz/boton'
-import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
-import { Icono } from '../../compartido/icono'
+import { FiltroDesplegable } from '../../compartido/interfaz/filtro_desplegable'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { PanelFiltroEstado } from './panel_filtro_estado'
 import { ResultadosFiltroFecha } from './resultados_filtro_fecha'
@@ -50,16 +49,6 @@ export function SeccionEventosOrganizas({ datos }: {
     EVENTO_COLABORAS,
   } = datos
 
-  function alternarFiltroEstado(evento: { stopPropagation: () => void }) {
-    evento.stopPropagation()
-    setFiltroEstadoAbierto((abierto) => !abierto)
-  }
-
-  function alternarFiltroFecha(evento: { stopPropagation: () => void }) {
-    evento.stopPropagation()
-    setFiltroFechaAbierto((abierto) => !abierto)
-  }
-
   function cerrarFiltroEstado() {
     setFiltroEstadoAbierto(false)
   }
@@ -76,30 +65,19 @@ export function SeccionEventosOrganizas({ datos }: {
     <>
 
     <div className="mb-6 flex items-center gap-3 border-b border-gris-borde py-3 max-600:flex-nowrap max-600:overflow-x-auto max-600:scrollbar-oculto">
-      <div className="relative flex-none">
-        <Boton type="button" onClick={alternarFiltroEstado} variant="filtro" size="filtro" activo={filtroEstadoAbierto}>
-          <Icono name="calendario" className="h-4 w-4" /> {catalogoEventos.botones.estado}
-          <Icono name={filtroEstadoAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="ml-1 h-3.5 w-3.5 text-texto-suave" />
-        </Boton>
-        {filtroEstadoAbierto && (
-          <>
-            <FondoPanelFlotante onCerrar={cerrarFiltroEstado} />
-            <PanelFiltroEstado onCerrar={cerrarFiltroEstado} />
-          </>
-        )}
-      </div>
-      <div className="relative flex-none">
-        <Boton type="button" onClick={alternarFiltroFecha} variant="filtro" size="filtro" activo={filtroFechaAbierto || filtroFecha !== null}>
-          <Icono name="calendario" className="h-4 w-4" /> {filtroFecha === null ? catalogoEventos.filtros.fecha : etiquetaFiltroFecha(filtroFecha)}
-          <Icono name={filtroFechaAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="ml-1 h-3.5 w-3.5 text-texto-suave" />
-        </Boton>
-        {filtroFechaAbierto && (
-          <>
-            <FondoPanelFlotante onCerrar={cerrarFiltroFecha} />
-            <PanelFiltroFecha onCerrar={cerrarFiltroFecha} onAplicar={setFiltroFecha} />
-          </>
-        )}
-      </div>
+      <FiltroDesplegable id={catalogoEventos.ids_filtros.estado} abierto={filtroEstadoAbierto} alCambiarAbierto={setFiltroEstadoAbierto} icono="calendario" etiqueta={catalogoEventos.botones.estado}>
+        <PanelFiltroEstado id={catalogoEventos.ids_filtros.estado} onCerrar={cerrarFiltroEstado} />
+      </FiltroDesplegable>
+      <FiltroDesplegable
+        id={catalogoEventos.ids_filtros.fecha}
+        abierto={filtroFechaAbierto}
+        alCambiarAbierto={setFiltroFechaAbierto}
+        activo={filtroFechaAbierto || filtroFecha !== null}
+        icono="calendario"
+        etiqueta={filtroFecha === null ? catalogoEventos.filtros.fecha : etiquetaFiltroFecha(filtroFecha)}
+      >
+        <PanelFiltroFecha id={catalogoEventos.ids_filtros.fecha} onCerrar={cerrarFiltroFecha} onAplicar={setFiltroFecha} />
+      </FiltroDesplegable>
       {filtroFecha !== null && (
         <Boton type="button" onClick={limpiarFiltroFecha} variant="secundario" size="mini" className="ml-auto flex-none">
           {catalogoEventos.botones.limpiar_filtros}

@@ -15,7 +15,7 @@ const CLAVES_PESTANAS = Object.keys(textos.pestanas)
 const ETIQUETAS_PESTANAS: Record<string, string> = textos.pestanas
 const ICONOS_PESTANAS = textos.iconos_pestana as Record<string, IconName>
 
-export function ModalDetalleEmpresa({ empresa, pestanaInicial, datosDetalle, usuariosGuardados, alCerrar }: ModalDetalleEmpresaProps) {
+export function ModalDetalleEmpresa({ empresa, totalEmpresas, pestanaInicial, datosDetalle, usuariosGuardados, alCerrar }: ModalDetalleEmpresaProps) {
   const [pestana, setPestana] = useState<PestanaDetalleEmpresa>(pestanaInicial)
 
   function cambiarPestana(clave: string) {
@@ -38,7 +38,7 @@ export function ModalDetalleEmpresa({ empresa, pestanaInicial, datosDetalle, usu
           alCambiar={cambiarPestana}
           elementos={CLAVES_PESTANAS.map((clave) => ({ clave, etiqueta: ETIQUETAS_PESTANAS[clave], icono: ICONOS_PESTANAS[clave] }))}
         />
-        <ContenidoPestanaEmpresa empresa={empresa} pestana={pestana} datosDetalle={datosDetalle} usuariosGuardados={usuariosGuardados} />
+        <ContenidoPestanaEmpresa empresa={empresa} pestana={pestana} datosDetalle={datosDetalle} usuariosGuardados={usuariosGuardados} totalEmpresas={totalEmpresas} />
       </div>
       <div className="flex flex-none justify-end border-t border-borde px-6 py-4 max-480:px-4">
         <Boton type="button" variant="secundario" size="md" onClick={alCerrar} className="max-480:w-full">

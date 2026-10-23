@@ -17,7 +17,7 @@ function buscar(texto: string) {
 }
 
 function filaDe(nombre: string) {
-  return screen.getByRole('checkbox', { name: nombre }).closest('tr') as HTMLElement
+  return screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement
 }
 
 function accionDeFila(nombre: string, accion: string) {
@@ -65,7 +65,7 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
     expect(fila.getByText('maria.diaz@gmail.com')).toBeInTheDocument()
     expect(fila.getByText('Vendedor')).toBeInTheDocument()
     expect(fila.getByText('Ventas')).toBeInTheDocument()
-    expect(screen.queryByRole('checkbox', { name: 'María López' })).toBeNull()
+    expect(screen.queryByText('María López', { selector: 'span.truncate' })).toBeNull()
   })
 
   it('cambiar las aplicaciones y la vigencia se refleja en la fila', () => {
@@ -77,7 +77,7 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
 
     const fila = within(filaDe('Carlos Mendoza'))
     expect(fila.queryByText(/^\+\d+$/)).toBeNull()
-    expect(Array.from(within(filaDe('Carlos Mendoza')).getAllByRole('cell')[3].querySelectorAll('.material-symbols-rounded, svg.icono')).map((icono) => (icono.tagName.toLowerCase() === 'svg' ? 'svg' : icono.textContent))).toEqual(['table_chart', 'calculate', 'svg'])
+    expect(Array.from(within(filaDe('Carlos Mendoza')).getAllByRole('cell')[2].querySelectorAll('.material-symbols-rounded, svg.icono')).map((icono) => (icono.tagName.toLowerCase() === 'svg' ? 'svg' : icono.textContent))).toEqual(['table_chart', 'calculate', 'svg'])
     expect(fila.getByText(/30\/12\/2027/)).toBeInTheDocument()
   })
 
@@ -88,7 +88,7 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
     fireEvent.click(panel.getByRole('button', { name: edicion.guardar_cambios }))
 
     fireEvent.click(screen.getByRole('tab', { name: /Inactivos/ }))
-    expect(screen.getByRole('checkbox', { name: 'Jorge Ramírez' })).toBeInTheDocument()
+    expect(screen.getByText('Jorge Ramírez', { selector: 'span.truncate' })).toBeInTheDocument()
     expect(within(filaDe('Jorge Ramírez')).getByText('Inactivo')).toBeInTheDocument()
   })
 
@@ -121,8 +121,8 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
     fireEvent.click(panel.getByRole('button', { name: textosRedSocial.CANCELAR }))
 
     expect(screen.getByRole('heading', { level: 2, name: catalogoColaboradores.secciones.detalle_colaborador })).toBeInTheDocument()
-    expect(screen.getByRole('checkbox', { name: 'María López' })).toBeInTheDocument()
-    expect(screen.queryByRole('checkbox', { name: 'Otro nombre' })).toBeNull()
+    expect(screen.getByText('María López', { selector: 'span.truncate' })).toBeInTheDocument()
+    expect(screen.queryByText('Otro nombre', { selector: 'span.truncate' })).toBeNull()
   })
 })
 
@@ -140,7 +140,7 @@ describe('Baja de colaboradores', { timeout: 30000 }, () => {
     expect(fila.getByText(catalogoColaboradores.celda_vigencia.etiqueta_baja)).toBeInTheDocument()
     expect(fila.getByText('15/10/2026')).toBeInTheDocument()
     fireEvent.click(screen.getByRole('tab', { name: /Baja/ }))
-    expect(screen.getByRole('checkbox', { name: 'Carlos Mendoza' })).toBeInTheDocument()
+    expect(screen.getByText('Carlos Mendoza', { selector: 'span.truncate' })).toBeInTheDocument()
   })
 
   it('no permite confirmar con una fecha invalida', () => {
@@ -238,9 +238,9 @@ describe('Filtros avanzados', { timeout: 30000 }, () => {
 
     expect(screen.queryByRole('dialog', { name: panelFiltros.titulo })).toBeNull()
     expect(screen.getByText(resumen(1, 3, 3))).toBeInTheDocument()
-    expect(screen.getByRole('checkbox', { name: 'Carlos Mendoza' })).toBeInTheDocument()
-    expect(screen.getByRole('checkbox', { name: 'Luis Fernández' })).toBeInTheDocument()
-    expect(screen.queryByRole('checkbox', { name: 'Ana Torres' })).toBeNull()
+    expect(screen.getByText('Carlos Mendoza', { selector: 'span.truncate' })).toBeInTheDocument()
+    expect(screen.getByText('Luis Fernández', { selector: 'span.truncate' })).toBeInTheDocument()
+    expect(screen.queryByText('Ana Torres', { selector: 'span.truncate' })).toBeNull()
 
     panel = abrirPanel()
     expect(panel.getByRole('combobox', { name: panelFiltros.aplicaciones_asignadas.etiqueta })).toHaveTextContent('Proyectos')

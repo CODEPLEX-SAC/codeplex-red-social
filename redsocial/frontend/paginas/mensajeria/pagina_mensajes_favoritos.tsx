@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, AvatarImagen, BotonIcono, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
+import { Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, AvatarUsuario, BotonIcono, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { PestanasMensajes, PanelLateralMensajeria } from '../../componentes/mensajeria'
 import { CONTACTOS_LINEA_MENSAJERIA, GRUPOS_RECIENTES_MENSAJERIA, EVENTOS_PROXIMOS_MENSAJERIA, FAVORITOS, MOSTRANDO_FAVORITOS } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -40,7 +40,7 @@ export function PaginaMensajesFavoritos() {
                     type="button"
                     className="flex w-full items-center gap-2.5 rounded-control border-b border-fondo-hover-discreto px-3 py-3.5 text-left last:border-b-0 hover:bg-fondo"
                   >
-                    <AvatarImagen src={usuarioImg} className="h-11 w-11 flex-none rounded-full bg-primario-suave" />
+                    <AvatarUsuario tamano="md" imagen={usuarioImg} />
                     <span className="min-w-0 flex-1">
                       <strong className="mb-0.75 block text-nombre-entidad text-texto">{c.nombre}</strong>
                       <span className="mb-1.25 block truncate text-cuerpo text-texto-suave">{c.preview}</span>

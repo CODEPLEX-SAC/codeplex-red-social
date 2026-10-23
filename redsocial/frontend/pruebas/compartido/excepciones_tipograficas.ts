@@ -16,5 +16,6 @@ export const EXCEPCIONES_TIPOGRAFICAS: { ruta: string; regla: string; clase: str
   { ruta: '/catalogos/capacidades/redsocial/compartido.json', regla: 'estilo-js', clase: 'fontSize', motivo: 'tema MUI: navegacion lateral apuntando al rol navegacion' },
   { ruta: '/catalogos/capacidades/redsocial/compartido.json', regla: 'estilo-js', clase: 'fontWeight', motivo: 'tema MUI: peso de las pestanas segun el rol' },
   { ruta: '/catalogos/capacidades/redsocial/compartido.json', regla: 'estilo-js', clase: 'fontFamily', motivo: 'tema MUI: herencia de la familia y tamano de navegacion' },
+  { ruta: '/catalogos/capacidades/redsocial/compartido.json', regla: 'estilo-js', clase: 'lineHeight', motivo: 'sx de CodeplexEstadoBadge: devuelve el interlineado a las clases tipograficas de CodePlex' },
   { ruta: '/catalogos/capacidades/redsocial/empresas.json', regla: 'estilo-js', clase: 'fontSize', motivo: 'migas de pan: sx de la libreria apuntando al rol auxiliar' },
 ]

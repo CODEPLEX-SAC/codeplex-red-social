@@ -2,7 +2,7 @@ import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 
@@ -26,11 +26,9 @@ export function BloqueRecientes({
         {LLAMADAS_RECIENTES.map((c) => (
           <article key={c.nombre} className="flex items-center gap-2.5 rounded-lg px-2 py-2.5">
             {c.esGrupo ? (
-              <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-primario text-white">
-                <Icono name="grupo" className="h-4 w-4" />
-              </span>
+              <AvatarUsuario tamano="md" icono="grupo" tono="solido" />
             ) : (
-              <AvatarImagen src={usuarioImg} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
+              <AvatarUsuario tamano="md" imagen={usuarioImg} />
             )}
             <span className="min-w-0 flex-1">
               <strong className="block truncate text-nombre-entidad text-texto">{c.nombre}</strong>

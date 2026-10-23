@@ -1,4 +1,4 @@
-import { Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Insignia, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
+import { Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Insignia, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio, AvatarUsuario, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import { PestanasActividad } from '../../componentes/actividad'
 import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../rutas/compartido/rutas_compartido'
@@ -58,7 +58,7 @@ export function PaginaActividadGrupos() {
                   </div>
 
                   <div className="flex items-center gap-2 area-actividad">
-                    <AvatarImagen src={usuarioImg} className="h-7 w-7 flex-none rounded-full bg-primario-suave" />
+                    <AvatarUsuario tamano="xs" imagen={usuarioImg} />
                     <div className="min-w-0 flex-1 text-cuerpo">
                       <span className="font-titulo text-texto">{g.usuario}</span>
                       <span className="text-texto-suave">{g.accion}</span>

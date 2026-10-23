@@ -7,6 +7,7 @@ import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.
 import type { CabeceraEmpresasProps } from '@/tipos/empresas/contrato_listado_empresas'
 
 const migas = catalogoEmpresas.migas
+const cabecera = catalogoEmpresas.clases.cabecera
 
 export function CabeceraEmpresas({ alNuevaEmpresa }: CabeceraEmpresasProps) {
   return (
@@ -17,9 +18,14 @@ export function CabeceraEmpresas({ alNuevaEmpresa }: CabeceraEmpresasProps) {
         </ProveedorTemaGraficos>
       </nav>
       <div className="flex flex-wrap items-start justify-between gap-3 max-600:flex-col max-600:items-stretch">
-        <div>
-          <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoEmpresas.titulos.listado}</h1>
-          <p className={catalogoEmpresas.clases.texto_descriptivo}>{catalogoEmpresas.subtitulos.listado}</p>
+        <div className={cabecera.fila}>
+          <span className={cabecera.icono_caja}>
+            <Icono name="empresa" className={cabecera.icono} />
+          </span>
+          <div>
+            <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoEmpresas.titulos.listado}</h1>
+            <p className={catalogoEmpresas.clases.texto_descriptivo}>{catalogoEmpresas.subtitulos.listado}</p>
+          </div>
         </div>
         <Boton type="button" variant="primario" size="md" onClick={alNuevaEmpresa}>
           <Icono name="mas" className="w-4 h-4" />

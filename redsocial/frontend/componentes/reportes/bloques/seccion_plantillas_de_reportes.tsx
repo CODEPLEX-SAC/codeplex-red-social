@@ -49,7 +49,7 @@ export function SeccionPlantillasDeReportes({
         className="mb-6 flex gap-2 overflow-x-auto scrollbar-oculto"
       >
         {MODULOS_TABS.map((m, i) => (
-          <Boton key={m.etiqueta} type="button" variant="filtro" size="md" activo={i === 0}>
+          <Boton key={m.etiqueta} type="button" variant="filtro" size="filtro" activo={i === 0}>
             <Icono name={m.icono} className="h-4 w-4" /> {m.etiqueta}
           </Boton>
         ))}

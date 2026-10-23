@@ -1,4 +1,5 @@
 import { Icono } from '../../compartido/icono'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { Selector } from '../../compartido/interfaz/selector'
@@ -20,14 +21,11 @@ export function BloqueRecordatorios({ OPCIONES_RECORDATORIO }: { OPCIONES_RECORD
         </span>
       </label>
 
-      <div className="mt-2">
-        <label className="mb-1 block text-etiqueta text-texto">
-          {catalogoColaboradores.campos_vigencia.recordar_con_anticipacion} <span className="text-negativo-kpi">*</span>
-        </label>
+      <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_vigencia.recordar_con_anticipacion} requerido className="mt-2">
         <Selector variant="colaboradores" defaultValue={OPCIONES_RECORDATORIO[0]}>
           {OPCIONES_RECORDATORIO.map((o) => <option key={o}>{o}</option>)}
         </Selector>
-      </div>
+      </CampoEtiquetado>
     </div>
   )
 }

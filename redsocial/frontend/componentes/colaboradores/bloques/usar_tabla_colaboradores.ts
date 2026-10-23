@@ -27,7 +27,6 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
   const [ordenarPor, setOrdenarPor] = useState(ORDENAR_POR_INICIAL)
   const [sorting, setSorting] = useState<SortingState>(ordenPorOpcion(ORDENAR_POR_INICIAL))
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: TAMANO_PAGINA_COLABORADORES })
-  const [rowSelection, setRowSelection] = useState({})
   const [filtrosAvanzados, setFiltrosAvanzados] = useState(crearFiltrosAvanzadosColaboradores)
 
   const datosVista = useMemo(() => {
@@ -48,12 +47,10 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
     data: datosPestana,
     columns: COLUMNAS_TABLA_COLABORADORES,
     getRowId: (c) => c.correo,
-    state: { globalFilter: busqueda, columnFilters, sorting, pagination, rowSelection },
+    state: { globalFilter: busqueda, columnFilters, sorting, pagination },
     globalFilterFn: filtroGlobalColaboradores,
-    enableRowSelection: true,
     onSortingChange: setSorting,
     onPaginationChange: setPagination,
-    onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),

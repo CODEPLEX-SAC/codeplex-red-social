@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { vi } from 'vitest'
+import { beforeEach, vi } from 'vitest'
+import { DATOS_TARJETA_VALIDA, sembrarTarjetas, textoAlmacenado } from './ayudas_pago'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
@@ -146,6 +147,10 @@ describe('Planes por volumen de ContaPlex', () => {
 })
 
 describe('Selector de planes de ContaPlex', () => {
+  beforeEach(() => {
+    sembrarTarjetas()
+  })
+
   it('abre un modal sin barra de titulo con el cierre flotante y la fila de siete planes', () => {
     const dialogo = abrirPlanes()
     expect(within(dialogo).queryByRole('heading', { name: textos.titulo })).toBeNull()
@@ -254,15 +259,20 @@ describe('Selector de planes de ContaPlex', () => {
     expect(screen.getAllByText(carrito.adquirido.replace(':fecha', fechaCorta())).length).toBeGreaterThan(0)
   })
 
-  it('la tarjeta usada queda guardada sin el numero completo y se ofrece en la siguiente compra', () => {
+  it('una tarjeta nueva se registra sin el numero completo ni el CVV y se ofrece en la siguiente compra', async () => {
+    sembrarTarjetas([])
     const pantalla = irAlPago(0)
-    fireEvent.click(within(pantalla).getByRole('button', { name: new RegExp(pago.metodos.opciones[0].titulo) }))
-    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.numero }), { target: { value: '4111111111111234' } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.numero }), { target: { value: DATOS_TARJETA_VALIDA.numero } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.vencimiento }), { target: { value: DATOS_TARJETA_VALIDA.vencimiento } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.cvv }), { target: { value: DATOS_TARJETA_VALIDA.cvv } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.propietario }), { target: { value: DATOS_TARJETA_VALIDA.titular } })
     fireEvent.click(within(pantalla).getByRole('checkbox', { name: new RegExp(pago.paso4.acepto.slice(0, 20)) }))
     fireEvent.click(within(pantalla).getByRole('button', { name: pago.resumen.activar }))
+    await within(pantalla).findByText(pago.exito.titulo)
     fireEvent.click(within(pantalla).getByRole('button', { name: pago.exito.volver }))
+    expect(textoAlmacenado()).not.toMatch(/4242424242424242|"cvv"/)
     const siguiente = irAlPago(0, false)
-    expect(within(siguiente).getByText(pago.guardados.enmascarada.replace(':ultimos', '1234'))).toBeInTheDocument()
+    expect(within(siguiente).getByText(pago.metodo_guardado.titulo_tarjeta.replace(':marca', 'Visa').replace(':ultimos', '4242'))).toBeInTheDocument()
     expect(within(siguiente).queryByRole('textbox', { name: pago.campos.numero })).toBeNull()
   })
 

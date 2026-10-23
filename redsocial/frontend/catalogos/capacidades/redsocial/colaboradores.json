@@ -172,7 +172,6 @@
     "codigo_pais": "Código de país",
     "documento_identidad": "Documento de identidad",
     "cargo_puesto": "Cargo / Puesto",
-    "cargo_ayuda": "Opcional. Ej: Contador, Analista, Asistente, etc.",
     "empresa": "Empresa",
     "area_departamento": "Área / Departamento",
     "area_ayuda": "Opcional.",
@@ -196,7 +195,6 @@
     "desactivar_acceso": "Desactivar acceso",
     "ver_todo": "Ver todo",
     "mas_opciones": "Más opciones",
-    "seleccionar_todos": "Seleccionar todos los colaboradores visibles",
     "volver_a_colaboradores": "Volver a colaboradores"
   },
   "placeholders": {
@@ -216,9 +214,6 @@
   "celda_aplicaciones": {
     "max_iconos": 3,
     "max_iconos_perfil": 6
-  },
-  "clases_tabla": {
-    "relleno_encabezado": "p-3.5 uppercase"
   },
   "estados": {
     "activo": "Activo",

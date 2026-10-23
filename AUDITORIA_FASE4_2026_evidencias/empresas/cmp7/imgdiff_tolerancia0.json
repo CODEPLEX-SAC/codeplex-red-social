@@ -1,0 +1,100 @@
+[
+ {
+  "w": 1280,
+  "ref": "scratchpad/au/emp/fin/s/empresas_1280_completa.png",
+  "act": "scratchpad/au/emp/p5/empresas_1280_completa.png",
+  "salida": "scratchpad/au/emp/p5x/d_1280",
+  "w1": 1280,
+  "h1": 1115,
+  "w2": 1280,
+  "h2": 1115,
+  "pixeles": 3085,
+  "pct": 0.22,
+  "bbox": [
+   570,
+   17,
+   777,
+   48
+  ],
+  "bandas": [
+   [
+    17,
+    37
+   ],
+   [
+    40,
+    48
+   ]
+  ]
+ },
+ {
+  "w": 1024,
+  "ref": "scratchpad/au/emp/fin/s/empresas_1024_completa.png",
+  "act": "scratchpad/au/emp/p5/empresas_1024_completa.png",
+  "salida": "scratchpad/au/emp/p5x/d_1024",
+  "w1": 1024,
+  "h1": 1130,
+  "w2": 1024,
+  "h2": 1130,
+  "pixeles": 0,
+  "pct": 0,
+  "bbox": null,
+  "bandas": []
+ },
+ {
+  "w": 768,
+  "ref": "scratchpad/au/emp/fin/s/empresas_768_completa.png",
+  "act": "scratchpad/au/emp/p5/empresas_768_completa.png",
+  "salida": "scratchpad/au/emp/p5x/d_768",
+  "w1": 768,
+  "h1": 1213,
+  "w2": 768,
+  "h2": 1213,
+  "pixeles": 0,
+  "pct": 0,
+  "bbox": null,
+  "bandas": []
+ },
+ {
+  "w": 600,
+  "ref": "scratchpad/au/emp/fin/s/empresas_600_completa.png",
+  "act": "scratchpad/au/emp/p5/empresas_600_completa.png",
+  "salida": "scratchpad/au/emp/p5x/d_600",
+  "w1": 600,
+  "h1": 1207,
+  "w2": 600,
+  "h2": 1207,
+  "pixeles": 0,
+  "pct": 0,
+  "bbox": null,
+  "bandas": []
+ },
+ {
+  "w": 390,
+  "ref": "scratchpad/au/emp/fin/s/empresas_390_completa.png",
+  "act": "scratchpad/au/emp/p5/empresas_390_completa.png",
+  "salida": "scratchpad/au/emp/p5x/d_390",
+  "w1": 390,
+  "h1": 1303,
+  "w2": 390,
+  "h2": 1303,
+  "pixeles": 0,
+  "pct": 0,
+  "bbox": null,
+  "bandas": []
+ },
+ {
+  "w": 320,
+  "ref": "scratchpad/au/emp/fin/s/empresas_320_completa.png",
+  "act": "scratchpad/au/emp/p5/empresas_320_completa.png",
+  "salida": "scratchpad/au/emp/p5x/d_320",
+  "w1": 320,
+  "h1": 1347,
+  "w2": 320,
+  "h2": 1347,
+  "pixeles": 0,
+  "pct": 0,
+  "bbox": null,
+  "bandas": []
+ }
+]

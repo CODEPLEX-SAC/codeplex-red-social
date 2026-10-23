@@ -10,7 +10,7 @@ const sinAcciones = { alVer: () => undefined, alEditar: () => undefined, alDarDe
 
 function filaDe(nombre: string) {
   fireEvent.change(screen.getByPlaceholderText(catalogoColaboradores.placeholders.buscar_colaborador), { target: { value: nombre } })
-  return within(screen.getByRole('checkbox', { name: nombre }).closest('tr') as HTMLElement)
+  return within(screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement)
 }
 
 function etiquetasDelMenu(nombre: string) {
@@ -86,7 +86,7 @@ describe('Acciones de fila en la tabla', { timeout: 30000 }, () => {
     fireEvent.click(filaDe(ana.nombre).getByRole('button', { name: botones.reenviar }))
     fireEvent.change(screen.getByPlaceholderText(catalogoColaboradores.placeholders.buscar_colaborador), { target: { value: '' } })
 
-    expect(screen.getAllByRole('checkbox', { name: ana.nombre })).toHaveLength(1)
+    expect(screen.getAllByText(ana.nombre, { selector: 'span.truncate' })).toHaveLength(1)
     expect(screen.getByText(catalogoColaboradores.paginacion.resumen.replace('{desde}', '1').replace('{hasta}', '3').replace('{total}', String(COLABORADORES.length)))).toBeInTheDocument()
   })
 

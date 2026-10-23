@@ -1,0 +1,16 @@
+{
+  "suscripciones": [
+    {
+      "aplicacion": "conta-plex",
+      "tipo": "independiente",
+      "plan": "estandar",
+      "periodo": "mensual"
+    },
+    {
+      "aplicacion": "facturacion-electronica",
+      "tipo": "unico",
+      "plan": "basico",
+      "periodo": "mensual"
+    }
+  ]
+}

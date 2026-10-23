@@ -1,5 +1,5 @@
-import { posicionesDe } from '../../compartido/posiciones'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Boton } from '../../compartido/interfaz/boton'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
@@ -14,25 +14,16 @@ export function BloqueMensaje({ AMIGOS }: { AMIGOS: Amigo[] }) {
       {AMIGOS.length === 0 && <MensajeVacio texto={catalogoAmigos.mensajes.sin_amigos} className="col-span-full py-8" />}
       {AMIGOS.map((a) => (
         <article key={a.nombre} className="flex items-center gap-3.5 border-b border-borde py-3.5 last:border-b-0">
-          <AvatarImagen src={usuarioImg} className="h-12 w-12 flex-none rounded-full bg-primario-suave" />
+          <AvatarUsuario tamano="lg" imagen={usuarioImg} estado={a.enLinea ? 'conectado' : 'desconectado'} />
           <div className="w-42.5 min-w-0 shrink max-900:w-32.5">
             <strong className="block truncate text-nombre-entidad text-texto">{a.nombre}</strong>
-            <span className={'mt-0.75 flex items-center gap-1.25 text-badge before:h-1.5 before:w-1.5 before:flex-none before:rounded-full ' + (a.enLinea ? 'text-exito-texto before:bg-exito' : 'text-texto-suave before:bg-texto-icono-discreto')}>
+            <span className={'mt-0.75 block text-badge ' + (a.enLinea ? 'text-exito-texto' : 'text-texto-suave')}>
               {a.estado}
             </span>
           </div>
           <div className="flex min-w-0 flex-1 items-center gap-2.5 max-900:hidden">
             <span className="whitespace-nowrap text-auxiliar text-texto-suave">{a.comunes}</span>
-            <div className="flex items-center">
-              {posicionesDe(4).map((posicion) => (
-                <AvatarImagen
-                  key={posicion.id}
-                  src={usuarioImg}
-                  className={'h-5.5 w-5.5 rounded-full border-2 border-white bg-primario-suave ' + (posicion.orden > 0 ? '-ml-2' : '')}
-                />
-              ))}
-              <span className="-ml-2 grid h-5.5 w-5.5 place-items-center rounded-full border-2 border-white bg-fondo-insignia-neutra text-conteo text-texto-suave">{a.masAvatares}</span>
-            </div>
+            <GrupoAvatares avatares={4} tamano="xs" tono="neutro" resto={a.masAvatares} />
           </div>
           <div className="flex flex-none items-center gap-2">
             <Boton variant="secundario" size="mini">{catalogoAmigos.botones.mensaje}</Boton>

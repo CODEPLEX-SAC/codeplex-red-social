@@ -1,4 +1,4 @@
-import { BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, AvatarImagen, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg, posicionesDe } from '../../componentes/compartido'
+import { BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, SuperficieColor, GrupoAvatares } from '../../componentes/compartido'
 import { EncabezadoAmigos, PestanasAmigos, PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
@@ -37,15 +37,7 @@ export function PaginaAmigosListas() {
                     <span className="text-auxiliar text-texto-suave">{l.cantidad}</span>
                   </div>
                   <div className="mb-3 flex items-center gap-1.5">
-                    <div className="flex items-center">
-                      {posicionesDe(l.avatares).map((posicion) => (
-                        <AvatarImagen
-                          key={posicion.id}
-                          src={usuarioImg}
-                          className={'h-5.5 w-5.5 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
-                        />
-                      ))}
-                    </div>
+                    <GrupoAvatares avatares={l.avatares} tamano="xs" />
                     <span className="text-conteo text-texto-suave">{l.masAvatares}</span>
                   </div>
                   <p className="m-0 mt-auto text-cuerpo leading-texto text-texto-suave">{l.descripcion}</p>

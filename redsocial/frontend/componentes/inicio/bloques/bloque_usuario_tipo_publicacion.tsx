@@ -1,5 +1,5 @@
 import { imagenUsuarioPredeterminada } from '../../compartido'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { Boton } from '../../compartido/interfaz/boton'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
@@ -10,7 +10,7 @@ const textos = catalogoInicio.modal_crear_publicacion
 export function BloqueUsuarioTipoPublicacion({ mostrarTipos, tipo, onCambiar }: BloqueUsuarioTipoPublicacionProps) {
   return (
     <div className="flex items-center gap-3">
-      <AvatarImagen src={imagenUsuarioPredeterminada} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
+      <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
       <div className="flex min-w-0 flex-col gap-1.5">
         <strong className="text-nombre-entidad text-texto">{catalogoCompartido.sesion_actual.usuario}</strong>
         {mostrarTipos && (
@@ -20,11 +20,10 @@ export function BloqueUsuarioTipoPublicacion({ mostrarTipos, tipo, onCambiar }: 
               key={opcion.valor}
               type="button"
               variant="filtro"
-              size="mini"
+              size="pildora"
               activo={tipo === opcion.valor}
               aria-pressed={tipo === opcion.valor}
               onClick={() => onCambiar(opcion.valor as TipoPublicacion)}
-              className="rounded-full"
             >
               {opcion.etiqueta}
             </Boton>

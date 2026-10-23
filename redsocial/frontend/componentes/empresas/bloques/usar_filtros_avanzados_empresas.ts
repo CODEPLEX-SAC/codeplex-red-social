@@ -4,14 +4,10 @@ import { crearFiltrosAvanzados } from './logica_listado_empresas'
 import type { CambioSelectorEmpresas, FiltrosAvanzadosEmpresas, ListadoEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
 
 export function usarFiltrosAvanzadosEmpresas(listado: ListadoEmpresas, alCerrar: () => void) {
-  const [borrador, setBorrador] = useState<FiltrosAvanzadosEmpresas>({ rubro: listado.rubro, plan: listado.plan, desde: listado.desde, hasta: listado.hasta })
+  const [borrador, setBorrador] = useState<FiltrosAvanzadosEmpresas>({ rubro: listado.rubro, plan: listado.plan, modulo: listado.modulo, desde: listado.desde, hasta: listado.hasta })
 
   function cambiarRubro(evento: CambioSelectorEmpresas) {
     setBorrador((actual) => ({ ...actual, rubro: String(evento.target.value) }))
-  }
-
-  function cambiarPlan(evento: CambioSelectorEmpresas) {
-    setBorrador((actual) => ({ ...actual, plan: String(evento.target.value) }))
   }
 
   function cambiarDesde(valor: Dayjs | null) {
@@ -23,7 +19,7 @@ export function usarFiltrosAvanzadosEmpresas(listado: ListadoEmpresas, alCerrar:
   }
 
   function limpiar() {
-    setBorrador(crearFiltrosAvanzados())
+    setBorrador({ ...crearFiltrosAvanzados(), plan: listado.plan, modulo: listado.modulo })
     listado.limpiarAvanzados()
   }
 
@@ -32,5 +28,5 @@ export function usarFiltrosAvanzadosEmpresas(listado: ListadoEmpresas, alCerrar:
     alCerrar()
   }
 
-  return { borrador, cambiarRubro, cambiarPlan, cambiarDesde, cambiarHasta, limpiar, aplicar }
+  return { borrador, cambiarRubro, cambiarDesde, cambiarHasta, limpiar, aplicar }
 }

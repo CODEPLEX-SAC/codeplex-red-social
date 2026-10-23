@@ -1,0 +1,13 @@
+{
+  "usuario": "Pedro Lozano",
+  "tarjetas": [
+    {
+      "id": "t-demostracion-pedro",
+      "marca": "Visa",
+      "ultimos4": "4242",
+      "vencimiento": "12/29",
+      "titular": "Pedro Lozano",
+      "predeterminada": true
+    }
+  ]
+}

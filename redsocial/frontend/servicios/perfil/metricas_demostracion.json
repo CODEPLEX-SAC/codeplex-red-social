@@ -1,0 +1,75 @@
+{
+  "comportamiento": [
+    {
+      "clave": "participacion",
+      "etiqueta": "Participación profesional",
+      "valor": "78.4%",
+      "estado": "estable"
+    },
+    {
+      "clave": "colaboracion",
+      "etiqueta": "Colaboración",
+      "valor": "82.1%",
+      "estado": "optimo"
+    },
+    {
+      "clave": "alcance",
+      "etiqueta": "Alcance del perfil",
+      "valor": "+5%",
+      "estado": "optimo"
+    },
+    {
+      "clave": "comunicacion",
+      "etiqueta": "Comunicación efectiva",
+      "valor": "75.3%",
+      "estado": "estable"
+    }
+  ],
+  "profesionales": [
+    {
+      "clave": "auditoria",
+      "titulo": "Auditoría financiera",
+      "precision": 85,
+      "datos": [
+        {
+          "etiqueta": "Informes emitidos",
+          "valor": "32"
+        },
+        {
+          "etiqueta": "Frecuencia",
+          "valor": "Trimestral"
+        }
+      ]
+    },
+    {
+      "clave": "tributario",
+      "titulo": "Cumplimiento tributario",
+      "precision": 88,
+      "datos": [
+        {
+          "etiqueta": "Declaraciones",
+          "valor": "18"
+        },
+        {
+          "etiqueta": "Ciclos",
+          "valor": "Mensual"
+        }
+      ]
+    },
+    {
+      "clave": "conciliacion",
+      "titulo": "Conciliación bancaria",
+      "precision": 82,
+      "datos": [
+        {
+          "etiqueta": "Reportes",
+          "valor": "15"
+        },
+        {
+          "etiqueta": "Verificación",
+          "valor": "Semanal"
+        }
+      ]
+    }
+  ]
+}

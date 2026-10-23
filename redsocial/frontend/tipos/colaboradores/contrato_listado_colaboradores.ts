@@ -1,4 +1,4 @@
-import type { LegacyRow, LegacyTable } from '@tanstack/react-table/legacy'
+import type { LegacyRow } from '@tanstack/react-table/legacy'
 import type { Colaborador } from './modelo_colaboradores'
 
 export interface DatosListadoColaboradores {
@@ -21,6 +21,5 @@ export interface DatosListadoColaboradores {
 
 export interface TablaColaboradoresProps {
   datos: DatosListadoColaboradores
-  tabla: LegacyTable<Colaborador>
   filas: LegacyRow<Colaborador>[]
 }

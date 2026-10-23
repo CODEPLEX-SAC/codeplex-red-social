@@ -21,7 +21,7 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
 
   return (
     <div
-      className="fixed right-md top-19 z-20 w-95 rounded-xl border border-borde bg-white shadow-t13 max-600:left-3 max-600:right-3 max-600:w-auto"
+      className="fixed right-md top-bajo-barra z-20 w-95 rounded-xl border border-borde bg-white shadow-t13 max-600:left-3 max-600:right-3 max-600:w-auto"
     >
       <div className="flex items-center justify-between border-b border-borde-suave p-3.5">
         <strong className="text-titulo-banner text-texto">{catalogoAvisos.titulos.principal}</strong>

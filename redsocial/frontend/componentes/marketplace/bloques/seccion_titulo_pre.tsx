@@ -43,7 +43,7 @@ export function SeccionTituloPre({
         </div>
       </div>
 
-      <SeccionTituloPre2 />
+      <SeccionTituloPre2 busqueda={accesos.busqueda} alBuscar={accesos.alBuscar} />
 
       <div
         ref={carrusel.pistaRef}

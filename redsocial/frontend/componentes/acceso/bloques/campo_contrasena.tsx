@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import catalogoAcceso from '../../../catalogos/capacidades/redsocial/acceso.json'
@@ -11,10 +12,7 @@ export function CampoContrasena({ variante, valor, error, onCambiar }: CampoCont
   const [visible, setVisible] = useState(false)
 
   return (
-    <div>
-      <label htmlFor={configuracion.id} className="mb-1.5 block text-etiqueta text-texto">
-        {configuracion.etiqueta}
-      </label>
+    <CampoEtiquetado para={configuracion.id} etiqueta={configuracion.etiqueta}>
       <CampoTexto
         id={configuracion.id}
         valor={valor}
@@ -36,6 +34,6 @@ export function CampoContrasena({ variante, valor, error, onCambiar }: CampoCont
           />
         }
       />
-    </div>
+    </CampoEtiquetado>
   )
 }

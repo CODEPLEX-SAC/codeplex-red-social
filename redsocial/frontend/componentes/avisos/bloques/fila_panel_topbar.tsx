@@ -1,5 +1,5 @@
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import type { FilaPanelTopbarProps } from '@/tipos/avisos/contrato_notificaciones_topbar'
@@ -10,14 +10,7 @@ export function FilaPanelTopbar({ aviso: n, claseIcono }: FilaPanelTopbarProps) 
   return (
     <article className="flex items-start gap-2.5 border-b border-borde-suave p-3 last:border-b-0 hover:bg-fondo">
       {n.tipo === 'avatar' ? (
-        <span className="relative flex-none">
-          <AvatarImagen src={usuarioImg} className="h-9 w-9 rounded-full bg-primario-suave" />
-          {n.conInsigniaIcono && (
-            <span className={`absolute -bottom-0.5 -right-0.5 grid h-4 w-4 place-items-center rounded-full border-2 border-white ${claseIcono}`}>
-              <Icono name={n.icono} className="h-3 w-3" />
-            </span>
-          )}
-        </span>
+        <AvatarUsuario tamano="sm" imagen={usuarioImg} insignia={n.conInsigniaIcono ? <Icono name={n.icono} className="h-3 w-3" /> : undefined} claseInsignia={claseIcono} />
       ) : (
         <div className={`grid h-9 w-9 flex-none place-items-center rounded-full ${claseIcono}`}>
           <Icono name={n.icono} className="h-4 w-4" />

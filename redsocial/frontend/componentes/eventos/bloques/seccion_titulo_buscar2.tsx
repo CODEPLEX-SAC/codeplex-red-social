@@ -25,7 +25,7 @@ export function SeccionTituloBuscar2({
   FilaCiudad: ({ nombre, activa, onElegir }: FilaCiudadProps) => React.JSX.Element
 }) {
   return (
-    <div className={'w-72 flex-none overflow-y-auto border-r border-borde-suave p-4 max-600:w-full max-600:overflow-visible max-600:border-r-0 max-600:pt-2 ' + (enMapa ? 'max-600:hidden' : '')}>
+    <div className={'w-72 flex-none overflow-y-auto border-r border-borde-suave p-4 max-900:w-full max-900:overflow-visible max-900:border-b max-900:border-r-0 max-600:border-b-0 max-600:pt-2 ' + (enMapa ? 'max-600:hidden' : '')}>
       <h3 className="m-0 mb-2 text-titulo-seccion text-texto max-600:hidden">{textos.titulo_buscar}</h3>
       {buscadorLista}
       <div className="mb-3">

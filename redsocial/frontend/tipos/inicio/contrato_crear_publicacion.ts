@@ -16,6 +16,9 @@ export interface OpcionEncuestaPublicacion {
 export interface ContenidoPublicacion {
   tipo: TipoPublicacion
   texto: string
+  prioridad?: PrioridadPublicacion
+  opciones?: string[]
+  medios?: MedioLocalPublicacion[]
 }
 
 export type ModoModalPublicacion = 'crear' | 'editar'
@@ -24,6 +27,7 @@ export interface ModalCrearPublicacionProps {
   modo?: ModoModalPublicacion
   tipoInicial?: TipoPublicacion
   textoInicial?: string
+  mediosIniciales?: MedioLocalPublicacion[]
   onPublicar: (contenido: ContenidoPublicacion) => void
   onCerrar: () => void
 }
@@ -53,7 +57,6 @@ export interface BloquePrioridadPublicacionProps {
 
 export interface BloquePiePublicacionProps {
   etiquetaPublicar: string
-  mostrarMedios: boolean
   puedeAgregarMedios: boolean
   contenidoValido: boolean
   onAgregarMedios: (archivos: File[]) => void

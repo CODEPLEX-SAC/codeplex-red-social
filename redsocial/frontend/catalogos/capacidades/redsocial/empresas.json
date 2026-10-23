@@ -9,6 +9,7 @@
     "ver_historial",
     "editar"
   ],
+  "codigo_empresa": "Código: :codigo",
   "alertas": {
     "filtros_sin_resultados": "Ninguna empresa coincide con los filtros aplicados."
   },
@@ -40,7 +41,7 @@
     "listado": "Empresas"
   },
   "subtitulos": {
-    "listado": "Administra todas las empresas registradas en tu plataforma."
+    "listado": "Gestiona qué empresas usan cada producto, plan y módulo. Visualiza límites, uso y estado de cada asignación."
   },
   "migas": {
     "etiqueta": "Ruta de navegación",
@@ -56,24 +57,23 @@
     "nueva_empresa": "Nueva empresa",
     "filtros_avanzados": "Filtros avanzados",
     "editar": "Editar :nombre",
-    "mas_opciones": "Más opciones de :nombre",
     "ver_detalle": "Ver detalle de :nombre",
-    "desactivar": "Desactivar :nombre"
+    "desactivar": "Desactivar :nombre",
+    "activar": "Activar :nombre",
+    "limpiar": "Limpiar",
+    "ordenar_empresas": "Ordenar por empresa"
   },
   "placeholders": {
-    "buscar_empresa": "Buscar por RUC, nombre o email..."
+    "buscar_empresa": "Buscar empresa por nombre o RUC..."
   },
   "campos": {
-    "buscar_empresa": "Buscar empresas",
-    "seleccionar_todas": "Seleccionar todas las empresas visibles",
-    "seleccionar_empresa": "Seleccionar :nombre",
-    "tamano_pagina": "Empresas por página"
+    "buscar_empresa": "Buscar empresas"
   },
   "selectores": {
     "estado": {
       "etiqueta": "Estado",
       "opciones": [
-        "Todos",
+        "Todas",
         "Activa",
         "Inactiva"
       ]
@@ -97,67 +97,37 @@
         "Servicios",
         "Tecnología",
         "Transportes",
-        "Turismo"
-      ]
-    },
-    "tipo_plan": {
-      "etiqueta": "Tipo de plan",
-      "opciones": [
-        "Todos",
-        "Avanzado",
-        "Intermedio",
+        "Turismo",
+        "Corporativo",
+        "Pyme",
         "Básico"
       ]
+    },
+    "plan": {
+      "etiqueta": "Plan"
+    },
+    "modulo": {
+      "etiqueta": "Módulo"
     }
   },
-  "tamanos_pagina": [
-    {
-      "valor": "10",
-      "etiqueta": "10 por página"
-    },
-    {
-      "valor": "20",
-      "etiqueta": "20 por página"
-    },
-    {
-      "valor": "50",
-      "etiqueta": "50 por página"
-    }
-  ],
   "tabla": {
-    "logo": "Logo",
     "empresa": "Empresa",
     "ruc": "RUC",
     "rubro": "Rubro",
-    "plan": "Plan",
-    "usuarios": "Usuarios",
-    "estado": "Estado",
-    "fecha_registro": "Fecha registro",
     "acciones": "Acciones"
-  },
-  "planes": {
-    "avanzado": "Avanzado",
-    "intermedio": "Intermedio",
-    "basico": "Básico"
   },
   "estados": {
     "activa": "Activa",
     "inactiva": "Inactiva"
   },
   "paginacion": {
-    "resumen": "Mostrando {desde} a {hasta} de {total} empresas"
+    "resumen": "Mostrando {desde} - {hasta} de {total} empresas",
+    "tamano": 10
   },
   "claves": {
     "modulo": "empresas"
   },
   "clases": {
-    "celda": "px-2 py-3 text-left align-middle",
-    "relleno_encabezado": "px-2 py-3.5",
-    "plan": {
-      "avanzado": "bg-azul-categoria/15 text-azul-categoria-texto",
-      "intermedio": "bg-primario-suave text-primario",
-      "basico": "bg-exito/15 text-exito-texto"
-    },
     "estado": {
       "activa": {
         "texto": "text-exito-texto",
@@ -182,8 +152,72 @@
     "nombre_fila": "whitespace-nowrap text-nombre-fila text-texto",
     "texto_error": "text-auxiliar font-control text-negativo-kpi",
     "boton_icono_peligro": "border-peligro text-peligro-texto",
+    "boton_icono_exito": "border-exito text-exito-texto",
     "titulo_ventana": "m-0 text-titulo-banner text-texto",
-    "texto_descriptivo": "m-0 text-subtitulo leading-texto text-texto-suave"
+    "texto_descriptivo": "m-0 text-subtitulo leading-texto text-texto-suave",
+    "rubro": {
+      "Corporativo": "bg-primario-suave text-primario",
+      "Pyme": "bg-azul-categoria/15 text-azul-categoria-texto",
+      "Básico": "bg-exito/15 text-exito-texto",
+      "otro": "bg-fondo-hover-neutro text-texto-suave"
+    },
+    "cabecera": {
+      "fila": "flex items-center gap-4",
+      "icono_caja": "grid h-14 w-14 flex-none place-items-center rounded-xl bg-primario-suave text-primario",
+      "icono": "h-7 w-7"
+    },
+    "resumen": {
+      "rejilla": "mb-4 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1",
+      "tarjeta": "flex min-w-0 items-start gap-2.5 rounded-xl border border-gris-borde bg-white p-3.5",
+      "icono_caja": "grid h-10 w-10 flex-none place-items-center rounded-xl",
+      "icono": "h-6 w-6",
+      "cuerpo": "flex min-w-0 flex-1 flex-col gap-1",
+      "etiqueta": "text-auxiliar text-texto-suave",
+      "valor": "text-titulo-seccion text-texto",
+      "detalle": "text-auxiliar text-texto-suave",
+      "barra": "h-1.5 w-full appearance-none overflow-hidden rounded-full border-0 bg-fondo-hover-neutro [&::-webkit-progress-bar]:bg-fondo-hover-neutro [&::-webkit-progress-value]:rounded-full [&::-moz-progress-bar]:rounded-full",
+      "barra_tono": {
+        "azul": "[&::-webkit-progress-value]:bg-azul-categoria [&::-moz-progress-bar]:bg-azul-categoria",
+        "verde": "[&::-webkit-progress-value]:bg-verde-categoria [&::-moz-progress-bar]:bg-verde-categoria",
+        "naranja": "[&::-webkit-progress-value]:bg-naranja-categoria [&::-moz-progress-bar]:bg-naranja-categoria",
+        "morado": "[&::-webkit-progress-value]:bg-morado-categoria [&::-moz-progress-bar]:bg-morado-categoria"
+      }
+    },
+    "filtros": {
+      "contenedor": "mb-4 flex flex-wrap items-end gap-3 rounded-xl border border-gris-borde bg-white p-4 max-900:flex-col max-900:items-stretch",
+      "buscador": "min-w-48 flex-1 max-1400:basis-full max-900:min-w-full",
+      "selector": "w-36 max-900:w-full",
+      "limpiar": "max-900:w-full"
+    },
+    "encabezado_orden": "inline-flex items-center gap-1 border-0 bg-transparent p-0 text-left text-encabezado-tabla text-texto-suave hover:text-primario",
+    "encabezado_orden_icono": "h-3.5 w-3.5",
+    "encabezado_modulo": {
+      "contenedor": "inline-flex items-center gap-2 whitespace-nowrap",
+      "icono_caja": "grid h-7 w-7 flex-none place-items-center rounded-lg",
+      "icono": "h-4 w-4"
+    },
+    "celda_modulo": {
+      "contenedor": "flex items-center gap-3 whitespace-nowrap rounded-lg px-2.5 py-2",
+      "fondo_neutro": "bg-fondo",
+      "estado": "inline-flex items-center gap-1.5 text-auxiliar font-control text-texto-suave",
+      "plan": "text-auxiliar font-control text-texto",
+      "icono": "h-3.5 w-3.5 flex-none",
+      "interruptor_color": "exito",
+      "etiqueta_oculta": "sr-only",
+      "fondo_activo": {
+        "verde": "bg-fondo-categoria-verde/40",
+        "naranja": "bg-fondo-categoria-naranja/40"
+      }
+    },
+    "celda_empresa": {
+      "logo": "grid h-9 w-9 flex-none place-items-center overflow-hidden rounded-lg bg-primario-suave text-nombre-entidad text-primario"
+    },
+    "acciones_fila": "flex items-center gap-2",
+    "encabezado_listado": "contents",
+    "aplicativos": {
+      "lista": "flex flex-wrap gap-2",
+      "pildora": "bg-primario-suave text-primario"
+    }
   },
   "toast": {
     "listado_actualizado": "Listado de empresas actualizado."
@@ -256,21 +290,6 @@
       "logo": "grid h-20 w-20 flex-none place-items-center overflow-hidden rounded-xl bg-primario-suave text-primario"
     }
   },
-  "menu_fila": [
-    {
-      "clave": "ver_detalle",
-      "etiqueta": "Ver detalle"
-    },
-    {
-      "clave": "editar",
-      "etiqueta": "Editar empresa"
-    },
-    {
-      "clave": "desactivar",
-      "etiqueta": "Desactivar empresa",
-      "peligro": true
-    }
-  ],
   "modal_desactivar": {
     "titulo": "¿Desactivar empresa?",
     "pregunta_antes": "¿Estás seguro de que deseas desactivar",
@@ -280,20 +299,37 @@
     "detalle": "La empresa dejará de estar activa en Codeplex, pero sus datos se conservarán.",
     "cancelar": "Cancelar",
     "confirmar": "Desactivar empresa",
-    "accion_menu": "desactivar"
+    "icono": "aviso-critico",
+    "icono_confirmar": "bloqueado",
+    "circulo": "bg-naranja-categoria/15 text-naranja-categoria-texto",
+    "boton": "peligro"
+  },
+  "modal_activar": {
+    "titulo": "¿Activar empresa?",
+    "pregunta_antes": "¿Estás seguro de que deseas activar",
+    "comilla_abre": "“",
+    "comilla_cierra": "”",
+    "pregunta_despues": "?",
+    "detalle": "La empresa volverá a estar activa en Codeplex con todos sus datos.",
+    "cancelar": "Cancelar",
+    "confirmar": "Activar empresa",
+    "icono": "verificado",
+    "icono_confirmar": "encendido",
+    "circulo": "bg-exito/15 text-exito-texto",
+    "boton": "exito"
   },
   "detalle_empresa": {
     "titulo": "Detalle de empresa",
     "subtitulo": "Información completa de la empresa en la plataforma.",
     "cerrar": "Cerrar",
-    "etiqueta_plan": "Plan :plan",
     "ver_logo": "Ver logo",
     "logo_alt": "Logo de :nombre",
     "abrir_web": "Abrir el sitio web de la empresa",
     "pestanas": {
       "informacion": "Información general",
       "usuarios": "Usuarios",
-      "historial": "Historial"
+      "historial": "Historial",
+      "planes": "Planes asignados"
     },
     "secciones": {
       "general": "Información general",
@@ -304,7 +340,6 @@
       "nombre_comercial": "Nombre comercial",
       "ruc": "RUC",
       "rubro": "Rubro",
-      "tipo_plan": "Tipo de plan",
       "estado": "Estado",
       "fecha_registro": "Fecha de registro",
       "logo": "Logo",
@@ -312,7 +347,9 @@
       "ubigeo": "Ubigeo",
       "telefono": "Teléfono",
       "email": "Correo electrónico",
-      "web": "Página web"
+      "web": "Página web",
+      "aplicativos": "Aplicativos asignados",
+    "tipo_plan_cuenta": "Tipo de plan de cuenta"
     },
     "clases": {
       "valor": "min-w-0 flex-1 break-words rounded-lg bg-fondo px-3 py-2 text-subtitulo text-texto",
@@ -323,8 +360,12 @@
     "iconos_pestana": {
       "informacion": "empresa",
       "usuarios": "usuarios",
-      "historial": "reloj"
-    }
+      "historial": "reloj",
+      "planes": "pila"
+    },
+    "sin_aplicativos": "Sin aplicativos asignados",
+    "sin_definir": "Sin definir",
+    "pildora_aplicativo": "{aplicativo} · Plan {plan}"
   },
   "usuarios_empresa": {
     "titulo": "Usuarios de la empresa",
@@ -389,7 +430,6 @@
           "punto": "bg-rojo-categoria"
         }
       },
-      "avatar_iniciales": "inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primario-suave text-auxiliar font-titulo text-primario",
       "tabla": "w-full min-w-208 border-collapse text-cuerpo"
     },
     "agregar": "Agregar usuario",
@@ -497,8 +537,7 @@
         "usuario": "bg-primario-suave text-primario",
         "empresa": "bg-azul-categoria/15 text-azul-categoria-texto",
         "plan": "bg-exito/15 text-exito-texto"
-      },
-      "encabezado": "bg-fondo"
+      }
     }
   },
   "edicion_empresa": {
@@ -509,6 +548,7 @@
     "quitar_logo": "Quitar logo",
     "formatos": "Formatos aceptados: PNG, JPG. Tamaño máx. 2MB.",
     "separador_ubigeo": " / ",
+    "sin_definir": "Sin definir",
     "etiquetas": {
       "departamento": "Departamento",
       "provincia": "Provincia",
@@ -530,13 +570,15 @@
     },
     "pestanas": [
       "informacion",
-      "usuarios"
+      "usuarios",
+      "planes"
     ]
   },
   "acciones_fila": {
     "ver_detalle": "ver_detalle",
     "editar": "editar",
-    "desactivar": "desactivar"
+    "desactivar": "desactivar",
+    "activar": "activar"
   },
   "filtros_avanzados": {
     "titulo": "Filtros avanzados",
@@ -548,5 +590,234 @@
     "idioma": "es",
     "marcador": "dd/mm/aaaa",
     "formato": "DD/MM/YYYY"
+  },
+  "modulos": [
+    {
+      "clave": "contabilidad",
+      "etiqueta": "Contabilidad",
+      "descripcion": "Finanzas y registros",
+      "icono": "contabilidad",
+      "tono": "azul",
+      "tono_estado": "verde",
+      "producto": "conta-plex"
+    },
+    {
+      "clave": "facturacion",
+      "etiqueta": "Facturación",
+      "descripcion": "Facturación electrónica",
+      "icono": "recibo",
+      "tono": "verde",
+      "tono_estado": "verde",
+      "producto": "facturacion-electronica"
+    },
+    {
+      "clave": "planillas",
+      "etiqueta": "Planillas",
+      "descripcion": "RRHH y nómina",
+      "icono": "personas",
+      "tono": "naranja",
+      "tono_estado": "naranja",
+      "producto": null
+    },
+    {
+      "clave": "inventario",
+      "etiqueta": "Inventario",
+      "descripcion": "Almacén y stock",
+      "icono": "almacen",
+      "tono": "morado",
+      "tono_estado": "verde",
+      "producto": null
+    }
+  ],
+  "resumen": {
+    "etiqueta": "Resumen de empresas",
+    "total": "Total de empresas",
+    "icono_total": "empresa",
+    "nuevas_mes": "+{cantidad} este mes",
+    "con_modulo": "Con {modulo}",
+    "porcentaje": "{porcentaje}% del total",
+    "tono_total": "morado",
+    "porcentaje_maximo": 100,
+    "etiqueta_barra": "{etiqueta}: {porcentaje}"
+  },
+  "modulo_estado": {
+    "no_asignado": "No asignado",
+    "plan": "Plan :plan",
+    "aria_activo": ":modulo: activo",
+    "aria_inactivo": ":modulo: inactivo",
+    "icono_no_asignado": "informacion"
+  },
+  "orden": {
+    "ascendente": "ascendente",
+    "descendente": "descendente",
+    "icono": "ordenar",
+    "idioma": "es",
+    "aria": {
+      "ascendente": "ascending",
+      "descendente": "descending",
+      "ninguno": "none"
+    }
+  },
+  "planes_asignados": {
+    "titulo": "Planes asignados",
+    "descripcion": "Aplicativos de Marketplace asignados a esta empresa, con su capacidad contratada y su uso.",
+    "plan": "Plan :plan",
+    "capacidad": "Capacidad",
+    "empresas": "Hasta {limite} empresas · {usadas} en uso",
+    "sucursales_una": "{n} sucursal o almacén",
+    "sucursales_varias": "{n} sucursales o almacenes",
+    "aviso": "La contratación y la mejora de los planes se gestionan desde Marketplace.",
+    "ir_marketplace": "Ir a Marketplace",
+    "vacio_titulo": "Sin planes asignados",
+    "vacio_detalle": "Esta empresa no tiene aplicativos contratados asignados. Contrata un aplicativo en Marketplace.",
+    "icono_aviso": "informacion",
+    "edicion": {
+      "icono_cabecera": "pila",
+      "activo": "Activo",
+      "inactivo": "Inactivo",
+      "recursos": {
+        "empresas": "Empresas",
+        "sucursales": "Sucursales o almacenes"
+      },
+      "uso_valor": "{usadas} de {limite}",
+      "capacidad_valor": "{limite}",
+      "uso_porcentaje": "{porcentaje}% de la capacidad utilizada",
+      "uso_no_determinado": "Uso no determinado",
+      "capacidad_no_determinada": "Capacidad no determinada",
+      "mejorar_plan": "Mejorar plan",
+      "etiqueta_mejorar": "Mejorar plan de :modulo",
+      "etiqueta_uso": "Uso de empresas de :modulo",
+      "icono_mejorar": "flecha-arriba",
+      "tono_barra": "azul",
+      "porcentaje_maximo": 100,
+      "columnas": {
+        "aplicativo": "Aplicativo",
+        "capacidad_uso": "Capacidad y uso",
+        "asignacion": "Asignación",
+        "acciones": "Acciones"
+      },
+      "aviso": {
+        "titulo": "¿Necesitas más capacidad?",
+        "descripcion": "Has utilizado {usadas} de las {limite} empresas incluidas en tu plan de {aplicativo}. Para registrar más empresas, puedes consultar los planes disponibles.",
+        "icono": "informacion"
+      },
+      "clases": {
+        "panel": "mb-4 overflow-hidden rounded-xl border border-gris-borde bg-white",
+        "avisos": "flex flex-col gap-3",
+        "cabecera": "flex items-start gap-3 p-5 max-480:p-4",
+        "cabecera_caja": "grid h-10 w-10 flex-none place-items-center rounded-full border border-borde-primario-suave bg-primario-suave text-primario",
+        "cabecera_icono": "h-5 w-5",
+        "titulo": "m-0 text-nombre-entidad text-texto",
+        "descripcion": "m-0 text-subtitulo text-texto-suave",
+        "tabla_envoltorio": "overflow-x-auto",
+        "tabla": "min-w-150",
+        "aplicativo": "flex min-w-40 items-center gap-3",
+        "subtitulo": "block text-auxiliar text-texto-suave",
+        "uso": "flex min-w-48 flex-col gap-1.5",
+        "uso_cabecera": "flex items-center justify-between gap-3 text-subtitulo text-texto",
+        "interruptor": "whitespace-nowrap"
+      }
+    },
+    "mejora": {
+      "titulo": "Mejorar plan de :aplicativo",
+      "cerrar": "Cerrar",
+      "motivo_limite": "Has utilizado {usadas} de las {limite} empresas incluidas en tu plan de :aplicativo.",
+      "motivo_general": "Elige un plan con mayor capacidad para :aplicativo.",
+      "plan_actual_titulo": "Tu plan actual",
+      "planes_titulo": "Planes superiores",
+      "lista_etiqueta": "Planes disponibles para :aplicativo",
+      "plan": "Plan :plan",
+      "insignia_actual": "Plan actual",
+      "insignia_no_disponible": "No disponible",
+      "capacidad_no_determinada": "Capacidad no determinada",
+      "unidades": {
+        "empresas": {
+          "una": "empresa",
+          "varias": "empresas"
+        },
+        "sucursales": {
+          "una": "sucursal o almacén",
+          "varias": "sucursales o almacenes"
+        }
+      },
+      "capacidad": "{n} {unidad}",
+      "mas_capacidad": "{n} más que tu plan actual",
+      "mas_precio": "+{monto} respecto a tu plan actual",
+      "motivos": {
+        "no_aumenta": "No aumenta la capacidad de tu plan actual.",
+        "no_determinada": "No se puede determinar la capacidad de este plan."
+      },
+      "elegir": "Elegir plan",
+      "etiqueta_elegir": "Elegir el plan :plan",
+      "sin_opciones": "No hay planes superiores disponibles para este aplicativo.",
+      "resumen": {
+        "titulo": "Revisa tu mejora",
+        "etiqueta": "Resumen de la mejora de plan",
+        "columnas": {
+          "concepto": "Concepto",
+          "actual": "Actual",
+          "nuevo": "Nuevo"
+        },
+        "plan": "Plan",
+        "capacidad": "Capacidad",
+        "precio": "Precio",
+        "diferencia": "Diferencia de precio",
+        "cobro_ahora": "Importe a cobrar ahora",
+        "cobro_ahora_valor": "Se calcula en el paso de pago",
+        "renovacion": "Renovación",
+        "renovacion_mensual": "Cada mes",
+        "renovacion_anual": "Cada año",
+        "impuestos": "Impuestos y prorrateo: no determinados con las reglas actuales.",
+        "demostrativo": "El pago es demostrativo: no se realiza ningún cobro real.",
+        "volver": "Volver a los planes",
+        "cancelar": "Cancelar",
+        "continuar": "Continuar al pago"
+      },
+      "clases": {
+        "modal": "max-w-170 rounded-2xl max-600:h-full max-600:rounded-none",
+        "cuerpo": "flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-6 py-5 max-480:px-4",
+        "contexto": "flex items-center gap-3",
+        "contexto_texto": "m-0 text-subtitulo text-texto-suave",
+        "lista": "m-0 flex list-none flex-col gap-3 p-0",
+        "tarjeta": "flex flex-wrap items-center gap-x-4 gap-y-3 rounded-xl border border-borde p-4",
+        "tarjeta_actual": "bg-fondo",
+        "tarjeta_cuerpo": "flex min-w-40 flex-1 flex-col gap-0.5",
+        "tarjeta_titulo": "flex flex-wrap items-center gap-2",
+        "nombre": "m-0 text-nombre-entidad text-texto",
+        "detalle": "text-auxiliar text-texto-suave",
+        "precio": "text-nombre-fila text-texto",
+        "pie": "flex flex-none items-center justify-end gap-3 border-t border-borde px-6 py-4 max-480:flex-col-reverse max-480:items-stretch max-480:px-4",
+        "insignia_actual": "bg-primario-suave text-primario",
+        "insignia_no_disponible": "bg-fondo-hover-neutro text-texto-suave"
+      }
+    },
+    "clases": {
+      "contenedor": "flex flex-col gap-4 px-6 max-480:px-4",
+      "lista": "flex flex-col gap-3",
+      "tarjeta": "flex flex-wrap items-center gap-4 rounded-xl border border-borde p-4",
+      "icono_caja": "grid h-11 w-11 flex-none place-items-center rounded-xl",
+      "icono": "h-5 w-5",
+      "cuerpo": "flex min-w-0 flex-1 flex-col gap-1",
+      "nombre": "m-0 text-nombre-entidad text-texto",
+      "capacidad": "text-auxiliar text-texto-suave",
+      "pie": "flex flex-wrap items-center justify-between gap-3"
+    }
+  },
+  "limite": {
+    "titulo": "Alcanzaste el límite de empresas",
+    "detalle": "Tu plan {plan} de {producto} incluye hasta {limite} empresas y ya tienes {usadas}. Mejora tu plan en Marketplace para registrar más empresas.",
+    "cancelar": "Cancelar",
+    "ir_marketplace": "Ir a Marketplace",
+    "modulo_destino": "marketplace",
+    "etiqueta": "Límite de empresas del plan",
+    "icono": "aviso-critico",
+    "clases": {
+      "cabecera": "flex flex-none justify-end px-4 pt-4",
+      "modal": "max-w-100 rounded-2xl max-600:mx-4 max-600:w-auto max-600:flex-1",
+      "cuerpo": "flex min-h-0 flex-1 flex-col items-center gap-3 overflow-y-auto px-6 pb-6 text-center",
+      "icono_caja": "grid h-16 w-16 flex-none place-items-center rounded-full bg-naranja-categoria/15 text-naranja-categoria-texto",
+      "icono": "h-8 w-8",
+      "botones": "mt-2 flex w-full gap-3 max-480:flex-col-reverse"
+    }
   }
 }

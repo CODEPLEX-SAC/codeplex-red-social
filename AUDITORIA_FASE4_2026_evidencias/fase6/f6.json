@@ -1,0 +1,207 @@
+{
+ "numero": {
+  "antes": {
+   "deshab": true,
+   "borde": "1px rgba(0, 0, 0, 0.26)",
+   "halo": "none"
+  },
+  "conmutador": true,
+  "despues": "EXC: \"TypeError: Cannot read properties of null (reading 'disabled')\\n    at <anonymous>:1:86\\n    at <anonymous>:1:392\""
+ },
+ "selectorTeclado": {
+  "foco": {
+   "tabs": 39,
+   "nombre": "Filtrar actividad por módulo",
+   "n": {
+    "borde": "2px rgb(90, 67, 244)",
+    "halo": "rgba(90, 67, 244, 0.1) 0px 0px 0px 4px"
+   }
+  },
+  "abierto": true,
+  "tras": {
+   "valor": "Todos los módulos",
+   "articulos": 18,
+   "listboxAbierto": true,
+   "foco": null
+  }
+ },
+ "categoria": [
+  {
+   "paso": "sin selección",
+   "destacado": "Concierto Codeplex Live 2026",
+   "etiqueta": "Música"
+  },
+  {
+   "paso": "Música",
+   "disparador": "sell Categoría: 1",
+   "destacado": "Concierto Codeplex Live 2026",
+   "etiqueta": "Música",
+   "proximos": [
+    "Concierto Codeplex Live 2026"
+   ],
+   "vacio": false
+  },
+  {
+   "paso": "+ Deportes",
+   "disparador": "sell Categoría: 2",
+   "destacado": "Concierto Codeplex Live 2026",
+   "etiqueta": "Música",
+   "proximos": [
+    "Concierto Codeplex Live 2026"
+   ],
+   "vacio": false
+  },
+  {
+   "paso": "Salud (sin eventos)",
+   "disparador": "sell Categoría: 1",
+   "proximos": [],
+   "vacio": true
+  }
+ ],
+ "responsive": [
+  {
+   "w": 1280,
+   "ubicacion": {
+    "izq": 518,
+    "der": 1248,
+    "w": 730,
+    "desborde": false
+   },
+   "barra": {
+    "alto": 64,
+    "solapa": false,
+    "desborde": false
+   },
+   "rutasConDesborde": []
+  },
+  {
+   "w": 1000,
+   "ubicacion": {
+    "izq": 254,
+    "der": 984,
+    "w": 730,
+    "desborde": false
+   },
+   "barra": {
+    "alto": 64,
+    "solapa": false,
+    "desborde": false
+   },
+   "rutasConDesborde": []
+  },
+  {
+   "w": 900,
+   "ubicacion": {
+    "izq": 154,
+    "der": 884,
+    "w": 730,
+    "desborde": false
+   },
+   "barra": {
+    "alto": 64,
+    "solapa": false,
+    "desborde": false
+   },
+   "rutasConDesborde": []
+  },
+  {
+   "w": 820,
+   "ubicacion": {
+    "izq": 278,
+    "der": 718,
+    "w": 440,
+    "desborde": false
+   },
+   "barra": {
+    "alto": 64,
+    "solapa": false,
+    "desborde": false
+   },
+   "rutasConDesborde": []
+  },
+  {
+   "w": 400,
+   "ubicacion": {
+    "izq": 0,
+    "der": 400,
+    "w": 400,
+    "desborde": false
+   },
+   "barra": {
+    "alto": 64,
+    "solapa": false,
+    "desborde": false
+   },
+   "rutasConDesborde": []
+  },
+  {
+   "w": 320,
+   "ubicacion": {
+    "izq": 0,
+    "der": 320,
+    "w": 320,
+    "desborde": false
+   },
+   "barra": {
+    "alto": 64,
+    "solapa": false,
+    "desborde": false
+   },
+   "rutasConDesborde": []
+  }
+ ],
+ "pies": [
+  {
+   "ruta": "/amigos",
+   "pies": [
+    {
+     "t": "Ver más",
+     "h": 49
+    }
+   ]
+  },
+  {
+   "ruta": "/amigos/sugerencias",
+   "pies": [
+    {
+     "t": "Ver más",
+     "h": 49
+    }
+   ]
+  },
+  {
+   "ruta": "/amigos/solicitudes",
+   "pies": [
+    {
+     "t": "Ver más solicitudes",
+     "h": 49
+    },
+    {
+     "t": "Ver todas las solicitudes",
+     "h": 49
+    }
+   ]
+  },
+  {
+   "ruta": "/grupos/invitaciones",
+   "pies": [
+    {
+     "t": "Ver todas las invitaciones",
+     "h": 49
+    }
+   ]
+  },
+  {
+   "ruta": "/actividad/modulos",
+   "pies": [
+    {
+     "t": "Cargar má",
+     "h": 49
+    }
+   ]
+  }
+ ],
+ "anidados": [],
+ "filtrosFecha": null,
+ "rutasRevisadas": 49
+}

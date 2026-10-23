@@ -22,7 +22,9 @@ export function usarModal(onCerrar: () => void) {
 
   useEffect(() => {
     function alPresionarTecla(evento: KeyboardEvent) {
-      if (evento.key === configuracion.tecla_cerrar) onCerrar()
+      const abiertos = document.querySelectorAll(configuracion.selector_dialogo)
+      const esElSuperior = abiertos[abiertos.length - 1] === dialogoRef.current
+      if (evento.key === configuracion.tecla_cerrar && esElSuperior) onCerrar()
     }
     document.addEventListener('keydown', alPresionarTecla)
     return () => document.removeEventListener('keydown', alPresionarTecla)

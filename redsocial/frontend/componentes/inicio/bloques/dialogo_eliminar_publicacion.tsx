@@ -3,9 +3,7 @@ import { Modal } from '../../compartido/interfaz/modal'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
 import type { DialogoEliminarPublicacionProps } from '@/tipos/inicio/contrato_interacciones_publicacion'
 
-const textos = catalogoInicio.publicacion.eliminar
-
-export function DialogoEliminarPublicacion({ onConfirmar, onCerrar }: DialogoEliminarPublicacionProps) {
+export function DialogoEliminarPublicacion({ textos = catalogoInicio.publicacion.eliminar, onConfirmar, onCerrar }: DialogoEliminarPublicacionProps) {
   function confirmar() {
     onConfirmar()
     onCerrar()

@@ -1,6 +1,7 @@
-import { BotonIcono, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
+import { BannerInformativo, BotonIcono, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
-import { PestanasAvisos, BannerInfoAviso, FilaEventoAviso, PanelDetalleAviso } from '../../componentes/avisos'
+import { PestanasAvisos, FilaEventoAviso, PanelDetalleAviso } from '../../componentes/avisos'
 import { EVENTOS_AVISO, CONTEOS_AVISOS, DETALLE_AVISO, CLASES_ICONO_COLOR } from '../../rutas/avisos/rutas_avisos'
 
 const EVENTOS_HOY = EVENTOS_AVISO.filter((e) => e.grupo === 'hoy')
@@ -27,11 +28,13 @@ export function PaginaAvisosEventos() {
 
             <PestanasAvisos activa="eventos" conteos={CONTEOS_AVISOS} />
 
-            <BannerInfoAviso
+            <BannerInformativo
               icono="calendario"
               titulo={catalogoAvisos.banner_eventos.titulo}
               descripcion={catalogoAvisos.banner_eventos.descripcion}
-              cuadrado
+              iconoCuadrado
+              etiquetaCerrar={textosRedSocial.CERRAR}
+              className="mb-4"
             />
 
             <div className="mb-2.5 text-titulo-subseccion text-texto">{catalogoAvisos.grupos_fecha.hoy}</div>

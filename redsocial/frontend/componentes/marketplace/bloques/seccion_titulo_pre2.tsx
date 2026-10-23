@@ -1,9 +1,8 @@
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import { Icono } from '../../compartido/icono'
-import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { CampoBuscadorMarketplace } from './campo_buscador_marketplace'
 
-export function SeccionTituloPre2() {
+export function SeccionTituloPre2({ busqueda, alBuscar }: { busqueda: string; alBuscar: (texto: string) => void }) {
   return (
     <div className="mb-5 grid grid-cols-2 items-center gap-6 overflow-hidden rounded-14 degradado-lavanda-triple p-9 max-900:grid-cols-1 max-900:p-6">
       <div className="relative z-10">
@@ -30,7 +29,7 @@ export function SeccionTituloPre2() {
             <div className="text-titulo-subseccion leading-compacto text-texto">{catalogoMarketplace.hero.beneficio_3_titulo}<span className="block text-auxiliar text-texto-suave">{catalogoMarketplace.hero.beneficio_3_detalle}</span></div>
           </div>
         </div>
-        <CampoBusqueda placeholder={catalogoMarketplace.placeholders.buscar} className="max-w-95" accion={<BotonIcono icono="buscar" type="button" aria-label={catalogoMarketplace.placeholders.buscar} variant="primario" size="md" />} />
+        <CampoBuscadorMarketplace busqueda={busqueda} alBuscar={alBuscar} />
       </div>
       <div className="relative grid h-40 place-items-center max-900:hidden">
         <div className="grid h-35 w-35 place-items-center rounded-full bg-overlay-11">

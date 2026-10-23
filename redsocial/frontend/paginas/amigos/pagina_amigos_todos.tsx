@@ -1,10 +1,9 @@
-import { PanelLateral, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Boton, AvatarImagen, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
+import { PanelLateral, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Boton, AvatarUsuario, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
 import { SeccionTusAmigos, SeccionSolicitudesAmistadLateral } from '../../componentes/amigos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { RESUMEN_AMIGOS as RESUMEN, AMIGOS, SOLICITUDES_AMIGOS as SOLICITUDES, PERSONAS_CONOCER_TODOS as PERSONAS_CONOCER, TUS_LISTAS_TODOS as TUS_LISTAS } from '../../rutas/amigos/rutas_amigos'
 
-const AVATAR = 'h-8 w-8 flex-none rounded-full bg-primario-suave'
 
 export function PaginaAmigosTodos() {
   return (
@@ -21,7 +20,7 @@ export function PaginaAmigosTodos() {
             <PanelLateral titulo={catalogoAmigos.secciones.personas_conocer} enlace={textosRedSocial.VER_TODAS} ruta={catalogoAmigos.rutas.sugerencias}>
               {PERSONAS_CONOCER.map((p) => (
                 <article key={p.nombre} className="flex items-center gap-2 border-b border-borde-suave py-2 last:border-b-0">
-                  <AvatarImagen src={usuarioImg} className={AVATAR} />
+                  <AvatarUsuario tamano="sm" imagen={usuarioImg} />
                   <div className="min-w-0 flex-1">
                     <strong className="block truncate text-nombre-entidad text-texto">{p.nombre}</strong>
                     <span className="block truncate text-auxiliar text-texto-suave">{p.comunes}</span>

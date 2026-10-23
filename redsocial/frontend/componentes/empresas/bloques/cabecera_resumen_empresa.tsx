@@ -5,11 +5,9 @@ import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.
 import type { DetalleEmpresaProps } from '@/tipos/empresas/contrato_detalle_empresa'
 
 const textos = catalogoEmpresas.detalle_empresa
-const PLANTILLA_PLAN = textos.etiqueta_plan
+const PLANTILLA_CODIGO = catalogoEmpresas.codigo_empresa
 const PLANTILLA_LOGO = textos.logo_alt
-const ETIQUETAS_PLAN: Record<string, string> = catalogoEmpresas.planes
 const ETIQUETAS_ESTADO: Record<string, string> = catalogoEmpresas.estados
-const CLASES_PLAN: Record<string, string> = catalogoEmpresas.clases.plan
 const CLASES_ESTADO: Record<string, { punto: string; insignia: string }> = catalogoEmpresas.clases.estado
 
 const textoAuxiliar = catalogoEmpresas.clases.texto_auxiliar
@@ -24,13 +22,11 @@ export function CabeceraResumenEmpresa({ empresa }: DetalleEmpresaProps) {
       </span>
       <div className="min-w-0 flex-1">
         <h3 className="m-0 break-words text-nombre-entidad text-texto">{empresa.nombre}</h3>
-        <span className={`block ${textoAuxiliar}`}>{empresa.codigo}</span>
+        <span className={`block ${textoAuxiliar}`}>{PLANTILLA_CODIGO.replace(':codigo', empresa.codigo)}</span>
         <div className="mt-2 flex flex-wrap gap-2">
-          <Insignia variant="status" className={`inline-flex items-center gap-1.5 ${estado.insignia}`}>
-            <i className={`h-1.5 w-1.5 rounded-full ${estado.punto}`} />
+          <Insignia variant="status" className={`inline-flex items-center gap-1.5 ${estado.insignia}`} punto={estado.punto}>
             {ETIQUETAS_ESTADO[empresa.estado]}
           </Insignia>
-          <Insignia variant="status" className={CLASES_PLAN[empresa.plan]}>{PLANTILLA_PLAN.replace(':plan', ETIQUETAS_PLAN[empresa.plan])}</Insignia>
         </div>
       </div>
     </div>

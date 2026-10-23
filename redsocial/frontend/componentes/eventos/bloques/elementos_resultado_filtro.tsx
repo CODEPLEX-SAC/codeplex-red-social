@@ -1,10 +1,10 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import { TextoColor } from '../../compartido/interfaz/texto_color'
-import { imagenUsuarioPredeterminada as usuarioImg, imagenEventoPredeterminada as imagenEvento } from '../../compartido/icono'
+import { imagenEventoPredeterminada as imagenEvento } from '../../compartido/icono'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import type { EventoResultadoFiltro, EventoSugeridoFiltro } from '@/tipos/eventos/contrato_resultados_filtro_fecha'
 import { formatearFechaEvento } from '../formato_fecha_filtro'
@@ -14,12 +14,7 @@ const MESES = catalogoEventos.meses
 
 export function AvataresEvento({ cantidad, asistentes }: { cantidad: number; asistentes: string }) {
   return (
-    <div className="flex items-center">
-      {posicionesDe(cantidad).map((posicion) => (
-        <img key={posicion.id} src={usuarioImg} alt="" className={'h-7 w-7 rounded-full border-2 border-white object-cover' + (posicion.orden > 0 ? ' -ml-2' : '')} />
-      ))}
-      <span className="-ml-1 inline-flex h-7 items-center rounded-14 border-2 border-white bg-fondo-categoria-morado px-2 text-conteo text-primario">{asistentes}</span>
-    </div>
+    <GrupoAvatares avatares={cantidad} tamano="sm" resto={asistentes} />
   )
 }
 

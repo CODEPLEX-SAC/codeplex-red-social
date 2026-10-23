@@ -1,12 +1,4 @@
 {
-  "transferencia": {
-    "banco": "BCP - Banco de Crédito del Perú",
-    "tipo_cuenta": "Cuenta corriente (Soles)",
-    "numero_cuenta": "193-1234567-0-00",
-    "cci": "002-193-001234567000-18",
-    "titular": "CodePlex S.A.C.",
-    "referencia": "CPX-2026-00123"
-  },
   "vip": {
     "precio": 500,
     "precio_antes": 1000,

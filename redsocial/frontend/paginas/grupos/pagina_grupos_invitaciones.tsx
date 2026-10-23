@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import { SeccionInvitaciones } from '../../componentes/grupos'
 import { FilaActividadGrupo } from '../../componentes/actividad'
@@ -32,7 +32,7 @@ export function PaginaGruposInvitaciones() {
                   </div>
                 ))}
               </div>
-              <a href="#" className="block rounded-lg border border-borde bg-white py-2.25 text-center text-enlace-accion text-primario no-underline hover:bg-fondo-hover-discreto">{catalogoGrupos.leyendas.ver_todas_invitaciones}</a>
+              <Boton type="button" variant="secundario" size="default" className="w-full">{catalogoGrupos.leyendas.ver_todas_invitaciones}</Boton>
             </section>
 
             <section className="rounded-xl border border-borde-suave bg-white p-4">
@@ -51,9 +51,9 @@ export function PaginaGruposInvitaciones() {
               </span>
               <strong className="mb-1 block text-subtitulo text-texto">{catalogoGrupos.ayuda.titulo}</strong>
               <p className="m-0 mb-3 text-cuerpo leading-texto text-texto-suave">{catalogoGrupos.ayuda.texto}</p>
-              <a href="#" className="flex items-center justify-center gap-1.5 rounded-lg border border-borde bg-white py-2 text-boton text-texto no-underline hover:bg-fondo-hover-discreto">
+              <Boton type="button" variant="secundario" size="default" className="w-full">
                 <Icono name="ajustes-sistema" className="h-3.5 w-3.5" /> {catalogoGrupos.botones.ir_a_configuracion}
-              </a>
+              </Boton>
             </section>
           </aside>
         }

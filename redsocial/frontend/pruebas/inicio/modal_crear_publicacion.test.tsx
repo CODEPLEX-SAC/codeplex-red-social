@@ -22,8 +22,7 @@ function montar() {
       PUBLICACION_COMPARTIDA_INICIO={PUBLICACION_COMPARTIDA_INICIO}
       publicaciones={[]}
       onPublicar={alPublicar}
-      onEditar={vi.fn()}
-      onEliminar={vi.fn()}
+      acciones={{ compartidosDe: () => 0, interaccionesDe: (_id, reaccionesPorTipo, comentarios) => ({ reaccion: null, reaccionesPorTipo, comentarios, onReaccionarPublicacion: vi.fn(), onComentar: vi.fn(), onResponder: vi.fn(), onEditar: vi.fn(), onEliminar: vi.fn(), onReaccionar: vi.fn(), utilidad: { habilitada: false, utilId: null, onMarcar: vi.fn() } }), esPropia: () => false, onEditar: vi.fn(), onEliminar: vi.fn(), onCompartir: vi.fn(), onVotar: vi.fn(), onMarcarUtil: vi.fn() }}
     />,
   )
 }

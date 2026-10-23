@@ -13,7 +13,7 @@ function filasDeDatos() {
 }
 
 function nombresVisibles() {
-  return filasDeDatos().map((fila) => fila.querySelector('input[type="checkbox"]')?.getAttribute('aria-label'))
+  return filasDeDatos().map((fila) => fila.querySelector('span.truncate')?.textContent)
 }
 
 function buscar(texto: string) {
@@ -26,7 +26,7 @@ function elegir(etiqueta: string, opcion: string) {
 }
 
 function filaDe(nombre: string) {
-  return screen.getByRole('checkbox', { name: nombre }).closest('tr') as HTMLElement
+  return screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement
 }
 
 describe('Tabla de colaboradores', { timeout: 30000 }, () => {
@@ -36,7 +36,7 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(filasDeDatos()).toHaveLength(3)
     expect(screen.getByText(resumen(1, 3, total))).toBeInTheDocument()
     const cabeceras = screen.getAllByRole('columnheader').map((th) => th.textContent)
-    expect(cabeceras).toEqual(['', ...Object.values(catalogoColaboradores.tabla)])
+    expect(cabeceras).toEqual(Object.values(catalogoColaboradores.tabla))
   })
 
   it('busca por nombre, correo o telefono y vuelve a la primera pagina', () => {
@@ -119,31 +119,11 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(screen.getByText(resumen(1, 3, total))).toBeInTheDocument()
   })
 
-  it('selecciona filas y la casilla de cabecera refleja el estado intermedio', () => {
+  it('la tabla no ofrece casillas de seleccion ni columna reservada para ellas', () => {
     render(<PaginaColaboradores />)
-    const cabecera = screen.getByRole('checkbox', { name: catalogoColaboradores.botones.seleccionar_todos })
-    const carlos = screen.getByRole('checkbox', { name: 'Carlos Mendoza' })
-
-    expect(cabecera).not.toBeChecked()
-    fireEvent.click(carlos)
-    expect(carlos).toBeChecked()
-    expect(cabecera).toHaveAttribute('data-indeterminate', 'true')
-
-    fireEvent.click(cabecera)
-    expect(screen.getAllByRole('checkbox').filter((casilla) => (casilla as HTMLInputElement).checked)).toHaveLength(4)
-    expect(cabecera).toBeChecked()
-
-    fireEvent.click(cabecera)
-    expect(screen.getAllByRole('checkbox').some((casilla) => (casilla as HTMLInputElement).checked)).toBe(false)
-  })
-
-  it('la seleccion se limita a la pagina visible', () => {
-    render(<PaginaColaboradores />)
-    fireEvent.click(screen.getByRole('checkbox', { name: catalogoColaboradores.botones.seleccionar_todos }))
-    fireEvent.click(screen.getByRole('button', { name: /page 2/i }))
-
-    expect(screen.getByRole('checkbox', { name: catalogoColaboradores.botones.seleccionar_todos })).not.toBeChecked()
-    expect(screen.getByRole('checkbox', { name: 'Rosa Jiménez' })).not.toBeChecked()
+    expect(screen.queryAllByRole('checkbox', { name: /Carlos Mendoza/ })).toHaveLength(0)
+    expect(within(screen.getByRole('table')).queryAllByRole('checkbox')).toHaveLength(0)
+    expect(screen.getAllByRole('columnheader')).toHaveLength(Object.keys(catalogoColaboradores.tabla).length)
   })
 
   it('el menu de la fila ofrece tres acciones y se cierra con Escape', () => {
@@ -172,10 +152,9 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(screen.getByRole('heading', { level: 2, name: catalogoColaboradores.secciones.detalle_colaborador })).toBeInTheDocument()
   })
 
-  it('cada fila tiene casilla con nombre accesible y botones con nombre', () => {
+  it('cada fila tiene botones con nombre accesible', () => {
     render(<PaginaColaboradores />)
     for (const fila of filasDeDatos()) {
-      expect(within(fila).getByRole('checkbox')).toHaveAccessibleName()
       for (const boton of within(fila).getAllByRole('button')) expect(boton).toHaveAccessibleName()
     }
   })

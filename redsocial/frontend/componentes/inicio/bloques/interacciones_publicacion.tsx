@@ -12,29 +12,39 @@ function contar(cantidad: number, singular: string, plural: string) {
   return `${cantidad} ${cantidad === 1 ? singular : plural}`
 }
 
-export function InteraccionesPublicacion({ nombre, texto, reaccionesIniciales, comentariosIniciales, iconosReacciones }: InteraccionesPublicacionProps) {
-  const interacciones = usarInteraccionesPublicacion(reaccionesIniciales, comentariosIniciales)
+export function InteraccionesPublicacion({ nombre, texto, interaccion, compartidos, puedeCompartir, onCompartir }: InteraccionesPublicacionProps) {
+  const interacciones = usarInteraccionesPublicacion(interaccion)
   const idComentarios = useId()
   const [compartiendo, setCompartiendo] = useState(false)
-  const reacciones = iconosReacciones ? `${iconosReacciones} ${interacciones.reacciones}` : contar(interacciones.reacciones, contadores.reaccion_singular, contadores.reaccion_plural)
 
   return (
     <>
       <PiePublicacion
-        reacciones={reacciones}
+        reacciones={contar(interacciones.reacciones, contadores.reaccion_singular, contadores.reaccion_plural)}
+        iconosResumen={interacciones.iconosResumen}
         comentarios={contar(interacciones.totalComentarios, contadores.comentario_singular, contadores.comentario_plural)}
-        compartidos={interacciones.compartidos > 0 ? contar(interacciones.compartidos, contadores.compartido_singular, contadores.compartido_plural) : undefined}
-        meGusta={interacciones.meGusta}
+        compartidos={compartidos > 0 ? contar(compartidos, contadores.compartido_singular, contadores.compartido_plural) : undefined}
+        reaccion={interaccion.reaccion}
+        puedeCompartir={puedeCompartir}
         comentariosAbiertos={interacciones.comentariosAbiertos}
         idComentarios={idComentarios}
-        onMeGusta={interacciones.alternarMeGusta}
+        onReaccionar={interaccion.onReaccionarPublicacion}
         onComentar={interacciones.alternarComentarios}
         onCompartir={() => setCompartiendo(true)}
       />
       {interacciones.comentariosAbiertos && (
-        <SeccionComentariosPublicacion id={idComentarios} comentarios={interacciones.comentarios} total={interacciones.totalComentarios} onComentar={interacciones.comentar} />
+        <SeccionComentariosPublicacion
+          id={idComentarios}
+          comentarios={interaccion.comentarios}
+          total={interacciones.totalComentarios}
+          onComentar={interaccion.onComentar}
+          onResponder={interaccion.onResponder}
+          onEditar={interaccion.onEditar}
+          onEliminar={interaccion.onEliminar}
+          onReaccionar={interaccion.onReaccionar}
+        />
       )}
-      {compartiendo && <DialogoCompartirPublicacion nombre={nombre} texto={texto} onCompartir={interacciones.compartir} onCerrar={() => setCompartiendo(false)} />}
+      {compartiendo && <DialogoCompartirPublicacion nombre={nombre} texto={texto} onCompartir={onCompartir} onCerrar={() => setCompartiendo(false)} />}
     </>
   )
 }

@@ -30,10 +30,10 @@ export function CuerpoPagoPlanes({
     <div className={textos.clases.cuerpo}>
       <div className={textos.clases.columnas}>
         <div className="grid min-w-0 gap-4">
-          <SeccionPagoMetodo estado={estado} pago={pago} cantidadGuardadas={historial.tarjetas.length} />
+          <SeccionPagoMetodo estado={estado} />
           <SeccionPagoFacturacion estado={estado} paises={pago.paises} cantidadGuardados={historial.perfiles.length} />
           {estado.elegibles > 0 && <SeccionPagoVip vip={pago.vip} seleccionado={estado.vip} alCambiar={estado.alternarVip} />}
-          <SeccionPagoCalendario fechaCobro={estado.fechaCobro} total={estado.total} hoy={estado.hoy} />
+          {!estado.mejora && <SeccionPagoCalendario fechaCobro={estado.fechaCobro} total={estado.total} hoy={estado.hoy} />}
           <section className={textos.clases.tarjeta}>
             <EncabezadoPasoPago numero={4} titulo={textos.paso4.titulo} detalle={textos.paso4.detalle} />
             <Casilla seleccionado={estado.terminos} alCambiar={(_, marcado) => estado.alternarTerminos(marcado)} etiqueta={textos.paso4.acepto} />

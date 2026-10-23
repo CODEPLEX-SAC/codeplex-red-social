@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import { ProveedorCarritoMarketplace } from '@/paginas/marketplace/proveedor_carrito_marketplace'
 import { BarraSuperior } from '@/componentes/compartido/navegacion/barra_superior'
@@ -9,8 +9,6 @@ import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
 import { PLANES_APLICACIONES } from '@/rutas/marketplace/rutas_marketplace'
 
 const TIEMPO_FLUJOS_COMPRA = 30000
-
-vi.setConfig({ testTimeout: TIEMPO_FLUJOS_COMPRA })
 
 const textos = catalogoMarketplace.planes
 const carrito = catalogoMarketplace.carrito
@@ -32,11 +30,11 @@ function botonCarritoSuperior() {
   return within(screen.getByRole('banner')).getByRole('button', { name: carrito.boton })
 }
 
-afterEach(() => {
-  window.history.pushState({}, '', '/')
-})
+describe('Carrito en la barra superior', { timeout: TIEMPO_FLUJOS_COMPRA }, () => {
+  afterEach(() => {
+    window.history.pushState({}, '', '/')
+  })
 
-describe('Carrito en la barra superior', () => {
   it('el icono del carrito vive en la barra superior y ya no en el encabezado de Marketplace', () => {
     render(<PaginaMarketplace />)
     expect(botonCarritoSuperior()).toBeInTheDocument()

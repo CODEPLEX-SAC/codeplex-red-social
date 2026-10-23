@@ -1,9 +1,7 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { Icono } from '../../compartido/icono'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Boton } from '../../compartido/interfaz/boton'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import type { GrupoMis } from '@/tipos/grupos/modelo_grupos_mis_grupos'
@@ -31,16 +29,7 @@ export function BloqueVerGrupo({
             <BotonIcono icono="puntos" type="button" aria-label={catalogoGrupos.botones.opciones} variant="discreto" size="sm" className="flex-none" />
           </div>
           <p className="my-2 text-cuerpo leading-texto text-texto-suave">{g.descripcion}</p>
-          <div className="mb-3 flex items-center">
-            {posicionesDe(4).map((posicion) => (
-              <AvatarImagen
-                key={posicion.id}
-                src={usuarioImg}
-                className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
-              />
-            ))}
-            <span className="-ml-1 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-fondo-categoria-morado text-conteo text-primario">{g.masAvatares}</span>
-          </div>
+          <GrupoAvatares avatares={4} tamano="sm" resto={g.masAvatares} className="mb-3" />
           <Boton type="button" variant="contorno" size="mini">{catalogoGrupos.botones.ver_grupo}</Boton>
         </article>
       ))}

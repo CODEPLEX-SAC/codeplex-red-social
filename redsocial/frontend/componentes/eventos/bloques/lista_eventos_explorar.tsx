@@ -1,5 +1,5 @@
-import { posicionesDe } from '../../compartido/posiciones'
-import { imagenEventoPredeterminada as imagenEvento, imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
+import { imagenEventoPredeterminada as imagenEvento } from '../../compartido'
 import { TextoColor } from '../../compartido/interfaz/texto_color'
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -31,12 +31,7 @@ export function ListaEventosExplorar({ EVENTOS }: { EVENTOS: EventoExplorar[] })
               <span className="flex items-center gap-1.25 text-auxiliar text-texto-suave"><Icono name="ubicacion" className="h-3.5 w-3.5 text-primario" /> {ev.ubicacion}</span>
             </div>
             <div className="mt-auto flex items-center justify-between max-600:flex-col max-600:items-stretch max-600:gap-2.5">
-              <div className="flex items-center">
-                {posicionesDe(ev.avatares).map((posicion) => (
-                  <img key={posicion.id} src={usuarioImg} alt="" className={'h-7 w-7 rounded-full border-2 border-white object-cover' + (posicion.orden > 0 ? ' -ml-2' : '')} />
-                ))}
-                <span className="-ml-1 inline-flex h-7 items-center rounded-14 border-2 border-white bg-fondo-categoria-morado px-2 text-conteo text-primario">{ev.masAsistentes}</span>
-              </div>
+              <GrupoAvatares avatares={ev.avatares} tamano="sm" resto={ev.masAsistentes} />
               <div className="flex items-center gap-2 max-600:w-full">
                 <Boton type="button" variant="contorno" size="default" className="max-600:flex-1">{catalogoEventos.botones.ver_detalles}</Boton>
                 <BotonIcono icono="guardado" type="button" aria-label={catalogoEventos.botones.guardar_evento} variant="contorno" size="default" className="flex-none" />

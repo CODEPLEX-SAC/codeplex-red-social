@@ -5,6 +5,7 @@ export function usarFiltrosEventos() {
   const [filtroFechaAbierto, setFiltroFechaAbierto] = useState(false)
   const [filtroFecha, setFiltroFecha] = useState<FiltroFecha | null>(null)
   const [filtroCategoriaAbierto, setFiltroCategoriaAbierto] = useState(false)
+  const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState<string[]>([])
   const [filtroUbicacionAbierto, setFiltroUbicacionAbierto] = useState(false)
   const [filtroUbicacion, setFiltroUbicacion] = useState<string | null>(null)
 
@@ -15,6 +16,8 @@ export function usarFiltrosEventos() {
     setFiltroFecha,
     filtroCategoriaAbierto,
     setFiltroCategoriaAbierto,
+    categoriasSeleccionadas,
+    setCategoriasSeleccionadas,
     filtroUbicacionAbierto,
     setFiltroUbicacionAbierto,
     filtroUbicacion,

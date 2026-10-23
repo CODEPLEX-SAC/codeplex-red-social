@@ -14,6 +14,7 @@ export interface MarcadorMapaEvento {
 }
 
 export interface PanelFiltroUbicacionProps {
+  id?: string
   ciudades: CiudadFiltroEvento[]
   marcadores: MarcadorMapaEvento[]
   ciudadActual: string | null

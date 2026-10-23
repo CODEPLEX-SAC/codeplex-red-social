@@ -40,6 +40,7 @@ export function crearItem(configuracion: ConfiguracionPlanes, seleccion: Selecci
     ruta: configuracion.ruta,
     icono: configuracion.icono,
     tema: configuracion.color,
+    tipo: tipo?.id ?? seleccion.tipo,
     plan: plan.id,
     planNombre: plan.nombre,
     periodo: seleccion.periodo,
@@ -50,7 +51,20 @@ export function crearItem(configuracion: ConfiguracionPlanes, seleccion: Selecci
 }
 
 export function crearCompras(items: ItemCarrito[], fecha: string, vence: string, dias: number): CompraRealizada[] {
-  return items.map((i) => ({ aplicacion: i.aplicacion, nombre: i.nombre, icono: i.icono, tema: i.tema, planNombre: i.planNombre, lema: i.lema, ruta: i.ruta, periodo: i.periodo, precio: i.precio, incluye: i.incluye, fecha, vence, dias }))
+  return items.map((i) => ({ aplicacion: i.aplicacion, nombre: i.nombre, icono: i.icono, tema: i.tema, tipo: i.tipo, plan: i.plan, planNombre: i.planNombre, lema: i.lema, ruta: i.ruta, periodo: i.periodo, precio: i.precio, incluye: i.incluye, fecha, vence, dias }))
+}
+
+export function aplicarMejora(compras: CompraRealizada[], mejora: ItemCarrito): CompraRealizada[] {
+  return compras.map((c) => (c.aplicacion === mejora.aplicacion ? crearCompras([mejora], c.fecha, c.vence, c.dias)[0] : c))
+}
+
+export function crearComprasIniciales(aplicaciones: Record<string, ConfiguracionPlanes>, selecciones: SeleccionPlan[], fecha: string, vence: string, dias: number): CompraRealizada[] {
+  const items = selecciones.flatMap((seleccion) => {
+    const configuracion = aplicaciones[seleccion.aplicacion]
+    const item = configuracion ? crearItem(configuracion, seleccion) : null
+    return item ? [item] : []
+  })
+  return crearCompras(items, fecha, vence, dias)
 }
 
 export function estadoSuscripcion(compra: CompraRealizada) {

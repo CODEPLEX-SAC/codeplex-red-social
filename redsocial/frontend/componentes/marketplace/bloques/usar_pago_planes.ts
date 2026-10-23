@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
-import { fechaPrimerCobro, formatearTarjeta, formatearVencimiento, marcaTarjeta, sumarPrecios, SUPER_VIP_HABILITADO } from './logica_pago_planes'
+import { fechaPrimerCobro, marcaTarjeta, sumarPrecios, SUPER_VIP_HABILITADO } from './logica_pago_planes'
+import { elegirTarjetaInicial, predeterminadaVencida, tarjetaVencida } from './logica_metodos_pago'
+import { datosParaGuardar } from './validacion_tarjeta'
+import { usarFormularioTarjeta } from './usar_formulario_tarjeta'
 import type { HistorialPago, ItemCarrito, PerfilFacturacion, TarjetaGuardada } from '@/tipos/marketplace/modelo_carrito'
-import type { BilleteraDigital, ConfiguracionPago, DatosFacturacion, DatosTarjeta, ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
+import type { BilleteraDigital, ConfiguracionPago, DatosFacturacion, MetodoPagoElegido, MetodosPago, ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
 
 const VACIO = catalogoCompartido.controles.texto_vacio
-const tarjetaInicial: DatosTarjeta = { numero: VACIO, vencimiento: VACIO, cvv: VACIO, propietario: VACIO }
 
 function facturacionDe(pago: ConfiguracionPago, perfil?: PerfilFacturacion): DatosFacturacion {
   return {
@@ -20,36 +22,43 @@ function facturacionDe(pago: ConfiguracionPago, perfil?: PerfilFacturacion): Dat
   }
 }
 
-export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], historial: HistorialPago, aplicacionesConVip: string[]) {
-  const [tarjeta, setTarjeta] = useState(tarjetaInicial)
-  const [tarjetaId, setTarjetaId] = useState<string | null>(historial.tarjetas[0]?.id ?? null)
+export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], historial: HistorialPago, aplicacionesConVip: string[], metodos: MetodosPago, mejora = false) {
+  const formulario = usarFormularioTarjeta()
+  const [idElegido, setIdElegido] = useState<string | null>(null)
+  const [nuevaElegida, setNuevaElegida] = useState(false)
+  const [guardarTarjeta, setGuardarTarjeta] = useState(true)
+  const [metodo, setMetodo] = useState<MetodoPagoElegido>('tarjeta')
+  const [procesando, setProcesando] = useState(false)
   const [facturacion, setFacturacion] = useState<DatosFacturacion>(() => facturacionDe(pago, historial.perfiles[0]))
   const [perfilId, setPerfilId] = useState<string | null>(historial.perfiles[0]?.id ?? null)
-  const [ventana, setVentana] = useState<'tarjetas' | 'perfiles' | null>(null)
+  const [ventana, setVentana] = useState<'metodo' | 'perfiles' | null>(null)
   const [vip, setVip] = useState(false)
   const [terminos, setTerminos] = useState(false)
   const [billetera, setBilletera] = useState<BilleteraDigital>('yape')
   const [resumen, setResumen] = useState<ResumenActivacion | null>(null)
 
   const fechaCobro = fechaPrimerCobro()
-  const elegibles = SUPER_VIP_HABILITADO ? items.filter((i) => !aplicacionesConVip.includes(i.aplicacion)).length : 0
+  const elegibles = SUPER_VIP_HABILITADO && !mejora ? items.filter((i) => !aplicacionesConVip.includes(i.aplicacion)).length : 0
   const vipTotal = pago.vip.precio * elegibles
   const vipActivo = vip && elegibles > 0
   const total = sumarPrecios(items.map((i) => i.precio)) + (vipActivo ? vipTotal : 0)
   const hoy = vipActivo ? vipTotal : 0
   const prefijo = pago.paises.find((p) => p.id === facturacion.pais)?.prefijo ?? pago.paises[0].prefijo
-  const tarjetaGuardada = historial.tarjetas.find((t) => t.id === tarjetaId) ?? null
+  const predeterminada = elegirTarjetaInicial(metodos.tarjetas)
+  const elegida = metodos.tarjetas.find((t) => t.id === idElegido)
+  const tarjetaGuardada = nuevaElegida ? null : elegida && !tarjetaVencida(elegida.vencimiento) ? elegida : predeterminada
   const perfilGuardado = historial.perfiles.find((p) => p.id === perfilId) ?? null
 
   function usarTarjeta(guardada: TarjetaGuardada) {
-    setTarjetaId(guardada.id)
-    setTarjeta((previa) => ({ ...previa, cvv: VACIO }))
+    setIdElegido(guardada.id)
+    setNuevaElegida(false)
     setVentana(null)
   }
 
   function nuevaTarjeta() {
-    setTarjetaId(null)
-    setTarjeta(tarjetaInicial)
+    setIdElegido(null)
+    setNuevaElegida(true)
+    formulario.limpiar()
     setVentana(null)
   }
 
@@ -65,18 +74,35 @@ export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], hi
     setVentana(null)
   }
 
-  function activar() {
-    const digitos = tarjeta.numero.replace(/\s/g, VACIO)
-    const marca = tarjetaGuardada?.marca ?? marcaTarjeta(tarjeta.numero)
-    const ultimos4 = tarjetaGuardada?.ultimos4 ?? (digitos.length >= 4 ? digitos.slice(-4) : VACIO)
-    const tarjetaNueva = !tarjetaGuardada && ultimos4 ? { id: `t-${Date.now()}`, marca, ultimos4, vencimiento: tarjeta.vencimiento, propietario: tarjeta.propietario } : undefined
+  async function activar() {
+    if (procesando) return
+    const conTarjeta = metodo === 'tarjeta'
+    if (conTarjeta && !tarjetaGuardada && !formulario.validar()) return
+    setProcesando(true)
+    const datosNueva = datosParaGuardar(formulario.tarjeta)
+    if (conTarjeta && !tarjetaGuardada && guardarTarjeta) {
+      const registrada = await metodos.registrar(datosNueva, metodos.tarjetas.length === 0)
+      if (!registrada) {
+        setProcesando(false)
+        return
+      }
+    }
+    const marca = conTarjeta ? (tarjetaGuardada?.marca ?? datosNueva.marca) : marcaTarjeta(VACIO)
+    const ultimos4 = conTarjeta ? (tarjetaGuardada?.ultimos4 ?? datosNueva.ultimos4) : VACIO
     const perfilNuevo = !perfilGuardado && (facturacion.documento || facturacion.razon) ? { id: `f-${Date.now()}`, documento: facturacion.documento, razon: facturacion.razon, pais: facturacion.pais, direccion: facturacion.direccion, correo: facturacion.correo, celular: facturacion.celular } : undefined
-    setResumen({ fechaCobro, total, marca, ultimos4, vip: vipActivo, tarjetaNueva, perfilNuevo })
+    setResumen({ fechaCobro, total, marca, ultimos4, vip: vipActivo, mejora, perfilNuevo })
+    setProcesando(false)
   }
 
   return {
-    tarjeta,
+    formulario,
+    tarjeta: formulario.tarjeta,
     tarjetaGuardada,
+    metodos,
+    metodo,
+    guardarTarjeta,
+    procesando,
+    predeterminadaVencida: predeterminadaVencida(metodos.tarjetas),
     facturacion,
     perfilGuardado,
     ventana,
@@ -87,13 +113,14 @@ export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], hi
     terminos,
     billetera,
     resumen,
+    mejora,
     fechaCobro,
     total,
     prefijo,
-    cambiarNumero: (valor: string) => setTarjeta((previa) => ({ ...previa, numero: formatearTarjeta(valor) })),
-    cambiarVencimiento: (valor: string) => setTarjeta((previa) => ({ ...previa, vencimiento: formatearVencimiento(valor) })),
-    cambiarCvv: (valor: string) => setTarjeta((previa) => ({ ...previa, cvv: valor.replace(/\D/g, VACIO).slice(0, 4) })),
-    cambiarPropietario: (valor: string) => setTarjeta((previa) => ({ ...previa, propietario: valor })),
+    cambiarNumero: formulario.cambiarNumero,
+    cambiarVencimiento: formulario.cambiarVencimiento,
+    cambiarCvv: formulario.cambiarCvv,
+    cambiarPropietario: formulario.cambiarPropietario,
     cambiarFacturacion: <C extends keyof DatosFacturacion>(campo: C, valor: DatosFacturacion[C]) => setFacturacion((previa) => ({ ...previa, [campo]: valor })),
     abrirVentana: setVentana,
     cerrarVentana: () => setVentana(null),
@@ -103,6 +130,8 @@ export function usarPagoPlanes(pago: ConfiguracionPago, items: ItemCarrito[], hi
     nuevoPerfil,
     alternarVip: setVip,
     alternarTerminos: setTerminos,
+    alternarGuardarTarjeta: setGuardarTarjeta,
+    elegirMetodo: setMetodo,
     elegirBilletera: setBilletera,
     activar,
   }

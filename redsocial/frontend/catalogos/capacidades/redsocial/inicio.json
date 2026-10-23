@@ -1,5 +1,10 @@
 {
-  "acciones": ["publicar", "reaccionar", "comentar", "compartir"],
+  "acciones": [
+    "publicar",
+    "reaccionar",
+    "comentar",
+    "compartir"
+  ],
   "alertas": {
     "confirmar_eliminar_publicacion": "Esta publicación se eliminará de tu perfil y del muro de inicio."
   },
@@ -45,8 +50,6 @@
   "botones": {
     "foto_video": "Foto/Video",
     "encuesta": "Encuesta",
-    "sentimiento": "Sentimiento",
-    "mas": "Más",
     "mas_opciones": "Más opciones",
     "unirse": "Unirse",
     "me_gusta": "Me gusta",
@@ -62,18 +65,86 @@
     "compartido_singular": "compartido",
     "compartido_plural": "compartidos"
   },
+  "reacciones": {
+    "resumen_maximo": 3,
+    "etiqueta_panel": "Elegir una reacción",
+    "retardo_apertura_ms": 250,
+    "retardo_cierre_ms": 300,
+    "pulsacion_larga_ms": 450,
+    "tecla_abrir": "ArrowUp",
+    "icono_predeterminado": "pulgar-arriba",
+    "clases": {
+      "contenedor_publicacion": "relative flex min-w-0 flex-1",
+      "contenedor_comentario": "relative inline-flex",
+      "puente": "absolute bottom-full left-0 z-20 pb-2",
+      "panel": "flex gap-1 rounded-full border border-borde bg-white p-1 shadow-t12",
+      "opcion": "transition-transform hover:-translate-y-0.5 hover:scale-110 motion-reduce:transition-none"
+    },
+    "opciones": [
+      {
+        "clave": "me_gusta",
+        "etiqueta": "Me gusta",
+        "icono": "pulgar-arriba",
+        "clase_color": "text-primario!",
+        "clase_resumen": "text-primario"
+      },
+      {
+        "clave": "me_encanta",
+        "etiqueta": "Me encanta",
+        "icono": "me-gusta",
+        "clase_color": "text-peligro-texto!",
+        "clase_resumen": "text-peligro-texto"
+      },
+      {
+        "clave": "asombroso",
+        "etiqueta": "Asombroso",
+        "icono": "estrella",
+        "clase_color": "text-naranja-categoria-texto!",
+        "clase_resumen": "text-naranja-categoria-texto"
+      }
+    ]
+  },
   "publicacion": {
     "tiempo_ahora": "Ahora",
+    "audiencia": {
+      "icono": "mundo",
+      "etiqueta": "Público",
+      "separador": "·",
+      "clase": "ml-1 h-3 w-3 align-text-bottom"
+    },
+    "compartir_propia": "No puedes compartir tu propia publicación",
+    "clases_prioridad": {
+      "urgente": "bg-peligro/15 text-peligro-texto",
+      "normal": "bg-naranja-categoria/15 text-naranja-categoria-texto"
+    },
     "mensaje_ejemplo": "¡Gran trabajo equipo! 💪🎉",
     "clase_marco": "mb-4 overflow-hidden rounded-xl border border-borde/60 bg-white shadow-sombra",
     "acciones": [
-      { "clave": "me_gusta", "icono": "me-gusta" },
-      { "clave": "comentar", "icono": "comentario" },
-      { "clave": "compartir", "icono": "compartir" }
+      {
+        "clave": "me_gusta",
+        "icono": "pulgar-arriba"
+      },
+      {
+        "clave": "comentar",
+        "icono": "comentario"
+      },
+      {
+        "clave": "compartir",
+        "icono": "compartir"
+      }
     ],
     "menu": [
-      { "clave": "editar", "etiqueta": "Editar", "icono": "editar-oficial" },
-      { "clave": "eliminar", "etiqueta": "Eliminar", "icono": "eliminar", "peligro": true }
+      {
+        "clave": "editar",
+        "etiqueta": "Editar",
+        "icono": "editar-oficial"
+      },
+      {
+        "clave": "eliminar",
+        "etiqueta": "Eliminar",
+        "icono": "eliminar",
+        "peligro": true
+      }
     ],
     "eliminar": {
       "titulo": "¿Eliminar publicación?",
@@ -100,11 +171,226 @@
       "vacio": "Aún no hay comentarios. Sé el primero en comentar.",
       "marcador": "Comenta aquí...",
       "etiqueta_campo": "Escribe un comentario",
-      "publicar": "Publicar"
+      "publicar": "Publicar",
+      "responder": "Responder",
+      "marcador_respuesta": "Responder a :nombre...",
+      "etiqueta_respuesta": "Escribe una respuesta",
+      "etiqueta_respuestas": "Respuestas",
+      "enviar_respuesta": "Enviar respuesta",
+      "etiqueta_edicion": "Editar comentario",
+      "guardar": "Guardar",
+      "cancelar": "Cancelar",
+      "editado": "Editado",
+      "opciones": "Opciones del comentario",
+      "menu": [
+        {
+          "clave": "editar",
+          "etiqueta": "Editar",
+          "icono": "editar-oficial"
+        },
+        {
+          "clave": "eliminar",
+          "etiqueta": "Eliminar",
+          "icono": "eliminar",
+          "peligro": true
+        }
+      ],
+      "eliminar": {
+        "titulo": "¿Eliminar comentario?",
+        "cerrar": "Cerrar",
+        "mensaje": "Esta acción no se puede deshacer. Si el comentario tiene respuestas, también se eliminarán.",
+        "cancelar": "Cancelar",
+        "confirmar": "Eliminar"
+      },
+      "clases": {
+        "item": "flex gap-2.5",
+        "burbuja": "min-w-0 rounded-xl bg-fondo px-3 py-2",
+        "meta": "mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-fecha-abreviada text-texto-suave",
+        "respuestas": "m-0 mt-2 flex list-none flex-col gap-3 border-l-2 border-borde-suave py-0 pr-0 pl-3",
+        "formulario": "mt-2 flex items-start gap-2",
+        "caja": "flex min-w-0 flex-1 flex-col gap-2 rounded-xl border border-borde bg-fondo-tarjeta px-3 py-2",
+        "pie_caja": "flex items-center justify-between gap-2",
+        "acciones_caja": "flex items-center gap-1",
+        "panel_emojis": "m-0 grid list-none grid-cols-8 gap-1 border-t border-borde-suave p-0 pt-2 max-480:grid-cols-6",
+        "pista": "text-auxiliar text-texto-suave",
+        "medios": "m-0 mt-2 flex list-none flex-wrap gap-2 p-0",
+        "medio": "max-h-60 max-w-full rounded-control border border-borde object-cover",
+        "mencion": "mr-1 text-auxiliar text-primario hover:underline"
+      },
+      "etiqueta_emojis": "Emojis",
+      "etiqueta_adjuntar": "Adjuntar foto",
+      "pista_edicion": "Esc para cancelar",
+      "etiqueta_medios": "Archivos del comentario",
+      "emojis": [
+        "😀",
+        "😂",
+        "😍",
+        "🥰",
+        "😎",
+        "🤔",
+        "😢",
+        "😡",
+        "👍",
+        "👏",
+        "🙏",
+        "🔥",
+        "🎉",
+        "❤️",
+        "💡",
+        "✅"
+      ],
+      "etiqueta_adjuntar_video": "Adjuntar video",
+      "aceptar_imagen": "image/*",
+      "aceptar_video": "video/*",
+      "prefijo_mencion": "@",
+      "tecla_enviar": "Enter"
     }
   },
   "leyendas": {
-    "compartio_una_publicacion": "compartió una publicación."
+    "compartio_una_publicacion": "compartió una publicación.",
+    "por_tipo": {
+      "encuesta": "publicó una encuesta.",
+      "pregunta": "publicó una pregunta."
+    }
+  },
+  "feed": {
+    "etiqueta_pestanas": "Filtrar publicaciones",
+    "pestanas": [
+      {
+        "clave": "inicio",
+        "etiqueta": "Inicio"
+      },
+      {
+        "clave": "videos",
+        "etiqueta": "Videos"
+      },
+      {
+        "clave": "encuestas",
+        "etiqueta": "Encuestas"
+      },
+      {
+        "clave": "preguntas",
+        "etiqueta": "Preguntas"
+      }
+    ],
+    "vacio": {
+      "inicio": {
+        "titulo": "No hay publicaciones aún",
+        "texto": "¡Sé el primero en publicar algo!"
+      },
+      "videos": {
+        "titulo": "No hay videos aún",
+        "texto": "Los videos compartidos aparecerán aquí."
+      },
+      "encuestas": {
+        "titulo": "No hay encuestas aún",
+        "texto": "Las encuestas de la comunidad aparecerán aquí."
+      },
+      "preguntas": {
+        "titulo": "No hay preguntas aún",
+        "texto": "Las preguntas de la comunidad aparecerán aquí."
+      }
+    },
+    "clases": {
+      "elemento": "contents",
+      "pestanas": "mb-4 rounded-xl border border-borde/60 bg-white px-2 shadow-sombra",
+      "vacio": "mb-4 rounded-xl border border-borde/60 bg-white p-8 shadow-sombra",
+      "prioridad": "px-4 pb-2"
+    }
+  },
+  "pregunta_estado": {
+    "resuelta": {
+      "etiqueta": "Resuelta",
+      "clase": "bg-exito/15 text-exito-texto"
+    },
+    "sin_resolver": {
+      "etiqueta": "Sin resolver",
+      "clase": "bg-fondo-hover-neutro text-texto-suave"
+    }
+  },
+  "mensajes_flotantes": {
+    "boton": "Abrir mensajes sin leer",
+    "cerrar": "Cerrar mensajes",
+    "titulo": "Mensajes sin leer",
+    "vacio": "No tienes mensajes sin leer.",
+    "ver_todos": "Ver todos los mensajes",
+    "clases": {
+      "contenedor": "fixed bottom-5 right-5 z-20 flex flex-col items-end gap-3 max-600:bottom-3 max-600:right-3",
+      "panel": "flex max-h-120 w-90 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:w-[calc(100vw-1.5rem)]",
+      "cabecera": "flex items-center justify-between gap-2 border-b border-borde px-4 py-3",
+      "lista": "m-0 min-h-0 flex-1 list-none overflow-y-auto p-0",
+      "fila": "flex items-center gap-3 border-b border-borde-suave px-4 py-3 no-underline hover:bg-fondo",
+      "ver_todos": "block px-4 py-3 text-center text-enlace-accion text-primario no-underline hover:bg-fondo",
+      "insignia": "absolute -right-1 -top-1"
+    }
+  },
+  "compositor": {
+    "clases": {
+      "seccion": "min-w-0",
+      "tarjeta": "mb-4 rounded-xl border border-borde bg-white p-4 shadow-sombra",
+      "fila": "mb-3 flex items-center gap-2.5",
+      "disparador": "block w-full cursor-pointer rounded-control border border-borde bg-white px-3.5 py-2.5 text-left text-campo-formulario text-texto-suave hover:bg-fondo",
+      "accesos": "flex flex-wrap gap-1 border-t border-borde pt-2.5"
+    }
+  },
+  "estadisticas": {
+    "etiqueta": "Tu actividad",
+    "tarjetas": [
+      {
+        "clave": "publicaciones",
+        "titulo": "Tus publicaciones",
+        "icono": "actividad",
+        "tono": "azul"
+      },
+      {
+        "clave": "videos",
+        "titulo": "Tus videos",
+        "icono": "video",
+        "tono": "rojo"
+      },
+      {
+        "clave": "compartidos",
+        "titulo": "Compartidos",
+        "icono": "compartir",
+        "tono": "morado"
+      }
+    ],
+    "clases": {
+      "rejilla": "mb-4 grid grid-cols-3 gap-4 max-600:grid-cols-1",
+      "tarjeta": "flex min-w-0 items-center gap-3 rounded-xl border border-gris-borde bg-white p-4",
+      "icono_caja": "grid h-11 w-11 flex-none place-items-center rounded-xl",
+      "icono": "h-6 w-6",
+      "cuerpo": "flex min-w-0 flex-1 flex-col gap-1",
+      "etiqueta": "text-auxiliar text-texto-suave",
+      "valor": "text-titulo-seccion text-texto"
+    }
+  },
+  "encuesta": {
+    "etiqueta": "Opciones de la encuesta",
+    "votos_singular": "voto",
+    "votos_plural": "votos",
+    "total": ":total :votos",
+    "etiqueta_opcion": ":opcion, :porcentaje %",
+    "porcentaje_maximo": 100,
+    "clases": {
+      "lista": "m-0 mb-3 flex list-none flex-col gap-2 px-4 py-0",
+      "opcion": "h-auto! min-h-0! w-full flex-col! items-stretch! justify-start! gap-1.5 rounded-control! border-borde! bg-white px-3.5! py-2.5! text-left text-subtitulo! text-texto!",
+      "opcion_elegida": "border-primario! bg-primario-suave",
+      "fila": "flex items-center justify-between gap-3",
+      "texto": "min-w-0 flex-1 truncate",
+      "porcentaje": "flex-none text-auxiliar text-texto-suave",
+      "barra": "h-1.5 w-full appearance-none overflow-hidden rounded-full border-0 bg-fondo-hover-neutro [&::-webkit-progress-bar]:bg-fondo-hover-neutro [&::-webkit-progress-value]:rounded-full [&::-moz-progress-bar]:rounded-full [&::-webkit-progress-value]:bg-primario [&::-moz-progress-bar]:bg-primario",
+      "total": "m-0 px-4 pb-3 text-auxiliar text-texto-suave"
+    }
+  },
+  "medios": {
+    "texto_alternativo": "Archivo :numero de la publicación",
+    "clases": {
+      "uno": "px-4 pb-3",
+      "varios": "grid grid-cols-2 gap-1 px-4 pb-3",
+      "medio_unico": "max-h-120 w-full rounded-lg bg-fondo object-cover",
+      "medio": "aspect-square w-full rounded-lg bg-fondo object-cover"
+    }
   },
   "modal_crear_publicacion": {
     "titulo": "Crear publicación",
@@ -116,12 +402,20 @@
     "marcador_editor": "¿Qué estás pensando, :nombre?",
     "etiqueta_editor": "Contenido de la publicación",
     "filas_minimas": 4,
-    "clase_editor": "m-0 block w-full resize-none overflow-hidden border-0 bg-transparent p-0 text-cuerpo leading-texto text-texto shadow-none outline-none placeholder:text-texto-suave",
     "etiqueta_tipos": "Tipo de publicación",
     "tipos": [
-      { "valor": "publicacion", "etiqueta": "Publicación" },
-      { "valor": "encuesta", "etiqueta": "Encuesta" },
-      { "valor": "pregunta", "etiqueta": "Pregunta" }
+      {
+        "valor": "publicacion",
+        "etiqueta": "Publicación"
+      },
+      {
+        "valor": "encuesta",
+        "etiqueta": "Encuesta"
+      },
+      {
+        "valor": "pregunta",
+        "etiqueta": "Pregunta"
+      }
     ],
     "encuesta": {
       "titulo": "Opciones de la encuesta",
@@ -138,8 +432,16 @@
     "prioridad": {
       "titulo": "Prioridad",
       "opciones": [
-        { "valor": "urgente", "etiqueta": "Urgente", "punto": "h-1.75 w-1.75 flex-none rounded-full bg-peligro" },
-        { "valor": "normal", "etiqueta": "Normal", "punto": "h-1.75 w-1.75 flex-none rounded-full bg-naranja-categoria" }
+        {
+          "valor": "urgente",
+          "etiqueta": "Urgente",
+          "punto": "h-1.75 w-1.75 flex-none rounded-full bg-peligro"
+        },
+        {
+          "valor": "normal",
+          "etiqueta": "Normal",
+          "punto": "h-1.75 w-1.75 flex-none rounded-full bg-naranja-categoria"
+        }
       ],
       "inicial": "normal"
     },
@@ -148,7 +450,10 @@
     "medios": {
       "etiqueta_selector": "Seleccionar fotos o videos",
       "tipos_aceptados": "image/*,video/*",
-      "prefijos_aceptados": ["image/", "video/"],
+      "prefijos_aceptados": [
+        "image/",
+        "video/"
+      ],
       "prefijo_video": "video/",
       "tamano_maximo": 52428800,
       "maximo_archivos": 10,

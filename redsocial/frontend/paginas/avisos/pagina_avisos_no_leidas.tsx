@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import { BotonIcono, Boton, Casilla, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, Selector } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
 import { PestanasAvisos, FilaAviso, PanelDetalleAviso } from '../../componentes/avisos'
 import { AVISOS_NO_LEIDAS, CONTEOS_AVISOS, DETALLE_AVISO, CLASES_ICONO_COLOR } from '../../rutas/avisos/rutas_avisos'
 
 export function PaginaAvisosNoLeidas() {
+  const [orden, setOrden] = useState('recientes')
+
   return (
     <EstructuraApp paginaActiva="avisos">
       <EstructuraTresColumnas
@@ -29,13 +32,14 @@ export function PaginaAvisosNoLeidas() {
                 <Casilla />
                 {catalogoAvisos.campos_lista.seleccionar_todas} ({AVISOS_NO_LEIDAS.length})
               </label>
-              <Selector variant="mini" aria-label={catalogoAvisos.campos_lista.mas_recientes}>
-                <option>{catalogoAvisos.campos_lista.mas_recientes}</option>
+              <Selector variant="mini" value={orden} onChange={(evento) => setOrden(evento.target.value)} aria-label={catalogoAvisos.campos_lista.mas_recientes}>
+                <option value="recientes">{catalogoAvisos.campos_lista.mas_recientes}</option>
+                <option value="antiguas">{catalogoAvisos.campos_lista.mas_antiguas}</option>
               </Selector>
             </div>
 
             <section className="rounded-control border border-borde bg-white">
-              {AVISOS_NO_LEIDAS.map((n) => (
+              {(orden === 'recientes' ? AVISOS_NO_LEIDAS : [...AVISOS_NO_LEIDAS].reverse()).map((n) => (
                 <FilaAviso key={n.id} aviso={n} claseIcono={CLASES_ICONO_COLOR[n.colorIcono]} seleccionable />
               ))}
             </section>

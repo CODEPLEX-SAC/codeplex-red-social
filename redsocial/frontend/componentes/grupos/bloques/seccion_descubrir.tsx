@@ -1,5 +1,6 @@
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import { Boton } from '../../compartido/interfaz/boton'
+import { BannerInformativo } from '../../compartido/interfaz/banner_informativo'
 import { Icono } from '../../compartido/icono'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { PestanasGrupos } from './pestanas_grupos'
@@ -34,16 +35,7 @@ export function SeccionDescubrir({
 
       <PestanasGrupos activa="descubrir" />
 
-      <div className="mb-6 flex items-start gap-3.5 rounded-control border border-borde-primario-suave bg-fondo-activo-filtro p-5">
-        <span className="grid h-11 w-11 flex-none place-items-center rounded-control bg-primario text-white">
-          <Icono name="grupo" className="h-5 w-5" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <strong className="mb-0.75 block text-subtitulo text-texto">{catalogoGrupos.banner.titulo}</strong>
-          <p className="m-0 text-cuerpo leading-texto text-texto-suave">{catalogoGrupos.banner.descripcion}</p>
-        </div>
-        <BotonIcono icono="cerrar" type="button" aria-label={catalogoGrupos.botones.cerrar} variant="discreto" size="sm" className="flex-none" />
-      </div>
+      <BannerInformativo icono="grupo" titulo={catalogoGrupos.banner.titulo} descripcion={catalogoGrupos.banner.descripcion} etiquetaCerrar={catalogoGrupos.botones.cerrar} className="mb-6" />
 
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.destacados}</h2>

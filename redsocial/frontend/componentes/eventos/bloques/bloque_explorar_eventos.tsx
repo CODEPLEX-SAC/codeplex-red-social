@@ -5,6 +5,7 @@ import { SinEventosUbicacion } from './sin_eventos_ubicacion'
 import { BloqueCategoria } from './bloque_categoria'
 import { EncabezadoEventosExplorar } from './encabezado_eventos_explorar'
 import { ListaEventosExplorar } from './lista_eventos_explorar'
+import { filtrarEventosPorCategoria } from '../filtrar_eventos_por_categoria'
 import type { DatosExplorarEventos } from '@/tipos/eventos/contrato_explorar_eventos'
 
 export function BloqueExplorarEventos({ datos, clave }: { datos: DatosExplorarEventos; clave: string }) {
@@ -36,7 +37,7 @@ export function BloqueExplorarEventos({ datos, clave }: { datos: DatosExplorarEv
       ) : filtroFecha !== null ? (
         <ResultadosFiltroFecha filtro={filtroFecha} resultados={RESULTADOS_FILTRO_FECHA} onExplorar={quitarFiltroFecha} />
       ) : (
-        <ListaEventosExplorar EVENTOS={EVENTOS} />
+        <ListaEventosExplorar EVENTOS={filtrarEventosPorCategoria(EVENTOS, filtros.categoriasSeleccionadas)} />
       )}
     </section>
   )

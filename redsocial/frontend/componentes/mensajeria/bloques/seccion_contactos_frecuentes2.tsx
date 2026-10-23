@@ -1,7 +1,7 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { clasesBoton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 
 export function SeccionContactosFrecuentes2({
@@ -22,20 +22,13 @@ export function SeccionContactosFrecuentes2({
           <article key={c.nombre} className="flex w-37.5 flex-none flex-col items-center gap-1.5 rounded-xl border border-borde bg-white px-2 py-3.5 text-center hover:shadow-t9">
             <div className="relative inline-block">
               {c.esGrupo ? (
-                <span className="relative grid h-13 w-13 place-items-center rounded-full bg-primario-suave text-primario">
-                  <Icono name="grupo" className="h-5 w-5" />
-                  <span className="absolute -right-1 -top-1 inline-grid h-4.5 min-w-4.5 place-items-center rounded-full border-2 border-white bg-primario px-1 text-conteo text-white">4</span>
-                </span>
+                <AvatarUsuario tamano="lg" icono="grupo" insignia={4} colorInsignia="primario" />
               ) : (
-                <>
-                  <AvatarImagen src={usuarioImg} className="block h-13 w-13 rounded-full bg-primario-suave" />
-                  <span className="absolute bottom-0.5 right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-verde-categoria" />
-                </>
+                <AvatarUsuario tamano="lg" imagen={usuarioImg} estado="conectado" />
               )}
             </div>
             <strong className="text-nombre-entidad leading-compacto text-texto">{c.nombre}</strong>
             <span className="inline-flex items-center gap-1 text-auxiliar text-texto-suave">
-              {!c.esGrupo && <span className="inline-block h-1.5 w-1.5 rounded-full bg-verde-categoria" />}
               {c.esGrupo ? c.miembros : catalogoMensajeria.filtros.en_linea}
             </span>
             <a href="#" className={clasesBoton({ variant: 'contorno', size: 'mini', className: 'mt-0.5' })}>

@@ -1,4 +1,3 @@
-export * from './bloques/banner_info_aviso'
 export * from './bloques/fila_aviso'
 export * from './bloques/fila_evento_aviso'
 export * from './bloques/fila_mencion'

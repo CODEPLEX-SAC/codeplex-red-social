@@ -1,8 +1,9 @@
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import { rucEsValido } from './logica_formulario_empresa'
 import type { DatosEdicionEmpresa, OpcionesUbigeo } from '@/tipos/empresas/contrato_edicion_empresa'
-import type { Empresa } from '@/tipos/empresas/modelo_empresas'
+import type { ClaveModuloEmpresa, Empresa } from '@/tipos/empresas/modelo_empresas'
 
+export const SIN_TIPO_PLAN_CUENTA = 'sin_definir'
 const SEPARADOR_UBIGEO = catalogoEmpresas.edicion_empresa.separador_ubigeo
 const UBIGEOS = catalogoEmpresas.modal_empresa.opciones.ubigeos.map((ubigeo) => ubigeo.split(SEPARADOR_UBIGEO))
 
@@ -34,7 +35,7 @@ export function datosDesdeEmpresa(empresa: Empresa): DatosEdicionEmpresa {
     nombre_comercial: empresa.nombreComercial,
     ruc: empresa.ruc,
     rubro: empresa.rubro,
-    plan: empresa.plan,
+    tipo_plan_cuenta: empresa.tipoPlanCuenta ?? SIN_TIPO_PLAN_CUENTA,
     estado: empresa.estado,
     direccion: empresa.direccion,
     departamento,
@@ -47,18 +48,23 @@ export function datosDesdeEmpresa(empresa: Empresa): DatosEdicionEmpresa {
 }
 
 export function edicionCompleta(datos: DatosEdicionEmpresa) {
-  const obligatorios = [datos.razon_social, datos.rubro, datos.plan, datos.estado, datos.direccion, datos.telefono, datos.email]
+  const obligatorios = [datos.razon_social, datos.rubro, datos.estado, datos.direccion, datos.telefono, datos.email]
   return rucEsValido(datos.ruc) && obligatorios.every((campo) => campo.trim().length !== 0) && datos.email.includes('@')
 }
 
-export function empresaDesdeEdicion(original: Empresa, datos: DatosEdicionEmpresa, logo: string | null): Empresa {
+export function alternarModulos(modulos: ClaveModuloEmpresa[], clave: ClaveModuloEmpresa): ClaveModuloEmpresa[] {
+  return modulos.includes(clave) ? modulos.filter((actual) => actual !== clave) : [...modulos, clave]
+}
+
+export function empresaDesdeEdicion(original: Empresa, datos: DatosEdicionEmpresa, logo: string | null, modulos: ClaveModuloEmpresa[]): Empresa {
   return {
     ...original,
+    modulos,
     nombre: datos.razon_social.trim(),
     nombreComercial: datos.nombre_comercial.trim() || datos.razon_social.trim(),
     ruc: datos.ruc,
     rubro: datos.rubro,
-    plan: datos.plan as Empresa['plan'],
+    tipoPlanCuenta: datos.tipo_plan_cuenta === SIN_TIPO_PLAN_CUENTA ? undefined : datos.tipo_plan_cuenta,
     estado: datos.estado as Empresa['estado'],
     direccion: datos.direccion.trim(),
     ubigeo: [datos.departamento, datos.provincia, datos.distrito].join(SEPARADOR_UBIGEO),

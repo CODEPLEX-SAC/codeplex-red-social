@@ -1,9 +1,7 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { Icono } from '../../compartido/icono'
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import type { GrupoAdmin } from '@/tipos/grupos/modelo_grupos_mis_grupos'
 
 export function BloqueAdmin({
@@ -28,16 +26,7 @@ export function BloqueAdmin({
             </div>
             <div className="mb-1.5 text-auxiliar text-texto-suave">{g.tipo}</div>
             <p className="m-0 mb-2.5 text-cuerpo leading-texto text-texto-suave">{g.descripcion}</p>
-            <div className="mb-0 flex items-center">
-              {posicionesDe(4).map((posicion) => (
-                <AvatarImagen
-                  key={posicion.id}
-                  src={usuarioImg}
-                  className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
-                />
-              ))}
-              <span className="-ml-1 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-fondo-categoria-morado text-conteo text-primario">{g.masAvatares}</span>
-            </div>
+            <GrupoAvatares avatares={4} tamano="sm" resto={g.masAvatares} className="mb-0" />
           </div>
         </article>
       ))}

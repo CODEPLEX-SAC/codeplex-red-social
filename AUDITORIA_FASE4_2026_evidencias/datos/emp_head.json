@@ -1,0 +1,16 @@
+{
+ "ref": {
+  "font-family": "Roboto, Helvetica, Arial, sans-serif",
+  "alto_px": 39.8125,
+  "ancho_px": 191,
+  "letter-spacing": "0.5px",
+  "fuente": "getComputedStyle del encabezado «Módulos disponibles» en el commit a2b857e"
+ },
+ "act": {
+  "font-family": "Inter, ui-sans-serif, system-ui, -apple-…",
+  "alto_px": 24,
+  "ancho_px": 191,
+  "letter-spacing": "0.5px",
+  "fuente": "ídem en el árbol de trabajo"
+ }
+}

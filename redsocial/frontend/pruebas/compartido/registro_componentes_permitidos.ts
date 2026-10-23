@@ -27,7 +27,6 @@ export const COLORES_NOMBRADOS_PERMITIDOS: Record<string, ExcepcionDeColor> = {
 
 export const ICONOS_DECORATIVOS_PERMITIDOS: string[] = [
   '/componentes/actividad/bloques/tarjeta_actividad.tsx',
-  '/componentes/amigos/bloques/bloque_mensaje.tsx',
   '/componentes/compartido/bloques/columna_publicidad.tsx',
   '/paginas/actividad/pagina_actividad_grupos.tsx',
   '/paginas/actividad/pagina_actividad_todas.tsx',
@@ -44,7 +43,7 @@ export const BOTONES_NATIVOS_PERMITIDOS: Record<string, ExcepcionDeBoton> = {
   '/componentes/compartido/bloques/columna_publicidad.tsx': { cantidad: 2, clasificacion: 'C', motivo: 'flechas del carrusel de anuncios sobre fondo oscuro' },
   '/componentes/compartido/interfaz/boton.tsx': { cantidad: 1, clasificacion: 'A', motivo: 'es el componente Boton' },
   '/componentes/compartido/interfaz/boton_icono.tsx': { cantidad: 1, clasificacion: 'A', motivo: 'es el componente BotonIcono' },
-  '/componentes/compartido/navegacion/barra_superior.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'disparador de avisos de la barra superior con aria-haspopup' },
+  '/componentes/compartido/navegacion/boton_avisos_topbar.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'disparador de avisos de la barra superior con aria-haspopup' },
   '/componentes/compartido/interfaz/selector_buscable.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'disparador del selector buscable: muestra icono, titulo, subtitulo y flecha, con aria-haspopup' },
   '/componentes/compartido/interfaz/lista_opciones_buscables.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'fila de opcion del selector buscable con icono, titulo y subtitulo' },
   '/componentes/compartido/navegacion/menu_usuario_topbar.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'disparador del menu de usuario con avatar' },
@@ -55,7 +54,7 @@ export const BOTONES_NATIVOS_PERMITIDOS: Record<string, ExcepcionDeBoton> = {
   '/componentes/eventos/bloques/bloque_titulo2.tsx': { cantidad: 3, clasificacion: 'C', motivo: FILA_DE_OPCION },
   '/componentes/eventos/bloques/seccion_destacados2.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'punto de paginacion del carrusel con aria-label' },
   '/componentes/eventos/bloques/seccion_titulo_buscar2.tsx': { cantidad: 2, clasificacion: 'C', motivo: FILA_DE_OPCION },
-  '/componentes/inicio/bloques/bloque_foto_video.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'disparador con forma de campo que abre el dialogo de publicacion' },
+  '/componentes/inicio/bloques/compositor_inicio.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'disparador con forma de campo que abre el dialogo de publicacion' },
   '/componentes/marketplace/bloques/item_caracteristica.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'texto de caracteristica que abre su detalle y hereda el color de la tarjeta clara u oscura; Boton no tiene variante heredada' },
   '/componentes/mensajeria/bloques/control_llamada.tsx': { cantidad: 1, clasificacion: 'G', motivo: SUPERFICIE_SOBRE_VIDEO },
   '/componentes/mensajeria/bloques/lista_conversaciones.tsx': { cantidad: 1, clasificacion: 'C', motivo: FILA_DE_OPCION },

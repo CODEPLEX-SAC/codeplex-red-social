@@ -8,6 +8,7 @@ const FILTROS = ['todos', 'mis_grupos', 'tecnologia', 'diseno', 'negocios', 'des
 
 export function PaginaGuardados() {
   const [filtroActivo, setFiltroActivo] = useState<(typeof FILTROS)[number]>('todos')
+  const [orden, setOrden] = useState('mas_recientes')
   const [vista, setVista] = useState<'cuadricula' | 'listas'>('cuadricula')
 
   return (
@@ -43,14 +44,15 @@ export function PaginaGuardados() {
                   <BotonIcono icono="cuadricula-oficial" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('cuadricula')} variant={vista === 'cuadricula' ? 'primario' : 'sutil'} size="md" />
                   <BotonIcono icono="vista-lista" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('listas')} variant={vista === 'listas' ? 'primario' : 'sutil'} size="md" />
                 </div>
-                <Selector variant="mini" defaultValue="mas_recientes" aria-label={catalogoGuardados.botones.mas_recientes}>
+                <Selector variant="mini" value={orden} onChange={(evento) => setOrden(evento.target.value)} aria-label={catalogoGuardados.botones.mas_recientes}>
                   <option value="mas_recientes">{catalogoGuardados.botones.mas_recientes}</option>
+                  <option value="mas_antiguas">{catalogoGuardados.botones.mas_antiguas}</option>
                 </Selector>
               </div>
             </div>
 
             <div className={vista === 'cuadricula' ? 'grid grid-cols-2 gap-4 max-1000:grid-cols-1' : 'grid gap-3'}>
-              {GRUPOS_GUARDADOS.map((g) => (
+              {(orden === 'mas_recientes' ? GRUPOS_GUARDADOS : [...GRUPOS_GUARDADOS].reverse()).map((g) => (
                 <TarjetaGrupoGuardado key={g.id} grupo={g} />
               ))}
             </div>

@@ -7,7 +7,7 @@ import type { BloquePiePublicacionProps } from '@/tipos/inicio/contrato_crear_pu
 
 const textos = catalogoInicio.modal_crear_publicacion
 
-export function BloquePiePublicacion({ etiquetaPublicar, mostrarMedios, puedeAgregarMedios, contenidoValido, onAgregarMedios, onPublicar }: BloquePiePublicacionProps) {
+export function BloquePiePublicacion({ etiquetaPublicar, puedeAgregarMedios, contenidoValido, onAgregarMedios, onPublicar }: BloquePiePublicacionProps) {
   const selectorArchivos = useRef<HTMLInputElement>(null)
 
   function alElegirArchivos(evento: ChangeEvent<HTMLInputElement>) {
@@ -17,32 +17,30 @@ export function BloquePiePublicacion({ etiquetaPublicar, mostrarMedios, puedeAgr
 
   return (
     <div className="flex flex-col gap-3 border-t border-borde px-5 py-4">
-      {mostrarMedios && (
-        <div className="flex items-center justify-between gap-3 rounded-control border border-borde px-4 py-2">
-          <span className="text-titulo-subseccion text-texto">{textos.agregar_a_publicacion}</span>
-          <BotonIcono
-            icono="foto-video"
-            type="button"
-            aria-label={textos.foto_video}
-            title={textos.foto_video}
-            disabled={!puedeAgregarMedios}
-            onClick={() => selectorArchivos.current?.click()}
-            variant="suave"
-            size="default"
-           
-          />
-          <input
-            ref={selectorArchivos}
-            type="file"
-            multiple
-            hidden
-            tabIndex={-1}
-            accept={textos.medios.tipos_aceptados}
-            aria-label={textos.medios.etiqueta_selector}
-            onChange={alElegirArchivos}
-          />
-        </div>
-      )}
+      <div className="flex items-center justify-between gap-3 rounded-control border border-borde px-4 py-2">
+        <span className="text-titulo-subseccion text-texto">{textos.agregar_a_publicacion}</span>
+        <BotonIcono
+          icono="foto-video"
+          type="button"
+          aria-label={textos.foto_video}
+          title={textos.foto_video}
+          disabled={!puedeAgregarMedios}
+          onClick={() => selectorArchivos.current?.click()}
+          variant="suave"
+          size="default"
+         
+        />
+        <input
+          ref={selectorArchivos}
+          type="file"
+          multiple
+          hidden
+          tabIndex={-1}
+          accept={textos.medios.tipos_aceptados}
+          aria-label={textos.medios.etiqueta_selector}
+          onChange={alElegirArchivos}
+        />
+      </div>
       <Boton type="button" variant="primario" size="md" disabled={!contenidoValido} onClick={onPublicar} className="w-full">
         {etiquetaPublicar}
       </Boton>

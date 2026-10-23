@@ -49,15 +49,15 @@
   },
   "pestanas": [
     {"clave": "todas", "etiqueta": "Todas", "ruta": "/notificaciones"},
-    {"clave": "no_leidas", "etiqueta": "No leidas", "ruta": "/notificaciones/no-leidas"},
+    {"clave": "no_leidas", "etiqueta": "No leídas", "ruta": "/notificaciones/no-leidas"},
     {"clave": "menciones", "etiqueta": "Menciones", "ruta": "/notificaciones/menciones"},
     {"clave": "solicitudes", "etiqueta": "Solicitudes", "ruta": "/notificaciones/solicitudes"},
     {"clave": "eventos", "etiqueta": "Eventos", "ruta": "/notificaciones/eventos"},
-    {"clave": "sistema", "etiqueta": "Sistema", "ruta": "#"}
+    {"clave": "sistema", "etiqueta": "Sistema", "ruta": "/notificaciones/sistema"}
   ],
   "pestanas_panel_topbar": [
     {"clave": "todas", "etiqueta": "Todas", "insignia": 12},
-    {"clave": "no_leidas", "etiqueta": "No leidas", "insignia": 8}
+    {"clave": "no_leidas", "etiqueta": "No leídas", "insignia": 8}
   ],
   "menu_panel_topbar": [
     {"icono": "verificado", "etiqueta": "Marcar todas como leidas"},
@@ -81,7 +81,7 @@
     "mas_opciones": "Más opciones",
     "me_gusta": "Me gusta",
     "responder": "Responder",
-    "ver_conversacion_completa": "Ver conversacion completa",
+    "ver_conversacion_completa": "Ver conversación completa",
     "confirmar": "Confirmar",
     "eliminar": "Eliminar",
     "aceptar": "Aceptar",
@@ -90,7 +90,7 @@
     "ver_evento": "Ver evento",
     "ver_todas": "Ver todas",
     "buscar_personas": "Buscar personas",
-    "ver_mas": "Ver mas"
+    "ver_mas": "Ver más"
   },
   "secciones": {
     "comentaron_en_tu_publicacion": "Comentaron en tu publicación",
@@ -130,7 +130,8 @@
   },
   "campos_lista": {
     "seleccionar_todas": "Seleccionar todas",
-    "mas_recientes": "Mas recientes"
+    "mas_recientes": "Más recientes",
+    "mas_antiguas": "Más antiguas"
   },
   "banner_menciones": {
     "titulo": "Te mencionaron",
@@ -165,7 +166,7 @@
     "eliminar_notificacion": "Eliminar notificación"
   },
   "panel_topbar": {
-    "ver_mas": "Ver mas",
+    "ver_mas": "Ver más",
     "ver_todas_las_notificaciones": "Ver todas las notificaciones"
   },
   "clases_icono_color": {

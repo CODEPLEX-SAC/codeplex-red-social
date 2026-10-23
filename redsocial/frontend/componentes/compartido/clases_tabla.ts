@@ -6,9 +6,14 @@ export const CLASES_TABLA = {
   contenedor: base.contenedor,
   tabla: base.tabla,
   fila: base.fila,
+  celda: base.celda,
+  columnaAjustada: base.columna_ajustada,
+  columnas: base.columnas,
+  celdaFija: base.acciones,
+  identidad: base.identidad,
   mensajeVacio: base.mensaje_vacio,
 }
 
-export function claseEncabezadoTabla(relleno: string): string {
-  return `${base.encabezado} ${relleno}`
+export function claseEncabezadoTabla(): string {
+  return `${base.encabezado} ${base.relleno_encabezado}`
 }

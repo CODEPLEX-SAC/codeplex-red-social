@@ -1,6 +1,7 @@
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Boton } from '../../compartido/interfaz/boton'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 
 export function BloqueColaborador2({
   RESUMEN_COLABORADOR,
@@ -21,7 +22,7 @@ export function BloqueColaborador2({
         </Boton>
       </div>
       <div className="flex items-center gap-3.5">
-        <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-fondo-categoria-morado text-nombre-entidad text-primario">{RESUMEN_COLABORADOR.iniciales}</div>
+        <AvatarUsuario tamano="lg" iniciales={RESUMEN_COLABORADOR.iniciales} />
         <div className="flex min-w-0 flex-col gap-0.5">
           <span className="text-nombre-entidad text-texto">{RESUMEN_COLABORADOR.nombreCompleto}</span>
           <span className="text-auxiliar text-texto-suave">{RESUMEN_COLABORADOR.correo}</span>

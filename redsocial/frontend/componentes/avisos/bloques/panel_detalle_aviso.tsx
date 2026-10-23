@@ -1,7 +1,7 @@
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -11,7 +11,7 @@ export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
   return (
     <section className="rounded-xl border border-borde bg-white p-4">
       <div className="mb-3.5 flex items-center gap-2.5">
-        <AvatarImagen src={usuarioImg} className="h-9 w-9 flex-none rounded-full bg-primario-suave" />
+        <AvatarUsuario tamano="sm" imagen={usuarioImg} />
         <div className="min-w-0 flex-1">
           <strong className="block truncate text-nombre-entidad text-texto">{detalle.autor}</strong>
           <span className="block text-fecha-abreviada text-texto-suave">{detalle.tiempo}</span>
@@ -47,7 +47,7 @@ export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
       <ul className="m-0 grid list-none gap-2.5 p-0">
         {detalle.comentarios.map((c) => (
           <li key={c.nombre} className="flex items-start gap-2">
-            <AvatarImagen src={usuarioImg} className="h-7 w-7 flex-none rounded-full bg-primario-suave" />
+            <AvatarUsuario tamano="xs" imagen={usuarioImg} />
             <div className="min-w-0 flex-1 text-cuerpo">
               <span className="text-nombre-entidad text-texto">{c.nombre}</span> <span className="text-texto-suave">{c.texto}</span>
               <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{c.tiempo}</span>

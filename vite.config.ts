@@ -41,5 +41,6 @@ export default defineConfig({
     include: ['redsocial/frontend/pruebas/**/*.test.{ts,tsx}'],
     maxWorkers: '50%',
     testTimeout: 10000,
+    server: { deps: { inline: ['@codeplex-sac/ui'], external: [/@mui[\\/]icons-material/] } },
   },
 })

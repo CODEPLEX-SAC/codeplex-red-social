@@ -17,13 +17,13 @@ const MAXIMO = catalogoColaboradores.celda_aplicaciones.max_iconos
 
 function filaDe(nombre: string) {
   fireEvent.change(screen.getByPlaceholderText(catalogoColaboradores.placeholders.buscar_colaborador), { target: { value: nombre } })
-  return screen.getByRole('checkbox', { name: nombre }).closest('tr') as HTMLElement
+  return screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement
 }
 
 describe('Aplicaciones en la tabla de Colaboradores', { timeout: 30000 }, () => {
   it.each(COLABORADORES.map((colaborador) => [colaborador.nombre, colaborador] as const))('la fila de %s dibuja los iconos de sus primeras aplicaciones y un contador que suma el resto', (_, colaborador) => {
     render(<PaginaColaboradores />)
-    const celda = within(filaDe(colaborador.nombre)).getAllByRole('cell')[3]
+    const celda = within(filaDe(colaborador.nombre)).getAllByRole('cell')[2]
     const dibujados = Array.from(celda.querySelectorAll('.material-symbols-rounded, svg.icono')).map((icono) => (icono.tagName.toLowerCase() === 'svg' ? 'svg' : icono.textContent))
     const contador = within(celda).queryByText(/^\+\d+$/)?.textContent ?? null
     const ocultas = colaborador.aplicaciones.length - MAXIMO

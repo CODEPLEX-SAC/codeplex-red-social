@@ -1,7 +1,7 @@
 import type { ChangeEvent } from 'react'
 import type { DatosDetalleEmpresa, PestanaDetalleEmpresa } from './contrato_detalle_empresa'
 import type { EdicionUsuariosEmpresa } from './contrato_usuarios_empresa'
-import type { Empresa } from './modelo_empresas'
+import type { ClaveModuloEmpresa, Empresa } from './modelo_empresas'
 import type { UsuarioEmpresa } from './modelo_usuarios_empresa'
 
 export interface DatosEdicionEmpresa {
@@ -9,7 +9,7 @@ export interface DatosEdicionEmpresa {
   nombre_comercial: string
   ruc: string
   rubro: string
-  plan: string
+  tipo_plan_cuenta: string
   estado: string
   direccion: string
   departamento: string
@@ -34,6 +34,8 @@ export interface EdicionEmpresa {
   logo: string | null
   errorLogo: string | null
   puedeGuardar: boolean
+  modulos: ClaveModuloEmpresa[]
+  alternarModulo: (clave: ClaveModuloEmpresa) => void
   manejarTexto: (campo: CampoEdicionEmpresa) => (texto: string) => void
   manejarSelector: (campo: CampoEdicionEmpresa) => (evento: { target: { value: unknown } }) => void
   elegirLogo: (evento: ChangeEvent<HTMLInputElement>) => void
@@ -52,10 +54,12 @@ export interface CuerpoEditarEmpresaProps {
   pestanaInicial: PestanaDetalleEmpresa
   datosDetalle: DatosDetalleEmpresa
   edicionUsuarios: EdicionUsuariosEmpresa
+  totalEmpresas: number
 }
 
 export interface ModalEditarEmpresaProps {
   empresa: Empresa
+  totalEmpresas: number
   pestanaInicial: PestanaDetalleEmpresa
   datosDetalle: DatosDetalleEmpresa
   usuariosGuardados?: UsuarioEmpresa[]

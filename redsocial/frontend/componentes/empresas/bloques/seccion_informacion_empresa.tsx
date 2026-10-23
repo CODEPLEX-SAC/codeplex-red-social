@@ -1,7 +1,7 @@
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { Interruptor } from '../../compartido/interfaz/interruptor'
 import { Selector } from '../../compartido/interfaz/selector'
-import { CampoEtiquetadoEmpresa } from './campo_etiquetado_empresa'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { FormularioEmpresaProps } from '@/tipos/empresas/contrato_formulario_empresa'
 
@@ -21,15 +21,15 @@ export function SeccionInformacionEmpresa({ formulario }: FormularioEmpresaProps
     <div className="flex flex-col gap-4">
       <h3 className={textos.clases.seccion}>{textos.seccion_informacion}</h3>
       <div className="grid grid-cols-2 gap-4 max-480:grid-cols-1">
-        <CampoEtiquetadoEmpresa etiqueta={campos.direccion} requerido>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.direccion} requerido>
           <CampoTexto anchoCompleto valor={datos.direccion} alCambiar={formulario.manejarTexto('direccion')} />
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.ubigeo}>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.ubigeo}>
           <Selector variant="colaboradores" aria-label={campos.ubigeo} value={datos.ubigeo} onChange={formulario.manejarSelector('ubigeo')}>
             {opciones.ubigeos.map((ubigeo) => <option key={ubigeo}>{ubigeo}</option>)}
           </Selector>
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.telefono} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.telefono} requerido>
           <div className="flex gap-2">
             <Selector variant="default" className="flex-none" aria-label={campos.codigo_pais} value={datos.codigo_pais} onChange={formulario.manejarSelector('codigo_pais')}>
               {opciones.codigos_pais.map((codigo) => <option key={codigo}>{codigo}</option>)}
@@ -38,25 +38,25 @@ export function SeccionInformacionEmpresa({ formulario }: FormularioEmpresaProps
               <CampoTexto anchoCompleto tipo="tel" inputProps={{ 'aria-label': campos.telefono }} valor={datos.telefono} alCambiar={formulario.manejarTexto('telefono')} />
             </div>
           </div>
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.email} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.email} requerido>
           <CampoTexto anchoCompleto tipo="email" valor={datos.email} alCambiar={formulario.manejarTexto('email')} />
-        </CampoEtiquetadoEmpresa>
+        </CampoEtiquetado>
       </div>
-      <CampoEtiquetadoEmpresa etiqueta={campos.web}>
+      <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.web}>
         <CampoTexto anchoCompleto valor={datos.web} alCambiar={formulario.manejarTexto('web')} />
-      </CampoEtiquetadoEmpresa>
+      </CampoEtiquetado>
       <div className="grid grid-cols-2 gap-4 max-480:grid-cols-1">
-        <CampoEtiquetadoEmpresa etiqueta={campos.rubro} requerido>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.rubro} requerido>
           <Selector variant="colaboradores" aria-label={campos.rubro} value={datos.rubro} onChange={formulario.manejarSelector('rubro')}>
             {RUBROS.map((rubro) => <option key={rubro}>{rubro}</option>)}
           </Selector>
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.tipo_plan_cuenta} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.tipo_plan_cuenta} requerido>
           <Selector variant="colaboradores" aria-label={campos.tipo_plan_cuenta} value={datos.tipo_plan_cuenta} onChange={formulario.manejarSelector('tipo_plan_cuenta')}>
             {opciones.tipos_plan_cuenta.map((tipo) => <option key={tipo}>{tipo}</option>)}
           </Selector>
-        </CampoEtiquetadoEmpresa>
+        </CampoEtiquetado>
       </div>
       <Interruptor etiqueta={campos.activa} posicionEtiqueta="fin" seleccionado={datos.activa} alCambiar={cambiarActiva} />
     </div>

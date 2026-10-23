@@ -61,6 +61,7 @@
   },
   "selectores": {
     "periodo_actual": { "etiqueta": "Periodo actual", "opciones": ["Junio 2026", "Mayo 2026"] },
-    "mensual_semanal": { "opciones": ["Mensual", "Semanal"] }
+    "mensual_semanal": {
+      "etiqueta": "Frecuencia del gráfico", "opciones": ["Mensual", "Semanal"] }
   }
 }

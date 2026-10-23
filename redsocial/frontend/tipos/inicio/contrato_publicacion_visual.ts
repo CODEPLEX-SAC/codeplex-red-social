@@ -2,6 +2,8 @@ import type { ReactNode } from 'react'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { ElementoMenu } from '@/tipos/compartido/contrato_menu'
 import type { PublicacionCompartidaInicio } from './modelo_inicio'
+import type { InteraccionPublicacion } from './contrato_interacciones_publicacion'
+import type { ClaveReaccion, OpcionReaccion } from './contrato_reacciones'
 
 export interface MarcoPublicacionProps {
   children: ReactNode
@@ -12,17 +14,20 @@ export interface CabeceraPublicacionProps {
   nombre: string
   tiempo: string
   leyenda?: string
+  publica?: boolean
   opciones?: ElementoMenu[]
 }
 
 export interface PiePublicacionProps {
   reacciones: string
+  iconosResumen: OpcionReaccion[]
   comentarios: string
   compartidos?: string
-  meGusta: boolean
+  reaccion: ClaveReaccion | null
+  puedeCompartir: boolean
   comentariosAbiertos: boolean
   idComentarios: string
-  onMeGusta: () => void
+  onReaccionar: (clave: ClaveReaccion) => void
   onComentar: () => void
   onCompartir: () => void
 }
@@ -43,4 +48,8 @@ export interface OpcionMenuPublicacion {
 
 export interface TarjetaCompartidaProps {
   publicacion: PublicacionCompartidaInicio
+  compartidos: number
+  interaccion: InteraccionPublicacion
+  puedeCompartir: boolean
+  onCompartir: (comentario: string) => void
 }

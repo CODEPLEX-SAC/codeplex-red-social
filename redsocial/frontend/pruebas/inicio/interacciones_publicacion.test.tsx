@@ -21,7 +21,7 @@ function tarjeta(texto: string) {
 }
 
 function ejemplo() {
-  return within(screen.getByText(new RegExp(PUBLICACION_INICIO.texto)).closest('article') as HTMLElement)
+  return within(screen.getAllByText(new RegExp(PUBLICACION_INICIO.texto)).at(-1)?.closest('article') as HTMLElement)
 }
 
 function abrirMenu(texto: string) {
@@ -109,11 +109,11 @@ describe('Me gusta', () => {
 
   it('suma y resta sobre el total de la publicacion de ejemplo', () => {
     render(<PaginaInicio />)
-    const total = PUBLICACION_INICIO.totalReacciones
+    const total = Object.values(PUBLICACION_INICIO.reaccionesPorTipo).reduce((suma, cantidad) => suma + cantidad, 0)
     fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.me_gusta) }))
-    expect(ejemplo().getByText(`${PUBLICACION_INICIO.iconosReacciones} ${total + 1}`)).toBeInTheDocument()
+    expect(ejemplo().getByText(`${total + 1} ${catalogoInicio.contadores.reaccion_plural}`)).toBeInTheDocument()
     fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.me_gusta) }))
-    expect(ejemplo().getByText(`${PUBLICACION_INICIO.iconosReacciones} ${total}`)).toBeInTheDocument()
+    expect(ejemplo().getByText(`${total} ${catalogoInicio.contadores.reaccion_plural}`)).toBeInTheDocument()
   })
 })
 
@@ -146,28 +146,52 @@ describe('Comentar', () => {
   })
 })
 
-describe('Compartir', () => {
-  it('abre el dialogo, confirma, muestra el resultado y cuenta el compartido', () => {
+describe('Comentarios de la publicacion de ejemplo', () => {
+  const registros = PUBLICACION_INICIO.comentarios.reduce((suma, comentario) => suma + 1 + comentario.respuestas.length, 0)
+
+  it('el contador coincide con los comentarios que se muestran al abrirlos', () => {
     render(<PaginaInicio />)
-    publicar('Para compartir')
-    const tarj = tarjeta('Para compartir')
-    fireEvent.click(tarj.getByRole('button', { name: new RegExp(botones.compartir) }))
+    expect(ejemplo().getByText(`${registros} ${catalogoInicio.contadores.comentario_plural}`)).toBeInTheDocument()
+    fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.comentar) }))
+
+    const seccion = within(ejemplo().getByRole('region', { name: publicacion.comentarios.etiqueta_seccion }))
+    for (const comentario of PUBLICACION_INICIO.comentarios) {
+      expect(seccion.getByText(comentario.texto)).toBeInTheDocument()
+      for (const respuesta of comentario.respuestas) expect(seccion.getByText(respuesta.texto)).toBeInTheDocument()
+    }
+    expect(seccion.queryByText(publicacion.comentarios.vacio)).toBeNull()
+  })
+})
+
+describe('Compartir', () => {
+  it('una publicacion propia no se puede compartir', () => {
+    render(<PaginaInicio />)
+    publicar('Mi publicacion')
+    expect(tarjeta('Mi publicacion').getByRole('button', { name: new RegExp(botones.compartir) })).toBeDisabled()
+  })
+
+  it('compartir una publicacion ajena crea una publicacion compartida en el feed y cuenta el compartido', () => {
+    render(<PaginaInicio />)
+    fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.compartir) }))
 
     const dialogo = within(screen.getByRole('dialog', { name: publicacion.compartir.titulo }))
-    expect(dialogo.getByText('Para compartir')).toBeInTheDocument()
-    expect(dialogo.getAllByText(catalogoCompartido.sesion_actual.usuario, { selector: 'strong' })).toHaveLength(2)
-    expect(dialogo.getByLabelText(publicacion.compartir.etiqueta_campo)).toBeInTheDocument()
+    expect(dialogo.getByText(PUBLICACION_INICIO.texto)).toBeInTheDocument()
     fireEvent.click(dialogo.getByRole('button', { name: publicacion.compartir.cerrar }))
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(tarj.queryByText(/compartido/)).toBeNull()
+    expect(ejemplo().queryByText(/compartido/)).toBeNull()
 
-    fireEvent.click(tarj.getByRole('button', { name: new RegExp(botones.compartir) }))
-    fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: publicacion.compartir.confirmar }))
+    fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.compartir) }))
+    const confirmacion = within(screen.getByRole('dialog'))
+    fireEvent.change(confirmacion.getByLabelText(publicacion.compartir.etiqueta_campo), { target: { value: 'Vale la pena verlo' } })
+    fireEvent.click(confirmacion.getByRole('button', { name: publicacion.compartir.confirmar }))
     const estado = within(screen.getByRole('status'))
     expect(estado.getByText(publicacion.compartir.exito_titulo)).toBeInTheDocument()
-    expect(tarj.getByText('1 compartido')).toBeInTheDocument()
-    expect(estado.getByRole('button', { name: publicacion.compartir.listo })).toHaveFocus()
     fireEvent.click(estado.getByRole('button', { name: publicacion.compartir.listo }))
     expect(screen.queryByRole('dialog')).toBeNull()
+
+    expect(ejemplo().getByText(`1 ${catalogoInicio.contadores.compartido_singular}`)).toBeInTheDocument()
+    const compartida = within(screen.getByText('Vale la pena verlo').closest('article') as HTMLElement)
+    expect(compartida.getByText(catalogoInicio.leyendas.compartio_una_publicacion)).toBeInTheDocument()
+    expect(compartida.getByText(catalogoCompartido.sesion_actual.usuario)).toBeInTheDocument()
   })
 })

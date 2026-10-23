@@ -1,6 +1,6 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import type { IconName } from '../../../tipos/compartido/contrato_icono'
@@ -46,11 +46,9 @@ export function SeccionContactosFrecuentes({
             {HISTORIAL.map((h) => (
               <article key={h.nombre} className="flex items-center gap-3 border-b border-borde-suave py-3 last:border-b-0">
                 {h.esGrupo ? (
-                  <span className="grid h-8 w-8 flex-none place-items-center rounded-full bg-primario text-white">
-                    <Icono name="grupo" className="h-4 w-4" />
-                  </span>
+                  <AvatarUsuario tamano="sm" icono="grupo" tono="solido" />
                 ) : (
-                  <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full bg-primario-suave" />
+                  <AvatarUsuario tamano="sm" imagen={usuarioImg} />
                 )}
                 <div className="min-w-0 flex-1">
                   <strong className="mb-0.75 block text-nombre-entidad text-texto">{h.nombre}</strong>

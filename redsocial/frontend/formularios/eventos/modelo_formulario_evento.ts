@@ -15,14 +15,6 @@ export interface AvisoFormularioEventoProps {
   texto: string
 }
 
-export interface CampoFormularioEventoProps {
-  texto: string
-  requerido?: boolean
-  ayuda?: string
-  className?: string
-  children: ReactNode
-}
-
 export interface OpcionModalidadEventoProps {
   icono: IconName
   etiqueta: string

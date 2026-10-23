@@ -13,11 +13,10 @@ export function BloquePrioridadPublicacion({ prioridad, onCambiar }: BloquePrior
           key={opcion.valor}
           type="button"
           variant="filtro"
-          size="mini"
+          size="pildora"
           activo={prioridad === opcion.valor}
           aria-pressed={prioridad === opcion.valor}
           onClick={() => onCambiar(opcion.valor as PrioridadPublicacion)}
-          className="rounded-full"
         >
           <span className={opcion.punto} />
           {opcion.etiqueta}

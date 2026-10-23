@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import { Icono } from '../../compartido/icono'
-import { Boton } from '../../compartido/interfaz/boton'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { CampoTexto } from '../../compartido/interfaz/campo_texto'
-import { Selector } from '../../compartido/interfaz/selector'
+import { Boton, BotonIcono, CampoEtiquetado, CampoTexto, Icono, Selector } from '../../compartido'
 import { Modal } from '../../compartido/interfaz/modal'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -42,17 +38,15 @@ export function BloqueConfirmarBajaColaborador({
           <h3 className="m-0 mb-1.5 text-cuerpo-grande text-texto">{[textos.pregunta_prefijo, colaborador.nombre + textos.pregunta_sufijo].join(' ')}</h3>
           <p className="m-0 mb-4 text-cuerpo leading-texto text-texto-suave">{textos.descripcion}</p>
 
-          <div className="mb-3 flex flex-col gap-1">
-            <label className="text-etiqueta text-texto">{textos.motivo.etiqueta} <span className="text-negativo-kpi">*</span></label>
+          <CampoEtiquetado variante="compacta" etiqueta={textos.motivo.etiqueta} requerido className="mb-3">
             <Selector variant="colaboradores" placeholder={textos.motivo.placeholder}>
               {textos.motivo.opciones.map((o) => <option key={o}>{o}</option>)}
             </Selector>
-          </div>
+          </CampoEtiquetado>
 
-          <div className="mb-5 flex flex-col gap-1">
-            <label className="text-etiqueta text-texto">{textos.fecha_baja} <span className="text-negativo-kpi">*</span></label>
+          <CampoEtiquetado variante="compacta" etiqueta={textos.fecha_baja} requerido className="mb-5">
             <CampoTexto valor={fecha} alCambiar={setFecha} inputProps={etiquetarCampo(textos.fecha_baja)} anchoCompleto iconoFin={<Icono name="calendario" className="h-4 w-4" />} />
-          </div>
+          </CampoEtiquetado>
 
           <div className="grid grid-cols-2 gap-2">
             <Boton type="button" variant="secundario" onClick={alCerrar}>{textosRedSocial.CANCELAR}</Boton>

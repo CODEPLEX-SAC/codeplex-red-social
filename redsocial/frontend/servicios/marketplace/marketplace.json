@@ -153,26 +153,6 @@
       "cantidad": "10 soluciones"
     }
   ],
-  "compras": [
-    {
-      "icono": "contabilidad-propio",
-      "color": "verde",
-      "nombre": "ContaPlex",
-      "fecha": "Adquirido el 12/06/2026"
-    },
-    {
-      "icono": "planillas",
-      "color": "morado",
-      "nombre": "GestiónPlex",
-      "fecha": "Adquirido el 05/06/2026"
-    },
-    {
-      "icono": "recibo",
-      "color": "azul",
-      "nombre": "Facturación Electrónica",
-      "fecha": "Adquirido el 01/06/2026"
-    }
-  ],
   "populares": [
     {
       "icono": "contabilidad-propio",

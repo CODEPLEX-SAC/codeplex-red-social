@@ -1,4 +1,5 @@
 import type { Dayjs } from 'dayjs'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import { SelectorFecha } from '../../compartido/interfaz/selector_fecha'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 
@@ -6,10 +7,9 @@ const textos = catalogoColaboradores.panel_filtros_avanzados
 
 function CampoFecha({ texto, valor, alCambiar }: { texto: string; valor: Dayjs | null; alCambiar: (valor: Dayjs | null) => void }) {
   return (
-    <div className="flex flex-col gap-1">
-      <label className="text-etiqueta text-texto">{texto}</label>
+    <CampoEtiquetado variante="compacta" etiqueta={texto}>
       <SelectorFecha valor={valor} alCambiar={alCambiar} marcador={textos.marcador_fecha} formato={textos.formato_fecha} />
-    </div>
+    </CampoEtiquetado>
   )
 }
 

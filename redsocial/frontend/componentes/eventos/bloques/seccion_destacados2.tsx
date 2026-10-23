@@ -1,7 +1,7 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { imagenEventoPredeterminada as imagenEvento, imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
+import { imagenEventoPredeterminada as imagenEvento } from '../../compartido'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Icono } from '../../compartido/icono'
@@ -20,7 +20,7 @@ export function SeccionDestacados2({
   pistaProximosRef,
   PROXIMOS,
 }: {
-  destacado: EventoDestacado
+  destacado: EventoDestacado | undefined
   alCambiarDestacado: (direccion: 1 | -1) => void
   setDetalleAbierto: (valor: boolean | ((actual: boolean) => boolean)) => void
   DESTACADOS: EventoDestacado[]
@@ -33,6 +33,7 @@ export function SeccionDestacados2({
   return (
     <>
 
+    {destacado && (
     <section className="mb-7">
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoEventos.secciones.destacados}</h2>
@@ -57,16 +58,7 @@ export function SeccionDestacados2({
             <span className="flex items-center gap-1.25 text-auxiliar text-texto-suave"><Icono name="ubicacion" className="h-3.5 w-3.5 text-primario" /> {destacado.ubicacion}</span>
           </div>
           <div className="mt-auto flex items-center justify-between max-600:flex-col max-600:items-stretch max-600:gap-2.5">
-            <div className="flex items-center">
-              {posicionesDe(4).map((posicion) => (
-                <AvatarImagen
-                  key={posicion.id}
-                  src={usuarioImg}
-                  className={'h-7 w-7 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
-                />
-              ))}
-              <span className="-ml-1 inline-flex h-7 items-center rounded-2xl border-2 border-white bg-fondo-categoria-morado px-2 text-conteo text-primario">{destacado.asistentes}</span>
-            </div>
+            <GrupoAvatares avatares={4} tamano="sm" resto={destacado.asistentes} />
             <Boton type="button" onClick={() => setDetalleAbierto(true)} variant="contorno" size="default" className="max-600:w-full">{catalogoEventos.botones.ver_detalles}</Boton>
           </div>
         </div>
@@ -83,6 +75,7 @@ export function SeccionDestacados2({
         ))}
       </div>
     </section>
+    )}
 
     <SeccionProximos
       alDesplazarProximos={alDesplazarProximos}

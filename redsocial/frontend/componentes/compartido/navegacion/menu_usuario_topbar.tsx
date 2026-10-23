@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { FondoPanelFlotante } from '../interfaz/fondo_panel_flotante'
 import { imagenUsuarioPredeterminada, Icono } from '../icono'
-import { AvatarImagen } from '../interfaz/avatar_imagen'
+import { AvatarUsuario } from '../interfaz/avatar_usuario'
 import { irARuta } from '../interfaz/menu'
 import { usarSesionDemostracion } from '../sesion/usar_sesion_demostracion'
 import { PanelUsuarioTopbar } from './panel_usuario_topbar'
@@ -39,7 +39,7 @@ export function MenuUsuarioTopbar() {
         onClick={() => setAbierto((visible) => !visible)}
         className="flex items-center gap-xs rounded-full border-0 bg-transparent px-sm py-1 max-800:p-1"
       >
-        <AvatarImagen src={imagenUsuarioPredeterminada} className="h-8 w-8 rounded-full bg-borde" />
+        <AvatarUsuario tamano="sm" imagen={imagenUsuarioPredeterminada} />
         <strong className="text-nombre-entidad max-800:hidden">{usuario.usuario}</strong>
         <Icono name="flecha-abajo" className="flex-none text-texto-suave max-800:hidden w-3.5 h-3.5" />
       </button>

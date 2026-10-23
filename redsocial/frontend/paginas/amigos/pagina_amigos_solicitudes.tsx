@@ -1,9 +1,8 @@
-import { MensajeVacio, Boton, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CampoBusqueda, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg, posicionesDe, clasesChip, clasesConteoChip } from '../../componentes/compartido'
+import { BotonPieLista, MensajeVacio, Boton, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CampoBusqueda, GrupoAvatares, AvatarUsuario, imagenUsuarioPredeterminada as usuarioImg, clasesChip, Insignia } from '../../componentes/compartido'
 import { EncabezadoAmigos, PestanasAmigos, PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import { RECIBIDAS, PERSONAS_CONOCER_SOLICITUDES as PERSONAS_CONOCER, TUS_LISTAS_SOLICITUDES as TUS_LISTAS, ACTIVIDAD_RECIENTE_SOLICITUDES as ACTIVIDAD_RECIENTE, SOLICITUD_ENVIADA_EJEMPLO } from '../../rutas/amigos/rutas_amigos'
 
-const AMIGOS_COMUNES = 'h-5.5 w-5.5 rounded-full border-2 border-white bg-primario-suave'
 
 export function PaginaAmigosSolicitudes() {
   return (
@@ -18,10 +17,10 @@ export function PaginaAmigosSolicitudes() {
 
             <div className="mb-4.5 flex flex-wrap items-center gap-2">
               <a href="#" className={clasesChip({ activo: true, className: 'flex-none' })}>
-                {catalogoAmigos.pestanas_solicitudes.recibidas} <span className={clasesConteoChip({ activo: true })}>3</span>
+                {catalogoAmigos.pestanas_solicitudes.recibidas} <Insignia variant="counter" tamano="sm" tono="blanco">3</Insignia>
               </a>
               <a href="#" className={clasesChip({ className: 'flex-none' })}>
-                {catalogoAmigos.pestanas_solicitudes.enviadas} <span className={clasesConteoChip({})}>1</span>
+                {catalogoAmigos.pestanas_solicitudes.enviadas} <Insignia variant="counter" tamano="sm" tono="neutro">1</Insignia>
               </a>
               <a href="#" className={clasesChip({ className: 'flex-none' })}>
                 {catalogoAmigos.pestanas_solicitudes.ignoradas}
@@ -36,7 +35,7 @@ export function PaginaAmigosSolicitudes() {
             {RECIBIDAS.length === 0 && <MensajeVacio texto={catalogoAmigos.mensajes.sin_solicitudes} className="col-span-full py-8" />}
             {RECIBIDAS.map((s) => (
               <article key={s.nombre} className="relative mb-3 flex items-start gap-4 rounded-xl border border-borde bg-white p-4.5 last:mb-0 max-600:flex-wrap max-600:p-3.5">
-                <AvatarImagen src={usuarioImg} className="h-14 w-14 flex-none rounded-full bg-primario-suave" />
+                <AvatarUsuario tamano="lg" imagen={usuarioImg} />
                 <div className="min-w-0 flex-1">
                   <div className="mb-0.5 flex items-baseline gap-2 pr-22.5">
                     <strong className="text-nombre-entidad text-texto">{s.nombre}</strong>
@@ -45,14 +44,7 @@ export function PaginaAmigosSolicitudes() {
                   <p className="m-0 mb-1.5 text-cuerpo leading-texto text-texto-suave">{s.descripcion}</p>
                   <div className="mb-3 flex items-center gap-2.5">
                     <span className="text-auxiliar text-texto-suave">{s.comunes}</span>
-                    <div className="flex items-center">
-                      {posicionesDe(s.masAvatares ? 4 : 3).map((posicion) => (
-                        <AvatarImagen key={posicion.id} src={usuarioImg} className={AMIGOS_COMUNES + (posicion.orden > 0 ? ' -ml-2' : '')} />
-                      ))}
-                      {s.masAvatares && (
-                        <span className="-ml-2 grid h-5.5 w-5.5 place-items-center rounded-full border-2 border-white bg-fondo-insignia-neutra text-conteo text-texto-suave">{s.masAvatares}</span>
-                      )}
-                    </div>
+                    <GrupoAvatares avatares={s.masAvatares ? 4 : 3} tamano="xs" tono="neutro" resto={s.masAvatares} />
                   </div>
                 </div>
                 <div className="ml-auto flex flex-none items-center gap-2 self-center max-900:flex-col max-900:self-start max-900:mt-1 max-600:w-full max-600:flex-row max-600:self-stretch max-600:ml-0 max-600:mt-3">
@@ -62,12 +54,12 @@ export function PaginaAmigosSolicitudes() {
                 </div>
               </article>
             ))}
-            <a href="#" className="flex items-center justify-center p-3.5 text-enlace-accion text-primario no-underline hover:bg-fondo">{catalogoAmigos.botones.ver_mas_solicitudes_recibidas}</a>
+            <BotonPieLista>{catalogoAmigos.botones.ver_mas_solicitudes_recibidas}</BotonPieLista>
 
             <section className="mt-4">
               <h2 className="mb-3.5 text-titulo-seccion text-texto">{catalogoAmigos.secciones.solicitudes_enviadas}</h2>
               <article className="relative mb-3 flex items-start gap-4 rounded-xl border border-borde bg-white p-4.5 max-600:flex-wrap max-600:p-3.5">
-                <AvatarImagen src={usuarioImg} className="h-14 w-14 flex-none rounded-full bg-primario-suave" />
+                <AvatarUsuario tamano="lg" imagen={usuarioImg} />
                 <div className="min-w-0 flex-1">
                   <div className="mb-0.5 flex items-baseline gap-2 pr-22.5">
                     <strong className="text-nombre-entidad text-texto">{SOLICITUD_ENVIADA_EJEMPLO.nombre}</strong>
@@ -76,17 +68,14 @@ export function PaginaAmigosSolicitudes() {
                   <p className="m-0 mb-1.5 text-cuerpo leading-texto text-texto-suave">{SOLICITUD_ENVIADA_EJEMPLO.descripcion}</p>
                   <div className="mb-3 flex items-center gap-2.5">
                     <span className="text-auxiliar text-texto-suave">{SOLICITUD_ENVIADA_EJEMPLO.comunes}</span>
-                    <div className="flex items-center">
-                      <AvatarImagen src={usuarioImg} className={AMIGOS_COMUNES} />
-                      <AvatarImagen src={usuarioImg} className={AMIGOS_COMUNES + ' -ml-2'} />
-                    </div>
+                    <GrupoAvatares avatares={2} tamano="xs" />
                   </div>
                 </div>
                 <div className="ml-auto flex flex-none items-center gap-2 self-center max-900:flex-col max-900:self-start max-900:mt-1 max-600:w-full max-600:flex-row max-600:self-stretch max-600:ml-0 max-600:mt-3">
                   <Boton type="button" variant="secundario" size="default" className="max-600:flex-1">{catalogoAmigos.botones.cancelar_solicitud}</Boton>
                 </div>
               </article>
-              <a href="#" className="flex items-center justify-center p-3.5 text-enlace-accion text-primario no-underline hover:bg-fondo">{catalogoAmigos.botones.ver_todas_solicitudes_enviadas}</a>
+              <BotonPieLista>{catalogoAmigos.botones.ver_todas_solicitudes_enviadas}</BotonPieLista>
             </section>
           </section>
         }

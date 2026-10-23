@@ -9,7 +9,7 @@ function buscar(nombre: string) {
 
 function abrirDetalle(nombre: string) {
   buscar(nombre)
-  const fila = screen.getByRole('checkbox', { name: nombre }).closest('tr') as HTMLElement
+  const fila = screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement
   const boton = within(fila).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones })
   fireEvent.click(boton)
   fireEvent.click(screen.getByText(catalogoColaboradores.botones.ver_colaborador))
@@ -50,7 +50,7 @@ describe('SeccionDetalleColaborador', () => {
   it('al confirmar la baja desde el menú de la fila muestra el diálogo con el nombre del colaborador', () => {
     render(<PaginaColaboradores />)
     buscar('Carlos Mendoza')
-    const fila = screen.getByRole('checkbox', { name: 'Carlos Mendoza' }).closest('tr') as HTMLElement
+    const fila = screen.getByText('Carlos Mendoza', { selector: 'span.truncate' }).closest('tr') as HTMLElement
     fireEvent.click(within(fila).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones }))
     fireEvent.click(screen.getByText(catalogoColaboradores.botones.dar_de_baja))
     const dialogo = within(screen.getByRole('dialog'))

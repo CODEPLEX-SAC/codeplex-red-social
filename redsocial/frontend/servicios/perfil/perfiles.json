@@ -1,0 +1,377 @@
+{
+  "perfiles": [
+    {
+      "id": "usuario-pedro-lozano",
+      "nombre": "Pedro Lozano",
+      "titular": "Administrador",
+      "empresa": "Constructora del Norte SAC",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional de Ingeniería",
+      "desde": "marzo de 2024",
+      "acerca": "Administro los proyectos de obra civil de la constructora y coordino a los equipos de compras y finanzas. Me interesa digitalizar los procesos de la empresa.",
+      "habilidades": [
+        "Gestión de proyectos",
+        "Control de costos",
+        "Presupuestos de obra",
+        "Liderazgo de equipos"
+      ],
+      "amigos": [
+        "maria-fernandez",
+        "luis-rodriguez",
+        "carmen-lopez",
+        "diego-mendoza",
+        "ana-garcia"
+      ],
+      "publicaciones": [
+        {
+          "id": "perfil-pedro-1",
+          "tiempo": "1 día",
+          "texto": "Cerramos el trimestre con el 94 % de las obras dentro del presupuesto. Gracias a todo el equipo.",
+          "reaccionesPorTipo": {
+            "me_gusta": 32,
+            "me_encanta": 8,
+            "asombroso": 2
+          },
+          "comentarios": [
+            {
+              "id": "perfil-pedro-1-c1",
+              "autorId": "ana-garcia",
+              "autor": "Ana García",
+              "texto": "Buen trabajo, felicitaciones al equipo.",
+              "tiempo": "1 hora",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-pedro-1-c2",
+              "autorId": "carmen-lopez",
+              "autor": "Carmen López",
+              "texto": "Excelente resultado, gracias por compartirlo.",
+              "tiempo": "40 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-pedro-1-c3",
+              "autorId": "diego-mendoza",
+              "autor": "Diego Mendoza",
+              "texto": "Muy buena noticia, sigamos así.",
+              "tiempo": "25 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maria-fernandez",
+      "nombre": "María Fernández",
+      "titular": "Ingeniera de proyectos",
+      "empresa": "Constructora del Norte SAC",
+      "ubicacion": "Arequipa, Perú",
+      "estudios": "Pontificia Universidad Católica del Perú",
+      "desde": "junio de 2023",
+      "acerca": "Superviso el avance de obras viales y puentes. Disfruto compartir lo que aprendo en campo con otros ingenieros.",
+      "habilidades": [
+        "Obras viales",
+        "Supervisión de obra",
+        "Cronogramas",
+        "Seguridad en obra"
+      ],
+      "amigos": [
+        "usuario-pedro-lozano",
+        "luis-rodriguez",
+        "carmen-lopez",
+        "ana-garcia"
+      ],
+      "publicaciones": [
+        {
+          "id": "perfil-maria-1",
+          "tiempo": "2 horas",
+          "texto": "Avance del proyecto del puente en la Av. Central.",
+          "reaccionesPorTipo": {
+            "me_gusta": 96,
+            "me_encanta": 24,
+            "asombroso": 8
+          },
+          "comentarios": [
+            {
+              "id": "perfil-maria-1-c1",
+              "autorId": "ana-garcia",
+              "autor": "Ana García",
+              "texto": "Buen trabajo, felicitaciones al equipo.",
+              "tiempo": "1 hora",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-maria-1-c2",
+              "autorId": "carmen-lopez",
+              "autor": "Carmen López",
+              "texto": "Excelente resultado, gracias por compartirlo.",
+              "tiempo": "40 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-maria-1-c3",
+              "autorId": "diego-mendoza",
+              "autor": "Diego Mendoza",
+              "texto": "Muy buena noticia, sigamos así.",
+              "tiempo": "25 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
+        },
+        {
+          "id": "perfil-maria-2",
+          "tiempo": "3 días",
+          "texto": "Hoy terminamos el vaciado de la losa del tercer tramo sin incidentes.",
+          "reaccionesPorTipo": {
+            "me_gusta": 43,
+            "me_encanta": 11,
+            "asombroso": 3
+          },
+          "comentarios": [
+            {
+              "id": "perfil-maria-2-c1",
+              "autorId": "ana-garcia",
+              "autor": "Ana García",
+              "texto": "Buen trabajo, felicitaciones al equipo.",
+              "tiempo": "1 hora",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-maria-2-c2",
+              "autorId": "carmen-lopez",
+              "autor": "Carmen López",
+              "texto": "Excelente resultado, gracias por compartirlo.",
+              "tiempo": "40 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luis-rodriguez",
+      "nombre": "Luis Rodríguez",
+      "titular": "Jefe de seguridad en obra",
+      "empresa": "Constructora del Norte SAC",
+      "ubicacion": "Trujillo, Perú",
+      "estudios": "Universidad Privada del Norte",
+      "desde": "enero de 2024",
+      "acerca": "Me encargo de que cada jornada termine sin accidentes. Creo que la prevención es la mejor inversión de una obra.",
+      "habilidades": [
+        "Prevención de riesgos",
+        "Capacitación",
+        "Inspecciones",
+        "Normativa de seguridad"
+      ],
+      "amigos": [
+        "usuario-pedro-lozano",
+        "maria-fernandez",
+        "diego-mendoza"
+      ],
+      "publicaciones": [
+        {
+          "id": "perfil-luis-1",
+          "tiempo": "5 horas",
+          "texto": "Normas de seguridad en obras: siempre primero la prevención.",
+          "reaccionesPorTipo": {
+            "me_gusta": 55,
+            "me_encanta": 14,
+            "asombroso": 4
+          },
+          "comentarios": [
+            {
+              "id": "perfil-luis-1-c1",
+              "autorId": "maria-fernandez",
+              "autor": "María Fernández",
+              "texto": "Buen trabajo, felicitaciones al equipo.",
+              "tiempo": "1 hora",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-luis-1-c2",
+              "autorId": "ana-garcia",
+              "autor": "Ana García",
+              "texto": "Excelente resultado, gracias por compartirlo.",
+              "tiempo": "40 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-luis-1-c3",
+              "autorId": "carmen-lopez",
+              "autor": "Carmen López",
+              "texto": "Muy buena noticia, sigamos así.",
+              "tiempo": "25 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ana-garcia",
+      "nombre": "Ana García",
+      "titular": "Contadora general",
+      "empresa": "Constructora del Norte SAC",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad de Lima",
+      "desde": "agosto de 2023",
+      "acerca": "Llevo la contabilidad y los cierres mensuales. Me gusta automatizar tareas repetitivas para dedicar más tiempo al análisis.",
+      "habilidades": [
+        "Contabilidad",
+        "Cierres mensuales",
+        "Tributación",
+        "Análisis financiero"
+      ],
+      "amigos": [
+        "usuario-pedro-lozano",
+        "maria-fernandez",
+        "carmen-lopez"
+      ],
+      "publicaciones": []
+    },
+    {
+      "id": "carmen-lopez",
+      "nombre": "Carmen López",
+      "titular": "Arquitecta",
+      "empresa": "Estudio Habitar",
+      "ubicacion": "Cusco, Perú",
+      "estudios": "Universidad Nacional de San Antonio Abad",
+      "desde": "octubre de 2023",
+      "acerca": "Diseño espacios públicos y vivienda social. Busco soluciones que respeten el entorno y la identidad de cada lugar.",
+      "habilidades": [
+        "Diseño arquitectónico",
+        "Urbanismo",
+        "Modelado 3D",
+        "Vivienda social"
+      ],
+      "amigos": [
+        "usuario-pedro-lozano",
+        "maria-fernandez",
+        "ana-garcia"
+      ],
+      "publicaciones": [
+        {
+          "id": "perfil-carmen-1",
+          "tiempo": "2 días",
+          "texto": "Presentamos la propuesta del parque central. Gracias a todos los que participaron en los talleres.",
+          "reaccionesPorTipo": {
+            "me_gusta": 26,
+            "me_encanta": 7,
+            "asombroso": 2
+          },
+          "comentarios": [
+            {
+              "id": "perfil-carmen-1-c1",
+              "autorId": "ana-garcia",
+              "autor": "Ana García",
+              "texto": "Buen trabajo, felicitaciones al equipo.",
+              "tiempo": "1 hora",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            },
+            {
+              "id": "perfil-carmen-1-c2",
+              "autorId": "diego-mendoza",
+              "autor": "Diego Mendoza",
+              "texto": "Excelente resultado, gracias por compartirlo.",
+              "tiempo": "40 min",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diego-mendoza",
+      "nombre": "Diego Mendoza",
+      "titular": "Jefe de compras",
+      "empresa": "Constructora del Norte SAC",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad del Pacífico",
+      "desde": "febrero de 2024",
+      "acerca": "Negocio con proveedores y cuido que los materiales lleguen a tiempo y al mejor precio.",
+      "habilidades": [
+        "Negociación",
+        "Gestión de proveedores",
+        "Logística",
+        "Control de inventarios"
+      ],
+      "amigos": [
+        "usuario-pedro-lozano",
+        "luis-rodriguez"
+      ],
+      "publicaciones": []
+    },
+    {
+      "id": "elena-sanchez",
+      "nombre": "Elena Sánchez",
+      "titular": "Analista de costos",
+      "empresa": "Estudio Habitar",
+      "ubicacion": "Piura, Perú",
+      "estudios": "Universidad de Piura",
+      "desde": "mayo de 2024",
+      "acerca": "Analizo presupuestos y costos de proyectos para encontrar ahorros sin sacrificar calidad.",
+      "habilidades": [
+        "Análisis de costos",
+        "Presupuestos",
+        "Hojas de cálculo",
+        "Reportes"
+      ],
+      "amigos": [
+        "maria-fernandez",
+        "ana-garcia"
+      ],
+      "publicaciones": [
+        {
+          "id": "perfil-elena-1",
+          "tiempo": "4 días",
+          "texto": "Compartimos la plantilla de control de costos que usamos en los últimos proyectos.",
+          "reaccionesPorTipo": {
+            "me_gusta": 14,
+            "me_encanta": 3,
+            "asombroso": 1
+          },
+          "comentarios": [
+            {
+              "id": "perfil-elena-1-c1",
+              "autorId": "luis-rodriguez",
+              "autor": "Luis Rodríguez",
+              "texto": "Buen trabajo, felicitaciones al equipo.",
+              "tiempo": "1 hora",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "separadorUbicacion": ", "
+}

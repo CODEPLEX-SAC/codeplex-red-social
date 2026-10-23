@@ -1,8 +1,9 @@
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { BotonPieLista } from '../../compartido/interfaz/boton_pie_lista'
 import type { InvitacionAceptada, ColorGrupo } from '@/tipos/grupos/modelo_grupos_invitaciones'
 
 export function SeccionAceptadas({
@@ -29,7 +30,7 @@ export function SeccionAceptadas({
             </div>
           </div>
           <div className="flex min-w-35 flex-none items-center gap-2">
-            <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full bg-primario-suave" />
+            <AvatarUsuario tamano="sm" imagen={usuarioImg} />
             <div className="min-w-0">
               <strong className="block text-nombre-entidad text-texto">{a.invitadoPor}</strong>
               <span className="text-fecha-abreviada text-texto-suave">{a.tiempo}</span>
@@ -45,7 +46,7 @@ export function SeccionAceptadas({
           </div>
         </article>
       ))}
-      <a href="#" className="flex items-center justify-center border-t border-borde-suave p-3.5 text-enlace-accion text-primario no-underline hover:underline">{catalogoGrupos.leyendas.ver_todas_aceptadas}</a>
+      <BotonPieLista>{catalogoGrupos.leyendas.ver_todas_aceptadas}</BotonPieLista>
     </section>
   )
 }

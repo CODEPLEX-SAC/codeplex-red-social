@@ -39,7 +39,7 @@ export function SeccionListado({ datos }: { datos: DatosListadoColaboradores }) 
 
       <BloqueColaboradores1 datos={{ rol, cambiarRol, aplicacion, cambiarAplicacion, ordenarPor, cambiarOrdenarPor }} />
 
-      <TablaColaboradores datos={datos} tabla={tabla} filas={filas} />
+      <TablaColaboradores datos={datos} filas={filas} />
 
       <div className="flex flex-wrap items-center justify-between gap-3 py-4">
         <span className="text-auxiliar text-texto-suave">{resumen}</span>

@@ -1,12 +1,12 @@
 import { Icono, imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import type { FilaActividadGrupoProps } from '@/tipos/actividad/contrato_actividad_grupo'
 
 export function FilaActividadGrupo({ nombre, accion, grupo, tiempo, icono, colorIcono }: FilaActividadGrupoProps) {
   return (
     <article className="flex items-start gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
-      <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full" />
+      <AvatarUsuario tamano="sm" imagen={usuarioImg} />
       <div className="min-w-0 flex-1 text-cuerpo leading-texto text-texto">
         <strong className="font-titulo">{nombre}</strong> {accion} <span className="font-titulo text-texto">{grupo}</span>
         <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{tiempo}</span>

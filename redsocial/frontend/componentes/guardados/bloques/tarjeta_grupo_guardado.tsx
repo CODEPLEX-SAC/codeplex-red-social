@@ -1,9 +1,7 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { useState } from 'react'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
-import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoGuardados from '../../../catalogos/capacidades/redsocial/guardados.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { TarjetaGrupoGuardadoProps } from '@/tipos/guardados/contrato_grupo_guardado'
@@ -39,11 +37,7 @@ export function TarjetaGrupoGuardado({ grupo: g }: TarjetaGrupoGuardadoProps) {
         <span className={'hidden self-start rounded px-1.5 py-px text-badge max-600:inline-block ' + claseCategoria}>{etiquetaCategoria}</span>
         <p className="m-0 mb-2.5 text-cuerpo leading-texto text-texto-suave max-600:hidden">{g.descripcion}</p>
         <div className="flex items-center gap-1.5 max-600:hidden">
-          <div className="flex flex-none items-center">
-            {posicionesDe(3).map((posicion) => (
-              <AvatarImagen key={posicion.id} src={usuarioImg} className={'h-5 w-5 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-1.5' : '')} />
-            ))}
-          </div>
+          <GrupoAvatares avatares={3} tamano="xs" className="flex-none" />
           <span className="min-w-0 flex-1 truncate text-auxiliar text-texto-suave">
             {catalogoGuardados.campos_lista.actividad_reciente}: {g.actividadReciente}
           </span>

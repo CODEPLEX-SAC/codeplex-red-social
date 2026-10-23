@@ -1,5 +1,5 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
-import type { ItemCarrito, TarjetaGuardada } from '@/tipos/marketplace/modelo_carrito'
+import type { ItemCarrito } from '@/tipos/marketplace/modelo_carrito'
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 
 const formato = catalogoMarketplace.pago.formato_fecha
@@ -75,9 +75,4 @@ export function etiquetaTotal(items: ItemCarrito[]) {
   const periodos = new Set(items.map((i) => i.periodo))
   if (periodos.size > 1) return catalogoMarketplace.carrito.total
   return periodos.has('anual') ? catalogoMarketplace.pago.resumen.total_anual : catalogoMarketplace.pago.resumen.total_mensual
-}
-
-export function detalleTarjeta(tarjeta: TarjetaGuardada) {
-  const partes = [tarjeta.propietario, tarjeta.vencimiento ? catalogoMarketplace.pago.guardados.vence.replace(':fecha', tarjeta.vencimiento) : tarjeta.vencimiento]
-  return partes.filter((parte) => parte).join(catalogoMarketplace.pago.guardados.separador)
 }

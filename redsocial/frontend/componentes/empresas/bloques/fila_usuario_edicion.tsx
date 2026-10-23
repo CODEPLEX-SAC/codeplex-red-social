@@ -8,12 +8,13 @@ import { inicialesDesdeNombreCompleto, usuarioEditadoValido } from './logica_usu
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { FilaUsuarioEdicionProps } from '@/tipos/empresas/contrato_usuarios_empresa'
 import type { RolUsuarioEmpresa, EstadoUsuarioEmpresa, UsuarioEmpresa } from '@/tipos/empresas/modelo_usuarios_empresa'
+import { CLASES_TABLA } from '../../compartido/clases_tabla'
 
 const textos = catalogoEmpresas.usuarios_empresa
 const edicion = textos.edicion
 const ROLES = Object.entries(textos.roles)
 const ESTADOS = Object.entries(textos.estados)
-const celda = catalogoEmpresas.clases.celda
+const celda = CLASES_TABLA.celda
 
 const textoAuxiliar = catalogoEmpresas.clases.texto_auxiliar
 const textoCelda = catalogoEmpresas.clases.texto_celda

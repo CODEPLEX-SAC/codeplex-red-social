@@ -1,3 +1,4 @@
+import { MarcoPanelFiltro } from '../../compartido/interfaz/filtro_desplegable'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -9,25 +10,17 @@ import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.js
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { PanelFiltroCategoriaProps } from '@/tipos/eventos/contrato_filtro_categoria'
 
-export function PanelFiltroCategoria({ categorias, onCerrar }: PanelFiltroCategoriaProps) {
+export function PanelFiltroCategoria({ id, categorias, seleccionadas, alCambiarSeleccion, onCerrar }: PanelFiltroCategoriaProps) {
   const [busqueda, setBusqueda] = useState('')
-  const [seleccionadas, setSeleccionadas] = useState<Set<string>>(() => new Set(categorias[0] ? [categorias[0].nombre] : []))
 
   const categoriasVisibles = categorias.filter((c) => c.nombre.toLowerCase().includes(busqueda.toLowerCase()))
 
   function alAlternar(nombre: string) {
-    setSeleccionadas((actual) => {
-      const siguiente = new Set(actual)
-      siguiente.has(nombre) ? siguiente.delete(nombre) : siguiente.add(nombre)
-      return siguiente
-    })
+    alCambiarSeleccion(seleccionadas.includes(nombre) ? seleccionadas.filter((actual) => actual !== nombre) : [...seleccionadas, nombre])
   }
 
   return (
-    <div
-      onClick={(evento) => evento.stopPropagation()}
-      className="absolute left-0 top-tooltip z-20 flex w-72.5 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 panel-hoja-movil max-600:w-full max-600:rounded-b-none max-600:rounded-t-2xl max-600:border-0 max-600:p-0"
-    >
+    <MarcoPanelFiltro id={id} className="w-72.5 flex-col overflow-hidden p-3 max-600:p-0">
       <div className="hidden max-600:flex max-600:flex-none max-600:flex-col max-600:bg-white max-600:pt-2.5">
         <div className="mx-auto mb-1 h-1 w-10 flex-none rounded-full bg-borde-flotante" />
         <div className="flex items-center justify-between border-b border-borde-suave px-4 pb-3">
@@ -47,7 +40,7 @@ export function PanelFiltroCategoria({ categorias, onCerrar }: PanelFiltroCatego
       <div className="max-h-75 overflow-y-auto max-600:max-h-none max-600:flex-1 max-600:px-4">
         {categoriasVisibles.map((c) => (
           <label key={c.nombre} className="flex cursor-pointer items-center gap-2.5 rounded-lg px-1.5 py-2 hover:bg-fondo">
-            <Casilla seleccionado={seleccionadas.has(c.nombre)} alCambiar={() => alAlternar(c.nombre)} />
+            <Casilla seleccionado={seleccionadas.includes(c.nombre)} alCambiar={() => alAlternar(c.nombre)} />
             <SuperficieColor variante={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-7 text-white">
               <Icono name={c.icono} className="h-3.5 w-3.5" />
             </SuperficieColor>
@@ -58,13 +51,13 @@ export function PanelFiltroCategoria({ categorias, onCerrar }: PanelFiltroCatego
       </div>
 
       <div className="mt-2 flex items-center justify-between border-t border-borde-suave pt-3 max-600:m-0 max-600:flex-none max-600:bg-white max-600:px-4 max-600:pb-4">
-        <Boton type="button" variant="enlace" size="enlace" onClick={() => setSeleccionadas(new Set())}>
+        <Boton type="button" variant="enlace" size="enlace" onClick={() => alCambiarSeleccion([])}>
           {catalogoEventos.botones.limpiar_seleccion}
         </Boton>
         <Boton type="button" onClick={onCerrar} variant="primario" size="default">
           {catalogoEventos.panel_filtro_fecha.aplicar}
         </Boton>
       </div>
-    </div>
+    </MarcoPanelFiltro>
   )
 }

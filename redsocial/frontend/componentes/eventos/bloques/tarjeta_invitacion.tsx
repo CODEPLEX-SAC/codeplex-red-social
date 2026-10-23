@@ -1,9 +1,9 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { TextoColor } from '../../compartido/interfaz/texto_color'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { imagenUsuarioPredeterminada as usuarioImg, imagenEventoPredeterminada as imagenEvento } from '../../compartido/icono'
+import { imagenEventoPredeterminada as imagenEvento } from '../../compartido/icono'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import type { TarjetaInvitacionProps } from '@/tipos/eventos/contrato_invitacion'
 
@@ -36,16 +36,7 @@ export function TarjetaInvitacion({ inv }: TarjetaInvitacionProps) {
           <span className="flex items-center gap-1"><Icono name="ubicacion" className="w-3.5 h-3.5" /> {inv.ubicacion}</span>
         </div>
         <div className="mt-1 flex items-center gap-2">
-          <div className="flex">
-            {posicionesDe(inv.avatares).map((posicion) => (
-              <img
-                key={posicion.id}
-                src={usuarioImg}
-                alt=""
-                className={'h-7 w-7 rounded-full border-2 border-white object-cover' + (posicion.orden > 0 ? ' -ml-2' : '')}
-              />
-            ))}
-          </div>
+          <GrupoAvatares avatares={inv.avatares} tamano="sm" />
           <div className="text-auxiliar leading-compacto">
             <span className="block text-nombre-entidad">{inv.invitador}</span>
             <span className="text-auxiliar text-texto-suave">{catalogoEventos.leyendas.te_ha_invitado}</span>

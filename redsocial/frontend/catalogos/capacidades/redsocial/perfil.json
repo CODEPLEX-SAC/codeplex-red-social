@@ -1,0 +1,576 @@
+{
+  "acciones": [
+    "ver_perfil",
+    "agregar_amigo",
+    "cancelar_solicitud",
+    "enviar_mensaje"
+  ],
+  "permisos": {
+    "ver_perfil": "PERFIL_CONSULTAR",
+    "agregar_amigo": "PERFIL_AGREGAR_AMIGO",
+    "cancelar_solicitud": "PERFIL_CANCELAR_SOLICITUD",
+    "enviar_mensaje": "PERFIL_ENVIAR_MENSAJE"
+  },
+  "alertas": {
+    "confirmar_cancelar_solicitud": "Vas a cancelar la solicitud de amistad que enviaste."
+  },
+  "campos": {
+    "buscar_amigos": "Buscar entre sus amigos"
+  },
+  "errores": {
+    "carga_perfil": "No fue posible cargar este perfil."
+  },
+  "mensajes": {
+    "perfil_no_encontrado_titulo": "No encontramos este perfil",
+    "perfil_no_encontrado": "El perfil que buscas no existe o ya no está disponible.",
+    "sin_publicaciones": "Aún no hay publicaciones en este perfil.",
+    "sin_amigos": "Aún no hay amigos para mostrar.",
+    "sin_resultados_amigos": "Ningún amigo coincide con tu búsqueda."
+  },
+  "toast": {
+    "solicitud_enviada": "Solicitud de amistad enviada.",
+    "solicitud_cancelada": "Solicitud de amistad cancelada."
+  },
+  "contexto_requerido": [
+    "empresa_id",
+    "sucursal_id",
+    "periodo_id",
+    "usuario_id"
+  ],
+  "rutas": {
+    "principal": "/perfil"
+  },
+  "parametros_ruta": {
+    "usuario": "usuario"
+  },
+  "titulo_menu": "Perfil",
+  "titulos": {
+    "principal": "Perfil"
+  },
+  "enlace": {
+    "ver_perfil_de": "Ver perfil de :nombre"
+  },
+  "cabecera": {
+    "estadisticas": "Resumen del perfil",
+    "publicaciones": "Publicaciones",
+    "amigos": "Amigos",
+    "en_comun_singular": "amigo en común",
+    "en_comun_plural": "amigos en común",
+    "datos": [
+      {
+        "clave": "ubicacion",
+        "icono": "ubicacion",
+        "fijado": "ubicacion"
+      },
+      {
+        "clave": "estudios",
+        "icono": "universidad",
+        "fijado": "educacion"
+      },
+      {
+        "clave": "empresa",
+        "icono": "empresa",
+        "fijado": "trabajo"
+      }
+    ]
+  },
+  "botones": {
+    "agregar_amigo": "Agregar amigo",
+    "solicitud_enviada": "Solicitud enviada",
+    "ya_son_amigos": "Ya son amigos",
+    "enviar_mensaje": "Mensaje",
+    "volver_a_inicio": "Volver a inicio",
+    "editar_perfil": "Editar perfil"
+  },
+  "pestanas": [
+    {
+      "clave": "red_social",
+      "etiqueta": "Red Social",
+      "icono": "actividad"
+    },
+    {
+      "clave": "resumen",
+      "etiqueta": "Resumen",
+      "icono": "usuario"
+    },
+    {
+      "clave": "experiencia",
+      "etiqueta": "Experiencia",
+      "icono": "maletin"
+    },
+    {
+      "clave": "documentos",
+      "etiqueta": "Documentos",
+      "icono": "documento"
+    },
+    {
+      "clave": "metricas",
+      "etiqueta": "Métricas",
+      "icono": "datos"
+    },
+    {
+      "clave": "amigos",
+      "etiqueta": "Amigos",
+      "icono": "amigos"
+    }
+  ],
+  "amigos": {
+    "titulo": "Amigos",
+    "etiqueta_lista": "Lista de amigos",
+    "maximo_lateral": 5
+  },
+  "clases": {
+    "tarjeta": "mb-4 overflow-hidden rounded-xl border border-borde/60 bg-white p-5 shadow-sombra max-600:p-4",
+    "cuerpo": "flex flex-col gap-3",
+    "identidad": "flex items-start gap-5 max-600:flex-col",
+    "avatar": "border-4 border-white ring-1 ring-borde max-600:size-20!",
+    "acciones": "flex flex-col items-end gap-3 pt-3 max-600:items-start",
+    "pestanas": "mb-4 rounded-xl border border-borde/60 bg-white px-2 shadow-sombra",
+    "vacio": "rounded-xl border border-borde/60 bg-white p-8 shadow-sombra",
+    "estadisticas": "m-0 flex flex-wrap gap-x-4 gap-y-1 p-0 list-none",
+    "seccion": "mb-4 rounded-xl border border-borde/60 bg-white p-5 shadow-sombra max-600:p-4",
+    "datos": "m-0 grid list-none gap-3 p-0",
+    "habilidades": "m-0 flex list-none flex-wrap gap-2 p-0",
+    "habilidad": "inline-flex h-8 items-center rounded-20 border border-borde-primario-suave bg-primario-suave px-3.5 text-chip text-primario",
+    "amigos": "m-0 grid list-none grid-cols-2 gap-3 p-0 max-600:grid-cols-1",
+    "amigo": "flex items-center gap-3 rounded-control border border-borde p-3",
+    "metricas": {
+      "rejilla": "m-0 grid list-none grid-cols-4 gap-3 p-0 max-900:grid-cols-2 max-480:grid-cols-1",
+      "tarjeta": "flex flex-col items-start gap-1 rounded-control border border-borde bg-fondo p-3.5",
+      "titulo": "text-nombre-entidad text-texto",
+      "etiqueta": "text-auxiliar text-texto-suave",
+      "valor": "text-titulo-seccion text-texto",
+      "estado": {
+        "optimo": "bg-exito/15 text-exito-texto",
+        "estable": "bg-fondo-categoria-azul text-azul-categoria-texto"
+      },
+      "barra": "h-1.5 w-full appearance-none overflow-hidden rounded-full border-0 bg-fondo-hover-neutro [&::-webkit-progress-bar]:bg-fondo-hover-neutro [&::-webkit-progress-value]:rounded-full [&::-moz-progress-bar]:rounded-full [&::-webkit-progress-value]:bg-primario [&::-moz-progress-bar]:bg-primario"
+    },
+    "volver": "mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-texto-suave no-underline hover:bg-fondo hover:text-texto",
+    "datos_cabecera": "m-0 flex list-none flex-wrap gap-x-4 gap-y-1 p-0",
+    "red_social": {
+      "rejilla": "grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start gap-4 max-900:grid-cols-1",
+      "columna": "flex min-w-0 flex-col gap-4",
+      "tarjeta": "min-w-0 rounded-xl border border-borde/60 bg-white p-5 shadow-sombra max-600:p-4",
+      "titulo": "m-0 text-titulo-banner text-texto",
+      "cabecera_panel": "mb-3 flex items-start justify-between gap-3",
+      "lista_datos": "m-0 mb-3 mt-3 flex list-none flex-col gap-2 p-0 text-subtitulo text-texto",
+      "fotos": "m-0 grid list-none grid-cols-3 gap-1 p-0",
+      "foto": "aspect-square w-full rounded-lg object-cover bg-fondo",
+      "amigos": "m-0 grid list-none grid-cols-3 gap-2 p-0 max-480:grid-cols-2",
+      "subpestanas": "flex flex-wrap gap-2",
+      "foto_amigo": "aspect-square w-full rounded-lg object-cover bg-fondo",
+      "resumen_preguntas": "flex flex-wrap items-center justify-between gap-3 border-b border-borde-suave px-5 py-3",
+      "fila_pregunta": "flex flex-col gap-2 border-b border-borde-suave px-5 py-4 last:border-b-0",
+      "respuesta_util": "flex items-start gap-2 rounded-control border-l-4 border-primario bg-fondo p-3"
+    },
+    "editor": {
+      "cabecera": "mb-3 flex items-center justify-between gap-3",
+      "formulario": "flex flex-col gap-3",
+      "acciones": "mt-3 flex justify-end gap-2",
+      "fila": "flex items-start gap-2.5",
+      "lista": "m-0 flex list-none flex-col gap-3 p-0",
+      "item": "flex items-start gap-3 rounded-control border border-borde p-3",
+      "item_cuerpo": "flex min-w-0 flex-1 flex-col gap-0.5",
+      "item_acciones": "flex flex-none gap-1",
+      "redes": "flex items-center gap-2",
+      "red": "inline-flex h-9 w-9 items-center justify-center rounded-full border border-borde text-texto-suave no-underline hover:bg-fondo hover:text-primario",
+      "verificacion": "m-0 flex list-none flex-col gap-2 p-0",
+      "paso": "flex items-center gap-2 text-subtitulo",
+      "documento": "flex items-center gap-3 rounded-control border border-borde p-3",
+      "oculto": "hidden",
+      "bloqueo": "flex flex-col items-center gap-3 py-8 text-center"
+    },
+    "visor": {
+      "cuerpo": "flex min-h-0 flex-1 flex-col items-center gap-3 p-4",
+      "imagen": "max-h-[70vh] max-w-full rounded-lg object-contain",
+      "controles": "flex w-full items-center justify-between gap-3"
+    }
+  },
+  "experiencia": {
+    "laboral": {
+      "titulo": "Empleo",
+      "agregar": "+ Agregar otra experiencia",
+      "vacio": "Aún no hay experiencia laboral registrada.",
+      "icono": "maletin",
+      "actual": "Actualmente",
+      "campos": [
+        {
+          "clave": "empresa",
+          "etiqueta": "Empresa",
+          "tipo": "texto",
+          "marcador": "Ej: Google, Ministerio de Educación..."
+        },
+        {
+          "clave": "cargo",
+          "etiqueta": "Puesto / Cargo",
+          "tipo": "texto",
+          "marcador": "Ej: Desarrollador Frontend, Analista..."
+        },
+        {
+          "clave": "inicio",
+          "etiqueta": "Período de inicio",
+          "tipo": "texto",
+          "marcador": "MM/AAAA"
+        },
+        {
+          "clave": "actual",
+          "etiqueta": "Actualmente trabajo aquí",
+          "tipo": "casilla"
+        },
+        {
+          "clave": "fin",
+          "etiqueta": "Período de fin",
+          "tipo": "texto",
+          "marcador": "MM/AAAA"
+        },
+        {
+          "clave": "ciudad",
+          "etiqueta": "Ciudad / Localidad",
+          "tipo": "texto",
+          "marcador": "Ej: Lima, Perú"
+        },
+        {
+          "clave": "descripcion",
+          "etiqueta": "Descripción",
+          "tipo": "multilinea",
+          "marcador": "Describe tus responsabilidades y logros..."
+        }
+      ]
+    },
+    "formacion": {
+      "titulo": "Formación académica",
+      "agregar": "+ Agregar formación",
+      "vacio": "Aún no hay formación académica registrada.",
+      "icono": "universidad",
+      "campos": [
+        {
+          "clave": "tipo",
+          "etiqueta": "Tipo",
+          "tipo": "seleccion",
+          "opciones": [
+            "Universidad",
+            "Instituto",
+            "Colegio",
+            "Curso",
+            "Otro"
+          ]
+        },
+        {
+          "clave": "institucion",
+          "etiqueta": "Institución",
+          "tipo": "texto",
+          "marcador": "Ej: Universidad Nacional Mayor de San Marcos"
+        },
+        {
+          "clave": "carrera",
+          "etiqueta": "Grado / Carrera",
+          "tipo": "texto",
+          "marcador": "Ej: Ingeniería de Sistemas"
+        },
+        {
+          "clave": "inicio",
+          "etiqueta": "Fecha de inicio",
+          "tipo": "texto",
+          "marcador": "AAAA"
+        },
+        {
+          "clave": "fin",
+          "etiqueta": "Fecha de fin",
+          "tipo": "texto",
+          "marcador": "AAAA"
+        }
+      ]
+    },
+    "editar_item": "Editar",
+    "eliminar_item": "Eliminar",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar"
+  },
+  "documentos": {
+    "titulo": "Documentos",
+    "vacio_titulo": "Sin documentos",
+    "vacio_ajeno": "Este perfil aún no tiene documentos compartidos.",
+    "agregar": "+ Agregar documento",
+    "subir_cv": "+ Subir CV actualizado",
+    "subir_cv_detalle": "PDF o Word",
+    "subir_titulo": "+ Subir título profesional",
+    "eliminar": "Eliminar :nombre",
+    "abrir": "Abrir :nombre",
+    "tipos_aceptados": ".pdf,.doc,.docx,image/*",
+    "etiqueta_archivo": "Seleccionar documento",
+    "nota_ajeno": "Los documentos que comparta este perfil aparecerán aquí.",
+    "idioma": "es-PE"
+  },
+  "metricas": {
+    "resumen_actividad": "Resumen de actividad",
+    "publicaciones": "Publicaciones",
+    "amigos": "Amigos",
+    "habilidades": "Habilidades",
+    "comportamiento": "Métricas de comportamiento",
+    "profesionales": "Métricas profesionales",
+    "nota_demostracion": "Valores de demostración: reflejan el comportamiento profesional dentro de la plataforma.",
+    "precision": "Precisión",
+    "precision_maxima": 100,
+    "estados": {
+      "optimo": "Óptimo",
+      "estable": "Estable"
+    },
+    "preguntas": "Preguntas",
+    "resueltas": "Resueltas",
+    "bloqueadas_titulo": "Métricas bloqueadas",
+    "bloqueadas_texto": "Se generan automáticamente al completar tu perfil y participar en la plataforma.",
+    "completar": "Completar perfil"
+  },
+  "editar": {
+    "titulo": "Editar perfil",
+    "cerrar": "Cerrar",
+    "nombres": "Nombre",
+    "apellidos": "Apellido",
+    "titular": "Título o categoría",
+    "contacto": "Contacto",
+    "correo": "Correo electrónico",
+    "linkedin": "LinkedIn",
+    "web": "Sitio web",
+    "ayuda_nombre": "Este nombre solo se usa en la red social; no cambia el de tu cuenta.",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar cambios"
+  },
+  "red_social": {
+    "datos_personales": "Datos personales",
+    "fotos": "Fotos",
+    "ver_todas_fotos": "Ver todas las fotos",
+    "ver_menos_fotos": "Ver menos fotos",
+    "sin_fotos": "Aún no hay fotos.",
+    "fotos_maximo": 9,
+    "texto_foto": "Foto :numero de :nombre",
+    "amigos": "Amigos",
+    "amigo_singular": "amigo",
+    "amigo_plural": "amigos",
+    "ver_todos": "Ver todos",
+    "amigos_maximo": 6,
+    "etiqueta_subpestanas": "Contenido de la red social",
+    "subpestanas": [
+      {
+        "clave": "actividad",
+        "etiqueta": "Actividad reciente"
+      },
+      {
+        "clave": "preguntas",
+        "etiqueta": "Preguntas"
+      }
+    ],
+    "mis_preguntas": "Mis preguntas",
+    "ver_experiencia": "Ver experiencia",
+    "editar_datos": "Editar datos personales",
+    "preguntas": {
+      "total_singular": "pregunta",
+      "total_plural": "preguntas",
+      "resueltas": "resueltas",
+      "pendientes": "pendientes",
+      "filtros": [
+        {
+          "clave": "todas",
+          "etiqueta": "Todas"
+        },
+        {
+          "clave": "sin_resolver",
+          "etiqueta": "Sin resolver"
+        },
+        {
+          "clave": "resuelta",
+          "etiqueta": "Resueltas"
+        }
+      ],
+      "etiqueta_filtros": "Filtrar preguntas",
+      "vacio_propio": "Aún no has publicado ninguna pregunta",
+      "vacio_resueltas": "Ninguna pregunta resuelta aún",
+      "vacio_pendientes": "No tienes preguntas pendientes",
+      "aviso_pendiente": "Entra a tu publicación y marca el comentario que te ayudó como útil para cerrar la pregunta.",
+      "respuesta_util": "Respuesta útil · :autor",
+      "desmarcar": "Desmarcar respuesta útil"
+    }
+  },
+  "redes": {
+    "etiqueta": "Contacto del perfil",
+    "botones": [
+      {
+        "clave": "correo",
+        "titulo": "Correo",
+        "icono": "correo",
+        "prefijo": "mailto:"
+      },
+      {
+        "clave": "linkedin",
+        "titulo": "LinkedIn",
+        "icono": "linkedin",
+        "prefijo": ""
+      },
+      {
+        "clave": "web",
+        "titulo": "Sitio web",
+        "icono": "web",
+        "prefijo": ""
+      }
+    ],
+    "agregar": "Agregar :red en Editar perfil"
+  },
+  "foto": {
+    "menu": [
+      {
+        "clave": "ver",
+        "etiqueta": "Ver foto del perfil",
+        "icono": "imagen"
+      },
+      {
+        "clave": "elegir",
+        "etiqueta": "Elegir foto del perfil",
+        "icono": "camara"
+      }
+    ],
+    "cambiar_aria": "Foto de :nombre",
+    "tipos_aceptados": "image/*",
+    "texto_alternativo": "Foto de perfil de :nombre",
+    "visor_titulo": "Fotos de :nombre",
+    "etiqueta_entrada": "Elegir foto del perfil"
+  },
+  "visor": {
+    "anterior": "Anterior",
+    "siguiente": "Siguiente",
+    "cerrar": "Cerrar",
+    "posicion": ":actual de :total"
+  },
+  "secciones": {
+    "editar_seccion": "Editar :seccion",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar",
+    "presentacion": {
+      "titulo": "Presentación",
+      "agregar": "+ Agregar tu presentación",
+      "campos": [
+        {
+          "clave": "acerca",
+          "etiqueta": "Sobre mí",
+          "tipo": "multilinea",
+          "marcador": "Cuéntanos sobre ti"
+        }
+      ]
+    },
+    "datos_personales": {
+      "titulo": "Datos personales",
+      "agregar": "+ Agregar tu ubicación y fecha de nacimiento",
+      "ver_mas": "Ver más datos personales",
+      "ver_menos": "Ver menos",
+      "filas_visibles": 2,
+      "campos": [
+        {
+          "clave": "ciudad",
+          "etiqueta": "Ciudad actual",
+          "tipo": "texto",
+          "marcador": "Ej: Lima",
+          "prefijo": "Vive en"
+        },
+        {
+          "clave": "pais",
+          "etiqueta": "País",
+          "tipo": "texto",
+          "marcador": "Ej: Perú",
+          "prefijo": "País"
+        },
+        {
+          "clave": "fechaNacimiento",
+          "etiqueta": "Fecha de nacimiento",
+          "tipo": "texto",
+          "marcador": "DD/MM/AAAA",
+          "prefijo": "Nació el"
+        },
+        {
+          "clave": "genero",
+          "etiqueta": "Género",
+          "tipo": "seleccion",
+          "prefijo": "Género",
+          "opciones": [
+            "Femenino",
+            "Masculino",
+            "Otro",
+            "Prefiero no decirlo"
+          ]
+        },
+        {
+          "clave": "situacionSentimental",
+          "etiqueta": "Situación sentimental",
+          "tipo": "seleccion",
+          "prefijo": "Situación",
+          "opciones": [
+            "Soltero/a",
+            "En una relación",
+            "Casado/a",
+            "Prefiero no decirlo"
+          ]
+        }
+      ]
+    },
+    "habilidades": {
+      "titulo": "Habilidades",
+      "agregar": "+ Agregar habilidades",
+      "marcador": "Ej: React, Diseño, Excel…",
+      "agregar_boton": "+ Agregar",
+      "quitar": "Quitar :habilidad",
+      "etiqueta_campo": "Nueva habilidad"
+    },
+    "detalles_fijados": {
+      "titulo": "Detalles fijados",
+      "agregar": "+ Agregar ubicación, trabajo o formación",
+      "opciones": [
+        {
+          "clave": "ubicacion",
+          "etiqueta": "Ubicación"
+        },
+        {
+          "clave": "trabajo",
+          "etiqueta": "Trabajo"
+        },
+        {
+          "clave": "educacion",
+          "etiqueta": "Educación"
+        }
+      ]
+    },
+    "verificacion": {
+      "titulo": "Para completar tu perfil",
+      "pasos": [
+        {
+          "clave": "presentacion",
+          "etiqueta": "Escribe tu presentación",
+          "pestana": "resumen"
+        },
+        {
+          "clave": "ubicacion",
+          "etiqueta": "Agrega tu ubicación",
+          "pestana": "resumen"
+        },
+        {
+          "clave": "habilidades",
+          "etiqueta": "Agrega tus habilidades",
+          "pestana": "resumen"
+        },
+        {
+          "clave": "experiencia",
+          "etiqueta": "Registra tu experiencia",
+          "pestana": "experiencia"
+        },
+        {
+          "clave": "formacion",
+          "etiqueta": "Registra tu formación",
+          "pestana": "experiencia"
+        },
+        {
+          "clave": "documentos",
+          "etiqueta": "Sube un documento",
+          "pestana": "documentos"
+        }
+      ]
+    },
+    "sin_especificar": "Sin especificar"
+  }
+}

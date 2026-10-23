@@ -1,9 +1,10 @@
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
-import { BotonIcono, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
+import { BannerInformativo, BotonIcono, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
-import { PestanasAvisos, BannerInfoAviso, FilaSolicitudAviso, PanelLateralSolicitudesAviso } from '../../componentes/avisos'
+import { PestanasAvisos, FilaSolicitudAviso, PanelLateralSolicitudesAviso } from '../../componentes/avisos'
 import { CONTEOS_AVISOS, SOLICITUDES_AMISTAD, SOLICITUDES_GRUPO, SOLICITUDES_EVENTO, SOLICITUDES_COLABORACION } from '../../rutas/avisos/rutas_avisos'
 
 export function PaginaAvisosSolicitudes() {
@@ -27,11 +28,13 @@ export function PaginaAvisosSolicitudes() {
 
             <PestanasAvisos activa="solicitudes" conteos={CONTEOS_AVISOS} />
 
-            <BannerInfoAviso
+            <BannerInformativo
               icono="campana"
               titulo={catalogoAvisos.banner_solicitudes.titulo}
               descripcion={catalogoAvisos.banner_solicitudes.descripcion}
-              cuadrado
+              iconoCuadrado
+              etiquetaCerrar={textosRedSocial.CERRAR}
+              className="mb-4"
             />
 
             <div className="mb-2.5 flex items-center justify-between">

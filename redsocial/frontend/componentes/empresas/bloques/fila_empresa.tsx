@@ -1,43 +1,28 @@
-import { useState } from 'react'
-import type { MouseEvent } from 'react'
 import { imagenEmpresaPredeterminada } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { Casilla } from '../../compartido/interfaz/casilla'
 import { Insignia } from '../../compartido/interfaz/insignia'
-import { Menu } from '../../compartido/interfaz/menu'
-import { EstadoEmpresa } from './estado_empresa'
-import { CLASE_FILA_EMPRESA, opcionesDeFila } from './logica_listado_empresas'
+import { TextoTruncable } from '../../compartido/interfaz/texto_truncable'
+import { CeldaModuloEmpresa } from './celda_modulo_empresa'
+import { CLASE_FILA_EMPRESA, MODULOS_EMPRESA, estaInactiva } from './logica_listado_empresas'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { FilaEmpresaProps } from '@/tipos/empresas/contrato_listado_empresas'
+import { CLASES_TABLA } from '../../compartido/clases_tabla'
 
-const PLANTILLA_SELECCIONAR = catalogoEmpresas.campos.seleccionar_empresa
 const PLANTILLA_EDITAR = catalogoEmpresas.botones.editar
-const PLANTILLA_OPCIONES = catalogoEmpresas.botones.mas_opciones
 const PLANTILLA_VER = catalogoEmpresas.botones.ver_detalle
 const PLANTILLA_DESACTIVAR = catalogoEmpresas.botones.desactivar
-const ETIQUETAS_PLAN: Record<string, string> = catalogoEmpresas.planes
+const PLANTILLA_ACTIVAR = catalogoEmpresas.botones.activar
 const ACCIONES = catalogoEmpresas.acciones_fila
-const ACCION_DESACTIVAR = catalogoEmpresas.modal_desactivar.accion_menu
-const CLASES_PLAN: Record<string, string> = catalogoEmpresas.clases.plan
+const PLANTILLA_CODIGO = catalogoEmpresas.codigo_empresa
+const CLASES_RUBRO: Record<string, string> = catalogoEmpresas.clases.rubro
+const CLASE_RUBRO_OTRO = CLASES_RUBRO.otro
 
 const clases = catalogoEmpresas.clases
+const identidad = CLASES_TABLA.identidad
 
-export function FilaEmpresa({ empresa, seleccionada, alAlternar, alElegirAccion }: FilaEmpresaProps) {
-  const [ancla, setAncla] = useState<HTMLElement | null>(null)
-  const puedeDesactivar = opcionesDeFila(empresa).some((opcion) => opcion.clave === ACCION_DESACTIVAR)
-
-  function alternar(_: unknown, marcado: boolean) {
-    alAlternar(empresa.codigo, marcado)
-  }
-
-  function abrirMenu(evento: MouseEvent<HTMLButtonElement>) {
-    setAncla(evento.currentTarget)
-  }
-
-  function cerrarMenu() {
-    setAncla(null)
-  }
+export function FilaEmpresa({ empresa, alElegirAccion, alAlternarModulo }: FilaEmpresaProps) {
+  const inactiva = estaInactiva(empresa)
 
   function abrirDetalle() {
     alElegirAccion(ACCIONES.ver_detalle, empresa)
@@ -47,55 +32,35 @@ export function FilaEmpresa({ empresa, seleccionada, alAlternar, alElegirAccion 
     alElegirAccion(ACCIONES.editar, empresa)
   }
 
-  function pedirDesactivacion() {
-    alElegirAccion(ACCIONES.desactivar, empresa)
-  }
-
-  function manejarOpcion(clave: string) {
-    return () => alElegirAccion(clave, empresa)
+  function pedirCambioEstado() {
+    alElegirAccion(inactiva ? ACCIONES.activar : ACCIONES.desactivar, empresa)
   }
 
   return (
     <tr className={CLASE_FILA_EMPRESA}>
-      <td className={`${clases.celda} w-10 text-center`}>
-        <Casilla seleccionado={seleccionada} alCambiar={alternar} inputProps={{ 'aria-label': PLANTILLA_SELECCIONAR.replace(':nombre', empresa.nombre) }} />
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnaAjustada}`}>
+        <div className={identidad.contenedor}>
+          <span className={clases.celda_empresa.logo}>
+            <AvatarImagen src={empresa.logo ?? imagenEmpresaPredeterminada} className="h-full w-full" />
+          </span>
+          <div className={identidad.texto}>
+            <TextoTruncable texto={empresa.nombre} className={identidad.principal} />
+            <span className={`block ${identidad.secundario}`}>{PLANTILLA_CODIGO.replace(':codigo', empresa.codigo)}</span>
+          </div>
+        </div>
       </td>
-      <td className={clases.celda}>
-        <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-lg bg-primario-suave text-nombre-entidad text-primario">
-          <AvatarImagen src={empresa.logo ?? imagenEmpresaPredeterminada} className="h-full w-full" />
-        </span>
+      <td className={`${CLASES_TABLA.celda} whitespace-nowrap ${clases.texto_celda}`}>{empresa.ruc}</td>
+      <td className={CLASES_TABLA.celda}>
+        <Insignia variant="status" className={CLASES_RUBRO[empresa.rubro] ?? CLASE_RUBRO_OTRO}>{empresa.rubro}</Insignia>
       </td>
-      <td className={clases.celda}>
-        <strong className={`block ${clases.nombre_fila}`}>{empresa.nombre}</strong>
-        <span className={`block ${clases.texto_auxiliar}`}>{empresa.codigo}</span>
-      </td>
-      <td className={`${clases.celda} whitespace-nowrap ${clases.texto_celda}`}>{empresa.ruc}</td>
-      <td className={`${clases.celda} whitespace-nowrap ${clases.texto_celda}`}>{empresa.rubro}</td>
-      <td className={clases.celda}>
-        <Insignia variant="status" className={CLASES_PLAN[empresa.plan]}>{ETIQUETAS_PLAN[empresa.plan]}</Insignia>
-      </td>
-      <td className={`${clases.celda} text-center ${clases.texto_celda}`}>{empresa.usuarios}</td>
-      <td className={`${clases.celda} whitespace-nowrap`}>
-        <EstadoEmpresa estado={empresa.estado} />
-      </td>
-      <td className={`${clases.celda} whitespace-nowrap ${clases.texto_celda}`}>{empresa.fechaRegistro}</td>
-      <td className={clases.celda}>
-        <div className="flex items-center gap-2 max-600:hidden">
+      {MODULOS_EMPRESA.map((modulo) => (
+        <CeldaModuloEmpresa key={modulo.clave} empresa={empresa} modulo={modulo} alAlternar={() => alAlternarModulo(empresa, modulo.clave)} />
+      ))}
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.celdaFija}`}>
+        <div className={clases.acciones_fila}>
           <BotonIcono icono="ver" type="button" variant="contorno" aria-label={PLANTILLA_VER.replace(':nombre', empresa.nombre)} onClick={abrirDetalle} />
           <BotonIcono icono="editar-oficial" type="button" variant="suave" aria-label={PLANTILLA_EDITAR.replace(':nombre', empresa.nombre)} className={catalogoEmpresas.clases.editar} onClick={abrirEdicion} />
-          <BotonIcono icono="eliminar" type="button" variant="contorno" aria-label={PLANTILLA_DESACTIVAR.replace(':nombre', empresa.nombre)} disabled={!puedeDesactivar} className={catalogoEmpresas.clases.boton_icono_peligro} onClick={pedirDesactivacion} />
-        </div>
-        <div className="hidden max-600:block">
-          <BotonIcono
-            icono="puntos"
-            type="button"
-            variant="contorno"
-            aria-label={PLANTILLA_OPCIONES.replace(':nombre', empresa.nombre)}
-            aria-haspopup="menu"
-            aria-expanded={Boolean(ancla)}
-            onClick={abrirMenu}
-          />
-          {ancla ? <Menu ancla={ancla} alCerrar={cerrarMenu} elementos={opcionesDeFila(empresa).map((opcion) => ({ etiqueta: opcion.etiqueta, peligro: opcion.peligro, alHacerClick: manejarOpcion(opcion.clave) }))} /> : null}
+          <BotonIcono icono="encendido" type="button" variant="contorno" aria-label={(inactiva ? PLANTILLA_ACTIVAR : PLANTILLA_DESACTIVAR).replace(':nombre', empresa.nombre)} className={inactiva ? clases.boton_icono_exito : clases.boton_icono_peligro} onClick={pedirCambioEstado} />
         </div>
       </td>
     </tr>

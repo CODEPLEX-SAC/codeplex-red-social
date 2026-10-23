@@ -36,6 +36,9 @@ INFORME_EMPRESAS_2026-10-05.md
 INFORME_SISTEMA_VISUAL_GLOBAL_2026.md
 INVENTARIO_ICONOGRAFIA_CODEPLEX_2026.md
 AUDITORIA_ICONOS_LIBRERIA_2026_capturas
+AUDITORIA_DISENO_COMPARTIDO_2026_FASE4.md
+AUDITORIA_RED_SOCIAL_COMPARATIVA_2026-10-23.md
+AUDITORIA_DISENO_COMPARTIDO_2026_FASE4.xlsx
 .vitest
 
 # Herramientas personales de validacion (solo locales)
@@ -48,6 +51,3 @@ vercel.json
 # Credenciales (el ejemplo sin secretos si se versiona)
 .env*
 !.env.ftp.ejemplo
-
-# Documentacion interna de componentes (solo local)
-redsocial/frontend/guia/componentes/**/*.md

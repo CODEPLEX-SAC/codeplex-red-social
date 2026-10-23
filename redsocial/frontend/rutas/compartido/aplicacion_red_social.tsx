@@ -4,6 +4,7 @@ import { PaginaNoEncontrada } from '@/paginas/compartido/pagina_no_encontrada'
 import { ProveedorCarritoMarketplace } from '@/paginas/marketplace/proveedor_carrito_marketplace'
 import catalogoAcceso from '../../catalogos/capacidades/redsocial/acceso.json'
 import { EMPRESAS } from '../empresas/rutas_empresas'
+import { SUSCRIPCIONES_DEMOSTRACION } from '../marketplace/rutas_marketplace'
 import { usarInterceptarEnlaces } from './usar_interceptar_enlaces'
 import { usarPaginaActual } from './usar_pagina_actual'
 
@@ -18,7 +19,7 @@ export function AplicacionRedSocial() {
   return (
     <ProveedorSesionDemostracion>
       <ProveedorEmpresaActiva empresas={EMPRESAS}>
-        <ProveedorCarritoMarketplace>
+        <ProveedorCarritoMarketplace suscripcionesIniciales={SUSCRIPCIONES_DEMOSTRACION}>
           <PaginaVigente />
         </ProveedorCarritoMarketplace>
       </ProveedorEmpresaActiva>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { imagenUsuarioPredeterminada } from '../../compartido'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Modal } from '../../compartido/interfaz/modal'
 import { usarSesionDemostracion } from '../../compartido/sesion/usar_sesion_demostracion'
@@ -17,7 +17,7 @@ export function DialogoCompartirPublicacion({ nombre, texto, onCompartir, onCerr
   const [comentario, setComentario] = useState('')
 
   function confirmar() {
-    onCompartir()
+    onCompartir(comentario.trim())
     setCompartida(true)
   }
 
@@ -38,7 +38,7 @@ export function DialogoCompartirPublicacion({ nombre, texto, onCompartir, onCerr
         <>
           <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-6 py-5">
             <div className="flex items-center gap-3">
-              <AvatarImagen src={imagenUsuarioPredeterminada} className="h-11 w-11 flex-none rounded-full bg-primario-suave" />
+              <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
               <div className="min-w-0">
                 <strong className="block truncate text-nombre-entidad text-texto">{usuario?.usuario}</strong>
                 <span className="block text-auxiliar text-texto-suave">{textos.contexto}</span>
@@ -49,7 +49,7 @@ export function DialogoCompartirPublicacion({ nombre, texto, onCompartir, onCerr
             </div>
             <blockquote aria-label={textos.etiqueta_vista_previa} className="m-0 flex shrink-0 flex-col gap-3 rounded-xl border border-borde bg-fondo p-4">
               <div className="flex items-center gap-3">
-                <AvatarImagen src={imagenUsuarioPredeterminada} className="h-10 w-10 flex-none rounded-full bg-primario-suave" />
+                <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
                 <strong className="min-w-0 truncate text-nombre-entidad text-texto">{nombre}</strong>
               </div>
               <p className="m-0 line-clamp-6 whitespace-pre-wrap break-words text-subtitulo leading-texto text-texto">{texto}</p>

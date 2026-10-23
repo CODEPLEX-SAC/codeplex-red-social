@@ -39,7 +39,7 @@
     },
     {
       "autorId": "luis-rodriguez",
-    "nombre": "Luis Rodríguez",
+      "nombre": "Luis Rodríguez",
       "colaborador": true
     },
     {
@@ -54,19 +54,81 @@
     }
   ],
   "publicacionInicio": {
+    "id": "inicio-demo-1",
     "autorId": "maria-fernandez",
     "nombre": "María Fernández",
-    "tiempo": "2 horas · 🌐",
+    "tiempo": "2 horas",
+    "publica": true,
     "texto": "Avance del proyecto del puente en la Av. Central.",
-    "iconosReacciones": "👍❤️😮",
-    "totalReacciones": 128,
-    "totalComentarios": 24
+    "reaccionesPorTipo": {
+      "me_gusta": 96,
+      "me_encanta": 24,
+      "asombroso": 8
+    },
+    "comentarios": [
+      {
+        "id": "demo-c1",
+        "autorId": "ana-garcia",
+        "autor": "Ana García",
+        "texto": "Excelente avance. ¿Cuándo se entrega la segunda fase?",
+        "tiempo": "1 hora",
+        "reaccion": null,
+        "editado": false,
+        "respuestas": [
+          {
+            "id": "demo-r1",
+            "autorId": "maria-fernandez",
+            "autor": "María Fernández",
+            "texto": "La segunda fase inicia el próximo mes.",
+            "tiempo": "45 min",
+            "reaccion": null,
+            "editado": false,
+            "respuestas": []
+          }
+        ]
+      },
+      {
+        "id": "demo-c2",
+        "autorId": "luis-rodriguez",
+        "autor": "Luis Rodríguez",
+        "texto": "Buen trabajo de todo el equipo.",
+        "tiempo": "50 min",
+        "reaccion": null,
+        "editado": false,
+        "respuestas": []
+      },
+      {
+        "id": "demo-c3",
+        "autorId": "carmen-lopez",
+        "autor": "Carmen López",
+        "texto": "¿Podrían compartir más fotos de la obra?",
+        "tiempo": "30 min",
+        "reaccion": null,
+        "editado": false,
+        "respuestas": [
+          {
+            "id": "demo-r2",
+            "autorId": "maria-fernandez",
+            "autor": "María Fernández",
+            "texto": "Claro, las subimos esta semana.",
+            "tiempo": "20 min",
+            "reaccion": null,
+            "editado": false,
+            "respuestas": []
+          }
+        ]
+      }
+    ]
   },
   "publicacionCompartidaInicio": {
+    "id": "inicio-demo-2",
+    "autorId": "luis-rodriguez",
     "nombre": "Luis Rodríguez",
-    "tiempoCompartio": "3 horas · 🌐",
+    "tiempoCompartio": "3 horas",
+    "publica": true,
     "origenNombre": "Ingenieros Unidos",
     "origenTiempo": "5 horas",
-    "texto": "Normas de seguridad en obras: siempre primero la prevención."
+    "texto": "Normas de seguridad en obras: siempre primero la prevención.",
+    "conMedio": true
   }
 }

@@ -1,6 +1,5 @@
 import { Boton } from '../../compartido/interfaz/boton'
-import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
-import { Icono } from '../../compartido/icono'
+import { FiltroDesplegable } from '../../compartido/interfaz/filtro_desplegable'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { etiquetaFiltroFecha } from '../formato_fecha_filtro'
 import { PanelFiltroFecha } from './panel_filtro_fecha'
@@ -17,6 +16,8 @@ export function BloqueCategoria({ datos }: {
     setFiltroFecha: (valor: FiltroFecha | ((actual: FiltroFecha | null) => FiltroFecha | null) | null) => void
     setFiltroCategoriaAbierto: (valor: boolean | ((actual: boolean) => boolean)) => void
     filtroCategoriaAbierto: boolean
+    categoriasSeleccionadas: string[]
+    setCategoriasSeleccionadas: (valor: string[]) => void
     CATEGORIAS_FILTRO_PARA_TI: { icono: string; color: string; nombre: string; conteo: string; }[]
     setFiltroUbicacionAbierto: (valor: boolean | ((actual: boolean) => boolean)) => void
     filtroUbicacionAbierto: boolean
@@ -33,6 +34,8 @@ export function BloqueCategoria({ datos }: {
     setFiltroFecha,
     setFiltroCategoriaAbierto,
     filtroCategoriaAbierto,
+    categoriasSeleccionadas,
+    setCategoriasSeleccionadas,
     CATEGORIAS_FILTRO_PARA_TI,
     setFiltroUbicacionAbierto,
     filtroUbicacionAbierto,
@@ -42,55 +45,34 @@ export function BloqueCategoria({ datos }: {
     MARCADORES_MAPA_PARA_TI,
   } = datos
 
-  function alternarFiltroFecha(evento: { stopPropagation: () => void }) {
-    evento.stopPropagation()
-    setFiltroFechaAbierto((abierto) => !abierto)
-  }
-
-  function alternarFiltroCategoria(evento: { stopPropagation: () => void }) {
-    evento.stopPropagation()
-    setFiltroCategoriaAbierto((abierto) => !abierto)
-  }
-
-  function cerrarFiltroFecha() {
-    setFiltroFechaAbierto(false)
-  }
-
-  function cerrarFiltroCategoria() {
-    setFiltroCategoriaAbierto(false)
-  }
-
   function limpiarFiltros() {
     setFiltroFecha(null)
     setFiltroUbicacion(null)
+    setCategoriasSeleccionadas([])
   }
 
   return (
     <div className="mb-6 flex flex-wrap items-center gap-2 max-600:flex-nowrap max-600:overflow-x-auto max-600:scrollbar-oculto">
-      <div className="relative flex-none">
-        <Boton type="button" onClick={alternarFiltroFecha} variant="filtro" size="filtro" activo={filtroFechaAbierto || filtroFecha !== null}>
-          <Icono name="calendario" className="h-3.5 w-3.5" /> {filtroFecha === null ? catalogoEventos.filtros.fecha : etiquetaFiltroFecha(filtroFecha)}
-          <Icono name={filtroFechaAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="h-3.5 w-3.5" />
-        </Boton>
-        {filtroFechaAbierto && (
-          <>
-            <FondoPanelFlotante onCerrar={cerrarFiltroFecha} />
-            <PanelFiltroFecha onCerrar={cerrarFiltroFecha} onAplicar={setFiltroFecha} />
-          </>
-        )}
-      </div>
-      <div className="relative flex-none">
-        <Boton type="button" onClick={alternarFiltroCategoria} variant="filtro" size="filtro" activo={filtroCategoriaAbierto}>
-          <Icono name="precio" className="h-3.5 w-3.5" /> {catalogoEventos.filtros.categoria}
-          <Icono name={filtroCategoriaAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="h-3.5 w-3.5" />
-        </Boton>
-        {filtroCategoriaAbierto && (
-          <>
-            <FondoPanelFlotante onCerrar={cerrarFiltroCategoria} />
-            <PanelFiltroCategoria categorias={CATEGORIAS_FILTRO_PARA_TI} onCerrar={cerrarFiltroCategoria} />
-          </>
-        )}
-      </div>
+      <FiltroDesplegable
+        id={catalogoEventos.ids_filtros.fecha}
+        abierto={filtroFechaAbierto}
+        alCambiarAbierto={setFiltroFechaAbierto}
+        activo={filtroFechaAbierto || filtroFecha !== null}
+        icono="calendario"
+        etiqueta={filtroFecha === null ? catalogoEventos.filtros.fecha : etiquetaFiltroFecha(filtroFecha)}
+      >
+        <PanelFiltroFecha id={catalogoEventos.ids_filtros.fecha} onCerrar={() => setFiltroFechaAbierto(false)} onAplicar={setFiltroFecha} />
+      </FiltroDesplegable>
+      <FiltroDesplegable
+        id={catalogoEventos.ids_filtros.categoria}
+        abierto={filtroCategoriaAbierto}
+        alCambiarAbierto={setFiltroCategoriaAbierto}
+        activo={filtroCategoriaAbierto || categoriasSeleccionadas.length > 0}
+        icono="precio"
+        etiqueta={categoriasSeleccionadas.length === 0 ? catalogoEventos.filtros.categoria : [catalogoEventos.filtros.categoria, categoriasSeleccionadas.length].join(catalogoEventos.filtros.separador_conteo)}
+      >
+        <PanelFiltroCategoria id={catalogoEventos.ids_filtros.categoria} categorias={CATEGORIAS_FILTRO_PARA_TI} seleccionadas={categoriasSeleccionadas} alCambiarSeleccion={setCategoriasSeleccionadas} onCerrar={() => setFiltroCategoriaAbierto(false)} />
+      </FiltroDesplegable>
       <BloqueEventosParaTi1
         setFiltroUbicacionAbierto={setFiltroUbicacionAbierto}
         filtroUbicacionAbierto={filtroUbicacionAbierto}
@@ -99,7 +81,7 @@ export function BloqueCategoria({ datos }: {
         CIUDADES_FILTRO_PARA_TI={CIUDADES_FILTRO_PARA_TI}
         MARCADORES_MAPA_PARA_TI={MARCADORES_MAPA_PARA_TI}
       />
-      {(filtroFecha !== null || filtroUbicacion !== null) && (
+      {(filtroFecha !== null || filtroUbicacion !== null || categoriasSeleccionadas.length > 0) && (
         <Boton type="button" onClick={limpiarFiltros} variant="secundario" size="mini" className="ml-auto flex-none">
           {catalogoEventos.botones.limpiar_filtros}
         </Boton>

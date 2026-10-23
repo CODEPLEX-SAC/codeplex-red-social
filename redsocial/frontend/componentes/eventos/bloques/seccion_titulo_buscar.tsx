@@ -62,7 +62,7 @@ export function SeccionTituloBuscar({ datos }: {
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={onCerrar} variant="discreto" size="md" className="flex-none" />
       </div>
 
-      <div className="flex min-h-0 flex-1 max-600:flex-col max-600:overflow-y-auto">
+      <div className="flex min-h-0 flex-1 max-900:flex-col max-900:overflow-y-auto">
         <SeccionTituloBuscar2
           enMapa={enMapa}
           buscadorLista={buscadorLista}
@@ -74,7 +74,7 @@ export function SeccionTituloBuscar({ datos }: {
           FilaCiudad={FilaCiudad}
         />
 
-        <div className={'w-110 flex-none overflow-y-auto p-4 max-600:w-full max-600:overflow-visible max-600:pt-2 ' + (enMapa ? 'max-600:flex max-600:min-h-0 max-600:flex-1 max-600:flex-col' : 'max-600:hidden')}>
+        <div className={'w-110 flex-none overflow-y-auto p-4 max-900:w-full max-900:overflow-visible max-600:pt-2 ' + (enMapa ? 'max-600:flex max-600:min-h-0 max-600:flex-1 max-600:flex-col' : 'max-600:hidden')}>
           <h3 className="m-0 mb-2 text-titulo-seccion text-texto max-600:hidden">{textos.vista_en_el_mapa}</h3>
           <CampoBusqueda
             placeholder={catalogoEventos.placeholders.buscar_lugar_mapa}

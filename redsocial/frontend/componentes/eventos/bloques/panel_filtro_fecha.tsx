@@ -1,3 +1,4 @@
+import { MarcoPanelFiltro } from '../../compartido/interfaz/filtro_desplegable'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { BloquePanelFiltroFecha1 } from './bloque_panel_filtro_fecha1'
 import { BloqueTitulo2 } from './bloque_titulo2'
@@ -6,7 +7,7 @@ import { OPCIONES_AVANZADAS, OPCIONES_MOVIL, OPCIONES_RAPIDAS, esMismoDia, estaE
 import { usarFiltroFecha } from '../usar_filtro_fecha'
 import type { PanelFiltroFechaProps } from '@/tipos/eventos/contrato_filtro_fecha'
 
-export function PanelFiltroFecha({ onCerrar, onAplicar }: PanelFiltroFechaProps) {
+export function PanelFiltroFecha({ id, onCerrar, onAplicar }: PanelFiltroFechaProps) {
   const {
     opcionActiva,
     setOpcionActiva,
@@ -28,10 +29,7 @@ export function PanelFiltroFecha({ onCerrar, onAplicar }: PanelFiltroFechaProps)
   } = usarFiltroFecha({ onCerrar, onAplicar })
 
   return (
-    <div
-      onClick={(evento) => evento.stopPropagation()}
-      className={catalogoEventos.panel_filtro_fecha.clase_contenedor}
-    >
+    <MarcoPanelFiltro id={id} className={catalogoEventos.panel_filtro_fecha.clase_contenedor}>
       <BloquePanelFiltroFecha1
         enCalendarioMovil={enCalendarioMovil}
         setVistaMovil={setVistaMovil}
@@ -69,6 +67,6 @@ export function PanelFiltroFecha({ onCerrar, onAplicar }: PanelFiltroFechaProps)
           alAplicar,
         }}
       />
-    </div>
+    </MarcoPanelFiltro>
   )
 }

@@ -3,7 +3,7 @@ import { EncabezadoSeccionEmpresa } from './encabezado_seccion_empresa'
 import { Boton } from '../../compartido/interfaz/boton'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { Selector } from '../../compartido/interfaz/selector'
-import { CampoEtiquetadoEmpresa } from './campo_etiquetado_empresa'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { FormularioAgregarUsuarioProps } from '@/tipos/empresas/contrato_usuarios_empresa'
 
@@ -26,33 +26,33 @@ export function FormularioAgregarUsuario({ edicionUsuarios }: FormularioAgregarU
       </Boton>
       <EncabezadoSeccionEmpresa icono="nuevo-usuario" titulo={textos.titulo} subtitulo={textos.subtitulo} />
       <div className="grid grid-cols-2 gap-x-6 gap-y-4 max-600:grid-cols-1">
-        <CampoEtiquetadoEmpresa etiqueta={campos.nombres} requerido>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.nombres} requerido>
           <CampoTexto anchoCompleto marcador={marcadores.nombres} valor={nuevo.nombres} alCambiar={edicionUsuarios.manejarTexto('nombres')} />
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.apellidos} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.apellidos} requerido>
           <CampoTexto anchoCompleto marcador={marcadores.apellidos} valor={nuevo.apellidos} alCambiar={edicionUsuarios.manejarTexto('apellidos')} />
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.correo} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.correo} requerido>
           <CampoTexto anchoCompleto tipo="email" marcador={marcadores.correo} valor={nuevo.correo} alCambiar={edicionUsuarios.manejarTexto('correo')} />
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.telefono}>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.telefono}>
           <CampoTexto anchoCompleto tipo="tel" marcador={marcadores.telefono} valor={nuevo.telefono} alCambiar={edicionUsuarios.manejarTexto('telefono')} />
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.rol} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.rol} requerido>
           <Selector variant="colaboradores" aria-label={campos.rol} placeholder={marcadores.rol} value={nuevo.rol} onChange={edicionUsuarios.manejarSelector('rol')}>
             {ROLES.map(([clave, etiqueta]) => <option key={clave} value={clave}>{etiqueta}</option>)}
           </Selector>
-        </CampoEtiquetadoEmpresa>
-        <CampoEtiquetadoEmpresa etiqueta={campos.estado} requerido>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.estado} requerido>
           <Selector variant="colaboradores" aria-label={campos.estado} value={nuevo.estado} onChange={edicionUsuarios.manejarSelector('estado')}>
             {ESTADOS.map(([clave, etiqueta]) => <option key={clave} value={clave}>{etiqueta}</option>)}
           </Selector>
-        </CampoEtiquetadoEmpresa>
+        </CampoEtiquetado>
       </div>
       <div className="flex flex-col gap-1">
-        <CampoEtiquetadoEmpresa etiqueta={campos.notas}>
+        <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.notas}>
           <CampoTexto anchoCompleto multilinea filas={3} inputProps={{ 'aria-label': campos.notas }} marcador={marcadores.notas} longitudMaxima={textos.notas_maximo} valor={nuevo.notas} alCambiar={edicionUsuarios.manejarTexto('notas')} />
-        </CampoEtiquetadoEmpresa>
+        </CampoEtiquetado>
         <span aria-label={textos.contador_notas} className={`self-end ${textoAuxiliar}`}>
           {nuevo.notas.length}/{textos.notas_maximo}
         </span>

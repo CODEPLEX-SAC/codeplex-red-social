@@ -3,7 +3,7 @@ import { vi } from 'vitest'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
-import { COMPRAS, DESTACADOS, PLANES_APLICACIONES, POPULARES } from '@/rutas/marketplace/rutas_marketplace'
+import { DESTACADOS, PLANES_APLICACIONES, POPULARES } from '@/rutas/marketplace/rutas_marketplace'
 
 vi.setConfig({ testTimeout: 30000 })
 
@@ -25,8 +25,8 @@ describe('Facturación Electrónica con CodeplexIconoRecibo', () => {
   })
 
   it('todas las apariciones de la aplicacion usan la misma clave aprobada', () => {
-    const apariciones = [...DESTACADOS, ...COMPRAS, ...POPULARES].filter((a) => a.nombre === NOMBRE_FACTURACION).map((a) => a.icono)
-    expect(apariciones).toHaveLength(3)
+    const apariciones = [...DESTACADOS, ...POPULARES].filter((a) => a.nombre === NOMBRE_FACTURACION).map((a) => a.icono)
+    expect(apariciones).toHaveLength(2)
     expect(new Set([...apariciones, PLANES_APLICACIONES['facturacion-electronica'].icono])).toEqual(new Set(['recibo']))
   })
 

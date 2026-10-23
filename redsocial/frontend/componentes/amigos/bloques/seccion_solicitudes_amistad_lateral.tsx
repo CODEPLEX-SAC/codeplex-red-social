@@ -1,7 +1,7 @@
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { PanelLateral } from '../../compartido/bloques/panel_lateral'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Boton } from '../../compartido/interfaz/boton'
 
@@ -11,7 +11,7 @@ export function SeccionSolicitudesAmistadLateral({ SOLICITUDES }: { SOLICITUDES:
       {SOLICITUDES.map((s) => (
         <article key={s.nombre} className="border-b border-borde py-3.5 last:border-b-0">
           <div className="mb-2.5 flex gap-2.5">
-            <AvatarImagen src={usuarioImg} className="h-12 w-12 flex-none rounded-full bg-primario-suave" />
+            <AvatarUsuario tamano="lg" imagen={usuarioImg} />
             <div>
               <strong className="block text-nombre-entidad text-texto">{s.nombre}</strong>
               <p className="m-0 mt-0.5 text-cuerpo leading-texto text-texto-suave">{s.descripcion}</p>

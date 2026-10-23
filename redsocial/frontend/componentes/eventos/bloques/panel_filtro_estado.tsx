@@ -1,3 +1,4 @@
+import { MarcoPanelFiltro } from '../../compartido/interfaz/filtro_desplegable'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -8,7 +9,7 @@ import type { PanelFiltroEstadoProps } from '@/tipos/eventos/contrato_filtro_est
 
 const OPCIONES = catalogoEventos.panel_filtro_estado.opciones
 
-export function PanelFiltroEstado({ onCerrar }: PanelFiltroEstadoProps) {
+export function PanelFiltroEstado({ id, onCerrar }: PanelFiltroEstadoProps) {
   const [seleccionadas, setSeleccionadas] = useState<Set<string>>(() => new Set([OPCIONES[0].clave]))
 
   function alAlternar(clave: string) {
@@ -20,10 +21,7 @@ export function PanelFiltroEstado({ onCerrar }: PanelFiltroEstadoProps) {
   }
 
   return (
-    <div
-      onClick={(evento) => evento.stopPropagation()}
-      className="absolute left-0 top-tooltip z-20 flex w-65 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 panel-hoja-movil max-600:w-full max-600:rounded-b-none max-600:rounded-t-2xl max-600:border-0 max-600:p-0"
-    >
+    <MarcoPanelFiltro id={id} className="w-65 flex-col overflow-hidden p-3 max-600:p-0">
       <div className="hidden max-600:flex max-600:flex-none max-600:flex-col max-600:bg-white max-600:pt-2.5">
         <div className="mx-auto mb-1 h-1 w-10 flex-none rounded-full bg-borde-flotante" />
         <div className="flex items-center justify-between border-b border-borde-suave px-4 pb-3">
@@ -54,6 +52,6 @@ export function PanelFiltroEstado({ onCerrar }: PanelFiltroEstadoProps) {
           {catalogoEventos.panel_filtro_estado.aplicar}
         </Boton>
       </div>
-    </div>
+    </MarcoPanelFiltro>
   )
 }

@@ -3,7 +3,7 @@ import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { useState } from 'react'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -15,14 +15,7 @@ export function FilaEventoAviso({ evento: e, claseIcono }: FilaEventoAvisoProps)
   return (
     <article className="flex items-start gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
       {e.avatar ? (
-        <span className="relative flex-none">
-          <AvatarImagen src={usuarioImg} className="h-10 w-10 rounded-full bg-primario-suave" />
-          {e.conInsigniaIcono && (
-            <span className={`absolute -bottom-0.5 -right-0.5 grid h-4.5 w-4.5 place-items-center rounded-full border-2 border-white ${claseIcono}`}>
-              <Icono name={e.icono} className="h-3 w-3" />
-            </span>
-          )}
-        </span>
+        <AvatarUsuario tamano="md" imagen={usuarioImg} insignia={e.conInsigniaIcono ? <Icono name={e.icono} className="h-3 w-3" /> : undefined} claseInsignia={claseIcono} />
       ) : (
         <div className={`grid h-10 w-10 flex-none place-items-center ${e.forma === 'cuadrado' ? 'rounded-md' : 'rounded-full'} ${claseIcono}`}>
           <Icono name={e.icono} className="h-4.5 w-4.5" />

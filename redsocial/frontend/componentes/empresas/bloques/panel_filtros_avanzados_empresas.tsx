@@ -35,12 +35,9 @@ export function PanelFiltrosAvanzadosEmpresas({ listado, alCerrar }: PanelFiltro
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={alCerrar} variant="discreto" size="sm" />
       </div>
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-4">
-        <div className="grid grid-cols-2 gap-3 max-480:grid-cols-1">
+        <div className="grid grid-cols-1 gap-3">
           <Selector variant="colaboradores" label={selectores.rubro.etiqueta} value={borrador.rubro} onChange={filtros.cambiarRubro}>
             {selectores.rubro.opciones.map((opcion) => <option key={opcion}>{opcion}</option>)}
-          </Selector>
-          <Selector variant="colaboradores" label={selectores.tipo_plan.etiqueta} value={borrador.plan} onChange={filtros.cambiarPlan}>
-            {selectores.tipo_plan.opciones.map((opcion) => <option key={opcion}>{opcion}</option>)}
           </Selector>
         </div>
         <section className="flex flex-col gap-2">

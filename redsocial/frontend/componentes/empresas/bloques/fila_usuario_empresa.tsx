@@ -64,28 +64,27 @@ export function FilaUsuarioEmpresa({ usuario, editable, edicionUsuarios }: FilaU
 
   return (
     <tr className={CLASES_TABLA.fila}>
-      <td className={clases.celda}>
+      <td className={CLASES_TABLA.celda}>
         <div className="flex items-center gap-3">
           <AvatarUsuarioEmpresa usuario={usuario} />
           <strong className={clases.nombre_fila}>{usuario.nombre}</strong>
         </div>
       </td>
-      <td className={`${clases.celda} whitespace-nowrap ${clases.texto_celda}`}>{usuario.correo}</td>
-      <td className={clases.celda}>
+      <td className={`${CLASES_TABLA.celda} whitespace-nowrap ${clases.texto_celda}`}>{usuario.correo}</td>
+      <td className={CLASES_TABLA.celda}>
         <Insignia variant="status" className={CLASES_ROL[usuario.rol]}>{ETIQUETAS_ROL[usuario.rol]}</Insignia>
       </td>
-      <td className={`${clases.celda} whitespace-nowrap`}>
-        <span className={`inline-flex items-center gap-1.5 text-subtitulo ${estado.texto}`}>
-          <i className={`h-1.5 w-1.5 rounded-full ${estado.punto}`} />
+      <td className={`${CLASES_TABLA.celda} whitespace-nowrap`}>
+        <Insignia variant="status" className={`inline-flex items-center gap-1.5 text-subtitulo ${estado.texto}`} punto={estado.punto}>
           {ETIQUETAS_ESTADO[usuario.estado]}
-        </span>
+        </Insignia>
       </td>
-      <td className={`${clases.celda} whitespace-nowrap`}>
+      <td className={`${CLASES_TABLA.celda} whitespace-nowrap`}>
         <span className={`block ${clases.texto_celda}`}>{usuario.fecha}</span>
         <span className={`block ${clases.texto_auxiliar}`}>{usuario.hora}</span>
       </td>
       {editable ? (
-        <td className={clases.celda}>
+        <td className={CLASES_TABLA.celda}>
           <BotonIcono
             icono="puntos"
             type="button"

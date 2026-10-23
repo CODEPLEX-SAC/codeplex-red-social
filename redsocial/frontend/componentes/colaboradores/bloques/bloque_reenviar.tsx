@@ -1,12 +1,8 @@
-import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
-import { Casilla } from '../../compartido/interfaz/casilla'
-import { Icono } from '../../compartido/icono'
-import { Boton } from '../../compartido/interfaz/boton'
+import { Icono, imagenUsuarioPredeterminada as usuarioImg, AvatarUsuario, Insignia, Boton, BotonIcono, Menu } from '../../compartido'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { Menu } from '../../compartido/interfaz/menu'
 import { BloqueColaboradores3 } from './bloque_colaboradores3'
 import { CLASES_TABLA } from '../../compartido/clases_tabla'
+import { TextoTruncable } from '../../compartido/interfaz/texto_truncable'
 import { opcionesMenuFila } from './reglas_estado_colaboradores'
 import { resumirAplicaciones } from './logica_colaboradores'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
@@ -26,8 +22,6 @@ export function BloqueReenviar({ datos }: {
     alEditarColaborador: (colaborador: Colaborador) => void
     alConfirmarBaja: (colaborador: Colaborador) => void
     alReenviar: (colaborador: Colaborador) => void
-    seleccionado: boolean
-    alCambiarSeleccion: (_: unknown, marcado: boolean) => void
   }
 }) {
   const {
@@ -44,26 +38,21 @@ export function BloqueReenviar({ datos }: {
     alEditarColaborador,
     alConfirmarBaja,
     alReenviar,
-    seleccionado,
-    alCambiarSeleccion,
   } = datos
   const aplicaciones = resumirAplicaciones(c, catalogoColaboradores.celda_aplicaciones.max_iconos)
   return (
     <tr className={CLASES_TABLA.fila}>
-      <td className="p-3.5 text-center align-middle">
-        <Casilla seleccionado={seleccionado} alCambiar={alCambiarSeleccion} inputProps={{ 'aria-label': c.nombre }} />
-      </td>
-      <td className="p-3.5 align-middle">
-        <div className="flex w-44 items-center gap-3">
-          <img src={usuarioImg} alt={c.nombre} className="h-10 w-10 flex-none rounded-full bg-gris-borde object-cover" />
-          <div className="flex min-w-0 flex-col">
-            <span className="truncate text-nombre-entidad text-texto">{c.nombre}</span>
-            <span className="truncate text-auxiliar text-texto-suave">{c.correo}</span>
-            <span className="truncate text-auxiliar text-texto-suave">{c.telefono}</span>
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnaAjustada}`}>
+        <div className={CLASES_TABLA.identidad.contenedor}>
+          <AvatarUsuario tamano="md" imagen={usuarioImg} etiqueta={c.nombre} />
+          <div className={CLASES_TABLA.identidad.texto}>
+            <TextoTruncable texto={c.nombre} className={CLASES_TABLA.identidad.principal} />
+            <TextoTruncable texto={c.correo} className={CLASES_TABLA.identidad.secundario} />
+            <TextoTruncable texto={c.telefono} className={CLASES_TABLA.identidad.secundario} />
           </div>
         </div>
       </td>
-      <td className="p-3.5 align-middle">
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnas.etiquetas}`}>
         <div className="flex flex-col gap-0.5">
           <span className={`inline-block whitespace-nowrap rounded-md px-2.5 py-0.75 text-badge ${ROL_CLASES[c.rolClase] ?? ROL_CLASES.predeterminado}`}>
             {c.rol}
@@ -71,7 +60,7 @@ export function BloqueReenviar({ datos }: {
           <span className="text-auxiliar text-texto-suave">{c.descripcionRol}</span>
         </div>
       </td>
-      <td className="p-3.5 align-middle">
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnas.iconos}`}>
         <div className="flex items-center gap-1">
           {aplicaciones.visibles.map((app) => (
             <span key={app.nombre} title={app.nombre} className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${app.clase}`}>
@@ -81,14 +70,13 @@ export function BloqueReenviar({ datos }: {
           {aplicaciones.ocultas > 0 && <span className="ml-0.5 text-conteo text-primario">+{aplicaciones.ocultas}</span>}
         </div>
       </td>
-      <td className="p-3.5 align-middle">
-        <span className={`inline-flex items-center gap-1.25 whitespace-nowrap text-estado ${estado.texto}`}>
-          <span className={`h-1.75 w-1.75 flex-none rounded-full ${estado.punto}`} />
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnas.estado}`}>
+        <Insignia variant="status" className={`inline-flex items-center gap-1.25 whitespace-nowrap text-estado ${estado.texto}`} punto={estado.punto}>
           {estado.etiqueta}
-        </span>
+        </Insignia>
       </td>
       <BloqueColaboradores3 c={c} />
-      <td className="p-3.5 text-center align-middle">
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.celdaFija} text-center`}>
         {c.acciones === 'reenviar' ? (
           <Boton type="button" variant="secundario" size="mini" onClick={() => alReenviar(c)}>
             {catalogoColaboradores.botones.reenviar}

@@ -1,4 +1,4 @@
-import { MensajeVacio, Boton, BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg, posicionesDe } from '../../componentes/compartido'
+import { BotonPieLista, MensajeVacio, Boton, BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, AvatarUsuario, imagenUsuarioPredeterminada as usuarioImg, GrupoAvatares } from '../../componentes/compartido'
 import { EncabezadoAmigos, PestanasAmigos, PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
@@ -29,7 +29,7 @@ export function PaginaAmigosSugerencias() {
               {SUGERENCIAS.length === 0 && <MensajeVacio texto={catalogoAmigos.mensajes.sin_sugerencias} className="col-span-full py-8" />}
               {SUGERENCIAS.map((s) => (
                 <article key={s.nombre} className="flex flex-col items-center rounded-control border border-borde bg-white p-3 pb-3.5 pt-4.5 text-center">
-                  <AvatarImagen src={usuarioImg} className="mb-2.5 h-14 w-14 flex-none rounded-full bg-primario-suave" />
+                  <AvatarUsuario tamano="lg" imagen={usuarioImg} className="mb-2.5" />
                   <div className="mb-2 w-full">
                     <strong className="mb-0.5 block text-nombre-entidad leading-compacto text-texto">{s.nombre}</strong>
                     <p className="m-0 text-cuerpo leading-texto text-texto-suave">{s.descripcion}</p>
@@ -37,16 +37,7 @@ export function PaginaAmigosSugerencias() {
                   <div className="mb-2 flex w-full items-center justify-center gap-2">
                     <span className="whitespace-nowrap text-auxiliar text-texto-suave">{s.comunes}</span>
                   </div>
-                  <div className="mb-2.5 flex items-center justify-center">
-                    {posicionesDe(4).map((posicion) => (
-                      <AvatarImagen
-                        key={posicion.id}
-                        src={usuarioImg}
-                        className={'h-5.5 w-5.5 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
-                      />
-                    ))}
-                    <span className="-ml-2 grid h-5.5 w-5.5 place-items-center rounded-full border-2 border-white bg-fondo-insignia-neutra text-conteo text-texto-suave">{s.masAvatares}</span>
-                  </div>
+                  <GrupoAvatares avatares={4} tamano="xs" tono="neutro" resto={s.masAvatares} className="mb-2.5 justify-center" />
                   <div className="flex w-full flex-col items-center gap-1.5">
                     <Boton type="button" variant="secundario" size="mini" className="w-full max-w-30">{catalogoAmigos.botones.agregar}</Boton>
                     <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAmigos.botones.ver_perfil}</a>
@@ -54,9 +45,7 @@ export function PaginaAmigosSugerencias() {
                 </article>
               ))}
             </div>
-            <a href="#" className="flex items-center justify-center gap-1.5 border-t border-borde p-3.5 text-enlace-accion text-texto-suave no-underline hover:bg-fondo">
-              {catalogoAmigos.botones.ver_mas_sugerencias} <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
-            </a>
+            <BotonPieLista>{catalogoAmigos.botones.ver_mas_sugerencias}</BotonPieLista>
           </section>
         }
         publicidad={<ColumnaPublicidad />}

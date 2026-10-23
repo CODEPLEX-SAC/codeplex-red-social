@@ -84,7 +84,16 @@
     "grupos_ver_mas": "Ver más grupos",
     "modulos_todos": "Todos los módulos",
     "sistema_todos": "Todos los eventos",
+    "sistema_filtro": "Filtrar eventos del sistema por estado",
+    "modulos_filtro": "Filtrar actividad por módulo",
     "todas_ver_grupo": "Ver grupo"
+  },
+  "estados_sistema": {
+    "exito": "Correctos",
+    "info": "Informativos",
+    "pendiente": "Pendientes",
+    "advertencia": "Advertencias",
+    "error": "Errores"
   },
   "insignias": {
     "grupo_publico": "Grupo público",

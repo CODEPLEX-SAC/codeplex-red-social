@@ -8,6 +8,9 @@ export interface CategoriaFiltroEvento {
 }
 
 export interface PanelFiltroCategoriaProps {
+  id?: string
   categorias: CategoriaFiltroEvento[]
+  seleccionadas: string[]
+  alCambiarSeleccion: (seleccionadas: string[]) => void
   onCerrar: () => void
 }

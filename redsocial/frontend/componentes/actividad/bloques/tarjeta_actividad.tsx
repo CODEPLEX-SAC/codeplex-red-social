@@ -1,7 +1,7 @@
 import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { TarjetaActividadProps } from '@/tipos/actividad/contrato_actividad_item'
@@ -24,7 +24,7 @@ export function TarjetaActividad({
           <Icono name={iconoSistema} className="h-5 w-5" />
         </div>
       ) : (
-        <AvatarImagen src={usuarioImg} className="h-9 w-9 flex-none overflow-hidden rounded-full bg-primario-suave" />
+        <AvatarUsuario tamano="sm" imagen={usuarioImg} />
       )}
       <div className="min-w-0 flex-1">
         <div className="mb-0 flex items-start justify-between gap-2">

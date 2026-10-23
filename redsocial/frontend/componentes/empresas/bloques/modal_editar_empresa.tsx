@@ -14,7 +14,7 @@ import type { ModalEditarEmpresaProps } from '@/tipos/empresas/contrato_edicion_
 const textos = catalogoEmpresas.edicion_empresa
 const textosAgregar = catalogoEmpresas.usuarios_empresa.agregar_usuario
 
-export function ModalEditarEmpresa({ empresa, pestanaInicial, datosDetalle, usuariosGuardados, alCerrar, alGuardar }: ModalEditarEmpresaProps) {
+export function ModalEditarEmpresa({ empresa, totalEmpresas, pestanaInicial, datosDetalle, usuariosGuardados, alCerrar, alGuardar }: ModalEditarEmpresaProps) {
   const edicion = usarEdicionEmpresa(empresa)
   const edicionUsuarios = usarBorradorUsuarios(empresa, datosDetalle.usuariosBase, usuariosGuardados)
 
@@ -35,7 +35,7 @@ export function ModalEditarEmpresa({ empresa, pestanaInicial, datosDetalle, usua
       <form onSubmit={guardar} noValidate className="flex min-h-0 flex-1 flex-col">
         <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto pb-4">
           <CabeceraResumenEmpresa empresa={empresa} />
-          <CuerpoEditarEmpresa empresa={empresa} edicion={edicion} pestanaInicial={pestanaInicial} datosDetalle={datosDetalle} edicionUsuarios={edicionUsuarios} />
+          <CuerpoEditarEmpresa empresa={empresa} edicion={edicion} pestanaInicial={pestanaInicial} datosDetalle={datosDetalle} edicionUsuarios={edicionUsuarios} totalEmpresas={totalEmpresas} />
         </div>
         <div className="flex flex-none items-center justify-end gap-3 border-t border-borde px-6 py-4 max-480:flex-col-reverse max-480:items-stretch max-480:px-4">
           {edicionUsuarios.agregando ? (

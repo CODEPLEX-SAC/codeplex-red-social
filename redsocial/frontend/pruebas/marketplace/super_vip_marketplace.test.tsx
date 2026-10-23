@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { vi } from 'vitest'
+import { beforeEach, vi } from 'vitest'
+import { sembrarTarjetas } from './ayudas_pago'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
@@ -58,6 +59,10 @@ vi.mock('@/catalogos/capacidades/redsocial/marketplace.json', async (original) =
 })
 
 describe('Super VIP de Marketplace cuando el servicio esta habilitado', () => {
+  beforeEach(() => {
+    sembrarTarjetas()
+  })
+
   it('en la pantalla de pago solo se activa tras aceptar los terminos y el Super VIP suma al total', () => {
     const pantalla = irAlPago(1)
     const activar = within(pantalla).getByRole('button', { name: pago.resumen.activar })

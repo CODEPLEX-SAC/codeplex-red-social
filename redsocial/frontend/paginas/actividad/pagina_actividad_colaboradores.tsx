@@ -1,4 +1,4 @@
-import { Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
+import { Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio, AvatarUsuario, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import { PestanasActividad } from '../../componentes/actividad'
 import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../rutas/compartido/rutas_compartido'
@@ -24,12 +24,7 @@ export function PaginaActividadColaboradores() {
             <section className="rounded-control border border-borde bg-white">
               {EVENTOS_COLABORADOR.map((e) => (
                 <article key={e.nombre} className="flex items-start gap-3.5 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
-                  <div className="relative h-11 w-11 flex-none">
-                    <AvatarImagen src={usuarioImg} className="block h-11 w-11 rounded-full bg-primario-suave" />
-                    <span className={`absolute -bottom-0.5 -right-0.5 grid h-5.5 w-5.5 place-items-center rounded-full border-2 border-white text-white ${CLASES_BADGE[e.color]}`}>
-                      <Icono name={e.icono} className="h-3 w-3" />
-                    </span>
-                  </div>
+                  <AvatarUsuario tamano="md" imagen={usuarioImg} insignia={<Icono name={e.icono} className="h-3 w-3" />} claseInsignia={'text-white ' + CLASES_BADGE[e.color]} />
                   <div className="min-w-0 flex-1 text-cuerpo">
                     <span className="text-nombre-entidad text-texto">{e.nombre}</span>
                     <span className="text-texto-suave">{e.accion}</span>

@@ -1,0 +1,90 @@
+{
+ "chips": [
+  {
+   "w": 1280,
+   "contenedor": 278,
+   "chips": [
+    70,
+    98,
+    74
+   ],
+   "suma": 250,
+   "conPadding14": 286,
+   "wrap": "nowrap",
+   "overflowX": "visible"
+  },
+  {
+   "w": 820,
+   "contenedor": 757,
+   "chips": [
+    240,
+    240,
+    240
+   ],
+   "suma": 728,
+   "conPadding14": 764,
+   "wrap": "nowrap",
+   "overflowX": "visible"
+  },
+  {
+   "w": 400,
+   "contenedor": 376,
+   "chips": [
+    113,
+    113,
+    113
+   ],
+   "suma": 347,
+   "conPadding14": 383,
+   "wrap": "nowrap",
+   "overflowX": "visible"
+  },
+  {
+   "w": 320,
+   "contenedor": 296,
+   "chips": [
+    81,
+    98,
+    81
+   ],
+   "suma": 268,
+   "conPadding14": 304,
+   "wrap": "nowrap",
+   "overflowX": "visible"
+  }
+ ],
+ "pildoras": [
+  {
+   "w": 1280,
+   "n": 0,
+   "h": [],
+   "radio": []
+  },
+  {
+   "w": 400,
+   "n": 0,
+   "h": [],
+   "radio": []
+  }
+ ],
+ "pildorasModal": {
+  "n": 3,
+  "h": [
+   30
+  ],
+  "radio": [
+   "3.35544e+07px"
+  ],
+  "texto": [
+   "Publicación",
+   "Encuesta",
+   "Pregunta"
+  ]
+ },
+ "n404": {
+  "boton": [
+   "Volver a Inicio 48"
+  ],
+  "desborde": false
+ }
+}

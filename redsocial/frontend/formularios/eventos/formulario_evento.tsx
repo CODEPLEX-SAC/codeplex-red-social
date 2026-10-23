@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Dayjs } from 'dayjs'
 import { Icono } from '../../componentes/compartido/icono'
+import { CampoEtiquetado } from '../../componentes/compartido/interfaz/campo_etiquetado'
 import { Interruptor } from '../../componentes/compartido/interfaz/interruptor'
 import { Radio } from '../../componentes/compartido/interfaz/radio'
 import { SelectorFecha } from '../../componentes/compartido/interfaz/selector_fecha'
@@ -9,7 +10,6 @@ import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import type {
   AvisoFormularioEventoProps,
   CampoFechaHoraEventoProps,
-  CampoFormularioEventoProps,
   FilaInterruptorEventoProps,
   OpcionCostoEventoProps,
   OpcionModalidadEventoProps,
@@ -32,18 +32,6 @@ export function TarjetaFormularioEvento({ icono, titulo, opcional, accion, child
       </div>
       {children}
     </section>
-  )
-}
-
-export function CampoFormularioEvento({ texto, requerido, ayuda, className, children }: CampoFormularioEventoProps) {
-  return (
-    <div className={'min-w-0 ' + (className ?? '')}>
-      <span className="mb-1.5 block text-etiqueta text-texto">
-        {texto} {requerido && <span className="text-peligro-texto">*</span>}
-      </span>
-      {children}
-      {ayuda && <span className="mt-1 block text-right text-auxiliar text-texto-suave">{ayuda}</span>}
-    </div>
   )
 }
 
@@ -101,11 +89,11 @@ export function CampoFechaHoraEvento({ etiqueta, valorInicial }: CampoFechaHoraE
   const [hora, setHora] = useState<Dayjs | null>(valorInicial ?? null)
 
   return (
-    <CampoFormularioEvento texto={etiqueta} requerido>
+    <CampoEtiquetado etiqueta={etiqueta} requerido>
       <div className="grid grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-2.5">
         <SelectorFecha valor={fecha} alCambiar={setFecha} marcador={textos.marcador_fecha} formato={textos.formato_fecha} />
         <SelectorHora valor={hora} alCambiar={setHora} marcador={textos.marcador_hora} formato={textos.formato_hora} />
       </div>
-    </CampoFormularioEvento>
+    </CampoEtiquetado>
   )
 }

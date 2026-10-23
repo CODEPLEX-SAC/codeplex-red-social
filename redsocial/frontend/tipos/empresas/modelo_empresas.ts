@@ -1,6 +1,6 @@
-export type PlanEmpresa = 'avanzado' | 'intermedio' | 'basico'
-
 export type EstadoEmpresa = 'activa' | 'inactiva'
+
+export type ClaveModuloEmpresa = 'contabilidad' | 'facturacion' | 'planillas' | 'inventario'
 
 export interface Empresa {
   codigo: string
@@ -13,9 +13,11 @@ export interface Empresa {
   telefono: string
   web: string
   rubro: string
-  plan: PlanEmpresa
+  modulos: ClaveModuloEmpresa[]
+  planesModulo?: Partial<Record<ClaveModuloEmpresa, string>>
   usuarios: number
   estado: EstadoEmpresa
   fechaRegistro: string
   logo?: string
+  tipoPlanCuenta?: string
 }

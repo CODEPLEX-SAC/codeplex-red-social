@@ -1,3 +1,4 @@
+import { MarcoPanelFiltro } from '../../compartido/interfaz/filtro_desplegable'
 import { useEffect, useMemo, useState } from 'react'
 import 'leaflet/dist/leaflet.css'
 import type { CodeplexMapaMarcador } from '@codeplex-sac/mapas'
@@ -36,7 +37,7 @@ function FilaCiudad({ nombre, activa, onElegir }: FilaCiudadProps) {
   )
 }
 
-export function PanelFiltroUbicacion({ ciudades, marcadores, ciudadActual, onAplicar, onCerrar }: PanelFiltroUbicacionProps) {
+export function PanelFiltroUbicacion({ id, ciudades, marcadores, ciudadActual, onAplicar, onCerrar }: PanelFiltroUbicacionProps) {
   const [busqueda, setBusqueda] = useState('')
   const [enMapa, setEnMapa] = useState(false)
   const [ciudadElegida, setCiudadElegida] = useState(() => ciudadActual ?? ciudades[0]?.nombre ?? '')
@@ -85,10 +86,7 @@ export function PanelFiltroUbicacion({ ciudades, marcadores, ciudadActual, onApl
   )
 
   return (
-    <div
-      onClick={(evento) => evento.stopPropagation()}
-      className={'absolute left-0 top-tooltip z-20 flex max-h-150 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 panel-hoja-movil max-600:w-full max-600:rounded-b-none max-600:rounded-t-2xl max-600:border-0 ' + (enMapa ? textos.clase_hoja_fija : '')}
-    >
+    <MarcoPanelFiltro id={id} className={'max-h-150 flex-col overflow-hidden max-900:w-110 ' + (enMapa ? textos.clase_hoja_fija : '')}>
       <SeccionTituloBuscar
         datos={{
           enMapa,
@@ -109,6 +107,6 @@ export function PanelFiltroUbicacion({ ciudades, marcadores, ciudadActual, onApl
           alAplicar,
         }}
       />
-    </div>
+    </MarcoPanelFiltro>
   )
 }

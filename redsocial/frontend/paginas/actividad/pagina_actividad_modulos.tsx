@@ -1,11 +1,18 @@
-import { BotonIcono, Boton, BotonPieLista, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio } from '../../componentes/compartido'
+import { useState } from 'react'
+import { BotonIcono, BotonPieLista, Selector, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, ContactosPanel, GruposRecomendadosPanel, EventosProximosPanel, BloqueAnuncio } from '../../componentes/compartido'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import { PestanasActividad } from '../../componentes/actividad'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { CONTACTOS_SUGERIDOS, GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS } from '../../rutas/compartido/rutas_compartido'
 import { EVENTOS_MODULO, CLASES_ICONO, CLASES_REFERENCIA } from '../../rutas/actividad/rutas_actividad'
 
+const TODOS = 'todos'
+
 export function PaginaActividadModulos() {
+  const [modulo, setModulo] = useState(TODOS)
+  const nombres = [...new Set(EVENTOS_MODULO.map((m) => m.nombre))]
+  const eventos = EVENTOS_MODULO.filter((m) => modulo === TODOS || m.nombre === modulo)
+
   return (
     <EstructuraApp paginaActiva="actividad">
       <EstructuraTresColumnas
@@ -29,13 +36,15 @@ export function PaginaActividadModulos() {
                     <p className="m-0 text-auxiliar text-texto-suave">{catalogoActividad.secciones.modulos.descripcion}</p>
                   </div>
                 </div>
-                <Boton type="button" variant="secundario" size="default" className="flex-none">
-                  {catalogoActividad.botones.modulos_todos}
-                  <Icono name="flecha-abajo" className="h-3.5 w-3.5 text-texto-suave" />
-                </Boton>
+                <Selector variant="mini" value={modulo} onChange={(evento) => setModulo(evento.target.value)} aria-label={catalogoActividad.botones.modulos_filtro} className="flex-none">
+                  <option value={TODOS}>{catalogoActividad.botones.modulos_todos}</option>
+                  {nombres.map((nombre) => (
+                    <option key={nombre} value={nombre}>{nombre}</option>
+                  ))}
+                </Selector>
               </div>
 
-              {EVENTOS_MODULO.map((m) => (
+              {eventos.map((m) => (
                 <article key={m.nombre} className="flex items-center gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
                   <div className={`grid h-10.5 w-10.5 flex-none place-items-center rounded-xl text-white ${CLASES_ICONO[m.color]}`}>
                     <Icono name={m.icono} className="h-5 w-5" />

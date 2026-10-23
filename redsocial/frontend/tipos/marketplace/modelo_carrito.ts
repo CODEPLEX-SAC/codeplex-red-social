@@ -7,6 +7,7 @@ export interface ItemCarrito {
   descripcion: string
   icono: IconName
   tema: ConfiguracionPlanes['color']
+  tipo: string
   plan: string
   planNombre: string
   periodo: SeleccionPlan['periodo']
@@ -22,6 +23,8 @@ export interface CompraRealizada {
   nombre: string
   icono: IconName
   tema: ConfiguracionPlanes['color']
+  tipo: string
+  plan: string
   planNombre: string
   lema: string
   ruta?: string
@@ -51,7 +54,8 @@ export interface TarjetaGuardada {
   marca: string
   ultimos4: string
   vencimiento: string
-  propietario: string
+  titular?: string
+  predeterminada?: boolean
 }
 
 export interface PerfilFacturacion {
@@ -65,7 +69,6 @@ export interface PerfilFacturacion {
 }
 
 export interface HistorialPago {
-  tarjetas: TarjetaGuardada[]
   perfiles: PerfilFacturacion[]
 }
 
@@ -90,6 +93,8 @@ export interface DesinstalacionCompra {
 }
 
 export interface AccesosCabecera {
+  busqueda: string
+  alBuscar: (texto: string) => void
   abrirCompras: () => void
 }
 

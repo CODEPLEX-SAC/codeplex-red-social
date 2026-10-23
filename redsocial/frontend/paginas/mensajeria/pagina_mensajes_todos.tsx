@@ -28,10 +28,7 @@ export function PaginaMensajesTodos() {
               ]}
             />
 
-            <section
-              data-zona="panel-mensajes"
-              className="grid grid-cols-280-1fr h-vh-mensajes min-h-100 overflow-hidden max-1100:grid-cols-260-1fr max-900:grid-cols-1 max-900:gap-4 max-900:flex-1 max-900:min-h-0"
-            >
+            <section data-zona="panel-mensajes" className={catalogoMensajeria.clases.panel}>
               <ListaConversaciones
                 conversaciones={CONVERSACIONES}
                 activa={conversacionActiva}

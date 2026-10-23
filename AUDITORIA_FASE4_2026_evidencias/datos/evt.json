@@ -1,0 +1,2862 @@
+[
+ {
+  "w": 1280,
+  "filtro": "Fecha",
+  "cerrado": {
+   "x": 264,
+   "y": 317,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 370.5,
+   "vw": 1280
+  },
+  "abierto": {
+   "x": 264,
+   "y": 317,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-fecha",
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 370.5,
+   "vw": 1280
+  },
+  "panel": {
+   "x": 264,
+   "y": 353,
+   "w": 502,
+   "h": 369,
+   "radio": "12px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "absolute",
+   "z": "20",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Filtrar por fechacloseFiltrar por Cualquier HMañFin de  Fech",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-135 overflow-y-auto overflow-x-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto m",
+   "derecha": 766,
+   "vw": 1280
+  },
+  "cont": {
+   "n": 40,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayCualquier fech",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayHoy",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayMañana",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayFin de  emana",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_today Fecha e pecíf",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_today Rango de fech",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "chevron_left",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "chevron_right",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "1",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "2",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "3",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "4",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "5",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "6",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "7",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "8",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "9",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "10",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "11",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "12",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "13",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "14",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "15",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "16",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "17",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "18",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "19",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "20",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "21",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "22",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "23",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "24",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "25",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "26",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "27",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "28",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "29",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "30",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Cancelar",
+     "w": 82,
+     "h": 34,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 72,
+     "h": 34,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "calendar_todayCualquier fecha",
+   "aplicar": "Aplicar",
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 1280,
+  "filtro": "Categoría",
+  "cerrado": {
+   "x": 378.5,
+   "y": 317,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 509.9,
+   "vw": 1280
+  },
+  "abierto": {
+   "x": 378.5,
+   "y": 317,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-categoria",
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 509.9,
+   "vw": 1280
+  },
+  "panel": {
+   "x": 378.5,
+   "y": 353,
+   "w": 290,
+   "h": 439,
+   "radio": "12px",
+   "pad": "12px 12px 12px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "absolute",
+   "z": "20",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Categoríaclose​search​starMúsica124workNegocios98lightbulbEd",
+   "clase": "absolute left-0 top-tooltip z-20 flex w-72.5 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z",
+   "derecha": 668.5,
+   "vw": 1280
+  },
+  "cont": {
+   "n": 13,
+   "items": [
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car categoría ...",
+     "w": 226,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Limpiar  elección",
+     "w": 111,
+     "h": 23,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 72,
+     "h": 34,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "checkbox",
+   "aplicar": "Aplicar",
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 1280,
+  "filtro": "Ubicación",
+  "cerrado": {
+   "x": 517.9,
+   "y": 317,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 650.5,
+   "vw": 1280
+  },
+  "abierto": {
+   "x": 517.9,
+   "y": 317,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-ubicacion",
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 650.5,
+   "vw": 1280
+  },
+  "panel": {
+   "x": 517.9,
+   "y": 353,
+   "w": 730,
+   "h": 488,
+   "radio": "12px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "absolute",
+   "z": "20",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Buscar ubicacióncloseBuscar ubicación​search​language Todas ",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-150 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-",
+   "derecha": 1247.9,
+   "vw": 1280
+  },
+  "cont": {
+   "n": 16,
+   "items": [
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car ciudad, di trito o lu",
+     "w": 217,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "language Toda  la  ubicacion",
+     "w": 255,
+     "h": 37,
+     "cls": "mb-1 flex w-full items-center gap-2.5 rounded-lg border-0 px-2.5 py-2 "
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "adju t Mi ubicación actualch",
+     "w": 255,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2.5 rounded-lg border-0 bg-transparent px"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Lima",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Arequipa",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Trujillo",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Cu co",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Piura",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Má  ciudade  keyboard_arrow_",
+     "w": 108,
+     "h": 21,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "a",
+     "tipo": "button",
+     "t": "+",
+     "w": 30,
+     "h": 30,
+     "cls": "leaflet-control-zoom-in"
+    },
+    {
+     "tag": "a",
+     "tipo": "button",
+     "t": "−",
+     "w": 30,
+     "h": 30,
+     "cls": "leaflet-control-zoom-out"
+    },
+    {
+     "tag": "a",
+     "tipo": "",
+     "t": "Leaflet",
+     "w": 51,
+     "h": 14,
+     "cls": ""
+    },
+    {
+     "tag": "a",
+     "tipo": "",
+     "t": "OpenStreetMap",
+     "w": 85,
+     "h": 14,
+     "cls": ""
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "autorenew Cambiar ubicación",
+     "w": 123,
+     "h": 18,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Cancelar",
+     "w": 199,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 199,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 1,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "language Todas las ubicaciones",
+   "aplicar": "Aplicar",
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 820,
+  "filtro": "Fecha",
+  "cerrado": {
+   "x": 24,
+   "y": 431,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 130.5,
+   "vw": 820
+  },
+  "abierto": {
+   "x": 24,
+   "y": 431,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-fecha",
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 130.5,
+   "vw": 820
+  },
+  "panel": {
+   "x": 24,
+   "y": 467,
+   "w": 502,
+   "h": 369,
+   "radio": "12px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "absolute",
+   "z": "20",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Filtrar por fechacloseFiltrar por Cualquier HMañFin de  Fech",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-135 overflow-y-auto overflow-x-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto m",
+   "derecha": 526,
+   "vw": 820
+  },
+  "cont": {
+   "n": 40,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayCualquier fech",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayHoy",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayMañana",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayFin de  emana",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_today Fecha e pecíf",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_today Rango de fech",
+     "w": 189,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2 px-4 py-2 text-left text-campo-formular"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "chevron_left",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "chevron_right",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "1",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "2",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "3",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "4",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "5",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "6",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "7",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "8",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "9",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "10",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "11",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "12",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "13",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "14",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "15",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "16",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "17",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "18",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "19",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "20",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "21",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "22",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "23",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "24",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "25",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "26",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "27",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "28",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "29",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "30",
+     "w": 30,
+     "h": 30,
+     "cls": "grid h-7.5 w-7.5 place-items-center justify-self-center rounded-full t"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Cancelar",
+     "w": 82,
+     "h": 34,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 72,
+     "h": 34,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "calendar_todayCualquier fecha",
+   "aplicar": "Aplicar",
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 820,
+  "filtro": "Categoría",
+  "cerrado": {
+   "x": 138.5,
+   "y": 431,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 269.9,
+   "vw": 820
+  },
+  "abierto": {
+   "x": 138.5,
+   "y": 431,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-categoria",
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 269.9,
+   "vw": 820
+  },
+  "panel": {
+   "x": 138.5,
+   "y": 467,
+   "w": 290,
+   "h": 439,
+   "radio": "12px",
+   "pad": "12px 12px 12px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "absolute",
+   "z": "20",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Categoríaclose​search​starMúsica124workNegocios98lightbulbEd",
+   "clase": "absolute left-0 top-tooltip z-20 flex w-72.5 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z",
+   "derecha": 428.5,
+   "vw": 820
+  },
+  "cont": {
+   "n": 13,
+   "items": [
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car categoría ...",
+     "w": 226,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Limpiar  elección",
+     "w": 111,
+     "h": 23,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 72,
+     "h": 34,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "checkbox",
+   "aplicar": "Aplicar",
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 820,
+  "filtro": "Ubicación",
+  "cerrado": {
+   "x": 277.9,
+   "y": 431,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 410.5,
+   "vw": 820
+  },
+  "abierto": {
+   "x": 277.9,
+   "y": 431,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-ubicacion",
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 410.5,
+   "vw": 820
+  },
+  "panel": {
+   "x": 277.9,
+   "y": 467,
+   "w": 730,
+   "h": 480.5,
+   "radio": "12px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "absolute",
+   "z": "20",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Buscar ubicacióncloseBuscar ubicación​search​language Todas ",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-150 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-",
+   "derecha": 1007.9,
+   "vw": 820
+  },
+  "cont": {
+   "n": 16,
+   "items": [
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car ciudad, di trito o lu",
+     "w": 217,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "language Toda  la  ubicacion",
+     "w": 255,
+     "h": 37,
+     "cls": "mb-1 flex w-full items-center gap-2.5 rounded-lg border-0 px-2.5 py-2 "
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "adju t Mi ubicación actualch",
+     "w": 255,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2.5 rounded-lg border-0 bg-transparent px"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Lima",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Arequipa",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Trujillo",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Cu co",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Piura",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Má  ciudade  keyboard_arrow_",
+     "w": 108,
+     "h": 21,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "a",
+     "tipo": "button",
+     "t": "+",
+     "w": 30,
+     "h": 30,
+     "cls": "leaflet-control-zoom-in"
+    },
+    {
+     "tag": "a",
+     "tipo": "button",
+     "t": "−",
+     "w": 30,
+     "h": 30,
+     "cls": "leaflet-control-zoom-out"
+    },
+    {
+     "tag": "a",
+     "tipo": "",
+     "t": "Leaflet",
+     "w": 51,
+     "h": 14,
+     "cls": ""
+    },
+    {
+     "tag": "a",
+     "tipo": "",
+     "t": "OpenStreetMap",
+     "w": 85,
+     "h": 14,
+     "cls": ""
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "autorenew Cambiar ubicación",
+     "w": 123,
+     "h": 18,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Cancelar",
+     "w": 199,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 199,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 1,
+   "tieneScroll": false
+  },
+  "desborde": true,
+  "seleccion": {
+   "opcion": "language Todas las ubicaciones",
+   "aplicar": "Aplicar",
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "true",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": true,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 400,
+  "filtro": "Fecha",
+  "cerrado": {
+   "x": 12,
+   "y": 460,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 118.5,
+   "vw": 400
+  },
+  "abierto": {
+   "x": 12,
+   "y": 409,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-fecha",
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 118.5,
+   "vw": 400
+  },
+  "panel": {
+   "x": 0,
+   "y": 310,
+   "w": 400,
+   "h": 540,
+   "radio": "16px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "0px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "fixed",
+   "z": "30",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Filtrar por fechacloseFiltrar por Cualquier HMañFin de  Fech",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-135 overflow-y-auto overflow-x-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto m",
+   "derecha": 400,
+   "vw": 400
+  },
+  "cont": {
+   "n": 7,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "clo e",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayCualquier fech",
+     "w": 368,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayHoySolo evento",
+     "w": 368,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayMañanaSolo eve",
+     "w": 368,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayFin de  emanaE",
+     "w": 368,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayFecha e pecífi",
+     "w": 368,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayRango de fecha",
+     "w": 368,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "close",
+   "aplicar": null,
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 400,
+  "filtro": "Categoría",
+  "cerrado": {
+   "x": 126.5,
+   "y": 460,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 257.9,
+   "vw": 400
+  },
+  "abierto": {
+   "x": 126.5,
+   "y": 409,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-categoria",
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 257.9,
+   "vw": 400
+  },
+  "panel": {
+   "x": 0,
+   "y": 182,
+   "w": 400,
+   "h": 668,
+   "radio": "16px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "0px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "fixed",
+   "z": "30",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Categoríaclose​search​starMúsica124workNegocios98lightbulbEd",
+   "clase": "absolute left-0 top-tooltip z-20 flex w-72.5 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z",
+   "derecha": 400,
+   "vw": 400
+  },
+  "cont": {
+   "n": 14,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "clo e",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car categoría ...",
+     "w": 330,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Limpiar  elección",
+     "w": 111,
+     "h": 23,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 66,
+     "h": 30,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "close",
+   "aplicar": null,
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 400,
+  "filtro": "Ubicación",
+  "cerrado": {
+   "x": 265.9,
+   "y": 460,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 398.5,
+   "vw": 400
+  },
+  "abierto": {
+   "x": 255.9,
+   "y": 409,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-ubicacion",
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 388.5,
+   "vw": 400
+  },
+  "panel": {
+   "x": 0,
+   "y": 250,
+   "w": 400,
+   "h": 600,
+   "radio": "16px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "0px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "fixed",
+   "z": "30",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Buscar ubicacióncloseBuscar ubicación​search​language Todas ",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-150 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-",
+   "derecha": 400,
+   "vw": 400
+  },
+  "cont": {
+   "n": 13,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "clo e",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car ciudad, di trito o lu",
+     "w": 330,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "language Toda  la  ubicacion",
+     "w": 368,
+     "h": 37,
+     "cls": "mb-1 flex w-full items-center gap-2.5 rounded-lg border-0 px-2.5 py-2 "
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "adju t Mi ubicación actualch",
+     "w": 368,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2.5 rounded-lg border-0 bg-transparent px"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Lima",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Arequipa",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Trujillo",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Cu co",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Piura",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Má  ciudade  keyboard_arrow_",
+     "w": 108,
+     "h": 21,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "language Ver en el mapachevr",
+     "w": 368,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Cancelar",
+     "w": 179,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 179,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 1,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "close",
+   "aplicar": null,
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 320,
+  "filtro": "Fecha",
+  "cerrado": {
+   "x": 12,
+   "y": 481,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 118.5,
+   "vw": 320
+  },
+  "abierto": {
+   "x": 12,
+   "y": 334,
+   "w": 106.5,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-fecha",
+   "texto": "F",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 118.5,
+   "vw": 320
+  },
+  "panel": {
+   "x": 0,
+   "y": 160,
+   "w": 320,
+   "h": 540,
+   "radio": "16px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "0px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "fixed",
+   "z": "30",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Filtrar por fechacloseFiltrar por Cualquier HMañFin de  Fech",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-135 overflow-y-auto overflow-x-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto m",
+   "derecha": 320,
+   "vw": 320
+  },
+  "cont": {
+   "n": 7,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "clo e",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayCualquier fech",
+     "w": 288,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayHoySolo evento",
+     "w": 288,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayMañanaSolo eve",
+     "w": 288,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayFin de  emanaE",
+     "w": 288,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayFecha e pecífi",
+     "w": 288,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "calendar_todayRango de fecha",
+     "w": 288,
+     "h": 59,
+     "cls": "flex w-full items-center gap-3 rounded-lg border-0 px-3 py-2.5 text-le"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "close",
+   "aplicar": null,
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 320,
+  "filtro": "Categoría",
+  "cerrado": {
+   "x": 126.5,
+   "y": 481,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 257.9,
+   "vw": 320
+  },
+  "abierto": {
+   "x": 126.5,
+   "y": 334,
+   "w": 131.4,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-categoria",
+   "texto": "sell Categorí",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 257.9,
+   "vw": 320
+  },
+  "panel": {
+   "x": 0,
+   "y": 105,
+   "w": 320,
+   "h": 595,
+   "radio": "16px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "0px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "fixed",
+   "z": "30",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Categoríaclose​search​starMúsica124workNegocios98lightbulbEd",
+   "clase": "absolute left-0 top-tooltip z-20 flex w-72.5 flex-col overflow-hidden rounded-xl border border-borde bg-white p-3 shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z",
+   "derecha": 320,
+   "vw": 320
+  },
+  "cont": {
+   "n": 14,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "clo e",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car categoría ...",
+     "w": 250,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "checkbox",
+     "t": "Ca illa",
+     "w": 32,
+     "h": 32,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Limpiar  elección",
+     "w": 111,
+     "h": 23,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 66,
+     "h": 30,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 0,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "close",
+   "aplicar": null,
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ },
+ {
+  "w": 320,
+  "filtro": "Ubicación",
+  "cerrado": {
+   "x": 265.9,
+   "y": 481,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "1px rgb(233, 231, 241)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "false",
+   "ariaControls": null,
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 398.5,
+   "vw": 320
+  },
+  "abierto": {
+   "x": 175.9,
+   "y": 334,
+   "w": 132.6,
+   "h": 32,
+   "radio": "8px",
+   "pad": "0px 12px 0px 12px",
+   "fondo": "rgb(243, 240, 255)",
+   "borde": "1px rgb(90, 67, 244)",
+   "sombra": "none",
+   "pos": "static",
+   "z": "auto",
+   "fuente": "14px",
+   "peso": "500",
+   "ariaExpanded": "true",
+   "ariaControls": "panel-filtro-ubicacion",
+   "texto": "Ubicació",
+   "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-chip [&_.icono]:h-3.5! [&_.icono]:w-3.5! [",
+   "derecha": 308.5,
+   "vw": 320
+  },
+  "panel": {
+   "x": 0,
+   "y": 100,
+   "w": 320,
+   "h": 600,
+   "radio": "16px",
+   "pad": "0px 0px 0px 0px",
+   "fondo": "rgb(255, 255, 255)",
+   "borde": "0px rgb(233, 231, 241)",
+   "sombra": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rg",
+   "pos": "fixed",
+   "z": "30",
+   "fuente": "14px",
+   "peso": "400",
+   "ariaExpanded": null,
+   "ariaControls": null,
+   "texto": "Buscar ubicacióncloseBuscar ubicación​search​language Todas ",
+   "clase": "absolute left-0 top-tooltip z-20 flex max-h-150 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-",
+   "derecha": 320,
+   "vw": 320
+  },
+  "cont": {
+   "n": 13,
+   "items": [
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "clo e",
+     "w": 28,
+     "h": 28,
+     "cls": "inline-grid place-items-center p-0 disabled:cursor-not-allowed disable"
+    },
+    {
+     "tag": "input",
+     "tipo": "search",
+     "t": "Bu car ciudad, di trito o lu",
+     "w": 250,
+     "h": 40,
+     "cls": "MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "language Toda  la  ubicacion",
+     "w": 288,
+     "h": 37,
+     "cls": "mb-1 flex w-full items-center gap-2.5 rounded-lg border-0 px-2.5 py-2 "
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "adju t Mi ubicación actualch",
+     "w": 288,
+     "h": 37,
+     "cls": "flex w-full items-center gap-2.5 rounded-lg border-0 bg-transparent px"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Lima",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Arequipa",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Trujillo",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Cu co",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "input",
+     "tipo": "radio",
+     "t": "Piura",
+     "w": 38,
+     "h": 38,
+     "cls": "PrivateSwitchBase-input css-12xagqm-MuiSwitchBase-root"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Má  ciudade  keyboard_arrow_",
+     "w": 108,
+     "h": 21,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "language Ver en el mapachevr",
+     "w": 288,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Cancelar",
+     "w": 139,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    },
+    {
+     "tag": "button",
+     "tipo": "button",
+     "t": "Aplicar",
+     "w": 139,
+     "h": 48,
+     "cls": "inline-flex items-center justify-center gap-sm whitespace-nowrap borde"
+    }
+   ],
+   "mapas": 1,
+   "tieneScroll": false
+  },
+  "desborde": false,
+  "seleccion": {
+   "opcion": "close",
+   "aplicar": null,
+   "disparadores": [
+    {
+     "t": "F",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "sell Categorí",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    },
+    {
+     "t": "Ubicació",
+     "h": 32,
+     "exp": "false",
+     "clase": "inline-flex items-center justify-center gap-sm whitespace-nowrap border no-underline disabled:cursor-not-allowed disabled:opacity-40 h-8 px-3 rounded-lg text-ch"
+    }
+   ],
+   "panelSigueAbierto": false,
+   "limpiar": false
+  }
+ }
+]

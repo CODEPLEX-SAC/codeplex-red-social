@@ -1,6 +1,4 @@
-import { Boton } from '../../compartido/interfaz/boton'
-import { FondoPanelFlotante } from '../../compartido/interfaz/fondo_panel_flotante'
-import { Icono } from '../../compartido/icono'
+import { FiltroDesplegable } from '../../compartido/interfaz/filtro_desplegable'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { PanelFiltroUbicacion } from './panel_filtro_ubicacion'
 import type { CiudadFiltroEvento, MarcadorMapaEvento } from '@/tipos/eventos/contrato_filtro_ubicacion'
@@ -21,35 +19,16 @@ export function BloqueEventosParaTi1({
   MARCADORES_MAPA_PARA_TI: MarcadorMapaEvento[]
 }) {
   return (
-    <div className="relative flex-none">
-      <Boton type="button" onClick={(evento) => {
-          evento.stopPropagation()
-          setFiltroUbicacionAbierto((abierto) => !abierto)
-        }} variant="filtro" size="filtro" activo={filtroUbicacionAbierto || filtroUbicacion !== null}>
-        <Icono name="ubicacion" className="h-3.5 w-3.5" /> {filtroUbicacion === null ? catalogoEventos.filtros.ubicacion : [catalogoEventos.filtros.ubicacion_prefijo, filtroUbicacion].join('')}
-        {filtroUbicacion === null ? (
-          <Icono name={filtroUbicacionAbierto ? 'flecha-arriba' : 'flecha-abajo'} className="h-3.5 w-3.5" />
-        ) : (
-          <span
-            role="button"
-            tabIndex={0}
-            aria-label={catalogoEventos.botones.quitar_filtro}
-            onClick={(evento) => {
-              evento.stopPropagation()
-              setFiltroUbicacion(null)
-            }}
-            className="grid place-items-center"
-          >
-            <Icono name="cerrar" className="h-3.5 w-3.5" />
-          </span>
-        )}
-      </Boton>
-      {filtroUbicacionAbierto && (
-        <>
-          <FondoPanelFlotante onCerrar={() => setFiltroUbicacionAbierto(false)} />
-          <PanelFiltroUbicacion ciudades={CIUDADES_FILTRO_PARA_TI} marcadores={MARCADORES_MAPA_PARA_TI} ciudadActual={filtroUbicacion} onAplicar={setFiltroUbicacion} onCerrar={() => setFiltroUbicacionAbierto(false)} />
-        </>
-      )}
-    </div>
+    <FiltroDesplegable
+      id={catalogoEventos.ids_filtros.ubicacion}
+      abierto={filtroUbicacionAbierto}
+      alCambiarAbierto={setFiltroUbicacionAbierto}
+      activo={filtroUbicacionAbierto || filtroUbicacion !== null}
+      icono="ubicacion"
+      etiqueta={filtroUbicacion === null ? catalogoEventos.filtros.ubicacion : [catalogoEventos.filtros.ubicacion_prefijo, filtroUbicacion].join('')}
+      quitar={filtroUbicacion === null ? undefined : { etiqueta: catalogoEventos.botones.quitar_filtro, alQuitar: () => setFiltroUbicacion(null) }}
+    >
+      <PanelFiltroUbicacion id={catalogoEventos.ids_filtros.ubicacion} ciudades={CIUDADES_FILTRO_PARA_TI} marcadores={MARCADORES_MAPA_PARA_TI} ciudadActual={filtroUbicacion} onAplicar={setFiltroUbicacion} onCerrar={() => setFiltroUbicacionAbierto(false)} />
+    </FiltroDesplegable>
   )
 }

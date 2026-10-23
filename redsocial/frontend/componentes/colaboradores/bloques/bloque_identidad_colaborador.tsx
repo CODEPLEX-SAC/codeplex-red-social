@@ -1,5 +1,5 @@
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
@@ -17,7 +17,7 @@ export function BloqueIdentidadColaborador({
   return (
     <div>
       <div className="mb-4 flex items-start gap-3">
-        <AvatarImagen src={usuarioImg} className="h-14 w-14 flex-none rounded-full bg-gris-borde" />
+        <AvatarUsuario tamano="lg" imagen={usuarioImg} />
         <div className="flex min-w-0 flex-col gap-1">
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="m-0 text-cuerpo-grande text-texto">{colaborador.nombre}</h3>

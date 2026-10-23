@@ -1,4 +1,4 @@
-import type { ChangeEvent, ReactNode } from 'react'
+import type { ChangeEvent } from 'react'
 import type { Empresa } from './modelo_empresas'
 
 export interface DatosFormularioEmpresa {
@@ -42,12 +42,6 @@ export interface ModalEmpresaProps {
   totalExistentes: number
   alCerrar: () => void
   alGuardar: (empresa: Empresa) => void
-}
-
-export interface CampoEtiquetadoEmpresaProps {
-  etiqueta: string
-  requerido?: boolean
-  children: ReactNode
 }
 
 export interface CabeceraModalEmpresaProps {

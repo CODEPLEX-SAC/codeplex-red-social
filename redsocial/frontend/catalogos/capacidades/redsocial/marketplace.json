@@ -2,6 +2,12 @@
   "super_vip": {
     "habilitado": false
   },
+  "capacidad": {
+    "patrones": {
+      "empresas": "^(\\d+) empresas?$",
+      "sucursales": "^(\\d+) sucursal(?:es)?\\b"
+    }
+  },
   "acciones": [
     "listar",
     "buscar",
@@ -56,6 +62,12 @@
     "beneficio_2_detalle": "y segura",
     "beneficio_3_titulo": "Soporte y actualizaciones",
     "beneficio_3_detalle": "continuas"
+  },
+  "busqueda": {
+    "normalizacion": "NFD",
+    "marcas_diacriticas": "\\p{Diacritic}",
+    "sin_resultados_titulo": "Sin resultados",
+    "sin_resultados_detalle": "Ninguna aplicación destacada coincide con tu búsqueda."
   },
   "placeholders": {
     "buscar": "Buscar aplicaciones, módulos o soluciones..."
@@ -175,30 +187,28 @@
   },
   "pago": {
     "titulo": "Información de pago",
+    "mejora": {
+      "metodo_detalle": "Selecciona cómo deseas pagar tu suscripción.",
+      "importe": "Importe de la mejora",
+      "importe_valor": "No determinado: prorrateo e impuestos sin definir",
+      "precio_nuevo": "Precio del plan nuevo",
+      "activar": "Confirmar mejora (demostración)",
+      "demostrativo": "Demostración: no se realiza ningún cobro real.",
+      "exito": {
+        "titulo": "Mejora registrada (demostración)",
+        "detalle": "El plan se actualizó en esta sesión de demostración. No se realizó ningún cobro real.",
+        "volver": "Cerrar"
+      }
+    },
     "metodos": {
+      "abiertos_inicialmente": ["tarjeta"],
       "titulo": "Método de pago",
       "detalle": "Selecciona cómo deseas pagar tu suscripción. El primer mes es gratis.",
       "etiqueta": "Método de pago",
       "opciones": [
         { "id": "tarjeta", "titulo": "Tarjeta", "icono": "tarjeta-pago" },
-        { "id": "transferencia", "titulo": "Transferencia bancaria", "icono": "banco" },
         { "id": "billetera", "titulo": "Billeteras digitales", "icono": "celular" }
       ],
-      "transferencia": {
-        "titulo": "Transferencia bancaria",
-        "detalle": "Realiza una transferencia por el monto indicado.",
-        "filas": {
-          "banco": "Banco",
-          "tipo_cuenta": "Tipo de cuenta",
-          "numero_cuenta": "Número de cuenta",
-          "cci": "CCI",
-          "titular": "Titular"
-        },
-        "monto": "Monto a transferir",
-        "referencia": "Código de referencia",
-        "copiar": "Copiar :dato",
-        "importante": "Importante: usa el código de referencia para que podamos identificar tu pago. El acceso se activará automáticamente cuando confirmemos la transferencia."
-      },
       "billetera": {
         "titulo": "Selecciona tu billetera digital",
         "opciones": [
@@ -352,9 +362,14 @@
       "numero": "grid h-7 w-7 flex-none place-items-center rounded-full bg-primario text-conteo text-white",
       "cuerpo": "grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-5 max-600:p-4",
       "columnas": "grid items-start gap-4 grid-cols-minmax400-1fr-minmax230-300 max-768:grid-cols-1",
-      "copiar": "flex-none",
       "metodos_dos": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
       "metodo": "flex min-w-0 cursor-pointer items-center gap-3 rounded-xl border p-3.5 text-left",
+      "metodo_deshabilitado": "cursor-not-allowed opacity-60",
+      "metodo_texto": "min-w-0 flex-1",
+      "metodo_titulo": "flex flex-wrap items-center gap-x-2 gap-y-1 text-nombre-fila text-texto",
+      "metodo_detalle": "block text-auxiliar text-texto-suave",
+      "metodo_glifo": "h-5 w-5",
+      "indicador_glifo": "h-3 w-3",
       "metodo_activo": "border-primario bg-fondo-hover-suave",
       "metodo_inactivo": "border-borde bg-white hover:border-primario",
       "metodo_icono": "grid h-9 w-9 flex-none place-items-center rounded-control bg-primario-suave text-primario",
@@ -365,9 +380,6 @@
       "panel_titulo": "m-0 text-titulo-subseccion text-texto",
       "panel_detalle": "m-0 mt-0.5 text-auxiliar text-texto-suave",
       "datos": "grid grid-cols-1 rounded-xl border border-borde-suave bg-fondo px-3.5",
-      "dato": "flex items-center gap-3 border-t border-borde-suave py-2.5 first:border-t-0",
-      "dato_etiqueta": "w-28 flex-none text-auxiliar text-texto-suave max-600:w-20",
-      "dato_valor": "min-w-0 flex-1 break-words text-nombre-fila text-texto",
       "destacados": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
       "destacado": "flex items-center justify-between gap-3 rounded-xl border border-borde-suave bg-fondo p-3.5",
       "aviso": "flex items-start gap-2.5 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-primario",
@@ -408,18 +420,71 @@
       "usar_guardada": "Usar tarjeta guardada",
       "ver_todas": "Ver todas mis tarjetas (:n)",
       "cambiar": "Cambiar",
-      "cvv_aviso": "Por seguridad, ingresa el CVV cada vez",
-      "titulo_tarjetas": "Cambiar medio de pago",
-      "nueva_tarjeta": "Agregar nueva tarjeta",
+      
+      
+      
       "vence": "Vence :fecha",
-      "enmascarada": "•••• •••• •••• :ultimos",
+      
       "titulo_perfiles": "Datos de facturación",
       "nuevo_perfil": "Agregar nuevos datos",
       "usar_perfil": "Usar datos de facturación guardados",
       "ver_otras": "Ver otras empresas (:n)",
       "documento": "RUC / DNI :documento",
-      "aviso_sesion": "Los datos guardados solo viven en esta sesión y no incluyen el número completo de la tarjeta.",
+      "aviso_sesion": "Los datos de facturación guardados solo viven en esta sesión.",
       "separador": " · "
+    },
+    "reglas_tarjeta": { "digitos_minimos": 13, "digitos_maximos": 19, "cvv_minimo": 3, "cvv_maximo": 4, "ultimos": 4, "meses": 12, "siglo": 2000 },
+    "errores": {
+      "numero": "Ingresa un número de tarjeta válido.",
+      "vencimiento": "Ingresa la fecha de vencimiento (MM/AA).",
+      "vencida": "La tarjeta está vencida.",
+      "cvv": "Ingresa el CVV de 3 o 4 dígitos.",
+      "propietario": "Ingresa el nombre del propietario."
+    },
+    "metodo_guardado": {
+      "editar_etiqueta": "Editar método de pago",
+      "titulo_tarjeta": ":marca •••• :ultimos",
+      "predeterminada": "Predeterminada",
+      "vencida": "Vencida",
+      "elegir_valida": "Selecciona o registra un método de pago válido para continuar.",
+      "predeterminada_vencida": "Tu tarjeta predeterminada está vencida. Elige otra tarjeta o registra una nueva.",
+      "guardar_futuras": "Guardar esta tarjeta para próximas compras",
+      "aviso_demo": "Demostración: los métodos guardados viven solo en esta sesión y se pierden al recargar la página. Únicamente se conservan la marca, los últimos cuatro dígitos y el vencimiento; el número completo y el CVV nunca se guardan.",
+      "cargando": "Cargando tus métodos de pago…",
+      "error_lectura": "No pudimos recuperar tus métodos de pago.",
+      "error_escritura": "No pudimos guardar el cambio. Tu método de pago anterior se conserva.",
+      "reintentar": "Reintentar",
+      "procesando": "Procesando…",
+      "clases": {
+        "tarjeta": "flex items-center gap-3 rounded-lg border border-borde bg-fondo px-3.5 py-2.5",
+        "texto": "min-w-0 flex-1",
+        "linea_principal": "flex flex-wrap items-center gap-x-2 gap-y-1 text-nombre-fila text-texto",
+        "linea_secundaria": "text-auxiliar text-texto-suave",
+        "icono": "h-5 w-5 flex-none text-primario",
+        "aviso_estado": "flex flex-wrap items-center gap-3 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-texto",
+        "pie": "flex flex-wrap items-center justify-end gap-3",
+        "etiqueta_predeterminada": "bg-fondo-categoria-verde text-verde-categoria-texto",
+        "etiqueta_vencida": "bg-fondo-peligro-suave text-peligro-texto",
+        "contenido": "grid gap-4",
+        "texto_suave": "m-0 text-auxiliar text-texto-suave",
+        "modal": "max-w-130 rounded-2xl max-600:rounded-none",
+        "cuerpo_modal": "grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-5 max-600:p-4",
+        "lista_modal": "m-0 grid list-none gap-2.5 p-0",
+        "formulario": "grid gap-4 rounded-xl border border-borde-suave bg-fondo p-4"
+      },
+      "modal": {
+        "titulo": "Método de pago",
+        "lista_etiqueta": "Tarjetas guardadas",
+        "agregar": "Agregar otra tarjeta",
+        "nueva_titulo": "Datos de la nueva tarjeta",
+        "predeterminada_nueva": "Establecer como predeterminada",
+        "guardar": "Guardar tarjeta",
+        "descartar": "Descartar",
+        "cancelar": "Cancelar",
+        "usar_tarjeta": "Usar tarjeta",
+        "vacio": "Todavía no tienes tarjetas guardadas.",
+        "guardando": "Guardando…"
+      }
     },
     "formato_fecha_corta": {
       "locale": "es-PE",

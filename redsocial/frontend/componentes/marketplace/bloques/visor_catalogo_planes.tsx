@@ -3,6 +3,7 @@ import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/market
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Icono } from '../../compartido/icono'
+import { IndicadorCarga } from '../../compartido/interfaz/indicador_carga'
 import { Modal } from '../../compartido/interfaz/modal'
 import type { EstiloSelectorPlanes } from '@/tipos/marketplace/modelo_planes'
 
@@ -14,7 +15,7 @@ export function VisorCatalogoPlanes({ nombre, url, estilo, alCerrar }: { nombre:
   const cabecera = (
     <div className="flex flex-none items-center gap-3 border-b border-borde bg-white px-4 py-3">
       <span className={`grid h-9 w-9 flex-none place-items-center rounded-lg ${estilo.relleno}`}>
-        <Icono name="archivo-pdf" className="h-5 w-5" />
+        <Icono name="documento" className="h-5 w-5" />
       </span>
       <div className="min-w-0 flex-1">
         <h2 className="m-0 truncate text-titulo-banner text-texto">{nombre}</h2>
@@ -29,7 +30,11 @@ export function VisorCatalogoPlanes({ nombre, url, estilo, alCerrar }: { nombre:
   return (
     <Modal titulo={nombre} etiquetaCerrar={textos.cerrar} onCerrar={alCerrar} cabecera={cabecera} className="h-full max-w-240 rounded-2xl max-600:rounded-none">
       <div className="relative flex min-h-0 flex-1">
-        {cargando && <p className="absolute inset-0 m-0 grid place-items-center text-cuerpo text-texto-suave">{textos.cargando}</p>}
+        {cargando && (
+          <div className="absolute inset-0 grid place-items-center text-cuerpo text-texto-suave">
+            <IndicadorCarga etiqueta={textos.cargando} />
+          </div>
+        )}
         <iframe src={url} title={textos.marco} onLoad={() => setCargando(false)} className="min-h-0 w-full flex-1 border-0" />
       </div>
     </Modal>

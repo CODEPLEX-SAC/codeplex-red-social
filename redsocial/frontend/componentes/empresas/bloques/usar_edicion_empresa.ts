@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { datosDesdeEmpresa, edicionCompleta, empresaDesdeEdicion, opcionesDeUbigeo, reajustarUbigeo } from './logica_edicion_empresa'
+import { alternarModulos, datosDesdeEmpresa, edicionCompleta, empresaDesdeEdicion, opcionesDeUbigeo, reajustarUbigeo } from './logica_edicion_empresa'
 import { usarLogoEmpresa } from './usar_logo_empresa'
 import type { CampoEdicionEmpresa, EdicionEmpresa } from '@/tipos/empresas/contrato_edicion_empresa'
-import type { Empresa } from '@/tipos/empresas/modelo_empresas'
+import type { ClaveModuloEmpresa, Empresa } from '@/tipos/empresas/modelo_empresas'
 
 export function usarEdicionEmpresa(empresa: Empresa): EdicionEmpresa {
   const [datos, setDatos] = useState(() => datosDesdeEmpresa(empresa))
   const [logoQuitado, setLogoQuitado] = useState(false)
+  const [modulos, setModulos] = useState<ClaveModuloEmpresa[]>(empresa.modulos)
   const nuevo = usarLogoEmpresa()
   const logoVisible = nuevo.logo ?? (logoQuitado ? null : (empresa.logo ?? null))
 
@@ -22,6 +23,10 @@ export function usarEdicionEmpresa(empresa: Empresa): EdicionEmpresa {
     return (evento: { target: { value: unknown } }) => cambiarCampo(campo, String(evento.target.value))
   }
 
+  function alternarModulo(clave: ClaveModuloEmpresa) {
+    setModulos((actuales) => alternarModulos(actuales, clave))
+  }
+
   function quitarLogo() {
     nuevo.quitarLogo()
     setLogoQuitado(true)
@@ -29,7 +34,7 @@ export function usarEdicionEmpresa(empresa: Empresa): EdicionEmpresa {
 
   function construirEmpresa() {
     nuevo.conservarLogo()
-    return empresaDesdeEdicion(empresa, datos, logoVisible)
+    return empresaDesdeEdicion(empresa, datos, logoVisible, modulos)
   }
 
   return {
@@ -38,6 +43,8 @@ export function usarEdicionEmpresa(empresa: Empresa): EdicionEmpresa {
     logo: logoVisible,
     errorLogo: nuevo.errorLogo,
     puedeGuardar: edicionCompleta(datos),
+    modulos,
+    alternarModulo,
     manejarTexto,
     manejarSelector,
     elegirLogo: nuevo.elegirLogo,

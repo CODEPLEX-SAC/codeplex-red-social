@@ -64,6 +64,7 @@
     "abrir": "Cuenta de :nombre",
     "cerrar_sesion": "Cerrar sesión",
     "proximamente": "Disponible próximamente.",
+    "clave_perfil": "perfil",
     "etiqueta_opciones": "Opciones de la cuenta",
     "opciones": [
       { "clave": "perfil", "etiqueta": "Mi perfil", "icono": "usuario" },

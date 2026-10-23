@@ -1,6 +1,7 @@
-import { BotonIcono, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
+import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
+import { BannerInformativo, BotonIcono, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
-import { PestanasAvisos, BannerInfoAviso, FilaMencion, PanelDetalleAviso } from '../../componentes/avisos'
+import { PestanasAvisos, FilaMencion, PanelDetalleAviso } from '../../componentes/avisos'
 import { MENCIONES, CONTEOS_AVISOS, DETALLE_AVISO } from '../../rutas/avisos/rutas_avisos'
 
 export function PaginaAvisosMenciones() {
@@ -24,10 +25,12 @@ export function PaginaAvisosMenciones() {
 
             <PestanasAvisos activa="menciones" conteos={CONTEOS_AVISOS} />
 
-            <BannerInfoAviso
+            <BannerInformativo
               icono="comentario"
               titulo={catalogoAvisos.banner_menciones.titulo}
               descripcion={catalogoAvisos.banner_menciones.descripcion}
+              etiquetaCerrar={textosRedSocial.CERRAR}
+              className="mb-4"
             />
 
             <section className="rounded-control border border-borde bg-white">

@@ -1,9 +1,9 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -15,14 +15,7 @@ export function FilaAviso({ aviso: n, claseIcono, seleccionable }: FilaAvisoProp
       {seleccionable && <Casilla />}
 
       {n.tipo === 'avatar' ? (
-        <span className="relative flex-none">
-          <AvatarImagen src={usuarioImg} className="h-10 w-10 rounded-full bg-primario-suave" />
-          {n.conInsigniaIcono && (
-            <span className={`absolute -bottom-0.5 -right-0.5 grid h-4.5 w-4.5 place-items-center rounded-full border-2 border-white ${claseIcono}`}>
-              <Icono name={n.icono} className="h-3 w-3" />
-            </span>
-          )}
-        </span>
+        <AvatarUsuario tamano="md" imagen={usuarioImg} insignia={n.conInsigniaIcono ? <Icono name={n.icono} className="h-3 w-3" /> : undefined} claseInsignia={claseIcono} />
       ) : (
         <div className={`grid h-10 w-10 flex-none place-items-center rounded-full ${claseIcono}`}>
           <Icono name={n.icono} className="h-4.5 w-4.5" />
@@ -40,14 +33,7 @@ export function FilaAviso({ aviso: n, claseIcono, seleccionable }: FilaAvisoProp
       </div>
 
       {n.avataresExtra !== undefined && (
-        <div className="flex flex-none items-center">
-          {posicionesDe(2).map((posicion) => (
-            <AvatarImagen key={posicion.id} src={usuarioImg} className={'h-6 w-6 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-1.5' : '')} />
-          ))}
-          <span className="-ml-1.5 grid h-6 w-6 place-items-center rounded-full border-2 border-white bg-fondo-categoria-morado text-conteo text-primario">
-            +{n.avataresExtra}
-          </span>
-        </div>
+        <GrupoAvatares avatares={2} tamano="xs" resto={`+${n.avataresExtra}`} className="flex-none" />
       )}
 
       {n.solicitud ? (

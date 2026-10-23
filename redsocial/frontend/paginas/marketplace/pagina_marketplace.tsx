@@ -1,14 +1,15 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel } from '../../componentes/compartido'
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
-import { DESTACADOS, CATEGORIAS, COMPRAS, POPULARES, PAGO_PLANES, CLASES_MODULO, CLASES_INSIGNIA_CATEGORIA, CLASES_CATEGORIA_COLOR } from '../../rutas/marketplace/rutas_marketplace'
-import { ContextoCarritoMarketplace, SeccionTituloPre, SeccionPopularEstaSemana, PanelMisCompras, SeccionMisCompras, usarCarritoCompartido } from '../../componentes/marketplace'
+import { DESTACADOS, CATEGORIAS, POPULARES, PAGO_PLANES, CLASES_MODULO, CLASES_INSIGNIA_CATEGORIA, CLASES_CATEGORIA_COLOR } from '../../rutas/marketplace/rutas_marketplace'
+import { ContextoCarritoMarketplace, SeccionTituloPre, SeccionPopularEstaSemana, PanelMisCompras, SeccionMisCompras, usarCarritoCompartido, filtrarDestacados } from '../../componentes/marketplace'
 import { ProveedorCarritoMarketplace } from './proveedor_carrito_marketplace'
 
 function ContenidoMarketplace() {
   const carrusel = usarCarrusel()
   const carrito = usarCarritoCompartido()
-  const comprasVista = [...carrito.compras.map((c) => ({ nombre: c.nombre, icono: c.icono, color: c.tema, fecha: catalogoMarketplace.carrito.adquirido.replace(':fecha', c.fecha) })), ...COMPRAS]
+  const [busqueda, setBusqueda] = useState('')
+  const comprasVista = carrito.compras.map((c) => ({ nombre: c.nombre, icono: c.icono, color: c.tema, fecha: catalogoMarketplace.carrito.adquirido.replace(':fecha', c.fecha) }))
   const seccionCompras = carrito.comprasAbiertas ? (
     <SeccionMisCompras compras={carrito.compras} servicios={carrito.servicios} vip={PAGO_PLANES.vip} clasesModulo={CLASES_MODULO} desinstalacion={carrito.desinstalacion} alVolver={carrito.cerrarCompras} alMejorar={carrito.abrirPlanes} alContratarVip={carrito.contratarVip} />
   ) : null
@@ -18,11 +19,11 @@ function ContenidoMarketplace() {
         principal={
           <SeccionTituloPre
             carrusel={carrusel}
-            DESTACADOS={DESTACADOS}
+            DESTACADOS={filtrarDestacados(DESTACADOS, busqueda)}
             CLASES_MODULO={CLASES_MODULO}
             CLASES_INSIGNIA_CATEGORIA={CLASES_INSIGNIA_CATEGORIA}
             alVerPlanes={carrito.abrirPlanes}
-            accesos={{ abrirCompras: carrito.alternarCompras }}
+            accesos={{ abrirCompras: carrito.alternarCompras, busqueda, alBuscar: setBusqueda }}
             contenidoCompras={seccionCompras}
             CATEGORIAS={CATEGORIAS}
             CLASES_CATEGORIA_COLOR={CLASES_CATEGORIA_COLOR}

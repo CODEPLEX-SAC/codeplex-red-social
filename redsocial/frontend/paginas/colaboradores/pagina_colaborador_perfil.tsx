@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, ContactosPanel, BloqueAnuncio } from '../../componentes/compartido'
+import { Icono, Insignia, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, ContactosPanel, BloqueAnuncio } from '../../componentes/compartido'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
@@ -39,9 +39,9 @@ export function PaginaColaboradorPerfil() {
                     <span className="text-auxiliar text-texto-suave">{DETALLE_COLABORADOR_EJEMPLO.telefono}</span>
                   </div>
                 </div>
-                <span className="inline-flex items-center gap-1.25 text-estado text-positivo-kpi">
-                  <span className="h-1.75 w-1.75 rounded-full bg-verde-categoria" /> {DETALLE_COLABORADOR_EJEMPLO.estado}
-                </span>
+                <Insignia variant="status" className="inline-flex items-center gap-1.25 text-estado text-positivo-kpi" punto="bg-verde-categoria">
+                  {DETALLE_COLABORADOR_EJEMPLO.estado}
+                </Insignia>
               </div>
 
               <section className="mb-4">

@@ -1,9 +1,7 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import { clasesBoton } from '../../compartido/interfaz/boton'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import type { ReunionProgramada } from '@/tipos/mensajeria/contrato_reunion'
 
 export function SeccionReunionesProgramadas({
@@ -31,16 +29,7 @@ export function SeccionReunionesProgramadas({
             </p>
 
             <div className="flex flex-none items-center gap-1.5">
-              <div className="flex items-center">
-                {posicionesDe(r.avatares).map((posicion) => (
-                  <AvatarImagen
-                    key={posicion.id}
-                    src={usuarioImg}
-                    className={'h-8 w-8 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-2' : '')}
-                  />
-                ))}
-                <span className="-ml-2 grid h-8 w-8 place-items-center rounded-full border-2 border-white bg-primario text-conteo text-white">{r.extra}</span>
-              </div>
+              <GrupoAvatares avatares={r.avatares} tamano="sm" tono="solido" resto={r.extra} />
               <span className="flex items-center gap-1.5 whitespace-nowrap text-auxiliar text-texto-suave">
                 <Icono name="grupo" className="h-3.5 w-3.5" /> {r.participantes}
               </span>

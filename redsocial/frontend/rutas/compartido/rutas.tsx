@@ -15,6 +15,7 @@ import catalogoReportes from '../../catalogos/capacidades/redsocial/reportes.jso
 import catalogoIndicadores from '../../catalogos/capacidades/redsocial/indicadores.json'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
 import catalogoGuardados from '../../catalogos/capacidades/redsocial/guardados.json'
+import catalogoPerfil from '../../catalogos/capacidades/redsocial/perfil.json'
 import { PaginaAcceso } from '@/paginas/acceso/pagina_acceso'
 import { PaginaInicio } from '@/paginas/inicio/pagina_inicio'
 import { PaginaActividadTodas } from '@/paginas/actividad/pagina_actividad_todas'
@@ -60,7 +61,9 @@ import { PaginaAvisosNoLeidas } from '@/paginas/avisos/pagina_avisos_no_leidas'
 import { PaginaAvisosMenciones } from '@/paginas/avisos/pagina_avisos_menciones'
 import { PaginaAvisosSolicitudes } from '@/paginas/avisos/pagina_avisos_solicitudes'
 import { PaginaAvisosEventos } from '@/paginas/avisos/pagina_avisos_eventos'
+import { PaginaAvisosSistema } from '@/paginas/avisos/pagina_avisos_sistema'
 import { PaginaGuardados } from '@/paginas/guardados/pagina_guardados'
+import { PaginaPerfilUsuario } from '@/paginas/perfil/pagina_perfil_usuario'
 
 export const RUTA_INICIAL = catalogoInicio.rutas.principal
 
@@ -74,8 +77,11 @@ export const RUTAS: readonly RutaApp[] = [
   { path: catalogoAvisos.rutas.menciones, render: () => <PaginaAvisosMenciones /> },
   { path: catalogoAvisos.rutas.solicitudes, render: () => <PaginaAvisosSolicitudes /> },
   { path: catalogoAvisos.rutas.eventos, render: () => <PaginaAvisosEventos /> },
+  { path: catalogoAvisos.rutas.sistema, render: () => <PaginaAvisosSistema /> },
 
   { path: catalogoGuardados.rutas.principal, render: () => <PaginaGuardados /> },
+
+  { path: catalogoPerfil.rutas.principal, render: () => <PaginaPerfilUsuario /> },
 
   { path: catalogoActividad.rutas.todas, render: () => <PaginaActividadTodas /> },
   { path: catalogoActividad.rutas.publicaciones, render: () => <PaginaActividadPublicaciones /> },

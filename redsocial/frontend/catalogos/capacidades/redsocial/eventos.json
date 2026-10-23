@@ -185,6 +185,7 @@
     "estado_aceptada": "Aceptada",
     "estado_rechazada": "Rechazada"
   },
+  "ids_filtros": { "fecha": "panel-filtro-fecha", "categoria": "panel-filtro-categoria", "ubicacion": "panel-filtro-ubicacion", "estado": "panel-filtro-estado" },
   "filtros": {
     "todos_los_eventos": "Todos los eventos",
     "fecha": "Fecha",
@@ -195,7 +196,8 @@
     "pendientes": "Pendientes",
     "aceptadas": "Aceptadas",
     "rechazadas": "Rechazadas",
-    "ubicacion_prefijo": "Ubicación: "
+    "ubicacion_prefijo": "Ubicación: ",
+    "separador_conteo": ": "
   },
   "pestanas_filtro_invitaciones": [
     {"clave": "todas", "etiqueta": "Todas", "ruta": "/eventos/invitaciones"},
@@ -246,7 +248,7 @@
       {"clave": "especifica", "etiqueta": "Fecha específica", "detalle": "Selecciona una fecha en el calendario"},
       {"clave": "rango", "etiqueta": "Rango de fechas", "detalle": "Selecciona un rango de fechas"}
     ],
-    "clase_contenedor": "absolute left-0 top-tooltip z-20 flex max-h-135 overflow-y-auto overflow-x-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 panel-hoja-movil panel-hoja-movil-fija max-600:w-full max-600:flex-col max-600:rounded-b-none max-600:rounded-t-2xl max-600:border-0",
+    "clase_contenedor": "max-h-135 overflow-y-auto overflow-x-hidden panel-hoja-movil-fija max-600:flex-col",
     "titulo": "Filtrar por fecha",
     "hoy": "Hoy",
     "manana": "Mañana",

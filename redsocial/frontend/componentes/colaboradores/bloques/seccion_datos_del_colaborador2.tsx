@@ -1,4 +1,5 @@
 import { Icono } from '../../compartido/icono'
+import { BannerInformativo } from '../../compartido/interfaz/banner_informativo'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Radio } from '../../compartido/interfaz/radio'
 import { SeccionDatosDelColaborador3 } from './seccion_datos_del_colaborador3'
@@ -34,12 +35,7 @@ export function SeccionDatosDelColaborador2({
             </div>
           </label>
         </div>
-        <div className="mt-4 flex items-start gap-2 rounded-lg border border-borde-primario-suave bg-primario-suave px-3.5 py-2.5">
-          <Icono name="aviso" className="mt-px w-4 h-4 flex-none text-primario" />
-          <p className="m-0 text-auxiliar leading-texto text-texto-suave">
-            {catalogoColaboradores.campos_informacion.nota_registro}
-          </p>
-        </div>
+        <BannerInformativo icono="aviso" descripcion={catalogoColaboradores.campos_informacion.nota_registro} variante="nota" className="mt-4" />
       </div>
     </div>
   )

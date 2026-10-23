@@ -7,6 +7,7 @@ export interface FiltroFecha {
 }
 
 export interface PanelFiltroFechaProps {
+  id?: string
   onCerrar: () => void
   onAplicar: (filtro: FiltroFecha | null) => void
 }

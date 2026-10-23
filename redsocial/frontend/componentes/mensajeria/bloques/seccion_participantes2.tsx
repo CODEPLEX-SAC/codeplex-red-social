@@ -1,6 +1,6 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -20,7 +20,7 @@ export function SeccionParticipantes2({
       </div>
       {PARTICIPANTES_INICIAR.map((p) => (
         <article key={p.nombre} className="flex items-center gap-2.5 py-2">
-          <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full bg-primario-suave" />
+          <AvatarUsuario tamano="sm" imagen={usuarioImg} />
           <div className="min-w-0 flex-1">
             <strong className="block truncate text-nombre-entidad text-texto">{p.nombre}</strong>
             <span className="block text-estado text-exito-texto">{p.rol}</span>
@@ -35,7 +35,7 @@ export function SeccionParticipantes2({
       <div className="flex flex-col">
         {CONTACTOS_INVITAR.map((nombre) => (
           <article key={nombre} className="flex items-center gap-2.5 py-2">
-            <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full bg-primario-suave" />
+            <AvatarUsuario tamano="sm" imagen={usuarioImg} />
             <div className="min-w-0 flex-1">
               <strong className="block truncate text-nombre-entidad text-texto">{nombre}</strong>
               <span className="block text-auxiliar text-texto-suave">{catalogoMensajeria.leyendas.colaborador}</span>

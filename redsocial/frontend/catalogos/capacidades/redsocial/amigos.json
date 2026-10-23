@@ -60,7 +60,10 @@
   "botones": {
     "agregar_amigos": "Agregar amigos",
     "crear_listas": "Crear listas",
-    "todos_los_amigos": "Todos los amigos...",
+    "todos_los_amigos": "Todos los amigos",
+    "amigos_en_linea": "En línea",
+    "amigos_desconectados": "Desconectados",
+    "filtrar_amigos": "Filtrar amigos por estado",
     "mensaje": "Mensaje",
     "ver_mas_amigos": "Ver más amigos",
     "aceptar": "Aceptar",

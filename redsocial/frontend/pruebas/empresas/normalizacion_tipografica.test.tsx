@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { PaginaEmpresas } from '@/paginas/empresas/pagina_empresas'
+import { renderEmpresas } from './entorno_empresas'
 import { leerCssGlobal } from '../compartido/leer_css'
 import catalogoEmpresas from '../../catalogos/capacidades/redsocial/empresas.json'
 import { EstadoEmpresa } from '../../componentes/empresas/bloques/estado_empresa'
@@ -51,7 +51,7 @@ function abrirDetalle() {
 
 describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
   it('el mensaje vacio del listado usa el nivel subtitulo y no el de cuerpo', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     fireEvent.change(screen.getByRole('searchbox', { name: catalogoEmpresas.campos.buscar_empresa }), { target: { value: 'sin coincidencias posibles' } })
     const mensaje = screen.getByText(catalogoEmpresas.mensajes.sin_empresas)
     expect(mensaje).toHaveClass('text-subtitulo')
@@ -59,7 +59,7 @@ describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
   })
 
   it('los mensajes vacios de Usuarios e Historial usan el nivel subtitulo', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirDetalle()
     fireEvent.click(dialogo.getByRole('tab', { name: textosDetalle.pestanas.usuarios }))
     fireEvent.change(dialogo.getByRole('searchbox', { name: textosUsuarios.etiquetas.busqueda }), { target: { value: 'sin coincidencias' } })
@@ -71,7 +71,7 @@ describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
   })
 
   it('Historial rotula Desde y Hasta con la etiqueta externa del sistema (12 px / 500), no con una etiqueta flotante', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirDetalle()
     fireEvent.click(dialogo.getByRole('tab', { name: textosDetalle.pestanas.historial }))
     for (const texto of [textosHistorial.etiquetas.desde, textosHistorial.etiquetas.hasta]) {
@@ -82,7 +82,7 @@ describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
   })
 
   it('el nombre de usuario se muestra con el mismo peso en Usuarios y en Historial', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirDetalle()
     fireEvent.click(dialogo.getByRole('tab', { name: textosDetalle.pestanas.usuarios }))
     const enUsuarios = dialogo.getAllByRole('row')[1].querySelector('strong') as HTMLElement
@@ -93,7 +93,7 @@ describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
   })
 
   it('la subseccion Fecha de registro del panel queda por debajo del titulo del panel', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.filtros_avanzados }))
     const panel = within(screen.getByRole('dialog', { name: catalogoEmpresas.filtros_avanzados.titulo }))
     const titulo = panel.getByRole('heading', { name: catalogoEmpresas.filtros_avanzados.titulo })
@@ -104,7 +104,7 @@ describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
   })
 
   it('las migas de pan llevan al sistema el tamano auxiliar que declara su contenedor', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     expect(screen.getByRole('navigation', { name: catalogoEmpresas.migas.etiqueta })).toHaveClass('text-auxiliar')
     const reglas = Array.from(document.querySelectorAll('style')).map((estilo) => estilo.textContent).join('\n')
     expect(reglas).toMatch(/\.MuiTypography-root[^{]*\{[^}]*font-size:\s*var\(--text-auxiliar\)/)
@@ -112,9 +112,9 @@ describe('Normalizacion tipografica de Empresas', { timeout: 30000 }, () => {
 
   it('el estado de la empresa se muestra con un unico componente semantico en listado y Detalle', () => {
     const { rerender } = render(<EstadoEmpresa estado="activa" />)
-    expect(screen.getByText(catalogoEmpresas.estados.activa)).toHaveClass('text-exito-texto', 'text-subtitulo')
+    expect(screen.getByText(catalogoEmpresas.estados.activa).parentElement).toHaveClass('text-exito-texto', 'text-subtitulo')
     rerender(<EstadoEmpresa estado="inactiva" />)
-    expect(screen.getByText(catalogoEmpresas.estados.inactiva)).toHaveClass('text-peligro-texto', 'text-subtitulo')
+    expect(screen.getByText(catalogoEmpresas.estados.inactiva).parentElement).toHaveClass('text-peligro-texto', 'text-subtitulo')
   })
 })
 
@@ -124,9 +124,6 @@ describe('Accesibilidad AA de estados, planes y roles de Empresas', () => {
     ['estado activa (badge)', catalogoEmpresas.clases.estado.activa.insignia],
     ['estado inactiva (texto)', catalogoEmpresas.clases.estado.inactiva.texto],
     ['estado inactiva (badge)', catalogoEmpresas.clases.estado.inactiva.insignia],
-    ['plan avanzado', catalogoEmpresas.clases.plan.avanzado],
-    ['plan intermedio', catalogoEmpresas.clases.plan.intermedio],
-    ['plan basico', catalogoEmpresas.clases.plan.basico],
     ['rol administrador', textosUsuarios.clases.rol.administrador],
     ['rol contador', textosUsuarios.clases.rol.contador],
     ['rol supervisor', textosUsuarios.clases.rol.supervisor],

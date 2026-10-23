@@ -1,4 +1,5 @@
 import { Icono } from '../../compartido/icono'
+import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Radio } from '../../compartido/interfaz/radio'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
@@ -24,18 +25,12 @@ export function SeccionPeriodoDeVigencia2({
       </label>
 
       <div className="my-3 grid grid-cols-2 gap-4 max-960:grid-cols-1">
-        <div>
-          <label className="mb-1 block text-etiqueta text-texto">
-            {catalogoColaboradores.campos_vigencia.fecha_de_inicio} <span className="text-negativo-kpi">*</span>
-          </label>
+        <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_vigencia.fecha_de_inicio} requerido>
           <CampoTexto defaultValue={VIGENCIA_DEFAULT.fechaInicio} soloLectura iconoInicio={<Icono name="calendario" className="h-4.5 w-4.5" />} />
-        </div>
-        <div>
-          <label className="mb-1 block text-etiqueta text-texto">
-            {catalogoColaboradores.campos_vigencia.fecha_de_vencimiento} <span className="text-negativo-kpi">*</span>
-          </label>
+        </CampoEtiquetado>
+        <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_vigencia.fecha_de_vencimiento} requerido>
           <CampoTexto defaultValue={VIGENCIA_DEFAULT.fechaVencimiento} soloLectura iconoInicio={<Icono name="calendario" className="h-4.5 w-4.5" />} />
-        </div>
+        </CampoEtiquetado>
       </div>
       <span className="mt-2 inline-flex items-center rounded-md bg-fondo-hover-neutro px-3 py-1 text-badge text-texto-suave">{VIGENCIA_DEFAULT.duracion}</span>
 

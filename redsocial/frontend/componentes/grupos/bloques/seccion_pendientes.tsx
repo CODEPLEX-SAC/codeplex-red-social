@@ -1,8 +1,8 @@
-import { posicionesDe } from '../../compartido/posiciones'
+import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import { Icono } from '../../compartido/icono'
 import { Insignia } from '../../compartido/interfaz/insignia'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Boton } from '../../compartido/interfaz/boton'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
@@ -34,20 +34,11 @@ export function SeccionPendientes({
                 {p.privado && <Insignia variant="privado">{catalogoGrupos.leyendas.privado}</Insignia>}
               </h3>
               <span className="text-auxiliar text-texto-suave">{p.tipo}</span>
-              <div className="mt-1.5 flex items-center">
-                {posicionesDe(4).map((posicion) => (
-                  <AvatarImagen
-                    key={posicion.id}
-                    src={usuarioImg}
-                    className={'h-6 w-6 rounded-full border-2 border-white bg-primario-suave' + (posicion.orden > 0 ? ' -ml-1.5' : '')}
-                  />
-                ))}
-                <span className="-ml-1 inline-flex h-6 items-center rounded-xl border-2 border-white bg-fondo-categoria-morado px-1.5 text-conteo text-primario">{p.masAvatares}</span>
-              </div>
+              <GrupoAvatares avatares={4} tamano="xs" resto={p.masAvatares} className="mt-1.5" />
             </div>
           </div>
           <div className="flex min-w-35 flex-none items-center gap-2">
-            <AvatarImagen src={usuarioImg} className="h-8 w-8 flex-none rounded-full bg-primario-suave" />
+            <AvatarUsuario tamano="sm" imagen={usuarioImg} />
             <div className="min-w-0">
               <strong className="block text-nombre-entidad text-texto">{p.invitadoPor}</strong>
               <span className="text-fecha-abreviada text-texto-suave">{p.tiempo}</span>

@@ -1,36 +1,42 @@
+import { CodeplexEstadoBadge, CodeplexInsignia } from '@codeplex-sac/ui'
 import type { InsigniaProps } from '@/tipos/compartido/contrato_insignia'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
 const mapaPrivacidad: Record<'publico' | 'privado', string> = catalogoCompartido.insignia_privacidad
+const estado = catalogoCompartido.insignia_estado
+const superpuesta = catalogoCompartido.insignia_superpuesta
+const puntos: Record<string, string> = estado.puntos
+
+function Pildora({ etiqueta, clases, punto }: { etiqueta: string; clases: string; punto?: string }) {
+  const clasePunto = punto === undefined ? undefined : puntos[punto]
+  return <CodeplexEstadoBadge etiqueta={etiqueta} variante="neutro" mostrarPunto={clasePunto !== undefined} className={[clases, clasePunto ?? ''].join(' ').trim()} sx={estado.sx} />
+}
 
 export function Insignia(props: InsigniaProps) {
   switch (props.variant) {
     case 'counter':
-      return (
-        <span className="inline-grid h-4.5 min-w-4.5 place-items-center rounded-full bg-primario px-1.25 text-conteo text-white">
-          {props.children}
-        </span>
-      )
+      return <Pildora etiqueta={String(props.children)} clases={[estado.contador.tamanos[props.tamano ?? 'md'], estado.contador.tonos[props.tono ?? 'primario']].join(' ')} />
 
     case 'status':
-      return (
-        <span className={`inline-block whitespace-nowrap rounded-xl px-2 py-0.5 text-badge ${props.className}`}>
-          {props.children}
-        </span>
-      )
+      return <Pildora etiqueta={props.children} clases={[estado.pildora, props.className].join(' ')} punto={props.punto} />
 
     case 'privacy':
-      return (
-        <span className={`inline-block rounded px-2 py-0.5 text-badge ${mapaPrivacidad[props.tone]}`}>
-          {props.children}
-        </span>
-      )
+      return <Pildora etiqueta={props.children} clases={[estado.privacidad, mapaPrivacidad[props.tone]].join(' ')} />
 
     case 'privado':
+      return <Pildora etiqueta={props.children} clases={estado.privado} />
+
+    case 'superpuesta':
       return (
-        <span className="inline-block rounded-3 bg-fondo-categoria-morado px-1.5 py-px text-badge text-morado-categoria">
+        <CodeplexInsignia
+          contenido={props.contenido}
+          color={props.color ?? 'primario'}
+          maximo={props.maximo}
+          slotProps={{ badge: { className: superpuesta.texto } }}
+          className={[superpuesta.base, superpuesta.colores[props.color ?? 'primario'], props.className ?? ''].join(' ').trim()}
+        >
           {props.children}
-        </span>
+        </CodeplexInsignia>
       )
   }
 }

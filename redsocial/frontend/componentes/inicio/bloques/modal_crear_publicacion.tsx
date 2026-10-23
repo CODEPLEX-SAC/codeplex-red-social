@@ -13,12 +13,20 @@ import type { ModalCrearPublicacionProps } from '@/tipos/inicio/contrato_crear_p
 const textos = catalogoInicio.modal_crear_publicacion
 const primerNombre = catalogoCompartido.sesion_actual.usuario.split(' ')[0]
 
-export function ModalCrearPublicacion({ modo = 'crear', tipoInicial = 'publicacion', textoInicial = '', onPublicar, onCerrar }: ModalCrearPublicacionProps) {
-  const borrador = usarBorradorPublicacion(tipoInicial, textoInicial)
+export function ModalCrearPublicacion({ modo = 'crear', tipoInicial = 'publicacion', textoInicial = '', mediosIniciales, onPublicar, onCerrar }: ModalCrearPublicacionProps) {
+  const borrador = usarBorradorPublicacion(tipoInicial, textoInicial, mediosIniciales)
   const editando = modo === 'editar'
 
   function publicar() {
-    onPublicar({ tipo: borrador.tipo, texto: borrador.contenido.trim() })
+    const completas = borrador.opciones.map((opcion) => opcion.texto.trim()).filter((texto) => texto.length > 0)
+    const medios = borrador.entregarMedios()
+    onPublicar({
+      tipo: borrador.tipo,
+      texto: borrador.contenido.trim(),
+      prioridad: borrador.tipo === 'pregunta' ? borrador.prioridad : undefined,
+      opciones: borrador.tipo === 'encuesta' ? completas : undefined,
+      medios: medios.length > 0 || editando ? medios : undefined,
+    })
     onCerrar()
   }
 
@@ -46,7 +54,6 @@ export function ModalCrearPublicacion({ modo = 'crear', tipoInicial = 'publicaci
 
       <BloquePiePublicacion
         etiquetaPublicar={editando ? textos.editar.guardar : textos.publicar}
-        mostrarMedios={!editando}
         puedeAgregarMedios={borrador.puedeAgregarMedios}
         contenidoValido={borrador.contenidoValido}
         onAgregarMedios={borrador.agregarMedios}

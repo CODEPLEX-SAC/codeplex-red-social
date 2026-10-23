@@ -1,5 +1,5 @@
 import catalogoReportes from '../../../catalogos/capacidades/redsocial/reportes.json'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
+import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Icono } from '../../compartido/icono'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
@@ -41,7 +41,7 @@ export function SeccionReportesRecientes({
                 <td className={TD}>{r.periodo}</td>
                 <td className={TD}>
                   <div className="flex items-center gap-2">
-                    <AvatarImagen className="h-6.5 w-6.5 rounded-full" src={usuarioImg} />
+                    <AvatarUsuario tamano="xs" imagen={usuarioImg} />
                     <span>{r.autor}</span>
                   </div>
                 </td>

@@ -1,0 +1,272 @@
+[
+ {
+  "ruta": "/notificaciones",
+  "w": 1280,
+  "banners": []
+ },
+ {
+  "ruta": "/notificaciones",
+  "w": 400,
+  "banners": []
+ },
+ {
+  "ruta": "/notificaciones/no-leidas",
+  "w": 1280,
+  "banners": []
+ },
+ {
+  "ruta": "/notificaciones/no-leidas",
+  "w": 400,
+  "banners": []
+ },
+ {
+  "ruta": "/notificaciones/solicitudes",
+  "w": 1280,
+  "banners": [
+   {
+    "clase": "mb-4 flex items-start gap-3 rounded-xl border border-borde-primario-suave bg-fondo-activo-filtro p-3.5",
+    "w": 653,
+    "h": 99.4,
+    "pad": "14px 14px 14px 14px",
+    "radio": "12px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "12px",
+    "icono": "36x36",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/notificaciones/solicitudes",
+  "w": 400,
+  "banners": [
+   {
+    "clase": "mb-4 flex items-start gap-3 rounded-xl border border-borde-primario-suave bg-fondo-activo-filtro p-3.5",
+    "w": 376,
+    "h": 113.9,
+    "pad": "14px 14px 14px 14px",
+    "radio": "12px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "12px",
+    "icono": "36x36",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/notificaciones/menciones",
+  "w": 1280,
+  "banners": [
+   {
+    "clase": "mb-4 flex items-start gap-3 rounded-xl border border-borde-primario-suave bg-fondo-activo-filtro p-3.5",
+    "w": 653,
+    "h": 99.4,
+    "pad": "14px 14px 14px 14px",
+    "radio": "12px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "12px",
+    "icono": "36x36",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/notificaciones/menciones",
+  "w": 400,
+  "banners": [
+   {
+    "clase": "mb-4 flex items-start gap-3 rounded-xl border border-borde-primario-suave bg-fondo-activo-filtro p-3.5",
+    "w": 376,
+    "h": 113.9,
+    "pad": "14px 14px 14px 14px",
+    "radio": "12px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "12px",
+    "icono": "36x36",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/notificaciones/eventos",
+  "w": 1280,
+  "banners": [
+   {
+    "clase": "mb-4 flex items-start gap-3 rounded-xl border border-borde-primario-suave bg-fondo-activo-filtro p-3.5",
+    "w": 653,
+    "h": 99.4,
+    "pad": "14px 14px 14px 14px",
+    "radio": "12px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "12px",
+    "icono": "36x36",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/notificaciones/eventos",
+  "w": 400,
+  "banners": [
+   {
+    "clase": "mb-4 flex items-start gap-3 rounded-xl border border-borde-primario-suave bg-fondo-activo-filtro p-3.5",
+    "w": 376,
+    "h": 113.9,
+    "pad": "14px 14px 14px 14px",
+    "radio": "12px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "12px",
+    "icono": "36x36",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/notificaciones/sistema",
+  "w": 1280,
+  "banners": []
+ },
+ {
+  "ruta": "/notificaciones/sistema",
+  "w": 400,
+  "banners": []
+ },
+ {
+  "ruta": "/grupos",
+  "w": 1280,
+  "banners": [
+   {
+    "clase": "mb-6 flex items-start gap-3.5 rounded-control border border-borde-primario-suave bg-fondo-activo-filtro p-5",
+    "w": 653,
+    "h": 112.4,
+    "pad": "20px 20px 20px 20px",
+    "radio": "10px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "14px",
+    "icono": "44x44",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/grupos",
+  "w": 400,
+  "banners": [
+   {
+    "clase": "mb-6 flex items-start gap-3.5 rounded-control border border-borde-primario-suave bg-fondo-activo-filtro p-5",
+    "w": 376,
+    "h": 168.2,
+    "pad": "20px 20px 20px 20px",
+    "radio": "10px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "14px",
+    "icono": "44x44",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/grupos/descubrir",
+  "w": 1280,
+  "banners": [
+   {
+    "clase": "mb-6 flex items-start gap-3.5 rounded-control border border-borde-primario-suave bg-fondo-activo-filtro p-5",
+    "w": 653,
+    "h": 89.2,
+    "pad": "20px 20px 20px 20px",
+    "radio": "10px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "14px",
+    "icono": "44x44",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/grupos/descubrir",
+  "w": 400,
+  "banners": [
+   {
+    "clase": "mb-6 flex items-start gap-3.5 rounded-control border border-borde-primario-suave bg-fondo-activo-filtro p-5",
+    "w": 376,
+    "h": 127.6,
+    "pad": "20px 20px 20px 20px",
+    "radio": "10px",
+    "borde": "1px rgb(228, 223, 255)",
+    "fondo": "rgb(243, 240, 255)",
+    "gap": "14px",
+    "icono": "44x44",
+    "tituloFs": "14px",
+    "cierre": true,
+    "botones": [
+     "24x24"
+    ]
+   }
+  ]
+ },
+ {
+  "ruta": "/colaboradores/perfil",
+  "w": 1280,
+  "banners": []
+ },
+ {
+  "ruta": "/colaboradores/perfil",
+  "w": 400,
+  "banners": []
+ },
+ {
+  "ruta": "/colaboradores",
+  "w": 1280,
+  "banners": []
+ },
+ {
+  "ruta": "/colaboradores",
+  "w": 400,
+  "banners": []
+ }
+]

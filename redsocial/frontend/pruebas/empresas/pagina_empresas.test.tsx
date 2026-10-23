@@ -1,9 +1,9 @@
-import { fireEvent, render, screen, within } from '@testing-library/react'
-import { PaginaEmpresas } from '@/paginas/empresas/pagina_empresas'
+import { fireEvent, screen, within } from '@testing-library/react'
+import { renderEmpresas, SUSCRIPCIONES } from './entorno_empresas'
 import catalogoEmpresas from '../../catalogos/capacidades/redsocial/empresas.json'
 import dayjs from 'dayjs'
 import { datosDesdeEmpresa, edicionCompleta, empresaDesdeEdicion, opcionesDeUbigeo, reajustarUbigeo } from '../../componentes/empresas/bloques/logica_edicion_empresa'
-import { crearFiltrosAvanzados, filtrarEmpresas } from '../../componentes/empresas/bloques/logica_listado_empresas'
+import { crearFiltrosAvanzados, filtrarEmpresas, TODOS } from '../../componentes/empresas/bloques/logica_listado_empresas'
 import { filtrarHistorial, TODOS_LOS_TIPOS } from '../../componentes/empresas/bloques/logica_historial_empresa'
 import { EMPRESAS } from '../../servicios/empresas/empresas'
 import { HISTORIAL_BASE_EMPRESA } from '../../servicios/empresas/historial_empresa'
@@ -30,7 +30,7 @@ function elegir(etiqueta: string, opcion: string) {
 
 describe('Pagina Empresas', { timeout: 30000 }, () => {
   it('muestra la cabecera, la ruta de navegacion y la primera pagina del listado', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
 
     expect(screen.getByRole('heading', { level: 1, name: catalogoEmpresas.titulos.listado })).toBeInTheDocument()
     expect(screen.getByText(catalogoEmpresas.subtitulos.listado)).toBeInTheDocument()
@@ -39,11 +39,11 @@ describe('Pagina Empresas', { timeout: 30000 }, () => {
     expect(filasDeDatos()).toHaveLength(10)
     expect(screen.getByText(resumen(1, 10, total))).toBeInTheDocument()
     expect(within(filasDeDatos()[0]).getByText(EMPRESAS[0].nombre)).toBeInTheDocument()
-    expect(within(filasDeDatos()[0]).getByText(EMPRESAS[0].codigo)).toBeInTheDocument()
+    expect(within(filasDeDatos()[0]).getByText(catalogoEmpresas.codigo_empresa.replace(':codigo', EMPRESAS[0].codigo))).toBeInTheDocument()
   })
 
   it('filtra por RUC, nombre o correo y restablece la pagina', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const buscador = screen.getByRole('searchbox', { name: catalogoEmpresas.campos.buscar_empresa })
 
     fireEvent.change(buscador, { target: { value: EMPRESAS[1].ruc } })
@@ -56,11 +56,12 @@ describe('Pagina Empresas', { timeout: 30000 }, () => {
     expect(screen.getByText(resumen(0, 0, 0))).toBeInTheDocument()
   })
 
-  it('filtra por estado desde la barra y por rubro y tipo de plan desde Filtros avanzados', () => {
-    render(<PaginaEmpresas />)
+  it('filtra por estado, plan y modulo desde la barra y por rubro desde Filtros avanzados', () => {
+    renderEmpresas()
 
     expect(screen.queryByRole('combobox', { name: catalogoEmpresas.selectores.rubro.etiqueta })).toBeNull()
-    expect(screen.queryByRole('combobox', { name: catalogoEmpresas.selectores.tipo_plan.etiqueta })).toBeNull()
+    expect(screen.getByRole('combobox', { name: catalogoEmpresas.selectores.plan.etiqueta })).toBeInTheDocument()
+    expect(screen.getByRole('combobox', { name: catalogoEmpresas.selectores.modulo.etiqueta })).toBeInTheDocument()
 
     elegir(catalogoEmpresas.selectores.estado.etiqueta, catalogoEmpresas.estados.inactiva)
     const inactivas = EMPRESAS.filter((empresa) => empresa.estado === 'inactiva')
@@ -68,27 +69,44 @@ describe('Pagina Empresas', { timeout: 30000 }, () => {
     expect(screen.getByText(inactivas[0].nombre)).toBeInTheDocument()
 
     elegir(catalogoEmpresas.selectores.estado.etiqueta, catalogoEmpresas.selectores.estado.opciones[0])
-    let panel = abrirFiltrosAvanzados()
-    elegir(catalogoEmpresas.selectores.tipo_plan.etiqueta, catalogoEmpresas.planes.avanzado)
-    elegir(catalogoEmpresas.selectores.rubro.etiqueta, 'Construcción')
-    expect(filasDeDatos()).toHaveLength(Math.min(10, total))
+    elegir(catalogoEmpresas.selectores.plan.etiqueta, SUSCRIPCIONES[1].planNombre)
+    const conFacturacion = EMPRESAS.filter((empresa) => empresa.modulos.includes('facturacion'))
+    expect(filasDeDatos()).toHaveLength(Math.min(10, conFacturacion.length))
+
+    elegir(catalogoEmpresas.selectores.modulo.etiqueta, catalogoEmpresas.modulos[1].etiqueta)
+    expect(filasDeDatos()).toHaveLength(Math.min(10, conFacturacion.length))
+
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.limpiar }))
+    expect(screen.getByText(resumen(1, Math.min(10, total), total))).toBeInTheDocument()
+    expect(screen.getByRole('combobox', { name: catalogoEmpresas.selectores.plan.etiqueta })).toHaveTextContent(TODOS)
+
+    const panel = abrirFiltrosAvanzados()
+    elegir(catalogoEmpresas.selectores.rubro.etiqueta, 'Pyme')
     fireEvent.click(panel.getByRole('button', { name: textosAvanzados.aplicar }))
-
     expect(screen.queryByRole('dialog', { name: textosAvanzados.titulo })).toBeNull()
-    const construccion = EMPRESAS.filter((empresa) => empresa.plan === 'avanzado' && empresa.rubro === 'Construcción')
-    expect(filasDeDatos()).toHaveLength(construccion.length)
+    expect(filasDeDatos()).toHaveLength(EMPRESAS.filter((empresa) => empresa.rubro === 'Pyme').length)
 
-    panel = abrirFiltrosAvanzados()
-    fireEvent.click(panel.getByRole('button', { name: textosAvanzados.limpiar }))
+    fireEvent.click(abrirFiltrosAvanzados().getByRole('button', { name: textosAvanzados.limpiar }))
     expect(screen.getByText(resumen(1, Math.min(10, total), total))).toBeInTheDocument()
   })
 
-  it('el panel de Filtros avanzados trae rubro, tipo de plan, fecha de registro desde y hasta, limpiar y aplicar', () => {
-    render(<PaginaEmpresas />)
+  it('Limpiar de la barra restablece la busqueda, el estado, el plan y el modulo', () => {
+    renderEmpresas()
+    fireEvent.change(screen.getByRole('searchbox', { name: catalogoEmpresas.campos.buscar_empresa }), { target: { value: EMPRESAS[1].ruc } })
+    elegir(catalogoEmpresas.selectores.plan.etiqueta, SUSCRIPCIONES[0].planNombre)
+    expect(filasDeDatos()).toHaveLength(1)
+
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.limpiar }))
+    expect(screen.getByRole('searchbox', { name: catalogoEmpresas.campos.buscar_empresa })).toHaveValue('')
+    expect(filasDeDatos()).toHaveLength(Math.min(10, total))
+  })
+
+  it('el panel de Filtros avanzados trae rubro, fecha de registro desde y hasta, limpiar y aplicar, sin el plan que ya esta en la barra', () => {
+    renderEmpresas()
     const panel = abrirFiltrosAvanzados()
 
     expect(panel.getByRole('combobox', { name: catalogoEmpresas.selectores.rubro.etiqueta })).toBeInTheDocument()
-    expect(panel.getByRole('combobox', { name: catalogoEmpresas.selectores.tipo_plan.etiqueta })).toBeInTheDocument()
+    expect(panel.queryByRole('combobox', { name: catalogoEmpresas.selectores.plan.etiqueta })).toBeNull()
     expect(panel.getByText(textosAvanzados.fecha_registro)).toBeInTheDocument()
     expect(panel.getByText(textosAvanzados.desde)).toBeInTheDocument()
     expect(panel.getByText(textosAvanzados.hasta)).toBeInTheDocument()
@@ -108,33 +126,23 @@ describe('Pagina Empresas', { timeout: 30000 }, () => {
     expect(hasta.length).toBe(fechas.filter((fecha) => !fecha.isAfter(corte, 'day')).length)
   })
 
-  it('pagina el listado y cambia el tamano de pagina', () => {
-    render(<PaginaEmpresas />)
+  it('pagina el listado en bloques de diez al registrar una empresa mas', () => {
+    renderEmpresas()
+    expect(screen.queryByRole('combobox', { name: 'Empresas por página' })).toBeNull()
+
+    const dialogo = abrirModal()
+    completarFormulario(dialogo)
+    fireEvent.click(dialogo.getByRole('button', { name: modalEmpresa.guardar }))
+    expect(screen.getByText(resumen(1, 10, total + 1))).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: 'Go to page 2' }))
-    expect(screen.getByText(resumen(11, 20, total))).toBeInTheDocument()
-    expect(within(filasDeDatos()[0]).getByText(EMPRESAS[10].nombre)).toBeInTheDocument()
-
-    elegir(catalogoEmpresas.campos.tamano_pagina, catalogoEmpresas.tamanos_pagina[1].etiqueta)
-    expect(filasDeDatos()).toHaveLength(20)
-    expect(screen.getByText(resumen(1, 20, total))).toBeInTheDocument()
+    expect(screen.getByText(resumen(11, 11, total + 1))).toBeInTheDocument()
+    expect(filasDeDatos()).toHaveLength(1)
   })
 
-  it('selecciona filas individuales y todas las de la pagina', () => {
-    render(<PaginaEmpresas />)
-    const todas = screen.getByRole('checkbox', { name: catalogoEmpresas.campos.seleccionar_todas })
-    const primera = screen.getByRole('checkbox', { name: catalogoEmpresas.campos.seleccionar_empresa.replace(':nombre', EMPRESAS[0].nombre) })
-
-    expect(primera).not.toBeChecked()
-    fireEvent.click(primera)
-    expect(primera).toBeChecked()
-    expect(todas).not.toBeChecked()
-
-    fireEvent.click(todas)
-    expect(screen.getAllByRole('checkbox').every((casilla) => (casilla as HTMLInputElement).checked)).toBe(true)
-
-    fireEvent.click(todas)
-    expect(primera).not.toBeChecked()
+  it('la tabla no ofrece casillas de seleccion', () => {
+    renderEmpresas()
+    expect(screen.queryAllByRole('checkbox')).toHaveLength(0)
   })
 })
 
@@ -162,7 +170,7 @@ function completarFormulario(dialogo: ReturnType<typeof abrirModal>) {
 
 describe('Modal Nueva empresa', { timeout: 30000 }, () => {
   it('abre con la cabecera propia, deshabilita Guardar y se cierra con la x, Cancelar y Escape devolviendo el foco', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirModal()
 
     expect(dialogo.getByText(modalEmpresa.subtitulo)).toBeInTheDocument()
@@ -183,7 +191,7 @@ describe('Modal Nueva empresa', { timeout: 30000 }, () => {
   })
 
   it('valida el RUC de 11 digitos', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirModal()
 
     escribirCampo(dialogo, camposModal.ruc, '123')
@@ -197,7 +205,7 @@ describe('Modal Nueva empresa', { timeout: 30000 }, () => {
   })
 
   it('guarda la empresa completando los datos obligatorios y la muestra primera en el listado', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirModal()
     completarFormulario(dialogo)
 
@@ -212,7 +220,7 @@ describe('Modal Nueva empresa', { timeout: 30000 }, () => {
   })
 
   it('rechaza un logo que no es PNG o JPG', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirModal()
     const entrada = dialogo.getByLabelText(modalEmpresa.logo.cambiar, { selector: 'input' })
 
@@ -221,49 +229,18 @@ describe('Modal Nueva empresa', { timeout: 30000 }, () => {
   })
 })
 
-describe('Menu de acciones de la fila', { timeout: 30000 }, () => {
-  function botonOpciones(nombre: string) {
-    return screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', nombre) })
-  }
-
-  it('abre con las tres opciones, la ultima como peligro, y se cierra con Escape devolviendo el foco', () => {
-    render(<PaginaEmpresas />)
-    const boton = botonOpciones(EMPRESAS[0].nombre)
-    boton.focus()
-    expect(boton).toHaveAttribute('aria-expanded', 'false')
-    fireEvent.click(boton)
-
-    const menu = within(screen.getByRole('menu'))
-    const opciones = catalogoEmpresas.menu_fila
-    expect(menu.getAllByRole('menuitem').map((item) => item.textContent)).toEqual(opciones.map((opcion) => opcion.etiqueta))
-    expect(boton).toHaveAttribute('aria-expanded', 'true')
-
-    fireEvent.keyDown(screen.getByRole('menu'), { key: 'Escape' })
-    expect(screen.queryByRole('menu')).toBeNull()
-  })
-
-  it('cierra el menu al elegir una opcion', () => {
-    render(<PaginaEmpresas />)
-    fireEvent.click(botonOpciones(EMPRESAS[1].nombre))
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: catalogoEmpresas.menu_fila[0].etiqueta }))
-    expect(screen.queryByRole('menu')).toBeNull()
-  })
-})
-
 describe('Desactivar empresa', { timeout: 30000 }, () => {
   const textosDesactivar = catalogoEmpresas.modal_desactivar
-  const opcionDesactivar = catalogoEmpresas.menu_fila[2].etiqueta
 
   function pedirDesactivacion(nombre: string) {
-    const boton = screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', nombre) })
+    const boton = screen.getByRole('button', { name: catalogoEmpresas.botones.desactivar.replace(':nombre', nombre) })
     boton.focus()
     fireEvent.click(boton)
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: opcionDesactivar }))
     return within(screen.getByRole('dialog', { name: textosDesactivar.titulo }))
   }
 
   it('muestra la confirmacion con el nombre de la empresa y Cancelar no cambia nada', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = pedirDesactivacion(EMPRESAS[0].nombre)
 
     expect(dialogo.getByText(EMPRESAS[0].nombre, { exact: false })).toBeInTheDocument()
@@ -271,24 +248,35 @@ describe('Desactivar empresa', { timeout: 30000 }, () => {
     fireEvent.click(dialogo.getByRole('button', { name: textosDesactivar.cancelar }))
 
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(within(filasDeDatos()[0]).getByText(catalogoEmpresas.estados.activa)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[0].nombre) })).toHaveFocus()
+    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.desactivar.replace(':nombre', EMPRESAS[0].nombre) })).toBeEnabled()
+    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.desactivar.replace(':nombre', EMPRESAS[0].nombre) })).toHaveFocus()
   })
 
   it('confirmar pasa la empresa a Inactiva y la opcion deja de ofrecerse en esa fila', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     fireEvent.click(pedirDesactivacion(EMPRESAS[0].nombre).getByRole('button', { name: textosDesactivar.confirmar }))
 
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(within(filasDeDatos()[0]).getByText(catalogoEmpresas.estados.inactiva)).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: catalogoEmpresas.botones.desactivar.replace(':nombre', EMPRESAS[0].nombre) })).toBeNull()
+    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.activar.replace(':nombre', EMPRESAS[0].nombre) })).toBeEnabled()
+  })
 
-    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[0].nombre) }))
-    const opciones = within(screen.getByRole('menu')).getAllByRole('menuitem').map((item) => item.textContent)
-    expect(opciones).not.toContain(opcionDesactivar)
+  it('en una empresa inactiva ofrece activar, pide confirmacion y la vuelve Activa', () => {
+    renderEmpresas()
+    const inactiva = EMPRESAS.find((empresa) => empresa.estado === 'inactiva')
+    expect(inactiva).toBeDefined()
+    const nombre = inactiva?.nombre ?? ''
+    elegir(catalogoEmpresas.selectores.estado.etiqueta, catalogoEmpresas.estados.inactiva)
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.activar.replace(':nombre', nombre) }))
+    const dialogo = within(screen.getByRole('dialog', { name: catalogoEmpresas.modal_activar.titulo }))
+
+    fireEvent.click(dialogo.getByRole('button', { name: catalogoEmpresas.modal_activar.confirmar }))
+    expect(screen.queryByRole('dialog')).toBeNull()
+    expect(screen.queryByRole('button', { name: catalogoEmpresas.botones.activar.replace(':nombre', nombre) })).toBeNull()
   })
 
   it('se cierra con Escape y con la x', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     pedirDesactivacion(EMPRESAS[1].nombre)
     fireEvent.keyDown(document, { key: 'Escape' })
     expect(screen.queryByRole('dialog')).toBeNull()
@@ -300,25 +288,22 @@ describe('Desactivar empresa', { timeout: 30000 }, () => {
 
 describe('Detalle de empresa', { timeout: 30000 }, () => {
   const textosDetalle = catalogoEmpresas.detalle_empresa
-  const opcionVerDetalle = catalogoEmpresas.menu_fila[0].etiqueta
-  const opcionEditar = catalogoEmpresas.menu_fila[1].etiqueta
 
-  function abrirDesdeMenu(nombre: string, opcion: string) {
-    const boton = screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', nombre) })
+  function abrirDetalle(nombre: string) {
+    const boton = screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', nombre) })
     boton.focus()
     fireEvent.click(boton)
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: opcion }))
     return within(screen.getByRole('dialog', { name: textosDetalle.titulo }))
   }
 
   it('muestra las filas con el logo de la empresa', () => {
-    const { container } = render(<PaginaEmpresas />)
+    const { container } = renderEmpresas()
     expect(container.querySelectorAll('tbody tr img')).toHaveLength(10)
   })
 
   it('Ver detalle abre la informacion general y completa de la empresa', () => {
-    render(<PaginaEmpresas />)
-    const dialogo = abrirDesdeMenu(EMPRESAS[0].nombre, opcionVerDetalle)
+    renderEmpresas()
+    const dialogo = abrirDetalle(EMPRESAS[0].nombre)
 
     expect(dialogo.getByText(textosDetalle.subtitulo)).toBeInTheDocument()
     expect(dialogo.getByRole('heading', { level: 3, name: EMPRESAS[0].nombre })).toBeInTheDocument()
@@ -331,8 +316,8 @@ describe('Detalle de empresa', { timeout: 30000 }, () => {
   })
 
   it('cambia entre las pestanas del detalle', () => {
-    render(<PaginaEmpresas />)
-    const dialogo = abrirDesdeMenu(EMPRESAS[0].nombre, opcionVerDetalle)
+    renderEmpresas()
+    const dialogo = abrirDetalle(EMPRESAS[0].nombre)
 
     fireEvent.click(dialogo.getByRole('tab', { name: textosDetalle.pestanas.historial }))
     expect(dialogo.getByText(catalogoEmpresas.historial_empresa.titulo)).toBeInTheDocument()
@@ -342,16 +327,8 @@ describe('Detalle de empresa', { timeout: 30000 }, () => {
     expect(dialogo.queryByText(textosDetalle.pestanas.informacion, { selector: 'h4' })).toBeNull()
   })
 
-  it('la opcion Editar empresa del menu abre el modal de edicion', () => {
-    render(<PaginaEmpresas />)
-    const boton = screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[1].nombre) })
-    fireEvent.click(boton)
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: opcionEditar }))
-    expect(screen.getByRole('dialog', { name: catalogoEmpresas.edicion_empresa.titulo })).toBeInTheDocument()
-  })
-
   it('las acciones de la fila ofrecen ver detalle, editar y desactivar como iconos', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const nombre = EMPRESAS[0].nombre
     fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', nombre) }))
     expect(screen.getByRole('dialog', { name: textosDetalle.titulo })).toBeInTheDocument()
@@ -365,22 +342,14 @@ describe('Detalle de empresa', { timeout: 30000 }, () => {
     expect(screen.getByRole('dialog', { name: catalogoEmpresas.modal_desactivar.titulo })).toBeInTheDocument()
   })
 
-  it('el icono de desactivar queda deshabilitado en una empresa inactiva', () => {
-    render(<PaginaEmpresas />)
-    const inactiva = EMPRESAS.find((empresa) => empresa.estado === 'inactiva')
-    expect(inactiva).toBeDefined()
-    elegir(catalogoEmpresas.selectores.estado.etiqueta, catalogoEmpresas.estados.inactiva)
-    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.desactivar.replace(':nombre', inactiva?.nombre ?? '') })).toBeDisabled()
-  })
-
-  it('se cierra con Cerrar y devuelve el foco al boton de opciones', () => {
-    render(<PaginaEmpresas />)
-    const dialogo = abrirDesdeMenu(EMPRESAS[0].nombre, opcionVerDetalle)
+  it('se cierra con Cerrar y devuelve el foco al icono de ver detalle', () => {
+    renderEmpresas()
+    const dialogo = abrirDetalle(EMPRESAS[0].nombre)
     const cierres = dialogo.getAllByRole('button', { name: textosDetalle.cerrar })
     fireEvent.click(cierres[cierres.length - 1])
 
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[0].nombre) })).toHaveFocus()
+    expect(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', EMPRESAS[0].nombre) })).toHaveFocus()
   })
 })
 
@@ -390,9 +359,7 @@ describe('Pestana Usuarios del detalle', { timeout: 30000 }, () => {
     textosUsuarios.resumen.replace('{mostrados}', String(mostrados)).replace('{total}', String(totalUsuarios))
 
   function abrirUsuarios(nombre: string) {
-    const boton = screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', nombre) })
-    fireEvent.click(boton)
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: catalogoEmpresas.menu_fila[0].etiqueta }))
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', nombre) }))
     fireEvent.click(within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo })).getByRole('tab', { name: catalogoEmpresas.detalle_empresa.pestanas.usuarios }))
     return within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo }))
   }
@@ -402,7 +369,7 @@ describe('Pestana Usuarios del detalle', { timeout: 30000 }, () => {
   }
 
   it('muestra el listado de usuarios de la empresa con su avatar y la primera pagina', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuarios(EMPRESAS[0].nombre)
 
     expect(dialogo.getByText(textosUsuarios.titulo)).toBeInTheDocument()
@@ -417,7 +384,7 @@ describe('Pestana Usuarios del detalle', { timeout: 30000 }, () => {
   })
 
   it('busca por nombre, correo o rol y filtra por rol y por estado', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuarios(EMPRESAS[0].nombre)
 
     fireEvent.change(dialogo.getByRole('searchbox', { name: textosUsuarios.etiquetas.busqueda }), { target: { value: 'maria' } })
@@ -436,7 +403,7 @@ describe('Pestana Usuarios del detalle', { timeout: 30000 }, () => {
   })
 
   it('pagina los usuarios', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuarios(EMPRESAS[0].nombre)
 
     fireEvent.click(dialogo.getByRole('button', { name: 'Go to page 2' }))
@@ -445,7 +412,7 @@ describe('Pestana Usuarios del detalle', { timeout: 30000 }, () => {
   })
 
   it('una empresa sin usuarios muestra el mensaje de vacio', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const nueva = abrirModal()
     completarFormulario(nueva)
     fireEvent.click(nueva.getByRole('button', { name: modalEmpresa.guardar }))
@@ -461,8 +428,7 @@ describe('Pestana Historial del detalle', { timeout: 30000 }, () => {
     textosHistorial.resumen.replace('{mostrados}', String(mostrados)).replace('{total}', String(totalRegistros))
 
   function abrirHistorial(nombre: string) {
-    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', nombre) }))
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: catalogoEmpresas.menu_fila[0].etiqueta }))
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', nombre) }))
     const dialogo = within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo }))
     fireEvent.click(dialogo.getByRole('tab', { name: catalogoEmpresas.detalle_empresa.pestanas.historial }))
     return dialogo
@@ -473,7 +439,7 @@ describe('Pestana Historial del detalle', { timeout: 30000 }, () => {
   }
 
   it('muestra el historial con avatar de usuario, tipo y la primera pagina', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirHistorial(EMPRESAS[0].nombre)
 
     expect(dialogo.getByText(textosHistorial.subtitulo)).toBeInTheDocument()
@@ -485,7 +451,7 @@ describe('Pestana Historial del detalle', { timeout: 30000 }, () => {
   })
 
   it('busca por accion, usuario o detalle y filtra por tipo', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirHistorial(EMPRESAS[0].nombre)
 
     fireEvent.change(dialogo.getByRole('searchbox', { name: textosHistorial.etiquetas.busqueda }), { target: { value: 'sin coincidencias' } })
@@ -499,7 +465,7 @@ describe('Pestana Historial del detalle', { timeout: 30000 }, () => {
   })
 
   it('pagina el historial', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirHistorial(EMPRESAS[0].nombre)
 
     fireEvent.click(dialogo.getByRole('button', { name: 'Go to page 2' }))
@@ -508,7 +474,7 @@ describe('Pestana Historial del detalle', { timeout: 30000 }, () => {
   })
 
   it('una empresa sin usuarios no tiene actividad registrada', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const nueva = abrirModal()
     completarFormulario(nueva)
     fireEvent.click(nueva.getByRole('button', { name: modalEmpresa.guardar }))
@@ -543,7 +509,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
   }
 
   it('el lapiz abre el formulario con los datos actuales de la empresa', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirEdicion(EMPRESAS[0].nombre)
 
     expect(dialogo.getByText(textosEdicion.subtitulo)).toBeInTheDocument()
@@ -557,7 +523,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('Guardar cambios actualiza la fila de la tabla y cierra el formulario', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirEdicion(EMPRESAS[0].nombre)
     escribirEdicion(dialogo, camposDetalle.razon_social, 'Constructora Renovada SAC')
     fireEvent.click(dialogo.getByRole('button', { name: textosEdicion.guardar }))
@@ -568,7 +534,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('no permite guardar con un RUC incompleto ni con campos obligatorios vacios', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirEdicion(EMPRESAS[0].nombre)
     const guardar = dialogo.getByRole('button', { name: textosEdicion.guardar })
 
@@ -581,7 +547,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('Cancelar y Escape cierran sin cambiar nada y devuelven el foco al lapiz', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirEdicion(EMPRESAS[0].nombre)
     escribirEdicion(dialogo, camposDetalle.razon_social, 'Nombre descartado')
     fireEvent.click(dialogo.getByRole('button', { name: textosEdicion.cancelar }))
@@ -596,7 +562,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('conserva los datos al cambiar de pestana y Ver detalle sigue siendo de solo lectura', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirEdicion(EMPRESAS[0].nombre)
     escribirEdicion(dialogo, camposDetalle.razon_social, 'Editada en memoria SAC')
     fireEvent.click(dialogo.getByRole('tab', { name: catalogoEmpresas.detalle_empresa.pestanas.usuarios }))
@@ -605,8 +571,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
     expect(dialogo.getByRole('textbox', { name: camposDetalle.razon_social })).toHaveValue('Editada en memoria SAC')
     fireEvent.click(dialogo.getByRole('button', { name: textosEdicion.cancelar }))
 
-    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[1].nombre) }))
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: catalogoEmpresas.menu_fila[0].etiqueta }))
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', EMPRESAS[1].nombre) }))
     const detalle = within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo }))
     expect(detalle.queryByRole('textbox', { name: camposDetalle.razon_social })).toBeNull()
   })
@@ -618,7 +583,7 @@ describe('Editar empresa', { timeout: 30000 }, () => {
     const otro = reajustarUbigeo({ ...datos, departamento: 'Arequipa' })
     expect(otro.provincia).toBe('Arequipa')
     expect(otro.distrito).toBe('Cercado')
-    expect(empresaDesdeEdicion(EMPRESAS[0], otro, null).ubigeo).toBe('Arequipa / Arequipa / Cercado')
+    expect(empresaDesdeEdicion(EMPRESAS[0], otro, null, EMPRESAS[0].modulos).ubigeo).toBe('Arequipa / Arequipa / Cercado')
     expect(edicionCompleta(otro)).toBe(true)
   })
 })
@@ -634,7 +599,7 @@ describe('Usuarios dentro de Editar empresa', { timeout: 30000 }, () => {
   }
 
   it('muestra el boton Agregar usuario y la columna Acciones con un menu por usuario', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
 
     expect(dialogo.getByRole('button', { name: textosUsuarios.agregar })).toBeInTheDocument()
@@ -643,7 +608,7 @@ describe('Usuarios dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('el menu de acciones ofrece Editar y Desactivar usuario (el primero esta activo) y se cierra con Escape', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
     const boton = dialogo.getAllByRole('button', { name: /Más opciones de/ })[0]
     boton.focus()
@@ -656,7 +621,7 @@ describe('Usuarios dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('Desactivar usuario lo pasa a Inactivo y entonces el menu ofrece Activar usuario', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
     const boton = dialogo.getAllByRole('button', { name: /Más opciones de/ })[0]
     boton.focus()
@@ -673,9 +638,8 @@ describe('Usuarios dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('Ver detalle sigue mostrando los usuarios sin boton Agregar ni columna Acciones', () => {
-    render(<PaginaEmpresas />)
-    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[0].nombre) }))
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: catalogoEmpresas.menu_fila[0].etiqueta }))
+    renderEmpresas()
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', EMPRESAS[0].nombre) }))
     fireEvent.click(within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo })).getByRole('tab', { name: catalogoEmpresas.detalle_empresa.pestanas.usuarios }))
     const dialogo = within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo }))
 
@@ -704,7 +668,7 @@ describe('Editar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   }
 
   it('Editar usuario convierte la fila en editable con sus datos actuales', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
     pedirEdicion(dialogo, 0)
 
@@ -716,7 +680,7 @@ describe('Editar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('guardar la fila actualiza la tabla y cancelar descarta los cambios', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
 
     pedirEdicion(dialogo, 0)
@@ -733,7 +697,7 @@ describe('Editar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('no permite guardar con nombre vacio, correo invalido o correo repetido', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
     pedirEdicion(dialogo, 0)
     const guardar = dialogo.getByRole('button', { name: edicionUsuario.guardar })
@@ -750,7 +714,7 @@ describe('Editar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('Enter guarda solo la fila y no envia el formulario de la empresa', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
     pedirEdicion(dialogo, 0)
     const campo = dialogo.getByRole('textbox', { name: edicionUsuario.nombre })
@@ -762,7 +726,7 @@ describe('Editar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('los cambios se conservan al cambiar de pestana, al guardar la empresa y al abrir el detalle', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirUsuariosEnEdicion()
     pedirEdicion(dialogo, 0)
     fireEvent.change(dialogo.getByRole('textbox', { name: edicionUsuario.nombre }), { target: { value: 'Persistido' } })
@@ -775,8 +739,7 @@ describe('Editar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
     fireEvent.click(dialogo.getByRole('button', { name: catalogoEmpresas.edicion_empresa.guardar }))
     expect(screen.queryByRole('dialog')).toBeNull()
 
-    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.mas_opciones.replace(':nombre', EMPRESAS[0].nombre) }))
-    fireEvent.click(within(screen.getByRole('menu')).getByRole('menuitem', { name: catalogoEmpresas.menu_fila[0].etiqueta }))
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', EMPRESAS[0].nombre) }))
     fireEvent.click(within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo })).getByRole('tab', { name: catalogoEmpresas.detalle_empresa.pestanas.usuarios }))
     expect(within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo })).getByText('Persistido')).toBeInTheDocument()
   })
@@ -810,7 +773,7 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   }
 
   it('muestra el formulario con sus campos y cambia el pie a Cancelar y Agregar usuario', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirFormulario()
 
     expect(dialogo.getByRole('button', { name: textosAgregar.volver })).toBeInTheDocument()
@@ -823,7 +786,7 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('agrega el usuario a la lista cuando los datos obligatorios estan completos', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirFormulario()
     completar(dialogo)
     fireEvent.click(dialogo.getByRole('button', { name: textosAgregar.confirmar }))
@@ -837,7 +800,7 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('el usuario nuevo muestra las iniciales de su primer nombre y primer apellido en lugar de la foto', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirFormulario()
     completar(dialogo)
     fireEvent.click(dialogo.getByRole('button', { name: textosAgregar.confirmar }))
@@ -847,7 +810,7 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('no permite agregar con un correo repetido o invalido', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirFormulario()
     completar(dialogo, 'maria.lopez@constructoranorte.com')
     expect(dialogo.getByRole('button', { name: textosAgregar.confirmar })).toBeDisabled()
@@ -857,7 +820,7 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('Cancelar y Volver a usuarios regresan a la lista sin agregar nada', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     let dialogo = abrirFormulario()
     completar(dialogo)
     fireEvent.click(dialogo.getByRole('button', { name: textosAgregar.cancelar }))
@@ -871,7 +834,7 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('cuenta las notas y al cambiar de pestana se abandona el formulario', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirFormulario()
     fireEvent.change(dialogo.getByRole('textbox', { name: camposAgregar.notas }), { target: { value: 'hola' } })
     expect(dialogo.getByLabelText(textosAgregar.contador_notas)).toHaveTextContent('4/' + textosAgregar.notas_maximo)
@@ -882,13 +845,17 @@ describe('Agregar usuario dentro de Editar empresa', { timeout: 30000 }, () => {
   })
 
   it('al guardar la empresa se actualiza la cantidad de usuarios', () => {
-    render(<PaginaEmpresas />)
+    renderEmpresas()
     const dialogo = abrirFormulario()
     completar(dialogo)
     fireEvent.click(dialogo.getByRole('button', { name: textosAgregar.confirmar }))
     fireEvent.click(dialogo.getByRole('button', { name: textosEdicion.guardar }))
 
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(within(filasDeDatos()[0]).getByText(String(EMPRESAS[0].usuarios + 1))).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: catalogoEmpresas.botones.ver_detalle.replace(':nombre', EMPRESAS[0].nombre) }))
+    const detalle = within(screen.getByRole('dialog', { name: catalogoEmpresas.detalle_empresa.titulo }))
+    fireEvent.click(detalle.getByRole('tab', { name: catalogoEmpresas.detalle_empresa.pestanas.usuarios }))
+    expect(detalle.getByText(textosUsuarios.resumen.replace('{mostrados}', String(textosUsuarios.tamano_pagina)).replace('{total}', String(EMPRESAS[0].usuarios + 1)))).toBeInTheDocument()
   })
 })

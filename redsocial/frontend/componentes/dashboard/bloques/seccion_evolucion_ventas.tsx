@@ -33,7 +33,7 @@ export function SeccionEvolucionVentas({
         <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.evolucion_ventas}</h2>
           <div className="flex items-center gap-2">
-            <Selector variant="mini">
+            <Selector variant="mini" aria-label={catalogoDashboard.selectores.mensual_semanal.etiqueta}>
               {catalogoDashboard.selectores.mensual_semanal.opciones.map((o) => <option key={o}>{o}</option>)}
             </Selector>
             <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="sutil" size="md" />

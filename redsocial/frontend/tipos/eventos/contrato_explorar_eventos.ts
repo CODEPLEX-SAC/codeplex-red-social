@@ -10,6 +10,8 @@ export interface DatosExplorarEventos {
   setFiltroFecha: (valor: FiltroFecha | null | ((actual: FiltroFecha | null) => FiltroFecha | null)) => void
   setFiltroCategoriaAbierto: (valor: boolean | ((actual: boolean) => boolean)) => void
   filtroCategoriaAbierto: boolean
+  categoriasSeleccionadas: string[]
+  setCategoriasSeleccionadas: (valor: string[]) => void
   CATEGORIAS_FILTRO_PARA_TI: { icono: string; color: string; nombre: string; conteo: string }[]
   setFiltroUbicacionAbierto: (valor: boolean | ((actual: boolean) => boolean)) => void
   filtroUbicacionAbierto: boolean

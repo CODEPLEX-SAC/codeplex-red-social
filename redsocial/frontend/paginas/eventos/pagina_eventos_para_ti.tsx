@@ -1,6 +1,6 @@
-import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, MensajeVacio } from '../../componentes/compartido'
 import { useRef, useState } from 'react'
-import { PestanasEventos, ModalCrearEvento, DetalleEvento, SeccionParaTi, BloqueBuscar, SeccionProximos2, BloqueCategoria, SinEventosUbicacion, ResultadosFiltroFecha, SeccionDestacados2, usarFiltrosEventos } from '../../componentes/eventos'
+import { PestanasEventos, ModalCrearEvento, DetalleEvento, SeccionParaTi, BloqueBuscar, SeccionProximos2, BloqueCategoria, SinEventosUbicacion, ResultadosFiltroFecha, SeccionDestacados2, usarFiltrosEventos, filtrarEventosPorCategoria } from '../../componentes/eventos'
 import { RESULTADOS_FILTRO_FECHA, DESTACADOS, PROXIMOS, PROXIMOS_LATERAL_PARA_TI as PROXIMOS_LATERAL, CATEGORIAS_LATERAL_PARA_TI as CATEGORIAS_LATERAL, CATEGORIAS_FILTRO_PARA_TI, CIUDADES_FILTRO_PARA_TI, MARCADORES_MAPA_PARA_TI, CIUDADES_CON_EVENTOS } from '../../rutas/eventos/rutas_eventos'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 
@@ -15,6 +15,8 @@ export function PaginaEventosParaTi() {
     setFiltroFecha,
     filtroCategoriaAbierto,
     setFiltroCategoriaAbierto,
+    categoriasSeleccionadas,
+    setCategoriasSeleccionadas,
     filtroUbicacionAbierto,
     setFiltroUbicacionAbierto,
     filtroUbicacion,
@@ -23,7 +25,7 @@ export function PaginaEventosParaTi() {
   const pistaProximosRef = useRef<HTMLDivElement>(null)
 
   function alCambiarDestacado(direccion: -1 | 1) {
-    setIndiceDestacado((actual) => (actual + direccion + DESTACADOS.length) % DESTACADOS.length)
+    setIndiceDestacado((actual) => (Math.min(actual, destacadosVisibles.length - 1) + direccion + destacadosVisibles.length) % destacadosVisibles.length)
   }
 
   function alDesplazarProximos(direccion: -1 | 1) {
@@ -32,7 +34,10 @@ export function PaginaEventosParaTi() {
     pista.scrollBy({ left: direccion * pista.clientWidth * 0.9, behavior: catalogoEventos.claves.desplazamiento_suave as ScrollBehavior })
   }
 
-  const destacado = DESTACADOS[indiceDestacado]
+  const destacadosVisibles = filtrarEventosPorCategoria(DESTACADOS, categoriasSeleccionadas)
+  const proximosVisibles = filtrarEventosPorCategoria(PROXIMOS, categoriasSeleccionadas)
+  const indiceVisible = Math.min(indiceDestacado, destacadosVisibles.length - 1)
+  const destacado = destacadosVisibles[indiceVisible]
 
   function cerrarCreacion() {
     setCreandoEvento(false)
@@ -66,7 +71,7 @@ export function PaginaEventosParaTi() {
             <PestanasEventos activa={catalogoEventos.claves.pestanas.para_ti} insigniaInvitaciones={{ valor: 7, estilo: catalogoEventos.claves.insignia.pill }} />
 
             {creandoEvento && <ModalCrearEvento onCerrar={cerrarCreacion} />}
-            {detalleAbierto ? (
+            {detalleAbierto && destacado ? (
               <DetalleEvento evento={destacado} onVolver={cerrarDetalle} />
             ) : (
               <>
@@ -78,6 +83,8 @@ export function PaginaEventosParaTi() {
                   setFiltroFecha,
                   setFiltroCategoriaAbierto,
                   filtroCategoriaAbierto,
+                  categoriasSeleccionadas,
+                  setCategoriasSeleccionadas,
                   CATEGORIAS_FILTRO_PARA_TI,
                   setFiltroUbicacionAbierto,
                   filtroUbicacionAbierto,
@@ -92,17 +99,19 @@ export function PaginaEventosParaTi() {
                 <SinEventosUbicacion ciudad={filtroUbicacion} onCambiar={abrirFiltroUbicacion} onVerTodos={quitarFiltroUbicacion} />
               ) : filtroFecha !== null ? (
                 <ResultadosFiltroFecha filtro={filtroFecha} resultados={RESULTADOS_FILTRO_FECHA} onExplorar={quitarFiltroFecha} />
+              ) : destacado === undefined && proximosVisibles.length === 0 ? (
+                <MensajeVacio texto={catalogoEventos.mensajes.sin_eventos} className="py-10" />
               ) : (
                 <SeccionDestacados2
                   destacado={destacado}
                   alCambiarDestacado={alCambiarDestacado}
                   setDetalleAbierto={setDetalleAbierto}
-                  DESTACADOS={DESTACADOS}
+                  DESTACADOS={destacadosVisibles}
                   setIndiceDestacado={setIndiceDestacado}
-                  indiceDestacado={indiceDestacado}
+                  indiceDestacado={indiceVisible}
                   alDesplazarProximos={alDesplazarProximos}
                   pistaProximosRef={pistaProximosRef}
-                  PROXIMOS={PROXIMOS}
+                  PROXIMOS={proximosVisibles}
                 />
               )}
                 </>
