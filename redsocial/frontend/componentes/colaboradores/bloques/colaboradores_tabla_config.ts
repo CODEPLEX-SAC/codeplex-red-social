@@ -4,7 +4,7 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import type { Colaborador, Vigencia } from '@/tipos/colaboradores/modelo_colaboradores'
 import { fechaDeTexto, inicioDeVigencia } from './logica_colaboradores'
 
-export const TAMANO_PAGINA_COLABORADORES = 3
+export const TAMANO_PAGINA_COLABORADORES = catalogoColaboradores.paginacion.tamano
 
 export const ESTADO_POR_ETIQUETA_PESTANA: Record<string, Colaborador['estado'] | null> = {
   Todos: null,

@@ -10,4 +10,4 @@ export type InsigniaProps =
   | { variant: 'status'; className: string; punto?: string; children: string }
   | { variant: 'privacy'; tone: 'publico' | 'privado'; children: string }
   | { variant: 'privado'; children: string }
-  | { variant: 'superpuesta'; contenido: ReactNode; color?: ColorInsigniaSuperpuesta; maximo?: number; className?: string; children: ReactNode }
+  | { variant: 'superpuesta'; contenido: ReactNode; color?: ColorInsigniaSuperpuesta; maximo?: number; punto?: boolean; compacta?: boolean; superposicion?: 'rectangular' | 'circular'; className?: string; children: ReactNode }

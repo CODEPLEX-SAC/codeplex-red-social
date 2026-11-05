@@ -1,8 +1,7 @@
 {
   "vigenciaDefault": {
-    "fechaInicio": "13/08/2026",
-    "fechaVencimiento": "13/08/2027",
-    "duracion": "Duración: 1 año"
+    "fechaInicio": "2026-08-13",
+    "fechaVencimiento": "2027-08-13"
   },
   "opcionesRecordatorio": [
     "7 días antes",

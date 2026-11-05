@@ -3,13 +3,14 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { TablaCalendarioMini } from '../../../tablas/eventos/tabla_calendario_mini'
 import type { DiaCalendarioMini } from '@/tipos/eventos/modelo_calendario_mini'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function PanelCalendarioMini({ mes, semanas, textoEnlace = catalogoEventos.botones.ver_calendario }: { mes: string; semanas: DiaCalendarioMini[][]; textoEnlace?: string }) {
   return (
     <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
       <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
         <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.calendario}</h2>
-        <a href={catalogoEventos.rutas.calendario} className="text-enlace-accion text-primario no-underline hover:underline">{textoEnlace}</a>
+        <a href={catalogoEventos.rutas.calendario} className={CLASE_ENLACE_ACCION}>{textoEnlace}</a>
       </div>
       <div className="px-4 pb-3">
         <div className="mb-2.5 flex items-center justify-between px-1">

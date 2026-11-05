@@ -1,44 +1,24 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+import type { DonaProgresoProps } from '@/tipos/compartido/contrato_dona_progreso'
+import { AnilloDona } from './anillo_dona'
+import { usarTextoCentralDona } from './usar_texto_central_dona'
 
-void catalogoCompartido
+const dona = catalogoCompartido.dona_progreso
 
-export function DonaProgreso({
-  segmentos,
-  tamano = 130,
-  grosor = 16,
-  className = '',
-}: {
-  segmentos: { color: string; porcentaje: number }[]
-  tamano?: number
-  grosor?: number
-  className?: string
-}) {
-  const radio = (tamano - grosor) / 2
-  const circunferencia = 2 * Math.PI * radio
-  let acumulado = 0
+export function DonaProgreso({ segmentos, tamano = 130, grosor = 16, valorCentral, etiquetaCentral, className = '' }: DonaProgresoProps) {
+  const { valorRef, compacto, recortado, textoCompacto } = usarTextoCentralDona(valorCentral, tamano - 2 * grosor - dona.margen_texto)
+
+  if (valorCentral === undefined) return <AnilloDona segmentos={segmentos} tamano={tamano} grosor={grosor} className={className} />
 
   return (
-    <svg viewBox={`0 0 ${tamano} ${tamano}`} width={tamano} height={tamano} className={className}>
-      <g transform={`rotate(-90 ${tamano / 2} ${tamano / 2})`}>
-        {segmentos.map((segmento) => {
-          const largo = (segmento.porcentaje / 100) * circunferencia
-          const desplazamiento = -((acumulado / 100) * circunferencia)
-          acumulado += segmento.porcentaje
-          return (
-            <circle
-              key={[segmento.color, segmento.porcentaje].join('')}
-              cx={tamano / 2}
-              cy={tamano / 2}
-              r={radio}
-              fill="none"
-              stroke={segmento.color}
-              strokeWidth={grosor}
-              strokeDasharray={`${largo} ${circunferencia - largo}`}
-              strokeDashoffset={desplazamiento}
-            />
-          )
-        })}
-      </g>
-    </svg>
+    <div className={[dona.contenedor, className].join(' ')}>
+      <AnilloDona segmentos={segmentos} tamano={tamano} grosor={grosor} className={dona.anillo} />
+      <span className={dona.texto}>
+        <strong ref={valorRef} title={compacto || recortado ? valorCentral : undefined} className={dona.valor}>
+          {textoCompacto === null ? valorCentral : <><span aria-hidden="true">{textoCompacto}</span><span className={dona.solo_lectores}>{valorCentral}</span></>}
+        </strong>
+        {etiquetaCentral !== undefined && <span className={dona.etiqueta}>{etiquetaCentral}</span>}
+      </span>
+    </div>
   )
 }

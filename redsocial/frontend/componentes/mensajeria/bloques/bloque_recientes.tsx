@@ -5,6 +5,7 @@ import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function BloqueRecientes({
   LLAMADAS_RECIENTES,
@@ -49,7 +50,7 @@ export function BloqueRecientes({
       </div>
 
       <div className="px-3.5 py-2.5 text-center">
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_mas_llamadas}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoMensajeria.botones.ver_mas_llamadas}</a>
       </div>
     </section>
   )

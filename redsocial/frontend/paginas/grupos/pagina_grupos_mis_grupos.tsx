@@ -1,4 +1,4 @@
-import { BannerInformativo, BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Boton } from '../../componentes/compartido'
+import { BannerInformativo, BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Boton, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { PestanasGrupos, BloqueAdmin, BloqueVerGrupo, SeccionActividadRecienteGrupos } from '../../componentes/grupos'
@@ -26,13 +26,13 @@ export function PaginaGruposMisGrupos() {
 
             <div className="mb-3.5 flex items-center justify-between">
               <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.grupos_que_administro} ({GRUPOS_ADMIN.length})</h2>
-              <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+              <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
             </div>
             <BloqueAdmin GRUPOS_ADMIN={GRUPOS_ADMIN} CLASES_ICONO_ADMIN={CLASES_ICONO_ADMIN} />
 
             <div className="mb-3.5 flex items-center justify-between">
               <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.mis_grupos_titulo} ({MIS_GRUPOS.length})</h2>
-              <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+              <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
             </div>
             <BloqueVerGrupo MIS_GRUPOS={MIS_GRUPOS} CLASES_ICONO_MIS={CLASES_ICONO_MIS} />
           </section>

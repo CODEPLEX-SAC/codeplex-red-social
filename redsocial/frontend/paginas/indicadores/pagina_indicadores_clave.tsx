@@ -1,4 +1,4 @@
-import { Boton, Icono, EstructuraApp, Insignia, usarCarrusel } from '../../componentes/compartido'
+import { Boton, Icono, EstructuraApp, Insignia, usarCarrusel, CLASES_TABLA, CLASE_ENLACE_ACCION, CLASES_TARJETA, CLASES_CUERPO_TARJETA } from '../../componentes/compartido'
 import catalogoIndicadores from '../../catalogos/capacidades/redsocial/indicadores.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import type { EstadoInd, FilaTabla } from '@/tipos/indicadores/modelo_indicadores_clave'
@@ -13,8 +13,8 @@ function EstadoIndBadge({ estado }: { estado: EstadoInd }) {
 
 function TablaIndicador({ filas }: { filas: FilaTabla[] }) {
   return (
-    <div className="overflow-x-auto max-380:-mx-2">
-      <table className="w-full border-collapse text-cuerpo tabla-ultima-fila-sin-borde">
+    <div className={['overflow-x-auto max-380:-mx-2', CLASES_CUERPO_TARJETA.cuerpo_tabla].join(' ')}>
+      <table className={CLASES_TABLA.compacta.tabla}>
         <thead>
           <tr>
             <th className={TH}>{catalogoIndicadores.tabla.indicador}</th>
@@ -64,26 +64,26 @@ export function PaginaIndicadoresClave() {
         />
 
         <div className="mb-5 grid grid-cols-3 gap-4 max-1400:grid-cols-2 max-1000:grid-cols-1">
-          <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
+          <article className={[CLASES_TARJETA.panel, 'relative'].join(' ')}>
             <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
               <h2 className="m-0 text-titulo-banner text-texto">{catalogoIndicadores.secciones.rentabilidad}</h2>
-              <a href="#" className="whitespace-nowrap text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
+              <a href="#" className={[CLASE_ENLACE_ACCION, 'whitespace-nowrap'].join(' ')}>{catalogoIndicadores.botones.ver_todos}</a>
             </div>
             <TablaIndicador filas={RENTABILIDAD} />
           </article>
 
-          <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
+          <article className={[CLASES_TARJETA.panel, 'relative'].join(' ')}>
             <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
               <h2 className="m-0 text-titulo-banner text-texto">{catalogoIndicadores.secciones.liquidez}</h2>
-              <a href="#" className="whitespace-nowrap text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
+              <a href="#" className={[CLASE_ENLACE_ACCION, 'whitespace-nowrap'].join(' ')}>{catalogoIndicadores.botones.ver_todos}</a>
             </div>
             <TablaIndicador filas={LIQUIDEZ} />
           </article>
 
-          <article className="relative min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5 max-1400:col-span-2 max-1000:col-span-1">
+          <article className={[CLASES_TARJETA.panel, 'relative max-1400:col-span-2 max-1000:col-span-1'].join(' ')}>
             <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
               <h2 className="m-0 text-titulo-banner text-texto">{catalogoIndicadores.secciones.gestion}</h2>
-              <a href="#" className="whitespace-nowrap text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos}</a>
+              <a href="#" className={[CLASE_ENLACE_ACCION, 'whitespace-nowrap'].join(' ')}>{catalogoIndicadores.botones.ver_todos}</a>
             </div>
             <TablaIndicador filas={GESTION} />
           </article>
@@ -97,7 +97,7 @@ export function PaginaIndicadoresClave() {
 
         <div className="mb-3.5 flex items-center justify-between">
           <h2 className="m-0 text-titulo-seccion text-texto">{catalogoIndicadores.secciones.indicadores_por_modulo}</h2>
-          <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoIndicadores.botones.ver_todos_los_indicadores}</a>
+          <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoIndicadores.botones.ver_todos_los_indicadores}</a>
         </div>
         <BloqueIndicadoresClave2
           MODULOS_IND={MODULOS_IND}

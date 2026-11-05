@@ -8,25 +8,28 @@ import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { Amigo } from '@/tipos/amigos/modelo_amigos_todos'
 
-export function BloqueMensaje({ AMIGOS }: { AMIGOS: Amigo[] }) {
+const clases = catalogoAmigos.clases.amigo
+
+export function BloqueMensaje({ AMIGOS, alMensaje }: { AMIGOS: Amigo[]; alMensaje?: ((nombre: string) => void) | undefined }) {
   return (
     <div>
-      {AMIGOS.length === 0 && <MensajeVacio texto={catalogoAmigos.mensajes.sin_amigos} className="col-span-full py-8" />}
+      {AMIGOS.length === 0 && <MensajeVacio texto={catalogoAmigos.mensajes.sin_amigos} className={clases.vacio} />}
       {AMIGOS.map((a) => (
-        <article key={a.nombre} className="flex items-center gap-3.5 border-b border-borde py-3.5 last:border-b-0">
+        <article key={a.nombre} className={clases.fila}>
           <AvatarUsuario tamano="lg" imagen={usuarioImg} estado={a.enLinea ? 'conectado' : 'desconectado'} />
-          <div className="w-42.5 min-w-0 shrink max-900:w-32.5">
-            <strong className="block truncate text-nombre-entidad text-texto">{a.nombre}</strong>
-            <span className={'mt-0.75 block text-badge ' + (a.enLinea ? 'text-exito-texto' : 'text-texto-suave')}>
+          <div className={clases.identidad}>
+            <strong className={clases.nombre}>{a.nombre}</strong>
+            <span className={`${clases.estado} ${a.enLinea ? clases.estado_en_linea : clases.estado_fuera}`}>
               {a.estado}
             </span>
+            <span className={clases.comunes_compacto}>{a.comunes}</span>
           </div>
-          <div className="flex min-w-0 flex-1 items-center gap-2.5 max-900:hidden">
-            <span className="whitespace-nowrap text-auxiliar text-texto-suave">{a.comunes}</span>
+          <div className={clases.comunes_columna}>
+            <span className={clases.comunes_texto}>{a.comunes}</span>
             <GrupoAvatares avatares={4} tamano="xs" tono="neutro" resto={a.masAvatares} />
           </div>
-          <div className="flex flex-none items-center gap-2">
-            <Boton variant="secundario" size="mini">{catalogoAmigos.botones.mensaje}</Boton>
+          <div className={clases.acciones}>
+            <Boton type="button" variant="secundario" size="default" onClick={() => alMensaje?.(a.nombre)}>{catalogoAmigos.botones.mensaje}</Boton>
             <BotonIcono icono="puntos" aria-label={textosRedSocial.MAS_OPCIONES} />
           </div>
         </article>

@@ -5,37 +5,41 @@ import { Radio } from '../../compartido/interfaz/radio'
 import { SeccionDatosDelColaborador3 } from './seccion_datos_del_colaborador3'
 import type { CambiarCampoColaborador, DatosColaboradorInvitado } from '@/tipos/colaboradores/contrato_invitar_colaborador'
 
+const clases = catalogoColaboradores.clases.invitar_informacion
+const comun = catalogoColaboradores.clases.invitar_comun
+const textos = catalogoColaboradores.campos_informacion
+
 export function SeccionDatosDelColaborador2({
   colaborador,
   alCambiarCampo,
 }: { colaborador: DatosColaboradorInvitado; alCambiarCampo: CambiarCampoColaborador }) {
   return (
-    <div className="border-r border-borde-suave px-7 pb-7 pt-6 max-960:border-b max-960:border-r-0 max-960:px-6 max-960:py-5 max-768:p-4 max-480:p-3">
+    <div className={clases.formulario}>
       <SeccionDatosDelColaborador3 colaborador={colaborador} alCambiarCampo={alCambiarCampo} />
 
-      <div className="mt-2">
-        <div className="mb-3 flex items-center gap-2">
-          <Icono name="mensaje" className="w-4.5 h-4.5 text-primario" />
-          <span className="text-titulo-subseccion text-texto">{catalogoColaboradores.secciones.metodo_de_invitacion}</span>
+      <div className={clases.metodo}>
+        <div className={clases.metodo_cabecera}>
+          <Icono name="mensaje" className={clases.metodo_glifo} />
+          <span className={clases.metodo_titulo}>{catalogoColaboradores.secciones.metodo_de_invitacion}</span>
         </div>
-        <p className="mb-3 text-auxiliar text-texto-suave">{catalogoColaboradores.campos_informacion.metodo_invitacion_ayuda}</p>
-        <div className="mb-3 flex gap-4 max-480:flex-col">
-          <label className="flex cursor-pointer items-start gap-2">
+        <p className={clases.metodo_ayuda}>{textos.metodo_invitacion_ayuda}</p>
+        <div className={clases.metodo_opciones}>
+          <label className={clases.metodo_opcion}>
             <Radio name="metodo-inv" defaultChecked />
-            <div className="flex flex-col gap-0.5">
-              <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_informacion.enviar_correo}</span>
-              <span className="text-auxiliar text-texto-suave">{catalogoColaboradores.campos_informacion.enviar_correo_ayuda}</span>
+            <div className={comun.opcion_textos}>
+              <span className={comun.opcion_titulo}>{textos.enviar_correo}</span>
+              <span className={clases.ayuda}>{textos.enviar_correo_ayuda}</span>
             </div>
           </label>
-          <label className="flex cursor-pointer items-start gap-2">
+          <label className={clases.metodo_opcion}>
             <Radio name="metodo-inv" />
-            <div className="flex flex-col gap-0.5">
-              <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_informacion.enviar_whatsapp}</span>
-              <span className="text-auxiliar text-texto-suave">{catalogoColaboradores.campos_informacion.enviar_whatsapp_ayuda}</span>
+            <div className={comun.opcion_textos}>
+              <span className={comun.opcion_titulo}>{textos.enviar_whatsapp}</span>
+              <span className={clases.ayuda}>{textos.enviar_whatsapp_ayuda}</span>
             </div>
           </label>
         </div>
-        <BannerInformativo icono="aviso" descripcion={catalogoColaboradores.campos_informacion.nota_registro} variante="nota" className="mt-4" />
+        <BannerInformativo icono="aviso" descripcion={textos.nota_registro} variante="nota" className={clases.metodo_banner} />
       </div>
     </div>
   )

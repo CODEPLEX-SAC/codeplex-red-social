@@ -1,4 +1,4 @@
-import Tooltip from '@mui/material/Tooltip'
+import { CodeplexTooltip } from '@codeplex-sac/feedback'
 import { FondoPanelFlotante } from './fondo_panel_flotante'
 import { PanelSelectorBuscable } from './panel_selector_buscable'
 import { usarSelectorBuscable } from './usar_selector_buscable'
@@ -22,7 +22,7 @@ export function SelectorBuscable({ seleccionada, fuente, limite, textos, icono, 
   return (
     <div className={className ? `${clases.contenedor} ${className}` : clases.contenedor}>
       <ProveedorTemaGraficos>
-        <Tooltip title={truncado && !estado.abierto && seleccionada.titulo} describeChild>
+        <CodeplexTooltip contenido={truncado && !estado.abierto && seleccionada.titulo} describeChild>
           <button type="button" aria-haspopup="dialog" aria-expanded={estado.abierto} aria-controls={estado.abierto ? clases.id_panel : undefined} onClick={estado.abrir} onMouseEnter={medirTitulo} onFocus={medirTitulo} className={clases.disparador}>
             <span className={clases.icono_caja}>
               <Icono name={icono} />
@@ -33,7 +33,7 @@ export function SelectorBuscable({ seleccionada, fuente, limite, textos, icono, 
             </span>
             <Icono name="flecha-abajo" className={clases.flecha} />
           </button>
-        </Tooltip>
+        </CodeplexTooltip>
       </ProveedorTemaGraficos>
       {estado.abierto && (
         <>

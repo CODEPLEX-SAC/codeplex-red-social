@@ -16,6 +16,17 @@ export interface FiltrosAvanzadosColaboradores {
   metodoInvitacion: string
 }
 
+export interface BasicosFiltrosColaboradores {
+  rol: string
+  aplicacion: string
+  alAplicar: (rol: string, aplicacion: string) => void
+}
+
+export interface FiltroActivo {
+  clave: string
+  etiqueta: string
+}
+
 export interface BorradorColaborador {
   nombre: string
   correo: string
@@ -23,6 +34,7 @@ export interface BorradorColaborador {
   rol: string
   fechaInicio: string
   fechaFin: string
+  ultimoAcceso: string
   aplicaciones: string[]
   estado: Colaborador['estado']
 }
@@ -69,6 +81,7 @@ export type OpcionesTablaPdf = Partial<UserOptions>
 export type CondicionCriterio = readonly [boolean, string]
 
 export interface AvisoColaboradores {
+  titulo: string
   texto: string
   error: boolean
 }

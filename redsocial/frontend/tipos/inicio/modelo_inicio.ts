@@ -4,6 +4,7 @@ import type { ReaccionesPorTipo } from './contrato_reacciones'
 
 export interface Historia {
   nombre: string
+  autorId?: string
   crear?: boolean
 }
 

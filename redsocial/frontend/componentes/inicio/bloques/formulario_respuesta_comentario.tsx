@@ -1,4 +1,4 @@
-import { imagenUsuarioPredeterminada } from '../../compartido'
+import { imagenPerfilPedroRedSocial } from '../../compartido'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { CajaComentario } from './caja_comentario'
 import { respuestaPara } from './logica_caja_comentario'
@@ -10,7 +10,7 @@ const textos = catalogoInicio.publicacion.comentarios
 export function FormularioRespuestaComentario({ mencion, onEnviar, onCancelar }: FormularioRespuestaComentarioProps) {
   return (
     <div className={textos.clases.formulario}>
-      <AvatarUsuario tamano="sm" imagen={imagenUsuarioPredeterminada} />
+      <AvatarUsuario tamano="sm" imagen={imagenPerfilPedroRedSocial} />
       <CajaComentario
         autoFoco
         marcador={respuestaPara(mencion.nombre, textos.marcador_respuesta)}

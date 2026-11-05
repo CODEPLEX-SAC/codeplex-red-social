@@ -50,7 +50,7 @@ export function SeccionDestacados2({
         </div>
         <div className="flex flex-col p-6">
           <span className="mb-1.5 inline-block text-badge uppercase tracking-wide text-primario">{destacado.categoriaEtiqueta}</span>
-          <h3 className="m-0 mb-2 text-titulo-seccion leading-compacto text-texto">{destacado.nombre}</h3>
+          <h3 className="m-0 mb-2 text-cuerpo-grande text-texto">{destacado.nombre}</h3>
           <p className="m-0 mb-4 whitespace-pre-line text-cuerpo leading-texto text-texto-suave">{destacado.descripcion}</p>
           <div className="mb-4 flex flex-wrap gap-4">
             <span className="flex items-center gap-1.25 text-auxiliar text-texto-suave"><Icono name="calendario" className="h-3.5 w-3.5 text-primario" /> {destacado.fecha}</span>

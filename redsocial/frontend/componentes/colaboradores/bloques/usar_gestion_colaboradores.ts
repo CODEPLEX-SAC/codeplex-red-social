@@ -27,16 +27,16 @@ export function usarGestionColaboradores(iniciales: Colaborador[], disponibles: 
 
   function reenviar(colaborador: Colaborador) {
     actualizar(colaborador, reenviarInvitacion(colaborador, Date.now()))
-    setAviso({ texto: mensajes.invitacion_reenviada_demostracion, error: false })
+    setAviso({ titulo: mensajes.invitacion_reenviada_titulo, texto: mensajes.invitacion_reenviada_demostracion, error: false })
   }
 
   function invitar(invitado: DatosColaboradorInvitado) {
     if (!existeCorreo(colaboradores, invitado.correo)) setColaboradores((lista) => [crearInvitado(invitado, datosAsistente, Date.now()), ...lista])
-    setAviso({ texto: mensajes.invitacion_completada_demostracion, error: false })
+    setAviso({ titulo: mensajes.invitacion_completada_titulo, texto: mensajes.invitacion_completada_demostracion, error: false })
   }
 
   function avisarFalloExportacion() {
-    setAviso({ texto: mensajes.exportacion_fallida, error: true })
+    setAviso({ titulo: mensajes.exportacion_fallida_titulo, texto: mensajes.exportacion_fallida, error: true })
   }
 
   return { colaboradores, aviso, cerrarAviso: () => setAviso(null), guardarEdicion, darDeBaja, reenviar, invitar, avisarFalloExportacion }

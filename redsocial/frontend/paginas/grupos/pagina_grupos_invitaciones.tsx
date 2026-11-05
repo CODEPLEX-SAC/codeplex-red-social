@@ -1,4 +1,4 @@
-import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import { SeccionInvitaciones } from '../../componentes/grupos'
 import { FilaActividadGrupo } from '../../componentes/actividad'
@@ -38,7 +38,7 @@ export function PaginaGruposInvitaciones() {
             <section className="rounded-xl border border-borde-suave bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h3 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.actividad_reciente}</h3>
-                <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoGrupos.leyendas.ver_toda}</a>
+                <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoGrupos.leyendas.ver_toda}</a>
               </div>
               {ACTIVIDAD.map((a) => (
                 <FilaActividadGrupo key={a.nombre + a.grupo} nombre={a.nombre} accion={a.accion} grupo={a.grupo} tiempo={a.tiempo} icono={a.icono} colorIcono={a.color} />

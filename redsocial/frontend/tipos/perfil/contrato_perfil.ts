@@ -162,6 +162,14 @@ export interface VisorMediosProps {
   onCerrar: () => void
 }
 
+export interface FilaPlaceholderPerfilProps {
+  etiqueta: string
+  detalle?: string
+  accesible?: string
+  icono: string
+  onClick: () => void
+}
+
 export interface ItemListaPerfilProps {
   item: ItemPerfil
   datos: ResumenItemPerfil
@@ -169,4 +177,17 @@ export interface ItemListaPerfilProps {
   propio: boolean
   onEditar: (item: ItemPerfil) => void
   onEliminar: (id: string) => void
+}
+
+export interface EstadisticaCabeceraPerfil {
+  clave: string
+  valor: number
+  texto: string
+}
+
+export interface ItemEstadisticaCabeceraPerfil {
+  clave: string
+  texto: string
+  texto_singular?: string
+  solo_ajeno: boolean
 }

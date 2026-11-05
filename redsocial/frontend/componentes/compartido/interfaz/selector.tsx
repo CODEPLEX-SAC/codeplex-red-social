@@ -9,6 +9,11 @@ const mapaEnvoltorio: Record<SelectorVariant, string> = catalogoCompartido.selec
 const mapaLabel: Record<string, string> = catalogoCompartido.selector_label
 const mapaLibreria = catalogoCompartido.selector_libreria as Record<SelectorVariant, SelectorConfiguracionLibreria>
 
+function enfocarOpcion(nodo: HTMLElement) {
+  if (document.activeElement?.matches(catalogoCompartido.selector_foco_opcion)) return
+  nodo.querySelector<HTMLElement>(catalogoCompartido.selector_foco_opcion)?.focus()
+}
+
 export function Selector({ variant = 'default', label, className, children, 'aria-label': ariaLabel, value, defaultValue, onChange, disabled, name, placeholder }: SelectorProps) {
   const opciones = Children.toArray(children)
     .filter(isValidElement<OptionHTMLAttributes<HTMLOptionElement>>)
@@ -32,10 +37,13 @@ export function Selector({ variant = 'default', label, className, children, 'ari
     marcador: placeholder,
     alCambiar: onChange as ManejadorSelectorLibreria,
     SelectDisplayProps: propiedadesVisibles,
+    MenuProps: { TransitionProps: { onEntered: enfocarOpcion } },
   }
 
   const select = (
     <div className={[mapaEnvoltorio[variant], className].filter(Boolean).join(' ')}>
+      {configuracion.anchoEstable &&
+        opciones.map((opcion) => <span key={opcion.valor} aria-hidden="true" data-etiqueta={opcion.etiqueta} className={catalogoCompartido.selector_estable} />)}
       <ProveedorTemaGraficos>
         <CodeplexSelector {...propiedadesLibreria} />
       </ProveedorTemaGraficos>

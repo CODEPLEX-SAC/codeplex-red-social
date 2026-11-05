@@ -2,49 +2,70 @@ import { Icono } from '../../compartido/icono'
 import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Radio } from '../../compartido/interfaz/radio'
-import { CampoTexto } from '../../compartido/interfaz/campo_texto'
+import { SelectorFecha } from '../../compartido/interfaz/selector_fecha'
+import { duracionVigencia } from './logica_vigencia_invitacion'
+import type { EstadoVigenciaInvitacion } from '@/tipos/colaboradores/contrato_invitar_colaborador'
 
-export function SeccionPeriodoDeVigencia2({
-  VIGENCIA_DEFAULT,
-}: {
-  VIGENCIA_DEFAULT: { fechaInicio: string; fechaVencimiento: string; duracion: string; }
-}) {
+const clases = catalogoColaboradores.clases.invitar_vigencia
+const comun = catalogoColaboradores.clases.invitar_comun
+const textos = catalogoColaboradores.campos_vigencia
+const PLANTILLAS_DURACION: Record<string, string[]> = {
+  anio: [textos.duracion.anio_uno, textos.duracion.anio_otros],
+  mes: [textos.duracion.mes_uno, textos.duracion.mes_otros],
+  dia: [textos.duracion.dia_uno, textos.duracion.dia_otros],
+  incompleta: [textos.duracion.incompleta],
+  invalida: [textos.duracion.invalida],
+}
+
+export function SeccionPeriodoDeVigencia2({ VIGENCIA }: { VIGENCIA: EstadoVigenciaInvitacion }) {
+  const duracion = duracionVigencia(VIGENCIA.inicio, VIGENCIA.vencimiento)
+  const plantilla = PLANTILLAS_DURACION[duracion.unidad][duracion.cantidad > 1 ? 1 : 0]
+  const textoDuracion = duracion.cantidad > 0 ? `${textos.duracion.prefijo} ${plantilla.replace(':n', String(duracion.cantidad))}` : plantilla
+
   return (
-    <div className="rounded-xl border border-gris-borde p-5">
-      <div className="mb-4 flex items-center gap-2">
-        <Icono name="calendario" className="w-5 h-5 text-primario" />
-        <h3 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_vigencia.periodo_de_vigencia}</h3>
+    <div className={comun.tarjeta}>
+      <div className={clases.periodo_cabecera}>
+        <Icono name="calendario" className={comun.glifo_titulo} />
+        <h3 className={comun.titulo}>{textos.periodo_de_vigencia}</h3>
       </div>
 
-      <label className="mb-4 flex cursor-pointer items-start gap-2.5 last:mb-0">
+      <label className={clases.periodo_opcion}>
         <Radio name="vigencia" value="periodo" defaultChecked />
-        <span className="flex flex-col gap-0.5">
-          <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_vigencia.vigencia_por_periodo}</span>
-          <span className="text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.vigencia_por_periodo_detalle}</span>
+        <span className={comun.opcion_textos}>
+          <span className={comun.opcion_titulo}>{textos.vigencia_por_periodo}</span>
+          <span className={comun.opcion_detalle}>{textos.vigencia_por_periodo_detalle}</span>
         </span>
       </label>
 
-      <div className="my-3 grid grid-cols-2 gap-4 max-960:grid-cols-1">
-        <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_vigencia.fecha_de_inicio} requerido>
-          <CampoTexto defaultValue={VIGENCIA_DEFAULT.fechaInicio} soloLectura iconoInicio={<Icono name="calendario" className="h-4.5 w-4.5" />} />
+      <div className={clases.fechas}>
+        <CampoEtiquetado variante="compacta" etiqueta={textos.fecha_de_inicio} requerido>
+          <SelectorFecha nombreAccesible={textos.fecha_de_inicio} valor={VIGENCIA.inicio} alCambiar={VIGENCIA.asignarInicio} marcador={textos.marcador_fecha} formato={textos.formato_fecha} />
         </CampoEtiquetado>
-        <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_vigencia.fecha_de_vencimiento} requerido>
-          <CampoTexto defaultValue={VIGENCIA_DEFAULT.fechaVencimiento} soloLectura iconoInicio={<Icono name="calendario" className="h-4.5 w-4.5" />} />
+        <CampoEtiquetado variante="compacta" etiqueta={textos.fecha_de_vencimiento} requerido>
+          <SelectorFecha
+            nombreAccesible={textos.fecha_de_vencimiento}
+            valor={VIGENCIA.vencimiento}
+            alCambiar={VIGENCIA.asignarVencimiento}
+            minFecha={VIGENCIA.inicio ?? undefined}
+            error={duracion.unidad === 'invalida'}
+            marcador={textos.marcador_fecha}
+            formato={textos.formato_fecha}
+          />
         </CampoEtiquetado>
       </div>
-      <span className="mt-2 inline-flex items-center rounded-md bg-fondo-hover-neutro px-3 py-1 text-badge text-texto-suave">{VIGENCIA_DEFAULT.duracion}</span>
+      <span className={clases.duracion}>{textoDuracion}</span>
 
-      <label className="mt-4 flex cursor-pointer items-start gap-2.5">
+      <label className={clases.opcion_indefinida}>
         <Radio name="vigencia" value="indefinida" />
-        <span className="flex flex-col gap-0.5">
-          <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_vigencia.vigencia_indefinida}</span>
-          <span className="text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.vigencia_indefinida_detalle}</span>
+        <span className={comun.opcion_textos}>
+          <span className={comun.opcion_titulo}>{textos.vigencia_indefinida}</span>
+          <span className={comun.opcion_detalle}>{textos.vigencia_indefinida_detalle}</span>
         </span>
       </label>
 
-      <div className="mt-3 flex items-start gap-2 rounded-lg border border-borde-info-suave bg-fondo-info-suave px-3.5 py-2.5">
-        <Icono name="aviso" className="mt-px w-4 h-4 flex-none text-primario" />
-        <p className="m-0 text-auxiliar leading-texto text-azul-categoria-texto">{catalogoColaboradores.campos_vigencia.nota_indefinida}</p>
+      <div className={`${clases.nota_indefinida} ${comun.nota}`}>
+        <Icono name="aviso" className={comun.nota_glifo} />
+        <p className={comun.nota_texto}>{textos.nota_indefinida}</p>
       </div>
     </div>
   )

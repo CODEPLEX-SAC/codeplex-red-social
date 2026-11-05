@@ -3,6 +3,7 @@ import { clasesBoton } from '../../compartido/interfaz/boton'
 import { FilaActividadGrupo } from '../../actividad/bloques/fila_actividad_grupo'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Icono } from '../../compartido/icono'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionActividadRecienteGrupos({
   ACTIVIDAD,
@@ -18,7 +19,7 @@ export function SeccionActividadRecienteGrupos({
       <section className="rounded-xl border border-borde-suave bg-white p-4">
         <div className="mb-3.5 flex items-center justify-between">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.actividad_reciente_grupos}</h2>
-          <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoGrupos.leyendas.ver_toda}</a>
+          <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoGrupos.leyendas.ver_toda}</a>
         </div>
         {ACTIVIDAD.map((a) => (
           <FilaActividadGrupo key={a.nombre + a.grupo} nombre={a.nombre} accion={a.accion} grupo={a.grupo} tiempo={a.tiempo} icono={a.icono} colorIcono={a.color} />
@@ -28,7 +29,7 @@ export function SeccionActividadRecienteGrupos({
       <section className="rounded-xl border border-borde-suave bg-white p-4">
         <div className="mb-3.5 flex items-center justify-between">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.grupos_populares}</h2>
-          <a href={catalogoGrupos.rutas.descubrir} className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+          <a href={catalogoGrupos.rutas.descubrir} className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
         </div>
         {GRUPOS_POPULARES.map((g) => (
           <article key={g.nombre} className="flex items-center gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
@@ -36,7 +37,7 @@ export function SeccionActividadRecienteGrupos({
               <Icono name="grupos" className="h-4.5 w-4.5" />
             </div>
             <div className="min-w-0 flex-1">
-              <span className="block text-nombre-entidad text-texto">{g.nombre}</span>
+              <span className="block text-nombre-fila text-texto">{g.nombre}</span>
               <span className="text-auxiliar text-texto-suave">{g.tipo}</span>
             </div>
             <a href="#" className={clasesBoton({ variant: 'contorno', size: 'default', className: 'flex-none' })}>{catalogoGrupos.botones.unirse}</a>

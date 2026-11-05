@@ -118,7 +118,7 @@
       "normal": "bg-naranja-categoria/15 text-naranja-categoria-texto"
     },
     "mensaje_ejemplo": "¡Gran trabajo equipo! 💪🎉",
-    "clase_marco": "mb-4 overflow-hidden rounded-xl border border-borde/60 bg-white shadow-sombra",
+    "clase_marco": "mb-5 overflow-hidden rounded-xl border border-borde/60 bg-white px-8 py-7 shadow-sombra max-480:px-4 max-480:py-5",
     "acciones": [
       {
         "clave": "me_gusta",
@@ -179,7 +179,7 @@
       "enviar_respuesta": "Enviar respuesta",
       "etiqueta_edicion": "Editar comentario",
       "guardar": "Guardar",
-      "cancelar": "Cancelar",
+      "cancelar": "cancelar",
       "editado": "Editado",
       "opciones": "Opciones del comentario",
       "menu": [
@@ -206,20 +206,30 @@
         "item": "flex gap-2.5",
         "burbuja": "min-w-0 rounded-xl bg-fondo px-3 py-2",
         "meta": "mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-fecha-abreviada text-texto-suave",
-        "respuestas": "m-0 mt-2 flex list-none flex-col gap-3 border-l-2 border-borde-suave py-0 pr-0 pl-3",
-        "formulario": "mt-2 flex items-start gap-2",
-        "caja": "flex min-w-0 flex-1 flex-col gap-2 rounded-xl border border-borde bg-fondo-tarjeta px-3 py-2",
-        "pie_caja": "flex items-center justify-between gap-2",
+        "respuestas": "m-0 mt-2 flex list-none flex-col gap-3 border-l-2 border-borde-suave py-0 pr-0 pl-4",
+        "formulario": "mt-2 flex items-start gap-2.5 pl-4",
+        "caja": "flex min-w-0 flex-1 flex-col rounded-18 border border-borde bg-white px-3.5 pt-2 pb-1.5 focus-within:border-primario",
+        "pie_caja": "mt-1 flex items-center justify-between gap-2",
         "acciones_caja": "flex items-center gap-1",
         "panel_emojis": "m-0 grid list-none grid-cols-8 gap-1 border-t border-borde-suave p-0 pt-2 max-480:grid-cols-6",
-        "pista": "text-auxiliar text-texto-suave",
-        "medios": "m-0 mt-2 flex list-none flex-wrap gap-2 p-0",
-        "medio": "max-h-60 max-w-full rounded-control border border-borde object-cover",
-        "mencion": "mr-1 text-auxiliar text-primario hover:underline"
+        "pista": "inline-flex items-baseline gap-1 px-1 text-fecha-abreviada text-texto-suave",
+        "medios": "m-0 mt-2 mb-1 flex list-none flex-wrap gap-1 p-0",
+        "medio": "block max-h-45 w-full object-cover",
+        "mencion": "mr-1 text-primario",
+        "fila_texto": "flex items-start gap-1",
+        "mencion_caja": "flex-none text-cuerpo leading-texto text-primario",
+        "miniaturas": "m-0 flex list-none flex-wrap p-0 px-2 pb-1",
+        "miniatura": "relative mx-1 mt-2",
+        "miniatura_medio": "block h-18 w-auto rounded-control border border-borde object-cover",
+        "miniatura_quitar": "absolute -top-1 -right-1",
+        "medio_item": "relative max-w-70 overflow-hidden rounded-control border border-borde",
+        "medio_boton": "block h-auto w-full p-0",
+        "lista": "m-0 mb-6 flex list-none flex-col gap-4 p-0",
+        "burbuja_edicion": "min-w-0 flex-1"
       },
       "etiqueta_emojis": "Emojis",
-      "etiqueta_adjuntar": "Adjuntar foto",
-      "pista_edicion": "Esc para cancelar",
+      "etiqueta_adjuntar": "Foto / Video",
+      "pista_edicion": "Pulsa Esc para",
       "etiqueta_medios": "Archivos del comentario",
       "emojis": [
         "😀",
@@ -239,11 +249,9 @@
         "💡",
         "✅"
       ],
-      "etiqueta_adjuntar_video": "Adjuntar video",
-      "aceptar_imagen": "image/*",
-      "aceptar_video": "video/*",
       "prefijo_mencion": "@",
-      "tecla_enviar": "Enter"
+      "tecla_enviar": "Enter",
+      "etiqueta_visor": "Archivo del comentario"
     }
   },
   "leyendas": {
@@ -293,9 +301,9 @@
     },
     "clases": {
       "elemento": "contents",
-      "pestanas": "mb-4 rounded-xl border border-borde/60 bg-white px-2 shadow-sombra",
+      "pestanas": "mb-4 rounded-xl border border-borde/60 bg-white px-6 pt-2 shadow-sombra max-480:px-3",
       "vacio": "mb-4 rounded-xl border border-borde/60 bg-white p-8 shadow-sombra",
-      "prioridad": "px-4 pb-2"
+      "prioridad": "pb-3"
     }
   },
   "pregunta_estado": {
@@ -309,28 +317,37 @@
     }
   },
   "mensajes_flotantes": {
-    "boton": "Abrir mensajes sin leer",
+    "boton": "Abrir mensajes",
     "cerrar": "Cerrar mensajes",
-    "titulo": "Mensajes sin leer",
-    "vacio": "No tienes mensajes sin leer.",
+    "ampliar": "Ampliar mensajes",
+    "titulo": "Mensajes",
+    "recientes": "Recientes",
+    "vacio_todos": "Aún no tienes conversaciones.",
+    "vacio_no_leidos": "No tienes mensajes sin leer.",
     "ver_todos": "Ver todos los mensajes",
+    "pestanas": {
+      "todos": "Todos",
+      "no_leidos": "No leídos"
+    },
     "clases": {
       "contenedor": "fixed bottom-5 right-5 z-20 flex flex-col items-end gap-3 max-600:bottom-3 max-600:right-3",
       "panel": "flex max-h-120 w-90 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:w-[calc(100vw-1.5rem)]",
+      "panel_hilo": "h-130 max-h-[calc(100vh-7rem)]",
       "cabecera": "flex items-center justify-between gap-2 border-b border-borde px-4 py-3",
+      "pestanas": "px-2",
+      "recientes": "m-0 px-4 pb-1 pt-3 text-auxiliar font-control uppercase text-texto-suave",
       "lista": "m-0 min-h-0 flex-1 list-none overflow-y-auto p-0",
-      "fila": "flex items-center gap-3 border-b border-borde-suave px-4 py-3 no-underline hover:bg-fondo",
-      "ver_todos": "block px-4 py-3 text-center text-enlace-accion text-primario no-underline hover:bg-fondo",
-      "insignia": "absolute -right-1 -top-1"
+      "fila": "flex w-full items-center gap-3 border-0 border-b border-borde-suave bg-transparent px-4 py-3 text-left hover:bg-fondo",
+      "hilo": "grid min-h-0 flex-1 grid-rows-1",
+      "ver_todos": "block px-4 py-3 text-center text-enlace-accion text-primario no-underline hover:bg-fondo"
     }
   },
   "compositor": {
     "clases": {
       "seccion": "min-w-0",
-      "tarjeta": "mb-4 rounded-xl border border-borde bg-white p-4 shadow-sombra",
-      "fila": "mb-3 flex items-center gap-2.5",
-      "disparador": "block w-full cursor-pointer rounded-control border border-borde bg-white px-3.5 py-2.5 text-left text-campo-formulario text-texto-suave hover:bg-fondo",
-      "accesos": "flex flex-wrap gap-1 border-t border-borde pt-2.5"
+      "tarjeta": "mb-4 rounded-xl border border-borde bg-white p-5 shadow-sombra max-480:px-4",
+      "fila": "flex items-center gap-3.5",
+      "disparador": "block w-full cursor-pointer rounded-control border border-borde bg-white px-4 py-3 text-left text-campo-formulario text-texto-suave hover:bg-fondo"
     }
   },
   "estadisticas": {
@@ -362,7 +379,7 @@
       "icono": "h-6 w-6",
       "cuerpo": "flex min-w-0 flex-1 flex-col gap-1",
       "etiqueta": "text-auxiliar text-texto-suave",
-      "valor": "text-titulo-seccion text-texto"
+      "valor": "text-valor-destacado text-texto"
     }
   },
   "encuesta": {
@@ -373,7 +390,7 @@
     "etiqueta_opcion": ":opcion, :porcentaje %",
     "porcentaje_maximo": 100,
     "clases": {
-      "lista": "m-0 mb-3 flex list-none flex-col gap-2 px-4 py-0",
+      "lista": "m-0 mb-3 flex list-none flex-col gap-2 p-0",
       "opcion": "h-auto! min-h-0! w-full flex-col! items-stretch! justify-start! gap-1.5 rounded-control! border-borde! bg-white px-3.5! py-2.5! text-left text-subtitulo! text-texto!",
       "opcion_elegida": "border-primario! bg-primario-suave",
       "fila": "flex items-center justify-between gap-3",
@@ -386,11 +403,17 @@
   "medios": {
     "texto_alternativo": "Archivo :numero de la publicación",
     "clases": {
-      "uno": "px-4 pb-3",
-      "varios": "grid grid-cols-2 gap-1 px-4 pb-3",
+      "uno": "pb-4.5",
+      "varios": "grid grid-cols-2 gap-1 pb-4.5",
       "medio_unico": "max-h-120 w-full rounded-lg bg-fondo object-cover",
-      "medio": "aspect-square w-full rounded-lg bg-fondo object-cover"
-    }
+      "medio": "aspect-square w-full rounded-lg bg-fondo object-cover",
+      "item": "relative overflow-hidden rounded-lg",
+      "boton": "block h-auto w-full p-0",
+      "restantes": "pointer-events-none absolute inset-0 grid place-items-center rounded-lg bg-overlay-14 text-valor-destacado text-white"
+    },
+    "mas": "+:cantidad",
+    "etiqueta_visor": "Archivo de la publicación",
+    "maximo_visibles": 4
   },
   "modal_crear_publicacion": {
     "titulo": "Crear publicación",
@@ -445,7 +468,7 @@
       ],
       "inicial": "normal"
     },
-    "agregar_a_publicacion": "Agregar a tu publicación",
+    "agregar_a_publicacion": "Añadir a tu publicación",
     "foto_video": "Foto/Video",
     "medios": {
       "etiqueta_selector": "Seleccionar fotos o videos",
@@ -461,6 +484,522 @@
       "texto_alternativo": "Archivo :numero",
       "quitar": "Quitar archivo :numero"
     },
-    "publicar": "Publicar"
+    "publicar": "Publicar",
+    "filas_con_medios": 1
+  },
+  "historias": {
+    "etiqueta_lienzo": "Lienzo de la historia",
+    "texto_alternativo_medio": "Contenido multimedia de la historia",
+    "borrador": {
+      "tipo_inicial": "texto",
+      "fondo_inicial": "degradado-primario",
+      "estilo_texto_inicial": "clasico",
+      "posicion_inicial": "central",
+      "limite_texto": 150
+    },
+    "lienzo": {
+      "marco": "relative isolate flex aspect-9/16 items-center justify-center overflow-hidden rounded-xl shadow-t13",
+      "capa_imagen": "absolute inset-0 -z-10 h-full w-full object-cover",
+      "capa_medio": "absolute inset-0 -z-10 h-full w-full origin-center object-contain",
+      "superposicion_imagen": "absolute inset-0 -z-10 bg-overlay-14",
+      "texto": "relative z-10 m-0 whitespace-pre-wrap break-words px-6",
+      "elemento": "absolute z-10 m-0 max-w-4/5 whitespace-pre-wrap break-words px-2",
+      "completo": "w-full max-w-80",
+      "compacto": "w-full max-w-64",
+      "editor_texto": "relative z-10 m-0 field-sizing-content max-h-full w-full resize-none overflow-hidden border-0 bg-transparent px-6 outline-none placeholder:text-current placeholder:opacity-60",
+      "inmersivo": "h-full w-full",
+      "texto_miniatura": "line-clamp-5"
+    },
+    "posiciones": [
+      {
+        "id": "superior",
+        "clase": "top-8 left-1/2 -translate-x-1/2"
+      },
+      {
+        "id": "central",
+        "clase": "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      },
+      {
+        "id": "inferior",
+        "clase": "bottom-8 left-1/2 -translate-x-1/2"
+      }
+    ],
+    "fondos": [
+      {
+        "id": "solido-azul",
+        "tipo": "solido",
+        "etiqueta": "Azul",
+        "clase": "bg-azul-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "solido-verde",
+        "tipo": "solido",
+        "etiqueta": "Verde",
+        "clase": "bg-verde-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "solido-morado",
+        "tipo": "solido",
+        "etiqueta": "Morado",
+        "clase": "bg-morado-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "solido-naranja",
+        "tipo": "solido",
+        "etiqueta": "Naranja",
+        "clase": "bg-naranja-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "solido-rosa",
+        "tipo": "solido",
+        "etiqueta": "Rosa",
+        "clase": "bg-rosa-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "solido-teal",
+        "tipo": "solido",
+        "etiqueta": "Turquesa",
+        "clase": "bg-teal-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "solido-violeta",
+        "tipo": "solido",
+        "etiqueta": "Violeta",
+        "clase": "bg-violeta-categoria",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-primario",
+        "tipo": "degradado",
+        "etiqueta": "Primario",
+        "clase": "degradado-primario",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-morado",
+        "tipo": "degradado",
+        "etiqueta": "Morado",
+        "clase": "degradado-morado",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-azul",
+        "tipo": "degradado",
+        "etiqueta": "Azul",
+        "clase": "degradado-azul",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-calido",
+        "tipo": "degradado",
+        "etiqueta": "Cálido",
+        "clase": "degradado-calido",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-verde",
+        "tipo": "degradado",
+        "etiqueta": "Verde",
+        "clase": "degradado-verde",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-rosa",
+        "tipo": "degradado",
+        "etiqueta": "Rosa",
+        "clase": "degradado-rosa",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-teal",
+        "tipo": "degradado",
+        "etiqueta": "Turquesa",
+        "clase": "degradado-teal",
+        "texto": "text-white"
+      },
+      {
+        "id": "degradado-nocturno",
+        "tipo": "degradado",
+        "etiqueta": "Nocturno",
+        "clase": "degradado-nocturno",
+        "texto": "text-white"
+      },
+      {
+        "id": "decorativo-puntos",
+        "tipo": "decorativo",
+        "etiqueta": "Puntos",
+        "clase": "fondo-historia-puntos",
+        "texto": "text-white"
+      },
+      {
+        "id": "decorativo-rayas",
+        "tipo": "decorativo",
+        "etiqueta": "Rayas",
+        "clase": "fondo-historia-rayas",
+        "texto": "text-white"
+      },
+      {
+        "id": "decorativo-ondas",
+        "tipo": "decorativo",
+        "etiqueta": "Ondas",
+        "clase": "fondo-historia-ondas",
+        "texto": "text-white"
+      }
+    ],
+    "estilos_texto": [
+      {
+        "id": "clasico",
+        "etiqueta": "Clásico",
+        "clases": "text-titulo-seccion text-center"
+      },
+      {
+        "id": "titular",
+        "etiqueta": "Titular",
+        "clases": "text-titulo-pagina text-center uppercase"
+      },
+      {
+        "id": "cuerpo",
+        "etiqueta": "Cuerpo",
+        "clases": "text-cuerpo-grande text-left"
+      },
+      {
+        "id": "destacado",
+        "etiqueta": "Destacado",
+        "clases": "text-valor-destacado text-center"
+      },
+      {
+        "id": "susurro",
+        "etiqueta": "Susurro",
+        "clases": "text-cuerpo text-center italic"
+      },
+      {
+        "id": "etiqueta",
+        "etiqueta": "Etiqueta",
+        "clases": "text-titulo-banner text-center uppercase"
+      }
+    ],
+    "tipos_fondo": [
+      {
+        "clave": "solido",
+        "etiqueta": "Colores"
+      },
+      {
+        "clave": "degradado",
+        "etiqueta": "Degradados"
+      },
+      {
+        "clave": "decorativo",
+        "etiqueta": "Decorativos"
+      },
+      {
+        "clave": "imagen",
+        "etiqueta": "Imágenes"
+      }
+    ],
+    "flujo": {
+      "crear": {
+        "titulo": "Crear historia",
+        "cerrar": "Cerrar",
+        "etiqueta_tipos": "Formato de la historia",
+        "tipos": [
+          {
+            "valor": "media",
+            "etiqueta": "Foto o video",
+            "icono": "imagen"
+          },
+          {
+            "valor": "texto",
+            "etiqueta": "Texto",
+            "icono": "texto"
+          }
+        ],
+        "cancelar": "Cancelar",
+        "continuar": "Continuar",
+        "etiqueta_archivo": "Elegir foto o video",
+        "limite_segmentos": "Alcanzaste el máximo de :maximo historias"
+      },
+      "editor": {
+        "titulo_texto": "Historia de texto",
+        "titulo_media": "Historia de foto o video",
+        "volver": "Volver",
+        "vista_previa": "Vista previa",
+        "descartar": "Descartar",
+        "mensaje_etiqueta": "Mensaje de la historia",
+        "mensaje_marcador": "Escribe tu historia…",
+        "etiqueta_estilos": "Estilo de texto",
+        "etiqueta_fondos": "Fondo",
+        "etiqueta_pestanas_fondo": "Tipo de fondo",
+        "muestra_fondo": "Fondo :nombre",
+        "etiqueta_elementos": "Texto superpuesto",
+        "elemento_etiqueta": "Texto que se superpone",
+        "elemento_marcador": "Añade un texto sobre la historia",
+        "elemento_agregar": "Añadir texto",
+        "elemento_quitar": "Quitar texto :contenido",
+        "etiqueta_posiciones": "Posición de :contenido",
+        "posiciones": [
+          {
+            "id": "superior",
+            "etiqueta": "Arriba"
+          },
+          {
+            "id": "central",
+            "etiqueta": "Centro"
+          },
+          {
+            "id": "inferior",
+            "etiqueta": "Abajo"
+          }
+        ],
+        "cambiar_archivo": "Cambiar archivo",
+        "etiqueta_herramientas": "Herramientas de edición",
+        "herramientas_texto": [
+          {
+            "clave": "texto",
+            "etiqueta": "Texto",
+            "icono": "texto"
+          },
+          {
+            "clave": "fondo",
+            "etiqueta": "Fondo",
+            "icono": "paleta"
+          }
+        ],
+        "herramientas_media": [
+          {
+            "clave": "archivo",
+            "etiqueta": "Archivo",
+            "icono": "imagen"
+          },
+          {
+            "clave": "superpuesto",
+            "etiqueta": "Texto",
+            "icono": "texto"
+          }
+        ],
+        "elemento_modificar": "Texto superpuesto :numero",
+        "etiqueta_emojis": "Emojis",
+        "contador": ":usados/:maximo"
+      },
+      "cargador": {
+        "error": "El archivo no es una imagen ni un video, o supera el tamaño permitido."
+      },
+      "vista_previa": {
+        "titulo": "Vista previa de la historia",
+        "volver_a_editar": "Volver a editar",
+        "cancelar": "Cancelar",
+        "publicar": "Publicar historia",
+        "encabezado": "Así se verá tu historia"
+      },
+      "descartar": {
+        "titulo": "¿Descartar la historia?",
+        "cerrar": "Cerrar",
+        "mensaje": "Si sales ahora se perderá el contenido de esta historia.",
+        "cancelar": "Seguir editando",
+        "confirmar": "Descartar"
+      },
+      "visor": {
+        "titulo": "Historia de :nombre",
+        "cerrar": "Cerrar",
+        "anterior": "Historia anterior",
+        "siguiente": "Historia siguiente",
+        "progreso": "Historia :actual de :total",
+        "etiqueta_progreso": "Progreso de las historias",
+        "previa_anterior": "Ver historia anterior",
+        "previa_siguiente": "Ver historia siguiente",
+        "responder_etiqueta": "Respuesta a la historia de :nombre",
+        "responder_marcador": "Enviar mensaje…",
+        "enviar": "Enviar respuesta",
+        "reaccionar": "Reaccionar con :reaccion",
+        "etiqueta_reacciones": "Reacciones a la historia",
+        "respuesta_enviada": "Respuesta enviada a :nombre. En esta demostración no se guarda en Mensajería.",
+        "opciones": "Opciones de la historia",
+        "menu": [
+          {
+            "clave": "copiar_enlace",
+            "etiqueta": "Copiar enlace para compartir esta historia",
+            "icono": "enlace"
+          },
+          {
+            "clave": "eliminar",
+            "etiqueta": "Eliminar historia",
+            "icono": "eliminar",
+            "peligro": true
+          }
+        ],
+        "eliminar_foto": "Eliminar foto",
+        "eliminar_video": "Eliminar video",
+        "enlace_copiado": "Enlace copiado",
+        "zona_anterior": "Tocar para ir a la historia anterior",
+        "zona_siguiente": "Tocar para ir a la historia siguiente"
+      },
+      "clases": {
+        "tipos": "grid grid-cols-2 gap-3 px-5 py-4 max-480:grid-cols-1",
+        "opcion": "h-auto! flex-col! gap-2 rounded-xl! border-borde! px-4! py-6! text-subtitulo!",
+        "acciones": "flex justify-end gap-2 border-t border-borde px-5 py-4 max-600:flex-col-reverse",
+        "cuerpo_editor": "grid min-h-0 flex-1 grid-cols-[minmax(0,18rem)_minmax(0,1fr)] items-start gap-5 overflow-y-auto px-5 py-4 max-800:grid-cols-1",
+        "controles": "flex min-w-0 flex-col gap-4",
+        "seccion_control": "flex flex-col gap-2",
+        "titulo_control": "m-0 text-titulo-subseccion text-texto",
+        "estilos": "m-0 grid list-none grid-cols-3 gap-2 p-0 max-480:grid-cols-2",
+        "muestras": "m-0 grid list-none grid-cols-6 gap-2 p-0 max-480:grid-cols-5",
+        "muestra": "size-8! min-w-0! rounded-full! border-2! border-white! p-0! ring-1 ring-borde",
+        "muestra_activa": "ring-2 ring-primario ring-offset-2",
+        "elemento_formulario": "flex items-start gap-2",
+        "elementos": "m-0 flex list-none flex-col gap-2 p-0",
+        "elemento_fila": "flex flex-col gap-2 rounded-control border border-borde p-3",
+        "cuerpo_vista": "flex flex-col items-center gap-3 px-5 py-5",
+        "mini": "relative grid h-26 w-26 place-items-center rounded-full",
+        "boton_historia": "h-auto! w-27.5 flex-none flex-col! gap-2 p-0!",
+        "etiqueta_historia": "w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-auxiliar",
+        "escenario": "flex flex-col items-center gap-2 rounded-xl bg-fondo p-4 max-800:p-3",
+        "estilo_boton": "h-14! w-full! min-w-0! overflow-hidden px-2!",
+        "elemento_acciones": "flex flex-wrap items-center justify-between gap-2",
+        "posiciones": "flex flex-wrap gap-1.5",
+        "titulo_vista": "m-0 text-titulo-banner text-texto-suave",
+        "cabecera_visor": "absolute inset-x-0 top-0 z-20 flex flex-col gap-3 degradado-historia-superior p-3 max-600:pr-14",
+        "progreso": "m-0 flex list-none gap-1 p-0",
+        "segmento": "h-1 flex-1 overflow-hidden rounded-full",
+        "segmento_activo": "bg-white",
+        "autor_visor": "flex items-center gap-3",
+        "datos_autor": "flex min-w-0 flex-1 flex-col",
+        "nombre_autor": "truncate text-nombre-entidad text-white",
+        "tiempo_autor": "text-fecha-abreviada text-white/80",
+        "cuerpo_visor": "relative min-h-0 flex-1 px-3 py-4 max-600:px-0 max-600:py-0",
+        "marco_visor": "relative h-full w-full overflow-hidden rounded-xl max-600:rounded-none",
+        "lateral_interior": "relative block h-full w-full",
+        "pie_visor": "absolute inset-x-0 bottom-0 z-20 flex flex-col gap-2 degradado-historia-inferior p-3",
+        "fila_respuesta": "flex items-center gap-1.5",
+        "reacciones_visor": "flex min-w-0 shrink items-center gap-0.5 overflow-x-auto scrollbar-oculto",
+        "estado_respuesta": "m-0 text-center text-fecha-abreviada text-white",
+        "campo_respuesta": "min-w-36 flex-1 basis-36",
+        "mini_sin_historia": "relative grid h-26 w-26 place-items-center rounded-full bg-borde",
+        "miniatura_anillo": "relative grid h-26 w-26 place-items-center rounded-full",
+        "miniatura_circulo": "relative h-full w-full overflow-hidden rounded-full border-3 border-white bg-fondo",
+        "miniatura_lienzo": "absolute top-1/2 left-1/2 block h-92.5 w-52 -translate-x-1/2 -translate-y-1/2 scale-50",
+        "autor_previo": "flex items-center gap-2",
+        "nombre_previo": "text-subtitulo text-texto",
+        "contador": "m-0 text-fecha-abreviada text-texto-suave",
+        "acciones_visor": "absolute right-3 top-3 z-30",
+        "error_archivo": "m-0 px-5 text-subtitulo text-peligro-texto",
+        "estado_enlace": "text-fecha-abreviada text-white",
+        "ajuste_medio": "flex w-full max-w-64 flex-col gap-1 px-2",
+        "valor_ajuste": "text-fecha-abreviada text-texto-suave",
+        "lateral_datos": "absolute inset-0 z-20 flex flex-col items-center justify-center gap-1 px-2 text-center",
+        "lateral_nombre": "max-w-full truncate text-subtitulo text-white",
+        "lateral_tiempo": "text-fecha-abreviada text-white/80",
+        "lateral_velo": "absolute inset-0 z-10 bg-black/40",
+        "segmento_inactivo": "bg-white/40",
+        "boton_fila_respuesta": "size-9!",
+        "zona_toque": "absolute top-20 bottom-32 z-10 h-auto! w-1/3 min-w-0! rounded-none! border-0! bg-transparent! p-0! hover:bg-transparent! active:bg-transparent! focus-visible:bg-transparent!",
+        "zona_toque_anterior": "left-0",
+        "zona_toque_siguiente": "right-0",
+        "segmento_relleno": "block h-full w-full rounded-full bg-white transition-all ease-linear starting:w-0 motion-reduce:transition-none"
+      },
+      "etiqueta_propia": "Tu historia",
+      "eliminar": {
+        "titulo": "¿Eliminar la historia?",
+        "cerrar": "Cerrar",
+        "mensaje": "La historia dejará de mostrarse en Inicio.",
+        "cancelar": "Cancelar",
+        "confirmar": "Eliminar"
+      }
+    },
+    "texto_adaptable": {
+      "umbrales": [
+        60,
+        110
+      ],
+      "reduccion": {
+        "text-titulo-pagina": [
+          "text-titulo-seccion",
+          "text-titulo-banner"
+        ],
+        "text-titulo-seccion": [
+          "text-titulo-banner",
+          "text-cuerpo"
+        ],
+        "text-cuerpo-grande": [
+          "text-cuerpo",
+          "text-subtitulo"
+        ],
+        "text-valor-destacado": [
+          "text-titulo-banner",
+          "text-cuerpo"
+        ],
+        "text-titulo-banner": [
+          "text-subtitulo",
+          "text-subtitulo"
+        ],
+        "text-cuerpo": [
+          "text-subtitulo",
+          "text-subtitulo"
+        ]
+      }
+    },
+    "ajuste_medio": {
+      "etiqueta": "Ajustar tamaño",
+      "valor": ":porcentaje %",
+      "niveles": [
+        {
+          "porcentaje": 100,
+          "clase": "scale-100"
+        },
+        {
+          "porcentaje": 125,
+          "clase": "scale-125"
+        },
+        {
+          "porcentaje": 150,
+          "clase": "scale-150"
+        },
+        {
+          "porcentaje": 175,
+          "clase": "scale-175"
+        },
+        {
+          "porcentaje": 200,
+          "clase": "scale-200"
+        },
+        {
+          "porcentaje": 250,
+          "clase": "scale-250"
+        },
+        {
+          "porcentaje": 300,
+          "clase": "scale-300"
+        }
+      ]
+    },
+    "carrusel": {
+      "radio": 3,
+      "escenario": "relative h-full w-full overflow-hidden",
+      "tarjeta": "absolute top-1/2 left-1/2 h-full max-h-full max-w-full aspect-9/16 transition-all duration-500 ease-out motion-reduce:transition-none",
+      "contenido": "h-full w-full",
+      "vecina_boton": "block! h-full! w-full! min-w-0! rounded-xl! bg-black p-0! max-800:hidden",
+      "oculta": "pointer-events-none max-800:hidden",
+      "guia": "pointer-events-none absolute top-1/2 left-1/2 z-20 h-full max-h-full max-w-full aspect-9/16 -translate-x-1/2 -translate-y-1/2",
+      "flecha_anterior": "pointer-events-auto absolute top-1/2 -left-12 -translate-y-1/2 max-800:hidden",
+      "flecha_siguiente": "pointer-events-auto absolute top-1/2 -right-12 -translate-y-1/2 max-800:hidden",
+      "posiciones": [
+        "z-0 -translate-x-21/10 -translate-y-1/2 scale-25 opacity-0",
+        "z-0 -translate-x-17/10 -translate-y-1/2 scale-30 opacity-30",
+        "z-0 -translate-x-32/25 -translate-y-1/2 scale-40 opacity-60",
+        "z-10 -translate-x-1/2 -translate-y-1/2 scale-100 opacity-100",
+        "z-0 translate-x-7/25 -translate-y-1/2 scale-40 opacity-60",
+        "z-0 translate-x-7/10 -translate-y-1/2 scale-30 opacity-30",
+        "z-0 translate-x-11/10 -translate-y-1/2 scale-25 opacity-0"
+      ]
+    },
+    "maximo_segmentos": 10,
+    "reproduccion": {
+      "duracion_ms": 5000,
+      "clase_duracion": "duration-5000"
+    }
   }
 }

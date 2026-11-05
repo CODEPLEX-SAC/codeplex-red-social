@@ -12,7 +12,7 @@ export function PiePublicacion({ reacciones, iconosResumen, comentarios, compart
 
   return (
     <>
-      <div className="flex items-center justify-between gap-3 px-4 pb-3 text-auxiliar text-texto-suave" aria-live="polite">
+      <div className="flex items-center justify-between gap-3 px-2 py-3 text-auxiliar text-texto-suave" aria-live="polite">
         <span className="flex min-w-0 items-center gap-1.5 truncate">
           {iconosResumen.map((opcion) => (
             <Icono key={opcion.clave} name={opcion.icono} className={`h-4 w-4 flex-none ${opcion.clase_resumen}`} />
@@ -24,7 +24,7 @@ export function PiePublicacion({ reacciones, iconosResumen, comentarios, compart
           {compartidos && <span>{compartidos}</span>}
         </span>
       </div>
-      <div className="flex gap-1 border-t border-borde-suave px-2 py-1">
+      <div className="mt-1 flex gap-3 border-t border-borde-suave py-3">
         {acciones.map((accion) =>
           accion.clave === 'me_gusta' ? (
             <BotonReaccion key={accion.clave} reaccion={reaccion} variante="publicacion" onReaccionar={onReaccionar} />

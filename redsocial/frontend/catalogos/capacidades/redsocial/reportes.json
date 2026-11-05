@@ -140,10 +140,10 @@
     "95": "h-p95"
   },
   "clases_barra_color": {
-    "#7c3aed": "bg-morado-categoria",
-    "#c4b5fd": "bg-t-c4b5fd",
-    "#ddd6fe": "bg-t-ddd6fe",
-    "#f97316": "bg-naranja-categoria",
-    "#fed7aa": "bg-t-fed7aa"
+    "primario": "bg-morado-categoria",
+    "primario-claro": "bg-t-c4b5fd",
+    "primario-suave": "bg-t-ddd6fe",
+    "naranja-categoria": "bg-naranja-categoria",
+    "advertencia-suave": "bg-t-fed7aa"
   }
 }

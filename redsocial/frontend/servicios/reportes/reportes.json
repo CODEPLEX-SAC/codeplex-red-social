@@ -11,27 +11,27 @@
         "barras": [
           {
             "v": 35,
-            "c": "#c4b5fd"
+            "c": "primario-claro"
           },
           {
             "v": 55,
-            "c": "#c4b5fd"
+            "c": "primario-claro"
           },
           {
             "v": 45,
-            "c": "#7c3aed"
+            "c": "primario"
           },
           {
             "v": 75,
-            "c": "#c4b5fd"
+            "c": "primario-claro"
           },
           {
             "v": 90,
-            "c": "#7c3aed"
+            "c": "primario"
           },
           {
             "v": 60,
-            "c": "#c4b5fd"
+            "c": "primario-claro"
           }
         ]
       }
@@ -44,7 +44,7 @@
       "modulo": "Contabilidad",
       "grafico": {
         "tipo": "linea",
-        "color": "#22c55e",
+        "color": "exito",
         "puntos": "0,30 20,26 40,32 60,18 80,22 100,10 120,14"
       }
     },
@@ -59,27 +59,27 @@
         "barras": [
           {
             "v": 30,
-            "c": "#fed7aa"
+            "c": "advertencia-suave"
           },
           {
             "v": 50,
-            "c": "#fed7aa"
+            "c": "advertencia-suave"
           },
           {
             "v": 65,
-            "c": "#f97316"
+            "c": "naranja-categoria"
           },
           {
             "v": 45,
-            "c": "#fed7aa"
+            "c": "advertencia-suave"
           },
           {
             "v": 85,
-            "c": "#f97316"
+            "c": "naranja-categoria"
           },
           {
             "v": 55,
-            "c": "#fed7aa"
+            "c": "advertencia-suave"
           }
         ]
       }
@@ -94,11 +94,11 @@
         "tipo": "dona-lista",
         "segmentos": [
           {
-            "color": "#3b82f6",
+            "color": "info",
             "porcentaje": 60
           },
           {
-            "color": "#93c5fd",
+            "color": "info-claro",
             "porcentaje": 40
           }
         ]
@@ -135,27 +135,27 @@
         "barras": [
           {
             "v": 40,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           },
           {
             "v": 60,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           },
           {
             "v": 50,
-            "c": "#7c3aed"
+            "c": "primario"
           },
           {
             "v": 80,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           },
           {
             "v": 95,
-            "c": "#7c3aed"
+            "c": "primario"
           },
           {
             "v": 65,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           }
         ]
       }
@@ -168,7 +168,7 @@
       "modulo": "Inventarios",
       "grafico": {
         "tipo": "linea",
-        "color": "#3b82f6",
+        "color": "info",
         "puntos": "0,20 20,30 40,15 60,25 80,12 100,22 120,8"
       }
     },
@@ -193,27 +193,27 @@
         "barras": [
           {
             "v": 45,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           },
           {
             "v": 65,
-            "c": "#7c3aed"
+            "c": "primario"
           },
           {
             "v": 55,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           },
           {
             "v": 85,
-            "c": "#7c3aed"
+            "c": "primario"
           },
           {
             "v": 70,
-            "c": "#ddd6fe"
+            "c": "primario-suave"
           },
           {
             "v": 90,
-            "c": "#7c3aed"
+            "c": "primario"
           }
         ]
       }

@@ -85,9 +85,9 @@ export function FilaUsuarioEdicion({ usuario, alGuardar, alCancelar, correoDispo
         <span className={`block ${textoAuxiliar}`}>{usuario.hora}</span>
       </td>
       <td className={`${celda} ${edicion.clases.acciones}`}>
-        <div className="flex gap-2">
-          <BotonIcono icono="verificado" type="button" variant="suave" aria-label={edicion.guardar} disabled={!valido} onClick={guardar} className={edicion.clases.guardar} />
-          <BotonIcono icono="cerrar" type="button" variant="contorno" aria-label={edicion.cancelar} onClick={alCancelar} />
+        <div className="flex gap-3.5">
+          <BotonIcono icono="verificado" type="button" variant="suave" aria-label={edicion.guardar} disabled={!valido} onClick={guardar} className={`${edicion.clases.guardar} ${catalogoEmpresas.clases.objetivo_tactil}`} />
+          <BotonIcono icono="cerrar" type="button" variant="contorno" aria-label={edicion.cancelar} className={catalogoEmpresas.clases.objetivo_tactil} onClick={alCancelar} />
         </div>
       </td>
     </tr>

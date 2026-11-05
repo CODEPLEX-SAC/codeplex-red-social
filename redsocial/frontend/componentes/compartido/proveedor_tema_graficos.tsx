@@ -22,37 +22,44 @@ function estiloCampoOutlined(theme: Theme) {
   }
 }
 
-const temaGraficos = createTheme({
-  typography: catalogoCompartido.fuente_heredada,
-  components: {
-    MuiOutlinedInput: { styleOverrides: { root: ({ theme }) => estiloCampoOutlined(theme) } },
-    MuiInputBase: { styleOverrides: { input: catalogoCompartido.placeholder_tema } },
-    MuiMenuItem: { styleOverrides: { root: catalogoCompartido.elemento_menu_tema } },
-    MuiTooltip: { styleOverrides: { tooltip: catalogoCompartido.tooltip_tema } },
-    MuiTab: { styleOverrides: { root: catalogoCompartido.pestanas_tema } },
-    MuiPickersOutlinedInput: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          borderRadius: catalogoCompartido.radio_campos,
-          [`& .${pickersOutlinedInputClasses.notchedOutline}`]: { borderColor: theme.palette.divider },
-          [`&:hover .${pickersOutlinedInputClasses.notchedOutline}`]: { borderColor: theme.palette.primary.main },
-          [`&.${pickersOutlinedInputClasses.focused} .${pickersOutlinedInputClasses.notchedOutline}`]: { borderWidth: foco.grosor, borderColor: theme.palette.primary.main, boxShadow: haloFoco(theme.palette.primary.main) },
-          [`&.${pickersOutlinedInputClasses.error} .${pickersOutlinedInputClasses.notchedOutline}`]: { borderColor: theme.palette.error.main },
-        }),
+const TOOLTIP_GRAFICOS = { MuiTooltip: { styleOverrides: { tooltip: catalogoCompartido.tooltip_tema } } }
+
+function crearTema(conTooltipGraficos: boolean) {
+  return createTheme({
+    typography: catalogoCompartido.fuente_heredada,
+    components: {
+      MuiOutlinedInput: { styleOverrides: { root: ({ theme }) => estiloCampoOutlined(theme) } },
+      MuiInputBase: { styleOverrides: { input: catalogoCompartido.placeholder_tema } },
+      MuiMenuItem: { styleOverrides: { root: catalogoCompartido.elemento_menu_tema } },
+      ...(conTooltipGraficos ? TOOLTIP_GRAFICOS : {}),
+      MuiTab: { styleOverrides: { root: catalogoCompartido.pestanas_tema } },
+      MuiPickersOutlinedInput: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderRadius: catalogoCompartido.radio_campos,
+            [`& .${pickersOutlinedInputClasses.notchedOutline}`]: { borderColor: theme.palette.divider },
+            [`&:hover .${pickersOutlinedInputClasses.notchedOutline}`]: { borderColor: theme.palette.primary.main },
+            [`&.${pickersOutlinedInputClasses.focused} .${pickersOutlinedInputClasses.notchedOutline}`]: { borderWidth: foco.grosor, borderColor: theme.palette.primary.main, boxShadow: haloFoco(theme.palette.primary.main) },
+            [`&.${pickersOutlinedInputClasses.error} .${pickersOutlinedInputClasses.notchedOutline}`]: { borderColor: theme.palette.error.main },
+          }),
+        },
       },
     },
-  },
-  palette: {
-    text: catalogoCompartido.texto_tema,
-    primary: { main: catalogoCompartido.tema_mui.primario },
-    secondary: { main: catalogoCompartido.colores_graficos.secundario },
-    success: { main: catalogoCompartido.colores_graficos.exito },
-    error: { main: catalogoCompartido.colores_graficos.error },
-    warning: { main: catalogoCompartido.colores_graficos.advertencia },
-    info: { main: catalogoCompartido.colores_graficos.info },
-  },
-})
+    palette: {
+      text: catalogoCompartido.texto_tema,
+      primary: { main: catalogoCompartido.tema_mui.primario },
+      secondary: { main: catalogoCompartido.colores_graficos.secundario },
+      success: { main: catalogoCompartido.colores_graficos.exito },
+      error: { main: catalogoCompartido.colores_graficos.error },
+      warning: { main: catalogoCompartido.colores_graficos.advertencia },
+      info: { main: catalogoCompartido.colores_graficos.info },
+    },
+  })
+}
 
-export function ProveedorTemaGraficos({ children }: { children: ReactNode }) {
-  return <ThemeProvider theme={temaGraficos}>{children}</ThemeProvider>
+const temaBase = crearTema(false)
+const temaConTooltipGraficos = crearTema(true)
+
+export function ProveedorTemaGraficos({ children, tooltipGraficos = false }: { children: ReactNode; tooltipGraficos?: boolean }) {
+  return <ThemeProvider theme={tooltipGraficos ? temaConTooltipGraficos : temaBase}>{children}</ThemeProvider>
 }

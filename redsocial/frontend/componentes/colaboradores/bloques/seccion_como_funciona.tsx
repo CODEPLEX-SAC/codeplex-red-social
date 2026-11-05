@@ -1,28 +1,25 @@
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Icono } from '../../compartido/icono'
 
+const clases = catalogoColaboradores.clases.como_funciona
+const colores: Record<string, string> = catalogoColaboradores.clases.paso_color
+
 export function SeccionComoFunciona({
   PASOS_FUNCIONA,
 }: {
-  PASOS_FUNCIONA: { icono: string; clase: string; numero: string; descripcion: string; }[]
+  PASOS_FUNCIONA: { icono: string; numero: string; descripcion: string; }[]
 }) {
   return (
-    <div className="rounded-xl border border-gris-borde bg-white p-6 area-comofunciona">
-      <h2 className="m-0 mb-5 text-titulo-banner text-texto">{catalogoColaboradores.secciones.como_funciona}</h2>
-      <div className="grid grid-cols-4 gap-5 max-1100:grid-cols-2 max-768:grid-cols-1">
+    <div className={clases.tarjeta}>
+      <h2 className={clases.titulo}>{catalogoColaboradores.secciones.como_funciona}</h2>
+      <div className={clases.rejilla}>
         {PASOS_FUNCIONA.map((paso, i) => (
-          <article
-            key={paso.numero}
-            className={
-              'flex flex-col gap-2.5 ' +
-              (i < PASOS_FUNCIONA.length - 1 ? 'border-r border-borde-suave pr-5 max-1100:border-r-0 max-1100:pr-0 max-768:border-r-0' : '')
-            }
-          >
-            <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${paso.clase}`}>
-              <Icono name={paso.icono} className="w-5 h-5" />
+          <article key={paso.numero} className={i < PASOS_FUNCIONA.length - 1 ? `${clases.paso} ${clases.paso_con_separador}` : clases.paso}>
+            <div className={`${clases.icono_caja} ${colores[paso.icono]}`}>
+              <Icono name={paso.icono} className={clases.glifo} />
             </div>
-            <span className="text-conteo text-texto">{paso.numero}</span>
-            <p className="text-cuerpo leading-texto text-texto-suave">{paso.descripcion}</p>
+            <span className={clases.numero}>{paso.numero}</span>
+            <p className={clases.descripcion}>{paso.descripcion}</p>
           </article>
         ))}
       </div>

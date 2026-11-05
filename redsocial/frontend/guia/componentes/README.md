@@ -83,6 +83,17 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 | [panel_lateral.md](panel_lateral.md), [columna_publicidad.md](columna_publicidad.md) | Paneles de la columna lateral |
 | [tabla_compartida.md](tabla_compartida.md), [tabla_colaboradores.md](tabla_colaboradores.md) | Clases de tabla y tabla de Colaboradores |
 
+### Perfil e Historias (fichas añadidas el 2026-10-26)
+| Archivo | Componentes |
+|---|---|
+| [perfil_usuario.md](perfil_usuario.md) | `PaginaPerfilUsuario`, pestañas, edición, relación de amistad y almacén en memoria |
+| [cabecera_perfil.md](cabecera_perfil.md) | `CabeceraPerfil`, foto, redes y acciones por relación |
+| [carrusel_historias.md](carrusel_historias.md) | `CarruselHistorias` (diseño propio de Inicio) |
+| [lienzo_historia.md](lienzo_historia.md) | `LienzoHistoria` y `BorradorHistoria` |
+| [visor_historia.md](visor_historia.md) | `VisorHistoria`: grupos por autor, segmentos, temporizador, respuestas y reacciones |
+| [flujo_creacion_historia.md](flujo_creacion_historia.md) | Creación, editores, almacén en memoria y configuración de Historias |
+| [avatar_usuario.md](avatar_usuario.md), [aro_historia.md](aro_historia.md) (**nuevo**), [fila_conversacion.md](fila_conversacion.md) (**nuevo**), [adjuntos_audio_respuestas_mensajeria.md](adjuntos_audio_respuestas_mensajeria.md) (**nuevo**), [grupo_avatares.md](grupo_avatares.md), [enlace_perfil_usuario.md](enlace_perfil_usuario.md), [indicador_carga.md](indicador_carga.md), [texto_truncable.md](texto_truncable.md), [valoracion.md](valoracion.md), [visor_medios.md](visor_medios.md) | Interfaces compartidas que no tenían ficha |
+
 ### Presentación y utilidades
 [insignia.md](insignia.md), [avatar_imagen.md](avatar_imagen.md), [mensaje_vacio.md](mensaje_vacio.md), [dona_progreso.md](dona_progreso.md), [sparkline.md](sparkline.md), [superficie_color.md](superficie_color.md), [texto_color.md](texto_color.md), [medida_dinamica.md](medida_dinamica.md), [graficos_y_visualizacion.md](graficos_y_visualizacion.md) (gráficos de `@codeplex-sac/graficos`).
 
@@ -93,6 +104,8 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 | [pasarela_pagos.md](pasarela_pagos.md) | Información de pago y resumen del pedido |
 | [seccion_pago_metodo.md](seccion_pago_metodo.md), [opcion_metodo_pago.md](opcion_metodo_pago.md), [panel_pago_billetera.md](panel_pago_billetera.md), [titulo_panel_pago.md](titulo_panel_pago.md) | Componentes **nuevos** de la pasarela |
 | [proveedor_carrito_marketplace.md](proveedor_carrito_marketplace.md) | Proveedor del carrito (**nuevo**) |
+| [asistente_invitar_colaborador.md](asistente_invitar_colaborador.md) | Asistente «Invitar colaborador» (patrón propio, perfiles y personalización de permisos) |
+| [ayuda_contextual.md](ayuda_contextual.md) | `AyudaContextual` (icono con texto de ayuda breve) |
 | [asistente_contaplex.md](asistente_contaplex.md) | Asistente de planes por producto |
 | [calendario_eventos.md](calendario_eventos.md) | Calendario, formulario de eventos, mapa y filtros |
 | [exportacion_colaboradores.md](exportacion_colaboradores.md) | Exportación a Excel y PDF (**nuevo**) |
@@ -103,7 +116,7 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 
 **Procedencia confirmada.** Las siete librerías `@codeplex-sac/*` (versiones en `procedencia_librerias_y_recursos.md`) coincidían archivo a archivo con sus paquetes publicados en la comprobación del 2026-10-17: **no hay modificaciones locales de librería** y no deben hacerse. Las diferencias de aspecto son adaptaciones del proyecto (envoltorios, tema MUI, `compartido.json`, clases Tailwind y tokens). La librería no ofrece botón, diálogo ni tooltip; `Boton`, `BotonIcono`, `Modal` y los chips son desarrollo propio y el tooltip es el `Tooltip` de `@mui/material` dentro del tema compartido.
 
-**Iconos.** Material Symbols Rounded mediante `@codeplex-sac/iconos` (cargado desde Google Fonts en tiempo de ejecución) y 107 SVG propios, de los que 66 llevan cabecera `lucide-static v1.34.0 (ISC)` en el prototipo HTML (no hay `lucide-react`). Origen de 35 SVG: no determinado.
+**Iconos.** Material Symbols Rounded mediante `@codeplex-sac/iconos` (cargado desde Google Fonts en tiempo de ejecución) y SVG propios (112 archivos en disco el 2026-10-24, 25 de ellos dibujados por el catálogo; 107 era la cifra del 2026-10-17), de los que 66 llevan cabecera `lucide-static v1.34.0 (ISC)` en el prototipo HTML (no hay `lucide-react`). Origen de 35 SVG: no determinado.
 
 **Sistema de diseño.** Tokens en `montaje_local/index.css`; configuración de componentes en `catalogos/capacidades/redsocial/compartido.json`; tema MUI en `proveedor_tema_graficos.tsx` (tipografía heredada, primario `#5a43f4`, foco de 2 px con halo de 4 px, estilo de tooltip). Alturas: barra superior 64 px; `--control-height` 48 px (campos, selectores estándar, `Boton md`, selector de empresa); `cta` 40 px; `Boton default` 34/30 px; `mini` y `pildora` 30 px; `Selector mini` 40 px; `BotonPieLista` ≈ 49 px; chips y `Boton filtro` 32 px.
 

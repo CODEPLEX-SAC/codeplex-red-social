@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@codeplex-sac/diseno": "^0.0.20",
+    "@codeplex-sac/feedback": "^0.1.8",
     "@codeplex-sac/formularios": "^0.1.10",
     "@codeplex-sac/graficos": "^0.0.24",
     "@codeplex-sac/iconos": "^0.0.11",
@@ -21,6 +22,7 @@
     "@codeplex-sac/navegacion": "^0.0.16",
     "@codeplex-sac/selectores-fecha": "^0.0.24",
     "@codeplex-sac/ui": "^0.0.25",
+    "@fontsource/inter": "^5.3.0",
     "@mui/material": "^7.3.11",
     "@mui/x-date-pickers": "^8.29.3",
     "@tanstack/react-table": "^9.2.4",

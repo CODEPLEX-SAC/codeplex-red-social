@@ -43,28 +43,54 @@ describe('PaginaAcceso', () => {
     expect(screen.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', textos.modos[0].id)
   })
 
-  it('no ofrece acciones sociales que no funcionan', () => {
+  it('ofrece Google, Outlook y Hotmail, deshabilitados hasta contar con un proveedor real', () => {
     render(<PaginaAcceso />)
-    expect(screen.getByRole('button', { name: textos.botones.continuar_con_google })).toBeDisabled()
+    for (const proveedor of textos.proveedores) {
+      const boton = screen.getByRole('button', { name: new RegExp(proveedor.etiqueta) })
+      expect(boton).toBeDisabled()
+      expect(boton).toHaveAttribute('title', textos.mensajes.proveedor_proximamente.replace(':proveedor', proveedor.nombre))
+    }
     expect(screen.queryByText(/Facebook|Instagram|TikTok/)).toBeNull()
   })
 
-  it('llega con las credenciales de demostracion precargadas y la contrasena oculta', () => {
+  it('no ofrece Hotmail', () => {
     render(<PaginaAcceso />)
-    expect(campoCorreo()).toHaveValue(textos.demostracion.correo)
-    expect(campoContrasena()).toHaveValue(textos.demostracion.contrasena)
+    expect(screen.queryByRole('button', { name: /hotmail/i })).toBeNull()
+    expect(textos.proveedores.map((proveedor) => proveedor.clave)).toEqual(['google', 'outlook'])
+  })
+
+  it('muestra el encabezado de cada modo, el pie para cambiar de modo, Recordar mi sesión y la recuperación deshabilitada', () => {
+    render(<PaginaAcceso />)
+    expect(screen.getByRole('heading', { name: textos.encabezados.iniciar_sesion.titulo })).toBeInTheDocument()
+    expect(screen.getByText(textos.encabezados.iniciar_sesion.subtitulo)).toBeInTheDocument()
+    expect(screen.getByRole('checkbox', { name: textos.recordar_sesion })).not.toBeChecked()
+    expect(screen.getByRole('button', { name: textos.olvido_contrasena })).toBeDisabled()
+    fireEvent.click(screen.getByRole('button', { name: textos.pie.iniciar_sesion.accion }))
+    expect(screen.getByRole('heading', { name: textos.encabezados.crear_cuenta.titulo })).toBeInTheDocument()
+    expect(screen.getByRole('tab', { name: textos.modos[1].etiqueta })).toHaveAttribute('aria-selected', 'true')
+    fireEvent.click(screen.getByRole('button', { name: textos.pie.crear_cuenta.accion }))
+    expect(screen.getByRole('heading', { name: textos.encabezados.iniciar_sesion.titulo })).toBeInTheDocument()
+  })
+
+  it('no ofrece volver al demo', () => {
+    render(<PaginaAcceso />)
+    expect(screen.queryByRole('button', { name: /demo/i })).toBeNull()
+  })
+
+  it('llega con los campos vacios, etiquetas flotantes y sin marcadores', () => {
+    render(<PaginaAcceso />)
+    expect(campoCorreo()).toHaveValue('')
+    expect(campoContrasena()).toHaveValue('')
     expect(campoContrasena()).toHaveAttribute('type', 'password')
+    expect(campoCorreo()).not.toHaveAttribute('placeholder')
+    expect(campoContrasena()).not.toHaveAttribute('placeholder')
     expect(screen.getByRole('button', { name: textos.campos_contrasena.acceso.mostrar })).toBeInTheDocument()
     expect(screen.queryByText(textos.errores.correo_obligatorio)).toBeNull()
-    expect(screen.queryByText(textos.errores.contrasena_obligatoria)).toBeNull()
     expect(campoCorreo()).not.toHaveAttribute('aria-invalid', 'true')
-    expect(campoContrasena()).not.toHaveAttribute('aria-invalid', 'true')
   })
 
   it('valida correo y contrasena antes de iniciar', () => {
     render(<PaginaAcceso />)
-    fireEvent.change(campoCorreo(), { target: { value: '' } })
-    fireEvent.change(campoContrasena(), { target: { value: '' } })
     enviar()
     expect(screen.getByText(textos.errores.correo_obligatorio)).toBeInTheDocument()
     expect(screen.getByText(textos.errores.contrasena_obligatoria)).toBeInTheDocument()
@@ -77,13 +103,26 @@ describe('PaginaAcceso', () => {
 
   it('muestra y oculta la contrasena', () => {
     render(<PaginaAcceso />)
+    fireEvent.change(campoContrasena(), { target: { value: 'secreta' } })
     expect(campoContrasena()).toHaveAttribute('type', 'password')
     fireEvent.click(screen.getByRole('button', { name: textos.campos_contrasena.acceso.mostrar }))
     expect(campoContrasena()).toHaveAttribute('type', 'text')
-    expect(campoContrasena()).toHaveValue(textos.demostracion.contrasena)
+    expect(campoContrasena()).toHaveValue('secreta')
     expect(screen.getByRole('button', { name: textos.campos_contrasena.acceso.ocultar })).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: textos.campos_contrasena.acceso.ocultar }))
     expect(campoContrasena()).toHaveAttribute('type', 'password')
+  })
+
+  it('el botón del ojo cambia de icono (visibilidad / visibilidad oculta) y no usa fondo de color al activarse', () => {
+    render(<PaginaAcceso />)
+    const glifo = (nombre: string) => screen.getByRole('button', { name: nombre }).querySelector('.material-symbols-rounded')?.textContent
+    const mostrar = textos.campos_contrasena.acceso.mostrar
+    const clasesInicio = screen.getByRole('button', { name: mostrar }).className
+    expect(glifo(mostrar)).toBe('visibility')
+    fireEvent.click(screen.getByRole('button', { name: mostrar }))
+    const ocultar = textos.campos_contrasena.acceso.ocultar
+    expect(glifo(ocultar)).toBe('visibility_off')
+    expect(screen.getByRole('button', { name: ocultar }).className).toBe(clasesInicio)
   })
 
   it('recorre carga y exito y luego entra a Inicio sin autenticar', () => {
@@ -108,30 +147,12 @@ describe('PaginaAcceso', () => {
     expect(window.location.pathname).toBe(catalogoInicio.rutas.principal)
   })
 
-  it('deja Volver al demo visible pero deshabilitado y sin efecto', () => {
-    window.history.pushState({}, '', textos.rutas.principal)
-    render(<PaginaAcceso />)
-    const volver = screen.getByRole('button', { name: new RegExp(textos.botones.volver_al_demo) })
-    expect(volver).toBeDisabled()
-    expect(volver).toHaveAttribute('title', textos.mensajes.demo_proximamente)
-    fireEvent.click(volver)
-    expect(window.location.pathname).toBe(textos.rutas.principal)
-    expect(screen.queryByText(textos.mensajes.acceso_concedido)).toBeNull()
-  })
-
-  it('inicia sesion con las credenciales precargadas sin escribir nada', () => {
-    vi.useFakeTimers()
+  it('no inicia sesion con los campos vacios', () => {
     render(<PaginaAcceso />)
     enviar()
-    expect(screen.getByRole('button', { name: new RegExp(textos.mensajes.validando_acceso) })).toBeDisabled()
-    act(() => {
-      vi.advanceTimersByTime(textos.tiempos.carga_ms)
-    })
-    expect(screen.getByRole('button', { name: textos.mensajes.acceso_concedido })).toBeDisabled()
-    act(() => {
-      vi.advanceTimersByTime(textos.tiempos.exito_ms)
-    })
-    expect(window.location.pathname).toBe(catalogoInicio.rutas.principal)
+    expect(screen.getByText(textos.errores.correo_obligatorio)).toBeInTheDocument()
+    expect(screen.getByText(textos.errores.contrasena_obligatoria)).toBeInTheDocument()
+    expect(window.location.pathname).not.toBe(catalogoInicio.rutas.principal)
   })
 })
 

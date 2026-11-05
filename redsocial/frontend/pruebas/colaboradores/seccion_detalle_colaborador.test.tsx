@@ -10,9 +10,8 @@ function buscar(nombre: string) {
 function abrirDetalle(nombre: string) {
   buscar(nombre)
   const fila = screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement
-  const boton = within(fila).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones })
+  const boton = within(fila).getByRole('button', { name: catalogoColaboradores.botones.accion_ver.replace(':nombre', nombre) })
   fireEvent.click(boton)
-  fireEvent.click(screen.getByText(catalogoColaboradores.botones.ver_colaborador))
   const titulo = screen.getByRole('heading', { level: 2, name: catalogoColaboradores.secciones.detalle_colaborador })
   return within(titulo.closest('aside') as HTMLElement)
 }
@@ -51,8 +50,7 @@ describe('SeccionDetalleColaborador', () => {
     render(<PaginaColaboradores />)
     buscar('Carlos Mendoza')
     const fila = screen.getByText('Carlos Mendoza', { selector: 'span.truncate' }).closest('tr') as HTMLElement
-    fireEvent.click(within(fila).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones }))
-    fireEvent.click(screen.getByText(catalogoColaboradores.botones.dar_de_baja))
+    fireEvent.click(within(fila).getByRole('button', { name: catalogoColaboradores.botones.accion_baja.replace(':nombre', 'Carlos Mendoza') }))
     const dialogo = within(screen.getByRole('dialog'))
     expect(dialogo.getByText('¿Dar de baja a Carlos Mendoza?')).toBeTruthy()
     expect(dialogo.getByText(catalogoColaboradores.confirmar_baja.motivo.etiqueta)).toBeTruthy()

@@ -15,6 +15,7 @@ export interface SelectorConfiguracionLibreria {
   conEtiqueta: boolean
   tamano: SelectProps['size']
   anchoCompleto: boolean
+  anchoEstable?: boolean
   sx: SxProps<Theme>
 }
 

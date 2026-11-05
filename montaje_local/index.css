@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @source "../redsocial/frontend";
 
+@utility selector-medida {
+  font-size: 1rem;
+  letter-spacing: 0.00938em;
+}
+
 @utility scrollbar-oculto {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -12,8 +17,7 @@
 
 @theme {
 
-  /* Familia tipográfica única de la aplicación. DECISIÓN PENDIENTE — FUENTE: Inter se declara pero no se entrega (sin archivo, sin regla de carga y sin dependencia autorizada).
-     Cuando se proporcione, se cambia solo aquí (más su regla de carga y typography.fontFamily "inherit" en el tema MUI). */
+  /* Familia tipográfica única de la aplicación: Inter, entregada con la aplicación (@fontsource/inter, subconjunto latin, pesos 400, 500, 600, 700 y 800 importados en montaje_local/main.tsx). */
   --fuente-base: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --color-primario: #5a43f4;
@@ -46,6 +50,7 @@
   --color-teal-categoria: #14b8a6;
   --color-violeta-categoria: #8b5cf6;
   --color-azul-claro-categoria: #60a5fa;
+  --color-azul-muy-claro-categoria: #93c5fd;
   --color-positivo-kpi: var(--color-exito-texto);
   --color-negativo-kpi: var(--color-peligro-texto);
 
@@ -141,6 +146,7 @@
   --radius-7: 7px;
   --radius-9: 9px;
   --radius-14: 14px;
+  --radius-18: 18px;
   --radius-20: 20px;
 
   --breakpoint-380: 380px;
@@ -195,7 +201,8 @@
 
   /* Escala tipográfica responsive — valores Desktop (>=1024px). Tablet/Mobile en @layer base. */
   --text-titulo-pagina: 2rem;
-  --text-titulo-seccion: 1.5rem;
+  --text-titulo-seccion: 1.25rem;
+  --text-titulo-detalle: 1.25rem;
   --text-titulo-banner: 1rem;
   --text-subtitulo: 0.875rem;
   --text-cuerpo-grande: 1.125rem;
@@ -208,6 +215,7 @@
   --text-estado: 0.75rem;
   --text-contador: 0.875rem;
   --text-conteo: 0.875rem;
+  --text-conteo-insignia: 0.875rem;
   --text-titulo-subseccion: 0.875rem;
   --text-boton-mini: 0.75rem;
   --text-chip: 0.875rem;
@@ -223,13 +231,14 @@
 
   /* Roles tipográficos globales (REG-01…REG-08). Cada utilidad text-<rol> aporta tamaño (con su escala responsive) y peso.
      Una clase font-* junto a un rol solo se admite como excepción semántica documentada y la prueba de la Fase B la rechaza en el resto.
-       titulo-pagina 800 · titulo-seccion 700 · titulo-banner 700 (ventana, panel y tarjeta con cabecera) · nombre-entidad 700 · valor-destacado 800
+       titulo-pagina 800 · titulo-seccion 700 · titulo-detalle 700 (título de la ventana de detalle de una entidad: evento, etc.; misma escala 20/18/16 que titulo-seccion, pero función distinta) · titulo-banner 700 (ventana, panel y tarjeta con cabecera) · nombre-entidad 700 · valor-destacado 800
        titulo-subseccion 600 · nombre-fila 700 (dato principal de una fila: nombre en una tabla, precio en una lista, 14 px) · cuerpo-grande 700 (título destacado) · campo-formulario 600 (valor u opción de formulario) · etiqueta 500 (etiqueta de campo)
        boton 600 · boton-mini 600 · chip 500 (chip de filtro) · enlace-accion 600 · encabezado-tabla 600
-       badge 700 (insignia o rótulo) · estado 500 (texto de estado) · conteo 700 (burbuja o cifra de conteo) · fecha-abreviada 400 · dia-evento 800 · mes-evento 700
+       badge 700 (insignia o rótulo) · estado 500 (texto de estado) · conteo 700 (cifra de conteo en texto) · conteo-insignia 400 (numeración dentro de una insignia: misma escala que conteo, peso normal) · fecha-abreviada 400 · dia-evento 800 · mes-evento 700
      Sin peso propio, porque el peso lo decide la función del texto: subtitulo, cuerpo, auxiliar, contador (metadato numérico), navegacion. */
   --text-titulo-pagina--font-weight: 800;
   --text-titulo-seccion--font-weight: 700;
+  --text-titulo-detalle--font-weight: 700;
   --text-titulo-banner--font-weight: 700;
   --text-nombre-entidad--font-weight: 700;
   --text-valor-destacado--font-weight: 800;
@@ -246,6 +255,7 @@
   --text-badge--font-weight: 700;
   --text-estado--font-weight: 500;
   --text-conteo--font-weight: 700;
+  --text-conteo-insignia--font-weight: 400;
   --text-fecha-abreviada--font-weight: 400;
   --text-dia-evento--font-weight: 800;
   --text-mes-evento--font-weight: 700;
@@ -298,6 +308,7 @@
   --height-p90: 90%;
   --height-p95: 95%;
   --max-width-p75: 75%;
+  --max-width-p90: 90%;
 
   --border-width-1.5: 1.5px;
   --border-width-3: 3px;
@@ -316,6 +327,8 @@
   --grid-template-columns-minmax0-1fr-auto-auto: minmax(0,1fr) auto auto;
   --grid-template-columns-1fr-300: 1fr 300px;
   --grid-template-columns-240-1fr: 240px 1fr;
+  --grid-template-columns-320-1fr: 320px 1fr;
+  --grid-template-columns-matriz-permisos: minmax(11rem, 1.6fr) repeat(7, minmax(0, 1fr));
   --grid-template-columns-1.6fr-1fr-1fr: 1.6fr 1fr 1fr;
   --grid-template-columns-2fr-1fr: 2fr 1fr;
   --grid-template-columns-64-1fr: 64px 1fr;
@@ -330,6 +343,8 @@
   --grid-template-columns-repeatauto-fill-minmax180-1fr: repeat(auto-fill,minmax(180px,1fr));
   --grid-template-columns-280-1fr: 300px 1fr;
   --grid-template-columns-260-1fr: 280px 1fr;
+  --grid-template-columns-lista-mensajes-1fr: 344px 1fr;
+  --grid-template-columns-lista-mensajes-estrecha-1fr: 312px 1fr;
   --grid-auto-rows-minmax120-1fr: minmax(120px,1fr);
   --grid-template-columns-repeatauto-fill-minmax170-1fr: repeat(auto-fill,minmax(170px,1fr));
   --grid-template-columns-repeatauto-fill-minmax130-1fr: repeat(auto-fill,minmax(130px,1fr));
@@ -337,7 +352,7 @@
   --grid-template-columns-minmax400-720-minmax320-400: minmax(400px,720px) minmax(320px,400px);
   --grid-template-columns-minmax260-300-minmax420-1fr-minmax280-340: minmax(260px,300px) minmax(420px,1fr) minmax(280px,340px);
 
-  --height-barra-superior: 4rem;
+  --height-barra-superior: 4.5rem;
   --height-vh-navbar: calc(100vh - var(--height-barra-superior));
   --height-dvh-navbar: calc(100dvh - var(--height-barra-superior));
   --height-vh-mensajes: calc(100vh - 340px);
@@ -387,11 +402,22 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* El hueco de la barra ya está reservado por scrollbar-gutter: se anula el padding-right que MUI añade al body al bloquear el scroll para no compensarlo dos veces. */
+body[style*="padding-right"] {
+  padding-right: 0 !important;
+}
+
+.MuiAvatar-root,
+.MuiBadge-badge {
+  font-family: var(--fuente-base) !important;
+}
+
 /* Escala tipográfica responsive — Tablet (768px–1023px). Breakpoints exclusivos de tipografía, independientes de --breakpoint-*. */
 @media (width < 1024px) {
   :root {
     --text-titulo-pagina: 1.75rem;
-    --text-titulo-seccion: 1.25rem;
+    --text-titulo-seccion: 1.125rem;
+    --text-titulo-detalle: 1.125rem;
     --text-titulo-banner: 0.9375rem;
     --text-subtitulo: 0.875rem;
     --text-cuerpo-grande: 1.0625rem;
@@ -404,6 +430,7 @@ html {
     --text-estado: 0.75rem;
     --text-contador: 0.8125rem;
     --text-conteo: 0.8125rem;
+    --text-conteo-insignia: 0.8125rem;
     --text-titulo-subseccion: 0.875rem;
     --text-boton-mini: 0.75rem;
     --text-chip: 0.875rem;
@@ -423,7 +450,8 @@ html {
 @media (width < 768px) {
   :root {
     --text-titulo-pagina: 1.5rem;
-    --text-titulo-seccion: 1.125rem;
+    --text-titulo-seccion: 1rem;
+    --text-titulo-detalle: 1rem;
     --text-titulo-banner: 0.875rem;
     --text-subtitulo: 0.875rem;
     --text-cuerpo-grande: 1rem;
@@ -436,6 +464,7 @@ html {
     --text-estado: 0.6875rem;
     --text-contador: 0.75rem;
     --text-conteo: 0.75rem;
+    --text-conteo-insignia: 0.75rem;
     --text-titulo-subseccion: 0.875rem;
     --text-boton-mini: 0.75rem;
     --text-chip: 0.875rem;
@@ -456,6 +485,13 @@ html {
 @layer components {
 .text-enlace-accion {
   white-space: nowrap;
+}
+@media (width < 768px) {
+  a.text-enlace-accion {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5rem;
+  }
 }
 .degradado-morado { background-image: linear-gradient(135deg, #6c3ce0, #a855f7); }
 .degradado-azul { background-image: linear-gradient(135deg, #3b82f6, #06b6d4); }
@@ -480,6 +516,13 @@ html {
 .degradado-lavanda-media { background-image: linear-gradient(135deg,#f3f0ff 0%,#e8e0ff 100%); }
 .degradado-lavanda-triple { background-image: linear-gradient(135deg,#f3f0ff 0%,#e8e0ff 50%,#d5ccff 100%); }
 .degradado-nocturno-profundo { background-image: linear-gradient(155deg,#362a63,#1c1735); }
+/* Fondos decorativos de Historias (Fase 1): solo imagen de fondo, sin tipografia ni color de texto. */
+.fondo-historia-puntos { background-color: var(--color-primario-oscuro); background-image: radial-gradient(rgba(255,255,255,0.22) 2px, transparent 2px); background-size: 22px 22px; }
+.fondo-historia-rayas { background-image: repeating-linear-gradient(45deg, #6c3ce0 0 16px, #7c4df0 16px 32px); }
+.fondo-historia-ondas { background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25) 0 12%, transparent 13%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.18) 0 18%, transparent 19%), linear-gradient(135deg, #3b82f6, #06b6d4); }
+
+.degradado-historia-inferior { background-image: linear-gradient(transparent, rgba(0,0,0,0.6)); }
+.degradado-historia-superior { background-image: linear-gradient(rgba(0,0,0,0.55), transparent); }
 .degradado-bandera { background-image: linear-gradient(90deg,#d92228 33%,#fff 33% 66%,#d92228 66%); }
 
 .grid-fila-grupo {
@@ -515,6 +558,7 @@ html {
   .panel-colaboradores-abierto {
     grid-template-columns: minmax(0,1fr) 360px;
     grid-template-areas: "colaboradores detalle" "comofunciona detalle";
+    grid-template-rows: auto 1fr;
   }
   .panel-colaboradores-cerrado {
     grid-template-columns: minmax(0,1fr);
@@ -524,10 +568,12 @@ html {
   .panel-colaboradores-abierto {
     grid-template-columns: minmax(0,1fr) 360px minmax(260px,300px);
     grid-template-areas: "colaboradores detalle publicidad" "comofunciona detalle publicidad";
+    grid-template-rows: auto 1fr;
   }
   .panel-colaboradores-cerrado {
     grid-template-columns: minmax(400px,1fr) minmax(260px,300px);
     grid-template-areas: "colaboradores publicidad" "comofunciona publicidad";
+    grid-template-rows: auto 1fr;
   }
 }
 
@@ -559,9 +605,12 @@ html {
 }
 }
 
+/* Texto central de DonaProgreso: el componente solo fija la escala (--escala-dona) cuando la cifra no cabe en el hueco; el tamano parte del rol valor-destacado y nunca baja del rol auxiliar; si ni asi cabe, el texto se corta con puntos suspensivos visibles (--ancho-dona). */
+.dona-valor { font-size: max(var(--text-auxiliar), calc(var(--text-valor-destacado) * var(--escala-dona, 1))); max-width: var(--ancho-dona, none); overflow: hidden; text-overflow: ellipsis; }
+
 /* Foco de teclado visible (REG-15). Fuera de las capas para imponerse al "outline: 0" de MUI y a las utilidades.
    Los campos de MUI marcan el foco con su borde; los contenedores con tabindex="-1" reciben el foco por código, no por teclado. */
-:focus-visible:not(.MuiInputBase-input):not([tabindex="-1"]) {
+:focus-visible:not(.MuiInputBase-input):not([tabindex="-1"]):not([data-escritura-historia]) {
   outline: 2px solid var(--color-foco);
   outline-offset: 2px;
 }

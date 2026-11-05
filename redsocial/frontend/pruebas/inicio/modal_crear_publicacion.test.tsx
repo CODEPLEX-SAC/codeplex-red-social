@@ -79,8 +79,19 @@ describe('ModalCrearPublicacion', () => {
     const dialogo = screen.getByRole('dialog')
     fireEvent.click(dialogo)
     expect(screen.getByRole('dialog')).toBeInTheDocument()
-    fireEvent.click(dialogo.parentElement as HTMLElement)
+    const fondo = dialogo.parentElement as HTMLElement
+    fireEvent.mouseDown(fondo)
+    fireEvent.click(fondo)
     expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('no se cierra si la pulsacion empezo dentro del modal y termino en el fondo, como al seleccionar texto', () => {
+    montar()
+    abrirModal()
+    const dialogo = screen.getByRole('dialog')
+    fireEvent.mouseDown(dialogo)
+    fireEvent.click(dialogo.parentElement as HTMLElement)
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
   })
 
   it('habilita Publicar solo cuando hay contenido valido', () => {
@@ -156,10 +167,19 @@ describe('ModalCrearPublicacion', () => {
     expect(botonPublicar()).toBeDisabled()
   })
 
-  it('abre directamente en Encuesta desde el boton de la barra', () => {
+  it('el compositor solo muestra el campo Que estas pensando, sin accesos de foto, video ni encuesta', () => {
     montar()
-    fireEvent.click(screen.getByRole('button', { name: catalogoInicio.botones.encuesta }))
-    expect(within(screen.getByRole('dialog')).getByRole('button', { name: textos.tipos[1].etiqueta })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.queryByRole('button', { name: catalogoInicio.botones.encuesta })).toBeNull()
+    expect(screen.queryByRole('button', { name: catalogoInicio.botones.foto_video })).toBeNull()
+  })
+
+  it('permite pegar una imagen con Ctrl+V dentro del modal', () => {
+    montar()
+    abrirModal()
+    URL.createObjectURL = vi.fn(() => 'blob:pegado-modal')
+    const dialogo = within(screen.getByRole('dialog'))
+    fireEvent.paste(dialogo.getByRole('textbox', { name: textos.etiqueta_editor }), { clipboardData: { files: [new File(['x'], 'p.png', { type: 'image/png' })] } })
+    expect(dialogo.getByRole('list', { name: textos.medios.vista_previa })).toBeInTheDocument()
   })
 
   it('rechaza archivos que no son imagen ni video, o que superan el tamano y la cantidad maximos', () => {

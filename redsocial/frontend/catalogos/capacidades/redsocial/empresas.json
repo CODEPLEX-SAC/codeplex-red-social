@@ -151,8 +151,8 @@
     "texto_celda": "text-subtitulo text-texto",
     "nombre_fila": "whitespace-nowrap text-nombre-fila text-texto",
     "texto_error": "text-auxiliar font-control text-negativo-kpi",
-    "boton_icono_peligro": "border-peligro text-peligro-texto",
-    "boton_icono_exito": "border-exito text-exito-texto",
+    "boton_icono_peligro": "text-peligro-texto!",
+    "boton_icono_exito": "text-exito-texto!",
     "titulo_ventana": "m-0 text-titulo-banner text-texto",
     "texto_descriptivo": "m-0 text-subtitulo leading-texto text-texto-suave",
     "rubro": {
@@ -173,7 +173,7 @@
       "icono": "h-6 w-6",
       "cuerpo": "flex min-w-0 flex-1 flex-col gap-1",
       "etiqueta": "text-auxiliar text-texto-suave",
-      "valor": "text-titulo-seccion text-texto",
+      "valor": "text-valor-destacado text-texto",
       "detalle": "text-auxiliar text-texto-suave",
       "barra": "h-1.5 w-full appearance-none overflow-hidden rounded-full border-0 bg-fondo-hover-neutro [&::-webkit-progress-bar]:bg-fondo-hover-neutro [&::-webkit-progress-value]:rounded-full [&::-moz-progress-bar]:rounded-full",
       "barra_tono": {
@@ -212,7 +212,8 @@
     "celda_empresa": {
       "logo": "grid h-9 w-9 flex-none place-items-center overflow-hidden rounded-lg bg-primario-suave text-nombre-entidad text-primario"
     },
-    "acciones_fila": "flex items-center gap-2",
+    "acciones_fila": "flex items-center gap-3.5",
+    "objetivo_tactil": "relative after:absolute after:-inset-1.75",
     "encabezado_listado": "contents",
     "aplicativos": {
       "lista": "flex flex-wrap gap-2",

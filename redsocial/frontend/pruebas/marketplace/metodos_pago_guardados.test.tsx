@@ -7,6 +7,7 @@ import { ProveedorCarritoMarketplace } from '@/paginas/marketplace/proveedor_car
 import { ContextoMejoraPlan } from '@/componentes/compartido/carrito/contexto_mejora_plan'
 import { ErrorMetodosPago, leerEstadoInicial, registrarMetodoPago, reiniciarMetodosPagoDemostracion } from '@/servicios/marketplace/metodos_pago'
 import demostracion from '@/servicios/marketplace/metodos_pago_demostracion.json'
+import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
 import { PLANES_APLICACIONES, SUSCRIPCIONES_DEMOSTRACION } from '@/rutas/marketplace/rutas_marketplace'
 
@@ -19,7 +20,8 @@ vi.setConfig({ testTimeout: 30000 })
 
 const textos = catalogoMarketplace.planes
 const pago = catalogoMarketplace.pago
-const guardado = pago.metodo_guardado
+const flujo = catalogoCompartido.flujo_pago.textos
+const guardado = flujo.metodo_guardado
 const modal = guardado.modal
 const carrito = catalogoMarketplace.carrito
 const contaplex = PLANES_APLICACIONES['conta-plex']
@@ -43,10 +45,10 @@ function aceptarTerminos(pantalla: ReturnType<typeof within>) {
 }
 
 function escribirTarjeta(pantalla: ReturnType<typeof within>, datos = DATOS_TARJETA_VALIDA) {
-  fireEvent.change(pantalla.getByRole('textbox', { name: pago.campos.numero }), { target: { value: datos.numero } })
-  fireEvent.change(pantalla.getByRole('textbox', { name: pago.campos.vencimiento }), { target: { value: datos.vencimiento } })
-  fireEvent.change(pantalla.getByRole('textbox', { name: pago.campos.cvv }), { target: { value: datos.cvv } })
-  fireEvent.change(pantalla.getByRole('textbox', { name: pago.campos.propietario }), { target: { value: datos.titular } })
+  fireEvent.change(pantalla.getByRole('textbox', { name: flujo.campos.numero }), { target: { value: datos.numero } })
+  fireEvent.change(pantalla.getByRole('textbox', { name: flujo.campos.vencimiento }), { target: { value: datos.vencimiento } })
+  fireEvent.change(pantalla.getByRole('textbox', { name: flujo.campos.cvv }), { target: { value: datos.cvv } })
+  fireEvent.change(pantalla.getByRole('textbox', { name: flujo.campos.propietario }), { target: { value: datos.titular } })
 }
 
 function abrirSelector(pantalla: ReturnType<typeof within>) {
@@ -64,12 +66,12 @@ describe('Compra con una tarjeta guardada', () => {
   it('muestra la tarjeta compacta con un unico lapiz, sin formulario ni botones de texto adicionales', () => {
     const pantalla = irAlPago()
     expect(pantalla.getByText(tarjeta('4242'))).toBeInTheDocument()
-    expect(pantalla.getByText(pago.guardados.vence.replace(':fecha', '12/99'))).toBeInTheDocument()
+    expect(pantalla.getByText(flujo.guardados.vence.replace(':fecha', '12/99'))).toBeInTheDocument()
     expect(pantalla.getByText(guardado.predeterminada)).toBeInTheDocument()
     expect(pantalla.getAllByRole('button', { name: guardado.editar_etiqueta })).toHaveLength(1)
     expect(pantalla.queryByRole('button', { name: /^(Editar|Cambiar)$/ })).toBeNull()
-    expect(pantalla.queryByRole('textbox', { name: pago.campos.numero })).toBeNull()
-    expect(pantalla.queryByRole('textbox', { name: pago.campos.cvv })).toBeNull()
+    expect(pantalla.queryByRole('textbox', { name: flujo.campos.numero })).toBeNull()
+    expect(pantalla.queryByRole('textbox', { name: flujo.campos.cvv })).toBeNull()
   })
 
   it('permite pagar solo con aceptar los terminos y no cambia ni duplica lo guardado', () => {
@@ -104,11 +106,11 @@ describe('Pedro Lozano: tarjeta de demostracion guardada', () => {
     const pantalla = irAlPago()
     expect(demostracion.usuario).toBe('Pedro Lozano')
     expect(pantalla.getByText(guardado.titulo_tarjeta.replace(':marca', pedro.marca).replace(':ultimos', pedro.ultimos4))).toBeVisible()
-    expect(pantalla.getByText([pago.guardados.vence.replace(':fecha', pedro.vencimiento), pedro.titular].join(pago.guardados.separador))).toBeVisible()
+    expect(pantalla.getByText([flujo.guardados.vence.replace(':fecha', pedro.vencimiento), pedro.titular].join(flujo.guardados.separador))).toBeVisible()
     expect(pantalla.getByText(guardado.predeterminada)).toBeVisible()
     expect(pantalla.getByRole('button', { name: guardado.editar_etiqueta })).toBeVisible()
-    expect(pantalla.queryByRole('textbox', { name: pago.campos.numero })).toBeNull()
-    expect(pantalla.getByText(pago.metodos.billetera.titulo)).not.toBeVisible()
+    expect(pantalla.queryByRole('textbox', { name: flujo.campos.numero })).toBeNull()
+    expect(pantalla.getByText(flujo.metodos.billetera.titulo)).not.toBeVisible()
   })
 
   it('permite comprar sin escribir ningun dato de tarjeta y deja el metodo intacto', () => {
@@ -147,7 +149,7 @@ describe('Mejora de plan con una tarjeta guardada', () => {
     fireEvent.click(screen.getByRole('button', { name: 'disparar' }))
     const pantalla = within(screen.getByRole('dialog', { name: pago.titulo }))
     expect(pantalla.getByText(tarjeta('4242'))).toBeVisible()
-    expect(pantalla.queryByRole('textbox', { name: pago.campos.numero })).toBeNull()
+    expect(pantalla.queryByRole('textbox', { name: flujo.campos.numero })).toBeNull()
     expect(pantalla.getByRole('button', { name: guardado.editar_etiqueta })).toBeVisible()
     aceptarTerminos(pantalla)
     fireEvent.click(pantalla.getByRole('button', { name: pago.mejora.activar }))
@@ -158,12 +160,12 @@ describe('Mejora de plan con una tarjeta guardada', () => {
 describe('Primera tarjeta', () => {
   it('sin tarjetas muestra el formulario, valida los datos y no avanza con datos invalidos', () => {
     const pantalla = irAlPago()
-    expect(pantalla.getByRole('textbox', { name: pago.campos.numero })).toBeInTheDocument()
+    expect(pantalla.getByRole('textbox', { name: flujo.campos.numero })).toBeInTheDocument()
     expect(pantalla.getByRole('checkbox', { name: guardado.guardar_futuras })).toBeChecked()
     aceptarTerminos(pantalla)
     fireEvent.click(pantalla.getByRole('button', { name: pago.resumen.activar }))
-    expect(pantalla.getByText(pago.errores.numero)).toBeInTheDocument()
-    expect(pantalla.getByText(pago.errores.cvv)).toBeInTheDocument()
+    expect(pantalla.getByText(flujo.errores.numero)).toBeInTheDocument()
+    expect(pantalla.getByText(flujo.errores.cvv)).toBeInTheDocument()
     expect(pantalla.queryByText(pago.exito.titulo)).toBeNull()
     expect(tarjetasAlmacenadas()).toHaveLength(0)
   })
@@ -173,10 +175,10 @@ describe('Primera tarjeta', () => {
     escribirTarjeta(pantalla, { ...DATOS_TARJETA_VALIDA, vencimiento: '0120' })
     aceptarTerminos(pantalla)
     fireEvent.click(pantalla.getByRole('button', { name: pago.resumen.activar }))
-    expect(pantalla.getByText(pago.errores.vencida)).toBeInTheDocument()
-    fireEvent.change(pantalla.getByRole('textbox', { name: pago.campos.numero }), { target: { value: '4242424242424241' } })
+    expect(pantalla.getByText(flujo.errores.vencida)).toBeInTheDocument()
+    fireEvent.change(pantalla.getByRole('textbox', { name: flujo.campos.numero }), { target: { value: '4242424242424241' } })
     fireEvent.click(pantalla.getByRole('button', { name: pago.resumen.activar }))
-    expect(pantalla.getByText(pago.errores.numero)).toBeInTheDocument()
+    expect(pantalla.getByText(flujo.errores.numero)).toBeInTheDocument()
   })
 
   it('la primera tarjeta queda predeterminada', async () => {
@@ -215,7 +217,7 @@ describe('Primera tarjeta', () => {
 describe('Selector «Método de pago»', () => {
   beforeEach(() => sembrarTarjetas([TARJETA_DEMOSTRACION, SEGUNDA]))
 
-  it('lista las tarjetas con indicador de seleccion, Predeterminada, Agregar otra tarjeta, Cancelar y Usar tarjeta, sin acciones de administracion', () => {
+  it('lista las tarjetas con indicador de seleccion, Predeterminada, Agregar otra tarjeta, Cancelar y Usar tarjeta, con un lapiz de edicion por tarjeta', () => {
     const pantalla = irAlPago()
     const selector = abrirSelector(pantalla)
     expect(selector.getByRole('radiogroup', { name: modal.lista_etiqueta })).toBeInTheDocument()
@@ -225,7 +227,7 @@ describe('Selector «Método de pago»', () => {
     expect(selector.getByRole('button', { name: modal.agregar })).toBeInTheDocument()
     expect(selector.getByRole('button', { name: modal.cancelar })).toBeInTheDocument()
     expect(selector.getByRole('button', { name: modal.usar_tarjeta })).toBeEnabled()
-    expect(selector.queryByRole('button', { name: /quitar|actualizar|predeterminada|listo/i })).toBeNull()
+    expect(selector.getAllByRole('button', { name: /^Editar tarjeta/ })).toHaveLength(2)
   })
 
   it('elegir otra tarjeta y confirmar actualiza el pedido y cierra el selector', () => {
@@ -267,9 +269,9 @@ describe('Selector «Método de pago»', () => {
     const pantalla = irAlPago()
     const selector = abrirSelector(pantalla)
     fireEvent.click(selector.getByRole('button', { name: modal.agregar }))
-    fireEvent.change(selector.getByRole('textbox', { name: pago.campos.numero }), { target: { value: '5555555555554444' } })
+    fireEvent.change(selector.getByRole('textbox', { name: flujo.campos.numero }), { target: { value: '5555555555554444' } })
     fireEvent.click(selector.getByRole('button', { name: modal.descartar }))
-    expect(selector.queryByRole('textbox', { name: pago.campos.numero })).toBeNull()
+    expect(selector.queryByRole('textbox', { name: flujo.campos.numero })).toBeNull()
     expect(textoAlmacenado()).toBe(antes)
   })
 })
@@ -288,7 +290,7 @@ describe('Errores y tarjetas vencidas', () => {
     expect(textoAlmacenado()).toBe(antes)
     expect(opcion(selector, '4242')).toHaveAttribute('aria-checked', 'true')
     expect(selector.queryByRole('radio', { name: new RegExp(tarjeta('4444')) })).toBeNull()
-    expect(selector.getByRole('textbox', { name: pago.campos.numero })).toBeInTheDocument()
+    expect(selector.getByRole('textbox', { name: flujo.campos.numero })).toBeInTheDocument()
   })
 
   it('un error al pagar con una tarjeta nueva no completa la compra ni inventa el guardado', async () => {
@@ -317,9 +319,9 @@ describe('Errores y tarjetas vencidas', () => {
     sembrarTarjetas([VENCIDA, SEGUNDA])
     const pantalla = irAlPago()
     expect(pantalla.getByText(guardado.predeterminada_vencida)).toBeInTheDocument()
-    expect(pantalla.getByRole('textbox', { name: pago.campos.numero })).toBeInTheDocument()
+    expect(pantalla.getByRole('textbox', { name: flujo.campos.numero })).toBeInTheDocument()
     expect(pantalla.queryByText(tarjeta('0001'))).toBeNull()
-    fireEvent.click(pantalla.getByRole('button', { name: pago.guardados.usar_guardada }))
+    fireEvent.click(pantalla.getByRole('button', { name: flujo.guardados.usar_guardada }))
     const selector = within(screen.getByRole('dialog', { name: modal.titulo }))
     expect(selector.getByText(guardado.vencida)).toBeInTheDocument()
     expect(opcion(selector, '0001')).toBeDisabled()

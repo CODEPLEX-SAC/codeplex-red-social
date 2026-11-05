@@ -99,8 +99,8 @@ export function usarPublicacionesInicio(almacen: AlmacenPublicaciones) {
       onReaccionarPublicacion: (clave: ClaveReaccion) => almacen.modificar((actual) => alternarReaccion(actual, id, clave)),
       onComentar: (texto, medios = []) => agregar(texto, medios, undefined, (lista, nuevo) => [...lista, nuevo]),
       onResponder: (idRaiz, texto, medios = [], mencion) => agregar(texto, medios, mencion, (lista, nuevo) => conRespuesta(lista, idRaiz, nuevo)),
-      onEditar: (idComentario, texto) => {
-        if (texto.length > 0) cambiar((lista) => conTextoEditado(lista, idComentario, texto))
+      onEditar: (idComentario, texto, medios) => {
+        if (!comentarioVacio(texto, medios ?? [])) cambiar((lista) => conTextoEditado(lista, idComentario, texto, medios))
       },
       onEliminar: (idComentario) => cambiar((lista) => sinComentario(lista, idComentario)),
       onReaccionar: (idComentario, clave) => cambiar((lista) => conReaccionDeComentario(lista, idComentario, clave)),

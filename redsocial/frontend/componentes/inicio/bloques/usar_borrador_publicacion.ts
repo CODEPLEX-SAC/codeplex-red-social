@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import type { ClipboardEvent } from 'react'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
 import type { MedioLocalPublicacion, OpcionEncuestaPublicacion, PrioridadPublicacion, TipoPublicacion } from '@/tipos/inicio/contrato_crear_publicacion'
 
@@ -37,6 +38,13 @@ export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInici
       return { id: nuevoId(), url, esVideo: archivo.type.startsWith(textos.medios.prefijo_video) }
     })
     setMedios((anteriores) => [...anteriores, ...creados])
+  }
+
+  function alPegar(evento: ClipboardEvent<HTMLElement>) {
+    const archivos = Array.from(evento.clipboardData.files)
+    if (archivos.length === 0) return
+    evento.preventDefault()
+    agregarMedios(archivos)
   }
 
   function entregarMedios() {
@@ -94,6 +102,7 @@ export function usarBorradorPublicacion(tipoInicial: TipoPublicacion, textoInici
     puedeAgregarMedios: medios.length < textos.medios.maximo_archivos,
     contenidoValido: calcularContenidoValido(),
     agregarMedios,
+    alPegar,
     entregarMedios,
     quitarMedio,
     actualizarOpcion,

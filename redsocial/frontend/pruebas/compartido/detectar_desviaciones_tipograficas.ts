@@ -2,7 +2,7 @@ import { COLORES_DE_SUPERFICIE_HEREDADOS, COLORES_TIPOGRAFICOS_HEREDADOS, EXCEPC
 
 const ROLES_CON_PESO = [
   'titulo-pagina', 'titulo-seccion', 'titulo-banner', 'nombre-entidad', 'nombre-fila', 'valor-destacado', 'titulo-subseccion', 'cuerpo-grande',
-  'campo-formulario', 'etiqueta', 'boton', 'boton-mini', 'chip', 'enlace-accion', 'encabezado-tabla', 'badge', 'estado', 'conteo',
+  'campo-formulario', 'etiqueta', 'boton', 'boton-mini', 'chip', 'enlace-accion', 'encabezado-tabla', 'badge', 'estado', 'conteo', 'conteo-insignia',
   'fecha-abreviada', 'dia-evento', 'mes-evento',
 ]
 const INTERLINEADOS_DEL_SISTEMA = ['leading-compacto', 'leading-texto', 'leading-none']

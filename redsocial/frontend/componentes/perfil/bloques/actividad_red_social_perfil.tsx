@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Boton } from '../../compartido/interfaz/boton'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
+import { Pestanas } from '../../compartido/interfaz/pestanas'
 import { CompositorInicio, ElementoFeedInicio, ModalCrearPublicacion } from '../../inicio'
 import { PanelMisPreguntasPerfil } from './panel_mis_preguntas_perfil'
-import { preguntasDe, primerNombre } from './logica_red_social_perfil'
+import { elementosSubpestanas, preguntasDe, primerNombre } from './logica_red_social_perfil'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
 import catalogoPerfil from '../../../catalogos/capacidades/redsocial/perfil.json'
 import type { TipoPublicacion } from '@/tipos/inicio/contrato_crear_publicacion'
@@ -21,13 +21,9 @@ export function ActividadRedSocialPerfil({ perfil, publicaciones, acciones, prop
 
   return (
     <div className={clases.columna}>
-      <div role="group" aria-label={textos.etiqueta_subpestanas} className={clases.subpestanas}>
-        {textos.subpestanas.map((opcion) => (
-          <Boton key={opcion.clave} type="button" variant="filtro" size="filtro" activo={subpestana === opcion.clave} aria-pressed={subpestana === opcion.clave} onClick={() => setSubpestana(opcion.clave as SubpestanaRedSocial)}>
-            {opcion.clave === 'preguntas' && propio ? textos.mis_preguntas : opcion.etiqueta}
-          </Boton>
-        ))}
-      </div>
+      <nav aria-label={textos.etiqueta_subpestanas} className={clases.subpestanas}>
+        <Pestanas elementos={elementosSubpestanas(textos.subpestanas, propio, textos.mis_preguntas)} activa={subpestana} alCambiar={(clave) => setSubpestana(clave as SubpestanaRedSocial)} />
+      </nav>
       {propio && <CompositorInicio placeholderPublicar={marcador} onAbrir={setApertura} />}
       {apertura && <ModalCrearPublicacion tipoInicial={apertura} onPublicar={onPublicar} onCerrar={() => setApertura(null)} />}
       {subpestana === 'preguntas' && <PanelMisPreguntasPerfil preguntas={visibles} acciones={acciones} propio={propio} />}

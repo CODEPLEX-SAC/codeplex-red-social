@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { Icono } from '../../compartido/icono'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
+import type { IconName } from '@/tipos/compartido/contrato_icono'
 import catalogoAcceso from '../../../catalogos/capacidades/redsocial/acceso.json'
 import type { CampoContrasenaProps } from '@/tipos/acceso/contrato_acceso'
 
@@ -12,28 +13,27 @@ export function CampoContrasena({ variante, valor, error, onCambiar }: CampoCont
   const [visible, setVisible] = useState(false)
 
   return (
-    <CampoEtiquetado para={configuracion.id} etiqueta={configuracion.etiqueta}>
-      <CampoTexto
-        id={configuracion.id}
-        valor={valor}
-        alCambiar={onCambiar}
-        tipo={visible ? 'text' : 'password'}
-        marcador={configuracion.marcador}
-        error={error !== ''}
-        mensajeError={error}
-        inputProps={{ autoComplete: configuracion.autocompletar }}
-        iconoFin={
-          <BotonIcono
-            icono="ver"
-            type="button"
-            aria-label={visible ? configuracion.ocultar : configuracion.mostrar}
-            aria-controls={configuracion.id}
-            onClick={() => setVisible((anterior) => !anterior)}
-            variant={visible ? 'suave' : 'discreto'}
-            size="md"
-          />
-        }
-      />
-    </CampoEtiquetado>
+    <CampoTexto
+      id={configuracion.id}
+      etiqueta={configuracion.etiqueta}
+      valor={valor}
+      alCambiar={onCambiar}
+      tipo={visible ? 'text' : 'password'}
+      error={error !== ''}
+      mensajeError={error}
+      iconoInicio={<Icono name={catalogoAcceso.iconos_campos.contrasena as IconName} className={catalogoAcceso.clase_icono_campo} />}
+      inputProps={{ autoComplete: configuracion.autocompletar }}
+      iconoFin={
+        <BotonIcono
+          icono={visible ? catalogoAcceso.iconos_campos.ocultar : catalogoAcceso.iconos_campos.mostrar}
+          type="button"
+          aria-label={visible ? configuracion.ocultar : configuracion.mostrar}
+          aria-controls={configuracion.id}
+          onClick={() => setVisible((anterior) => !anterior)}
+          variant="discreto"
+          size="md"
+        />
+      }
+    />
   )
 }

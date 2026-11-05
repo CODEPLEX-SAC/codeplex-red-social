@@ -16,6 +16,7 @@ describe('Avatares de personas migrados a la librería oficial', () => {
     'componentes/eventos/bloques/',
     'componentes/inicio/bloques/vista_previa_medios_publicacion.tsx',
     'componentes/inicio/bloques/medios_comentario.tsx',
+    'componentes/inicio/bloques/miniaturas_medios_comentario.tsx',
     'formularios/eventos/seccion_imagen_evento.tsx',
     'paginas/inicio/pagina_inicio.tsx',
     'paginas/mensajeria/pagina_mensajes_videollamada_en_curso.tsx',

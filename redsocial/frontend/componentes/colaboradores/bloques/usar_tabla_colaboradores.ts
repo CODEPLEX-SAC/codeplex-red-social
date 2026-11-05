@@ -5,6 +5,7 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 import { crearCriteriosExportacion } from './criterios_exportacion_colaboradores'
+import { crearFiltrosActivos, quitarFiltroAvanzado } from './logica_filtros_activos_colaboradores'
 import { aplicarFiltrosAvanzadosColaboradores, contarFiltrosAvanzadosColaboradores, crearFiltrosAvanzadosColaboradores } from './logica_filtros_avanzados_colaboradores'
 import {
   COLUMNAS_TABLA_COLABORADORES,
@@ -17,6 +18,7 @@ import {
 
 const textos = catalogoColaboradores.selectores
 const ORDENAR_POR_INICIAL = textos.ordenar_por.opciones[0]
+const CLAVES_FILTRO = catalogoColaboradores.filtros_activos.claves
 
 export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEstado: readonly { etiqueta: string; activa?: boolean }[]) {
   const pestanaInicial = filtrosEstado.find((p) => p.activa)?.etiqueta ?? filtrosEstado[0].etiqueta
@@ -76,6 +78,19 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
     setPagination((actual) => ({ ...actual, pageIndex: 0 }))
   }
 
+  function aplicarBasicos(nuevoRol: string, nuevaAplicacion: string) {
+    setRol(nuevoRol)
+    setAplicacion(nuevaAplicacion)
+    setPagination((actual) => ({ ...actual, pageIndex: 0 }))
+  }
+
+  function quitarFiltro(clave: string) {
+    if (clave === CLAVES_FILTRO.rol) setRol(textos.rol_perfil.opciones[0])
+    else if (clave === CLAVES_FILTRO.aplicacion) setAplicacion(textos.aplicaciones.opciones[0])
+    else setFiltrosAvanzados((actuales) => quitarFiltroAvanzado(actuales, clave))
+    setPagination((actual) => ({ ...actual, pageIndex: 0 }))
+  }
+
   function cambiarBusqueda(evento: { target: { value: unknown } }) {
     setBusqueda(String(evento.target.value))
     setPagination((actual) => ({ ...actual, pageIndex: 0 }))
@@ -97,11 +112,7 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
     setSorting(ordenPorOpcion(valor))
   }
 
-  const elementosPestana = filtrosEstado.map((p) => {
-    const valorEstado = ESTADO_POR_ETIQUETA_PESTANA[p.etiqueta]
-    const cantidad = valorEstado ? colaboradores.filter((c) => c.estado === valorEstado).length : colaboradores.length
-    return { clave: p.etiqueta, etiqueta: p.etiqueta, insignia: cantidad }
-  })
+  const elementosPestana = filtrosEstado.map((p) => ({ clave: p.etiqueta, etiqueta: p.etiqueta }))
 
   const filas = tabla.getRowModel().rows
   const hayCriteriosActivos = [
@@ -138,6 +149,9 @@ export function usarTablaColaboradores(colaboradores: Colaborador[], filtrosEsta
     hayCriteriosActivos,
     filtrosAvanzados,
     aplicarFiltrosAvanzados,
+    filtrosActivos: crearFiltrosActivos(rol, aplicacion, filtrosAvanzados),
+    aplicarBasicos,
+    quitarFiltro,
     resumen,
   }
 }

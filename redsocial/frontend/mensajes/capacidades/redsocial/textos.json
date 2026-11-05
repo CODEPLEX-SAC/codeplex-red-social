@@ -26,6 +26,7 @@
   "AMIGOS": "Amigos",
   "MENSAJES": "Mensajes",
   "AVISO_CAMPANA": "Notificaciones",
+  "NOMBRE_CON_PENDIENTES": { "plantilla": "{nombre}, {cantidad} pendientes", "nombre": "{nombre}", "cantidad": "{cantidad}" },
   "MODULOS": "Módulos",
   "MODULOS_DISPONIBLES": "Módulos disponibles",
   "CARGAR_MAS": "Cargar más",

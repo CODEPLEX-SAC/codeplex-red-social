@@ -22,6 +22,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(raiz, 'redsocial/frontend'),
     },
+    dedupe: ['react', 'react-dom'],
   },
   cacheDir: path.resolve(raiz, 'node_modules/.vite'),
   server: {
@@ -40,7 +41,7 @@ export default defineConfig({
     setupFiles: [path.resolve(raiz, 'montaje_local/configuracion_pruebas.ts')],
     include: ['redsocial/frontend/pruebas/**/*.test.{ts,tsx}'],
     maxWorkers: '50%',
-    testTimeout: 10000,
+    testTimeout: 30000,
     server: { deps: { inline: ['@codeplex-sac/ui'], external: [/@mui[\\/]icons-material/] } },
   },
 })

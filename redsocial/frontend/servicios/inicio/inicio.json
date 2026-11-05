@@ -1,23 +1,28 @@
 {
   "historias": [
     {
-      "nombre": "Tu historia",
+      "nombre": "Crear historia",
       "crear": true
     },
     {
-      "nombre": "Maria F."
+      "nombre": "Maria F.",
+      "autorId": "maria-fernandez"
     },
     {
-      "nombre": "Luis R."
+      "nombre": "Luis R.",
+      "autorId": "luis-rodriguez"
     },
     {
-      "nombre": "Carmen L."
+      "nombre": "Carmen L.",
+      "autorId": "carmen-lopez"
     },
     {
-      "nombre": "Diego M."
+      "nombre": "Diego M.",
+      "autorId": "diego-mendoza"
     },
     {
-      "nombre": "Ana G."
+      "nombre": "Ana G.",
+      "autorId": "ana-garcia"
     },
     {
       "nombre": "Grupo Ing."
@@ -130,5 +135,205 @@
     "origenTiempo": "5 horas",
     "texto": "Normas de seguridad en obras: siempre primero la prevención.",
     "conMedio": true
-  }
+  },
+  "historiasContactos": [
+    {
+      "id": "contacto-maria-1",
+      "autorId": "maria-fernandez",
+      "nombre": "María Fernández",
+      "tiempo": "2 h",
+      "borrador": {
+        "tipo": "texto",
+        "fondoId": "degradado-azul",
+        "texto": "Gran semana en la obra del puente. ¡Gracias, equipo!",
+        "estiloTextoId": "clasico",
+        "recurso": null,
+        "elementos": []
+      }
+    },
+    {
+      "id": "contacto-maria-2",
+      "autorId": "maria-fernandez",
+      "nombre": "María Fernández",
+      "tiempo": "1 h",
+      "borrador": {
+        "tipo": "media",
+        "fondoId": "degradado-primario",
+        "texto": "",
+        "estiloTextoId": "etiqueta",
+        "recurso": "foto1_red-social.jpg",
+        "elementos": [
+          {
+            "id": "contacto-maria-2-e1",
+            "contenido": "Av. Central",
+            "estiloTextoId": "etiqueta",
+            "posicionId": "inferior"
+          }
+        ]
+      }
+    },
+    {
+      "id": "contacto-luis-1",
+      "autorId": "luis-rodriguez",
+      "nombre": "Luis Rodríguez",
+      "tiempo": "3 h",
+      "borrador": {
+        "tipo": "texto",
+        "fondoId": "solido-verde",
+        "texto": "Buenos días a todos",
+        "estiloTextoId": "titular",
+        "recurso": null,
+        "elementos": []
+      }
+    },
+    {
+      "id": "contacto-luis-2",
+      "autorId": "luis-rodriguez",
+      "nombre": "Luis Rodríguez",
+      "tiempo": "2 h",
+      "borrador": {
+        "tipo": "media",
+        "fondoId": "degradado-primario",
+        "texto": "",
+        "estiloTextoId": "clasico",
+        "recurso": "foto4_red-social.jpg",
+        "elementos": []
+      }
+    },
+    {
+      "id": "contacto-carmen-1",
+      "autorId": "carmen-lopez",
+      "nombre": "Carmen López",
+      "tiempo": "5 h",
+      "borrador": {
+        "tipo": "texto",
+        "fondoId": "decorativo-puntos",
+        "texto": "Cierre de mes: todo en orden",
+        "estiloTextoId": "susurro",
+        "recurso": null,
+        "elementos": []
+      }
+    },
+    {
+      "id": "contacto-carmen-2",
+      "autorId": "carmen-lopez",
+      "nombre": "Carmen López",
+      "tiempo": "4 h",
+      "borrador": {
+        "tipo": "media",
+        "fondoId": "degradado-primario",
+        "texto": "",
+        "estiloTextoId": "clasico",
+        "recurso": "foto3_red-social.jpg",
+        "elementos": [
+          {
+            "id": "contacto-carmen-2-e1",
+            "contenido": "Equipo contable",
+            "estiloTextoId": "cuerpo",
+            "posicionId": "inferior"
+          }
+        ]
+      }
+    },
+    {
+      "id": "contacto-diego-1",
+      "autorId": "diego-mendoza",
+      "nombre": "Diego Mendoza",
+      "tiempo": "6 h",
+      "borrador": {
+        "tipo": "texto",
+        "fondoId": "solido-teal",
+        "texto": "Reunión de obra mañana a las 9:00",
+        "estiloTextoId": "cuerpo",
+        "recurso": null,
+        "elementos": []
+      }
+    },
+    {
+      "id": "contacto-diego-2",
+      "autorId": "diego-mendoza",
+      "nombre": "Diego Mendoza",
+      "tiempo": "4 h",
+      "borrador": {
+        "tipo": "media",
+        "fondoId": "degradado-primario",
+        "texto": "",
+        "estiloTextoId": "clasico",
+        "recurso": "foto2_red-social.jpg",
+        "elementos": [
+          {
+            "id": "contacto-diego-2-e1",
+            "contenido": "Reunión de obra",
+            "estiloTextoId": "cuerpo",
+            "posicionId": "superior"
+          }
+        ]
+      }
+    },
+    {
+      "id": "contacto-ana-1",
+      "autorId": "ana-garcia",
+      "nombre": "Ana García",
+      "tiempo": "6 h",
+      "borrador": {
+        "tipo": "texto",
+        "fondoId": "degradado-calido",
+        "texto": "¿Quién se anima a la capacitación del viernes?",
+        "estiloTextoId": "destacado",
+        "recurso": null,
+        "elementos": []
+      }
+    },
+    {
+      "id": "contacto-ana-2",
+      "autorId": "ana-garcia",
+      "nombre": "Ana García",
+      "tiempo": "5 h",
+      "borrador": {
+        "tipo": "media",
+        "fondoId": "degradado-primario",
+        "texto": "",
+        "estiloTextoId": "clasico",
+        "recurso": "foto1_red-social.jpg",
+        "elementos": []
+      }
+    }
+  ],
+  "historiasPropias": [
+    {
+      "id": "historia-demo-1",
+      "autorId": "usuario-pedro-lozano",
+      "nombre": "Pedro Lozano",
+      "tiempo": "1 h",
+      "borrador": {
+        "tipo": "texto",
+        "fondoId": "degradado-teal",
+        "texto": "Buenos días, equipo. Hoy cerramos el trimestre con buenos resultados.",
+        "estiloTextoId": "clasico",
+        "recurso": null,
+        "elementos": []
+      }
+    },
+    {
+      "id": "historia-demo-2",
+      "autorId": "usuario-pedro-lozano",
+      "nombre": "Pedro Lozano",
+      "tiempo": "1 h",
+      "borrador": {
+        "tipo": "media",
+        "fondoId": "degradado-primario",
+        "texto": "",
+        "estiloTextoId": "clasico",
+        "recurso": "foto2_red-social.jpg",
+        "elementos": [
+          {
+            "id": "historia-demo-2-e1",
+            "contenido": "Visita de obra",
+            "estiloTextoId": "cuerpo",
+            "posicionId": "inferior"
+          }
+        ]
+      }
+    }
+  ]
 }

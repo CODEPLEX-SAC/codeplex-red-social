@@ -37,7 +37,8 @@ describe('Aplicaciones asignables y sus iconos en Colaboradores', () => {
   })
 
   it('cada aplicacion tiene un color propio y distinto', () => {
-    const colores = APLICACIONES_DISPONIBLES.map((app) => app.clase)
+    const coloresCatalogo: Record<string, string> = catalogoColaboradores.clases.aplicacion_color
+    const colores = APLICACIONES_DISPONIBLES.map((app) => coloresCatalogo[app.nombre])
     expect(new Set(colores).size).toBe(colores.length)
   })
 

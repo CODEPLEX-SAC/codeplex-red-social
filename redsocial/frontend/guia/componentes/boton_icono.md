@@ -6,7 +6,7 @@
 - **Propósito:** botón cuadrado o circular con un solo icono y etiqueta accesible obligatoria.
 - **Ubicación:** `redsocial/frontend/componentes/compartido/interfaz/boton_icono.tsx`; tipos en `tipos/compartido/contrato_boton_icono.ts`; configuración en `compartido.json`.
 - **Estado:** existente.
-- **Consumidores:** todos los módulos; 142 usos JSX en 96 archivos (conteo del 2026-10-19).
+- **Consumidores:** todos los módulos; 171 usos JSX en 118 archivos (conteo estático del 2026-10-26; el 2026-10-19 eran 142 en 96).
 
 ## 2. Origen e implementación
 
@@ -24,7 +24,7 @@
 | `icono` | `IconName` (obligatoria) | — |
 | `aria-label` | texto (obligatorio) | — |
 | `variant` | `default`, `primario`, `suave`, `discreto`, `sobre_oscuro`, `contorno`, `sutil`, `flotante` | `default` |
-| `size` | `default`, `sm`, `md` | `default` |
+| `size` | `default`, `sm`, `md`, `tactil` | `default` |
 | `className` | clases locales | — |
 
 **Estados:** `hover` por variante, foco visible global, `disabled` (`disabled:opacity-40`, `cursor-not-allowed`). **Accesibilidad:** la etiqueta es obligatoria por tipo.
@@ -49,6 +49,8 @@ Nota: `md` (28 px) es más pequeño que `default` (32 px) en escritorio; el nomb
 | `contorno` | 8 px | blanco con borde `--color-borde`; `hover` `--color-fondo-hover-suave` |
 | `sutil` | 6 px | transparente, `--color-texto-suave`; `hover` fondo suave y texto primario |
 | `flotante` | círculo | blanco, borde `--color-borde-flotante`, sombra `shadow-t8` |
+
+El tamaño `tactil` (44 × 44 px, `h-11 w-11`, sin reducción en pantallas pequeñas) se creó para el botón de opciones de cada mensaje de Mensajería (2026-10-26); el resto de tamaños no cambia.
 
 Medido: 707 botones de icono visibles a 1280 px con alturas 24, 28 y 32 px. Los tamaños de icono de `BotonIcono` son independientes de `boton_icono_por_tamano` (que solo aplica a `Boton`).
 

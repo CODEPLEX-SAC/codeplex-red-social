@@ -12,10 +12,18 @@ function Pildora({ etiqueta, clases, punto }: { etiqueta: string; clases: string
   return <CodeplexEstadoBadge etiqueta={etiqueta} variante="neutro" mostrarPunto={clasePunto !== undefined} className={[clases, clasePunto ?? ''].join(' ').trim()} sx={estado.sx} />
 }
 
+function abreviado(contenido: unknown, maximo: number = superpuesta.maximo_predeterminado): { role: 'img'; 'aria-label': string } | Record<string, never> {
+  return typeof contenido === 'number' && contenido > maximo ? { role: 'img', 'aria-label': String(contenido) } : {}
+}
+
 export function Insignia(props: InsigniaProps) {
   switch (props.variant) {
-    case 'counter':
-      return <Pildora etiqueta={String(props.children)} clases={[estado.contador.tamanos[props.tamano ?? 'md'], estado.contador.tonos[props.tono ?? 'primario']].join(' ')} />
+    case 'counter': {
+      const real = props.children
+      const excedido = typeof real === 'number' && real > superpuesta.maximo_predeterminado
+      const pildora = <Pildora etiqueta={excedido ? `${superpuesta.maximo_predeterminado}+` : String(real)} clases={[estado.contador.tamanos[props.tamano ?? 'md'], estado.contador.tonos[props.tono ?? 'primario']].join(' ')} />
+      return excedido ? <span role="img" aria-label={String(real)} className="inline-flex">{pildora}</span> : pildora
+    }
 
     case 'status':
       return <Pildora etiqueta={props.children} clases={[estado.pildora, props.className].join(' ')} punto={props.punto} />
@@ -32,8 +40,10 @@ export function Insignia(props: InsigniaProps) {
           contenido={props.contenido}
           color={props.color ?? 'primario'}
           maximo={props.maximo}
-          slotProps={{ badge: { className: superpuesta.texto } }}
-          className={[superpuesta.base, superpuesta.colores[props.color ?? 'primario'], props.className ?? ''].join(' ').trim()}
+          superposicion={props.superposicion}
+          variante={props.punto ? 'punto' : 'estandar'}
+          slotProps={{ badge: { className: [superpuesta.texto, superpuesta.inerte].join(' '), ...abreviado(props.contenido, props.maximo) } }}
+          className={[superpuesta.base, superpuesta.colores[props.color ?? 'primario'], props.compacta ? superpuesta.compacta : '', props.className ?? ''].join(' ').trim()}
         >
           {props.children}
         </CodeplexInsignia>

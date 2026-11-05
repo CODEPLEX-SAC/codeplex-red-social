@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { ElementoFeed, EstadisticasActividad, OpcionVotable, OrigenCompartido, PestanaFeed, ComentarioUtil, PublicacionCompartidaInicio, PublicacionInicio, PublicacionTextoInicio } from './modelo_inicio'
 import type { MedioLocalPublicacion, TipoPublicacion } from './contrato_crear_publicacion'
 import type { ComentarioPublicacion, InteraccionPublicacion } from './contrato_interacciones_publicacion'
@@ -70,13 +71,21 @@ export interface CompositorInicioProps {
   onAbrir: (tipo: TipoPublicacion) => void
 }
 
-export interface MensajeFlotanteInicio {
+export type PestanaMensajesFlotantes = 'todos' | 'no_leidos'
+
+export interface ConversacionFlotanteInicio {
+  id: string
   nombre: string
-  preview: string
-  hora: string
-  badge: number
+  extracto: string
+  etiquetaTiempo: string
+  noLeidos: number
+  esGrupo?: boolean
+  enLinea: boolean
 }
 
 export interface MensajesFlotantesInicioProps {
-  mensajes: readonly MensajeFlotanteInicio[]
+  conversaciones: readonly ConversacionFlotanteInicio[]
+  onAbrirConversacion: (id: string) => void
+  onAmpliar: (id: string | null) => void
+  renderHilo: (id: string, volver: () => void) => ReactNode
 }

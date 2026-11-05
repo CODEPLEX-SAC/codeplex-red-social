@@ -1,0 +1,9 @@
+# Enlace de acción («Ver todos», «Ver detalle», «Ver más»)
+
+- **Fuente de verdad:** `compartido.json › enlaces`, exportado como `CLASE_ENLACE_ACCION`, `CLASE_ENLACE_ACCION_PIE` y `CLASE_ENLACE_ACCION_SECUNDARIO` (`componentes/compartido/clases_enlace.ts` y el barrel).
+- **Regla común:** rol tipográfico `enlace-accion`, sin subrayado en reposo y **subrayado al pasar el puntero**; el foco de teclado lo pone la regla global `:focus-visible` (`index.css`, REG-15). El color y el destino los decide cada uso.
+- **Variantes explícitas:** `accion` (color primario; 71 usos en 49 archivos), `accion_secundario` (color `texto-suave`; videollamadas) y `accion_pie` (fila completa centrada al pie de un panel, con fondo al pasar el puntero; panel de notificaciones). Las clases de maquetación (`block`, `whitespace-nowrap`, `mt-*`) se añaden fuera del contrato.
+- **Unificación del 2026-10-28:** 26 usos que no subrayaban al pasar el puntero (Dashboard, Estadísticas, Indicadores, Reportes y otros) cumplen el mismo rol que los otros 45 y pasaron a `accion`; el enlace «Historial de llamadas» (hover de color) pasó a `accion_secundario`.
+- **Fuera del contrato:** enlaces de navegación dentro de contenido (nombres de documento de Perfil, perfiles de usuario), el «Ver todos» de la ventana flotante de Inicio (`inicio.json`, fondo `hover:bg-fondo`).
+- **Prueba:** `pruebas/compartido/enlaces_accion_centralizados.test.ts`.
+- **Catálogo de Amigos:** la clave `amigos.json › clases.sugerencia.enlace` duplicaba el contrato y no tenía consumidores (búsqueda estática: la página de sugerencias solo lee 12 claves de `sugerencia`, ninguna `enlace`); se eliminó el 2026-10-29. La fuente oficial es `compartido.json › enlaces`; la prueba `enlaces_accion_centralizados.test.ts` impide duplicarlo en otros catálogos.

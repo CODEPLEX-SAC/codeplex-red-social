@@ -24,7 +24,7 @@ export function ListaEventosExplorar({ EVENTOS }: { EVENTOS: EventoExplorar[] })
           <div className="flex flex-col p-5">
             <TextoColor variante={ev.categoria} className="mb-1 inline-block text-badge uppercase tracking-wide">{ev.categoriaEtiqueta}</TextoColor>
             <h2 className="m-0 mb-1.5 text-nombre-entidad leading-compacto text-texto">{ev.nombre}</h2>
-            <p className="m-0 mb-3 text-cuerpo leading-texto text-texto-suave">{ev.descripcion}</p>
+            <p className="m-0 mb-3 text-subtitulo leading-texto text-texto-suave">{ev.descripcion}</p>
             <div className="mb-3.5 flex flex-wrap gap-3.5">
               <span className="flex items-center gap-1.25 text-auxiliar text-texto-suave"><Icono name="calendario" className="h-3.5 w-3.5 text-primario" /> {ev.fecha}</span>
               <span className="flex items-center gap-1.25 text-auxiliar text-texto-suave"><Icono name="calendario" className="h-3.5 w-3.5 text-primario" /> {ev.hora}</span>

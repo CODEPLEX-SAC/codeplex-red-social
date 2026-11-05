@@ -1,5 +1,6 @@
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import { Boton } from '../../compartido/interfaz/boton'
+import { CLASES_FLUJO_PAGO } from '../../compartido/pago/clases_flujo_pago'
 import { Icono } from '../../compartido/icono'
 import { etiquetaTotal, monto, precioNumerico, textoTotal } from './logica_pago_planes'
 import type { ItemCarrito } from '@/tipos/marketplace/modelo_carrito'
@@ -11,7 +12,7 @@ const planes = catalogoMarketplace.planes
 export function ResumenCarrito({ items, clasesModulo, alProceder }: { items: ItemCarrito[]; clasesModulo: Record<string, string>; alProceder: () => void }) {
   const separador = textos.separador_moneda
   return (
-    <aside className={`${catalogoMarketplace.pago.clases.tarjeta} ${clases.resumen}`}>
+    <aside className={`${CLASES_FLUJO_PAGO.seccion} ${clases.resumen}`}>
       <div className={clases.encabezado_resumen}>
         <h3 className="m-0 text-nombre-entidad text-texto">{textos.resumen}</h3>
         <span className="text-auxiliar text-texto-suave">{(items.length === 1 ? textos.una : textos.varias).replace(':n', String(items.length))}</span>

@@ -91,6 +91,7 @@ export function FilaUsuarioEmpresa({ usuario, editable, edicionUsuarios }: FilaU
             variant="contorno"
             aria-label={PLANTILLA_OPCIONES.replace(':nombre', usuario.nombre)}
             aria-haspopup="menu"
+            className={catalogoEmpresas.clases.objetivo_tactil}
             aria-expanded={Boolean(ancla)}
             onClick={abrirMenu}
           />

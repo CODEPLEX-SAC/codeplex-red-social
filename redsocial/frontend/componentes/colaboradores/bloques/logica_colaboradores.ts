@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { Aplicacion, Colaborador, Vigencia } from '@/tipos/colaboradores/modelo_colaboradores'
 import type { BorradorColaborador } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
@@ -31,6 +32,14 @@ export function fechaValida(texto: string): boolean {
   return FECHA_COMPLETA.test(texto) && formatearFecha(fechaDeTexto(texto)) === texto
 }
 
+export function fechaComoDayjs(texto: string): Dayjs | null {
+  return fechaValida(texto) ? dayjs(fechaDeTexto(texto)) : null
+}
+
+export function textoDeFecha(valor: Dayjs | null): string {
+  return valor ? formatearFecha(valor.valueOf()) : String()
+}
+
 export function inicioDeVigencia(vigencia: Vigencia): string {
   return vigencia.tipo === 'rango' ? vigencia.desde : vigencia.fecha
 }
@@ -44,6 +53,7 @@ export function crearBorrador(colaborador: Colaborador): BorradorColaborador {
     rol: colaborador.rol,
     fechaInicio: inicioDeVigencia(vigencia),
     fechaFin: vigencia.tipo === 'rango' ? vigencia.hasta : '',
+    ultimoAcceso: colaborador.ultimoAcceso ?? '',
     aplicaciones: colaborador.aplicaciones.map((app) => app.nombre),
     estado: colaborador.estado,
   }
@@ -66,10 +76,6 @@ function vigenciaDeBorrador(original: Vigencia, borrador: BorradorColaborador): 
   return original.tipo === 'simple' ? { ...original, fecha: borrador.fechaInicio } : original
 }
 
-export function resumirAplicaciones(colaborador: Colaborador, maximo: number) {
-  return { visibles: colaborador.aplicaciones.slice(0, maximo), ocultas: Math.max(0, colaborador.aplicaciones.length - maximo) }
-}
-
 export function referenciaDeRol(colaborador: Colaborador, rol: string, lista: Colaborador[]) {
   if (rol === colaborador.rol) return colaborador
   return lista.find((otro) => otro.rol === rol) ?? { rolClase: ROL_CLASE_PREDETERMINADO, descripcionRol: colaborador.descripcionRol }
@@ -87,6 +93,7 @@ export function aplicarBorrador(colaborador: Colaborador, borrador: BorradorCola
     descripcionRol: referencia.descripcionRol,
     aplicaciones: disponibles.filter((app) => borrador.aplicaciones.includes(app.nombre)),
     estado: borrador.estado,
+    ...(borrador.ultimoAcceso ? { ultimoAcceso: borrador.ultimoAcceso } : {}),
     acciones: borrador.estado === 'invitado' ? 'reenviar' : 'menu',
     vigencia: vigenciaDeBorrador(colaborador.vigencia, borrador),
   }

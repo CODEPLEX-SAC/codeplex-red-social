@@ -7,6 +7,7 @@ import { SeccionTituloPre2 } from './seccion_titulo_pre2'
 import { SeccionDestacados3 } from './seccion_destacados3'
 import type { AccesosCabecera } from '@/tipos/marketplace/modelo_carrito'
 import type { Destacado } from '@/tipos/marketplace/modelo_marketplace'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionTituloPre({
   carrusel,
@@ -74,7 +75,7 @@ export function SeccionTituloPre({
         <section>
           <div className="mb-3.5 flex items-center justify-between">
             <h2 className="m-0 text-titulo-seccion text-texto">{catalogoMarketplace.secciones.mas_categorias}</h2>
-            <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
+            <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODAS}</a>
           </div>
           <div className="grid grid-cols-repeatauto-fill-minmax180-1fr gap-3.5">
             {CATEGORIAS.map((c) => (

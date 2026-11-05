@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import { SeccionDescubrir } from '../../componentes/grupos'
@@ -24,7 +24,7 @@ export function PaginaGruposDescubrir() {
             <section className="rounded-xl border border-borde-suave bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.mis_grupos}</h2>
-                <a href={catalogoGrupos.rutas.mis_grupos} className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+                <a href={catalogoGrupos.rutas.mis_grupos} className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
               </div>
               {MIS_GRUPOS_LATERAL.map((g) => (
                 <article key={g.nombre} className="flex items-center gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
@@ -45,7 +45,7 @@ export function PaginaGruposDescubrir() {
             <section className="rounded-xl border border-borde-suave bg-white p-4">
               <div className="mb-3.5 flex items-center justify-between">
                 <h2 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.actividad_reciente}</h2>
-                <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoGrupos.leyendas.ver_toda}</a>
+                <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoGrupos.leyendas.ver_toda}</a>
               </div>
               {ACTIVIDAD.map((a) => (
                 <FilaActividadGrupo key={a.nombre + a.grupo} nombre={a.nombre} accion={a.accion} grupo={a.grupo} tiempo={a.tiempo} />

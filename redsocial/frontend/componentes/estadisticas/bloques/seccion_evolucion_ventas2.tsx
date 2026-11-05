@@ -4,6 +4,7 @@ import { ProveedorTemaGraficos } from '../../compartido/proveedor_tema_graficos'
 import { CodeplexGraficoLineas } from '@codeplex-sac/graficos'
 import { DonaProgreso } from '../../compartido/interfaz/dona_progreso'
 import { SeccionTopClientes } from './seccion_top_clientes'
+import { CLASES_TARJETA, CLASES_CUERPO_TARJETA } from '../../compartido/clases_tarjeta'
 
 export function SeccionEvolucionVentas2({
   VENTAS_MENSUALES,
@@ -18,7 +19,7 @@ export function SeccionEvolucionVentas2({
 }) {
   return (
     <div className="mb-4 grid grid-cols-3 gap-4 max-1400:grid-cols-2 max-1000:grid-cols-1">
-      <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5 max-1400:col-span-2 max-1000:col-span-1">
+      <article className={[CLASES_TARJETA.panel, 'max-1400:col-span-2 max-1000:col-span-1'].join(' ')}>
         <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.evolucion_ventas}</h2>
           <Selector variant="mini" aria-label={catalogoEstadisticas.selectores.frecuencia_grafico.etiqueta} defaultValue={catalogoEstadisticas.selectores.frecuencia_grafico.opciones[0]}>
@@ -26,7 +27,7 @@ export function SeccionEvolucionVentas2({
           </Selector>
         </div>
         <div className="relative">
-          <ProveedorTemaGraficos>
+          <ProveedorTemaGraficos tooltipGraficos>
             <CodeplexGraficoLineas datos={VENTAS_MENSUALES} color="info" gradiente conTooltip conCuadricula alto={220} />
           </ProveedorTemaGraficos>
         </div>
@@ -36,31 +37,28 @@ export function SeccionEvolucionVentas2({
         </div>
       </article>
 
-      <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
+      <article className={CLASES_TARJETA.panel}>
         <div className="mb-3.5 border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.composicion_ingresos}</h2>
         </div>
-        <div className="relative mx-auto mb-4 grid h-35 w-35 place-items-center rounded-full">
-          <DonaProgreso
-            segmentos={COMPOSICION_INGRESOS.items.map((it) => ({ color: it.color, porcentaje: Number(it.pct.replace('%', '')) }))}
-            tamano={140}
-            grosor={16}
-            className="absolute inset-0"
-          />
-          <div className="absolute inset-5.5 rounded-full bg-white" />
-          <span className="relative z-10 flex flex-col items-center text-center">
-            <strong className="text-valor-destacado text-texto">{COMPOSICION_INGRESOS.total}</strong>
-            <span className="text-auxiliar text-texto-suave">{catalogoEstadisticas.leyendas.total}</span>
-          </span>
-        </div>
+        <div className={CLASES_CUERPO_TARJETA.cuerpo_centrado}>
+        <DonaProgreso
+          segmentos={COMPOSICION_INGRESOS.items.map((it) => ({ color: it.color, porcentaje: Number(it.pct.replace('%', '')) }))}
+          tamano={140}
+          grosor={16}
+          valorCentral={COMPOSICION_INGRESOS.total}
+          etiquetaCentral={catalogoEstadisticas.leyendas.total}
+          className="mx-auto mb-4"
+        />
         <ul className="m-0 grid list-none gap-2 p-0">
           {COMPOSICION_INGRESOS.items.map((it) => (
             <li key={it.etiqueta} className="flex items-center gap-2 text-auxiliar text-texto">
               <svg width="10" height="10" viewBox="0 0 10 10" className="flex-none"><circle cx="5" cy="5" r="5" fill={it.color} /></svg>
-              {it.etiqueta} <b className="ml-auto font-titulo">{it.pct}</b> <small className="min-w-17 text-right text-texto-suave">{it.valor}</small>
+              {it.etiqueta} <b className="ml-auto font-titulo">{it.pct}</b> <small className="min-w-17 text-right text-auxiliar text-texto-suave">{it.valor}</small>
             </li>
           ))}
         </ul>
+        </div>
       </article>
 
       <SeccionTopClientes TOP_CLIENTES={TOP_CLIENTES} ESCALA_TOP_CLIENTES={ESCALA_TOP_CLIENTES} />

@@ -1,5 +1,6 @@
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { ConfiguracionPlanes, SeleccionPlan } from './modelo_planes'
+import type { PerfilPago, TarjetaPago } from '../compartido/contrato_flujo_pago'
 
 export interface ItemCarrito {
   aplicacion: string
@@ -49,34 +50,9 @@ export interface AccionesCompra {
   desinstalar: () => void
 }
 
-export interface TarjetaGuardada {
-  id: string
-  marca: string
-  ultimos4: string
-  vencimiento: string
-  titular?: string
-  predeterminada?: boolean
-}
+export type TarjetaGuardada = TarjetaPago
 
-export interface PerfilFacturacion {
-  id: string
-  documento: string
-  razon: string
-  pais: string
-  direccion: string
-  correo: string
-  celular: string
-}
-
-export interface HistorialPago {
-  perfiles: PerfilFacturacion[]
-}
-
-export interface OpcionSeleccionPago {
-  id: string
-  titulo: string
-  detalle: string
-}
+export type PerfilFacturacion = PerfilPago
 
 export interface CompraVista {
   nombre: string

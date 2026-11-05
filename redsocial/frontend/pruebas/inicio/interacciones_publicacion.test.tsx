@@ -52,7 +52,8 @@ describe('Editar publicacion', () => {
     const dialogo = within(screen.getByRole('dialog', { name: modal.editar.titulo }))
     const editor = dialogo.getByRole('textbox', { name: modal.etiqueta_editor })
     expect(editor).toHaveValue('Texto original')
-    expect(dialogo.queryByRole('group', { name: modal.etiqueta_tipos })).toBeNull()
+    expect(within(dialogo.getByRole('group', { name: modal.etiqueta_tipos })).getByRole('button', { name: modal.tipos[0].etiqueta })).toHaveAttribute('aria-pressed', 'true')
+    expect(within(dialogo.getByRole('group', { name: modal.etiqueta_tipos })).getByRole('button', { name: modal.tipos[1].etiqueta })).toBeDisabled()
 
     fireEvent.change(editor, { target: { value: '' } })
     expect(dialogo.getByRole('button', { name: modal.editar.guardar })).toBeDisabled()

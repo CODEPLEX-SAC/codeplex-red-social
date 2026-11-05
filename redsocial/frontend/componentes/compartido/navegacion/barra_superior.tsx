@@ -2,6 +2,7 @@ import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { CampoBusqueda } from '../interfaz/campo_busqueda'
 import { BotonAvisosTopbar } from './boton_avisos_topbar'
 import { BotonCarritoTopbar } from './boton_carrito_topbar'
+import { BotonMensajesTopbar } from './boton_mensajes_topbar'
 import { MenuUsuarioTopbar } from './menu_usuario_topbar'
 import { SelectorEmpresaTopbar } from './selector_empresa_topbar'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -18,7 +19,7 @@ export function BarraSuperior() {
       <div className="ml-auto flex items-center gap-sm max-800:gap-1.5">
         <BotonIcono icono="mas" type="button" aria-label={textosRedSocial.CREAR} variant="primario" size="default" />
         <BotonIcono icono="amigos" type="button" aria-label={textosRedSocial.AMIGOS} variant="sutil" size="default" className="max-800:hidden" />
-        <BotonIcono icono="mensajes" type="button" aria-label={textosRedSocial.MENSAJES} variant="sutil" size="default" />
+        <BotonMensajesTopbar />
         <BotonCarritoTopbar />
         <BotonAvisosTopbar />
         <BotonIcono icono="cuadricula" type="button" aria-label={textosRedSocial.MODULOS} variant="sutil" size="default" className="max-800:hidden" />

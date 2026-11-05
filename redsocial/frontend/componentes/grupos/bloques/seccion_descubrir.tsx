@@ -7,6 +7,7 @@ import { PestanasGrupos } from './pestanas_grupos'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { BloqueUnirse } from './bloque_unirse'
 import type { GrupoDestacado, ColorCategoria } from '@/tipos/grupos/modelo_grupos_descubrir'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionDescubrir({
   DESTACADOS,
@@ -39,7 +40,7 @@ export function SeccionDescubrir({
 
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.destacados}</h2>
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
       </div>
       <BloqueUnirse
         DESTACADOS={DESTACADOS}
@@ -49,7 +50,7 @@ export function SeccionDescubrir({
 
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.categorias}</h2>
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
       </div>
       <div className="grid grid-cols-4 gap-3 max-1100:grid-cols-3 max-900:grid-cols-2 max-600:grid-cols-1">
         {CATEGORIAS.map((c) => (

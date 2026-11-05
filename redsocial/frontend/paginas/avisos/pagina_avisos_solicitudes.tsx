@@ -2,7 +2,7 @@ import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
-import { BannerInformativo, BotonIcono, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
+import { BannerInformativo, BotonIcono, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
 import { PestanasAvisos, FilaSolicitudAviso, PanelLateralSolicitudesAviso } from '../../componentes/avisos'
 import { CONTEOS_AVISOS, SOLICITUDES_AMISTAD, SOLICITUDES_GRUPO, SOLICITUDES_EVENTO, SOLICITUDES_COLABORACION } from '../../rutas/avisos/rutas_avisos'
@@ -41,7 +41,7 @@ export function PaginaAvisosSolicitudes() {
               <h2 className="m-0 text-titulo-seccion text-texto">
                 {catalogoAvisos.secciones.solicitudes_amistad} ({SOLICITUDES_AMISTAD.length})
               </h2>
-              <a href={catalogoAmigos.rutas.solicitudes} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
+              <a href={catalogoAmigos.rutas.solicitudes} className={CLASE_ENLACE_ACCION}>{catalogoAvisos.botones.ver_todas}</a>
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_AMISTAD.map((s) => (
@@ -62,7 +62,7 @@ export function PaginaAvisosSolicitudes() {
               <h2 className="m-0 text-titulo-seccion text-texto">
                 {catalogoAvisos.secciones.solicitudes_grupo} ({SOLICITUDES_GRUPO.length})
               </h2>
-              <a href={catalogoGrupos.rutas.invitaciones} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
+              <a href={catalogoGrupos.rutas.invitaciones} className={CLASE_ENLACE_ACCION}>{catalogoAvisos.botones.ver_todas}</a>
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_GRUPO.map((s) => (
@@ -83,7 +83,7 @@ export function PaginaAvisosSolicitudes() {
               <h2 className="m-0 text-titulo-seccion text-texto">
                 {catalogoAvisos.secciones.solicitudes_evento} ({SOLICITUDES_EVENTO.length})
               </h2>
-              <a href={catalogoEventos.rutas.invitaciones} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoAvisos.botones.ver_todas}</a>
+              <a href={catalogoEventos.rutas.invitaciones} className={CLASE_ENLACE_ACCION}>{catalogoAvisos.botones.ver_todas}</a>
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_EVENTO.map((s) => (

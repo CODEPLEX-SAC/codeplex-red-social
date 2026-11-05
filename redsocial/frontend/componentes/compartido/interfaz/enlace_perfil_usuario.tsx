@@ -6,7 +6,7 @@ export function EnlacePerfilUsuario({ autorId, nombre, className = '', children 
   const etiqueta = nombre ? catalogoPerfil.enlace.ver_perfil_de.replace(':nombre', nombre) : undefined
 
   return (
-    <a href={rutaPerfilUsuario(autorId)} aria-label={etiqueta} className={`no-underline hover:underline ${className}`}>
+    <a href={rutaPerfilUsuario(autorId)} aria-label={etiqueta} className={`min-h-6 no-underline hover:underline ${className}`}>
       {children}
     </a>
   )

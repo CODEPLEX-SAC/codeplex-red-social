@@ -23,7 +23,7 @@ export function SelectorModoAcceso({ modo, onCambiar }: SelectorModoAccesoProps)
   }
 
   return (
-    <div role="tablist" aria-label={catalogoAcceso.etiqueta_modos} onKeyDown={alPresionarTecla} className="flex rounded-control border border-borde bg-fondo p-0.75">
+    <div role="tablist" aria-label={catalogoAcceso.etiqueta_modos} onKeyDown={alPresionarTecla} className="flex rounded-xl border border-borde bg-fondo p-1">
       {modos.map((opcion) => {
         const activa = opcion.clave === modo
         return (
@@ -37,7 +37,7 @@ export function SelectorModoAcceso({ modo, onCambiar }: SelectorModoAccesoProps)
             tabIndex={activa ? 0 : -1}
             onClick={() => onCambiar(opcion.clave as ModoAcceso)}
             className={`flex-1 cursor-pointer rounded-lg border-0 py-2 text-boton transition-colors ${
-              activa ? 'bg-white text-primario shadow-sombra' : 'bg-transparent text-texto-suave hover:text-texto'
+              activa ? 'bg-primario text-white shadow-sombra' : 'bg-transparent text-texto hover:text-primario'
             }`}
           >
             {opcion.etiqueta}

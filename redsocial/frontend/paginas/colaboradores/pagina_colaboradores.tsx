@@ -1,18 +1,18 @@
-import { EstructuraApp, ColumnaPublicidad } from '../../componentes/compartido'
+import { EstructuraApp, ColumnaPublicidad, AvisoEmergente } from '../../componentes/compartido'
 import { useState } from 'react'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
 import type { Colaborador } from '../../tipos/colaboradores/modelo_colaboradores'
 import type { EstadoInvitacion, DatosColaboradorInvitado } from '../../tipos/colaboradores/contrato_invitar_colaborador'
 import type { BorradorColaborador } from '../../tipos/colaboradores/contrato_gestion_colaboradores'
-import { COLABORADORES, FILTROS_ESTADO_COLABORADORES, PASOS_FUNCIONA_COLABORADORES, ROL_CLASES, ESTADO_CLASES, APLICACIONES_DISPONIBLES, FECHA_BAJA_EJEMPLO, DATOS_ASISTENTE_INVITACION } from '../../rutas/colaboradores/rutas_colaboradores'
-import { SeccionListado, SeccionDetalleColaborador, SeccionEditarColaborador, SeccionComoFunciona, BloqueConfirmarBajaColaborador, ModalInvitarColaborador, AvisoInvitacionEnviada, usarGestionColaboradores } from '../../componentes/colaboradores'
+import { COLABORADORES, FILTROS_ESTADO_COLABORADORES, PASOS_FUNCIONA_COLABORADORES, APLICACIONES_DISPONIBLES, FECHA_BAJA_EJEMPLO, DATOS_ASISTENTE_INVITACION } from '../../rutas/colaboradores/rutas_colaboradores'
+import { SeccionListado, SeccionDetalleColaborador, SeccionEditarColaborador, SeccionComoFunciona, BloqueConfirmarBajaColaborador, ModalInvitarColaborador, usarGestionColaboradores } from '../../componentes/colaboradores'
 
 
-const PASOS_FUNCIONA: { icono: IconName; clase: string; numero: string; descripcion: string }[] = [...PASOS_FUNCIONA_COLABORADORES]
+const PASOS_FUNCIONA: { icono: IconName; numero: string; descripcion: string }[] = [...PASOS_FUNCIONA_COLABORADORES]
+const clases = catalogoColaboradores.clases.listado
 
 export function PaginaColaboradores() {
-  const [menuAbierto, setMenuAbierto] = useState<number | null>(null)
   const [colaboradorAbierto, setColaboradorAbierto] = useState<Colaborador | null>(null)
   const [modoPanel, setModoPanel] = useState<'ver' | 'editar'>('ver')
   const [colaboradorABaja, setColaboradorABaja] = useState<Colaborador | null>(null)
@@ -54,33 +54,16 @@ export function PaginaColaboradores() {
     setColaboradorABaja(null)
   }
 
-  const [anclaMenu, setAnclaMenu] = useState<HTMLElement | null>(null)
-  const cerrarMenus = () => {
-    setMenuAbierto(null)
-    setAnclaMenu(null)
-  }
-
   return (
     <EstructuraApp paginaActiva={catalogoColaboradores.claves.modulo}>
-      {gestion.aviso && <AvisoInvitacionEnviada mensaje={gestion.aviso.texto} error={gestion.aviso.error} alCerrar={gestion.cerrarAviso} />}
+      {gestion.aviso && <AvisoEmergente abierto titulo={gestion.aviso.titulo} mensaje={gestion.aviso.texto} variante={gestion.aviso.error ? 'error' : 'exito'} alCerrar={gestion.cerrarAviso} />}
       <div
-        onClick={cerrarMenus}
-        className={
-          'grid items-start gap-lg max-1100:grid-cols-1 ' +
-          (panelAbierto ? 'panel-colaboradores-abierto' : 'panel-colaboradores-cerrado')
-        }
+        className={[clases.pagina_rejilla, panelAbierto ? clases.pagina_rejilla_panel_abierto : clases.pagina_rejilla_panel_cerrado].join(' ')}
       >
         <SeccionListado
           datos={{
             COLABORADORES: gestion.colaboradores,
             FILTROS_ESTADO_COLABORADORES,
-            ESTADO_CLASES,
-            ROL_CLASES,
-            setMenuAbierto,
-            setAnclaMenu,
-            menuAbierto,
-            anclaMenu,
-            cerrarMenus,
             alVerColaborador: abrirParaVer,
             alEditarColaborador: abrirParaEditar,
             alConfirmarBaja: setColaboradorABaja,
@@ -93,7 +76,6 @@ export function PaginaColaboradores() {
       {colaboradorAbierto && modoPanel === 'ver' && (
         <SeccionDetalleColaborador
           colaborador={colaboradorAbierto}
-          estado={ESTADO_CLASES[colaboradorAbierto.estado]}
           alCerrar={() => abrirParaVer(null)}
           alEditar={() => abrirParaEditar(colaboradorAbierto)}
         />
@@ -111,7 +93,7 @@ export function PaginaColaboradores() {
         />
       )}
 
-        <div className="hidden 2130:block area-publicidad">
+        <div className={clases.pagina_publicidad}>
           <ColumnaPublicidad />
         </div>
 

@@ -9,6 +9,7 @@ import { BloqueRecientes } from './bloque_recientes'
 import { SeccionContactosFrecuentes2 } from './seccion_contactos_frecuentes2'
 import type { ReunionProgramada } from '@/tipos/mensajeria/contrato_reunion'
 import { SeccionReunionesProgramadas } from './seccion_reuniones_programadas'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionContactosFrecuentes({
   LLAMADAS_RECIENTES,
@@ -64,7 +65,7 @@ export function SeccionContactosFrecuentes({
             ))}
           </div>
           <div className="pt-3.5 text-center">
-            <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_todo_el_historial}</a>
+            <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoMensajeria.botones.ver_todo_el_historial}</a>
           </div>
         </section>
       </section>

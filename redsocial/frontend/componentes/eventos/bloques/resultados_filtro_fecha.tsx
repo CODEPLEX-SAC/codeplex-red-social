@@ -7,6 +7,7 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import type { ResultadosFiltroFechaProps } from '@/tipos/eventos/contrato_resultados_filtro_fecha'
 import { formatearFechaCorta, formatearRangoLargo, obtenerClaveDia, unirExtremos } from '../formato_fecha_filtro'
 import { AvataresEvento, DatosEventoFiltro, InsigniaFechaEvento, SinEventosFiltro, TarjetaEventoSugerido, TarjetaOtroEvento } from './elementos_resultado_filtro'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 const textos = catalogoEventos.panel_filtro_fecha
 const MESES = catalogoEventos.meses
@@ -34,7 +35,7 @@ export function ResultadosFiltroFecha({ filtro, resultados, onExplorar }: Result
             </div>
             <div className="flex flex-col gap-2 px-5 py-4">
               <TextoColor variante={destacado.categoriaColor} className="inline-block text-badge uppercase tracking-wide">{destacado.categoria}</TextoColor>
-              <h4 className="m-0 text-titulo-seccion text-texto">{destacado.nombre}</h4>
+              <h4 className="m-0 text-cuerpo-grande text-texto">{destacado.nombre}</h4>
               <p className="m-0 text-cuerpo leading-texto text-texto-suave">{destacado.descripcion}</p>
               <DatosEventoFiltro evento={destacado} fecha={filtro.inicio} />
               <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
@@ -46,7 +47,7 @@ export function ResultadosFiltroFecha({ filtro, resultados, onExplorar }: Result
 
           <div className="mb-4 flex items-center justify-between gap-3">
             <h3 className="m-0 text-titulo-seccion text-texto">{[textos.otros_eventos_del, textos.espacio, unirExtremos(filtro, formatearFechaCorta)].join('')}</h3>
-            <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+            <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
           </div>
           <div className="grid grid-cols-3 gap-4 max-1100:grid-cols-2 max-600:grid-cols-1">
             {otros.map((evento) => (
@@ -60,7 +61,7 @@ export function ResultadosFiltroFecha({ filtro, resultados, onExplorar }: Result
         <div className="mt-7">
           <div className="mb-4 flex items-center justify-between gap-3">
             <h3 className="m-0 text-titulo-seccion text-texto">{textos.sugeridos}</h3>
-            <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+            <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
           </div>
           <div className="grid grid-cols-4 gap-4 max-1100:grid-cols-2 max-600:grid-cols-1">
             {sugeridos.map((evento) => (

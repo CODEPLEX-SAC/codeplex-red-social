@@ -2,6 +2,7 @@ import { fireEvent, render, screen, within } from '@testing-library/react'
 import { beforeEach, vi } from 'vitest'
 import { DATOS_TARJETA_VALIDA, sembrarTarjetas, textoAlmacenado } from './ayudas_pago'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
+import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
 import { DESTACADOS, PLANES_APLICACIONES } from '@/rutas/marketplace/rutas_marketplace'
@@ -13,6 +14,7 @@ vi.setConfig({ testTimeout: TIEMPO_FLUJOS_COMPRA })
 
 const textos = catalogoMarketplace.planes
 const pago = catalogoMarketplace.pago
+const flujo = catalogoCompartido.flujo_pago.textos
 const carrito = catalogoMarketplace.carrito
 const misCompras = catalogoMarketplace.mis_compras
 const contaplex = PLANES_APLICACIONES['conta-plex']
@@ -230,10 +232,13 @@ describe('Selector de planes de ContaPlex', () => {
     expect(within(modal).getAllByRole('article')).toHaveLength(1)
   })
 
-  it('en la pantalla de pago solo se activa tras aceptar los terminos y no ofrece Super VIP mientras este deshabilitado', () => {
+  it('en la pantalla de pago no se activa sin aceptar los terminos y no ofrece Super VIP mientras este deshabilitado', () => {
     const pantalla = irAlPago(1)
     const activar = within(pantalla).getByRole('button', { name: pago.resumen.activar })
-    expect(activar).toBeDisabled()
+    expect(activar).toBeEnabled()
+    fireEvent.click(activar)
+    expect(within(pantalla).getByText(catalogoCompartido.flujo_pago.textos.autorizacion.obligatoria_pendiente)).toBeInTheDocument()
+    expect(within(pantalla).queryByText(pago.exito.titulo)).toBeNull()
     expect(within(pantalla).getAllByText('S/50').length).toBeGreaterThan(0)
     expect(within(pantalla).queryByRole('checkbox', { name: pago.vip.agregar })).toBeNull()
     expect(within(pantalla).queryByText(pago.vip.titulo)).toBeNull()
@@ -244,7 +249,7 @@ describe('Selector de planes de ContaPlex', () => {
   it('el resumen del pedido queda fijo mientras se desplaza el formulario de pago', () => {
     const pantalla = irAlPago(0)
     const resumen = within(pantalla).getByRole('complementary')
-    pago.clases.resumen_fijo.split(' ').filter((c) => !c.includes(':') && !c.startsWith('max-')).forEach((c) => expect(resumen).toHaveClass(c))
+    catalogoCompartido.flujo_pago.clases.resumen_fijo.split(' ').filter((c) => !c.includes(':') && !c.startsWith('max-')).forEach((c) => expect(resumen).toHaveClass(c))
   })
 
 
@@ -262,18 +267,18 @@ describe('Selector de planes de ContaPlex', () => {
   it('una tarjeta nueva se registra sin el numero completo ni el CVV y se ofrece en la siguiente compra', async () => {
     sembrarTarjetas([])
     const pantalla = irAlPago(0)
-    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.numero }), { target: { value: DATOS_TARJETA_VALIDA.numero } })
-    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.vencimiento }), { target: { value: DATOS_TARJETA_VALIDA.vencimiento } })
-    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.cvv }), { target: { value: DATOS_TARJETA_VALIDA.cvv } })
-    fireEvent.change(within(pantalla).getByRole('textbox', { name: pago.campos.propietario }), { target: { value: DATOS_TARJETA_VALIDA.titular } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: flujo.campos.numero }), { target: { value: DATOS_TARJETA_VALIDA.numero } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: flujo.campos.vencimiento }), { target: { value: DATOS_TARJETA_VALIDA.vencimiento } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: flujo.campos.cvv }), { target: { value: DATOS_TARJETA_VALIDA.cvv } })
+    fireEvent.change(within(pantalla).getByRole('textbox', { name: flujo.campos.propietario }), { target: { value: DATOS_TARJETA_VALIDA.titular } })
     fireEvent.click(within(pantalla).getByRole('checkbox', { name: new RegExp(pago.paso4.acepto.slice(0, 20)) }))
     fireEvent.click(within(pantalla).getByRole('button', { name: pago.resumen.activar }))
     await within(pantalla).findByText(pago.exito.titulo)
     fireEvent.click(within(pantalla).getByRole('button', { name: pago.exito.volver }))
     expect(textoAlmacenado()).not.toMatch(/4242424242424242|"cvv"/)
     const siguiente = irAlPago(0, false)
-    expect(within(siguiente).getByText(pago.metodo_guardado.titulo_tarjeta.replace(':marca', 'Visa').replace(':ultimos', '4242'))).toBeInTheDocument()
-    expect(within(siguiente).queryByRole('textbox', { name: pago.campos.numero })).toBeNull()
+    expect(within(siguiente).getByText(flujo.metodo_guardado.titulo_tarjeta.replace(':marca', 'Visa').replace(':ultimos', '4242'))).toBeInTheDocument()
+    expect(within(siguiente).queryByRole('textbox', { name: flujo.campos.numero })).toBeNull()
   })
 
   it('Mis compras sustituye Destacados y Mas categorias por el listado y Ver catalogo los devuelve', () => {

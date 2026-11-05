@@ -7,7 +7,7 @@ export function FilaActividadGrupo({ nombre, accion, grupo, tiempo, icono, color
   return (
     <article className="flex items-start gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
       <AvatarUsuario tamano="sm" imagen={usuarioImg} />
-      <div className="min-w-0 flex-1 text-cuerpo leading-texto text-texto">
+      <div className="min-w-0 flex-1 text-subtitulo leading-texto text-texto">
         <strong className="font-titulo">{nombre}</strong> {accion} <span className="font-titulo text-texto">{grupo}</span>
         <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{tiempo}</span>
       </div>

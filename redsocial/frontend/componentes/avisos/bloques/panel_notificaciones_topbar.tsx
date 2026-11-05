@@ -8,6 +8,7 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import type { ElementoMenu } from '@/tipos/compartido/contrato_menu'
 import type { PanelNotificacionesTopbarProps } from '@/tipos/avisos/contrato_notificaciones_topbar'
 import type { Aviso, ColorIconoAviso, PestanaAviso } from '@/tipos/avisos/modelo_avisos'
+import { CLASE_ENLACE_ACCION_PIE } from '../../compartido/clases_enlace'
 
 const PESTANAS_PANEL = catalogoAvisos.pestanas_panel_topbar
 
@@ -46,7 +47,7 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
         {avisosPanelHoy.map((n) => (
           <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} />
         ))}
-        <a href={catalogoAvisos.rutas.todas} className="mt-2 flex items-center justify-center rounded-lg border border-borde py-2 text-enlace-accion text-primario no-underline hover:bg-fondo-hover-suave">
+        <a href={catalogoAvisos.rutas.todas} className={[CLASE_ENLACE_ACCION_PIE, 'mt-2 rounded-lg border border-borde py-2'].join(' ')}>
           {catalogoAvisos.panel_topbar.ver_mas}
         </a>
 
@@ -56,7 +57,7 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
         ))}
       </div>
 
-      <a href={catalogoAvisos.rutas.todas} className="flex items-center justify-center border-t border-borde-suave p-3 text-enlace-accion text-primario no-underline hover:bg-fondo-hover-suave">
+      <a href={catalogoAvisos.rutas.todas} className={[CLASE_ENLACE_ACCION_PIE, 'border-t border-borde-suave p-3'].join(' ')}>
         {catalogoAvisos.panel_topbar.ver_todas_las_notificaciones}
       </a>
     </div>

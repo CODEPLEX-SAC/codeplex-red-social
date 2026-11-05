@@ -1,67 +1,57 @@
-import { BotonIcono, AvatarUsuario, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel, SuperficieColor, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
-import { ALMACEN_PUBLICACIONES, HISTORIAS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../rutas/inicio/rutas_inicio'
+import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { ALMACEN_HISTORIAS, ALMACEN_PUBLICACIONES, HISTORIAS, HISTORIAS_CONTACTOS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../rutas/inicio/rutas_inicio'
 import { GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS, SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
-import { NO_LEIDOS } from '../../rutas/mensajeria/rutas_mensajeria'
+import { ALMACEN_MENSAJERIA, RELOJ_MENSAJERIA, rutasMensajeria } from '../../rutas/mensajeria/rutas_mensajeria'
+import { PanelConversacion, conversacionesConEtiqueta, proximoCambioReloj, usarAhora, usarMensajeria } from '../../componentes/mensajeria'
+import { navegar } from '../../rutas/compartido/navegacion'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
-import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { BloqueFotoVideo, EstadisticasActividadInicio, MensajesFlotantesInicio, SeccionContactosEnLinea, usarPublicacionesInicio } from '../../componentes/inicio'
+import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
+import { BloqueFotoVideo, EstadisticasActividadInicio, MensajesFlotantesInicio, SeccionContactosEnLinea, SeccionHistoriasInicio, usarHistoriasInicio, usarPublicacionesInicio } from '../../componentes/inicio'
 
 
 function Historias() {
-  const carrusel = usarCarrusel()
+  const { publicadas, deContactos, publicar, acciones } = usarHistoriasInicio(ALMACEN_HISTORIAS, HISTORIAS_CONTACTOS)
 
-  function alDesplazar(direccion: -1 | 1) {
-    const pista = carrusel.pistaRef.current
-    if (!pista) return
-    pista.scrollBy({ left: direccion * pista.clientWidth * 0.9, behavior: 'smooth' })
-  }
-
-  return (
-    <section className="relative mb-4 rounded-xl border border-borde bg-white pt-4">
-      <h2 className="m-0 mb-3 px-4 text-titulo-seccion text-texto">{catalogoInicio.secciones.historias}</h2>
-      <div className="relative">
-        <BotonIcono icono="flecha-izquierda" type="button" aria-label={textosRedSocial.ANTERIOR} onClick={() => alDesplazar(-1)} variant="flotante" size="default" className="absolute left-1 top-1/2 z-10 -translate-y-1/2 max-800:hidden" />
-        <div
-          ref={carrusel.pistaRef}
-          className="flex gap-3 overflow-x-auto px-4 pb-4 scrollbar-oculto"
-        >
-          {HISTORIAS.map((h) => (
-            <div key={h.nombre} className="flex w-27.5 flex-none cursor-pointer flex-col items-center gap-2">
-              {h.crear ? (
-                <span className="relative grid h-26 w-26 place-items-center rounded-full bg-borde">
-                  <AvatarUsuario tamano="historia" imagen={usuarioImg} className="border-3 border-white" insignia="+" colorInsignia="primario" />
-                </span>
-              ) : (
-                <SuperficieColor
-                  as="span"
-                  degradado="primario"
-                  className="relative grid h-26 w-26 place-items-center rounded-full"
-                >
-                  <AvatarUsuario tamano="historia" imagen={usuarioImg} className="border-3 border-white" />
-                </SuperficieColor>
-              )}
-              <span className={'w-full overflow-hidden text-ellipsis whitespace-nowrap text-center text-auxiliar ' + (h.crear ? 'font-titulo text-texto' : 'text-texto-suave')}>
-                {h.nombre}
-              </span>
-            </div>
-          ))}
-        </div>
-        <BotonIcono icono="flecha-derecha" type="button" aria-label={textosRedSocial.SIGUIENTE} onClick={() => alDesplazar(1)} variant="flotante" size="default" className="absolute right-1 top-1/2 z-10 -translate-y-1/2 max-800:hidden" />
-      </div>
-    </section>
-  )
+  return <SeccionHistoriasInicio historias={HISTORIAS} publicadas={publicadas} deContactos={deContactos} acciones={acciones} onPublicar={publicar} />
 }
 
 export function PaginaInicio() {
   const { feed, estadisticas, publicar, acciones } = usarPublicacionesInicio(ALMACEN_PUBLICACIONES)
+  const mensajeria = usarMensajeria(ALMACEN_MENSAJERIA, RELOJ_MENSAJERIA, SESION_ACTUAL.id)
+  const ahora = usarAhora(RELOJ_MENSAJERIA, (instante) => proximoCambioReloj(Object.values(mensajeria.estado.hilos).flat(), SESION_ACTUAL.id, instante))
 
-  const placeholderPublicar = catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', SESION_ACTUAL.usuario.split(' ')[0])
+  function ampliarMensajes(id: string | null) {
+    navegar(id ? `${rutasMensajeria.todos}?${catalogoMensajeria.parametros_ruta.conversacion}=${id}` : rutasMensajeria.todos)
+  }
+
+  function renderizarHilo(id: string, volver: () => void) {
+    const conversacion = mensajeria.estado.conversaciones.find((candidata) => candidata.id === id)
+    if (!conversacion) return null
+    return (
+      <PanelConversacion
+        key={id}
+        conversacion={conversacion}
+        mensajes={mensajeria.estado.hilos[id] ?? []}
+        participantes={mensajeria.estado.participantes}
+        usuarioId={SESION_ACTUAL.id}
+        ahora={ahora}
+        conversaciones={mensajeria.estado.conversaciones}
+        {...mensajeria.accionesDe(id)}
+        onVolver={volver}
+        oculta={false}
+        compacto
+      />
+    )
+  }
+
+  const placeholderPublicar =catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', SESION_ACTUAL.usuario.split(' ')[0])
   return (
     <EstructuraApp paginaActiva="inicio">
       <EstructuraTresColumnas
         distribucion="social"
         principal={
           <>
+            <h1 className="sr-only">{catalogoInicio.titulos.principal}</h1>
             <EstadisticasActividadInicio estadisticas={estadisticas} />
             <BloqueFotoVideo
               placeholderPublicar={placeholderPublicar}
@@ -83,7 +73,12 @@ export function PaginaInicio() {
           />
         }
       />
-      <MensajesFlotantesInicio mensajes={NO_LEIDOS} />
+      <MensajesFlotantesInicio
+        conversaciones={conversacionesConEtiqueta(mensajeria.estado.conversaciones, mensajeria.estado, ahora)}
+        onAbrirConversacion={mensajeria.marcarLeida}
+        onAmpliar={ampliarMensajes}
+        renderHilo={renderizarHilo}
+      />
     </EstructuraApp>
   )
 }

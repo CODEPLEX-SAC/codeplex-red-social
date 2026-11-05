@@ -3,6 +3,7 @@ import { clasesBoton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionContactosFrecuentes2({
   carrusel,
@@ -15,7 +16,7 @@ export function SeccionContactosFrecuentes2({
     <section className="min-w-0 rounded-xl border border-borde bg-white p-4">
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.contactos_frecuentes}</h2>
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_todos}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoMensajeria.botones.ver_todos}</a>
       </div>
       <div ref={carrusel.pistaRef} className="flex gap-3 overflow-x-auto scroll-smooth scrollbar-oculto">
         {CONTACTOS_FRECUENTES.map((c) => (

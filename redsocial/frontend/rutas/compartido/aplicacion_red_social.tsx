@@ -5,6 +5,7 @@ import { ProveedorCarritoMarketplace } from '@/paginas/marketplace/proveedor_car
 import catalogoAcceso from '../../catalogos/capacidades/redsocial/acceso.json'
 import { EMPRESAS } from '../empresas/rutas_empresas'
 import { SUSCRIPCIONES_DEMOSTRACION } from '../marketplace/rutas_marketplace'
+import { ProveedorInsigniasNavegacion } from './proveedor_insignias_navegacion'
 import { usarInterceptarEnlaces } from './usar_interceptar_enlaces'
 import { usarPaginaActual } from './usar_pagina_actual'
 
@@ -20,7 +21,9 @@ export function AplicacionRedSocial() {
     <ProveedorSesionDemostracion>
       <ProveedorEmpresaActiva empresas={EMPRESAS}>
         <ProveedorCarritoMarketplace suscripcionesIniciales={SUSCRIPCIONES_DEMOSTRACION}>
-          <PaginaVigente />
+          <ProveedorInsigniasNavegacion>
+            <PaginaVigente />
+          </ProveedorInsigniasNavegacion>
         </ProveedorCarritoMarketplace>
       </ProveedorEmpresaActiva>
     </ProveedorSesionDemostracion>

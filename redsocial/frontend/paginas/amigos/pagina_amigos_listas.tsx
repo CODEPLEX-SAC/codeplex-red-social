@@ -1,30 +1,23 @@
-import { BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, SuperficieColor, GrupoAvatares } from '../../componentes/compartido'
-import { EncabezadoAmigos, PestanasAmigos, PanelLateralAmigos, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos'
+import { PanelLateral, BannerInformativo, BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, SuperficieColor, GrupoAvatares, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
+import { EncabezadoAmigos, PestanasAmigos, insigniaDePendientes, FilaPersonaConocer, FilaListaLateral, FilaActividadReciente } from '../../componentes/amigos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { PERSONAS_CONOCER, TUS_LISTAS_LATERAL, ACTIVIDAD_RECIENTE_AMIGOS as ACTIVIDAD_RECIENTE, MIS_LISTAS, LISTAS_SUGERIDAS, CLASES_ICONO_LISTA } from '../../rutas/amigos/rutas_amigos'
+import { RECIBIDAS, PERSONAS_CONOCER, TUS_LISTAS_LATERAL, ACTIVIDAD_RECIENTE_AMIGOS as ACTIVIDAD_RECIENTE, MIS_LISTAS, LISTAS_SUGERIDAS, CLASES_ICONO_LISTA } from '../../rutas/amigos/rutas_amigos'
+
+const clases = catalogoAmigos.clases
 
 export function PaginaAmigosListas() {
   return (
     <EstructuraApp paginaActiva="amigos">
       <EstructuraTresColumnas
         principal={
-          <section className="rounded-xl border border-borde bg-white py-4.5 px-5">
+          <section className={clases.tarjeta_pagina}>
             <EncabezadoAmigos textoBoton={catalogoAmigos.botones.crear_listas} />
-            <PestanasAmigos activa="listas" insigniaSolicitudes={3} />
+            <PestanasAmigos activa="listas" insigniaSolicitudes={insigniaDePendientes(RECIBIDAS.length)} />
 
-            <div className="mb-5.5 mt-4.5 flex items-start gap-3.5 rounded-control bg-primario-suave p-4.5">
-              <span className="grid h-10 w-10 flex-none place-items-center rounded-control bg-white/60 text-primario">
-                <Icono name="grupo" className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <strong className="mb-0.75 block text-subtitulo text-texto">{catalogoAmigos.secciones.organiza_contactos_titulo}</strong>
-                <p className="m-0 text-cuerpo leading-texto text-texto-suave">{catalogoAmigos.secciones.organiza_contactos_desc}</p>
-              </div>
-              <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} variant="discreto" size="sm" className="flex-none" />
-            </div>
+            <BannerInformativo variante="suave" iconoCuadrado icono="grupo" titulo={catalogoAmigos.secciones.organiza_contactos_titulo} descripcion={catalogoAmigos.secciones.organiza_contactos_desc} etiquetaCerrar={textosRedSocial.CERRAR} className={clases.banner} />
 
-            <h2 className="mb-3.5 text-titulo-seccion text-texto">{catalogoAmigos.secciones.mis_listas}</h2>
+            <h2 className={clases.titulo_seccion}>{catalogoAmigos.secciones.mis_listas}</h2>
             <div className="mb-4.5 grid grid-cols-3 gap-3.5 max-900:grid-cols-2 max-600:grid-cols-1">
               {MIS_LISTAS.map((l) => (
                 <article key={l.nombre} className="relative flex flex-col rounded-control border border-borde bg-white p-4 pb-4 pt-4.5">
@@ -51,7 +44,7 @@ export function PaginaAmigosListas() {
 
             <div className="mb-3.5 flex items-center justify-between">
               <h2 className="m-0 text-titulo-seccion text-texto">{catalogoAmigos.secciones.listas_sugeridas}</h2>
-              <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
+              <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODAS}</a>
             </div>
             <div className="grid grid-cols-4 gap-3 max-900:grid-cols-2 max-600:grid-cols-2 max-380:grid-cols-1">
               {LISTAS_SUGERIDAS.map((l) => (
@@ -72,21 +65,21 @@ export function PaginaAmigosListas() {
         publicidad={<ColumnaPublicidad />}
         lateral={
           <aside className="grid gap-4">
-            <PanelLateralAmigos titulo={catalogoAmigos.secciones.personas_conocer} ruta={catalogoAmigos.rutas.sugerencias}>
+            <PanelLateral titulo={catalogoAmigos.secciones.personas_conocer} enlace={textosRedSocial.VER_TODAS} ruta={catalogoAmigos.rutas.sugerencias}>
               {PERSONAS_CONOCER.map((p) => (
                 <FilaPersonaConocer key={p.nombre} nombre={p.nombre} comunes={p.comunes} />
               ))}
-            </PanelLateralAmigos>
-            <PanelLateralAmigos titulo={catalogoAmigos.secciones.tus_listas} ruta={catalogoAmigos.rutas.listas}>
+            </PanelLateral>
+            <PanelLateral titulo={catalogoAmigos.secciones.tus_listas} enlace={textosRedSocial.VER_TODAS} ruta={catalogoAmigos.rutas.listas}>
               {TUS_LISTAS_LATERAL.map((l) => (
                 <FilaListaLateral key={l.nombre} icono={l.icono} color={l.color} nombre={l.nombre} miembros={l.miembros} />
               ))}
-            </PanelLateralAmigos>
-            <PanelLateralAmigos titulo={catalogoAmigos.secciones.actividad_reciente}>
+            </PanelLateral>
+            <PanelLateral titulo={catalogoAmigos.secciones.actividad_reciente} enlace={textosRedSocial.VER_TODAS}>
               {ACTIVIDAD_RECIENTE.map((a) => (
                 <FilaActividadReciente key={a.nombre} nombre={a.nombre} accion={a.accion} tiempo={a.tiempo} />
               ))}
-            </PanelLateralAmigos>
+            </PanelLateral>
           </aside>
         }
       />

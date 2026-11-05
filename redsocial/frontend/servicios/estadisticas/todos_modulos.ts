@@ -1,5 +1,8 @@
 import type { Kpi, EstadoRatio } from '@/tipos/estadisticas/modelo_estadisticas_todos_modulos'
-import datos from './todos_modulos.json'
+import { resolverColoresGraficos } from '../compartido/colores_graficos'
+import datosJson from './todos_modulos.json'
+
+const datos = resolverColoresGraficos(datosJson)
 
 export const KPIS = datos.kpis as Kpi[]
 export const COMPOSICION_INGRESOS = datos.composicionIngresos

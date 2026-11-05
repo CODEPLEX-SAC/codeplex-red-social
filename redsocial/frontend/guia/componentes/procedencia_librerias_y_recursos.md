@@ -15,6 +15,8 @@ Fecha de la investigación: 2026-10-16; actualizada el 2026-10-17 con la compara
 | `@codeplex-sac/selectores-fecha` | `^0.0.24` | 0.0.24 | `registry.npmjs.org` | Selector de fecha y hora, proveedor de fechas |
 | `@codeplex-sac/iconos` | `^0.0.11` | 0.0.11 | `registry.npmjs.org` | Iconos Material Symbols mediante `Icono` |
 | `@codeplex-sac/diseno` | `^0.0.20` | 0.0.20 | `registry.npmjs.org` | Barra lateral, acordeón, caja |
+| `@codeplex-sac/ui` | `^0.0.25` | 0.0.25 | `registry.npmjs.org` | Avatar, grupo de avatares, insignia, estado/badge, indicador de carga y valoración (envoltorios en `componentes/compartido/interfaz`). **No** se usan `Boton`, `Tarjeta`, `Alerta` ni `Progreso` de esta librería (el proyecto tiene `Boton` propio). Añadida a esta tabla el 2026-10-24 |
+| `@codeplex-sac/feedback` | **no declarada** | 0.1.8 (dependencia transitiva de `ui`, que pide `^0.1.4`) | `registry.npmjs.org` | Ninguno: no se importa en el código (`Modal`, `Tooltip`, `Toast` y diálogos oficiales no se usan; `Modal` es propio). Importarla directamente exigiría declararla en `package.json` (decisión pendiente, no realizada). Comprobado el 2026-10-24 |
 | `@codeplex-sac/graficos` | `^0.0.24` | 0.0.24 | `registry.npmjs.org` | Gráficos de Dashboard, Estadísticas e Indicadores |
 | `@codeplex-sac/mapas` | `^0.1.7` | 0.1.7 | `registry.npmjs.org` | Mapa de Eventos |
 | `@mui/material`, `@mui/x-date-pickers` | `^7.3.11`, `^8.29.3` | 7.3.11, 8.29.3 | `registry.npmjs.org` | Base de las librerías `@codeplex-sac/*`, tema (`ProveedorTemaGraficos`) y uso directo de `Tab` (`Pestanas`) y `Tooltip` (`SelectorBuscable`) |
@@ -74,7 +76,9 @@ El resto de exportaciones (por ejemplo `CodeplexSelectorFechaHora`, `CodeplexSel
 Hay dos fuentes de iconos. Detalle completo en [iconos.md](iconos.md).
 
 1. **Librería oficial `@codeplex-sac/iconos` 0.0.11** (glifos de *Material Symbols Rounded*, cargados en ejecución desde Google Fonts). **No es Lucide.**
-2. **SVG propios** en `redsocial/recursos/iconos/` (107 archivos; solo 20 se usan hoy). Proceden de la carpeta del prototipo HTML nativo `CodePlex_RedSocial_HTML_nativo/iconos/`, donde **66 de ellos llevan la cabecera `<!-- @license lucide-static v1.34.0 - ISC -->`**. Es decir, el origen de esos 66 es el paquete **`lucide-static` v1.34.0** (licencia ISC), no `lucide-react`.
+2. **SVG propios** en `redsocial/recursos/iconos/` (**112 archivos en disco el 2026-10-24**: 109 versionados y 3 sin versionar —`paleta`, `texto`, `web`—; el catálogo dibuja **25**, 85 quedan sombreados por un glifo oficial y 2 —`filtros`, `icono_base`— no tienen nombre registrado; conciliación completa en `AUDITORIA_ICONOS_LIBRERIA_2026.md › Cierre de trazabilidad de iconos`). La cifra anterior era «107 archivos; solo 20 se usan hoy». Proceden de la carpeta del prototipo HTML nativo `CodePlex_RedSocial_HTML_nativo/iconos/`, donde **66 de ellos llevan la cabecera `<!-- @license lucide-static v1.34.0 - ISC -->`**. Es decir, el origen de esos 66 es el paquete **`lucide-static` v1.34.0** (licencia ISC), no `lucide-react`.
+
+**[NO DETERMINADO, 2026-10-26]** `texto.svg`, `paleta.svg` y `web.svg` (sin versionar en Git, añadidos durante el desarrollo de Historias y Perfil) no llevan cabecera de licencia ni consta su fuente. Su geometría coincide con los iconos Lucide `type`, `palette` y `globe` (**INFERIDO**: `lucide-static` no está instalado y no se pudo contrastar). Hasta confirmar el origen no se asume Lucide ni se les atribuye licencia.
 
 **[PENDIENTE]** No hay registro en el repositorio de la URL ni de la fecha exacta en la que se descargó `lucide-static`. Lo único verificable es la cabecera de licencia de los archivos y el commit que los añadió (`9ea8704`, 2026-09-11, «Remplazo proyecto nueva version»).
 

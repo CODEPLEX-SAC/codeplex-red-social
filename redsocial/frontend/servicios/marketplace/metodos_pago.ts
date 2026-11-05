@@ -1,6 +1,6 @@
 import demostracion from './metodos_pago_demostracion.json'
 import type { TarjetaGuardada } from '@/tipos/marketplace/modelo_carrito'
-import type { CodigoErrorMetodosPago, DatosMetodoGuardado, EstadoInicialMetodosPago } from '@/tipos/marketplace/modelo_pago'
+import type { CambiosMetodoGuardado, CodigoErrorMetodosPago, DatosMetodoGuardado, EstadoInicialMetodosPago } from '@/tipos/marketplace/modelo_pago'
 
 export class ErrorMetodosPago extends Error {
   readonly codigo: CodigoErrorMetodosPago
@@ -62,5 +62,24 @@ export function registrarMetodoPago(datos: DatosMetodoGuardado, predeterminada: 
     secuencia += 1
     const nueva: TarjetaGuardada = { id: `t-demostracion-${secuencia}`, marca: datos.marca, ultimos4: datos.ultimos4, vencimiento: datos.vencimiento, titular: datos.titular, predeterminada: principal }
     return [nueva, ...otras.map((tarjeta) => (principal ? { ...tarjeta, predeterminada: false } : tarjeta))]
+  })
+}
+
+export function actualizarMetodoPago(id: string, cambios: CambiosMetodoGuardado) {
+  return modificar((actual) => {
+    if (!actual.some((tarjeta) => tarjeta.id === id)) throw new ErrorMetodosPago('escritura')
+    return actual.map((tarjeta) => {
+      if (tarjeta.id === id) return { ...tarjeta, vencimiento: cambios.vencimiento, titular: cambios.titular, predeterminada: cambios.predeterminada || tarjeta.predeterminada === true }
+      return cambios.predeterminada ? { ...tarjeta, predeterminada: false } : tarjeta
+    })
+  })
+}
+
+export function eliminarMetodoPago(id: string) {
+  return modificar((actual) => {
+    if (!actual.some((tarjeta) => tarjeta.id === id)) throw new ErrorMetodosPago('escritura')
+    const restantes = actual.filter((tarjeta) => tarjeta.id !== id)
+    if (restantes.length === 0 || restantes.some((tarjeta) => tarjeta.predeterminada)) return restantes
+    return restantes.map((tarjeta, indice) => (indice === 0 ? { ...tarjeta, predeterminada: true } : tarjeta))
   })
 }

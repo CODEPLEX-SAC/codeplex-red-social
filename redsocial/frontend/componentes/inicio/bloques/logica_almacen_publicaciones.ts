@@ -103,8 +103,8 @@ export function conRespuesta(lista: ComentarioPublicacion[], idRaiz: string, res
   return lista.map((comentario) => (comentario.id === idRaiz ? { ...comentario, respuestas: [...comentario.respuestas, respuesta] } : comentario))
 }
 
-export function conTextoEditado(lista: ComentarioPublicacion[], id: string, texto: string) {
-  return cambiarComentario(lista, id, (comentario) => ({ ...comentario, texto, editado: true }))
+export function conTextoEditado(lista: ComentarioPublicacion[], id: string, texto: string, medios?: MedioLocalPublicacion[]) {
+  return cambiarComentario(lista, id, (comentario) => ({ ...comentario, texto, medios: medios ?? comentario.medios, editado: true }))
 }
 
 export function sinComentario(lista: ComentarioPublicacion[], id: string) {

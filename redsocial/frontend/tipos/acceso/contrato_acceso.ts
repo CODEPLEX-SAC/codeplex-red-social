@@ -15,6 +15,7 @@ export interface ErroresCrearCuenta {
   correo: string
   contrasena: string
   confirmacion: string
+  terminos: string
 }
 
 export type VarianteCampoContrasena = 'acceso' | 'nueva' | 'confirmacion'
@@ -33,7 +34,6 @@ export interface CampoContrasenaProps {
 
 export interface FormularioInicioSesionProps {
   onAcceder: () => void
-  credencialesIniciales?: CredencialesAcceso
 }
 
 export interface FormularioCrearCuentaProps {
@@ -53,4 +53,10 @@ export interface PanelFormularioAccesoProps {
 
 export interface PanelVisualAccesoProps {
   obtenerUrlImagen: (archivo: string) => string
+}
+
+export interface CampoCorreoAccesoProps {
+  valor: string
+  error: string
+  onCambiar: (valor: string) => void
 }

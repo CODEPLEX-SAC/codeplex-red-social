@@ -40,7 +40,7 @@ export function SeccionPendientes({
           <div className="flex min-w-35 flex-none items-center gap-2">
             <AvatarUsuario tamano="sm" imagen={usuarioImg} />
             <div className="min-w-0">
-              <strong className="block text-nombre-entidad text-texto">{p.invitadoPor}</strong>
+              <strong className="block text-nombre-fila text-texto">{p.invitadoPor}</strong>
               <span className="text-fecha-abreviada text-texto-suave">{p.tiempo}</span>
             </div>
           </div>

@@ -12,7 +12,7 @@ export function EventosProximosPanel({ eventos }: EventosProximosPanelProps) {
             <span className="text-mes-evento">{e.mes}</span>
           </div>
           <div>
-            <h3 className="m-0 text-nombre-entidad text-texto">{e.titulo}</h3>
+            <h3 className="m-0 text-nombre-fila text-texto">{e.titulo}</h3>
             <p className="m-0 mt-1 text-auxiliar text-texto-suave">{e.detalle}</p>
           </div>
         </article>

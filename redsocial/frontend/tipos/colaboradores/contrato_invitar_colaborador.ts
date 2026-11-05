@@ -1,5 +1,6 @@
+import type { Dayjs } from 'dayjs'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
-import type { FilaPermiso, Modulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import type { EstadoPermisosInvitacion, Modulo, PerfilesDeModulo, RecursoPermiso, RepositorioRolesModulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
 
 export type PasoInvitacion = 1 | 2 | 3 | 4
 
@@ -38,10 +39,12 @@ export interface DatosAsistenteInvitacion {
   informacion: { nombres: string; apellidos: string; correo: string; telefono: string; documentoNumero: string; cargo: string }
   pasosFunciona: PasoFuncionaInvitacion[]
   modulos: Modulo[]
-  filas: FilaPermiso[]
-  perfilesNivelRapido: string[]
-  perfilAplicado: string
-  vigencia: { fechaInicio: string; fechaVencimiento: string; duracion: string }
+  recursosModulos: Record<string, RecursoPermiso[]>
+  perfilesModulos: Record<string, PerfilesDeModulo>
+  perfilInicialModulos: Record<string, string>
+  perfilesValidados: boolean
+  repositorioRoles: RepositorioRolesModulo
+  vigencia: { fechaInicio: string; fechaVencimiento: string }
   opcionesRecordatorio: string[]
   opcionesZonaHoraria: string[]
   resumenRol: { rolAsignado: string; modulosTexto: string }
@@ -57,6 +60,7 @@ export interface ModalInvitarColaboradorProps {
 
 export interface PieInvitarColaboradorProps {
   paso: PasoInvitacion
+  etiquetaSiguiente?: string
   alCancelar: () => void
   alAnterior: () => void
   alSiguiente: () => void
@@ -74,4 +78,18 @@ export interface ContenidoPasoInvitacionProps {
   resumen: ResumenColaboradorInvitado
   alCambiarCampo: CambiarCampoColaborador
   alEditarPaso: (paso: PasoInvitacion) => void
+  permisos: EstadoPermisosInvitacion
+  vigencia: EstadoVigenciaInvitacion
+}
+
+export interface EstadoVigenciaInvitacion {
+  inicio: Dayjs | null
+  vencimiento: Dayjs | null
+  asignarInicio: (valor: Dayjs | null) => void
+  asignarVencimiento: (valor: Dayjs | null) => void
+}
+
+export interface DuracionVigencia {
+  unidad: 'incompleta' | 'invalida' | 'anio' | 'mes' | 'dia'
+  cantidad: number
 }

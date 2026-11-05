@@ -2,32 +2,42 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { Selector } from '../../compartido/interfaz/selector'
-import { etiquetarCampo, manejarTexto } from './manejadores_campo_colaborador'
-import type { CambiarCampoColaborador, DatosColaboradorInvitado } from '@/tipos/colaboradores/contrato_invitar_colaborador'
+import { etiquetarCampo } from './manejadores_campo_colaborador'
+import type { CodeplexCampoTextoProps } from '@codeplex-sac/formularios'
+
+const clases = catalogoColaboradores.clases.invitar_informacion
+const CODIGOS: string[] = catalogoColaboradores.selectores.codigo_pais.opciones
+const SX_NUMERO = catalogoColaboradores.campo_telefono.sx as CodeplexCampoTextoProps['sx']
 
 export function BloqueTelefonoWhatsapp({
-  colaborador,
-  alCambiarCampo,
-}: { colaborador: DatosColaboradorInvitado; alCambiarCampo: CambiarCampoColaborador }) {
+  etiqueta,
+  ayuda,
+  numero,
+  codigo,
+}: {
+  etiqueta: string
+  ayuda?: string
+  numero: { valor: string; alCambiar: (texto: string) => void }
+  codigo?: { valor: string; alCambiar: (codigo: string) => void }
+}) {
+  const propiedadesCodigo = codigo
+    ? { value: codigo.valor, onChange: (evento: { target: { value: unknown } }) => codigo.alCambiar(String(evento.target.value)) }
+    : { defaultValue: CODIGOS[0] }
+
   return (
-    <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_informacion.telefono_whatsapp}>
-      <div className="flex gap-2">
-        <span className="flex h-control flex-none items-center gap-1 rounded-control border border-borde bg-superficie pl-3">
-          <span className="h-3.25 w-4.5 rounded-sm degradado-bandera" />
-          <Selector variant="integrado" aria-label={catalogoColaboradores.campos_informacion.codigo_pais} defaultValue={catalogoColaboradores.selectores.codigo_pais.opciones[0]}>
-            {catalogoColaboradores.selectores.codigo_pais.opciones.map((o) => <option key={o}>{o}</option>)}
+    <CampoEtiquetado variante="compacta" etiqueta={etiqueta}>
+      <div className={clases.telefono}>
+        <span className={clases.telefono_pais}>
+          <span className={clases.telefono_bandera} />
+          <Selector variant="integrado" aria-label={catalogoColaboradores.campos_informacion.codigo_pais} {...propiedadesCodigo}>
+            {CODIGOS.map((o) => <option key={o}>{o}</option>)}
           </Selector>
         </span>
-        <div className="min-w-0 flex-1">
-          <CampoTexto
-            valor={colaborador.telefono}
-            alCambiar={manejarTexto(alCambiarCampo, 'telefono')}
-            inputProps={etiquetarCampo(catalogoColaboradores.campos_informacion.telefono_whatsapp)}
-            tipo="tel"
-          />
+        <div className={clases.telefono_numero}>
+          <CampoTexto valor={numero.valor} alCambiar={numero.alCambiar} inputProps={etiquetarCampo(etiqueta)} tipo="tel" sx={SX_NUMERO} />
         </div>
       </div>
-      <span className="text-auxiliar text-texto-suave">{catalogoColaboradores.campos_informacion.telefono_ayuda}</span>
+      {ayuda && <span className={clases.ayuda}>{ayuda}</span>}
     </CampoEtiquetado>
   )
 }

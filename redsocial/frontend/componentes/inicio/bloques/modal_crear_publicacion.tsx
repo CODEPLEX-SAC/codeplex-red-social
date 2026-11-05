@@ -32,22 +32,22 @@ export function ModalCrearPublicacion({ modo = 'crear', tipoInicial = 'publicaci
 
   return (
     <Modal titulo={editando ? textos.editar.titulo : textos.titulo} etiquetaCerrar={textos.cerrar} onCerrar={onCerrar} className="max-w-130 rounded-2xl max-600:h-full max-600:rounded-none">
-      <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-5 py-4">
-        <BloqueUsuarioTipoPublicacion mostrarTipos={!editando} tipo={borrador.tipo} onCambiar={borrador.setTipo} />
+      <div onPaste={borrador.alPegar} className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-5 py-4">
+        <BloqueUsuarioTipoPublicacion tiposBloqueados={editando} tipo={borrador.tipo} onCambiar={borrador.setTipo} />
 
         <EditorPublicacion
           valor={borrador.contenido}
           marcador={textos.marcador_editor.replace(':nombre', primerNombre)}
           etiqueta={textos.etiqueta_editor}
-          filasMinimas={textos.filas_minimas}
+          filasMinimas={borrador.medios.length > 0 ? textos.filas_con_medios : textos.filas_minimas}
           onCambiar={borrador.setContenido}
         />
 
-        {borrador.tipo === 'encuesta' && (
+        {!editando && borrador.tipo === 'encuesta' && (
           <BloqueOpcionesEncuesta opciones={borrador.opciones} onActualizar={borrador.actualizarOpcion} onAgregar={borrador.agregarOpcion} onQuitar={borrador.quitarOpcion} />
         )}
 
-        {borrador.tipo === 'pregunta' && <BloquePrioridadPublicacion prioridad={borrador.prioridad} onCambiar={borrador.setPrioridad} />}
+        {!editando && borrador.tipo === 'pregunta' && <BloquePrioridadPublicacion prioridad={borrador.prioridad} onCambiar={borrador.setPrioridad} />}
 
         <VistaPreviaMediosPublicacion medios={borrador.medios} onQuitar={borrador.quitarMedio} />
       </div>

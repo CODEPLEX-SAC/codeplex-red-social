@@ -3,6 +3,7 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
 import { Icono } from '../../compartido/icono'
 import { PanelCalendarioMini } from './panel_calendario_mini'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionCalendario13({
   MES_CALENDARIO_POPULARES,
@@ -24,7 +25,7 @@ export function SeccionCalendario13({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.mis_proximas_fechas}</h2>
-          {conEnlaceVerTodas && <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>}
+          {conEnlaceVerTodas && <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODAS}</a>}
         </div>
         <div className="px-4 pb-1">
           {PROXIMAS_FECHAS.map((f) => (
@@ -47,7 +48,7 @@ export function SeccionCalendario13({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.categorias}</h2>
-          <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
+          <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODAS}</a>
         </div>
         <div className="px-4 pb-2">
           {CATEGORIAS_LATERAL.map((c) => (
@@ -60,7 +61,7 @@ export function SeccionCalendario13({
             </article>
           ))}
         </div>
-        <a href="#" className="flex items-center justify-center gap-1.5 border-t border-borde-suave px-4 py-3 text-enlace-accion text-primario no-underline hover:underline">
+        <a href="#" className={[CLASE_ENLACE_ACCION, 'flex items-center justify-center gap-1.5 border-t border-borde-suave px-4 py-3'].join(' ')}>
           {catalogoEventos.botones.ver_mas_categorias} <Icono name="flecha-derecha" className="h-3.5 w-3.5" />
         </a>
       </section>

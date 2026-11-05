@@ -36,7 +36,7 @@ export interface UtilidadComentarios {
 
 export interface AccionesComentarios {
   onResponder: (idRaiz: string, texto: string, medios?: MedioLocalPublicacion[], mencion?: MencionComentario) => void
-  onEditar: (id: string, texto: string) => void
+  onEditar: (id: string, texto: string, medios?: MedioLocalPublicacion[]) => void
   onEliminar: (id: string) => void
   onReaccionar: (id: string, clave: ClaveReaccion) => void
 }
@@ -76,7 +76,8 @@ export interface MenuComentarioProps {
 
 export interface FormularioEdicionComentarioProps {
   textoInicial: string
-  onGuardar: (texto: string) => void
+  mediosIniciales: MedioLocalPublicacion[]
+  onGuardar: (texto: string, medios?: MedioLocalPublicacion[]) => void
   onCancelar: () => void
 }
 
@@ -91,9 +92,8 @@ export interface CajaComentarioProps {
   etiqueta: string
   etiquetaEnviar: string
   textoInicial?: string
-  conMedios?: boolean
+  mediosIniciales?: MedioLocalPublicacion[]
   autoFoco?: boolean
-  pista?: string
   mencion?: string
   onEnviar: (texto: string, medios?: MedioLocalPublicacion[]) => void
   onCancelar?: () => void
@@ -105,6 +105,11 @@ export interface PanelEmojisComentarioProps {
 
 export interface MediosComentarioProps {
   medios: MedioLocalPublicacion[]
+}
+
+export interface MiniaturasMediosComentarioProps {
+  medios: MedioLocalPublicacion[]
+  onQuitar: (id: string) => void
 }
 
 export interface DialogoCompartirPublicacionProps {

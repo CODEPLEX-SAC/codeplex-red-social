@@ -5,12 +5,10 @@ export interface EnlaceSinDestino {
 }
 
 export const ENLACES_SIN_DESTINO: Record<string, EnlaceSinDestino> = {
-  '/componentes/amigos/bloques/panel_lateral_amigos.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/avisos/bloques/panel_detalle_aviso.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/avisos/bloques/panel_lateral_solicitudes_aviso.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/colaboradores/bloques/bloque_colaborador.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/colaboradores/bloques/bloque_vista_previa_correo.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
-  '/componentes/colaboradores/bloques/seccion_seleccionar_nivel_titulo2.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/compartido/bloques/columna_publicidad.tsx': { cantidad: 4, clasificacion: 'EXTERNO', motivo: 'destino del anunciante, dato del propio anuncio' },
   '/componentes/compartido/bloques/panel_lateral.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/dashboard/bloques/seccion_ratios_financieros.tsx': { cantidad: 1, clasificacion: 'FUERA_DE_ALCANCE', motivo: 'modulo Dashboard fuera de alcance' },
@@ -41,7 +39,6 @@ export const ENLACES_SIN_DESTINO: Record<string, EnlaceSinDestino> = {
   '/componentes/reportes/bloques/seccion_plantillas_de_reportes.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/componentes/reportes/bloques/seccion_reportes_recientes.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/paginas/amigos/pagina_amigos_listas.tsx': { cantidad: 1, clasificacion: 'ACCION_SIN_NAVEGACION', motivo: 'ampliar o filtrar el mismo listado, pestaña de estado o la misma pagina: no hay otra ruta de destino' },
-  '/paginas/amigos/pagina_amigos_solicitudes.tsx': { cantidad: 3, clasificacion: 'ACCION_SIN_NAVEGACION', motivo: 'ampliar o filtrar el mismo listado, pestaña de estado o la misma pagina: no hay otra ruta de destino' },
   '/paginas/amigos/pagina_amigos_sugerencias.tsx': { cantidad: 1, clasificacion: 'SIN_RUTA_DE_NEGOCIO_DEFINIDA', motivo: 'no existe una ruta de negocio inequivoca para este destino; no se inventa' },
   '/paginas/dashboard/pagina_dashboard.tsx': { cantidad: 1, clasificacion: 'FUERA_DE_ALCANCE', motivo: 'modulo Dashboard fuera de alcance' },
   '/paginas/grupos/pagina_grupos_descubrir.tsx': { cantidad: 1, clasificacion: 'ACCION_SIN_NAVEGACION', motivo: 'ampliar o filtrar el mismo listado, pestaña de estado o la misma pagina: no hay otra ruta de destino' },

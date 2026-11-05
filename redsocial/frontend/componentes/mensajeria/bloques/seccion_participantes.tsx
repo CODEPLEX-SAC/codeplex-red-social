@@ -51,7 +51,7 @@ export function SeccionParticipantes({
           <article key={p.nombre} className="flex items-center gap-2 py-1.75">
             <AvatarUsuario tamano="sm" imagen={usuarioImg} />
             <div className="min-w-0 flex-1">
-              <strong className="block truncate text-nombre-entidad text-texto">{p.nombre}</strong>
+              <strong className="block truncate text-nombre-fila text-texto">{p.nombre}</strong>
               <span className="block text-auxiliar text-texto-suave">{p.rol}</span>
             </div>
             <Icono name={p.micActivo ? 'microfono' : 'microfono-apagado'} className={'h-4 w-4 flex-none ' + (p.micActivo ? 'text-exito-texto' : 'text-peligro-texto')} />

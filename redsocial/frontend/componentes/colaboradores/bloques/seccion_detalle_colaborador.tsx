@@ -8,25 +8,25 @@ import { BloqueAplicacionesAsignadas } from './bloque_aplicaciones_asignadas'
 import { BloqueHistorialColaborador } from './bloque_historial_colaborador'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 
+const clases = catalogoColaboradores.clases.detalle
+
 export function SeccionDetalleColaborador({
   colaborador,
-  estado,
   alCerrar,
   alEditar,
 }: {
   colaborador: Colaborador
-  estado: { insignia: string; etiqueta: string }
   alCerrar: () => void
   alEditar: () => void
 }) {
   return (
-    <aside className="sticky top-22 max-1100:static w-full rounded-xl border border-gris-borde bg-white p-5 area-detalle">
-      <div className="mb-4 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-banner text-texto">{catalogoColaboradores.secciones.detalle_colaborador}</h2>
+    <aside className={clases.panel}>
+      <div className={clases.cabecera_panel}>
+        <h2 className={clases.titulo_panel}>{catalogoColaboradores.secciones.detalle_colaborador}</h2>
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={alCerrar} variant="sutil" size="md" />
       </div>
 
-      <BloqueIdentidadColaborador colaborador={colaborador} estado={estado} alEditar={alEditar} />
+      <BloqueIdentidadColaborador colaborador={colaborador} alEditar={alEditar} />
       <BloqueRolYPermisos colaborador={colaborador} />
       <BloqueInformacionGeneral colaborador={colaborador} />
       <BloqueAplicacionesAsignadas aplicaciones={colaborador.aplicaciones} />

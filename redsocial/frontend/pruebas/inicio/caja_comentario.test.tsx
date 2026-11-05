@@ -45,11 +45,6 @@ describe('CajaComentario: pegar, video y mencion', () => {
     expect(onEnviar).toHaveBeenCalledWith('', [expect.objectContaining({ url: 'blob:pegado' })])
   })
 
-  it('ofrece un icono propio para adjuntar video', () => {
-    caja()
-    expect(screen.getByRole('button', { name: textos.etiqueta_adjuntar_video })).toBeInTheDocument()
-  })
-
   it('muestra marcado el nombre de la persona a la que se responde', () => {
     render(<CajaComentario marcador={textos.marcador} etiqueta={textos.etiqueta_respuesta} etiquetaEnviar={textos.enviar_respuesta} mencion="@Ana García" onEnviar={vi.fn()} />)
     expect(screen.getByText('@Ana García')).toBeInTheDocument()

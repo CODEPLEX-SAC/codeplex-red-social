@@ -1,12 +1,4 @@
 {
-  "colorGrafico": {
-    "#3b82f6": "info",
-    "#ef4444": "error",
-    "#7c3aed": "primario",
-    "#06b6d4": "secundario",
-    "#22c55e": "exito",
-    "#eab308": "advertencia"
-  },
   "colorGraficoNombre": {
     "azul": "info",
     "morado": "primario",

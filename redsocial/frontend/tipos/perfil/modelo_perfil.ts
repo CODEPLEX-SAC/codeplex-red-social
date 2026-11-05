@@ -145,6 +145,7 @@ export interface DefinicionSeccionPerfil {
 }
 
 export interface DefinicionListaPerfil extends DefinicionSeccionPerfil {
+  placeholder: string
   vacio: string
   icono: string
   actual?: string

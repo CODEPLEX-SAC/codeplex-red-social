@@ -2,6 +2,10 @@ import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
+
+const clases = catalogoColaboradores.clases.invitar_resumen
+const textos = catalogoColaboradores.campos_resumen
 
 export function BloqueVistaPreviaCorreo({
   INICIAL_MARCA,
@@ -16,47 +20,47 @@ export function BloqueVistaPreviaCorreo({
 }) {
   return (
     <div>
-      <div className="overflow-hidden rounded-xl border border-gris-borde">
-        <div className="flex items-center justify-between border-b border-gris-borde px-4.5 py-3.5">
-          <div className="flex items-center gap-2">
-            <Icono name="correo" className="w-4.5 h-4.5 text-primario" />
-            <span className="text-titulo-subseccion text-texto">{catalogoColaboradores.campos_resumen.vista_previa_correo}</span>
+      <div className={clases.correo_marco}>
+        <div className={clases.correo_encabezado}>
+          <div className={clases.correo_encabezado_titulo}>
+            <Icono name="correo" className={clases.correo_encabezado_glifo} />
+            <span className={clases.correo_encabezado_texto}>{textos.vista_previa_correo}</span>
           </div>
           <Boton type="button" variant="secundario" size="mini">
-            {catalogoColaboradores.campos_resumen.cambiar_plantilla}
+            {textos.cambiar_plantilla}
           </Boton>
         </div>
 
-        <div className="bg-fondo px-6 py-7">
-          <div className="mb-5 text-center">
-            <span className="mr-1.5 inline-block h-6 w-6 rounded-md bg-primario text-center text-auxiliar leading-6 text-white">{INICIAL_MARCA}</span>
-            <span className="text-nombre-entidad tracking-wide text-primario">{textosRedSocial.MARCA}</span>
+        <div className={clases.correo_cuerpo}>
+          <div className={clases.correo_marca}>
+            <span className={clases.correo_marca_inicial}>{INICIAL_MARCA}</span>
+            <span className={clases.correo_marca_nombre}>{textosRedSocial.MARCA}</span>
           </div>
 
-          <p className="mb-4 text-cuerpo leading-texto text-texto">{catalogoColaboradores.campos_resumen.hola_saludo.replace('{nombre}', CORREO_PREVIEW.nombrePila)}</p>
-          <p className="mb-4 text-cuerpo leading-texto text-texto">
-            <strong className="text-texto">{CORREO_PREVIEW.invitadoPor}</strong> {catalogoColaboradores.campos_resumen.invitacion_intro}{' '}
-            <strong className="text-texto">{CORREO_PREVIEW.empresa}</strong> {catalogoColaboradores.campos_resumen.en_codeplex} <strong className="text-texto">{textosRedSocial.MARCA}</strong>.
+          <p className={clases.correo_parrafo}>{textos.hola_saludo.replace('{nombre}', CORREO_PREVIEW.nombrePila)}</p>
+          <p className={clases.correo_parrafo}>
+            <strong className={clases.correo_negrita}>{CORREO_PREVIEW.invitadoPor}</strong> {textos.invitacion_intro}{' '}
+            <strong className={clases.correo_negrita}>{CORREO_PREVIEW.empresa}</strong> {textos.en_codeplex} <strong className={clases.correo_negrita}>{textosRedSocial.MARCA}</strong>.
           </p>
 
-          <div className="mb-5 rounded-lg border border-gris-borde bg-white px-4 py-3.5">
-            <FilaCorreo icono="nuevo-usuario" etiqueta={catalogoColaboradores.campos_resumen.filas_correo.rol_asignado} valor={RESUMEN_ROL.rolAsignado} />
-            <FilaCorreo icono="calendario" etiqueta={catalogoColaboradores.campos_resumen.filas_correo.vigencia} valor={CORREO_PREVIEW.vigenciaTexto} />
-            <FilaCorreo icono="pantalla-compartida" etiqueta={catalogoColaboradores.campos_resumen.filas_correo.modulos} valor={RESUMEN_ROL.modulosTexto} />
+          <div className={clases.correo_datos}>
+            <FilaCorreo icono="nuevo-usuario" etiqueta={textos.filas_correo.rol_asignado} valor={RESUMEN_ROL.rolAsignado} />
+            <FilaCorreo icono="calendario" etiqueta={textos.filas_correo.vigencia} valor={CORREO_PREVIEW.vigenciaTexto} />
+            <FilaCorreo icono="pantalla-compartida" etiqueta={textos.filas_correo.modulos} valor={RESUMEN_ROL.modulosTexto} />
           </div>
 
-          <Boton type="button" variant="primario" size="md" className="mb-2 w-full">
-            {catalogoColaboradores.campos_resumen.aceptar_invitacion}
+          <Boton type="button" variant="primario" size="md" className={clases.correo_aceptar}>
+            {textos.aceptar_invitacion}
           </Boton>
-          <p className="mb-5 text-center text-auxiliar text-texto-suave">{CORREO_PREVIEW.expiraEnDias}</p>
+          <p className={clases.correo_expira}>{CORREO_PREVIEW.expiraEnDias}</p>
 
-          <div className="mb-3 rounded-lg bg-fondo p-3.5 text-center">
-            <p className="m-0 mb-1.5 text-auxiliar text-texto-suave">{catalogoColaboradores.campos_resumen.si_boton_no_funciona}</p>
-            <a href="#" className="break-all text-enlace-accion text-primario no-underline hover:underline">
-              {catalogoColaboradores.campos_resumen.enlace_invitacion_preview}
+          <div className={clases.correo_alterno}>
+            <p className={clases.correo_alterno_texto}>{textos.si_boton_no_funciona}</p>
+            <a href="#" className={`${CLASE_ENLACE_ACCION} ${clases.correo_enlace}`}>
+              {textos.enlace_invitacion_preview}
             </a>
           </div>
-          <p className="m-0 text-center text-auxiliar text-texto-suave">{catalogoColaboradores.campos_resumen.no_esperabas_invitacion}</p>
+          <p className={clases.correo_pie}>{textos.no_esperabas_invitacion}</p>
         </div>
       </div>
     </div>

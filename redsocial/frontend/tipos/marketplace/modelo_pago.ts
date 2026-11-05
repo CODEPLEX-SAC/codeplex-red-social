@@ -1,5 +1,13 @@
-import type { ReactNode } from 'react'
-import type { IconName } from '@/tipos/compartido/contrato_icono'
+import type {
+  CambiosTarjetaPago,
+  CodigoErrorPago,
+  ControlTarjetasPago,
+  EstadoCargaPago,
+  EstadoInicialTarjetasPago,
+  PaisPago,
+  RepositorioTarjetasPago,
+  TarjetaPorGuardar,
+} from '../compartido/contrato_flujo_pago'
 
 export interface BeneficioVip {
   n: string
@@ -7,48 +15,10 @@ export interface BeneficioVip {
   desc: string
 }
 
-export interface PaisPago {
-  id: string
-  nombre: string
-  prefijo: string
-}
-
-export type BilleteraDigital = 'yape' | 'plin'
-
 export interface ConfiguracionPago {
   vip: { precio: number; precio_antes: number; beneficios: BeneficioVip[] }
   paises: PaisPago[]
 }
-
-export interface OpcionMetodoPagoProps {
-  titulo: string
-  detalle?: string
-  icono: IconName
-  activa: boolean
-  deshabilitada?: boolean
-  adicional?: ReactNode
-  alElegir: () => void
-}
-
-export interface DatosTarjeta {
-  numero: string
-  vencimiento: string
-  cvv: string
-  propietario: string
-}
-
-export interface DatosFacturacion {
-  documento: string
-  razon: string
-  pais: string
-  direccion: string
-  correo: string
-  celular: string
-  whatsapp: boolean
-  sms: boolean
-}
-
-import type { PerfilFacturacion, TarjetaGuardada } from './modelo_carrito'
 
 export interface ResumenActivacion {
   fechaCobro: string
@@ -57,62 +27,18 @@ export interface ResumenActivacion {
   ultimos4: string
   vip: boolean
   mejora?: boolean
-  perfilNuevo?: PerfilFacturacion
 }
 
-export interface ErroresTarjeta {
-  numero?: string
-  vencimiento?: string
-  cvv?: string
-  propietario?: string
-}
+export type DatosMetodoGuardado = TarjetaPorGuardar
 
-export interface DatosMetodoGuardado {
-  marca: string
-  ultimos4: string
-  vencimiento: string
-  titular?: string
-}
+export type CambiosMetodoGuardado = CambiosTarjetaPago
 
-export type EstadoMetodosPago = 'cargando' | 'listo' | 'error'
+export type EstadoMetodosPago = EstadoCargaPago
 
-export interface OperacionMetodosPago {
-  (): Promise<TarjetaGuardada[]>
-}
+export type RepositorioMetodosPago = RepositorioTarjetasPago
 
-export interface RepositorioMetodosPago {
-  leerEstadoInicial(): EstadoInicialMetodosPago
-  listar(): Promise<TarjetaGuardada[]>
-  registrar(datos: DatosMetodoGuardado, predeterminada: boolean): Promise<TarjetaGuardada[]>
-  codigoDeFallo(fallo: unknown): CodigoErrorMetodosPago
-}
+export type CodigoErrorMetodosPago = CodigoErrorPago
 
-export type MetodoPagoElegido = 'tarjeta' | 'billetera'
+export type EstadoInicialMetodosPago = EstadoInicialTarjetasPago
 
-export type CodigoErrorMetodosPago = 'lectura' | 'escritura'
-
-export interface EstadoInicialMetodosPago {
-  tarjetas: TarjetaGuardada[]
-  estado: EstadoMetodosPago
-}
-
-export interface MetodosPago {
-  tarjetas: TarjetaGuardada[]
-  estado: EstadoMetodosPago
-  ocupado: boolean
-  error: string | null
-  recargar(): void
-  registrar(datos: DatosMetodoGuardado, predeterminada: boolean): Promise<TarjetaGuardada | null>
-  limpiarError(): void
-}
-
-export interface FormularioTarjeta {
-  tarjeta: DatosTarjeta
-  errores: ErroresTarjeta
-  cambiarNumero(valor: string): void
-  cambiarVencimiento(valor: string): void
-  cambiarCvv(valor: string): void
-  cambiarPropietario(valor: string): void
-  validar(): boolean
-  limpiar(): void
-}
+export type MetodosPago = ControlTarjetasPago

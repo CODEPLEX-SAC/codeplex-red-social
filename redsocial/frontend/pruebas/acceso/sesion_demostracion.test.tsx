@@ -76,7 +76,7 @@ describe('Sesion de demostracion', () => {
     render(<AplicacionRedSocial />)
     const dialogo = abrirPanel()
     expect(dialogo.getByText(SESION_ACTUAL.rol)).toBeInTheDocument()
-    expect(screen.getByRole('dialog').querySelector('img')?.getAttribute('src')).toContain('usuario')
+    expect(screen.getByRole('dialog').querySelector('img')?.getAttribute('src')).toContain('perfil-pedro-lozano')
     const lista = within(dialogo.getByRole('list', { name: panel.etiqueta_opciones }))
     const opciones = lista.getAllByRole('button')
     const sinPerfil = panel.opciones.filter((opcion) => opcion.clave !== panel.clave_perfil)
@@ -134,24 +134,11 @@ describe('Sesion de demostracion', () => {
     expect(screen.queryByRole('button', { name: nombreBoton })).toBeNull()
   })
 
-  it('volver al demo esta deshabilitado: no navega ni inicia sesion', () => {
+  it('tras cerrar sesion el formulario queda vacio y entra al escribir las credenciales', () => {
     render(<AplicacionRedSocial />)
     cerrarSesion()
-    const volver = screen.getByRole('button', { name: new RegExp(textos.botones.volver_al_demo) })
-    expect(volver).toBeDisabled()
-    fireEvent.click(volver)
-    expect(window.location.pathname).toBe(rutaAcceso)
-    expect(screen.queryByRole('button', { name: nombreBoton })).toBeNull()
-  })
-
-  it('entra con las credenciales precargadas tras cerrar sesion, sin escribir nada', () => {
-    render(<AplicacionRedSocial />)
-    cerrarSesion()
-    expect(screen.getByLabelText(textos.campos.correo)).toHaveValue(textos.demostracion.correo)
-    fireEvent.submit(screen.getByRole('button', { name: new RegExp(textos.botones.iniciar_sesion) }).closest('form') as HTMLFormElement)
-    act(() => {
-      vi.advanceTimersByTime(textos.tiempos.carga_ms + textos.tiempos.exito_ms)
-    })
+    expect(screen.getByLabelText(textos.campos.correo)).toHaveValue('')
+    iniciarSesionValida()
     expect(window.location.pathname).toBe(rutaInicio)
     expect(botonUsuario()).toBeInTheDocument()
   })

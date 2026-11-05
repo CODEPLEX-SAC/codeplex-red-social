@@ -10,7 +10,7 @@
         "texto": "12.5%"
       },
       "sparklinePuntos": "0,20 14,16 28,18 42,10 56,13 70,7 84,10 100,4",
-      "sparklineColor": "#22c55e"
+      "sparklineColor": "exito"
     },
     {
       "icono": "documento",
@@ -22,7 +22,7 @@
         "texto": "18.7%"
       },
       "sparklinePuntos": "0,18 14,20 28,14 42,16 56,10 70,13 84,7 100,9",
-      "sparklineColor": "#06b6d4"
+      "sparklineColor": "secundario"
     },
     {
       "icono": "estadisticas",
@@ -34,7 +34,7 @@
         "texto": "4.5 pp"
       },
       "sparklinePuntos": "0,16 14,19 28,12 42,14 56,8 70,11 84,6 100,9",
-      "sparklineColor": "#7c3aed"
+      "sparklineColor": "primario"
     },
     {
       "icono": "documento",
@@ -46,7 +46,7 @@
         "texto": "15.2%"
       },
       "sparklinePuntos": "0,19 14,15 28,17 42,9 56,12 70,6 84,11 100,5",
-      "sparklineColor": "#f97316"
+      "sparklineColor": "naranja-categoria"
     },
     {
       "icono": "documento",
@@ -58,7 +58,7 @@
         "texto": "22.1%"
       },
       "sparklinePuntos": "0,18 14,9 28,15 42,7 56,17 70,5 84,13 100,10",
-      "sparklineColor": "#22c55e"
+      "sparklineColor": "exito"
     }
   ],
   "rentabilidad": [
@@ -224,31 +224,31 @@
     "total": "S/ 850,000",
     "items": [
       {
-        "color": "#3b82f6",
+        "color": "info",
         "etiqueta": "Mano de Obra",
         "pct": "35%",
         "valor": "S/ 297,500"
       },
       {
-        "color": "#f97316",
+        "color": "naranja-categoria",
         "etiqueta": "Materiales",
         "pct": "30%",
         "valor": "S/ 255,000"
       },
       {
-        "color": "#22c55e",
+        "color": "exito",
         "etiqueta": "Servicios",
         "pct": "20%",
         "valor": "S/ 170,000"
       },
       {
-        "color": "#ec4899",
+        "color": "rosa-categoria",
         "etiqueta": "Gastos Generales",
         "pct": "10%",
         "valor": "S/ 85,000"
       },
       {
-        "color": "#eab308",
+        "color": "advertencia",
         "etiqueta": "Otros",
         "pct": "5%",
         "valor": "S/ 42,500"
@@ -330,7 +330,7 @@
       "variacion": "↑ 6.2%",
       "estado": "optimo",
       "sparklinePuntos": "0,17 20,13 40,15 60,8 80,11 100,4",
-      "sparklineColor": "#22c55e"
+      "sparklineColor": "exito"
     },
     {
       "icono": "moneda",
@@ -341,7 +341,7 @@
       "variacion": "↑ 18.7%",
       "estado": "optimo",
       "sparklinePuntos": "0,18 20,14 40,16 60,9 80,12 100,5",
-      "sparklineColor": "#7c3aed"
+      "sparklineColor": "primario"
     },
     {
       "icono": "caja",
@@ -352,7 +352,7 @@
       "variacion": "↑ 7.4%",
       "estado": "optimo",
       "sparklinePuntos": "0,10 20,15 40,8 60,17 80,11 100,6",
-      "sparklineColor": "#f97316"
+      "sparklineColor": "naranja-categoria"
     },
     {
       "icono": "ventas",
@@ -363,7 +363,7 @@
       "variacion": "↑ 14.8%",
       "estado": "optimo",
       "sparklinePuntos": "0,16 20,12 40,14 60,7 80,10 100,3",
-      "sparklineColor": "#3b82f6"
+      "sparklineColor": "info"
     },
     {
       "icono": "maletin",
@@ -374,7 +374,7 @@
       "variacion": "↑ 5.2 pp",
       "estado": "optimo",
       "sparklinePuntos": "0,15 20,17 40,10 60,13 80,7 100,9",
-      "sparklineColor": "#7c3aed"
+      "sparklineColor": "primario"
     },
     {
       "icono": "compras",
@@ -385,7 +385,7 @@
       "variacion": "↑ 9.1%",
       "estado": "optimo",
       "sparklinePuntos": "0,17 20,11 40,14 60,6 80,10 100,4",
-      "sparklineColor": "#ef4444"
+      "sparklineColor": "error"
     }
   ]
 }

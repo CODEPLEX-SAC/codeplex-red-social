@@ -72,3 +72,18 @@ Pruebas existentes: `prevencion_tipografica.test.tsx`, `sistema_global_fase_a.te
 - **Foco de los campos de MUI (`foco_campo`):** borde de 2 px en el primario del tema y halo de 4 px al 10 % de opacidad (en error, el color de error); borde normal `theme.palette.divider`. Se define una sola vez en el tema para `MuiOutlinedInput` y `MuiPickersOutlinedInput`, de modo que `CampoTexto`, `CampoBusqueda`, `CampoNumero`, `Selector`, `SelectorFecha` y `SelectorHora` comparten tratamiento. Medido a 1280 px: borde 2 px `rgb(90,67,244)` y halo `rgba(90,67,244,0.1) 0 0 0 4px` en campo de texto, multilínea, selector y fecha/hora. El foco de teclado de botones y enlaces sigue siendo `:focus-visible` (2 px `--color-foco`).
 - **Corrección de la auditoría (INC-04):** el campo numérico medido en la Fase 4 era un campo deshabilitado (`Mui-disabled`, borde 0,26 de opacidad); no demostraba un foco distinto. En la Fase 6 se midió un `CampoNumero` habilitado (modal «Crear evento» con el límite de personas activado): borde de 2 px `rgb(90,67,244)` y halo de 4 px, igual que `CampoTexto`.
 - **Altura de la barra superior:** 64 px (`--height-barra-superior`).
+
+## Tokens de borde: significado y consumidores (2026-10-29)
+
+Decisión vigente: **no hay un único color de borde**; cada token tiene un papel y se conserva. Recuento estático de clases `border-*`, `divide-*` y `ring-*` en el código de producción (sin `pruebas/` ni `guia/`):
+
+| Token | Valor | Significado | Usos | Consumidores principales |
+|---|---|---|---|---|
+| `borde` | `#e9e7f1` | borde general de superficies y controles: **tarjetas generales** (`CLASES_TARJETA`), paneles, campos, ventanas | 165 | Mensajería 28, Inicio 19, Marketplace 19, Avisos 17, Compartido 16, Actividad 12; Dashboard, Estadísticas e Indicadores por `tarjetas` |
+| `borde-suave` | `#f0eef5` | separadores **dentro** de una superficie: filas de lista, cabecera de panel, encabezado y filas de la tabla compacta | 160 | Eventos 45, Marketplace 17, Colaboradores 17, Estadísticas 16, Grupos 11, Compartido 11 |
+| `gris-borde` | `#e5e7eb` | borde neutro de las **tablas de datos** (`tabla_datos`: contenedor y encabezado) y de bloques de Colaboradores, Eventos y Empresas | 56 | Eventos 29, Colaboradores 20, Compartido 3 (`tabla_datos`), Empresas 3, Inicio 1 |
+| `borde/60` | `borde` al 60 % | superficies con sombra de Perfil y de Inicio | 9 | Perfil 6, Inicio 3 |
+| `borde-flotante` | `#e0dce8` | asa y borde de hojas flotantes | 1 | Compartido |
+
+Reglas: una tarjeta general usa `borde`; una tabla de datos usa `gris-borde` en su contenedor y encabezado y `borde-suave` en sus filas internas cuando es compacta; un separador interno usa `borde-suave`. Cambiar el borde de una familia no obliga a cambiar el de las demás. `gris-borde` y `borde` difieren a propósito y la diferencia no se unifica; Empresas conserva su aspecto y su línea base.
+

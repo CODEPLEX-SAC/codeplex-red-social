@@ -1,4 +1,4 @@
-import { imagenUsuarioPredeterminada } from '../../compartido'
+import { imagenRedSocialDe } from '../../compartido'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { EnlacePerfilUsuario } from '../../compartido/interfaz/enlace_perfil_usuario'
 import { DialogoEliminarPublicacion } from './dialogo_eliminar_publicacion'
@@ -21,16 +21,16 @@ export function ItemComentario(props: ItemComentarioProps) {
   return (
     <li className={clases.item}>
       <EnlacePerfilUsuario autorId={comentario.autorId} nombre={comentario.autor} className="flex-none">
-        <AvatarUsuario tamano="sm" imagen={imagenUsuarioPredeterminada} />
+        <AvatarUsuario tamano="sm" imagen={imagenRedSocialDe(comentario.autorId)} />
       </EnlacePerfilUsuario>
       <div className="min-w-0 flex-1">
         <div className="flex items-start gap-1">
-          <div className={clases.burbuja}>
+          <div className={estado.editando ? clases.burbuja_edicion : clases.burbuja}>
             <EnlacePerfilUsuario autorId={comentario.autorId} className="block text-auxiliar text-texto">
               <strong>{comentario.autor}</strong>
             </EnlacePerfilUsuario>
             {estado.editando ? (
-              <FormularioEdicionComentario textoInicial={comentario.texto} onGuardar={estado.guardarEdicion} onCancelar={estado.cerrarEdicion} />
+              <FormularioEdicionComentario textoInicial={comentario.texto} mediosIniciales={comentario.medios ?? []} onGuardar={estado.guardarEdicion} onCancelar={estado.cerrarEdicion} />
             ) : (
               <p className="m-0 whitespace-pre-wrap break-words text-subtitulo text-texto">
                 {comentario.mencion && (
@@ -44,7 +44,7 @@ export function ItemComentario(props: ItemComentarioProps) {
                 {comentario.texto}
               </p>
             )}
-            {comentario.medios && comentario.medios.length > 0 && <MediosComentario medios={comentario.medios} />}
+            {!estado.editando && comentario.medios && comentario.medios.length > 0 && <MediosComentario medios={comentario.medios} />}
           </div>
           {estado.esPropio && !estado.editando && <MenuComentario onEditar={estado.abrirEdicion} onEliminar={estado.pedirConfirmacion} />}
         </div>

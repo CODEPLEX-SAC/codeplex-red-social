@@ -9,7 +9,7 @@ import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketpla
 
 const CSS = await leerCssGlobal()
 const FUENTES = await leerFuentesFrontend()
-const EN_CODIGO = FUENTES.filter((fuente) => /^\/(componentes|paginas|formularios)\//.test(fuente.ruta) && fuente.ruta.endsWith('.tsx'))
+const EN_CODIGO = FUENTES.filter((fuente) => /^\/(componentes|paginas|formularios)\//.test(fuente.ruta) && /.tsx?$/.test(fuente.ruta))
 const CLASE_DE_COLOR_NOMBRADO = /(?<![\w-])(?:[a-z0-9-]+:)*(text|bg|border|from|to|via|fill|stroke)-t-([0-9a-f]{6})(?![\w-])/g
 
 function textoDe(sufijo: string): string {

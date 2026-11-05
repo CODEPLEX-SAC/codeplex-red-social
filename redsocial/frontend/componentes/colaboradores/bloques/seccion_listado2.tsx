@@ -2,17 +2,19 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 
+const clases = catalogoColaboradores.clases.listado
+
 export function SeccionListado2({ alInvitar }: { alInvitar: () => void }) {
   return (
-    <div className="mb-5 flex flex-wrap items-start justify-between gap-3 max-900:flex-col max-900:items-stretch">
+    <div className={clases.cabecera}>
       <div>
-        <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoColaboradores.titulos.listado}</h1>
-        <p className="m-0 max-w-120 text-subtitulo leading-texto text-texto-suave">
+        <h1 className={clases.titulo_pagina}>{catalogoColaboradores.titulos.listado}</h1>
+        <p className={clases.subtitulo_pagina}>
           {catalogoColaboradores.subtitulos.listado}
         </p>
       </div>
-      <Boton type="button" variant="primario" size="md" onClick={alInvitar} className="max-900:w-full">
-        <Icono name="nuevo-usuario" className="w-4 h-4" />
+      <Boton type="button" variant="primario" size="md" onClick={alInvitar} className={clases.boton_invitar}>
+        <Icono name="nuevo-usuario" className={clases.boton_invitar_glifo} />
         {catalogoColaboradores.botones.invitar_colaborador}
       </Boton>
     </div>

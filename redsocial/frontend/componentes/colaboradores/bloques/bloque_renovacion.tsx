@@ -4,6 +4,10 @@ import { Radio } from '../../compartido/interfaz/radio'
 import { Selector } from '../../compartido/interfaz/selector'
 import { BloqueRecordatorios } from './bloque_recordatorios'
 
+const clases = catalogoColaboradores.clases.invitar_vigencia
+const comun = catalogoColaboradores.clases.invitar_comun
+const textos = catalogoColaboradores.campos_vigencia
+
 export function BloqueRenovacion({
   OPCIONES_RECORDATORIO,
   OPCIONES_ZONA_HORARIA,
@@ -12,39 +16,39 @@ export function BloqueRenovacion({
   OPCIONES_ZONA_HORARIA: string[]
 }) {
   return (
-    <div className="flex flex-col gap-5">
-      <div className="rounded-xl border border-gris-borde px-5 py-4.5">
-        <div className="mb-3.5 flex items-center gap-2">
-          <Icono name="actualizar" className="w-5 h-5 text-primario" />
-          <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_vigencia.renovacion}</h4>
+    <div className={clases.columna}>
+      <div className={comun.tarjeta_compacta}>
+        <div className={clases.cabecera}>
+          <Icono name="actualizar" className={comun.glifo_titulo} />
+          <h4 className={comun.titulo}>{textos.renovacion}</h4>
         </div>
-        <p className="-mt-2 mb-3.5 text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.renovacion_subtitulo}</p>
+        <p className={comun.subtitulo}>{textos.renovacion_subtitulo}</p>
 
-        <label className="mb-3 flex cursor-pointer items-start gap-2.5">
+        <label className={clases.opcion_media}>
           <Radio name="renovacion" value="permitir" defaultChecked />
-          <span className="flex flex-col gap-0.5">
-            <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_vigencia.permitir_renovacion}</span>
-            <span className="text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.permitir_renovacion_detalle}</span>
+          <span className={comun.opcion_textos}>
+            <span className={comun.opcion_titulo}>{textos.permitir_renovacion}</span>
+            <span className={comun.opcion_detalle}>{textos.permitir_renovacion_detalle}</span>
           </span>
         </label>
 
-        <label className="flex cursor-pointer items-start gap-2.5">
+        <label className={comun.opcion}>
           <Radio name="renovacion" value="no-permitir" />
-          <span className="flex flex-col gap-0.5">
-            <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_vigencia.no_permitir_renovacion}</span>
-            <span className="text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.no_permitir_renovacion_detalle}</span>
+          <span className={comun.opcion_textos}>
+            <span className={comun.opcion_titulo}>{textos.no_permitir_renovacion}</span>
+            <span className={comun.opcion_detalle}>{textos.no_permitir_renovacion_detalle}</span>
           </span>
         </label>
       </div>
 
       <BloqueRecordatorios OPCIONES_RECORDATORIO={OPCIONES_RECORDATORIO} />
 
-      <div className="rounded-xl border border-gris-borde px-5 py-4.5">
-        <div className="mb-3.5 flex items-center gap-2">
-          <Icono name="mundo" className="w-5 h-5 text-primario" />
-          <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_vigencia.zona_horaria}</h4>
+      <div className={comun.tarjeta_compacta}>
+        <div className={clases.cabecera}>
+          <Icono name="mundo" className={comun.glifo_titulo} />
+          <h4 className={comun.titulo}>{textos.zona_horaria}</h4>
         </div>
-        <p className="-mt-2 mb-3.5 text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.zona_horaria_subtitulo}</p>
+        <p className={comun.subtitulo}>{textos.zona_horaria_subtitulo}</p>
         <Selector variant="colaboradores" defaultValue={OPCIONES_ZONA_HORARIA[0]}>
           {OPCIONES_ZONA_HORARIA.map((o) => <option key={o}>{o}</option>)}
         </Selector>

@@ -18,8 +18,8 @@ export function usarEstadoComentario({ comentario, idRaiz, onResponder, onEditar
     setEditando(false)
   }
 
-  function guardarEdicion(texto: string) {
-    onEditar(comentario.id, texto)
+  function guardarEdicion(texto: string, medios?: MedioLocalPublicacion[]) {
+    onEditar(comentario.id, texto, medios)
     setEditando(false)
   }
 

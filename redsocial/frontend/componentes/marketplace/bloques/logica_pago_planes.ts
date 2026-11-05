@@ -4,33 +4,10 @@ import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/market
 
 const formato = catalogoMarketplace.pago.formato_fecha
 const formatoCorto = catalogoMarketplace.pago.formato_fecha_corta
-const marcas = catalogoMarketplace.pago.marcas
-const prefijos = catalogoMarketplace.pago.prefijos
 
 const VACIO = catalogoCompartido.controles.texto_vacio
 
 export const SUPER_VIP_HABILITADO = catalogoMarketplace.super_vip.habilitado
-
-export function formatearTarjeta(valor: string) {
-  return valor.replace(/\D/g, VACIO).slice(0, 16).match(/\d{1,4}/g)?.join(catalogoMarketplace.pago.formato.separador_tarjeta) ?? VACIO
-}
-
-export function formatearVencimiento(valor: string) {
-  const digitos = valor.replace(/\D/g, VACIO).slice(0, 4)
-  return digitos.length >= 3 ? [digitos.slice(0, 2), digitos.slice(2)].join(catalogoMarketplace.pago.formato.separador_vencimiento) : digitos
-}
-
-function empiezaPor(digitos: string, prefijos: string[]) {
-  return prefijos.some((prefijo) => digitos.startsWith(prefijo))
-}
-
-export function marcaTarjeta(numero: string) {
-  const digitos = numero.replace(/\s/g, VACIO)
-  if (empiezaPor(digitos, prefijos.visa)) return marcas.visa
-  if (empiezaPor(digitos, prefijos.mastercard)) return marcas.mastercard
-  if (empiezaPor(digitos, prefijos.amex)) return marcas.amex
-  return marcas.otra
-}
 
 export function precioNumerico(texto: string) {
   return Number(texto.replace(/,/g, ''))

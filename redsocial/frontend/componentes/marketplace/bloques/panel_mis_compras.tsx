@@ -4,13 +4,14 @@ import { Boton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import type { CompraVista } from '@/tipos/marketplace/modelo_carrito'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function PanelMisCompras({ compras, clasesColor, alIrACompras }: { compras: CompraVista[]; clasesColor: Record<string, string>; alIrACompras: () => void }) {
   return (
     <section className="rounded-xl border border-borde-suave bg-white">
       <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
         <h3 className="m-0 text-titulo-banner text-texto">{catalogoMarketplace.secciones.mis_compras_recientes}</h3>
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODAS}</a>
       </div>
       <div className="px-4 pb-1">
         {compras.length === 0 && <MensajeVacio texto={catalogoMarketplace.mensajes.sin_compras} className="col-span-full py-8" />}

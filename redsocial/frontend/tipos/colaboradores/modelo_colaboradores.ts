@@ -2,7 +2,6 @@ import type { IconName } from '@/tipos/compartido/contrato_icono'
 
 export interface Aplicacion {
   icono: IconName
-  clase: string
   nombre: string
 }
 

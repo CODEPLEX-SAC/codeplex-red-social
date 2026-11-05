@@ -122,6 +122,7 @@ describe('Fase A: foco visible, placeholder y familia tipografica', () => {
   it('el tema de MUI no introduce una segunda familia tipografica', () => {
     const tema = FUENTES.find((fuente) => fuente.ruta.endsWith('/proveedor_tema_graficos.tsx'))
     expect(tema?.texto).not.toMatch(/fontFamily\s*:\s*['"`]/)
-    expect(CSS.match(/font-family:/g)?.length).toBe(1)
+    expect(CSS.match(/font-family:/g)?.length).toBe(2)
+    expect(CSS.match(/font-family:\s*var\(--fuente-base\)/g)?.length).toBe(2)
   })
 })

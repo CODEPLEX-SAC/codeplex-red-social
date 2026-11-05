@@ -45,7 +45,7 @@ export interface BloqueOpcionesEncuestaProps {
 }
 
 export interface BloqueUsuarioTipoPublicacionProps {
-  mostrarTipos: boolean
+  tiposBloqueados: boolean
   tipo: TipoPublicacion
   onCambiar: (tipo: TipoPublicacion) => void
 }

@@ -29,7 +29,7 @@ export function TarjetaInvitacion({ inv }: TarjetaInvitacionProps) {
           )}
         </div>
         <h3 className="m-0 text-nombre-entidad text-texto">{inv.nombre}</h3>
-        <p className="m-0 text-cuerpo leading-texto text-texto-suave">{inv.descripcion}</p>
+        <p className="m-0 text-subtitulo leading-texto text-texto-suave">{inv.descripcion}</p>
         <div className="flex flex-wrap gap-3 text-auxiliar text-texto-suave">
           <span className="flex items-center gap-1"><Icono name="calendario" className="w-3.5 h-3.5" /> {inv.fecha}</span>
           <span className="flex items-center gap-1"><Icono name="reloj" className="w-3.5 h-3.5" /> {inv.hora}</span>
@@ -38,7 +38,7 @@ export function TarjetaInvitacion({ inv }: TarjetaInvitacionProps) {
         <div className="mt-1 flex items-center gap-2">
           <GrupoAvatares avatares={inv.avatares} tamano="sm" />
           <div className="text-auxiliar leading-compacto">
-            <span className="block text-nombre-entidad">{inv.invitador}</span>
+            <span className="block text-nombre-fila">{inv.invitador}</span>
             <span className="text-auxiliar text-texto-suave">{catalogoEventos.leyendas.te_ha_invitado}</span>
           </div>
         </div>

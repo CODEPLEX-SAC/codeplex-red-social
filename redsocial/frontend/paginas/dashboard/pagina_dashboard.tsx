@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, Boton, Selector, Insignia } from '../../componentes/compartido'
+import { Icono, EstructuraApp, Boton, Selector, Insignia, CLASE_ENLACE_ACCION, CLASES_TARJETA } from '../../componentes/compartido'
 import type { PuntoCategoria } from '@codeplex-sac/graficos'
 import catalogoDashboard from '../../catalogos/capacidades/redsocial/dashboard.json'
 import { SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
@@ -61,7 +61,7 @@ export function PaginaDashboard() {
         </div>
         <div className="mb-5 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1">
           {MODULOS.map((m) => (
-            <article key={m.nombre} className="flex min-w-0 flex-col gap-2.5 rounded-xl border border-gris-borde bg-white p-4">
+            <article key={m.nombre} className={[CLASES_TARJETA.mosaico, 'flex flex-col gap-2.5'].join(' ')}>
               <div className="flex items-center gap-2.5">
                 <span className={`grid h-9 w-9 flex-none place-items-center rounded-control ${CLASES_ICONO_MODULO[m.color]}`}>
                   <Icono name={m.icono} className="w-4 h-4" />
@@ -74,7 +74,7 @@ export function PaginaDashboard() {
                   {f.badge ? <EstadoBadge estado={f.badge.estado}>{f.badge.texto}</EstadoBadge> : <b className="font-titulo text-texto">{f.valor}</b>}
                 </div>
               ))}
-              <a href="#" className="mt-0.5 text-enlace-accion text-primario no-underline">{catalogoDashboard.botones.ver_detalles}</a>
+              <a href="#" className={[CLASE_ENLACE_ACCION, 'mt-0.5'].join(' ')}>{catalogoDashboard.botones.ver_detalles}</a>
             </article>
           ))}
         </div>

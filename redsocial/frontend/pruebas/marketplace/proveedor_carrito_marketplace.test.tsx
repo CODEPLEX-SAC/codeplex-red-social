@@ -12,6 +12,7 @@ const TIEMPO_FLUJOS_COMPRA = 30000
 
 const textos = catalogoMarketplace.planes
 const carrito = catalogoMarketplace.carrito
+const nombreCarrito = new RegExp(`^${carrito.boton}(,|$)`)
 const contaplex = PLANES_APLICACIONES['conta-plex']
 
 function abrirPlanes() {
@@ -27,7 +28,7 @@ function agregarPrimerPlan() {
 }
 
 function botonCarritoSuperior() {
-  return within(screen.getByRole('banner')).getByRole('button', { name: carrito.boton })
+  return within(screen.getByRole('banner')).getByRole('button', { name: nombreCarrito })
 }
 
 describe('Carrito en la barra superior', { timeout: TIEMPO_FLUJOS_COMPRA }, () => {
@@ -38,7 +39,7 @@ describe('Carrito en la barra superior', { timeout: TIEMPO_FLUJOS_COMPRA }, () =
   it('el icono del carrito vive en la barra superior y ya no en el encabezado de Marketplace', () => {
     render(<PaginaMarketplace />)
     expect(botonCarritoSuperior()).toBeInTheDocument()
-    expect(screen.getAllByRole('button', { name: carrito.boton })).toHaveLength(1)
+    expect(screen.getAllByRole('button', { name: nombreCarrito })).toHaveLength(1)
   })
 
   it('muestra el contador de aplicaciones y abre el carrito al pulsarlo', () => {
@@ -68,7 +69,7 @@ describe('Carrito en la barra superior', { timeout: TIEMPO_FLUJOS_COMPRA }, () =
 
   it('la barra superior no muestra el carrito cuando no hay proveedor del carrito', () => {
     render(<BarraSuperior />)
-    expect(screen.queryByRole('button', { name: carrito.boton })).toBeNull()
+    expect(screen.queryByRole('button', { name: nombreCarrito })).toBeNull()
   })
 })
 

@@ -18,7 +18,7 @@ export function FilaPanelTopbar({ aviso: n, claseIcono }: FilaPanelTopbarProps) 
       )}
 
       <div className="min-w-0 flex-1">
-        <p className="m-0 text-cuerpo text-texto">
+        <p className="m-0 text-subtitulo text-texto">
           <span className="font-titulo text-texto">{n.nombreUsuario}</span>
           {n.nombreGrupo && <span className="font-titulo text-primario"> {n.nombreGrupo}</span>}
           {n.accion && <span className="text-texto-suave"> {n.accion}</span>}

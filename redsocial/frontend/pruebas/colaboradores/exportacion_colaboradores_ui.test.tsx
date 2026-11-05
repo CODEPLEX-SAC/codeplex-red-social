@@ -5,6 +5,11 @@ import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradore
 import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'
 import catalogoColaboradores from '@/catalogos/capacidades/redsocial/colaboradores.json'
 
+vi.mock('@/componentes/colaboradores/bloques/colaboradores_tabla_config', async (importarOriginal) => ({
+  ...(await importarOriginal<typeof import('@/componentes/colaboradores/bloques/colaboradores_tabla_config')>()),
+  TAMANO_PAGINA_COLABORADORES: 3,
+}))
+
 const botones = catalogoColaboradores.botones
 const config = catalogoColaboradores.exportacion
 const panelFiltros = catalogoColaboradores.panel_filtros_avanzados

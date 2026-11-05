@@ -6,6 +6,7 @@ import { Icono } from '../../compartido/icono'
 import { IndicadorCarga } from '../../compartido/interfaz/indicador_carga'
 import { Modal } from '../../compartido/interfaz/modal'
 import type { EstiloSelectorPlanes } from '@/tipos/marketplace/modelo_planes'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 const textos = catalogoMarketplace.planes.visor
 
@@ -19,7 +20,7 @@ export function VisorCatalogoPlanes({ nombre, url, estilo, alCerrar }: { nombre:
       </span>
       <div className="min-w-0 flex-1">
         <h2 className="m-0 truncate text-titulo-banner text-texto">{nombre}</h2>
-        <a href={url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-enlace-accion text-primario no-underline hover:underline">
+        <a href={url} target="_blank" rel="noreferrer" className={[CLASE_ENLACE_ACCION, 'inline-flex items-center gap-1'].join(' ')}>
           {textos.abrir_nueva} <Icono name="flecha-arriba-derecha" className="h-3 w-3" />
         </a>
       </div>

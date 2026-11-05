@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { Icono, imagenUsuarioPredeterminada } from '../icono'
+import { Icono } from '../icono'
+import { imagenPerfilPedroSas } from '../imagenes_red_social'
 import { AvatarUsuario } from '../interfaz/avatar_usuario'
 import { Boton } from '../interfaz/boton'
 import { BotonIcono } from '../interfaz/boton_icono'
@@ -50,7 +51,7 @@ export function PanelUsuarioTopbar({ usuario, onCerrar, onCerrarSesion }: PanelU
       <div className="relative flex items-center gap-4 bg-linear-to-br from-primario-suave via-white to-primario-suave p-5 pr-12 max-600:gap-3 max-600:p-4 max-600:pr-11">
         <BotonIcono icono="cerrar" type="button" aria-label={textos.cerrar} onClick={onCerrar} variant="discreto" size="default" className="absolute right-3 top-3" />
         <div className="relative flex-none">
-          <AvatarUsuario tamano="xxl" imagen={imagenUsuarioPredeterminada} estado="conectado" className="border-4 border-white ring-2 ring-primario/30 max-600:size-16!" />
+          <AvatarUsuario tamano="xxl" imagen={imagenPerfilPedroSas} estado="conectado" className="border-4 border-white ring-2 ring-primario/30 max-600:size-16!" />
         </div>
         <div className="flex min-w-0 flex-col items-start gap-1">
           <strong className="max-w-full truncate text-valor-destacado leading-compacto text-texto">{usuario.usuario}</strong>

@@ -38,7 +38,7 @@ export function TarjetaPublicacion({ publicacion, compartidos, interaccion, onEd
         />
       </MarcoPublicacion>
       {dialogo === 'editar' && (
-        <ModalCrearPublicacion modo="editar" textoInicial={publicacion.texto} mediosIniciales={publicacion.medios} onPublicar={guardarEdicion} onCerrar={() => setDialogo(null)} />
+        <ModalCrearPublicacion modo="editar" tipoInicial={publicacion.tipo} textoInicial={publicacion.texto} mediosIniciales={publicacion.medios} onPublicar={guardarEdicion} onCerrar={() => setDialogo(null)} />
       )}
       {dialogo === 'eliminar' && <DialogoEliminarPublicacion onConfirmar={() => onEliminar(publicacion.id)} onCerrar={() => setDialogo(null)} />}
     </>

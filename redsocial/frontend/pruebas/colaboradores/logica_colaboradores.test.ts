@@ -8,6 +8,7 @@ import {
   formatearFecha,
   reemplazarColaborador,
 } from '@/componentes/colaboradores/bloques/logica_colaboradores'
+import { componerAcceso, horaDeAcceso } from '@/componentes/colaboradores/bloques/logica_hora_acceso'
 import { crearInvitado, existeCorreo, registrarBaja, reenviarInvitacion } from '@/componentes/colaboradores/bloques/reglas_estado_colaboradores'
 import { ordenPorOpcion } from '@/componentes/colaboradores/bloques/colaboradores_tabla_config'
 import { COLABORADORES, APLICACIONES_DISPONIBLES } from '@/servicios/colaboradores/colaboradores'
@@ -74,6 +75,26 @@ describe('baja de un colaborador', () => {
   })
 })
 
+describe('hora del ultimo acceso', () => {
+  it('lee la hora del texto y la reescribe sin tocar el resto', () => {
+    const hora = horaDeAcceso('Hoy, 10:24 AM')
+    expect(hora?.hour()).toBe(10)
+    expect(hora?.minute()).toBe(24)
+    expect(componerAcceso('Hoy, 10:24 AM', dayjs().hour(15).minute(5))).toBe('Hoy, 03:05 PM')
+  })
+
+  it('interpreta pasado el mediodia y la medianoche', () => {
+    expect(horaDeAcceso('Ayer, 12:10 AM')?.hour()).toBe(0)
+    expect(horaDeAcceso('Ayer, 12:10 PM')?.hour()).toBe(12)
+    expect(horaDeAcceso('Ayer, 07:45 PM')?.hour()).toBe(19)
+  })
+
+  it('un texto sin hora no produce hora y no se modifica', () => {
+    expect(horaDeAcceso('')).toBeNull()
+    expect(componerAcceso('', dayjs().hour(9))).toBe('')
+  })
+})
+
 describe('edicion de un colaborador', () => {
   it('el borrador parte de los datos actuales', () => {
     expect(crearBorrador(carlos)).toEqual({
@@ -83,6 +104,7 @@ describe('edicion de un colaborador', () => {
       rol: 'Administrador',
       fechaInicio: '01/06/2026',
       fechaFin: '01/06/2027',
+      ultimoAcceso: carlos.ultimoAcceso ?? '',
       aplicaciones: ['Planillas', 'Contabilidad', 'Inventario', 'Ventas', 'Compras', 'Proyectos', 'Reportes', 'Configuración'],
       estado: 'activo',
     })

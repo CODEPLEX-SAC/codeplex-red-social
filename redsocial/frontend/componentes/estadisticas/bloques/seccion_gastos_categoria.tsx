@@ -2,6 +2,8 @@ import catalogoEstadisticas from '../../../catalogos/capacidades/redsocial/estad
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { SeccionGastosCategoria2 } from './seccion_gastos_categoria2'
 import type { EstadoRatio } from '@/tipos/estadisticas/modelo_estadisticas_todos_modulos'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
+import { CLASES_TARJETA } from '../../compartido/clases_tarjeta'
 
 const TABLA_ESTADO_RESULTADOS = catalogoEstadisticas.tabla_estado_resultados
 const TABLA_RATIOS = catalogoEstadisticas.tabla_ratios
@@ -31,7 +33,7 @@ export function SeccionGastosCategoria({
     <div className="mb-4 grid grid-cols-3 gap-4 max-1400:grid-cols-2 max-1000:grid-cols-1">
       <SeccionGastosCategoria2 GASTOS_CATEGORIA={GASTOS_CATEGORIA} />
 
-      <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
+      <article className={CLASES_TARJETA.panel}>
         <div className="mb-3.5 border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.estado_resultados}</h2>
         </div>
@@ -54,10 +56,10 @@ export function SeccionGastosCategoria({
         </TablaEst>
       </article>
 
-      <article className="min-w-0 rounded-xl border border-borde bg-white py-4.5 px-5">
+      <article className={CLASES_TARJETA.panel}>
         <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.ratios_financieros}</h2>
-          <a href="#" className="text-enlace-accion text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
+          <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
         </div>
         <TablaEst>
           <thead>

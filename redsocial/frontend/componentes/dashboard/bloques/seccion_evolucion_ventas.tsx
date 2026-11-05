@@ -9,6 +9,7 @@ import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compart
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
 import { SeccionRatiosFinancieros } from './seccion_ratios_financieros'
 import type { CodeplexGraficoColor } from '@codeplex-sac/graficos'
+import { CLASES_TARJETA, CLASES_CUERPO_TARJETA } from '../../compartido/clases_tarjeta'
 
 export function SeccionEvolucionVentas({
   VENTAS_MENSUALES,
@@ -29,7 +30,7 @@ export function SeccionEvolucionVentas({
 }) {
   return (
     <div className="mb-5 grid grid-cols-1.6fr-1fr-1fr items-stretch gap-4 max-1400:grid-cols-2 max-900:grid-cols-1">
-      <article className="relative min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra max-1400:col-span-2 max-900:col-span-1">
+      <article className={[CLASES_TARJETA.panel, 'relative max-1400:col-span-2 max-900:col-span-1'].join(' ')}>
         <div className="mb-3.5 flex items-center justify-between border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.evolucion_ventas}</h2>
           <div className="flex items-center gap-2">
@@ -40,7 +41,7 @@ export function SeccionEvolucionVentas({
           </div>
         </div>
         <div className="relative">
-          <ProveedorTemaGraficos>
+          <ProveedorTemaGraficos tooltipGraficos>
             <CodeplexGraficoLineas datos={VENTAS_MENSUALES} color="primario" gradiente conTooltip conCuadricula alto={220} />
           </ProveedorTemaGraficos>
         </div>
@@ -54,32 +55,29 @@ export function SeccionEvolucionVentas({
         </div>
       </article>
 
-      <article className="min-w-0 rounded-control border border-gris-borde bg-white py-4.5 px-5 shadow-sombra">
+      <article className={CLASES_TARJETA.panel}>
         <div className="mb-3.5 border-b border-borde-suave pb-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoDashboard.secciones.composicion_ingresos}</h2>
         </div>
-        <div className="relative mx-auto mb-4 grid h-32.5 w-32.5 place-items-center rounded-full">
-          <DonaProgreso
-            segmentos={DONA_SEGMENTOS.map((s) => ({ color: catalogoCompartido.colores_graficos[COLOR_GRAFICO_NOMBRE[s.color]], porcentaje: Number(s.porcentaje.replace('%', '')) }))}
-            tamano={130}
-            grosor={16}
-            className="absolute inset-0"
-          />
-          <div className="absolute inset-5 rounded-full bg-white" />
-          <span className="relative z-1 flex flex-col items-center text-center">
-            <strong className="text-valor-destacado text-texto">{VENTAS_TOTAL_CHART}</strong>
-            <span className="text-auxiliar text-texto-suave">{catalogoDashboard.leyendas.total}</span>
-          </span>
-        </div>
+        <div className={CLASES_CUERPO_TARJETA.cuerpo_centrado}>
+        <DonaProgreso
+          segmentos={DONA_SEGMENTOS.map((s) => ({ color: catalogoCompartido.colores_graficos[COLOR_GRAFICO_NOMBRE[s.color]], porcentaje: Number(s.porcentaje.replace('%', '')) }))}
+          tamano={130}
+          grosor={16}
+          valorCentral={VENTAS_TOTAL_CHART}
+          etiquetaCentral={catalogoDashboard.leyendas.total}
+          className="mx-auto mb-4"
+        />
         <ul className="m-0 grid list-none gap-2 p-0">
           {DONA_SEGMENTOS.map((s) => (
             <li key={s.etiqueta} className="flex items-center gap-2 text-auxiliar text-texto">
               <SuperficieColor as="i" variante={s.color} className="h-2.5 w-2.5 flex-none rounded-full not-italic" />
               {s.etiqueta} <b className="ml-auto font-titulo">{s.porcentaje}</b>
-              <small className="min-w-17 text-right text-texto-suave">{s.monto}</small>
+              <small className="min-w-17 text-right text-auxiliar text-texto-suave">{s.monto}</small>
             </li>
           ))}
         </ul>
+        </div>
       </article>
 
       <SeccionRatiosFinancieros

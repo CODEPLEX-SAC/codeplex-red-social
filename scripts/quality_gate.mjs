@@ -119,14 +119,21 @@ function medicionVisual() {
   const actual = argumentos.visual
   if (!actual || !existsSync(actual)) return marcar('Responsive', 'NO DETERMINADO', 'sin medicion en navegador: ejecutar la sonda y pasar --visual=<roles.json>') || marcar('Regresión Empresas', 'NO DETERMINADO')
   const datos = JSON.parse(readFileSync(actual, 'utf8'))
-  const desborde = Object.entries(datos).filter(([, v]) => v.desborde || v.anchoDoc > v.ancho).map(([k]) => k)
-  marcar('Responsive', desborde.length === 0 ? 'OK' : 'FALLO', `${Object.keys(datos).length} paginas, ${desborde.length} con desborde`)
+  const desborde = Object.entries(datos).filter(([clave, v]) => v.desborde || v.anchoDoc > Number(clave.split('|')[0])).map(([k]) => k)
+  marcar('Responsive', desborde.length === 0 ? 'OK' : 'FALLO', `${Object.keys(datos).length} paginas, ${desborde.length} con desborde${desborde.length ? ': ' + desborde.slice(0, 8).join(', ') : ''}`)
   if (!existsSync(RUTA_BASE_VISUAL)) return marcar('Regresión Empresas', 'NO DETERMINADO', `sin linea base: ${RUTA_BASE_VISUAL} (o pasar --base=<roles.json>)`)
   const base = JSON.parse(readFileSync(RUTA_BASE_VISUAL, 'utf8'))
   const firma = (v) => JSON.stringify([v.agg, v.campos, v.iconBtn, v.botones])
   const claves = Object.keys(datos).filter((k) => k.split('|')[1]?.startsWith('/empresas'))
   const distintas = claves.filter((k) => base[k] && firma(base[k]) !== firma(datos[k]))
   return marcar('Regresión Empresas', claves.length > 0 && distintas.length === 0 ? 'OK' : distintas.length ? 'FALLO' : 'NO DETERMINADO', `${claves.length} paginas, ${distintas.length} distintas`)
+}
+
+if ('solo-medicion' in argumentos) {
+  medicionVisual()
+  ;['Responsive', 'Regresión Empresas'].forEach((nombre) => console.log(`${nombre}=${estado.get(nombre) ?? 'NO DETERMINADO'}`))
+  if (detalle.length) console.log(detalle.join(String.fromCharCode(10)))
+  process.exit(0)
 }
 
 const bloqueCapacidad = validarCapacidadReal()

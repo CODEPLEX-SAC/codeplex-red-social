@@ -12,6 +12,8 @@ import type { Colaborador, Aplicacion } from '@/tipos/colaboradores/modelo_colab
 import type { BorradorColaborador } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 
 const textos = catalogoColaboradores.editar
+const clases = catalogoColaboradores.clases.edicion
+const detalle = catalogoColaboradores.clases.detalle
 
 export function SeccionEditarColaborador({
   colaborador,
@@ -31,12 +33,12 @@ export function SeccionEditarColaborador({
   const { borrador, cambiar, descripcionRol, valido, etiquetaEstado, elegirEstado } = usarEdicionColaborador(colaborador, colaboradores)
 
   return (
-    <aside className="sticky top-22 max-1100:static w-full rounded-xl border border-gris-borde bg-white p-5 area-detalle">
-      <div className="mb-1 flex items-center justify-between">
-        <h2 className="m-0 text-titulo-banner text-texto">{textos.titulo}</h2>
+    <aside className={detalle.panel}>
+      <div className={clases.cabecera_panel}>
+        <h2 className={detalle.titulo_panel}>{textos.titulo}</h2>
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={alCerrar} variant="sutil" size="md" />
       </div>
-      <p className="m-0 mb-4 text-auxiliar text-texto-suave">{textos.subtitulo}</p>
+      <p className={clases.subtitulo_panel}>{textos.subtitulo}</p>
 
       <BloqueEditarDatosColaborador borrador={borrador} alCambiar={cambiar} />
       <BloqueEditarRolPerfil borrador={borrador} descripcionRol={descripcionRol} alCambiar={cambiar} />
@@ -44,9 +46,9 @@ export function SeccionEditarColaborador({
       <BloqueEditarAplicaciones borrador={borrador} disponibles={aplicacionesDisponibles} alCambiar={cambiar} />
       <BloqueEditarEstadoAcceso borrador={borrador} etiquetaEstado={etiquetaEstado} alElegirEstado={elegirEstado} />
 
-      <div className="mt-4 grid grid-cols-2 gap-2 border-t border-borde-suave pt-4">
-        <Boton type="button" variant="secundario" onClick={alCancelar}>{textosRedSocial.CANCELAR}</Boton>
-        <Boton type="button" variant="primario" disabled={!valido} onClick={() => alGuardar(borrador)}>{textos.guardar_cambios}</Boton>
+      <div className={clases.pie_acciones}>
+        <Boton type="button" variant="secundario" size="md" onClick={alCancelar}>{textosRedSocial.CANCELAR}</Boton>
+        <Boton type="button" variant="primario" size="md" disabled={!valido} onClick={() => alGuardar(borrador)}>{textos.guardar_cambios}</Boton>
       </div>
     </aside>
   )

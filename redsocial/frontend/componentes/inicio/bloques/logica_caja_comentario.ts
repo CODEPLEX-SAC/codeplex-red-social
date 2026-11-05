@@ -10,15 +10,17 @@ export function mediosDesdeArchivos(archivos: File[], actuales: number, siguient
 }
 
 export function sinMedio(lista: MedioLocalPublicacion[], id: string) {
-  const quitado = lista.find((medio) => medio.id === id)
-  if (quitado) URL.revokeObjectURL(quitado.url)
   return lista.filter((medio) => medio.id !== id)
 }
 
-export function liberarMedios(lista: MedioLocalPublicacion[]) {
-  lista.forEach((medio) => URL.revokeObjectURL(medio.url))
+export function liberarMedios(lista: MedioLocalPublicacion[], propias: Set<string>) {
+  lista.filter((medio) => propias.has(medio.url)).forEach((medio) => URL.revokeObjectURL(medio.url))
 }
 
 export function respuestaPara(nombre: string, plantilla: string) {
   return plantilla.replace(':nombre', nombre)
+}
+
+export function imagenesDe(lista: MedioLocalPublicacion[]) {
+  return lista.filter((medio) => !medio.esVideo)
 }

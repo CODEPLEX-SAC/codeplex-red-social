@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { irARuta } from '../../compartido/interfaz/menu'
 import { aplicarMejora, crearCompras, crearComprasIniciales, crearItem, reemplazarOAgregar, RUTA_MARKETPLACE } from './logica_carrito_planes'
 import { diasPrueba, fechaCorta } from './logica_pago_planes'
-import { usarMetodosPago } from './usar_metodos_pago'
-import type { CompraRealizada, HistorialPago, ItemCarrito, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
+import { usarPerfilesPago } from '../../compartido/pago/usar_perfiles_pago'
+import { usarTarjetasPago } from '../../compartido/pago/usar_tarjetas_pago'
+import type { CompraRealizada, ItemCarrito, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
+import type { RepositorioPerfilesPago } from '@/tipos/compartido/contrato_flujo_pago'
 import type { RepositorioMetodosPago, ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
 import type { ConfiguracionPlanes, SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
 
 
-export function usarCarritoMarketplace(aplicaciones: Record<string, ConfiguracionPlanes>, repositorio: RepositorioMetodosPago, iniciales: SeleccionPlan[] = []) {
+export function usarCarritoMarketplace(aplicaciones: Record<string, ConfiguracionPlanes>, repositorio: RepositorioMetodosPago, repositorioPerfiles: RepositorioPerfilesPago, iniciales: SeleccionPlan[] = []) {
   const [planesAbiertos, setPlanesAbiertos] = useState<string | null>(null)
   const [carritoAbierto, setCarritoAbierto] = useState(false)
   const [pagoAbierto, setPagoAbierto] = useState(false)
@@ -18,8 +20,8 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
   const [items, setItems] = useState<ItemCarrito[]>([])
   const [compras, setCompras] = useState<CompraRealizada[]>(() => crearComprasIniciales(aplicaciones, iniciales, fechaCorta(), fechaCorta(1), diasPrueba()))
   const [servicios, setServicios] = useState<ServicioAdicional[]>([])
-  const [historial, setHistorial] = useState<HistorialPago>({ perfiles: [] })
-  const metodosPago = usarMetodosPago(repositorio)
+  const metodosPago = usarTarjetasPago(repositorio)
+  const perfilesPago = usarPerfilesPago(repositorioPerfiles)
 
   function agregar(seleccion: SeleccionPlan) {
     const item = crearItem(aplicaciones[seleccion.aplicacion], seleccion)
@@ -40,14 +42,7 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
     setPagoAbierto(false)
   }
 
-  function guardarHistorial(resumen: ResumenActivacion) {
-    setHistorial((previo) => ({
-      perfiles: resumen.perfilNuevo ? [resumen.perfilNuevo, ...previo.perfiles] : previo.perfiles,
-    }))
-  }
-
   function finalizar(resumen: ResumenActivacion) {
-    guardarHistorial(resumen)
     setPagoAbierto(false)
     if (mejora) {
       setCompras((previas) => aplicarMejora(previas, mejora))
@@ -84,8 +79,8 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
     compras,
     servicios,
     contratarVip: (aplicacion: string) => contratarVip(aplicacion, compras.find((c) => c.aplicacion === aplicacion)?.nombre ?? aplicacion),
-    historial,
     metodosPago,
+    perfilesPago,
     abrirPlanes: setPlanesAbiertos,
     cerrarPlanes: () => setPlanesAbiertos(null),
     abrirCarrito: () => setCarritoAbierto(true),

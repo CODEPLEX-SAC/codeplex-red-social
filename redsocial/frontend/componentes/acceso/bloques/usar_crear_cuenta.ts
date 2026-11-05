@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { SIN_ERROR, errorDeConfirmacion, errorDeContrasenaNueva, errorDeCorreo, errorDeNombre } from './validaciones_acceso'
+import { SIN_ERROR, errorDeConfirmacion, errorDeContrasenaNueva, errorDeCorreo, errorDeNombre, errorDeTerminos } from './validaciones_acceso'
 import { usarEnvioDemostracion } from './usar_envio_demostracion'
 import type { ErroresCrearCuenta } from '@/tipos/acceso/contrato_acceso'
 
-const SIN_ERRORES: ErroresCrearCuenta = { nombre: SIN_ERROR, correo: SIN_ERROR, contrasena: SIN_ERROR, confirmacion: SIN_ERROR }
+const SIN_ERRORES: ErroresCrearCuenta = { nombre: SIN_ERROR, correo: SIN_ERROR, contrasena: SIN_ERROR, confirmacion: SIN_ERROR, terminos: SIN_ERROR }
 
 export function usarCrearCuenta() {
   const [correoEnviado, setCorreoEnviado] = useState(false)
@@ -13,6 +13,7 @@ export function usarCrearCuenta() {
   const [correo, setCorreo] = useState('')
   const [contrasena, setContrasena] = useState('')
   const [confirmacion, setConfirmacion] = useState('')
+  const [terminos, setTerminos] = useState(false)
   const [errores, setErrores] = useState<ErroresCrearCuenta>(SIN_ERRORES)
 
   function cambiarNombre(valor: string) {
@@ -35,12 +36,18 @@ export function usarCrearCuenta() {
     setErrores((anteriores) => ({ ...anteriores, confirmacion: SIN_ERROR }))
   }
 
+  function cambiarTerminos(valor: boolean) {
+    setTerminos(valor)
+    setErrores((anteriores) => ({ ...anteriores, terminos: SIN_ERROR }))
+  }
+
   function validarFormulario(): ErroresCrearCuenta {
     return {
       nombre: errorDeNombre(nombre.trim()),
       correo: errorDeCorreo(correo.trim()),
       contrasena: errorDeContrasenaNueva(contrasena),
       confirmacion: errorDeConfirmacion(contrasena, confirmacion),
+      terminos: errorDeTerminos(terminos),
     }
   }
 
@@ -58,6 +65,7 @@ export function usarCrearCuenta() {
     correo,
     contrasena,
     confirmacion,
+    terminos,
     errores,
     correoEnviado,
     cargando: envio.cargando,
@@ -66,6 +74,7 @@ export function usarCrearCuenta() {
     cambiarCorreo,
     cambiarContrasena,
     cambiarConfirmacion,
+    cambiarTerminos,
     enviar,
   }
 }

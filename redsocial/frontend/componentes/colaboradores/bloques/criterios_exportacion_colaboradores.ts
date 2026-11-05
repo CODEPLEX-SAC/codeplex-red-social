@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import type { AmbitoExportacion, CondicionCriterio, CriteriosExportacion, FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
+import type { AmbitoExportacion, CondicionCriterio, CriteriosExportacion, FiltroActivo, FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 import { ESTADO_POR_ETIQUETA_PESTANA, interpolarPlantilla } from './colaboradores_tabla_config'
 
 const plantillas = catalogoColaboradores.exportacion.criterios
@@ -10,6 +10,7 @@ const OPCION_TODOS = catalogoColaboradores.selectores.rol_perfil.opciones[0]
 const OPCION_TODAS = catalogoColaboradores.selectores.aplicaciones.opciones[0]
 const ULTIMO_ACCESO_TODOS = panel.ultimo_acceso.opciones[0]
 const APLICACION_ASIGNADA_TODAS = panel.aplicaciones_asignadas.opciones[0]
+const CLAVES = catalogoColaboradores.filtros_activos.claves
 
 function valor(plantilla: string, texto: string): string {
   return interpolarPlantilla(plantilla, { valor: texto })
@@ -34,19 +35,24 @@ export function crearCriteriosExportacion(
   return { pestana, busqueda, rol, aplicacion, ordenarPor, avanzados }
 }
 
+export function listarFiltrosAvanzados(filtros: FiltrosAvanzadosColaboradores): FiltroActivo[] {
+  const condiciones: [string, boolean, string][] = [
+    [CLAVES.vigencia_desde, Boolean(filtros.fechaInicio), valor(plantillas.vigencia_desde, fecha(filtros.fechaInicio))],
+    [CLAVES.vigencia_hasta, Boolean(filtros.fechaFin), valor(plantillas.vigencia_hasta, fecha(filtros.fechaFin))],
+    [CLAVES.invitacion_desde, Boolean(filtros.invitacionDesde), valor(plantillas.invitacion_desde, fecha(filtros.invitacionDesde))],
+    [CLAVES.invitacion_hasta, Boolean(filtros.invitacionHasta), valor(plantillas.invitacion_hasta, fecha(filtros.invitacionHasta))],
+    [CLAVES.ultimo_acceso, filtros.ultimoAcceso !== ULTIMO_ACCESO_TODOS, valor(plantillas.ultimo_acceso, filtros.ultimoAcceso)],
+    [CLAVES.acceso_vigente, filtros.accesoVigente, plantillas.acceso_vigente],
+    [CLAVES.acceso_vencido, filtros.accesoVencido, plantillas.acceso_vencido],
+    [CLAVES.aplicacion_asignada, filtros.aplicaciones !== APLICACION_ASIGNADA_TODAS, valor(plantillas.aplicacion_asignada, filtros.aplicaciones)],
+    [CLAVES.cuenta_creada, filtros.cuentaCreada, plantillas.cuenta_creada],
+    [CLAVES.cuenta_invitada, filtros.cuentaInvitada, plantillas.cuenta_invitada],
+  ]
+  return condiciones.filter(([, activa]) => activa).map(([clave, , etiqueta]) => ({ clave, etiqueta }))
+}
+
 export function describirFiltrosAvanzados(filtros: FiltrosAvanzadosColaboradores): string[] {
-  return activas([
-    [Boolean(filtros.fechaInicio), valor(plantillas.vigencia_desde, fecha(filtros.fechaInicio))],
-    [Boolean(filtros.fechaFin), valor(plantillas.vigencia_hasta, fecha(filtros.fechaFin))],
-    [Boolean(filtros.invitacionDesde), valor(plantillas.invitacion_desde, fecha(filtros.invitacionDesde))],
-    [Boolean(filtros.invitacionHasta), valor(plantillas.invitacion_hasta, fecha(filtros.invitacionHasta))],
-    [filtros.ultimoAcceso !== ULTIMO_ACCESO_TODOS, valor(plantillas.ultimo_acceso, filtros.ultimoAcceso)],
-    [filtros.accesoVigente, plantillas.acceso_vigente],
-    [filtros.accesoVencido, plantillas.acceso_vencido],
-    [filtros.aplicaciones !== APLICACION_ASIGNADA_TODAS, valor(plantillas.aplicacion_asignada, filtros.aplicaciones)],
-    [filtros.cuentaCreada, plantillas.cuenta_creada],
-    [filtros.cuentaInvitada, plantillas.cuenta_invitada],
-  ])
+  return listarFiltrosAvanzados(filtros).map((filtro) => filtro.etiqueta)
 }
 
 export function describirCriteriosFiltrados(criterios: CriteriosExportacion): string[] {

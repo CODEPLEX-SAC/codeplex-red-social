@@ -6,7 +6,7 @@
 - **Propósito:** campo con calendario desplegable para elegir una fecha.
 - **Ubicación:** `redsocial/frontend/componentes/compartido/interfaz/selector_fecha.tsx`.
 - **Estado:** existente, adaptado (alto de 40 a 48 px el 2026-10-16).
-- **Consumidores:** 6 usos JSX en 4 archivos: filtros de vigencia de Colaboradores, historial y filtros avanzados de Empresas, y formulario de eventos.
+- **Consumidores:** 8 usos JSX en 5 archivos: filtros de vigencia de Colaboradores, fechas de vigencia del asistente «Invitar colaborador» (2026-10-31), historial y filtros avanzados de Empresas, y formulario de eventos.
 
 ## 2. Origen e implementación
 

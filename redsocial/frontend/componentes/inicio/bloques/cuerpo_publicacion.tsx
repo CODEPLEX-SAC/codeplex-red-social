@@ -19,7 +19,7 @@ export function CuerpoPublicacion({ publicacion, onVotar }: CuerpoPublicacionPro
           <Insignia variant="status" className={estadoPregunta.clase}>{estadoPregunta.etiqueta}</Insignia>
         </div>
       )}
-      {publicacion.texto && <p className="m-0 whitespace-pre-wrap break-words px-4 pb-3 text-cuerpo leading-texto text-texto">{publicacion.texto}</p>}
+      {publicacion.texto && <p className="m-0 whitespace-pre-wrap break-words pb-3 text-cuerpo leading-texto text-texto">{publicacion.texto}</p>}
       {publicacion.opciones.length > 0 && <BloqueVotacionEncuesta opciones={publicacion.opciones} miVoto={publicacion.miVoto} onVotar={onVotar} />}
       {publicacion.medios.length > 0 && <BloqueMediosPublicacion medios={publicacion.medios} />}
     </>

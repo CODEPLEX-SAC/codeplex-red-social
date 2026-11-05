@@ -12,7 +12,7 @@ export function ContactosPanel({ titulo = textosRedSocial.CONTACTOS, contactos }
         <article key={c.nombre} className="flex items-center gap-2 border-b border-borde-suave py-2">
           <AvatarUsuario tamano="sm" imagen={usuarioImg} />
           <div className="min-w-0 flex-1">
-            <strong className="block truncate text-nombre-entidad text-texto">{c.nombre}</strong>
+            <strong className="block truncate text-nombre-fila text-texto">{c.nombre}</strong>
             <span className="block truncate text-auxiliar text-texto-suave">{c.subtitulo}</span>
           </div>
           <BotonIcono icono="mensaje" type="button" aria-label={textosRedSocial.ENVIAR_MENSAJE} variant="contorno" size="md" className="flex-none" />

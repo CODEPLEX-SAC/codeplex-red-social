@@ -3,6 +3,7 @@ import type { IconName } from '@/tipos/compartido/contrato_icono'
 import { Sparkline } from '../../compartido/interfaz/sparkline'
 import { Icono } from '../../compartido/icono'
 import type { Kpi } from '@/tipos/estadisticas/modelo_estadisticas_todos_modulos'
+import { CLASES_TARJETA } from '../../compartido/clases_tarjeta'
 
 export function BloqueEstadisticasTodosModulos1({
   KPIS,
@@ -16,7 +17,7 @@ export function BloqueEstadisticasTodosModulos1({
   return (
     <div className="mb-5 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1">
       {KPIS.map((kpi) => (
-        <article key={kpi.etiqueta} className="min-w-0 rounded-xl border border-borde bg-white p-4">
+        <article key={kpi.etiqueta} className={CLASES_TARJETA.mosaico}>
           <div className="mb-2.5 flex items-center gap-2 text-titulo-subseccion text-texto-suave">
             <span className={`grid h-7.5 w-7.5 flex-none place-items-center rounded-lg ${CLASES_ICONO_KPI[kpi.color]}`}>
               <Icono name={kpi.icono} className="h-4 w-4" />

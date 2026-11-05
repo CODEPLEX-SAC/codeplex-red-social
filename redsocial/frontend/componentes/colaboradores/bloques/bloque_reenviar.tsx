@@ -1,45 +1,33 @@
-import { Icono, imagenUsuarioPredeterminada as usuarioImg, AvatarUsuario, Insignia, Boton, BotonIcono, Menu } from '../../compartido'
+import { imagenUsuarioPredeterminada as usuarioImg, AccionesFilaTabla, AvatarUsuario, Boton } from '../../compartido'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import { BloqueColaboradores3 } from './bloque_colaboradores3'
+import { VigenciaColaborador } from './vigencia_colaborador'
 import { CLASES_TABLA } from '../../compartido/clases_tabla'
 import { TextoTruncable } from '../../compartido/interfaz/texto_truncable'
-import { opcionesMenuFila } from './reglas_estado_colaboradores'
-import { resumirAplicaciones } from './logica_colaboradores'
+import { EstadoColaborador } from './estado_colaborador'
+import { IconosAplicaciones } from './iconos_aplicaciones'
+import { RolColaborador } from './rol_colaborador'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+import { puedeDarDeBaja } from './reglas_estado_colaboradores'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
+
+const clases = catalogoColaboradores.clases.listado
+const botones = catalogoColaboradores.botones
+const acciones = catalogoCompartido.acciones_tabla
 
 export function BloqueReenviar({ datos }: {
   datos: {
     c: Colaborador
-    ROL_CLASES: Record<string, string>
-    estado: { texto: string; punto: string; etiqueta: string; }
-    setMenuAbierto: (valor: number | null | ((actual: number | null) => number | null)) => void
-    i: number
-    setAnclaMenu: (valor: HTMLElement | null | ((actual: HTMLElement | null) => HTMLElement | null)) => void
-    menuAbierto: number | null
-    anclaMenu: HTMLElement | null
-    cerrarMenus: () => void
     alVerColaborador: (colaborador: Colaborador) => void
     alEditarColaborador: (colaborador: Colaborador) => void
     alConfirmarBaja: (colaborador: Colaborador) => void
     alReenviar: (colaborador: Colaborador) => void
   }
 }) {
-  const {
-    c,
-    ROL_CLASES,
-    estado,
-    setMenuAbierto,
-    i,
-    setAnclaMenu,
-    menuAbierto,
-    anclaMenu,
-    cerrarMenus,
-    alVerColaborador,
-    alEditarColaborador,
-    alConfirmarBaja,
-    alReenviar,
-  } = datos
-  const aplicaciones = resumirAplicaciones(c, catalogoColaboradores.celda_aplicaciones.max_iconos)
+  const { c, alVerColaborador, alEditarColaborador, alConfirmarBaja, alReenviar } = datos
+  const etiquetaVer = botones.accion_ver.replace(':nombre', c.nombre)
+  const etiquetaEditar = botones.accion_editar.replace(':nombre', c.nombre)
+  const etiquetaBaja = botones.accion_baja.replace(':nombre', c.nombre)
+
   return (
     <tr className={CLASES_TABLA.fila}>
       <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnaAjustada}`}>
@@ -52,46 +40,34 @@ export function BloqueReenviar({ datos }: {
           </div>
         </div>
       </td>
-      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnas.etiquetas}`}>
-        <div className="flex flex-col gap-0.5">
-          <span className={`inline-block whitespace-nowrap rounded-md px-2.5 py-0.75 text-badge ${ROL_CLASES[c.rolClase] ?? ROL_CLASES.predeterminado}`}>
-            {c.rol}
-          </span>
-          <span className="text-auxiliar text-texto-suave">{c.descripcionRol}</span>
-        </div>
+      <td className={CLASES_TABLA.celda}>
+        <RolColaborador c={c} />
       </td>
-      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnas.iconos}`}>
-        <div className="flex items-center gap-1">
-          {aplicaciones.visibles.map((app) => (
-            <span key={app.nombre} title={app.nombre} className={`flex h-7 w-7 flex-none items-center justify-center rounded-md ${app.clase}`}>
-              <Icono name={app.icono} className="w-3.5 h-3.5 text-white" />
-            </span>
-          ))}
-          {aplicaciones.ocultas > 0 && <span className="ml-0.5 text-conteo text-primario">+{aplicaciones.ocultas}</span>}
-        </div>
+      <td className={CLASES_TABLA.celda}>
+        <IconosAplicaciones aplicaciones={c.aplicaciones} />
       </td>
-      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.columnas.estado}`}>
-        <Insignia variant="status" className={`inline-flex items-center gap-1.25 whitespace-nowrap text-estado ${estado.texto}`} punto={estado.punto}>
-          {estado.etiqueta}
-        </Insignia>
+      <td className={CLASES_TABLA.celda}>
+        <EstadoColaborador estado={c.estado} />
       </td>
-      <BloqueColaboradores3 c={c} />
-      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.celdaFija} text-center`}>
+      <td className={CLASES_TABLA.celda}>
+        <VigenciaColaborador c={c} />
+      </td>
+      <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.celdaFija}`}>
         {c.acciones === 'reenviar' ? (
-          <Boton type="button" variant="secundario" size="mini" onClick={() => alReenviar(c)}>
-            {catalogoColaboradores.botones.reenviar}
+          <Boton type="button" variant="contorno" size="mini" onClick={() => alReenviar(c)}>
+            {botones.reenviar}
           </Boton>
         ) : (
-          <>
-            <BotonIcono icono="puntos" type="button" aria-label={catalogoColaboradores.botones.mas_opciones} onClick={(evento) => { evento.stopPropagation(); setMenuAbierto(i); setAnclaMenu(evento.currentTarget) }} variant="sutil" size="default" />
-            {menuAbierto === i && (
-              <Menu
-                ancla={anclaMenu}
-                alCerrar={cerrarMenus}
-                elementos={opcionesMenuFila(c, { alVer: () => alVerColaborador(c), alEditar: () => alEditarColaborador(c), alDarDeBaja: () => alConfirmarBaja(c) })}
-              />
-            )}
-          </>
+          <AccionesFilaTabla
+            nombre={c.nombre}
+            claseContenedor={clases.acciones_fila}
+            claseBoton={clases.objetivo_tactil}
+            acciones={[
+              { icono: 'ver', etiqueta: etiquetaVer, etiquetaMenu: acciones.ver_detalle, alHacerClick: () => alVerColaborador(c) },
+              { icono: 'editar-oficial', etiqueta: etiquetaEditar, etiquetaMenu: acciones.editar, clase: clases.accion_editar, alHacerClick: () => alEditarColaborador(c) },
+              ...(puedeDarDeBaja(c) ? [{ icono: 'persona-menos' as const, etiqueta: etiquetaBaja, etiquetaMenu: acciones.dar_de_baja, clase: clases.accion_peligro, peligro: true, alHacerClick: () => alConfirmarBaja(c) }] : []),
+            ]}
+          />
         )}
       </td>
     </tr>

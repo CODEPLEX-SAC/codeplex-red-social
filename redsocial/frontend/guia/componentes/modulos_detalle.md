@@ -39,6 +39,8 @@ Complementa a [modulos_y_patrones.md](modulos_y_patrones.md) (inventario y patro
   - Fase 6 (INC-16, **verificado en navegador**): las píldoras de selección del modal de publicación (tipo: Publicación, Encuesta, Pregunta; prioridad: Urgente, Normal; 5 botones) usan `Boton variant="filtro" size="pildora"` (30 px, radio completo, `aria-pressed`) en lugar de `filtro` + `mini` + `rounded-full`.
 - **Excepciones:** el disparador con forma de campo de la publicación y 1 `<button>` nativo están registrados ([excepciones_y_limitaciones.md](excepciones_y_limitaciones.md)).
 - **No verificado:** estados de error del editor; el recorrido posterior a publicar.
+- **Historias (añadido el 2026-10-26, COMPROBADO EN CÓDIGO y POR PRUEBA):** carrusel exterior (`CarruselHistorias`, genérico por índice y `renderTarjeta`), lienzo único (`LienzoHistoria`, modos `compacto`, `inmersivo`, `miniatura`, `soloFondo`), visor (`VisorHistoria`) con grupos por autor, segmentos, temporizador de 5 s, progreso, menú (copiar enlace, eliminar), respuesta y reacciones, y el flujo de creación (`ModalCrearHistoria`, `EditorTextoHistoria`, `EditorMedioHistoria`, `CodeplexDeslizador` para el ajuste de la foto). Los tres componentes principales son **diseño propio de Inicio** (viven en `componentes/inicio/bloques`; ninguno está registrado como compartido). Configuración: `inicio.json › historias`; estado: `servicios/inicio/almacen_historias.ts` (memoria, máximo 10 segmentos por autor). Pruebas: `flujo_historia`, `historias_interaccion`, `visor_historias`, `carrusel_historias`, `lienzo_historia`, `logica_historia`, `catalogo_historias` (`pruebas/inicio/`).
+- **Limitaciones de Historias:** las respuestas y reacciones quedan en el almacén en memoria y no generan mensajes (decisión pendiente); el nombre y el avatar del visor no abren el perfil; nada persiste tras recargar. Detalle en `INFORME_SISTEMA_VISUAL_GLOBAL_2026.md › Fase 2` y `AUDITORIA_ICONOS_LIBRERIA_2026.md` (iconos).
 
 ## 2. Actividad — `/actividad`, `/actividad/publicaciones`, `/actividad/menciones`, `/actividad/colaboradores`, `/actividad/grupos`, `/actividad/modulos`, `/actividad/sistema`
 
@@ -170,6 +172,15 @@ Complementa a [modulos_y_patrones.md](modulos_y_patrones.md) (inventario y patro
 - **Contenido:** indicadores clave, estructura de costos, evolución de la utilidad neta; periodo y «Comparar con» (`Selector default`), «Filtros avanzados» y chips de módulo.
 - **Estado según el código:** datos estáticos y controles sin manejadores; enlaces «Ver detalle/Ver todos» a `#`.
 - **Cambios por fase:** sin cambios propios.
+
+## Perfil (módulo adicional) — `/perfil`
+
+- **Ruta y parámetro:** `/perfil` (`perfil.json › rutas.principal`); sin parámetro muestra el perfil de la sesión; `?usuario=<id>` (`parametros_ruta.usuario`, `rutaPerfilUsuario`) muestra el de otra persona. El perfil propio y el ajeno comparten página (`pagina_perfil_usuario.tsx`) y se distinguen por `esPropio` (`usar_relacion_perfil.ts`); un id inexistente muestra «No encontramos este perfil».
+- **Contenido:** cabecera (`CabeceraPerfil`, avatar, `Valoracion` de `@codeplex-sac/ui`, redes con `correo`, `linkedin` y `web`, foto con menú ver/elegir), y seis pestañas de estado (`pestanas_perfil.tsx`): Red Social (con subpestañas Actividad y Preguntas), Resumen, Experiencia, Documentos, Métricas y Amigos. En el perfil propio hay compositor, edición (`ModalEditarPerfil`), alta/baja de experiencia y formación, subida de documentos y cambio de foto; en el ajeno, solicitud de amistad y métricas de comportamiento.
+- **Controles compartidos:** `Pestanas`, `Boton`, `BotonIcono`, `CampoTexto`, `Modal`, `Menu`, `AvatarUsuario`, `Insignia`, `MensajeVacio`; reutiliza de Inicio `CompositorInicio`, `ElementoFeedInicio` y `ModalCrearPublicacion`.
+- **Estado:** `servicios/perfil/almacen_perfil.ts` (memoria; no persiste); la solicitud de amistad vive en `useState` y se pierde al salir de la pantalla; los documentos y fotos son URL de objeto del navegador.
+- **Pruebas:** `pruebas/perfil/pagina_perfil_usuario.test.tsx` (propio, ajeno, seis pestañas, edición completa, documentos, foto, métricas, preguntas).
+- **Documentación:** esta sección es la única descripción del módulo; no existen fichas individuales de sus componentes (pendiente de autorización). Estado de verificación: código y pruebas; el aspecto visual no se verificó en esta tarea.
 
 ## Acceso (módulo adicional) — `/acceso`
 

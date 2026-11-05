@@ -4,6 +4,7 @@ import { Icono } from '../../compartido/icono'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 
 const textos = catalogoColaboradores.perfil
+const clases = catalogoColaboradores.clases.detalle
 
 export function BloqueInformacionGeneral({ colaborador }: { colaborador: Colaborador }) {
   const { vigencia } = colaborador
@@ -19,15 +20,15 @@ export function BloqueInformacionGeneral({ colaborador }: { colaborador: Colabor
   ]
 
   return (
-    <section className="mt-4 border-t border-borde-suave pt-4">
-      <h4 className="m-0 mb-2.5 text-nombre-entidad text-texto">{catalogoColaboradores.secciones.vigencia_y_acceso}</h4>
-      <ul className="m-0 grid list-none gap-3 p-0">
+    <section className={clases.seccion}>
+      <h4 className={clases.titulo_seccion}>{catalogoColaboradores.secciones.vigencia_y_acceso}</h4>
+      <ul className={clases.lista_datos}>
         {filas.map((item) => (
-          <li key={item.etiqueta} className="flex items-start gap-2.5">
-            <Icono name={item.icono} className="mt-0.5 w-4 h-4 flex-none text-texto-suave" />
+          <li key={item.etiqueta} className={clases.dato}>
+            <Icono name={item.icono} className={clases.dato_icono} />
             <div>
-              <span className="block text-auxiliar text-texto-suave">{item.etiqueta}</span>
-              <strong className="mt-px block text-campo-formulario text-texto">{item.valor}</strong>
+              <span className={clases.dato_etiqueta}>{item.etiqueta}</span>
+              <strong className={clases.dato_valor}>{item.valor}</strong>
             </div>
           </li>
         ))}

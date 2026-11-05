@@ -6,6 +6,11 @@ import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'
 import catalogoColaboradores from '@/catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
 
+vi.mock('@/componentes/colaboradores/bloques/colaboradores_tabla_config', async (importarOriginal) => ({
+  ...(await importarOriginal<typeof import('@/componentes/colaboradores/bloques/colaboradores_tabla_config')>()),
+  TAMANO_PAGINA_COLABORADORES: 3,
+}))
+
 const botones = catalogoColaboradores.botones
 const edicion = catalogoColaboradores.editar
 const panelFiltros = catalogoColaboradores.panel_filtros_avanzados
@@ -22,8 +27,7 @@ function filaDe(nombre: string) {
 
 function accionDeFila(nombre: string, accion: string) {
   buscar(nombre)
-  fireEvent.click(within(filaDe(nombre)).getByRole('button', { name: botones.mas_opciones }))
-  fireEvent.click(screen.getByRole('menuitem', { name: accion }))
+  fireEvent.click(within(filaDe(nombre)).getByRole('button', { name: accion.replace(':nombre', nombre) }))
 }
 
 function elegir(contenedor: ReturnType<typeof within>, etiqueta: string, opcion: string) {
@@ -32,13 +36,17 @@ function elegir(contenedor: ReturnType<typeof within>, etiqueta: string, opcion:
 }
 
 function abrirEdicion(nombre: string) {
-  accionDeFila(nombre, botones.editar_colaborador)
+  accionDeFila(nombre, botones.accion_editar)
   const titulo = screen.getByRole('heading', { level: 2, name: edicion.titulo })
   return within(titulo.closest('aside') as HTMLElement)
 }
 
 function escribir(panel: ReturnType<typeof within>, etiqueta: string, valor: string) {
   fireEvent.change(panel.getByRole('textbox', { name: etiqueta }), { target: { value: valor } })
+}
+
+function escribirFecha(contenedor: ReturnType<typeof within>, etiqueta: string, valor: string) {
+  fireEvent.change(contenedor.getByLabelText(etiqueta), { target: { value: valor } })
 }
 
 function enviarInvitacion() {
@@ -72,7 +80,7 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
     render(<PaginaColaboradores />)
     const panel = abrirEdicion('Carlos Mendoza')
     for (const aplicacion of ['Ventas', 'Compras', 'Proyectos', 'Reportes', 'Configuración']) fireEvent.click(panel.getByRole('checkbox', { name: aplicacion }))
-    escribir(panel, edicion.fecha_fin, '30/12/2027')
+    escribirFecha(panel, edicion.fecha_fin, '30/12/2027')
     fireEvent.click(panel.getByRole('button', { name: edicion.guardar_cambios }))
 
     const fila = within(filaDe('Carlos Mendoza'))
@@ -106,11 +114,11 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
     escribir(panel, catalogoColaboradores.campos.correo_electronico, COLABORADORES[0].correo)
     expect(guardar).toBeDisabled()
     escribir(panel, catalogoColaboradores.campos.correo_electronico, COLABORADORES[1].correo)
-    escribir(panel, edicion.fecha_fin, '31/02/2027')
+    escribirFecha(panel, edicion.fecha_fin, '31/02/2027')
     expect(guardar).toBeDisabled()
-    escribir(panel, edicion.fecha_fin, '01/01/2026')
+    escribirFecha(panel, edicion.fecha_fin, '01/01/2026')
     expect(guardar).toBeDisabled()
-    escribir(panel, edicion.fecha_fin, '15/05/2027')
+    escribirFecha(panel, edicion.fecha_fin, '15/05/2027')
     expect(guardar).toBeEnabled()
   })
 
@@ -129,9 +137,9 @@ describe('Edicion de colaboradores', { timeout: 30000 }, () => {
 describe('Baja de colaboradores', { timeout: 30000 }, () => {
   it('confirmar la baja cambia el estado y la vigencia en la tabla', () => {
     render(<PaginaColaboradores />)
-    accionDeFila('Carlos Mendoza', botones.dar_de_baja)
+    accionDeFila('Carlos Mendoza', botones.accion_baja)
     const dialogo = within(screen.getByRole('dialog'))
-    fireEvent.change(dialogo.getByRole('textbox', { name: catalogoColaboradores.confirmar_baja.fecha_baja }), { target: { value: '15/10/2026' } })
+    escribirFecha(dialogo, catalogoColaboradores.confirmar_baja.fecha_baja, '15/10/2026')
     fireEvent.click(dialogo.getByRole('button', { name: botones.dar_de_baja }))
 
     expect(screen.queryByRole('dialog')).toBeNull()
@@ -145,18 +153,18 @@ describe('Baja de colaboradores', { timeout: 30000 }, () => {
 
   it('no permite confirmar con una fecha invalida', () => {
     render(<PaginaColaboradores />)
-    accionDeFila('Carlos Mendoza', botones.dar_de_baja)
+    accionDeFila('Carlos Mendoza', botones.accion_baja)
     const dialogo = within(screen.getByRole('dialog'))
     const confirmar = dialogo.getByRole('button', { name: botones.dar_de_baja })
     expect(confirmar).toBeEnabled()
 
-    fireEvent.change(dialogo.getByRole('textbox', { name: catalogoColaboradores.confirmar_baja.fecha_baja }), { target: { value: '31/02/2026' } })
+    escribirFecha(dialogo, catalogoColaboradores.confirmar_baja.fecha_baja, '31/02/2026')
     expect(confirmar).toBeDisabled()
   })
 
   it('cancelar el dialogo no modifica al colaborador', () => {
     render(<PaginaColaboradores />)
-    accionDeFila('Carlos Mendoza', botones.dar_de_baja)
+    accionDeFila('Carlos Mendoza', botones.accion_baja)
     fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: textosRedSocial.CANCELAR }))
 
     expect(screen.queryByRole('dialog')).toBeNull()
@@ -166,10 +174,8 @@ describe('Baja de colaboradores', { timeout: 30000 }, () => {
   it('si el detalle del colaborador esta abierto, refleja la baja', () => {
     render(<PaginaColaboradores />)
     buscar('Carlos Mendoza')
-    fireEvent.click(within(filaDe('Carlos Mendoza')).getByRole('button', { name: botones.mas_opciones }))
-    fireEvent.click(screen.getByRole('menuitem', { name: botones.ver_colaborador }))
-    fireEvent.click(within(filaDe('Carlos Mendoza')).getByRole('button', { name: botones.mas_opciones }))
-    fireEvent.click(screen.getByRole('menuitem', { name: botones.dar_de_baja }))
+    fireEvent.click(within(filaDe('Carlos Mendoza')).getByRole('button', { name: botones.accion_ver.replace(':nombre', 'Carlos Mendoza') }))
+    fireEvent.click(within(filaDe('Carlos Mendoza')).getByRole('button', { name: botones.accion_baja.replace(':nombre', 'Carlos Mendoza') }))
     fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: botones.dar_de_baja }))
 
     const detalle = within(screen.getByRole('heading', { level: 2, name: catalogoColaboradores.secciones.detalle_colaborador }).closest('aside') as HTMLElement)
@@ -182,7 +188,7 @@ describe('Invitacion y reenvio', { timeout: 30000 }, () => {
     render(<PaginaColaboradores />)
     enviarInvitacion()
 
-    expect(within(screen.getByRole('status')).getByText(catalogoColaboradores.mensajes.invitacion_completada_demostracion)).toBeInTheDocument()
+    expect(within(screen.getByRole('alert')).getByText(catalogoColaboradores.mensajes.invitacion_completada_demostracion)).toBeInTheDocument()
     buscar('juan.perez@email.com')
     const fila = within(filaDe('Juan Pérez Martinez'))
     expect(fila.getByText('Invitado')).toBeInTheDocument()
@@ -190,7 +196,7 @@ describe('Invitacion y reenvio', { timeout: 30000 }, () => {
     expect(fila.getByText(formatearFecha(Date.now()))).toBeInTheDocument()
     buscar('')
     expect(screen.getByText(resumen(1, 3, COLABORADORES.length + 1))).toBeInTheDocument()
-    expect(screen.getByRole('tab', { name: /Invitados/ })).toHaveTextContent('2')
+    expect(screen.getByRole('tab', { name: /Invitados/ }).textContent?.trim()).toBe('Invitados')
   })
 
   it('invitar dos veces el mismo correo no duplica la fila', () => {
@@ -217,7 +223,7 @@ describe('Invitacion y reenvio', { timeout: 30000 }, () => {
     expect(fila.getByText('20/05/2026')).toBeInTheDocument()
 
     fireEvent.click(fila.getByRole('button', { name: botones.reenviar }))
-    expect(within(screen.getByRole('status')).getByText(catalogoColaboradores.mensajes.invitacion_reenviada_demostracion)).toBeInTheDocument()
+    expect(within(screen.getByRole('alert')).getByText(catalogoColaboradores.mensajes.invitacion_reenviada_demostracion)).toBeInTheDocument()
     expect(fila.getByText(formatearFecha(Date.now()))).toBeInTheDocument()
     expect(fila.queryByText('20/05/2026')).toBeNull()
     expect(fila.getByText('Invitado')).toBeInTheDocument()

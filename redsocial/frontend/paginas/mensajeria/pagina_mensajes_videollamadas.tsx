@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp, usarCarrusel, clasesBoton } from '../../componentes/compartido'
+import { Icono, EstructuraApp, usarCarrusel, clasesBoton, CLASE_ENLACE_ACCION_SECUNDARIO } from '../../componentes/compartido'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { PestanasMensajes, SeccionContactosFrecuentes } from '../../componentes/mensajeria'
 import { CONTACTOS_LINEA_MENSAJERIA, GRUPOS_RECIENTES_MENSAJERIA, EVENTOS_PROXIMOS_MENSAJERIA, LLAMADAS_RECIENTES, CONTACTOS_FRECUENTES, REUNIONES_PROGRAMADAS, HISTORIAL } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -10,9 +10,9 @@ export function PaginaMensajesVideollamadas() {
     <EstructuraApp paginaActiva="mensajes">
       <div>
         <div className="mb-5 flex items-start justify-between gap-5">
-          <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{catalogoMensajeria.titulos.videollamadas}</h1>
+          <h1 className="m-0 text-titulo-pagina text-texto">{catalogoMensajeria.titulos.videollamadas}</h1>
           <div className="flex items-center gap-2.5">
-            <a href="#" className="inline-flex items-center gap-1.5 text-enlace-accion text-texto-suave no-underline hover:text-primario">
+            <a href="#" className={[CLASE_ENLACE_ACCION_SECUNDARIO, 'inline-flex items-center gap-1.5'].join(' ')}>
               <Icono name="reloj" className="h-4 w-4" /> {catalogoMensajeria.leyendas.historial_de_llamadas}
             </a>
           </div>

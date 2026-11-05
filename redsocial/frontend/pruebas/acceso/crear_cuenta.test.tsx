@@ -28,11 +28,16 @@ function enviar() {
   fireEvent.submit(screen.getByRole('button', { name: new RegExp(textos.botones.crear_cuenta) }).closest('form') as HTMLFormElement)
 }
 
+function aceptarTerminos() {
+  fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(textos.terminos_aceptacion.uso) }))
+}
+
 function completarValido() {
   escribir(textos.campos.nombre, 'Ana Torres')
   escribir(textos.campos.correo, 'ana@ejemplo.com')
   escribir(nuevaContrasena.etiqueta, 'secreta1')
   escribir(confirmacionContrasena.etiqueta, 'secreta1')
+  aceptarTerminos()
 }
 
 describe('Selector de modo de acceso', () => {
@@ -42,7 +47,7 @@ describe('Selector de modo de acceso', () => {
     fireEvent.click(pestana('crear_cuenta'))
     expect(pestana('crear_cuenta')).toHaveAttribute('aria-selected', 'true')
     expect(screen.getByLabelText(textos.campos.nombre)).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: textos.botones.continuar_con_google })).toBeNull()
+    expect(screen.queryByRole('button', { name: new RegExp(textos.proveedores[0].etiqueta) })).toBeNull()
     expect(screen.getByRole('tabpanel')).toHaveAttribute('aria-labelledby', textos.modos[1].id)
 
     fireEvent.click(pestana('iniciar_sesion'))
@@ -147,10 +152,25 @@ describe('Flujo completo de Crear cuenta', () => {
     window.history.pushState({}, '', '/')
   })
 
-  it('no ofrece enlaces legales que no existen', () => {
+  it('no ofrece enlaces legales que no existen y la aceptación de términos llega sin marcar', () => {
     abrirCrearCuenta()
-    expect(screen.getByText(textos.mensajes.terminos)).toBeInTheDocument()
+    expect(screen.getByText(textos.terminos_aceptacion.uso)).toBeInTheDocument()
+    expect(screen.getByText(textos.terminos_aceptacion.privacidad)).toBeInTheDocument()
     expect(screen.queryByRole('link')).toBeNull()
+    expect(screen.getByRole('checkbox', { name: new RegExp(textos.terminos_aceptacion.uso) })).not.toBeChecked()
+  })
+
+  it('no crea la cuenta sin aceptar los términos y quita el error al aceptarlos', () => {
+    abrirCrearCuenta()
+    completarValido()
+    fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(textos.terminos_aceptacion.uso) }))
+    enviar()
+    const error = screen.getByText(textos.errores.terminos_obligatorios)
+    expect(error).toHaveAttribute('role', 'alert')
+    expect(screen.getByRole('checkbox', { name: new RegExp(textos.terminos_aceptacion.uso) })).toHaveAttribute('aria-invalid', 'true')
+    expect(screen.queryByText(textos.mensajes.creando_cuenta)).toBeNull()
+    aceptarTerminos()
+    expect(screen.queryByText(textos.errores.terminos_obligatorios)).toBeNull()
   })
 
   it('recorre carga, exito y la pantalla Revisa tu correo sin salir de acceso', () => {

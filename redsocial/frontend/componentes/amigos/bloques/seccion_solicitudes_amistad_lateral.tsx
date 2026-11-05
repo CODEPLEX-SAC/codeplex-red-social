@@ -13,8 +13,8 @@ export function SeccionSolicitudesAmistadLateral({ SOLICITUDES }: { SOLICITUDES:
           <div className="mb-2.5 flex gap-2.5">
             <AvatarUsuario tamano="lg" imagen={usuarioImg} />
             <div>
-              <strong className="block text-nombre-entidad text-texto">{s.nombre}</strong>
-              <p className="m-0 mt-0.5 text-cuerpo leading-texto text-texto-suave">{s.descripcion}</p>
+              <strong className="block text-nombre-fila text-texto">{s.nombre}</strong>
+              <p className="m-0 mt-0.5 text-subtitulo leading-texto text-texto-suave">{s.descripcion}</p>
             </div>
           </div>
           <div className="flex gap-1.5">

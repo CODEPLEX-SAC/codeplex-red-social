@@ -2,14 +2,12 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { SIN_ERROR, errorDeContrasena, errorDeCorreo } from './validaciones_acceso'
 import { usarEnvioDemostracion } from './usar_envio_demostracion'
-import type { CredencialesAcceso, ErroresInicioSesion } from '@/tipos/acceso/contrato_acceso'
+import type { ErroresInicioSesion } from '@/tipos/acceso/contrato_acceso'
 
-const CREDENCIALES_VACIAS: CredencialesAcceso = { correo: SIN_ERROR, contrasena: SIN_ERROR }
-
-export function usarInicioSesion(onAcceder: () => void, credencialesIniciales: CredencialesAcceso = CREDENCIALES_VACIAS) {
+export function usarInicioSesion(onAcceder: () => void) {
   const envio = usarEnvioDemostracion(onAcceder)
-  const [correo, setCorreo] = useState(credencialesIniciales.correo)
-  const [contrasena, setContrasena] = useState(credencialesIniciales.contrasena)
+  const [correo, setCorreo] = useState(SIN_ERROR)
+  const [contrasena, setContrasena] = useState(SIN_ERROR)
   const [errores, setErrores] = useState<ErroresInicioSesion>({ correo: SIN_ERROR, contrasena: SIN_ERROR })
 
   function cambiarCorreo(valor: string) {

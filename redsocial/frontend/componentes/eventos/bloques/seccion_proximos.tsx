@@ -7,6 +7,7 @@ import { imagenEventoPredeterminada as imagenEvento } from '../../compartido'
 import { TextoColor } from '../../compartido/interfaz/texto_color'
 import { Icono } from '../../compartido/icono'
 import type { EventoProximo } from '@/tipos/eventos/modelo_eventos_para_ti'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionProximos({
   alDesplazarProximos,
@@ -21,7 +22,7 @@ export function SeccionProximos({
     <section>
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoEventos.secciones.proximos}</h2>
-        <a href={catalogoEventos.rutas.proximos} className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+        <a href={catalogoEventos.rutas.proximos} className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
       </div>
       <div className="relative">
         <BotonIcono icono="flecha-izquierda" type="button" aria-label={textosRedSocial.ANTERIOR} onClick={() => alDesplazarProximos(-1)} variant="flotante" size="default" className="absolute -left-4 max-900:-left-2 top-1/2 -translate-y-1/2" />

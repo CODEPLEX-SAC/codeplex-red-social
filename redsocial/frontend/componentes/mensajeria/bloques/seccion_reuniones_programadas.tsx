@@ -3,6 +3,7 @@ import { clasesBoton } from '../../compartido/interfaz/boton'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
 import type { ReunionProgramada } from '@/tipos/mensajeria/contrato_reunion'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionReunionesProgramadas({
   REUNIONES_PROGRAMADAS,
@@ -40,7 +41,7 @@ export function SeccionReunionesProgramadas({
         ))}
       </div>
       <div className="pt-3.5 text-center">
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{catalogoMensajeria.botones.ver_todas_las_reuniones}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoMensajeria.botones.ver_todas_las_reuniones}</a>
       </div>
     </section>
   )

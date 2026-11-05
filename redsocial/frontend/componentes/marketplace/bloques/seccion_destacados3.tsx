@@ -4,6 +4,7 @@ import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import { FilaDestacados } from './fila_destacados'
 import { TarjetaDestacado } from './tarjeta_destacado'
 import type { Destacado } from '@/tipos/marketplace/modelo_marketplace'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionDestacados3({
   DESTACADOS,
@@ -20,7 +21,7 @@ export function SeccionDestacados3({
     <section className="mb-7">
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoMarketplace.secciones.destacados}</h2>
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
       </div>
       {DESTACADOS.length === 0 ? <MensajeVacio titulo={catalogoMarketplace.busqueda.sin_resultados_titulo} texto={catalogoMarketplace.busqueda.sin_resultados_detalle} /> : null}
       <FilaDestacados>

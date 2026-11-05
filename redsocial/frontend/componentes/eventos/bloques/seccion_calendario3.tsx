@@ -6,6 +6,7 @@ import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { PanelCalendarioMini } from './panel_calendario_mini'
 import type { EventoLateral } from '@/tipos/eventos/modelo_eventos_invitaciones'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionCalendario3({
   MES_CALENDARIO_INVITACIONES,
@@ -25,7 +26,7 @@ export function SeccionCalendario3({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner">{catalogoEventos.secciones.proximos_de_tus_eventos}</h2>
-          <a href={catalogoEventos.rutas.proximos} className="text-enlace-accion text-primario no-underline">{textosRedSocial.VER_TODOS}</a>
+          <a href={catalogoEventos.rutas.proximos} className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
         </div>
         <div className="px-3 pb-2">
           {PROXIMOS_LATERAL.map((ev, i) => (
@@ -54,7 +55,7 @@ export function SeccionCalendario3({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner">{catalogoEventos.secciones.resumen_de_tus_eventos}</h2>
-          <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoEventos.leyendas.este_anio}</a>
+          <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoEventos.leyendas.este_anio}</a>
         </div>
         <div className="px-4 pb-4">
           <div className="grid grid-cols-3 gap-2 py-2 text-center">

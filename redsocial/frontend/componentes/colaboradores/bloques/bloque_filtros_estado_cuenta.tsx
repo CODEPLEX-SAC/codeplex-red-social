@@ -3,6 +3,7 @@ import { Casilla } from '../../compartido/interfaz/casilla'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 
 const textos = catalogoColaboradores.panel_filtros_avanzados
+const clases = catalogoColaboradores.clases.filtros
 
 export function BloqueFiltrosEstadoCuenta({
   valores,
@@ -39,7 +40,7 @@ export function BloqueFiltrosEstadoCuenta({
   } = asignadores
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className={clases.columna}>
       <section>
         <Selector variant="colaboradores" label={textos.ultimo_acceso.etiqueta} value={ultimoAcceso} onChange={onCambiarUltimoAcceso}>
           {textos.ultimo_acceso.opciones.map((o) => <option key={o}>{o}</option>)}
@@ -47,15 +48,15 @@ export function BloqueFiltrosEstadoCuenta({
       </section>
 
       <section>
-        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.estado_acceso}</h4>
-        <div className="flex flex-col gap-1">
-          <label className="flex cursor-pointer items-center gap-2">
+        <h4 className={clases.titulo_grupo}>{textos.estado_acceso}</h4>
+        <div className={clases.opciones}>
+          <label className={clases.opcion}>
             <Casilla seleccionado={accesoVigente} alCambiar={onCambiarAccesoVigente} inputProps={{ 'aria-label': textos.acceso_vigente }} />
-            <span className="text-campo-formulario text-texto">{textos.acceso_vigente}</span>
+            <span className={clases.opcion_texto}>{textos.acceso_vigente}</span>
           </label>
-          <label className="flex cursor-pointer items-center gap-2">
+          <label className={clases.opcion}>
             <Casilla seleccionado={accesoVencido} alCambiar={onCambiarAccesoVencido} inputProps={{ 'aria-label': textos.acceso_vencido }} />
-            <span className="text-campo-formulario text-texto">{textos.acceso_vencido}</span>
+            <span className={clases.opcion_texto}>{textos.acceso_vencido}</span>
           </label>
         </div>
       </section>
@@ -67,15 +68,15 @@ export function BloqueFiltrosEstadoCuenta({
       </section>
 
       <section>
-        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.tipo_cuenta}</h4>
-        <div className="flex flex-col gap-1">
-          <label className="flex cursor-pointer items-center gap-2">
+        <h4 className={clases.titulo_grupo}>{textos.tipo_cuenta}</h4>
+        <div className={clases.opciones}>
+          <label className={clases.opcion}>
             <Casilla seleccionado={cuentaCreada} alCambiar={onCambiarCuentaCreada} inputProps={{ 'aria-label': textos.cuenta_creada }} />
-            <span className="text-campo-formulario text-texto">{textos.cuenta_creada}</span>
+            <span className={clases.opcion_texto}>{textos.cuenta_creada}</span>
           </label>
-          <label className="flex cursor-pointer items-center gap-2">
+          <label className={clases.opcion}>
             <Casilla seleccionado={cuentaInvitada} alCambiar={onCambiarCuentaInvitada} inputProps={{ 'aria-label': textos.cuenta_invitada }} />
-            <span className="text-campo-formulario text-texto">{textos.cuenta_invitada}</span>
+            <span className={clases.opcion_texto}>{textos.cuenta_invitada}</span>
           </label>
         </div>
       </section>

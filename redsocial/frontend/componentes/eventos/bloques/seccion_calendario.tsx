@@ -6,6 +6,7 @@ import { Icono } from '../../compartido/icono'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
 import { PanelCalendarioMini } from './panel_calendario_mini'
 import type { EventoLateral } from '@/tipos/eventos/modelo_eventos_calendario'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionCalendario({
   MES_CALENDARIO_ACTUAL,
@@ -25,7 +26,7 @@ export function SeccionCalendario({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.proximos}</h2>
-          <a href={catalogoEventos.rutas.proximos} className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+          <a href={catalogoEventos.rutas.proximos} className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
         </div>
         <div className="px-3 pb-2">
           {PROXIMOS_LATERAL.map((ev, i) => (

@@ -6,6 +6,7 @@ import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { SeccionReportesRecientes } from './seccion_reportes_recientes'
 import type { IconName } from '../../../tipos/compartido/contrato_icono'
 import type { Plantilla, MiniGrafico, ReporteReciente } from '@/tipos/reportes/modelo_reportes'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 const MODULOS_TABS: { etiqueta: string; icono: IconName }[] = catalogoReportes.modulos_tabs as { etiqueta: string; icono: IconName }[]
 
@@ -57,7 +58,7 @@ export function SeccionPlantillasDeReportes({
 
       <div className="mb-3.5 flex items-center justify-between">
         <h2 className="m-0 text-titulo-seccion text-texto">{catalogoReportes.secciones.plantillas_de_reportes}</h2>
-        <a href="#" className="text-enlace-accion text-primario no-underline">{catalogoReportes.botones.ver_todas_las_plantillas}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoReportes.botones.ver_todas_las_plantillas}</a>
       </div>
       <div className="mb-7 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1">
         {PLANTILLAS.map((p) => (
@@ -68,7 +69,7 @@ export function SeccionPlantillasDeReportes({
               </span>
               <strong className="text-nombre-entidad leading-compacto text-texto">{p.nombre}</strong>
             </div>
-            <p className="m-0 min-h-8 text-cuerpo leading-texto text-texto-suave">{p.descripcion}</p>
+            <p className="m-0 min-h-8 text-subtitulo leading-texto text-texto-suave">{p.descripcion}</p>
             <span className="text-etiqueta text-texto-suave">{p.modulo}</span>
             <MiniGraficoPlantilla grafico={p.grafico} />
             <div className="mt-1 flex items-center justify-between border-t border-fondo-hover-discreto pt-2">

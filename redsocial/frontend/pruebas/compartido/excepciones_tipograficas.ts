@@ -10,7 +10,7 @@ export const COLORES_DE_SUPERFICIE_HEREDADOS: Record<string, number> = {
 }
 
 export const EXCEPCIONES_TIPOGRAFICAS: { ruta: string; regla: string; clase: string; motivo: string }[] = [
-  { ruta: '/componentes/colaboradores/bloques/bloque_vista_previa_correo.tsx', regla: 'interlineado', clase: 'leading-6', motivo: 'cifra centrada en una caja de alto fijo de 24 px' },
+  { ruta: '/catalogos/capacidades/redsocial/colaboradores.json', regla: 'interlineado', clase: 'leading-6', motivo: 'cifra centrada en una caja de alto fijo de 24 px' },
   { ruta: '/componentes/compartido/icono.tsx', regla: 'estilo-js', clase: 'fontSize', motivo: 'mecanismo de tamano de glifos, no es texto' },
   { ruta: '/componentes/compartido/fuente_iconos.ts', regla: 'estilo-js', clase: 'fontSize', motivo: 'mecanismo de tamano de glifos, no es texto' },
   { ruta: '/catalogos/capacidades/redsocial/compartido.json', regla: 'estilo-js', clase: 'fontSize', motivo: 'tema MUI: navegacion lateral apuntando al rol navegacion' },

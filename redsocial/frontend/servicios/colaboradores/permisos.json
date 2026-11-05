@@ -2,111 +2,957 @@
   "modulos": [
     {
       "icono": "planillas",
-      "clase": "bg-fondo-categoria-morado text-morado-categoria",
       "nombre": "Planillas",
-      "descripcion": "Empleados, planillas, cálculos y pagos",
-      "activo": true
+      "descripcion": "Empleados, planillas, cálculos y pagos"
     },
     {
       "icono": "contabilidad",
-      "clase": "bg-fondo-categoria-verde text-verde-categoria-texto",
       "nombre": "Contabilidad",
       "descripcion": "Asientos, libros y reportes contables"
     },
     {
       "icono": "inventario",
-      "clase": "bg-fondo-categoria-naranja text-naranja-categoria-texto",
       "nombre": "Inventario",
       "descripcion": "Productos, almacenes y movimientos"
     },
     {
       "icono": "ventas",
-      "clase": "bg-fondo-categoria-azul text-azul-categoria-texto",
       "nombre": "Ventas",
       "descripcion": "Cotizaciones, pedidos y facturación"
     },
     {
       "icono": "compras",
-      "clase": "bg-fondo-categoria-rojo text-negativo-kpi",
       "nombre": "Compras",
       "descripcion": "Proveedores, órdenes y compras"
     },
     {
       "icono": "maletin",
-      "clase": "bg-fondo-categoria-cian text-azul-categoria-texto",
       "nombre": "Proyectos",
       "descripcion": "Tareas, avances y costos"
     },
     {
       "icono": "reportes",
-      "clase": "bg-fondo-categoria-amarillo text-naranja-categoria-texto",
       "nombre": "Reportes",
       "descripcion": "Dashboards y tableros"
     },
     {
       "icono": "configuracion",
-      "clase": "bg-fondo-hover-neutro text-texto-suave",
       "nombre": "Configuración",
       "descripcion": "Parámetros y configuración del sistema"
     }
   ],
-  "perfilesNivelRapido": [
-    "Supervisor de Planillas",
-    "Operador de Planillas",
-    "Consultor de Planillas",
-    "Solo lectura",
-    "Sin permisos"
-  ],
-  "perfilAplicado": "Supervisor de Planillas",
-  "filas": [
-    {
-      "nombre": "Empleados",
-      "descripcion": "Ver y gestionar información de empleados",
-      "activos": [
-        "ver"
-      ]
+  "recursosModulos": {
+    "Planillas": [
+      {
+        "nombre": "Empleados",
+        "descripcion": "Ver y gestionar información de empleados",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Planillas",
+        "descripcion": "Crear y editar planillas",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Cálculos",
+        "descripcion": "Realizar cálculos de planillas",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Pagos",
+        "descripcion": "Registrar y gestionar pagos",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Reportes",
+        "descripcion": "Generar reportes de planillas",
+        "operaciones": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Configuración del módulo",
+        "descripcion": "Configurar parámetros de planillas",
+        "operaciones": [
+          "ver",
+          "editar"
+        ]
+      }
+    ],
+    "Contabilidad": [
+      {
+        "nombre": "Asientos contables",
+        "descripcion": "Registrar y revisar asientos",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Libros contables",
+        "descripcion": "Consultar libros y registros",
+        "operaciones": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Reportes contables",
+        "descripcion": "Generar reportes contables",
+        "operaciones": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      }
+    ],
+    "Inventario": [
+      {
+        "nombre": "Productos",
+        "descripcion": "Gestionar el catálogo de productos",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Almacenes",
+        "descripcion": "Administrar almacenes",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar"
+        ]
+      },
+      {
+        "nombre": "Movimientos",
+        "descripcion": "Registrar entradas y salidas",
+        "operaciones": [
+          "ver",
+          "crear",
+          "imprimir",
+          "exportar"
+        ]
+      }
+    ],
+    "Ventas": [
+      {
+        "nombre": "Cotizaciones",
+        "descripcion": "Elaborar y enviar cotizaciones",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Pedidos",
+        "descripcion": "Gestionar pedidos de clientes",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Facturación",
+        "descripcion": "Emitir y consultar comprobantes",
+        "operaciones": [
+          "ver",
+          "crear",
+          "imprimir",
+          "exportar"
+        ]
+      }
+    ],
+    "Compras": [
+      {
+        "nombre": "Proveedores",
+        "descripcion": "Gestionar proveedores",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Órdenes de compra",
+        "descripcion": "Emitir y aprobar órdenes",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Compras",
+        "descripcion": "Registrar compras recibidas",
+        "operaciones": [
+          "ver",
+          "crear",
+          "imprimir",
+          "exportar"
+        ]
+      }
+    ],
+    "Proyectos": [
+      {
+        "nombre": "Tareas",
+        "descripcion": "Asignar y seguir tareas",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar"
+        ]
+      },
+      {
+        "nombre": "Avances",
+        "descripcion": "Registrar avances del proyecto",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Costos",
+        "descripcion": "Consultar y ajustar costos",
+        "operaciones": [
+          "ver",
+          "editar",
+          "imprimir",
+          "exportar"
+        ]
+      }
+    ],
+    "Reportes": [
+      {
+        "nombre": "Dashboards",
+        "descripcion": "Consultar dashboards",
+        "operaciones": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      {
+        "nombre": "Tableros",
+        "descripcion": "Consultar tableros",
+        "operaciones": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      }
+    ],
+    "Configuración": [
+      {
+        "nombre": "Parámetros del sistema",
+        "descripcion": "Ajustar parámetros generales",
+        "operaciones": [
+          "ver",
+          "editar"
+        ]
+      },
+      {
+        "nombre": "Usuarios y accesos",
+        "descripcion": "Administrar usuarios y accesos",
+        "operaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar"
+        ]
+      }
+    ]
+  },
+  "perfilesModulos": {
+    "Planillas": {
+      "administrador": {
+        "Empleados": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Planillas": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Cálculos": [
+          "ver",
+          "crear",
+          "editar",
+          "imprimir",
+          "exportar"
+        ],
+        "Pagos": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Reportes": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ],
+        "Configuración del módulo": [
+          "ver",
+          "editar"
+        ]
+      },
+      "supervisor": {
+        "Empleados": [
+          "ver"
+        ],
+        "Planillas": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Cálculos": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Pagos": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Reportes": [
+          "ver",
+          "exportar"
+        ],
+        "Configuración del módulo": [
+          "sin-acceso"
+        ]
+      },
+      "operador": {
+        "Empleados": [
+          "ver"
+        ],
+        "Planillas": [
+          "ver",
+          "crear"
+        ],
+        "Cálculos": [
+          "ver",
+          "crear"
+        ],
+        "Pagos": [
+          "ver"
+        ],
+        "Reportes": [
+          "ver"
+        ],
+        "Configuración del módulo": [
+          "sin-acceso"
+        ]
+      },
+      "consulta": {
+        "Empleados": [
+          "ver",
+          "exportar"
+        ],
+        "Planillas": [
+          "ver",
+          "exportar"
+        ],
+        "Cálculos": [
+          "ver",
+          "exportar"
+        ],
+        "Pagos": [
+          "ver",
+          "exportar"
+        ],
+        "Reportes": [
+          "ver",
+          "exportar"
+        ],
+        "Configuración del módulo": [
+          "ver"
+        ]
+      },
+      "sin-acceso": {
+        "Empleados": [
+          "sin-acceso"
+        ],
+        "Planillas": [
+          "sin-acceso"
+        ],
+        "Cálculos": [
+          "sin-acceso"
+        ],
+        "Pagos": [
+          "sin-acceso"
+        ],
+        "Reportes": [
+          "sin-acceso"
+        ],
+        "Configuración del módulo": [
+          "sin-acceso"
+        ]
+      }
     },
-    {
-      "nombre": "Planillas",
-      "descripcion": "Crear y editar planillas",
-      "activos": [
-        "ver",
-        "crear",
-        "editar"
-      ]
+    "Contabilidad": {
+      "administrador": {
+        "Asientos contables": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Libros contables": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ],
+        "Reportes contables": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      "supervisor": {
+        "Asientos contables": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Libros contables": [
+          "ver",
+          "exportar"
+        ],
+        "Reportes contables": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "operador": {
+        "Asientos contables": [
+          "ver",
+          "crear"
+        ],
+        "Libros contables": [
+          "ver"
+        ],
+        "Reportes contables": [
+          "ver"
+        ]
+      },
+      "consulta": {
+        "Asientos contables": [
+          "ver",
+          "exportar"
+        ],
+        "Libros contables": [
+          "ver",
+          "exportar"
+        ],
+        "Reportes contables": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "sin-acceso": {
+        "Asientos contables": [
+          "sin-acceso"
+        ],
+        "Libros contables": [
+          "sin-acceso"
+        ],
+        "Reportes contables": [
+          "sin-acceso"
+        ]
+      }
     },
-    {
-      "nombre": "Cálculos",
-      "descripcion": "Realizar cálculos de planillas",
-      "activos": [
-        "ver",
-        "crear",
-        "editar"
-      ]
+    "Inventario": {
+      "administrador": {
+        "Productos": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Almacenes": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar"
+        ],
+        "Movimientos": [
+          "ver",
+          "crear",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      "supervisor": {
+        "Productos": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Almacenes": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Movimientos": [
+          "ver",
+          "crear",
+          "exportar"
+        ]
+      },
+      "operador": {
+        "Productos": [
+          "ver"
+        ],
+        "Almacenes": [
+          "ver"
+        ],
+        "Movimientos": [
+          "ver",
+          "crear"
+        ]
+      },
+      "consulta": {
+        "Productos": [
+          "ver",
+          "exportar"
+        ],
+        "Almacenes": [
+          "ver"
+        ],
+        "Movimientos": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "sin-acceso": {
+        "Productos": [
+          "sin-acceso"
+        ],
+        "Almacenes": [
+          "sin-acceso"
+        ],
+        "Movimientos": [
+          "sin-acceso"
+        ]
+      }
     },
-    {
-      "nombre": "Pagos",
-      "descripcion": "Registrar y gestionar pagos",
-      "activos": [
-        "ver",
-        "crear",
-        "editar"
-      ]
+    "Ventas": {
+      "administrador": {
+        "Cotizaciones": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Pedidos": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Facturación": [
+          "ver",
+          "crear",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      "supervisor": {
+        "Cotizaciones": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Pedidos": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Facturación": [
+          "ver",
+          "crear",
+          "exportar"
+        ]
+      },
+      "operador": {
+        "Cotizaciones": [
+          "ver",
+          "crear"
+        ],
+        "Pedidos": [
+          "ver",
+          "crear"
+        ],
+        "Facturación": [
+          "ver"
+        ]
+      },
+      "consulta": {
+        "Cotizaciones": [
+          "ver",
+          "exportar"
+        ],
+        "Pedidos": [
+          "ver",
+          "exportar"
+        ],
+        "Facturación": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "sin-acceso": {
+        "Cotizaciones": [
+          "sin-acceso"
+        ],
+        "Pedidos": [
+          "sin-acceso"
+        ],
+        "Facturación": [
+          "sin-acceso"
+        ]
+      }
     },
-    {
-      "nombre": "Reportes",
-      "descripcion": "Generar reportes de planillas",
-      "activos": [
-        "ver",
-        "exportar"
-      ]
+    "Compras": {
+      "administrador": {
+        "Proveedores": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Órdenes de compra": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar",
+          "imprimir",
+          "exportar"
+        ],
+        "Compras": [
+          "ver",
+          "crear",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      "supervisor": {
+        "Proveedores": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Órdenes de compra": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Compras": [
+          "ver",
+          "crear",
+          "exportar"
+        ]
+      },
+      "operador": {
+        "Proveedores": [
+          "ver"
+        ],
+        "Órdenes de compra": [
+          "ver",
+          "crear"
+        ],
+        "Compras": [
+          "ver",
+          "crear"
+        ]
+      },
+      "consulta": {
+        "Proveedores": [
+          "ver",
+          "exportar"
+        ],
+        "Órdenes de compra": [
+          "ver",
+          "exportar"
+        ],
+        "Compras": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "sin-acceso": {
+        "Proveedores": [
+          "sin-acceso"
+        ],
+        "Órdenes de compra": [
+          "sin-acceso"
+        ],
+        "Compras": [
+          "sin-acceso"
+        ]
+      }
     },
-    {
-      "nombre": "Configuración del módulo",
-      "descripcion": "Configurar parámetros de planillas",
-      "activos": [
-        "sin-acceso"
-      ]
+    "Proyectos": {
+      "administrador": {
+        "Tareas": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar"
+        ],
+        "Avances": [
+          "ver",
+          "crear",
+          "editar",
+          "exportar"
+        ],
+        "Costos": [
+          "ver",
+          "editar",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      "supervisor": {
+        "Tareas": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Avances": [
+          "ver",
+          "crear",
+          "editar"
+        ],
+        "Costos": [
+          "ver",
+          "editar"
+        ]
+      },
+      "operador": {
+        "Tareas": [
+          "ver",
+          "crear"
+        ],
+        "Avances": [
+          "ver",
+          "crear"
+        ],
+        "Costos": [
+          "ver"
+        ]
+      },
+      "consulta": {
+        "Tareas": [
+          "ver"
+        ],
+        "Avances": [
+          "ver",
+          "exportar"
+        ],
+        "Costos": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "sin-acceso": {
+        "Tareas": [
+          "sin-acceso"
+        ],
+        "Avances": [
+          "sin-acceso"
+        ],
+        "Costos": [
+          "sin-acceso"
+        ]
+      }
+    },
+    "Reportes": {
+      "administrador": {
+        "Dashboards": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ],
+        "Tableros": [
+          "ver",
+          "imprimir",
+          "exportar"
+        ]
+      },
+      "supervisor": {
+        "Dashboards": [
+          "ver",
+          "exportar"
+        ],
+        "Tableros": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "operador": {
+        "Dashboards": [
+          "ver"
+        ],
+        "Tableros": [
+          "ver"
+        ]
+      },
+      "consulta": {
+        "Dashboards": [
+          "ver",
+          "exportar"
+        ],
+        "Tableros": [
+          "ver",
+          "exportar"
+        ]
+      },
+      "sin-acceso": {
+        "Dashboards": [
+          "sin-acceso"
+        ],
+        "Tableros": [
+          "sin-acceso"
+        ]
+      }
+    },
+    "Configuración": {
+      "administrador": {
+        "Parámetros del sistema": [
+          "ver",
+          "editar"
+        ],
+        "Usuarios y accesos": [
+          "ver",
+          "crear",
+          "editar",
+          "eliminar"
+        ]
+      },
+      "supervisor": {
+        "Parámetros del sistema": [
+          "ver",
+          "editar"
+        ],
+        "Usuarios y accesos": [
+          "ver"
+        ]
+      },
+      "operador": {
+        "Parámetros del sistema": [
+          "ver"
+        ],
+        "Usuarios y accesos": [
+          "sin-acceso"
+        ]
+      },
+      "consulta": {
+        "Parámetros del sistema": [
+          "ver"
+        ],
+        "Usuarios y accesos": [
+          "ver"
+        ]
+      },
+      "sin-acceso": {
+        "Parámetros del sistema": [
+          "sin-acceso"
+        ],
+        "Usuarios y accesos": [
+          "sin-acceso"
+        ]
+      }
     }
-  ]
+  },
+  "perfilInicialModulos": {
+    "Planillas": "supervisor",
+    "Contabilidad": "consulta",
+    "Inventario": "consulta",
+    "Ventas": "operador",
+    "Compras": "sin-acceso",
+    "Proyectos": "sin-acceso",
+    "Reportes": "sin-acceso",
+    "Configuración": "sin-acceso"
+  },
+  "perfilesValidados": false
 }

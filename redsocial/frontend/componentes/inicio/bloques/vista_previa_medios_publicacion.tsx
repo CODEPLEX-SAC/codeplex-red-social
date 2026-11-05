@@ -1,5 +1,4 @@
 import { Icono } from '../../compartido/icono'
-import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
 import type { VistaPreviaMediosPublicacionProps } from '@/tipos/inicio/contrato_crear_publicacion'
@@ -16,7 +15,7 @@ export function VistaPreviaMediosPublicacion({ medios, onQuitar }: VistaPreviaMe
   if (medios.length === 0) return null
 
   const unico = medios.length === 1
-  const altoMedio = unico ? 'max-h-80 w-full object-contain' : 'h-36 w-full object-cover'
+  const altoMedio = unico ? 'max-h-105 w-full object-contain' : 'h-45 w-full object-cover'
 
   return (
     <ul aria-label={textos.vista_previa} className={`m-0 grid list-none gap-0.5 overflow-hidden rounded-control border border-borde p-0 ${columnasPara(medios.length)}`}>
@@ -32,7 +31,7 @@ export function VistaPreviaMediosPublicacion({ medios, onQuitar }: VistaPreviaMe
                 </span>
               </>
             ) : (
-              <AvatarImagen src={medio.url} alt={textos.texto_alternativo.replace(':numero', numero)} className={`block ${altoMedio}`} />
+              <img src={medio.url} alt={textos.texto_alternativo.replace(':numero', numero)} className={`block ${altoMedio}`} />
             )}
             <BotonIcono
               icono="cerrar"

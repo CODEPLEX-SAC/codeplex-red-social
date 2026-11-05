@@ -4,24 +4,28 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { Selector } from '../../compartido/interfaz/selector'
 
+const clases = catalogoColaboradores.clases.invitar_vigencia
+const comun = catalogoColaboradores.clases.invitar_comun
+const textos = catalogoColaboradores.campos_vigencia
+
 export function BloqueRecordatorios({ OPCIONES_RECORDATORIO }: { OPCIONES_RECORDATORIO: string[] }) {
   return (
-    <div className="rounded-xl border border-gris-borde px-5 py-4.5">
-      <div className="mb-3.5 flex items-center gap-2">
-        <Icono name="campana" className="w-5 h-5 text-primario" />
-        <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_vigencia.recordatorios}</h4>
+    <div className={comun.tarjeta_compacta}>
+      <div className={clases.cabecera}>
+        <Icono name="campana" className={comun.glifo_titulo} />
+        <h4 className={comun.titulo}>{textos.recordatorios}</h4>
       </div>
-      <p className="-mt-2 mb-3.5 text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.recordatorios_subtitulo}</p>
+      <p className={comun.subtitulo}>{textos.recordatorios_subtitulo}</p>
 
-      <label className="mb-3 flex cursor-pointer items-start gap-2.5">
+      <label className={clases.opcion_media}>
         <Casilla defaultChecked />
-        <span className="flex flex-col gap-0.5">
-          <span className="text-campo-formulario text-texto">{catalogoColaboradores.campos_vigencia.enviar_recordatorio_correo}</span>
-          <span className="text-auxiliar leading-texto text-texto-suave">{catalogoColaboradores.campos_vigencia.enviar_recordatorio_correo_detalle}</span>
+        <span className={comun.opcion_textos}>
+          <span className={comun.opcion_titulo}>{textos.enviar_recordatorio_correo}</span>
+          <span className={comun.opcion_detalle}>{textos.enviar_recordatorio_correo_detalle}</span>
         </span>
       </label>
 
-      <CampoEtiquetado variante="compacta" etiqueta={catalogoColaboradores.campos_vigencia.recordar_con_anticipacion} requerido className="mt-2">
+      <CampoEtiquetado variante="compacta" etiqueta={textos.recordar_con_anticipacion} requerido className={clases.campo_recordatorio}>
         <Selector variant="colaboradores" defaultValue={OPCIONES_RECORDATORIO[0]}>
           {OPCIONES_RECORDATORIO.map((o) => <option key={o}>{o}</option>)}
         </Selector>

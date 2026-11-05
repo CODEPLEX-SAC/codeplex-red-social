@@ -10,7 +10,7 @@
         "texto": "12.5%"
       },
       "sparklinePuntos": "0,20 14,16 28,18 42,10 56,13 70,7 84,10 100,4",
-      "sparklineColor": "#3b82f6"
+      "sparklineColor": "info"
     },
     {
       "icono": "tarjeta-pago",
@@ -22,7 +22,7 @@
         "texto": "8.3%"
       },
       "sparklinePuntos": "0,6 14,12 28,8 42,16 56,12 70,20 84,15 100,18",
-      "sparklineColor": "#ef4444"
+      "sparklineColor": "error"
     },
     {
       "icono": "documento",
@@ -34,7 +34,7 @@
         "texto": "18.7%"
       },
       "sparklinePuntos": "0,20 14,17 28,19 42,13 56,15 70,9 84,12 100,5",
-      "sparklineColor": "#3b82f6"
+      "sparklineColor": "info"
     },
     {
       "icono": "documento",
@@ -46,7 +46,7 @@
         "texto": "4.5 pp"
       },
       "sparklinePuntos": "0,16 14,19 28,12 42,14 56,8 70,11 84,6 100,9",
-      "sparklineColor": "#7c3aed"
+      "sparklineColor": "primario"
     },
     {
       "icono": "documento",
@@ -58,7 +58,7 @@
         "texto": "22.1%"
       },
       "sparklinePuntos": "0,18 14,9 28,15 42,7 56,17 70,5 84,13 100,10",
-      "sparklineColor": "#06b6d4"
+      "sparklineColor": "secundario"
     }
   ],
   "ratios": [

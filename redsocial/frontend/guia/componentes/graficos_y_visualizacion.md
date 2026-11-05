@@ -34,3 +34,8 @@ Sin librería que modificar **[CONFIRMADO]**. Personalización: tema, colores po
 ## 5. Verificación
 
 Pruebas existentes: `pruebas/dashboard/*`, `pruebas/estadisticas/*`, `pruebas/indicadores/*`, `pruebas/reportes/*`. **[PENDIENTE]** No se ejecutó una revisión visual de gráficos en esta investigación; el último `npm run calidad` (2026-10-16, código de salida 0) incluyó sus pruebas.
+
+## Colores de gráficos: fuente única (2026-10-28)
+
+`compartido.json › colores_graficos` es la única fuente de hexadecimales de las series, los `Sparkline` y las donas: `primario`, `secundario`, `exito`, `error`, `advertencia`, `info` y, desde esta fecha, `naranja-categoria`, `gris-categoria`, `rosa-categoria`, `primario-claro`, `primario-suave`, `advertencia-suave` e `info-claro` (`#93c5fd`, token nuevo `--color-azul-muy-claro-categoria`). Los JSON de `servicios/` (Dashboard, Estadísticas, Indicadores, Reportes) guardan el **nombre** del color en `sparklineColor` y `color` (y en `c` de las barras, que solo es clave de `reportes.json › clases_barra_color`); `servicios/compartido/colores_graficos.ts` (`resolverColoresGraficos`) lo convierte a hexadecimal al cargar, porque `Sparkline` y `DonaProgreso` necesitan un color concreto. Se retiraron los mapas hexadecimal → nombre de `estilos_*.json` (`colorGrafico`, sin consumidores). La prueba `colores_graficos_fuente_unica.test.ts` impide hexadecimales fuera de `compartido.json` y exige que cada color de la paleta exista como token de `index.css`.
+

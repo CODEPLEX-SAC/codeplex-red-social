@@ -1,4 +1,4 @@
-import type { MouseEvent as EventoRaton, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { Box } from '@mui/material'
 import { ProveedorTemaGraficos } from '../proveedor_tema_graficos'
 import { BotonIcono } from './boton_icono'
@@ -15,6 +15,7 @@ export function Modal({
   className = '',
   cabecera,
   suave = false,
+  oscuro = false,
 }: {
   titulo: string
   etiquetaCerrar: string
@@ -23,16 +24,13 @@ export function Modal({
   className?: string
   cabecera?: ReactNode
   suave?: boolean
+  oscuro?: boolean
 }) {
-  const { dialogoRef, mantenerFoco } = usarModal(onCerrar)
-
-  function cerrarAlPulsarFuera(evento: EventoRaton<HTMLDivElement>) {
-    if (evento.target === evento.currentTarget) onCerrar()
-  }
+  const { dialogoRef, mantenerFoco, registrarPulsacion, cerrarAlPulsarFuera } = usarModal(onCerrar)
 
   return (
     <ProveedorTemaGraficos>
-      <Box sx={{ zIndex: (tema) => tema.zIndex.modal }} className={clases.clase_fondo} onClick={cerrarAlPulsarFuera}>
+      <Box sx={{ zIndex: (tema) => tema.zIndex.modal }} className={oscuro ? clases.clase_fondo_oscuro : clases.clase_fondo} onMouseDown={registrarPulsacion} onClick={cerrarAlPulsarFuera}>
         <div
           ref={dialogoRef}
           role="dialog"
@@ -40,7 +38,7 @@ export function Modal({
           aria-label={titulo}
           tabIndex={-1}
           onKeyDown={mantenerFoco}
-          className={`${suave ? clases.clase_dialogo_suave : clases.clase_dialogo} ${className}`}
+          className={`${oscuro ? clases.clase_dialogo_oscuro : suave ? clases.clase_dialogo_suave : clases.clase_dialogo} ${className}`}
         >
           {cabecera ?? (
             <div className={clases.clase_cabecera}>

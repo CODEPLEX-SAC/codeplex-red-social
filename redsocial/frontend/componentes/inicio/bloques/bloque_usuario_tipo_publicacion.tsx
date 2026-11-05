@@ -1,4 +1,4 @@
-import { imagenUsuarioPredeterminada } from '../../compartido'
+import { imagenPerfilPedroRedSocial } from '../../compartido'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { Boton } from '../../compartido/interfaz/boton'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
@@ -7,13 +7,12 @@ import type { BloqueUsuarioTipoPublicacionProps, TipoPublicacion } from '@/tipos
 
 const textos = catalogoInicio.modal_crear_publicacion
 
-export function BloqueUsuarioTipoPublicacion({ mostrarTipos, tipo, onCambiar }: BloqueUsuarioTipoPublicacionProps) {
+export function BloqueUsuarioTipoPublicacion({ tiposBloqueados, tipo, onCambiar }: BloqueUsuarioTipoPublicacionProps) {
   return (
     <div className="flex items-center gap-3">
-      <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
+      <AvatarUsuario tamano="md" imagen={imagenPerfilPedroRedSocial} />
       <div className="flex min-w-0 flex-col gap-1.5">
         <strong className="text-nombre-entidad text-texto">{catalogoCompartido.sesion_actual.usuario}</strong>
-        {mostrarTipos && (
         <div role="group" aria-label={textos.etiqueta_tipos} className="flex flex-wrap gap-1.5">
           {textos.tipos.map((opcion) => (
             <Boton
@@ -22,6 +21,7 @@ export function BloqueUsuarioTipoPublicacion({ mostrarTipos, tipo, onCambiar }: 
               variant="filtro"
               size="pildora"
               activo={tipo === opcion.valor}
+              disabled={tiposBloqueados && tipo !== opcion.valor}
               aria-pressed={tipo === opcion.valor}
               onClick={() => onCambiar(opcion.valor as TipoPublicacion)}
             >
@@ -29,7 +29,6 @@ export function BloqueUsuarioTipoPublicacion({ mostrarTipos, tipo, onCambiar }: 
             </Boton>
           ))}
         </div>
-        )}
       </div>
     </div>
   )

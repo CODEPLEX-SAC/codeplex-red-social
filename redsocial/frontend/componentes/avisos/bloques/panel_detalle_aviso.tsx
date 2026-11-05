@@ -6,6 +6,7 @@ import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icon
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { PanelDetalleAvisoProps } from '@/tipos/avisos/contrato_detalle_aviso'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
   return (
@@ -13,14 +14,14 @@ export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
       <div className="mb-3.5 flex items-center gap-2.5">
         <AvatarUsuario tamano="sm" imagen={usuarioImg} />
         <div className="min-w-0 flex-1">
-          <strong className="block truncate text-nombre-entidad text-texto">{detalle.autor}</strong>
+          <strong className="block truncate text-nombre-fila text-texto">{detalle.autor}</strong>
           <span className="block text-fecha-abreviada text-texto-suave">{detalle.tiempo}</span>
         </div>
         <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} variant="discreto" size="sm" className="flex-none" />
       </div>
 
       <h2 className="m-0 mb-1.5 text-titulo-banner text-texto">{catalogoAvisos.secciones.comentaron_en_tu_publicacion}</h2>
-      <p className="m-0 mb-3 text-cuerpo leading-texto text-texto-suave">{detalle.comentario}</p>
+      <p className="m-0 mb-3 text-subtitulo leading-texto text-texto-suave">{detalle.comentario}</p>
 
       <div className="mb-3 flex items-center gap-2.5 rounded-lg border border-borde bg-fondo p-2.5">
         <div className="grid h-11 w-11 flex-none place-items-center rounded-md bg-fondo-miniatura text-texto-suave">
@@ -28,7 +29,7 @@ export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
         </div>
         <div className="min-w-0 flex-1">
           <strong className="block truncate text-subtitulo text-texto">{detalle.publicacion.titulo}</strong>
-          <span className="block truncate text-cuerpo text-texto-suave">{detalle.publicacion.descripcion}</span>
+          <span className="block truncate text-subtitulo text-texto-suave">{detalle.publicacion.descripcion}</span>
         </div>
       </div>
 
@@ -48,8 +49,8 @@ export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
         {detalle.comentarios.map((c) => (
           <li key={c.nombre} className="flex items-start gap-2">
             <AvatarUsuario tamano="xs" imagen={usuarioImg} />
-            <div className="min-w-0 flex-1 text-cuerpo">
-              <span className="text-nombre-entidad text-texto">{c.nombre}</span> <span className="text-texto-suave">{c.texto}</span>
+            <div className="min-w-0 flex-1 text-subtitulo">
+              <span className="text-nombre-fila text-texto">{c.nombre}</span> <span className="text-texto-suave">{c.texto}</span>
               <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{c.tiempo}</span>
             </div>
             <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="discreto" size="sm" className="flex-none" />
@@ -57,7 +58,7 @@ export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
         ))}
       </ul>
 
-      <a href="#" className="mt-3 flex items-center justify-center gap-1 text-enlace-accion text-primario no-underline hover:underline">
+      <a href="#" className={[CLASE_ENLACE_ACCION, 'mt-3 flex items-center justify-center gap-1'].join(' ')}>
         {catalogoAvisos.botones.ver_conversacion_completa} <Icono name="flecha-derecha" className="h-3 w-3" />
       </a>
     </section>

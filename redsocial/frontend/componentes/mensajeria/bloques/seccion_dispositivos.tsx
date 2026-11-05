@@ -1,6 +1,7 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
 import { Interruptor } from '../../compartido/interfaz/interruptor'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionDispositivos({
   DISPOSITIVOS,
@@ -23,7 +24,7 @@ export function SeccionDispositivos({
             <Icono name="flecha-abajo" className="h-3.5 w-3.5 flex-none text-texto-suave" />
           </div>
         ))}
-        <a href="#" className="mt-3 inline-flex items-center gap-1.5 text-enlace-accion text-primario no-underline">
+        <a href="#" className={[CLASE_ENLACE_ACCION, 'mt-3 inline-flex items-center gap-1.5'].join(' ')}>
           <Icono name="actualizar" className="h-3.5 w-3.5" /> {catalogoMensajeria.botones.probar_dispositivos}
         </a>
       </section>

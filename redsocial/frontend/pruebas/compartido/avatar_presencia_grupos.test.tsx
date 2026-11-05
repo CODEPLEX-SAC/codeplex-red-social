@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import { AvatarUsuario } from '@/componentes/compartido/interfaz/avatar_usuario'
 import { GrupoAvatares } from '@/componentes/compartido/interfaz/grupo_avatares'
 import { ContactosEnLineaPanel } from '@/componentes/compartido/bloques/contactos_en_linea_panel'
@@ -9,15 +9,33 @@ import { AvatarUsuarioEmpresa } from '@/componentes/empresas/bloques/avatar_usua
 import { BloqueMensaje } from '@/componentes/amigos/bloques/bloque_mensaje'
 import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'
 import catalogoMensajeria from '@/catalogos/capacidades/redsocial/mensajeria.json'
-import { CONVERSACION_ACTIVA } from '../../rutas/mensajeria/rutas_mensajeria'
+import { ESTADO_INICIAL_MENSAJERIA } from '../../servicios/mensajeria/mensajes'
 import { AMIGOS as AMIGOS_TODOS } from '../../servicios/amigos/todos'
 
 const avatar = catalogoCompartido.avatar
 const TAMANOS = Object.keys(avatar.tamanos) as (keyof typeof avatar.tamanos)[]
 const OFICIALES = TAMANOS.filter((tamano) => tamano !== 'historia')
 
-function enlaces(conversacion = CONVERSACION_ACTIVA) {
-  return render(<PanelConversacion conversacion={conversacion} onVolver={() => undefined} oculta={false} />)
+const MARIA = ESTADO_INICIAL_MENSAJERIA.conversaciones[0]
+
+function enlaces(conversacion = MARIA) {
+  return render(
+    <PanelConversacion
+      conversacion={conversacion}
+      mensajes={ESTADO_INICIAL_MENSAJERIA.hilos[conversacion.id]}
+      participantes={ESTADO_INICIAL_MENSAJERIA.participantes}
+      usuarioId="usuario-pedro-lozano"
+      ahora={new Date()}
+      conversaciones={ESTADO_INICIAL_MENSAJERIA.conversaciones}
+      onEnviar={() => undefined}
+      onEliminar={() => undefined}
+      onReenviar={() => undefined}
+      onFijar={() => undefined}
+      onEditar={() => false}
+      onVolver={() => undefined}
+      oculta={false}
+    />,
+  )
 }
 
 describe('Avatar compartido: tamaños y contenido', () => {
@@ -88,7 +106,7 @@ describe('Estados de presencia', () => {
   })
 
   it('Mensajes: la conversación con María Fernández usa el indicador compartido y conserva el texto «En línea»', () => {
-    expect(CONVERSACION_ACTIVA.nombre).toBe('María Fernández')
+    expect(MARIA.nombre).toBe('María Fernández')
     const { container } = enlaces()
     const cabecera = container.querySelector('header') as HTMLElement
     expect(cabecera.querySelector('[data-estado="conectado"]')).not.toBeNull()
@@ -98,14 +116,16 @@ describe('Estados de presencia', () => {
   })
 
   it('Mensajes: una conversación sin presencia no muestra ni indicador ni texto', () => {
-    const { container } = enlaces({ ...CONVERSACION_ACTIVA, enLinea: false })
+    const { container } = enlaces({ ...MARIA, enLinea: false })
     const cabecera = container.querySelector('header') as HTMLElement
     expect(cabecera.querySelector('[data-estado]')).toBeNull()
     expect(within(cabecera).queryByText(catalogoMensajeria.conversacion.en_linea)).toBeNull()
   })
 
-  it('Mensajes: la página abre con María Fernández en línea', () => {
+  it('Mensajes: la página abre sin conversación y, al elegir a María Fernández, la muestra en línea', () => {
     const { container } = render(<PaginaMensajesTodos />)
+    expect(container.querySelector('[data-zona="panel-conversacion"]')).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: /^María Fernández/ }))
     const cabecera = container.querySelector('[data-zona="panel-conversacion"] header') as HTMLElement
     expect(cabecera.querySelector('[data-estado="conectado"]')).not.toBeNull()
     expect(within(cabecera).getByText(catalogoMensajeria.conversacion.en_linea)).toBeInTheDocument()
@@ -135,7 +155,8 @@ describe('Grupo de avatares', () => {
     const { container } = render(<GrupoAvatares avatares={4} resto="+8 más" />)
     expect(container.querySelector('.MuiAvatarGroup-root')).not.toBeNull()
     expect(tarjetas(container)).toHaveLength(5)
-    expect(screen.getByText('+8 más')).toBeInTheDocument()
+    expect(screen.getByText('+8')).toBeInTheDocument()
+    expect(screen.getByText('más')).toHaveClass(avatar.clases.resto_descripcion.split(' ')[0])
   })
 
   it('sin resto no dibuja el contador y con cero avatares solo queda el contador', () => {

@@ -36,3 +36,9 @@ Sin iconos relevantes.
 
 
 Verificado el 2026-10-17 contra el código del repositorio (rama `codeplexMaster`, cambios sin confirmar). Lo marcado como **no verificado** o **no determinado** no pudo comprobarse con los archivos ni con el navegador.
+
+## Ampliación (2026-10-26): `BloqueAnuncio`
+
+- **`BloqueAnuncio`** (`componentes/compartido/bloques/bloque_anuncio.tsx`): tarjeta oscura con marca, título, descripción y un `Boton variant="oscuro"` «Explorar». Textos de `compartido.json › anuncio`; sin props ni estado.
+- **Consumidores (10):** 7 páginas de Actividad, `pagina_colaborador_perfil.tsx`, `pagina_estadisticas_modulo.tsx` y `pagina_perfil_usuario.tsx`. Ninguna prueba lo nombra.
+- **Acción:** el botón «Explorar» no tiene manejador ni destino (BS-028, pendiente de decisión); los botones anterior/siguiente de `ColumnaPublicidad` tampoco (BS-029, BS-030) y los puntos del carrusel están fijos en dos. Los enlaces `href="#"` de los anuncios están clasificados como `EXTERNO` en `pruebas/compartido/registro_enlaces.ts`.

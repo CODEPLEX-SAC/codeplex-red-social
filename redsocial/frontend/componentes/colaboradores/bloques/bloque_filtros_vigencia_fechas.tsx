@@ -4,11 +4,12 @@ import { SelectorFecha } from '../../compartido/interfaz/selector_fecha'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 
 const textos = catalogoColaboradores.panel_filtros_avanzados
+const clases = catalogoColaboradores.clases.filtros
 
 function CampoFecha({ texto, valor, alCambiar }: { texto: string; valor: Dayjs | null; alCambiar: (valor: Dayjs | null) => void }) {
   return (
     <CampoEtiquetado variante="compacta" etiqueta={texto}>
-      <SelectorFecha valor={valor} alCambiar={alCambiar} marcador={textos.marcador_fecha} formato={textos.formato_fecha} />
+      <SelectorFecha nombreAccesible={texto} valor={valor} alCambiar={alCambiar} marcador={textos.marcador_fecha} formato={textos.formato_fecha} />
     </CampoEtiquetado>
   )
 }
@@ -33,18 +34,18 @@ export function BloqueFiltrosVigenciaFechas({
   asignarInvitacionHasta: (valor: Dayjs | null) => void
 }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className={clases.columna}>
       <section>
-        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.vigencia_acceso}</h4>
-        <div className="grid grid-cols-1 gap-3 max-600:grid-cols-2">
+        <h4 className={clases.titulo_grupo}>{textos.vigencia_acceso}</h4>
+        <div className={clases.fechas}>
           <CampoFecha texto={catalogoColaboradores.editar.fecha_inicio} valor={fechaInicio} alCambiar={asignarFechaInicio} />
           <CampoFecha texto={catalogoColaboradores.editar.fecha_fin} valor={fechaFin} alCambiar={asignarFechaFin} />
         </div>
       </section>
 
       <section>
-        <h4 className="m-0 mb-2 text-nombre-entidad text-texto">{textos.fecha_invitacion}</h4>
-        <div className="grid grid-cols-1 gap-3 max-600:grid-cols-2">
+        <h4 className={clases.titulo_grupo}>{textos.fecha_invitacion}</h4>
+        <div className={clases.fechas}>
           <CampoFecha texto={textos.desde} valor={invitacionDesde} alCambiar={asignarInvitacionDesde} />
           <CampoFecha texto={textos.hasta} valor={invitacionHasta} alCambiar={asignarInvitacionHasta} />
         </div>

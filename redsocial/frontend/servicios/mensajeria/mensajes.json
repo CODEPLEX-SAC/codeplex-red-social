@@ -1,108 +1,425 @@
 {
+  "participantes": [
+    {
+      "id": "usuario-pedro-lozano",
+      "nombre": "Pedro Lozano"
+    },
+    {
+      "id": "maria-fernandez",
+      "nombre": "María Fernández"
+    },
+    {
+      "id": "luis-rodriguez",
+      "nombre": "Luis Rodríguez"
+    },
+    {
+      "id": "carmen-lopez",
+      "nombre": "Carmen López"
+    },
+    {
+      "id": "diego-mendoza",
+      "nombre": "Diego Mendoza"
+    },
+    {
+      "id": "ana-garcia",
+      "nombre": "Ana García"
+    },
+    {
+      "id": "participante-001",
+      "nombre": "Javier Torres"
+    },
+    {
+      "id": "participante-002",
+      "nombre": "Ana Rivas"
+    },
+    {
+      "id": "participante-003",
+      "nombre": "Marcos Delgado"
+    },
+    {
+      "id": "participante-004",
+      "nombre": "Sofía Paredes"
+    },
+    {
+      "id": "participante-005",
+      "nombre": "Luis Campos"
+    },
+    {
+      "id": "participante-006",
+      "nombre": "Rosa Alvarado"
+    },
+    {
+      "id": "participante-007",
+      "nombre": "Iván Ochoa"
+    },
+    {
+      "id": "participante-008",
+      "nombre": "Renzo Salinas"
+    },
+    {
+      "id": "participante-009",
+      "nombre": "Karla Medina"
+    },
+    {
+      "id": "participante-010",
+      "nombre": "Tomás Vega"
+    }
+  ],
   "conversaciones": [
     {
+      "id": "conversacion-001",
+      "actividadHistoria": { "publicadaEn": "2025-08-12T10:05:00" },
       "nombre": "María Fernández",
-      "extracto": "Perfecto, muchas gracias Pedro.",
-      "hora": "10:24 AM",
-      "noLeidos": 2
+      "extracto": "Sí, confirmo mi asistencia.",
+      "noLeidos": 2,
+      "favorita": true,
+      "enLinea": true,
+      "participantes": [
+        "maria-fernandez"
+      ],
+      "contexto": "Proyecto Puente Central",
+      "mensajeFijadoId": "mensaje-001-5"
     },
     {
+      "id": "conversacion-002",
       "nombre": "Luis Rodríguez",
       "extracto": "Te comparto el informe solicitado.",
-      "hora": "09:15 AM",
-      "noLeidos": 1
+      "noLeidos": 1,
+      "favorita": true,
+      "enLinea": true,
+      "participantes": [
+        "luis-rodriguez"
+      ],
+      "contexto": "Informe de Costos - Proyecto Puente"
     },
     {
+      "id": "conversacion-003",
+      "grupoId": "grupo-equipo-de-proyectos",
       "nombre": "Equipo de Proyectos",
       "extracto": "Ana: Se ha actualizado el cronograma.",
-      "hora": "Ayer",
-      "esGrupo": true
+      "noLeidos": 1,
+      "favorita": true,
+      "enLinea": false,
+      "participantes": [
+        "participante-002",
+        "participante-003",
+        "participante-004"
+      ],
+      "esGrupo": true,
+      "contexto": "Reunión de seguimiento"
     },
     {
+      "id": "conversacion-004",
       "nombre": "Carmen López",
       "extracto": "Nos vemos en la reunión de hoy.",
-      "hora": "Ayer"
+      "noLeidos": 0,
+      "favorita": false,
+      "enLinea": true,
+      "participantes": [
+        "carmen-lopez"
+      ]
     },
     {
+      "id": "conversacion-005",
       "nombre": "Diego Mendoza",
       "extracto": "Estoy revisando los documentos.",
-      "hora": "2 días"
+      "noLeidos": 1,
+      "favorita": true,
+      "enLinea": true,
+      "participantes": [
+        "diego-mendoza"
+      ],
+      "contexto": "Documentos del proyecto"
     },
     {
+      "id": "conversacion-006",
+      "grupoId": "grupo-contabilidad",
       "nombre": "Grupo Contabilidad",
       "extracto": "Luis: Se cerró el mes de julio.",
-      "hora": "2 días",
+      "noLeidos": 0,
+      "favorita": false,
+      "enLinea": false,
+      "participantes": [
+        "participante-005",
+        "participante-006",
+        "participante-007"
+      ],
       "esGrupo": true,
       "silenciado": true
     },
     {
+      "id": "conversacion-007",
       "nombre": "Ana García",
       "extracto": "Gracias por la información.",
-      "hora": "3 días"
+      "noLeidos": 1,
+      "favorita": true,
+      "enLinea": true,
+      "participantes": [
+        "ana-garcia"
+      ],
+      "contexto": "Información general"
     },
     {
+      "id": "conversacion-008",
+      "grupoId": "grupo-infraestructura-ti",
       "nombre": "Infraestructura TI",
-      "extracto": "Servidor de reportes reiniciado.",
-      "hora": "3 días",
+      "extracto": "Renzo: Servidor de reportes reiniciado.",
+      "noLeidos": 0,
+      "favorita": false,
+      "enLinea": false,
+      "participantes": [
+        "participante-008",
+        "participante-009",
+        "participante-010"
+      ],
       "esGrupo": true
     },
     {
+      "id": "conversacion-009",
       "nombre": "Javier Torres",
       "extracto": "Avísame cualquier novedad.",
-      "hora": "4 días"
+      "noLeidos": 0,
+      "favorita": false,
+      "enLinea": false,
+      "participantes": [
+        "participante-001"
+      ]
     }
   ],
-  "conversacionActiva": {
-    "nombre": "María Fernández",
-    "enLinea": true,
-    "mensajeFijado": "Reunión de seguimiento del proyecto - Viernes 15 de agosto a las 10:00 AM",
-    "hilo": [
+  "hilos": {
+    "conversacion-001": [
       {
-        "id": "mensaje-1",
-        "fecha": "Lunes, 11 de agosto",
+        "id": "mensaje-001-1",
+        "autorId": "maria-fernandez",
         "contenido": "Hola Pedro, ¿puedes enviarme el reporte de avances del proyecto Central?",
         "hora": "10:18 AM",
-        "propio": false
+        "creadoEn": "2025-08-11T10:18:00"
       },
       {
-        "id": "mensaje-2",
+        "id": "mensaje-001-2",
+        "autorId": "usuario-pedro-lozano",
         "contenido": "Hola María, claro que sí. Te lo envío en un momento.",
         "hora": "10:20 AM",
-        "propio": true,
-        "confirmado": true
+        "creadoEn": "2025-08-11T10:20:00"
       },
       {
-        "id": "mensaje-3",
+        "id": "mensaje-001-3",
+        "autorId": "maria-fernandez",
         "adjunto": {
           "nombre": "reporte_avances_proyecto_central.pdf",
           "peso": "2.4 MB"
         },
         "hora": "10:21 AM",
-        "propio": false,
-        "confirmado": true
+        "creadoEn": "2025-08-11T10:21:00"
       },
       {
-        "id": "mensaje-4",
+        "id": "mensaje-001-4",
+        "autorId": "maria-fernandez",
         "contenido": "Perfecto, muchas gracias Pedro.",
         "hora": "10:24 AM",
-        "propio": false
+        "creadoEn": "2025-08-11T10:24:00"
       },
       {
-        "id": "mensaje-5",
-        "fecha": "Martes, 12 de agosto",
+        "id": "mensaje-001-5",
+        "autorId": "usuario-pedro-lozano",
         "contenido": "Por favor confirma si puedes asistir a la reunión de seguimiento este viernes.",
         "hora": "09:10 AM",
-        "propio": true,
-        "confirmado": true
+        "creadoEn": "2025-08-12T09:10:00"
       },
       {
-        "id": "mensaje-6",
+        "id": "mensaje-001-6",
+        "autorId": "maria-fernandez",
         "contenido": "Sí, confirmo mi asistencia.",
-        "propio": false,
         "reaccion": {
-          "emoji": "👍",
+          "icono": "pulgar-arriba",
           "cantidad": 1
-        }
+        },
+        "hora": "09:12 AM",
+        "creadoEn": "2025-08-12T09:12:00"
+      }
+    ],
+    "conversacion-002": [
+      {
+        "id": "mensaje-002-1",
+        "autorId": "usuario-pedro-lozano",
+        "contenido": "Buen día Luis, ¿ya tienes el informe de costos?",
+        "hora": "08:52 AM",
+        "creadoEn": "2025-08-12T08:52:00"
+      },
+      {
+        "id": "mensaje-002-2",
+        "autorId": "luis-rodriguez",
+        "contenido": "Buen día Pedro, lo estoy terminando.",
+        "hora": "09:05 AM",
+        "creadoEn": "2025-08-12T09:05:00"
+      },
+      {
+        "id": "mensaje-002-3",
+        "autorId": "luis-rodriguez",
+        "contenido": "Te comparto el informe solicitado.",
+        "hora": "09:15 AM",
+        "creadoEn": "2025-08-12T09:15:00"
+      }
+    ],
+    "conversacion-003": [
+      {
+        "id": "mensaje-003-1",
+        "autorId": "participante-003",
+        "contenido": "Revisen los entregables de la semana, por favor.",
+        "hora": "03:40 PM",
+        "creadoEn": "2025-08-11T15:40:00"
+      },
+      {
+        "id": "mensaje-003-2",
+        "autorId": "participante-004",
+        "contenido": "Ya subí las observaciones del cliente.",
+        "hora": "03:55 PM",
+        "creadoEn": "2025-08-11T15:55:00"
+      },
+      {
+        "id": "mensaje-003-3",
+        "autorId": "usuario-pedro-lozano",
+        "contenido": "Gracias, las reviso hoy.",
+        "hora": "04:05 PM",
+        "creadoEn": "2025-08-11T16:05:00"
+      },
+      {
+        "id": "mensaje-003-4",
+        "autorId": "participante-002",
+        "contenido": "Se ha actualizado el cronograma.",
+        "hora": "04:10 PM",
+        "creadoEn": "2025-08-11T16:10:00"
+      }
+    ],
+    "conversacion-004": [
+      {
+        "id": "mensaje-004-1",
+        "autorId": "carmen-lopez",
+        "contenido": "Hola Pedro, ¿confirmas la sala para la reunión?",
+        "hora": "11:20 AM",
+        "creadoEn": "2025-08-11T11:20:00"
+      },
+      {
+        "id": "mensaje-004-2",
+        "autorId": "usuario-pedro-lozano",
+        "contenido": "Sí, la sala 2 está reservada.",
+        "hora": "11:30 AM",
+        "creadoEn": "2025-08-11T11:30:00"
+      },
+      {
+        "id": "mensaje-004-3",
+        "autorId": "carmen-lopez",
+        "contenido": "Nos vemos en la reunión de hoy.",
+        "hora": "11:32 AM",
+        "creadoEn": "2025-08-11T11:32:00"
+      }
+    ],
+    "conversacion-005": [
+      {
+        "id": "mensaje-005-1",
+        "autorId": "usuario-pedro-lozano",
+        "contenido": "Diego, ¿pudiste revisar los documentos del contrato?",
+        "hora": "05:00 PM",
+        "creadoEn": "2025-08-10T17:00:00"
+      },
+      {
+        "id": "mensaje-005-2",
+        "autorId": "diego-mendoza",
+        "contenido": "Estoy revisando los documentos.",
+        "hora": "05:20 PM",
+        "creadoEn": "2025-08-10T17:20:00"
+      }
+    ],
+    "conversacion-006": [
+      {
+        "id": "mensaje-006-1",
+        "autorId": "participante-006",
+        "contenido": "Falta conciliar dos cuentas de julio.",
+        "hora": "10:05 AM",
+        "creadoEn": "2025-08-10T10:05:00"
+      },
+      {
+        "id": "mensaje-006-2",
+        "autorId": "participante-007",
+        "contenido": "Yo me encargo de las cuentas por pagar.",
+        "hora": "10:12 AM",
+        "creadoEn": "2025-08-10T10:12:00"
+      },
+      {
+        "id": "mensaje-006-3",
+        "autorId": "participante-005",
+        "contenido": "Se cerró el mes de julio.",
+        "hora": "10:40 AM",
+        "creadoEn": "2025-08-10T10:40:00"
+      }
+    ],
+    "conversacion-007": [
+      {
+        "id": "mensaje-007-1",
+        "autorId": "ana-garcia",
+        "contenido": "Hola Pedro, necesito los datos de la capacitación.",
+        "hora": "02:10 PM",
+        "creadoEn": "2025-08-09T14:10:00"
+      },
+      {
+        "id": "mensaje-007-2",
+        "autorId": "usuario-pedro-lozano",
+        "contenido": "Te los envié por correo hace un momento.",
+        "hora": "02:20 PM",
+        "creadoEn": "2025-08-09T14:20:00"
+      },
+      {
+        "id": "mensaje-007-3",
+        "autorId": "ana-garcia",
+        "contenido": "Gracias por la información.",
+        "hora": "02:25 PM",
+        "creadoEn": "2025-08-09T14:25:00"
+      }
+    ],
+    "conversacion-008": [
+      {
+        "id": "mensaje-008-1",
+        "autorId": "participante-008",
+        "contenido": "Iniciamos el mantenimiento del servidor de reportes.",
+        "hora": "08:30 AM",
+        "creadoEn": "2025-08-09T08:30:00"
+      },
+      {
+        "id": "mensaje-008-2",
+        "autorId": "participante-009",
+        "contenido": "Confirmo que el respaldo se completó.",
+        "hora": "08:45 AM",
+        "creadoEn": "2025-08-09T08:45:00"
+      },
+      {
+        "id": "mensaje-008-3",
+        "autorId": "participante-008",
+        "contenido": "Servidor de reportes reiniciado.",
+        "hora": "09:10 AM",
+        "creadoEn": "2025-08-09T09:10:00"
+      }
+    ],
+    "conversacion-009": [
+      {
+        "id": "mensaje-009-1",
+        "autorId": "participante-001",
+        "contenido": "Pedro, ¿pudiste ver la propuesta que te envié?",
+        "hora": "03:00 PM",
+        "creadoEn": "2025-08-08T15:00:00"
+      },
+      {
+        "id": "mensaje-009-2",
+        "autorId": "usuario-pedro-lozano",
+        "contenido": "Sí, la revisé; te escribo mañana con comentarios.",
+        "hora": "03:30 PM",
+        "creadoEn": "2025-08-08T15:30:00"
+      },
+      {
+        "id": "mensaje-009-3",
+        "autorId": "participante-001",
+        "contenido": "Avísame cualquier novedad.",
+        "hora": "03:35 PM",
+        "creadoEn": "2025-08-08T15:35:00"
       }
     ]
   }

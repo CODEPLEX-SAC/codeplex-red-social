@@ -23,7 +23,7 @@ export function FilaEventoAviso({ evento: e, claseIcono }: FilaEventoAvisoProps)
       )}
 
       <div className="min-w-0 flex-1">
-        <p className="m-0 text-nombre-entidad text-texto">{e.titulo}</p>
+        <p className="m-0 text-nombre-fila text-texto">{e.titulo}</p>
         <p className="m-0 mt-0.5 truncate text-auxiliar text-texto-suave">{e.detalle}</p>
         {e.detalleSecundario && <p className="m-0 mt-0.5 truncate text-auxiliar text-texto-suave">{e.detalleSecundario}</p>}
         <span className="mt-1 block text-fecha-abreviada text-texto-suave">{e.tiempo}</span>

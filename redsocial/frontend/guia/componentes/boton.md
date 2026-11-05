@@ -6,7 +6,7 @@
 - **Propósito:** única fuente de las variantes y tamaños de los botones de acción. `clasesBoton` entrega las mismas clases para enlaces `<a>` que deben verse como botón.
 - **Ubicación:** `redsocial/frontend/componentes/compartido/interfaz/boton.tsx`. Tipos: `tipos/compartido/contrato_boton.ts`. Configuración: `catalogos/capacidades/redsocial/compartido.json`.
 - **Estado:** existente y adaptado (variantes y tamaños reescritos entre 2026-10-15 y 2026-10-17; variante `pildora` añadida en la Fase 6).
-- **Consumidores:** todos los módulos. 214 usos JSX de `<Boton>` en 133 archivos de `componentes/`, `paginas/` y `formularios/` (conteo del 2026-10-19; el 2026-10-17 eran 219 en 134). `clasesBoton` lo usan 9 archivos además de `boton.tsx`: `panel_lateral_solicitudes_aviso`, `columna_publicidad`, `seccion_actividad_reciente_grupos`, `panel_lateral_guardados`, `bloque_en_llamada`, `seccion_contactos_frecuentes2`, `seccion_reuniones_programadas`, `seccion_videollamada_iniciar` y `pagina_mensajes_videollamadas`.
+- **Consumidores:** todos los módulos. 271 usos JSX de `<Boton>` en 168 archivos de `componentes/`, `paginas/` y `formularios/` (conteo estático del 2026-10-26; el 2026-10-19 eran 214 en 133). De los 271 + 171 `BotonIcono` + otros, 170 no tienen manejador (ver [excepciones_y_limitaciones.md](excepciones_y_limitaciones.md) §2). `clasesBoton` lo usan 9 archivos además de `boton.tsx`: `panel_lateral_solicitudes_aviso`, `columna_publicidad`, `seccion_actividad_reciente_grupos`, `panel_lateral_guardados`, `bloque_en_llamada`, `seccion_contactos_frecuentes2`, `seccion_reuniones_programadas`, `seccion_videollamada_iniciar` y `pagina_mensajes_videollamadas`.
 
 ## 2. Origen e implementación
 

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
+import { usarPermisosInvitacion } from './usar_permisos_invitacion'
+import { usarVigenciaInvitacion } from './usar_vigencia_invitacion'
 import type {
   CampoColaboradorInvitado,
   DatosAsistenteInvitacion,
@@ -42,6 +44,9 @@ export function usarAsistenteInvitacion(datos: DatosAsistenteInvitacion) {
     area: selectores.area_departamento.opciones[0],
   })
 
+  const permisos = usarPermisosInvitacion(datos)
+  const vigencia = usarVigenciaInvitacion(datos)
+
   function cambiarCampo(campo: CampoColaboradorInvitado, valor: string) {
     setColaborador((anterior) => ({ ...anterior, [campo]: valor }))
   }
@@ -58,5 +63,5 @@ export function usarAsistenteInvitacion(datos: DatosAsistenteInvitacion) {
     setPaso((actual) => Math.max(actual - 1, PRIMER_PASO) as PasoInvitacion)
   }
 
-  return { paso, colaborador, resumen: resumirColaborador(colaborador), cambiarCampo, irAPaso, siguiente, anterior }
+  return { paso, colaborador, resumen: resumirColaborador(colaborador), permisos, vigencia, cambiarCampo, irAPaso, siguiente, anterior }
 }

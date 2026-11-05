@@ -19,22 +19,18 @@
     "contrasena_obligatoria": "Ingresa tu contraseña.",
     "contrasena_corta": "La contraseña debe tener mínimo :minimo caracteres.",
     "confirmacion_obligatoria": "Confirma tu contraseña.",
+    "terminos_obligatorios": "Debes aceptar los términos de uso y la política de privacidad.",
     "contrasenas_distintas": "Las contraseñas no coinciden."
   },
   "mensajes": {
-    "google_proximamente": "El acceso con Google estará disponible próximamente.",
-    "demo_proximamente": "El escenario de demostración estará disponible próximamente.",
+    "proveedor_proximamente": "El acceso con :proveedor estará disponible próximamente.",
+    "olvido_proximamente": "La recuperación de contraseña estará disponible próximamente.",
     "acceso_concedido": "✓ Acceso concedido",
     "validando_acceso": "Validando acceso",
     "cuenta_creada": "✓ Cuenta creada",
     "creando_cuenta": "Creando cuenta",
-    "terminos": "Al crear tu cuenta aceptas los términos de uso y la política de privacidad.",
     "revisa_correo_titulo": "Revisa tu correo",
     "revisa_correo_descripcion": "Te enviamos instrucciones para continuar."
-  },
-  "demostracion": {
-    "correo": "pedro.lozano@codeplex.pe",
-    "contrasena": "demo"
   },
   "toast": {
     "acceso_concedido": "Acceso concedido."
@@ -46,15 +42,9 @@
   "titulos": {
     "principal": "Acceso a Codeplex Red Social"
   },
-  "placeholders": {
-    "nombre": "Tu nombre completo",
-    "correo": "correo@ejemplo.com"
-  },
   "botones": {
     "iniciar_sesion": "Iniciar sesión",
     "crear_cuenta": "Crear cuenta",
-    "continuar_con_google": "Continuar con Google",
-    "volver_al_demo": "Volver al demo",
     "volver_a_iniciar_sesion": "Volver a iniciar sesión"
   },
   "panel_usuario": {
@@ -72,7 +62,27 @@
       { "clave": "configuracion", "etiqueta": "Configuración", "icono": "configuracion" }
     ]
   },
-  "separador": "o con correo",
+  "proveedores": [
+    { "clave": "google", "nombre": "Google", "etiqueta": "Continuar con Google", "icono": "google" },
+    { "clave": "outlook", "nombre": "Outlook", "etiqueta": "Continuar con Outlook", "icono": "outlook" }
+  ],
+  "separador": "o con tu correo",
+  "encabezados": {
+    "iniciar_sesion": { "titulo": "Bienvenido a CodePlex", "subtitulo": "Accede a tu cuenta y administra tu sistema en la nube." },
+    "crear_cuenta": { "titulo": "Crea tu cuenta en CodePlex", "subtitulo": "Empieza a gestionar tu facturación electrónica en la nube." }
+  },
+  "pie": {
+    "iniciar_sesion": { "pregunta": "¿Aún no tienes una cuenta?", "accion": "Crear cuenta", "destino": "crear_cuenta" },
+    "crear_cuenta": { "pregunta": "¿Ya tienes una cuenta?", "accion": "Iniciar sesión", "destino": "iniciar_sesion" }
+  },
+  "recordar_sesion": "Recordar mi sesión",
+  "olvido_contrasena": "¿Olvidaste tu contraseña?",
+  "terminos_aceptacion": {
+    "texto": "Acepto los :uso y la :privacidad",
+    "uso": "términos de uso",
+    "privacidad": "política de privacidad",
+    "marcadores": ":uso|:privacidad"
+  },
   "etiqueta_modos": "Modo de acceso",
   "modos": [
     { "clave": "iniciar_sesion", "id": "pestana-iniciar-sesion", "etiqueta": "Iniciar sesión" },
@@ -87,8 +97,12 @@
   "ids": {
     "panel": "panel-acceso",
     "nombre": "campo-nombre-acceso",
+    "recordar": "campo-recordar-acceso",
+    "terminos": "campo-terminos-acceso",
     "correo": "campo-correo-acceso"
   },
+  "clase_icono_campo": "h-3.5 w-3.5 text-texto-icono-control",
+  "iconos_campos": { "nombre": "usuario", "correo": "correo", "contrasena": "candado", "mostrar": "ver", "ocultar": "ver-oculto" },
   "autocompletar": {
     "nombre": "name",
     "correo": "email"
@@ -97,7 +111,6 @@
     "acceso": {
       "etiqueta": "Contraseña",
       "id": "campo-contrasena-acceso",
-      "marcador": "••••••••",
       "autocompletar": "current-password",
       "mostrar": "Mostrar contraseña",
       "ocultar": "Ocultar contraseña"
@@ -105,7 +118,6 @@
     "nueva": {
       "etiqueta": "Contraseña",
       "id": "campo-contrasena-nueva",
-      "marcador": "Mínimo 6 caracteres",
       "autocompletar": "new-password",
       "mostrar": "Mostrar contraseña",
       "ocultar": "Ocultar contraseña"
@@ -113,7 +125,6 @@
     "confirmacion": {
       "etiqueta": "Confirmar contraseña",
       "id": "campo-confirmacion-contrasena",
-      "marcador": "Repite tu contraseña",
       "autocompletar": "new-password",
       "mostrar": "Mostrar confirmación de contraseña",
       "ocultar": "Ocultar confirmación de contraseña"

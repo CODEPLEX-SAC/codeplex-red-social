@@ -10,7 +10,7 @@
         "texto": "12.5%"
       },
       "sparklinePuntos": "0,22 15,20 30,16 45,18 60,10 75,12 100,4",
-      "sparklineColor": "#3b82f6"
+      "sparklineColor": "info"
     },
     {
       "icono": "flecha-abajo",
@@ -22,7 +22,7 @@
         "texto": "8.3%"
       },
       "sparklinePuntos": "0,8 15,14 30,10 45,20 60,16 75,24 100,18",
-      "sparklineColor": "#ef4444"
+      "sparklineColor": "error"
     },
     {
       "icono": "documento",
@@ -34,7 +34,7 @@
         "texto": "18.7%"
       },
       "sparklinePuntos": "0,24 15,20 30,22 45,14 60,16 75,8 100,6",
-      "sparklineColor": "#22c55e"
+      "sparklineColor": "exito"
     },
     {
       "icono": "estadisticas",
@@ -46,7 +46,7 @@
         "texto": "4.5 pp"
       },
       "sparklinePuntos": "0,18 15,22 30,14 45,16 60,10 75,14 100,8",
-      "sparklineColor": "#7c3aed"
+      "sparklineColor": "primario"
     },
     {
       "icono": "actualizar",
@@ -58,32 +58,32 @@
         "texto": "22.1%"
       },
       "sparklinePuntos": "0,20 15,10 30,16 45,8 60,18 75,6 100,12",
-      "sparklineColor": "#06b6d4"
+      "sparklineColor": "secundario"
     }
   ],
   "composicionIngresos": {
     "total": "S/ 1,250,000",
     "items": [
       {
-        "color": "#3b82f6",
+        "color": "info",
         "etiqueta": "Construcción",
         "pct": "45%",
         "valor": "S/ 562,500"
       },
       {
-        "color": "#7c3aed",
+        "color": "primario",
         "etiqueta": "Consultoría",
         "pct": "25%",
         "valor": "S/ 312,500"
       },
       {
-        "color": "#22c55e",
+        "color": "exito",
         "etiqueta": "Servicios",
         "pct": "20%",
         "valor": "S/ 250,000"
       },
       {
-        "color": "#f97316",
+        "color": "naranja-categoria",
         "etiqueta": "Otros",
         "pct": "10%",
         "valor": "S/ 125,000"
@@ -94,31 +94,31 @@
     "total": "S/ 850,000",
     "items": [
       {
-        "color": "#3b82f6",
+        "color": "info",
         "etiqueta": "Mano de obra",
         "pct": "35%",
         "valor": "S/ 297,500"
       },
       {
-        "color": "#f97316",
+        "color": "naranja-categoria",
         "etiqueta": "Materiales",
         "pct": "30%",
         "valor": "S/ 255,000"
       },
       {
-        "color": "#22c55e",
+        "color": "exito",
         "etiqueta": "Servicios",
         "pct": "15%",
         "valor": "S/ 127,500"
       },
       {
-        "color": "#7c3aed",
+        "color": "primario",
         "etiqueta": "Administrativos",
         "pct": "10%",
         "valor": "S/ 85,000"
       },
       {
-        "color": "#9ca3af",
+        "color": "gris-categoria",
         "etiqueta": "Otros",
         "pct": "10%",
         "valor": "S/ 85,000"

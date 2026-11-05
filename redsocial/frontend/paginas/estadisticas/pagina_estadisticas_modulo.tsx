@@ -1,4 +1,4 @@
-import { Selector, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, Boton, Icono, ContactosPanel, BloqueAnuncio } from '../../componentes/compartido'
+import { Selector, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, Boton, Icono, ContactosPanel, BloqueAnuncio, CLASES_TARJETA } from '../../componentes/compartido'
 import { CONTACTOS_SUGERIDOS } from '../../rutas/compartido/rutas_compartido'
 import { METRICAS, BARRAS, RESUMEN, DETALLE } from '../../rutas/estadisticas/rutas_estadisticas'
 import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadisticas.json'
@@ -15,7 +15,7 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
             <div className="mb-5 flex items-start justify-between gap-5">
               <div>
                 <p className="m-0 mb-1 text-titulo-subseccion text-primario">{catalogoEstadisticas.capacidad_nombre}</p>
-                <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{titulo}</h1>
+                <h1 className="m-0 text-titulo-pagina text-texto">{titulo}</h1>
               </div>
               <div className="flex items-center gap-2.5 max-560:hidden">
                 <Boton variant="primario" size="md"><Icono name="mas" className="h-4 w-4" /> {catalogoEstadisticas.botones.crear}</Boton>
@@ -33,7 +33,7 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
             </section>
 
             <section className="mb-3 grid grid-cols-2fr-1fr gap-3 max-800:grid-cols-1">
-              <article className="min-h-75 min-w-0 rounded-control border border-borde bg-white shadow-sombra">
+              <article className={[CLASES_TARJETA.superficie, 'min-h-75'].join(' ')}>
                 <div className="flex items-center justify-between py-4.5 px-5 pb-3.5">
                   <div>
                     <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.evolucion_de_prefijo} {modulo.toLowerCase()}</h2>
@@ -52,7 +52,7 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
                   ))}
                 </div>
               </article>
-              <article className="min-w-0 rounded-control border border-borde bg-white shadow-sombra">
+              <article className={CLASES_TARJETA.superficie}>
                 <div className="py-4.5 px-5 pb-3.5">
                   <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.modulo_resumen}</h2>
                   <p className="m-0 mt-0.5 text-auxiliar text-texto-suave">{catalogoEstadisticas.secciones.modulo_resumen_sub}</p>
@@ -61,14 +61,14 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
                   {RESUMEN.map((r) => (
                     <li key={r.etiqueta} className="flex justify-between border-b border-borde-suave py-3.5 text-auxiliar">
                       <span className="text-texto-suave">{r.etiqueta}</span>
-                      <strong className="text-valor-destacado text-texto">{r.valor}</strong>
+                      <strong className="text-nombre-fila text-texto">{r.valor}</strong>
                     </li>
                   ))}
                 </ul>
               </article>
             </section>
 
-            <section className="rounded-control border border-borde bg-white shadow-sombra">
+            <section className={CLASES_TARJETA.superficie}>
               <div className="flex items-center justify-between py-4.5 px-5 pb-3.5">
                 <div>
                   <h2 className="m-0 text-titulo-banner text-texto">{catalogoEstadisticas.secciones.modulo_detalle}</h2>
@@ -77,7 +77,7 @@ export function PaginaEstadisticasModulo({ modulo }: { modulo: string }) {
                 <Boton variant="secundario">{catalogoEstadisticas.botones.exportar}</Boton>
               </div>
               <div className="overflow-auto px-5 pb-5">
-                <table className="w-full border-collapse text-cuerpo">
+                <table className="w-full border-collapse text-subtitulo">
                   <thead>
                     <tr>
                       {TABLA_DETALLE_MODULO.map((h) => (

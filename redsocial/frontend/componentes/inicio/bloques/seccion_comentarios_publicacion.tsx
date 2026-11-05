@@ -1,4 +1,4 @@
-import { imagenUsuarioPredeterminada } from '../../compartido'
+import { imagenPerfilPedroRedSocial } from '../../compartido'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import { CajaComentario } from './caja_comentario'
@@ -10,10 +10,10 @@ const textos = catalogoInicio.publicacion.comentarios
 
 export function SeccionComentariosPublicacion({ id, comentarios, total, onComentar, onResponder, onEditar, onEliminar, onReaccionar }: SeccionComentariosPublicacionProps) {
   return (
-    <section id={id} aria-label={textos.etiqueta_seccion} className="border-t border-borde-suave px-4 py-3">
+    <section id={id} aria-label={textos.etiqueta_seccion} className="pt-4">
       {total === 0 && <MensajeVacio texto={textos.vacio} className="mb-3" />}
       {comentarios.length > 0 && (
-        <ul aria-label={textos.etiqueta_lista} className="m-0 mb-3 flex list-none flex-col gap-3 p-0">
+        <ul aria-label={textos.etiqueta_lista} className={textos.clases.lista}>
           {comentarios.map((comentario) => (
             <ItemComentario
               key={comentario.id}
@@ -28,7 +28,7 @@ export function SeccionComentariosPublicacion({ id, comentarios, total, onComent
         </ul>
       )}
       <div className="flex items-start gap-2">
-        <AvatarUsuario tamano="sm" imagen={imagenUsuarioPredeterminada} />
+        <AvatarUsuario tamano="sm" imagen={imagenPerfilPedroRedSocial} />
         <CajaComentario marcador={textos.marcador} etiqueta={textos.etiqueta_campo} etiquetaEnviar={textos.publicar} onEnviar={onComentar} />
       </div>
     </section>

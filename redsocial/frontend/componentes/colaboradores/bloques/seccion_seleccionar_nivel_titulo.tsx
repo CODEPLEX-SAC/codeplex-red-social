@@ -1,63 +1,47 @@
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Icono } from '../../compartido/icono'
+import { AvisoEmergente } from '../../compartido/interfaz/aviso_emergente'
+import { usarVistaMovil } from '../../compartido/interfaz/usar_vista_movil'
 import { SeccionSeleccionarNivelTitulo2 } from './seccion_seleccionar_nivel_titulo2'
-import type { Modulo, FilaPermiso, ClavePermiso } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import type { CodeplexNotificacionPosicion } from '@codeplex-sac/feedback'
+import type { EstadoPermisosInvitacion, Modulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
 
-export function SeccionSeleccionarNivelTitulo({
-  MODULOS,
-  PERFIL_APLICADO,
-  PERFILES_NIVEL_RAPIDO,
-  FILAS,
-  CeldaPermiso,
-}: {
-  MODULOS: Modulo[]
-  PERFIL_APLICADO: string
-  PERFILES_NIVEL_RAPIDO: string[]
-  FILAS: FilaPermiso[]
-  CeldaPermiso: ({ columna, activa }: { columna: { clave: ClavePermiso; icono: string; color: string; etiqueta: string; }; activa: boolean; }) => React.JSX.Element
-}) {
+const clases = catalogoColaboradores.clases.invitar_permisos
+const coloresModulo: Record<string, string> = catalogoColaboradores.clases.modulo_color
+
+export function SeccionSeleccionarNivelTitulo({ MODULOS, PERMISOS }: { MODULOS: Modulo[]; PERMISOS: EstadoPermisosInvitacion }) {
+  const moduloActivo = PERMISOS.moduloActivo ?? MODULOS[0].nombre
+  const movil = usarVistaMovil()
+
   return (
-    <div className="grid grid-cols-240-1fr min-h-100 max-960:grid-cols-1">
-      <aside className="border-r border-gris-borde py-6 max-960:flex max-960:gap-1 max-960:overflow-x-auto max-960:border-b max-960:border-r-0 max-960:px-4 max-960:py-3">
-        <p className="mb-2 px-5 text-titulo-subseccion text-texto max-960:hidden">{catalogoColaboradores.campos_rol_permisos.seleccionar_modulo}</p>
-        <ul className="m-0 list-none p-0 max-960:flex max-960:gap-1">
-          {MODULOS.map((m) => (
-            <li
-              key={m.nombre}
-              className={
-                'relative flex cursor-pointer items-center gap-3 px-5 py-3 hover:bg-fondo max-960:flex-shrink-0 max-960:px-3 max-960:py-2 ' +
-                (m.activo ? 'bg-primario-suave' : '')
-              }
-            >
-              {m.activo && <span className="absolute inset-y-0 left-0 w-0.75 bg-primario" />}
-              <div className={`flex h-8 w-8 flex-none items-center justify-center rounded-lg ${m.clase}`}>
-                <Icono name={m.icono} className="w-4.5 h-4.5" />
-              </div>
-              <div className="flex min-w-0 flex-col">
-                <span className={'text-nombre-entidad ' + (m.activo ? 'text-primario' : 'text-texto')}>{m.nombre}</span>
-                <span className="truncate text-auxiliar text-texto-suave max-960:hidden">{m.descripcion}</span>
-              </div>
-              {m.activo && (
-                <div className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-primario">
-                  <Icono name="verificado" className="w-3 h-3 text-white" />
-                </div>
-              )}
-            </li>
-          ))}
+    <div className={clases.contenedor}>
+      {!movil && (
+      <aside className={clases.lateral}>
+        <p className={clases.lateral_titulo}>{catalogoColaboradores.campos_rol_permisos.seleccionar_modulo}</p>
+        <ul className={clases.modulos}>
+          {MODULOS.map((m) => {
+            const activo = m.nombre === moduloActivo
+            return (
+              <li key={m.nombre}>
+                <button type="button" aria-current={activo} onClick={() => PERMISOS.activarModulo(m.nombre)} className={`${clases.modulo_boton} ${activo ? clases.modulo_activo : clases.modulo_inactivo}`}>
+                  {activo && <span className={clases.modulo_marca} />}
+                  <span className={`${clases.modulo_icono} ${coloresModulo[m.nombre]}`}>
+                    <Icono name={m.icono} className={clases.modulo_glifo} />
+                  </span>
+                  <span className={clases.modulo_texto}>
+                    <span className={`${clases.modulo_nombre} ${activo ? clases.modulo_nombre_activo : clases.modulo_nombre_inactivo}`}>{m.nombre}</span>
+                    <span className={clases.modulo_descripcion}>{m.descripcion}</span>
+                  </span>
+                </button>
+              </li>
+            )
+          })}
         </ul>
-        <div className="mx-4 mt-4 rounded-lg border border-borde-info-suave bg-fondo-info-suave px-3 py-2.5 max-960:hidden">
-          <p className="m-0 text-auxiliar leading-texto text-azul-categoria-texto">
-            {catalogoColaboradores.campos_rol_permisos.nota_modulo}
-          </p>
-        </div>
       </aside>
+      )}
 
-      <SeccionSeleccionarNivelTitulo2
-        PERFIL_APLICADO={PERFIL_APLICADO}
-        PERFILES_NIVEL_RAPIDO={PERFILES_NIVEL_RAPIDO}
-        FILAS={FILAS}
-        CeldaPermiso={CeldaPermiso}
-      />
+      <SeccionSeleccionarNivelTitulo2 MODULO={moduloActivo} MODULOS={MODULOS} PERMISOS={PERMISOS} />
+      {PERMISOS.aviso && <AvisoEmergente abierto {...(movil ? { posicion: catalogoColaboradores.dialogos_rol.posicion_aviso_movil as CodeplexNotificacionPosicion } : {})} variante={PERMISOS.aviso.variante} titulo={PERMISOS.aviso.titulo} mensaje={PERMISOS.aviso.mensaje} alCerrar={PERMISOS.cerrarAviso} />}
     </div>
   )
 }

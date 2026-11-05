@@ -10,7 +10,7 @@
 
 ## 2. Origen e implementación
 
-- **Origen:** envoltorio propio de CodePlex sobre `CodeplexIcono` de `@codeplex-sac/iconos` 0.0.11 (única importación de esa librería en el proyecto, `icono.tsx:1`), más SVG locales de `redsocial/recursos/iconos/` (107 archivos).
+- **Origen:** envoltorio propio de CodePlex sobre `CodeplexIcono` de `@codeplex-sac/iconos` 0.0.11 (única importación de esa librería en el proyecto, `icono.tsx:1`), más SVG locales de `redsocial/recursos/iconos/` (**112 archivos en disco el 2026-10-24**; 107 era la cifra del 2026-10-17).
 - **Glifos:** Material Symbols Rounded (ligaduras). La fuente se inyecta en tiempo de ejecución con un `<link>` a Google Fonts (`icono_libreria.url_fuente`) mediante `asegurarFuenteLibreria()`; requiere red.
 - **No hay** `lucide-react`, `react-icons`, `@mui/icons-material` como dependencia del proyecto ni importaciones de ellos en `componentes/`, `paginas/` o `formularios/` (comprobado por búsqueda el 2026-10-17). `@mui/icons-material` está instalado solo como dependencia transitiva de las librerías `@codeplex-sac/*`; el proyecto no lo importa.
 - **Exportación:** barrel `componentes/compartido/index.ts` (`Icono` y las imágenes predeterminadas).
@@ -21,9 +21,9 @@
 **Resolución de `<Icono name="x" className="h-5 w-5" />`:**
 
 1. `compartido.json › iconos` (alias): `name → clave`, o `svg:clave` para forzar un SVG propio (hoy `contabilidad-propio` y `cohete-propio`).
-2. Si la clave está en `iconos_libreria` (102 entradas) se pinta `CodeplexIcono` con el símbolo de Material.
+2. Si la clave está en `iconos_libreria` (109 entradas el 2026-10-24; 102 el 2026-10-17) se pinta `CodeplexIcono` con el símbolo de Material.
 3. Si no, se usa `ICONOS_SVG[clave]`, leído de `recursos/iconos/<clave>.svg` con `import.meta.glob(..., { query: '?raw' })`.
-4. `nombres_iconos` define el tipo `NombreIcono`. Recuento del 2026-10-17: 134 nombres (unión de los 115 alias de `iconos` y los 112 de `nombres_iconos`); 112 se resuelven a glifos de la librería y 22 a SVG locales (20 archivos distintos).
+4. `nombres_iconos` define el tipo `NombreIcono`. **Recuento del 2026-10-24 [comprobado en `compartido.json`]:** 145 nombres (unión de los 125 alias de `iconos` y los 118 de `nombres_iconos`); 118 se resuelven a glifos de la librería (`iconos_libreria`: 109 claves, 105 glifos distintos) y 27 a SVG locales (25 archivos distintos; 85 archivos más quedan sombreados y 2 no tienen nombre). Recuento anterior del 2026-10-17: 134 nombres (115 alias y 112 en `nombres_iconos`), 112 a la librería y 22 a SVG (20 archivos). Detalle por nombre en `AUDITORIA_ICONOS_LIBRERIA_2026.md › Cierre de trazabilidad de iconos`.
 
 - **Tamaño:** se deduce de la clase `h-N` del `className` (N × 0,25 rem; respaldo `1rem`); `w-*` se descarta; `max-N:h-M` genera reglas `@media`.
 - **Escala permitida por prueba** (`pruebas/compartido/escala_iconos.test.tsx`): 12, 14, 16, 18, 20 y 24 px, e ilustraciones de 28, 32, 40 y 56 px.
@@ -67,3 +67,7 @@ Las 566 exportaciones semánticas de `@codeplex-sac/iconos` (`CodeplexIconoInici
 
 
 Verificado el 2026-10-17 contra el código del repositorio (rama `codeplexMaster`, cambios sin confirmar). Lo marcado como **no verificado** o **no determinado** no pudo comprobarse con los archivos ni con el navegador.
+
+### Actualización 2026-10-29 (Ronda 13): menú de conversación
+- Tres puntos **horizontales**: el glifo oficial de `@codeplex-sac/iconos` es `more_horiz` (componente `CodeplexIconoMasHoriz`), registrado desde antes con el alias `puntos` en `compartido.json › iconos / nombres_iconos / iconos_libreria`. La fila de conversación lo dibuja con `BotonIcono icono="puntos"` a través del contenedor `Icono`; no se creó ningún alias nuevo para él ni se usó un SVG propio, texto ni otra librería. (El nombre `more-horizontal` no existe en la librería.)
+- Aliases nuevos, todos con glifo oficial: `marcar-leido` → `mark_chat_read`, `marcar-no-leido` → `mark_chat_unread`, `notificaciones-activas` → `notifications_active`. Los demás elementos del menú reutilizan `silenciado`, `usuario`, `despedida` (abandonar grupo, glifo `logout`) y `eliminar`; no se añadió un alias duplicado para `logout` porque la prueba de arquitectura impide dos nombres para el mismo glifo. **Sin excepciones nuevas de SVG propio.**

@@ -1,6 +1,6 @@
 import type { IconName } from './contrato_icono'
 
-export type BannerInformativoVariante = 'destacado' | 'nota'
+export type BannerInformativoVariante = 'destacado' | 'suave' | 'nota'
 
 export interface BannerInformativoProps {
   icono: IconName

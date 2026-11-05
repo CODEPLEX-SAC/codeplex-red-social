@@ -2,6 +2,7 @@ import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.js
 import { Icono } from '../../compartido/icono'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionProximos2({
   PROXIMOS_LATERAL,
@@ -15,7 +16,7 @@ export function SeccionProximos2({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.proximos}</h2>
-          <a href={catalogoEventos.rutas.calendario} className="text-enlace-accion text-primario no-underline hover:underline">{catalogoEventos.botones.ver_calendario}</a>
+          <a href={catalogoEventos.rutas.calendario} className={CLASE_ENLACE_ACCION}>{catalogoEventos.botones.ver_calendario}</a>
         </div>
         <div className="px-4 pb-1">
           {PROXIMOS_LATERAL.map((ev) => (
@@ -25,7 +26,7 @@ export function SeccionProximos2({
                 <span className="block text-mes-evento uppercase text-texto-suave">{ev.mes}</span>
               </div>
               <div className="min-w-0 flex-1">
-                <span className="mb-0.5 block text-nombre-entidad text-texto">{ev.nombre}</span>
+                <span className="mb-0.5 block text-nombre-fila text-texto">{ev.nombre}</span>
                 <span className="block text-auxiliar leading-compacto text-texto-suave">{ev.linea1}</span>
                 <span className="block text-auxiliar leading-compacto text-texto-suave">{ev.linea2}</span>
                 <span className="mt-0.75 flex items-center gap-1 text-auxiliar text-texto-suave">
@@ -35,7 +36,7 @@ export function SeccionProximos2({
             </article>
           ))}
         </div>
-        <a href="#" className="flex items-center justify-center gap-1.5 border-t border-borde-suave px-4 py-3 text-enlace-accion text-primario no-underline hover:underline">
+        <a href="#" className={[CLASE_ENLACE_ACCION, 'flex items-center justify-center gap-1.5 border-t border-borde-suave px-4 py-3'].join(' ')}>
           {catalogoEventos.filtros.todos_los_eventos} <Icono name="flecha-derecha" className="h-3.5 w-3.5" />
         </a>
       </section>
@@ -43,7 +44,7 @@ export function SeccionProximos2({
       <section className="overflow-hidden rounded-xl border border-borde-suave bg-white">
         <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
           <h2 className="m-0 text-titulo-banner text-texto">{catalogoEventos.secciones.categorias}</h2>
-          <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODAS}</a>
+          <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODAS}</a>
         </div>
         <div className="px-4 pb-2">
           {CATEGORIAS_LATERAL.map((c) => (
@@ -51,7 +52,7 @@ export function SeccionProximos2({
               <SuperficieColor variante={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-7">
                 <Icono name={c.icono} className="h-3.5 w-3.5 text-white" />
               </SuperficieColor>
-              <span className="flex-1 text-nombre-entidad text-texto">{c.nombre}</span>
+              <span className="flex-1 text-nombre-fila text-texto">{c.nombre}</span>
               <span className="flex-none text-conteo text-texto-suave">{c.conteo}</span>
             </article>
           ))}

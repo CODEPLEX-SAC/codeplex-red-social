@@ -1,5 +1,8 @@
 import type { Kpi, Modulo } from '@/tipos/dashboard/modelo_dashboard'
-import datos from './dashboard.json'
+import { resolverColoresGraficos } from '../compartido/colores_graficos'
+import datosJson from './dashboard.json'
+
+const datos = resolverColoresGraficos(datosJson)
 
 export const KPIS = datos.kpis as Kpi[]
 export const RATIOS = datos.ratios as { nombre: string; valor: string; estado: 'optimo' | 'aceptable' | 'bajo' | 'riesgo' }[]

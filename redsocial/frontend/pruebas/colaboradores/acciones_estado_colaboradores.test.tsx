@@ -1,21 +1,29 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradores'
-import { opcionesMenuFila, puedeDarDeBaja, puedeReenviar, registrarBaja, reenviarInvitacion } from '@/componentes/colaboradores/bloques/reglas_estado_colaboradores'
+import { puedeDarDeBaja, puedeReenviar, registrarBaja, reenviarInvitacion } from '@/componentes/colaboradores/bloques/reglas_estado_colaboradores'
 import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'
 import catalogoColaboradores from '@/catalogos/capacidades/redsocial/colaboradores.json'
 
+vi.mock('@/componentes/colaboradores/bloques/colaboradores_tabla_config', async (importarOriginal) => ({
+  ...(await importarOriginal<typeof import('@/componentes/colaboradores/bloques/colaboradores_tabla_config')>()),
+  TAMANO_PAGINA_COLABORADORES: 3,
+}))
+
 const botones = catalogoColaboradores.botones
 const [carlos, , , ana, luis, rosa] = COLABORADORES
-const sinAcciones = { alVer: () => undefined, alEditar: () => undefined, alDarDeBaja: () => undefined }
 
 function filaDe(nombre: string) {
   fireEvent.change(screen.getByPlaceholderText(catalogoColaboradores.placeholders.buscar_colaborador), { target: { value: nombre } })
   return within(screen.getByText(nombre, { selector: 'span.truncate' }).closest('tr') as HTMLElement)
 }
 
-function etiquetasDelMenu(nombre: string) {
-  fireEvent.click(filaDe(nombre).getByRole('button', { name: botones.mas_opciones }))
-  return within(screen.getByRole('menu')).getAllByRole('menuitem').map((item) => item.textContent)
+function accionesDe(nombre: string) {
+  return [botones.accion_ver, botones.accion_editar, botones.accion_baja].map((plantilla) => plantilla.replace(':nombre', nombre))
+}
+
+function etiquetasDeAcciones(nombre: string) {
+  const celda = filaDe(nombre).getAllByRole('cell').at(-1) as HTMLElement
+  return within(celda).getAllByRole('button').map((boton) => boton.getAttribute('aria-label'))
 }
 
 describe('Reglas de acciones segun el estado del colaborador', () => {
@@ -27,13 +35,6 @@ describe('Reglas de acciones segun el estado del colaborador', () => {
   it('solo un colaborador invitado puede recibir un reenvio y solo quien no esta de baja puede darse de baja', () => {
     expect(COLABORADORES.filter(puedeReenviar).map((c) => c.estado)).toEqual(['invitado'])
     expect(COLABORADORES.filter((c) => !puedeDarDeBaja(c)).map((c) => c.estado)).toEqual(['baja'])
-  })
-
-  it('el menu de fila omite Dar de baja cuando el colaborador ya esta de baja', () => {
-    const etiquetas = (c: typeof rosa) => opcionesMenuFila(c, sinAcciones).map((opcion) => opcion.etiqueta)
-    expect(etiquetas(carlos)).toEqual([botones.ver_colaborador, botones.editar_colaborador, botones.dar_de_baja])
-    expect(etiquetas(luis)).toEqual([botones.ver_colaborador, botones.editar_colaborador, botones.dar_de_baja])
-    expect(etiquetas(rosa)).toEqual([botones.ver_colaborador, botones.editar_colaborador])
   })
 
   it('dar de baja a quien ya esta de baja no cambia nada, ni siquiera la fecha', () => {
@@ -48,37 +49,35 @@ describe('Reglas de acciones segun el estado del colaborador', () => {
 })
 
 describe('Acciones de fila en la tabla', { timeout: 30000 }, () => {
-  it('un colaborador activo tiene menu completo y no tiene Reenviar', () => {
+  it('un colaborador activo tiene las tres acciones visibles y no tiene Reenviar', () => {
     render(<PaginaColaboradores />)
-    expect(etiquetasDelMenu(carlos.nombre)).toEqual([botones.ver_colaborador, botones.editar_colaborador, botones.dar_de_baja])
-    fireEvent.keyDown(screen.getByRole('menu'), { key: 'Escape' })
+    expect(etiquetasDeAcciones(carlos.nombre)).toEqual(accionesDe(carlos.nombre))
     expect(filaDe(carlos.nombre).queryByRole('button', { name: botones.reenviar })).toBeNull()
   })
 
-  it('un colaborador invitado muestra Reenviar y no el menu', () => {
+  it('un colaborador invitado muestra Reenviar y no las acciones de icono', () => {
     render(<PaginaColaboradores />)
     const fila = filaDe(ana.nombre)
     expect(fila.getByRole('button', { name: botones.reenviar })).toBeInTheDocument()
-    expect(fila.queryByRole('button', { name: botones.mas_opciones })).toBeNull()
+    expect(fila.queryByRole('button', { name: botones.accion_ver.replace(':nombre', ana.nombre) })).toBeNull()
   })
 
   it('un colaborador inactivo conserva Dar de baja', () => {
     render(<PaginaColaboradores />)
-    expect(etiquetasDelMenu(luis.nombre)).toContain(botones.dar_de_baja)
+    expect(etiquetasDeAcciones(luis.nombre)).toEqual(accionesDe(luis.nombre))
   })
 
   it('un colaborador de baja no ofrece Dar de baja pero si consultar y editar', () => {
     render(<PaginaColaboradores />)
-    expect(etiquetasDelMenu(rosa.nombre)).toEqual([botones.ver_colaborador, botones.editar_colaborador])
+    expect(etiquetasDeAcciones(rosa.nombre)).toEqual(accionesDe(rosa.nombre).slice(0, 2))
   })
 
-  it('despues de dar de baja a un colaborador su menu ya no ofrece Dar de baja', () => {
+  it('despues de dar de baja a un colaborador su fila ya no ofrece Dar de baja', () => {
     render(<PaginaColaboradores />)
-    fireEvent.click(filaDe(carlos.nombre).getByRole('button', { name: botones.mas_opciones }))
-    fireEvent.click(screen.getByRole('menuitem', { name: botones.dar_de_baja }))
+    fireEvent.click(filaDe(carlos.nombre).getByRole('button', { name: botones.accion_baja.replace(':nombre', carlos.nombre) }))
     fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: botones.dar_de_baja }))
 
-    expect(etiquetasDelMenu(carlos.nombre)).toEqual([botones.ver_colaborador, botones.editar_colaborador])
+    expect(etiquetasDeAcciones(carlos.nombre)).toEqual(accionesDe(carlos.nombre).slice(0, 2))
   })
 
   it('reenviar no crea otro colaborador', () => {

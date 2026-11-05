@@ -5,30 +5,32 @@ import { Insignia } from '../../compartido/interfaz/insignia'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 
+const clases = catalogoColaboradores.clases.detalle
+const coloresEstado: Record<string, { texto: string; punto: string; insignia: string }> = catalogoColaboradores.clases.estado_color
+const etiquetasEstado: Record<string, string> = catalogoColaboradores.estados
+
 export function BloqueIdentidadColaborador({
   colaborador,
-  estado,
   alEditar,
 }: {
   colaborador: Colaborador
-  estado: { insignia: string; etiqueta: string }
   alEditar: () => void
 }) {
   return (
     <div>
-      <div className="mb-4 flex items-start gap-3">
+      <div className={clases.identidad}>
         <AvatarUsuario tamano="lg" imagen={usuarioImg} />
-        <div className="flex min-w-0 flex-col gap-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="m-0 text-cuerpo-grande text-texto">{colaborador.nombre}</h3>
-            <Insignia variant="status" className={estado.insignia}>{estado.etiqueta}</Insignia>
+        <div className={clases.identidad_textos}>
+          <div className={clases.identidad_encabezado}>
+            <h3 className={clases.identidad_nombre}>{colaborador.nombre}</h3>
+            <Insignia variant="status" className={coloresEstado[colaborador.estado].insignia}>{etiquetasEstado[colaborador.estado]}</Insignia>
           </div>
-          <span className="text-campo-formulario text-texto-suave">{colaborador.rol}</span>
-          <span className="text-auxiliar text-texto-suave">{colaborador.correo}</span>
-          <span className="text-auxiliar text-texto-suave">{colaborador.telefono}</span>
+          <span className={clases.identidad_rol}>{colaborador.rol}</span>
+          <span className={clases.identidad_contacto}>{colaborador.correo}</span>
+          <span className={clases.identidad_contacto}>{colaborador.telefono}</span>
         </div>
       </div>
-      <Boton type="button" variant="primario" size="md" className="w-full" onClick={alEditar}>{catalogoColaboradores.botones.editar_colaborador}</Boton>
+      <Boton type="button" variant="primario" size="md" className={clases.identidad_accion} onClick={alEditar}>{catalogoColaboradores.botones.editar_colaborador}</Boton>
     </div>
   )
 }

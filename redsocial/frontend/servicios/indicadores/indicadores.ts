@@ -1,5 +1,8 @@
 import type { Kpi, FilaTabla, TarjetaModulo } from '@/tipos/indicadores/modelo_indicadores_clave'
-import datos from './indicadores.json'
+import { resolverColoresGraficos } from '../compartido/colores_graficos'
+import datosJson from './indicadores.json'
+
+const datos = resolverColoresGraficos(datosJson)
 
 export const KPIS = datos.kpis as Kpi[]
 export const RENTABILIDAD = datos.rentabilidad as FilaTabla[]

@@ -25,3 +25,7 @@ export function filtrarPreguntas(preguntas: ElementoFeed[], filtro: FiltroPregun
   if (filtro === 'sin_resolver') return preguntas.filter((pregunta) => !resuelta(pregunta))
   return preguntas
 }
+
+export function elementosSubpestanas(opciones: { clave: string; etiqueta: string }[], propio: boolean, etiquetaPropia: string) {
+  return opciones.map((opcion) => ({ clave: opcion.clave, etiqueta: opcion.clave === 'preguntas' && propio ? etiquetaPropia : opcion.etiqueta }))
+}

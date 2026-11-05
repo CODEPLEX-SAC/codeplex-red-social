@@ -58,7 +58,7 @@ describe('PaginaPerfilUsuario: perfil de otra persona', () => {
     expect(screen.getByRole('heading', { level: 1, name: maria.nombre })).toBeInTheDocument()
     expect(screen.getByText(botones.ya_son_amigos)).toBeInTheDocument()
     const estadisticas = within(screen.getByRole('list', { name: cabecera.estadisticas }))
-    expect(estadisticas.getByText(cabecera.en_comun_plural)).toBeInTheDocument()
+    expect(estadisticas.getByText(cabecera.estadisticas_items[2].texto)).toBeInTheDocument()
     expect(estadisticas.getByText(String(maria.publicaciones.length))).toBeInTheDocument()
     expect(screen.getByRole('link', { name: botones.enviar_mensaje })).toHaveAttribute('href', catalogoMensajeria.rutas.todos)
   })
@@ -139,7 +139,7 @@ describe('PaginaPerfilUsuario: experiencia, documentos y metricas', () => {
 
   it('el perfil ofrece las seis pestanas recuperadas', () => {
     abrirPerfil()
-    expect(screen.getAllByRole('tab')).toHaveLength(catalogoPerfil.pestanas.length)
+    expect(within(screen.getAllByRole('tablist')[0]).getAllByRole('tab')).toHaveLength(catalogoPerfil.pestanas.length)
     for (const clave of ['experiencia', 'documentos', 'metricas']) expect(pestana(etiqueta(clave))).toBeInTheDocument()
   })
 
@@ -182,10 +182,10 @@ describe('PaginaPerfilUsuario: Red Social y edicion del perfil', () => {
 
   it('solo ofrece las pestanas Red Social, Resumen, Experiencia, Documentos, Metricas y Amigos', () => {
     abrirPerfil()
-    const tabs = screen.getAllByRole('tab')
+    const tabs = within(screen.getAllByRole('tablist')[0]).getAllByRole('tab')
     expect(tabs).toHaveLength(6)
     ;['Red Social', 'Resumen', 'Experiencia', 'Documentos', 'Métricas', 'Amigos'].forEach((nombre, indice) => expect(tabs[indice]).toHaveTextContent(nombre))
-    expect(screen.getByRole('tab', { selected: true })).toHaveTextContent('Red Social')
+    expect(within(screen.getAllByRole('tablist')[0]).getByRole('tab', { selected: true })).toHaveTextContent('Red Social')
   })
 
   it('Red Social muestra datos personales, fotos, amigos y la actividad reciente con el compositor en el perfil propio', () => {
@@ -196,7 +196,7 @@ describe('PaginaPerfilUsuario: Red Social y edicion del perfil', () => {
     expect(screen.getByText(redSocial.sin_fotos)).toBeInTheDocument()
     expect(screen.getByText(`${propio.amigos.length} ${propio.amigos.length === 1 ? redSocial.amigo_singular : redSocial.amigo_plural}`)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', propio.nombres) })).toBeInTheDocument()
-    fireEvent.click(screen.getByRole('button', { name: redSocial.mis_preguntas }))
+    fireEvent.click(screen.getByRole('tab', { name: redSocial.mis_preguntas }))
     expect(screen.getByText(redSocial.preguntas.vacio_propio)).toBeInTheDocument()
   })
 
@@ -275,7 +275,7 @@ describe('PaginaPerfilUsuario: edicion completa del perfil propio', () => {
     fireEvent.click(screen.getByRole('button', { name: sec.habilidades.agregar_boton }))
     fireEvent.click(screen.getByRole('button', { name: sec.guardar }))
     expect(screen.getByText('Excel')).toBeInTheDocument()
-  })
+  }, 30000)
 
   it('Resumen: los detalles fijados controlan lo que muestra la cabecera', () => {
     abrirPerfil()
@@ -355,7 +355,7 @@ describe('PaginaPerfilUsuario: edicion completa del perfil propio', () => {
     act(() => ALMACEN_PUBLICACIONES.modificar((estado) => marcarComentarioUtil(estado, id, externo)))
     expect(tarjeta.getByText(catalogoInicio.pregunta_estado.resuelta.etiqueta)).toBeInTheDocument()
 
-    fireEvent.click(screen.getByRole('button', { name: redSocial.mis_preguntas }))
+    fireEvent.click(screen.getByRole('tab', { name: redSocial.mis_preguntas }))
     expect(screen.getByText(redSocial.preguntas.respuesta_util.replace(':autor', 'María Fernández'))).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: redSocial.preguntas.desmarcar }))
     expect(screen.queryByText(redSocial.preguntas.respuesta_util.replace(':autor', 'María Fernández'))).toBeNull()

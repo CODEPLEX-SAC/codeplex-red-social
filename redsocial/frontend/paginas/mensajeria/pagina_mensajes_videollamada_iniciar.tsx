@@ -1,4 +1,4 @@
-import { Icono, EstructuraApp } from '../../componentes/compartido'
+import { Icono, EstructuraApp, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
 import { DISPOSITIVOS, CONFIGURACION_LLAMADA, PARTICIPANTES_INICIAR, CONTACTOS_INVITAR, OPCIONES_LLAMADA, DETALLE_REUNION, VOLVER_A_VIDEOLLAMADAS } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -7,7 +7,7 @@ import { SeccionVideollamadaIniciar, SeccionParticipantes2 } from '../../compone
 export function PaginaMensajesVideollamadaIniciar() {
   return (
     <EstructuraApp paginaActiva="mensajes">
-      <a href={catalogoMensajeria.rutas.videollamadas} className="mb-4 inline-flex items-center gap-1.5 text-enlace-accion text-primario no-underline hover:underline">
+      <a href={catalogoMensajeria.rutas.videollamadas} className={[CLASE_ENLACE_ACCION, 'mb-4 inline-flex items-center gap-1.5'].join(' ')}>
         <Icono name="flecha-izquierda" className="h-4 w-4" /> {VOLVER_A_VIDEOLLAMADAS}
       </a>
 

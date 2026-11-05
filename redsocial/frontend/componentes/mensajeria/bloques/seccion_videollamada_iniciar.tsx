@@ -2,6 +2,7 @@ import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensaje
 import { clasesBoton } from '../../compartido/interfaz/boton'
 import { Icono } from '../../compartido/icono'
 import { SeccionDispositivos } from './seccion_dispositivos'
+import { CLASE_ENLACE_ACCION_SECUNDARIO } from '../../compartido/clases_enlace'
 
 export function SeccionVideollamadaIniciar({
   SESION_ACTUAL,
@@ -16,7 +17,7 @@ export function SeccionVideollamadaIniciar({
     <section className="min-w-0">
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="m-0 text-titulo-pagina tracking-n02 text-texto">{catalogoMensajeria.titulos.videollamada_iniciar}</h1>
+          <h1 className="m-0 text-titulo-pagina text-texto">{catalogoMensajeria.titulos.videollamada_iniciar}</h1>
           <p className="m-0 mt-1 text-subtitulo text-texto-suave">{catalogoMensajeria.subtitulos.videollamada_iniciar}</p>
         </div>
       </div>
@@ -44,7 +45,7 @@ export function SeccionVideollamadaIniciar({
       <a href={catalogoMensajeria.rutas.videollamada_en_curso} className={clasesBoton({ variant: 'primario', size: 'cta', className: 'mt-5 w-full' })}>
         <Icono name="video" className="h-4 w-4" /> {catalogoMensajeria.botones.iniciar_videollamada}
       </a>
-      <a href={catalogoMensajeria.rutas.videollamadas} className="mt-2.5 block text-center text-enlace-accion text-texto-suave no-underline hover:underline">{catalogoMensajeria.botones.cancelar}</a>
+      <a href={catalogoMensajeria.rutas.videollamadas} className={[CLASE_ENLACE_ACCION_SECUNDARIO, 'mt-2.5 block text-center'].join(' ')}>{catalogoMensajeria.botones.cancelar}</a>
     </section>
   )
 }

@@ -1,4 +1,4 @@
-import { Boton, Icono, EstructuraApp, Selector, Insignia, usarCarrusel } from '../../componentes/compartido'
+import { Boton, Icono, EstructuraApp, Selector, Insignia, usarCarrusel, CLASES_TABLA, CLASES_CUERPO_TARJETA } from '../../componentes/compartido'
 import type { ReactNode } from 'react'
 import catalogoEstadisticas from '../../catalogos/capacidades/redsocial/estadisticas.json'
 import type { PuntoCategoria } from '@codeplex-sac/graficos'
@@ -25,8 +25,8 @@ function EstadoBadge({ estado, children }: { estado: EstadoRatio; children: stri
 
 function TablaEst({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
-    <div className="overflow-x-auto max-380:-mx-2">
-      <table className={'w-full border-collapse text-cuerpo tabla-ultima-fila-sin-borde ' + className}>
+    <div className={['overflow-x-auto max-380:-mx-2', CLASES_CUERPO_TARJETA.cuerpo_tabla].join(' ')}>
+      <table className={[CLASES_TABLA.compacta.tabla, className].join(' ')}>
         {children}
       </table>
     </div>

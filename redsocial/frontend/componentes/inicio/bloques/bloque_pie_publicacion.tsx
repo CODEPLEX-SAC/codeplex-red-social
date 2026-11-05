@@ -16,11 +16,11 @@ export function BloquePiePublicacion({ etiquetaPublicar, puedeAgregarMedios, con
   }
 
   return (
-    <div className="flex flex-col gap-3 border-t border-borde px-5 py-4">
-      <div className="flex items-center justify-between gap-3 rounded-control border border-borde px-4 py-2">
+    <div className="flex flex-col gap-4 px-5 pb-4">
+      <div className="flex items-center justify-between gap-3 rounded-control border border-borde px-4 py-3">
         <span className="text-titulo-subseccion text-texto">{textos.agregar_a_publicacion}</span>
         <BotonIcono
-          icono="foto-video"
+          icono="imagen"
           type="button"
           aria-label={textos.foto_video}
           title={textos.foto_video}

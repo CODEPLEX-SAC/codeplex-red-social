@@ -92,8 +92,11 @@ describe('Prevencion de arquitectura: un solo cascaron de panel lateral', () => 
 describe('Prevencion de arquitectura: tokens e iconos sin huerfanos', () => {
   it('todo token --color-* tiene al menos un consumidor (clase, var() o referencia)', () => {
     const prefijos = '(?:[a-z0-9-]+:)*(?:text|bg|border(?:-[trblxy])?|from|to|via|fill|stroke|ring|shadow|outline|divide|decoration|accent|caret|placeholder)'
+    const coloresDeGraficos = Object.values(catalogoCompartido.colores_graficos).map((valor) => valor.toLowerCase())
+    const valorDelToken = (nombre: string) => CSS.match(new RegExp(`--color-${nombre}:\\s*(#[0-9a-fA-F]{6})`))?.[1].toLowerCase() ?? ''
     const huerfanos = [...CSS.matchAll(/^\s*--color-([a-z0-9-]+):/gm)]
       .map((coincidencia) => coincidencia[1])
+      .filter((nombre) => !coloresDeGraficos.includes(valorDelToken(nombre)))
       .filter((nombre) => {
         const escapado = nombre.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
         const comoClase = new RegExp(`(?<![\\w-])${prefijos}-${escapado}(?![\\w-])`)

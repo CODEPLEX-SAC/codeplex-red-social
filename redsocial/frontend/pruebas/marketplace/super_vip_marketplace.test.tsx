@@ -2,6 +2,7 @@ import { fireEvent, render, screen, within } from '@testing-library/react'
 import { beforeEach, vi } from 'vitest'
 import { sembrarTarjetas } from './ayudas_pago'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
+import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
 import { PLANES_APLICACIONES } from '@/rutas/marketplace/rutas_marketplace'
@@ -63,10 +64,13 @@ describe('Super VIP de Marketplace cuando el servicio esta habilitado', () => {
     sembrarTarjetas()
   })
 
-  it('en la pantalla de pago solo se activa tras aceptar los terminos y el Super VIP suma al total', () => {
+  it('en la pantalla de pago no se activa sin aceptar los terminos y el Super VIP suma al total', () => {
     const pantalla = irAlPago(1)
     const activar = within(pantalla).getByRole('button', { name: pago.resumen.activar })
-    expect(activar).toBeDisabled()
+    expect(activar).toBeEnabled()
+    fireEvent.click(activar)
+    expect(within(pantalla).getByText(catalogoCompartido.flujo_pago.textos.autorizacion.obligatoria_pendiente)).toBeInTheDocument()
+    expect(within(pantalla).queryByText(pago.exito.titulo)).toBeNull()
     expect(within(pantalla).getAllByText('S/50').length).toBeGreaterThan(0)
     fireEvent.click(within(pantalla).getByRole('checkbox', { name: pago.vip.agregar }))
     expect(within(pantalla).getAllByText('S/550').length).toBeGreaterThan(0)

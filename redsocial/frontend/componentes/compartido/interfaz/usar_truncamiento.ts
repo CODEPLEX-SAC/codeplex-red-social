@@ -6,7 +6,7 @@ export function usarTruncamiento<T extends HTMLElement>() {
 
   function medir() {
     const elemento = referencia.current
-    setTruncado(elemento !== null && elemento.scrollWidth > elemento.clientWidth)
+    setTruncado(elemento !== null && (elemento.scrollWidth > elemento.clientWidth || elemento.scrollHeight > elemento.clientHeight))
   }
 
   return { referencia, truncado, medir }

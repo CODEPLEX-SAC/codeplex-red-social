@@ -3,6 +3,11 @@ import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradore
 import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'
 import catalogoColaboradores from '@/catalogos/capacidades/redsocial/colaboradores.json'
 
+vi.mock('@/componentes/colaboradores/bloques/colaboradores_tabla_config', async (importarOriginal) => ({
+  ...(await importarOriginal<typeof import('@/componentes/colaboradores/bloques/colaboradores_tabla_config')>()),
+  TAMANO_PAGINA_COLABORADORES: 3,
+}))
+
 const selectores = catalogoColaboradores.selectores
 const total = COLABORADORES.length
 const resumen = (desde: number, hasta: number, cantidad: number) =>
@@ -64,10 +69,11 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(screen.getByText(resumen(0, 0, 0))).toBeInTheDocument()
   })
 
-  it('las pestanas filtran por estado y muestran cuantos hay', () => {
+  it('las pestanas filtran por estado y no llevan contador', () => {
     render(<PaginaColaboradores />)
     const invitados = screen.getByRole('tab', { name: /Invitados/ })
-    expect(invitados).toHaveTextContent('1')
+    expect(invitados.textContent?.trim()).toBe('Invitados')
+    expect(screen.getAllByRole('tab').every((pestana) => !/\d/.test(pestana.textContent ?? ''))).toBe(true)
 
     fireEvent.click(invitados)
     expect(nombresVisibles()).toEqual(['Ana Torres'])
@@ -126,29 +132,20 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(screen.getAllByRole('columnheader')).toHaveLength(Object.keys(catalogoColaboradores.tabla).length)
   })
 
-  it('el menu de la fila ofrece tres acciones y se cierra con Escape', () => {
+  it('la fila ofrece tres acciones visibles con nombre accesible y sin menu', () => {
     render(<PaginaColaboradores />)
-    const boton = within(filaDe('Carlos Mendoza')).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones })
-    boton.focus()
-    fireEvent.click(boton)
-
-    const menu = screen.getByRole('menu')
-    expect(within(menu).getAllByRole('menuitem').map((item) => item.textContent)).toEqual([
-      catalogoColaboradores.botones.ver_colaborador,
-      catalogoColaboradores.botones.editar_colaborador,
-      catalogoColaboradores.botones.dar_de_baja,
-    ])
-
-    fireEvent.keyDown(menu, { key: 'Escape' })
+    const fila = within(filaDe('Carlos Mendoza'))
+    const botones = catalogoColaboradores.botones
+    expect(fila.getByRole('button', { name: botones.accion_ver.replace(':nombre', 'Carlos Mendoza') })).toBeInTheDocument()
+    expect(fila.getByRole('button', { name: botones.accion_editar.replace(':nombre', 'Carlos Mendoza') })).toBeInTheDocument()
+    expect(fila.getByRole('button', { name: botones.accion_baja.replace(':nombre', 'Carlos Mendoza') })).toBeInTheDocument()
     expect(screen.queryByRole('menu')).toBeNull()
   })
 
-  it('elegir una accion cierra el menu', () => {
+  it('elegir Ver abre el detalle del colaborador', () => {
     render(<PaginaColaboradores />)
-    fireEvent.click(within(filaDe('Carlos Mendoza')).getByRole('button', { name: catalogoColaboradores.botones.mas_opciones }))
-    fireEvent.click(screen.getByRole('menuitem', { name: catalogoColaboradores.botones.ver_colaborador }))
+    fireEvent.click(within(filaDe('Carlos Mendoza')).getByRole('button', { name: catalogoColaboradores.botones.accion_ver.replace(':nombre', 'Carlos Mendoza') }))
 
-    expect(screen.queryByRole('menu')).toBeNull()
     expect(screen.getByRole('heading', { level: 2, name: catalogoColaboradores.secciones.detalle_colaborador })).toBeInTheDocument()
   })
 

@@ -22,7 +22,7 @@ export function SeccionParticipantes2({
         <article key={p.nombre} className="flex items-center gap-2.5 py-2">
           <AvatarUsuario tamano="sm" imagen={usuarioImg} />
           <div className="min-w-0 flex-1">
-            <strong className="block truncate text-nombre-entidad text-texto">{p.nombre}</strong>
+            <strong className="block truncate text-nombre-fila text-texto">{p.nombre}</strong>
             <span className="block text-estado text-exito-texto">{p.rol}</span>
           </div>
           <Icono name="microfono" className="h-4 w-4 flex-none text-exito-texto" />
@@ -37,7 +37,7 @@ export function SeccionParticipantes2({
           <article key={nombre} className="flex items-center gap-2.5 py-2">
             <AvatarUsuario tamano="sm" imagen={usuarioImg} />
             <div className="min-w-0 flex-1">
-              <strong className="block truncate text-nombre-entidad text-texto">{nombre}</strong>
+              <strong className="block truncate text-nombre-fila text-texto">{nombre}</strong>
               <span className="block text-auxiliar text-texto-suave">{catalogoMensajeria.leyendas.colaborador}</span>
             </div>
             <Boton type="button" variant="secundario" size="mini" className="flex-none">{catalogoMensajeria.botones.invitar}</Boton>

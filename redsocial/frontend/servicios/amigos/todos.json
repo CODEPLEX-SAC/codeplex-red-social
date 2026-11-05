@@ -75,20 +75,6 @@
       "masAvatares": "+2"
     }
   ],
-  "solicitudesAmigos": [
-    {
-      "nombre": "Carlos Ramírez",
-      "descripcion": "Gerente de Proyectos en Constructora ABC"
-    },
-    {
-      "nombre": "Valeria Quispe",
-      "descripcion": "Contadora en Estudio Contable Quispe & Asociados"
-    },
-    {
-      "nombre": "Andrés Salazar",
-      "descripcion": "Analista de Sistemas en TechSolutions SAC"
-    }
-  ],
   "personasConocerTodos": [
     {
       "nombre": "Paola Martínez",

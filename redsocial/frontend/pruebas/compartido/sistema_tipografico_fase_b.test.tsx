@@ -8,6 +8,7 @@ const FUENTES = await leerFuentesFrontend()
 const PESOS_DE_ROL: Record<string, number> = {
   'titulo-pagina': 800,
   'titulo-seccion': 700,
+  'titulo-detalle': 700,
   'titulo-banner': 700,
   'nombre-entidad': 700,
   'nombre-fila': 700,
@@ -24,6 +25,7 @@ const PESOS_DE_ROL: Record<string, number> = {
   'badge': 700,
   'estado': 500,
   'conteo': 700,
+  'conteo-insignia': 400,
   'fecha-abreviada': 400,
   'dia-evento': 800,
   'mes-evento': 700,
@@ -33,12 +35,11 @@ const TODOS_LOS_ROLES = Object.keys(PESOS_DE_ROL).concat(ROLES_SIN_PESO_PROPIO)
 const CLASES_DE_ROL = new Set(Object.keys(PESOS_DE_ROL).map((nombre) => `text-${nombre}`))
 const INTERLINEADOS_PERMITIDOS = ['leading-compacto', 'leading-texto', 'leading-none']
 const INTERLINEADOS_JUSTIFICADOS = [
-  { ruta: '/componentes/colaboradores/bloques/bloque_vista_previa_correo.tsx', clase: 'leading-6' },
+  { ruta: '/catalogos/capacidades/redsocial/colaboradores.json', clase: 'leading-6' },
 ]
 const PANELES_LATERALES = [
   '/componentes/compartido/bloques/panel_lateral.tsx',
   '/componentes/mensajeria/bloques/seccion_participantes.tsx',
-  '/componentes/amigos/bloques/panel_lateral_amigos.tsx',
   '/componentes/avisos/bloques/panel_lateral_solicitudes_aviso.tsx',
   '/componentes/avisos/bloques/panel_detalle_aviso.tsx',
   '/componentes/eventos/bloques/panel_calendario_mini.tsx',
@@ -162,9 +163,15 @@ describe('Fase B final: titulos de ventana, panel y tarjeta con el mismo rol', (
 
   it.each([
     ['/componentes/eventos/bloques/modal_crear_evento.tsx', /<h2 className="[^"]*text-titulo-banner[^"]*">\{textos\.titulo\}/],
-    ['/componentes/colaboradores/bloques/panel_filtros_avanzados.tsx', /<h3 className="[^"]*text-titulo-banner[^"]*">\{textos\.titulo\}/],
   ])('%s', (ruta, patron) => {
     expect(fuenteDe(ruta)?.texto).toMatch(patron)
+  })
+
+  it('el titulo del panel de filtros de Colaboradores y el de la confirmacion de baja usan titulo-banner desde el catalogo', () => {
+    const clases = JSON.parse(fuenteDe('/catalogos/capacidades/redsocial/colaboradores.json')?.texto ?? '{}').clases
+    expect(clases.filtros.titulo).toContain('text-titulo-banner')
+    expect(clases.confirmacion_baja.titulo).toContain('text-titulo-banner')
+    expect(fuenteDe('/componentes/colaboradores/bloques/panel_filtros_avanzados.tsx')?.texto).toMatch(/<h3 className=\{clases\.titulo\}>\{textos\.titulo\}/)
   })
 
   it('el catalogo del Modal compartido usa titulo-banner', () => {
@@ -172,8 +179,11 @@ describe('Fase B final: titulos de ventana, panel y tarjeta con el mismo rol', (
   })
 
   it('los bloques del modal de invitacion usan nombre-entidad como los del modal de edicion', () => {
-    expect(fuenteDe('/componentes/colaboradores/bloques/bloque_renovacion.tsx')?.texto).toContain('text-nombre-entidad')
-    expect(fuenteDe('/componentes/colaboradores/bloques/bloque_editar_datos_colaborador.tsx')?.texto).toContain('text-nombre-entidad')
+    const clases = JSON.parse(fuenteDe('/catalogos/capacidades/redsocial/colaboradores.json')?.texto ?? '{}').clases
+    expect(clases.invitar_comun.titulo).toContain('text-nombre-entidad')
+    expect(clases.detalle.titulo_seccion).toContain('text-nombre-entidad')
+    expect(fuenteDe('/componentes/colaboradores/bloques/bloque_renovacion.tsx')?.texto).toContain('comun.titulo')
+    expect(fuenteDe('/componentes/colaboradores/bloques/bloque_editar_datos_colaborador.tsx')?.texto).toContain('detalle.titulo_seccion')
   })
 })
 
@@ -201,8 +211,9 @@ describe('Fase B final: roles compartidos de badge, estado, conteo, chip, boton 
 })
 
 describe('Fase B final: una sola familia tipografica', () => {
-  it('index.css declara la familia una sola vez y no hay @font-face', () => {
-    expect(CSS.match(/font-family:/g)?.length).toBe(1)
+  it('index.css declara la familia oficial una sola vez (mas la regla que obliga al Avatar de MUI a heredarla) y no hay @font-face', () => {
+    expect(CSS.match(/font-family:\s*var\(--fuente-base\)(\s*!important)?;/g)?.length).toBe(2)
+    expect(CSS.match(/font-family:/g)?.length).toBe(2)
     expect(CSS).not.toMatch(/@font-face/)
   })
 })

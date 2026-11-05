@@ -3,7 +3,7 @@ import { PaginaInicio } from '@/paginas/inicio/pagina_inicio'
 import { PaginaPerfilUsuario } from '@/paginas/perfil/pagina_perfil_usuario'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import { PUBLICACION_INICIO } from '../../rutas/inicio/rutas_inicio'
-import { NO_LEIDOS } from '../../rutas/mensajeria/rutas_mensajeria'
+import { ESTADO_INICIAL_MENSAJERIA } from '../../servicios/mensajeria/mensajes'
 
 const modal = catalogoInicio.modal_crear_publicacion
 const feed = catalogoInicio.feed
@@ -136,17 +136,19 @@ describe('Las interacciones conservan su estado', () => {
 
 describe('Mensajes flotantes', () => {
   const textos = catalogoInicio.mensajes_flotantes
+  const TOTAL = ESTADO_INICIAL_MENSAJERIA.conversaciones.reduce((suma, conversacion) => suma + conversacion.noLeidos, 0)
 
-  it('el boton abre la lista de mensajes sin leer con su total y enlaza a la mensajeria', () => {
+  it('el boton abre la ventana de mensajes con su total, ampliar y cerrar', () => {
     render(<PaginaInicio />)
     expect(screen.queryByRole('region', { name: textos.titulo })).toBeNull()
     const boton = screen.getByRole('button', { name: textos.boton })
-    expect(within(boton.parentElement as HTMLElement).getByText(String(NO_LEIDOS.reduce((suma, mensaje) => suma + mensaje.badge, 0)))).toBeInTheDocument()
+    expect(within(boton.parentElement as HTMLElement).getByText(String(TOTAL))).toBeInTheDocument()
 
     fireEvent.click(boton)
     const panel = within(screen.getByRole('region', { name: textos.titulo }))
-    for (const mensaje of NO_LEIDOS) expect(panel.getByText(mensaje.nombre)).toBeInTheDocument()
+    for (const conversacion of ESTADO_INICIAL_MENSAJERIA.conversaciones) expect(panel.getByText(conversacion.nombre)).toBeInTheDocument()
     expect(panel.getByRole('link', { name: textos.ver_todos })).toBeInTheDocument()
+    expect(panel.getByRole('button', { name: textos.ampliar })).toBeInTheDocument()
 
     fireEvent.click(panel.getByRole('button', { name: textos.cerrar }))
     expect(screen.queryByRole('region', { name: textos.titulo })).toBeNull()

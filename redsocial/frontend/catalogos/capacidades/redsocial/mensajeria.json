@@ -1,5 +1,10 @@
 {
-  "acciones": ["listar", "enviar_mensaje", "marcar_favorito", "iniciar_videollamada"],
+  "acciones": [
+    "listar",
+    "enviar_mensaje",
+    "marcar_favorito",
+    "iniciar_videollamada"
+  ],
   "alertas": {
     "confirmar_salir_de_la_llamada": "Vas a salir de la videollamada en curso."
   },
@@ -12,7 +17,9 @@
     "iniciar_videollamada": "No fue posible iniciar la videollamada."
   },
   "mensajes": {
-    "sin_mensajes": "No tienes mensajes para mostrar."
+    "sin_mensajes": "No tienes mensajes para mostrar.",
+    "sin_favoritos": "Aún no tienes conversaciones favoritas.",
+    "sin_no_leidos": "No tienes mensajes sin leer."
   },
   "toast": {
     "mensaje_enviado": "Mensaje enviado.",
@@ -30,6 +37,7 @@
     "marcar_favorito": "MENSAJERIA_MARCAR",
     "iniciar_videollamada": "MENSAJERIA_INICIAR"
   },
+  "clave_navegacion": "mensajes",
   "rutas": {
     "todos": "/mensajes",
     "no_leidos": "/mensajes/no-leidos",
@@ -59,6 +67,7 @@
   "botones": {
     "nuevo_mensaje": "Nuevo mensaje",
     "marcar_favorito": "Marcar como favorito",
+    "quitar_favorito": "Quitar de favoritos",
     "ver_todos": "Ver todos",
     "ver_mas_llamadas": "Ver más llamadas",
     "ver_todas_las_reuniones": "Ver todas las reuniones",
@@ -118,35 +127,103 @@
     "completada": "Completada",
     "organizador": "Organizador",
     "en_llamada": "En llamada",
-    "colaborador": "Colaborador"
+    "colaborador": "Colaborador",
+    "mostrando_favoritos": "Mostrando :n de :total mensajes favoritos",
+    "mostrando_no_leidos": "Mostrando :n de :total mensajes no leídos"
   },
   "placeholders": {
     "buscar_videollamadas": "Buscar videollamadas...",
     "buscar_contactos_o_correo": "Buscar contactos o ingresar correo...",
     "buscar_participantes": "Buscar participantes...",
     "buscar_mensajes": "Buscar mensajes...",
-    "escribe_un_mensaje": "Escribe un mensaje..."
+    "escribe_un_mensaje": "Envía un mensaje..."
   },
-  "panel_lateral": { "contenedor": "grid gap-4" },
-  "parametros_ruta": { "reunion": "reunion" },
+  "panel_lateral": {
+    "contenedor": "grid gap-4"
+  },
+  "parametros_ruta": {
+    "reunion": "reunion",
+    "conversacion": "conversacion"
+  },
+  "grupos": {
+    "opcion": "Grupos",
+    "menu": "Más opciones de la lista",
+    "titulo": "Grupos",
+    "volver": "Volver a conversaciones",
+    "crear": "Crear grupo",
+    "vacia": "Aún no perteneces a ningún grupo.",
+    "extracto_inicial": "Grupo creado",
+    "modal": {
+      "titulo": "Crear grupo",
+      "cerrar": "Cerrar",
+      "id_nombre": "campo-nombre-grupo",
+      "participantes": "Participantes",
+      "buscar": "Buscar amigos o colaboradores",
+      "buscar_vacio": "No se encontraron personas con ese nombre.",
+      "agregar": "Agregar a :nombre",
+      "quitar": "Quitar a :nombre",
+      "participantes_ayuda": "Agrega al menos un participante para configurar el grupo.",
+      "nombre": "Nombre del grupo",
+      "nombre_marcador": "Ej. Equipo de proyecto",
+      "descripcion": "Descripción (opcional)",
+      "descripcion_marcador": "¿De qué trata este grupo?",
+      "imagen_elegir": "Elegir imagen del grupo",
+      "tipos_aceptados": "image/png,image/jpeg",
+      "cancelar": "Cancelar",
+      "confirmar": "Crear grupo",
+      "errores": {
+        "nombre_vacio": "Ingresa el nombre del grupo.",
+        "nombre_repetido": "Ya existe un grupo con ese nombre.",
+        "imagen_invalida": "Elige una imagen PNG o JPG."
+      }
+    }
+  },
   "clases": {
-    "panel": "grid grid-cols-280-1fr gap-4 h-vh-mensajes min-h-100 overflow-hidden max-1100:grid-cols-260-1fr max-900:grid-cols-1 max-900:flex-1 max-900:min-h-0",
+    "panel": "grid grid-cols-lista-mensajes-1fr gap-4 h-vh-mensajes min-h-100 overflow-hidden max-1100:grid-cols-lista-mensajes-estrecha-1fr max-900:grid-cols-1 max-900:flex-1 max-900:min-h-0",
     "lista": {
       "contenedor": "flex min-h-0 min-w-0 flex-col overflow-hidden rounded-control border border-borde bg-white max-900:rounded-none max-900:border-0 max-900:bg-transparent",
       "oculta": "max-900:hidden",
       "buscador": "m-4",
-      "filtros": "flex flex-shrink-0 gap-1.5 border-b border-borde px-4 pb-4",
-      "chip": "flex-1 justify-center px-2!",
+      "filtros": "flex flex-shrink-0 items-center gap-1.5 border-b border-borde px-4 pb-4",
+      "filtros_menu": "ml-auto flex-none",
+      "cabecera_grupos": "flex flex-shrink-0 items-center gap-2 border-b border-borde px-4 pb-4",
+      "cabecera_grupos_titulo": "m-0 min-w-0 flex-1 truncate text-nombre-entidad text-texto",
+      "boton_crear_grupo": "flex-none whitespace-nowrap",
+      "chip": "flex-none justify-center px-2.5!",
       "pista": "flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto p-3",
-      "fila": "flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left transition-colors hover:bg-fondo-hover-suave",
+      "fila": "group relative flex w-full items-center gap-2.5 rounded-lg px-3 py-3 transition-colors hover:bg-fondo-hover-suave",
       "fila_activa": "bg-fondo-hover-suave",
       "fila_inactiva": "bg-transparent",
-      "texto": "min-w-0 flex-1",
-      "nombre": "block truncate text-nombre-entidad text-texto",
-      "extracto": "mt-0.5 block truncate text-cuerpo text-texto-suave",
-      "meta": "flex flex-none flex-col items-end gap-1",
-      "hora": "whitespace-nowrap text-fecha-abreviada text-texto-suave",
-      "silenciado": "h-3.5 w-3.5 text-texto-icono-control"
+      "zona_avatar": "relative z-10 flex h-12 w-12 flex-none items-center justify-center",
+      "principal": "flex min-w-0 flex-1 cursor-pointer flex-col gap-1 border-0 bg-transparent p-0 text-left after:absolute after:inset-0 after:rounded-lg",
+      "linea": "flex min-w-0 items-center gap-2",
+      "nombre": "min-w-0 flex-1 truncate text-nombre-entidad text-texto",
+      "extracto": "min-w-0 flex-1 truncate text-subtitulo text-texto-suave",
+      "extracto_historia": "italic",
+      "hora": "flex-none whitespace-nowrap text-fecha-abreviada text-texto-suave",
+      "contador": "flex flex-none items-center gap-1 transition-all group-hover:pr-7 group-data-[abierto=true]:pr-7 group-has-[:focus-visible]:pr-7 pointer-coarse:group-data-[tactil=true]:pr-7 pointer-coarse:group-data-[activa=true]:pr-7",
+      "chip_conteo": "text-conteo-insignia",
+      "vacia": "m-0 px-3 py-6 text-center text-subtitulo text-texto-suave",
+      "grupo_modal": "max-w-120 rounded-2xl max-600:rounded-none",
+      "grupo_formulario": "flex flex-col gap-4 overflow-y-auto p-5 max-600:p-4",
+      "grupo_seccion": "flex flex-col gap-3",
+      "grupo_resultados": "m-0 flex max-h-44 list-none flex-col gap-1 overflow-y-auto rounded-control border border-borde p-1.5",
+      "grupo_resultado": "flex w-full justify-start gap-3 rounded-lg px-2.5 py-2 text-left hover:no-underline",
+      "grupo_resultado_nombre": "min-w-0 flex-1 truncate text-nombre-fila text-texto",
+      "grupo_resultado_glifo": "h-4 w-4 flex-none text-primario",
+      "grupo_chips": "m-0 flex list-none flex-wrap gap-2 p-0",
+      "grupo_chip_glifo": "h-3.5 w-3.5",
+      "grupo_identidad": "flex items-center gap-4",
+      "grupo_avatar": "relative flex-none",
+      "grupo_camara": "absolute right-0 bottom-0",
+      "grupo_nombre": "min-w-0 flex-1",
+      "grupo_ayuda": "m-0 text-auxiliar text-texto-suave",
+      "grupo_error": "m-0 text-auxiliar text-peligro-texto",
+      "grupo_pie": "flex justify-end gap-2 border-t border-borde-suave p-4",
+      "solo_lectores": "sr-only",
+      "silenciado": "h-3.5 w-3.5 text-texto-icono-control",
+      "ranura_menu": "absolute bottom-2.5 right-3 z-10 flex h-6 w-6 items-center justify-center",
+      "boton_menu": "opacity-0 transition-opacity group-hover:opacity-100 group-has-[:focus-visible]:opacity-100 focus-visible:opacity-100 data-[abierto=true]:opacity-100 pointer-coarse:group-data-[tactil=true]:opacity-100 pointer-coarse:group-data-[activa=true]:opacity-100"
     },
     "chat": {
       "contenedor": "grid min-h-0 min-w-0 grid-cols-1 grid-rows-auto-auto-1fr-auto overflow-hidden rounded-control border border-borde bg-white",
@@ -161,30 +238,86 @@
       "fijado_texto": "min-w-0 flex-1",
       "fijado_titulo": "mb-0.5 flex items-center gap-1.25 text-nombre-entidad text-texto",
       "fijado_icono": "h-3.5 w-3.5 text-primario",
-      "fijado_cuerpo": "m-0 text-cuerpo text-texto-suave",
+      "fijado_cuerpo": "m-0 truncate text-subtitulo text-texto-suave",
+      "volver_compacto": "block",
+      "destino": "flex w-full items-center gap-3 rounded-control border border-borde bg-white px-3 py-2 text-left hover:bg-fondo",
+      "destinos": "m-0 flex max-h-72 list-none flex-col gap-2 overflow-y-auto p-0",
+      "modal_cuerpo": "flex flex-col gap-4 p-5",
+      "modal_pie": "flex justify-end gap-2",
       "hilo": "flex min-h-0 min-w-0 flex-col gap-1 overflow-y-auto overflow-x-hidden bg-fondo p-5 max-480:p-3",
       "fecha": "my-3 text-center text-fecha-abreviada text-texto-suave",
-      "mensaje": "mb-2 flex max-w-p75 flex-col gap-0.5",
+      "mensaje": "flex max-w-p90 flex-col gap-0.5",
       "mensaje_propio": "ml-auto items-end text-right",
       "mensaje_ajeno": "items-start",
       "meta": "flex items-center gap-1 text-auxiliar text-texto-suave",
-      "leido": "h-3.5 w-3.5 text-primario",
-      "burbuja": "my-1 max-w-full rounded-xl px-3.5 py-2.5 text-cuerpo leading-texto",
-      "burbuja_propia": "rounded-tr-sm bg-primario text-white",
-      "burbuja_ajena": "rounded-tl-sm border border-borde bg-white text-texto",
-      "adjunto": "my-2 flex max-w-full items-center gap-3 rounded-control border border-borde bg-white px-3.5 py-2.5",
-      "adjunto_icono": "grid h-9 w-9 flex-none place-items-center rounded-lg bg-fondo-categoria-rojo text-negativo-kpi",
+      "burbuja": "my-1 max-w-full whitespace-pre-wrap text-left wrap-anywhere rounded-xl px-3.5 py-2.5 text-subtitulo leading-texto",
+      "burbuja_propia": "bg-primario text-white",
+      "burbuja_ajena": "border border-borde bg-white text-texto",
+      "esquinas_propia": {
+        "sola": "rounded-br-sm",
+        "primera": "rounded-br-sm",
+        "media": "rounded-r-sm",
+        "ultima": "rounded-br-sm"
+      },
+      "esquinas_ajena": {
+        "sola": "rounded-bl-sm",
+        "primera": "rounded-bl-sm",
+        "media": "rounded-l-sm",
+        "ultima": "rounded-bl-sm"
+      },
+      "fin_grupo": "mb-2",
+      "dentro_grupo": "mb-0.5",
+      "avatar_hueco": "size-6 flex-none",
+      "menu_boton": "text-texto opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100 data-[abierto=true]:opacity-100 pointer-coarse:opacity-100",
+      "menu_ranura": "absolute top-1/2 z-10 flex -translate-y-1/2",
+      "menu_ranura_propia": "right-full",
+      "menu_ranura_ajena": "left-full",
+      "reaccion_icono": "h-3.5 w-3.5 text-primario",
+      "reenviado": "flex items-center gap-1 text-auxiliar italic text-texto-suave",
+      "adjunto": "my-2 flex w-fit max-w-80 items-center gap-2.5 text-left rounded-control border border-borde bg-white px-3.5 py-2.5",
+      "adjunto_icono": "grid h-9 w-9 flex-none place-items-center rounded-lg",
       "adjunto_glifo": "h-4.5 w-4.5",
-      "adjunto_texto": "min-w-0 flex-1",
-      "adjunto_nombre": "block truncate text-auxiliar font-control text-texto",
+      "adjunto_texto": "min-w-0 flex-1 text-left",
+      "adjunto_nombre": "text-auxiliar font-control text-texto",
       "adjunto_peso": "block text-auxiliar text-texto-suave",
       "reacciones": "mt-1 flex gap-1",
       "reaccion": "inline-flex items-center gap-0.75 rounded-xl border border-borde bg-white px-2 py-0.5 text-auxiliar",
       "reaccion_cantidad": "text-contador text-texto-suave",
-      "composicion": "flex flex-wrap items-center gap-2 border-t border-borde bg-white px-4 py-3",
-      "campo": "min-w-40 flex-1 basis-48",
-      "herramientas": "flex flex-none items-center gap-1 max-480:ml-auto",
-      "enviar": "flex-none"
+      "composicion": "flex flex-wrap items-center gap-2 border-t border-borde bg-white px-4 py-3 max-480:px-2",
+      "campo": "min-w-0 flex-1",
+      "emoji_campo": "flex max-600:hidden",
+      "vacio": "grid-rows-[minmax(0,1fr)]! place-items-center px-4",
+      "banner_edicion": "flex items-center gap-3 border-t-2 border-primario bg-fondo px-4 py-2",
+      "banner_edicion_texto": "min-w-0 flex-1",
+      "banner_edicion_titulo": "block text-estado text-primario",
+      "banner_edicion_cuerpo": "block truncate text-auxiliar text-texto-suave",
+      "autor": "block text-auxiliar font-control text-texto-suave",
+      "cuerpo": "group relative flex min-w-0 flex-col",
+      "cuerpo_propio": "items-end",
+      "adjunto_extension": "text-auxiliar uppercase text-texto-suave",
+      "cita": "mb-1 flex max-w-full flex-col rounded-lg border-l-4 border-primario bg-fondo px-3 py-1.5 text-left",
+      "cita_autor": "block truncate text-auxiliar font-control text-primario",
+      "cita_cuerpo": "block truncate text-auxiliar text-texto-suave",
+      "reenviar_modal": "max-w-140 rounded-2xl max-600:h-full max-600:rounded-none",
+      "reenviar_cuerpo": "flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-5 pb-5 pt-4",
+      "reenviar_buscador": "mb-1",
+      "reenviar_seccion": "m-0 px-1 text-titulo-subseccion text-texto",
+      "reenviar_fila": "flex items-center gap-3 rounded-lg px-1 py-1.5",
+      "reenviar_nombre": "min-w-0 flex-1 truncate text-nombre-fila text-texto",
+      "reenviar_error": "flex-none text-auxiliar text-peligro-texto",
+      "reenviado_icono": "h-3 w-3",
+      "modal_texto": "m-0 text-cuerpo text-texto-suave",
+      "cuerpo_ajeno": "items-start",
+      "boton_descarga": "flex-none",
+      "adjunto_enlace": "cursor-pointer no-underline hover:bg-fondo",
+      "adjunto_sin_archivo": "cursor-default opacity-70",
+      "enlace_perfil_avatar": "inline-flex rounded-full",
+      "imagen": "relative my-1 block max-w-full cursor-pointer overflow-hidden rounded-xl border border-borde bg-white p-0",
+      "imagen_archivo": "block max-h-80 w-72 max-w-full object-cover",
+      "imagen_ampliada": "mx-auto block max-h-96 max-w-full rounded-lg object-contain",
+      "grabacion_error": "m-0 basis-full text-auxiliar text-peligro-texto",
+      "fila_mensaje": "flex items-center gap-1.5",
+      "fila_propia": "justify-end"
     }
   },
   "conversacion": {
@@ -196,9 +329,129 @@
     "mensaje_fijado": "Mensaje fijado",
     "mensaje": "Mensaje",
     "adjuntar_archivo": "Adjuntar archivo",
-    "enviar_imagen": "Enviar imagen",
     "emojis": "Emojis",
-    "gif": "GIF",
-    "descargar": "Descargar"
+    "descargar": "Descargar",
+    "grabar_audio": "Grabar audio",
+    "vacio_titulo": "No has seleccionado ningún chat",
+    "vacio_texto": "Selecciona una conversación para ver los mensajes",
+    "editando": "Editando mensaje",
+    "cancelar_edicion": "Cancelar edición",
+    "guardar_edicion": "Guardar cambios",
+    "adjuntos": {
+      "unidades": ["B", "KB", "MB", "GB"], "base": 1024, "decimales": 1, "separador": " ",
+      "tipo_entrada": "file", "prefijo_imagen": "image/", "prefijo_audio": "audio/",
+      "tipos_imagen": ["image/jpeg", "image/png", "image/gif", "image/webp"],
+      "tamano_maximo_bytes": null,
+      "formatos": {
+        "pdf": { "etiqueta": "PDF", "icono": "archivo-pdf", "tono": "bg-fondo-categoria-rojo text-negativo-kpi", "extensiones": ["pdf"], "mimes": ["application/pdf"] },
+        "word": { "etiqueta": "Word", "icono": "archivo-word", "tono": "bg-fondo-categoria-azul text-azul-categoria-texto", "extensiones": ["doc", "docx"], "mimes": ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"] },
+        "excel": { "etiqueta": "Excel", "icono": "archivo-excel", "tono": "bg-fondo-categoria-verde text-verde-categoria-texto", "extensiones": ["xls", "xlsx", "csv"], "mimes": ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv"] },
+        "otro": { "etiqueta": "Archivo", "icono": "archivo-generico", "tono": "bg-fondo-insignia-neutra text-texto-suave", "extensiones": ["txt", "ppt", "pptx", "zip"], "mimes": [] }
+      },
+      "etiquetas": {
+        "audio": "Mensaje de voz", "adjuntar_documento": "Adjuntar documento", "reproducir": "Reproducir audio", "pausar": "Pausar audio",
+        "posicion": "Posición del audio", "progreso": ":actual de :total", "ver_imagen": "Ver imagen", "cerrar_imagen": "Cerrar imagen",
+        "descargar_archivo": "Descargar :nombre", "sin_archivo": "Archivo no disponible en la demostración"
+      },
+      "errores": {
+        "tipo": "«:nombre» no es un formato permitido.",
+        "tamano": "«:nombre» supera el tamaño máximo permitido."
+      }
+    },
+    "grabacion": {
+      "grabando": "Grabando…", "cancelar": "Cancelar grabación", "detener": "Detener grabación", "descartar": "Descartar audio", "vista_previa": "Vista previa del mensaje de voz", "enviar": "Enviar mensaje de voz", "sin_permiso": "No se pudo acceder al micrófono. Revisa los permisos del navegador.", "sin_soporte": "Tu navegador no permite grabar audio.", "limite_duracion": "Se alcanzó la duración máxima del mensaje de voz."
+    },
+    "opciones_mensaje": "Opciones del mensaje",
+    "sin_mensajes": "Sin mensajes",
+    "reenviado": "Reenviado",
+    "cerrar_fijado": "Ocultar mensaje fijado",
+    "acciones": {
+      "responder": "Responder",
+      "editar": "Editar",
+      "reenviar": "Reenviar",
+      "fijar": "Fijar",
+      "desfijar": "Desfijar",
+      "eliminar": "Eliminar"
+    },
+    "reenviar_modal": {
+      "titulo": "Reenviar",
+      "buscar": "Buscar personas o grupos",
+      "recientes": "Recientes",
+      "grupos": "Grupos",
+      "sin_resultados": "No hay personas ni grupos con ese nombre",
+      "enviar": "Enviar",
+      "enviar_a": "Enviar a :nombre",
+      "enviado": "Enviado",
+      "error": "No se pudo enviar",
+      "cerrar": "Cerrar"
+    },
+    "respuesta": {
+      "titulo": "Respondiendo a :nombre",
+      "titulo_propio": "Respondiendo a tu mensaje",
+      "cancelar": "Cancelar respuesta",
+      "no_disponible": "Mensaje no disponible",
+      "propio": "Tú"
+    },
+    "eliminar_modal": {
+      "titulo": "Eliminar mensaje",
+      "texto": "Este mensaje se eliminará de la conversación. Esta acción no se puede deshacer.",
+      "confirmar": "Eliminar",
+      "cancelar": "Cancelar",
+      "cerrar": "Cerrar"
+    },
+    "formato_fecha": {
+      "plantilla": ":dia, :n de :mes",
+      "sufijo_anio": " de :anio",
+      "dias": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+      "meses": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    },
+    "etiqueta_tiempo": {
+      "ayer": "Ayer",
+      "umbral_dias": 7,
+      "plantilla_numerica": ":dd/:mm/:aaaa",
+      "relleno_numerico": "0"
+    },
+    "historias_vista_previa": {
+      "plural": ":nombre subió :n historias",
+      "singular": ":nombre subió 1 historia",
+      "generico": ":nombre subió historias"
+    },
+    "prefijo_propio": "Tú: ",
+    "tecla_enviar": "Enter",
+    "filas_maximas": 5,
+    "formato_hora": {
+      "relleno": "0",
+      "separador": ":",
+      "espacio": " "
+    },
+    "meridiano": {
+      "am": "AM",
+      "pm": "PM"
+    },
+    "edicion": {
+      "limite_minutos": 15
+    }
+  },
+  "acciones_conversacion": {
+    "aria_menu": "Más acciones de :nombre",
+    "aria_historias_nuevas": "Ver historias nuevas de :nombre",
+    "aria_historias_vistas": "Ver historias de :nombre",
+    "aria_marcada_no_leida": "Marcada como no leída",
+    "aria_sin_leer_singular": "1 mensaje sin leer",
+    "aria_sin_leer_plural": ":n mensajes sin leer",
+    "elementos": {
+      "marcar_favorito": { "etiqueta": "Agregar a favoritos", "icono": "estrella" },
+      "quitar_favorito": { "etiqueta": "Quitar de favoritos", "icono": "estrella" },
+      "marcar_leido": { "etiqueta": "Marcar como leído", "icono": "marcar-leido" },
+      "marcar_no_leido": { "etiqueta": "Marcar como no leído", "icono": "marcar-no-leido" },
+      "silenciar": { "etiqueta": "Silenciar notificaciones", "icono": "silenciado" },
+      "activar_notificaciones": { "etiqueta": "Activar notificaciones", "icono": "notificaciones-activas" },
+      "ver_perfil": { "etiqueta": "Ver perfil", "icono": "usuario" },
+      "eliminar_chat": { "etiqueta": "Eliminar chat", "icono": "eliminar" },
+      "abandonar_grupo": { "etiqueta": "Abandonar grupo", "icono": "despedida" }
+    },
+    "lista_vacia": { "no_leidos": "No tienes mensajes sin leer", "favoritos": "Aún no tienes chats favoritos" },
+    "modal_eliminar_chat": { "titulo": "Eliminar chat", "texto": "Se quitará de tu lista la conversación con :nombre. Esta acción no se puede deshacer.", "confirmar": "Eliminar", "cancelar": "Cancelar", "cerrar": "Cerrar" },
+    "modal_abandonar_grupo": { "titulo": "Abandonar grupo", "texto": "Dejarás de recibir los mensajes de :nombre y la conversación se quitará de tu lista.", "confirmar": "Abandonar", "cancelar": "Cancelar", "cerrar": "Cerrar" }
   }
 }

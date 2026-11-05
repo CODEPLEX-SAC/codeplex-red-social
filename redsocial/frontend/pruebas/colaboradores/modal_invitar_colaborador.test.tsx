@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradores'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
@@ -138,19 +138,19 @@ describe('Modal Invitar colaborador', { timeout: 30000 }, () => {
     expect(dialogo.getByRole('heading', { name: pasos.vigencia.titulo })).toBeInTheDocument()
   })
 
-  it('enviar cierra el modal, muestra la confirmacion local y permite descartarla', () => {
+  it('enviar cierra el modal, muestra la confirmacion local y permite descartarla', async () => {
     render(<PaginaColaboradores />)
     const dialogo = abrir()
     irAlResumen(dialogo)
     pulsar(dialogo, resumen.enviar_invitacion)
 
     expect(screen.queryByRole('dialog')).toBeNull()
-    const aviso = within(screen.getByRole('status'))
+    const aviso = within(screen.getByRole('alert'))
     expect(aviso.getByText(catalogoColaboradores.mensajes.invitacion_completada_demostracion)).toBeInTheDocument()
     expect(botonInvitar()).toHaveFocus()
 
-    fireEvent.click(aviso.getByRole('button', { name: textosRedSocial.CERRAR }))
-    expect(screen.queryByRole('status')).toBeNull()
+    fireEvent.click(aviso.getByRole('button', { name: /close|cerrar/i }))
+    await waitFor(() => expect(screen.queryByRole('alert')).toBeNull())
   })
 
   it('mantiene el cuerpo con scroll interno y el pie fuera de el', () => {

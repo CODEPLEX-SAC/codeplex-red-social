@@ -41,13 +41,21 @@
     "separador_coordenadas": ",",
     "radio_punto": 2.2
   },
+  "claves_color_en_datos": ["sparklineColor", "color"],
   "colores_graficos": {
     "primario": "#7c3aed",
     "secundario": "#06b6d4",
     "exito": "#22c55e",
     "error": "#ef4444",
     "advertencia": "#eab308",
-    "info": "#3b82f6"
+    "info": "#3b82f6",
+    "naranja-categoria": "#f97316",
+    "gris-categoria": "#9ca3af",
+    "rosa-categoria": "#ec4899",
+    "primario-claro": "#c4b5fd",
+    "primario-suave": "#ddd6fe",
+    "advertencia-suave": "#fed7aa",
+    "info-claro": "#93c5fd"
   },
   "titulos": {
     "no_encontrada": "Página no encontrada"
@@ -81,7 +89,6 @@
     "estadisticas": "estadisticas",
     "reportes": "reporte",
     "indicadores": "indicador",
-    "foto-video": "imagen",
     "encuesta": "encuesta",
     "sentimiento": "sentimiento",
     "me-gusta": "me-gusta",
@@ -119,6 +126,16 @@
     "informacion": "informacion",
     "fijar": "fijar",
     "silenciado": "silenciado",
+    "marcar-leido": "marcar-leido",
+    "marcar-no-leido": "marcar-no-leido",
+    "notificaciones-activas": "notificaciones-activas",
+    "reproducir": "reproducir",
+    "archivo-word": "archivo-word",
+    "archivo-excel": "archivo-excel",
+    "archivo-generico": "archivo-generico",
+    "responder": "responder",
+    "pausa": "pausa",
+    "detener": "detener",
     "flecha-abajo": "flecha-abajo",
     "reloj": "reloj",
     "flecha-derecha": "flecha-derecha",
@@ -131,6 +148,9 @@
     "actualizar": "actualizar",
     "encendido": "encendido",
     "linkedin": "linkedin",
+    "web": "web",
+    "texto": "texto",
+    "paleta": "paleta",
     "calendario": "calendario",
     "escudo": "escudo",
     "pantalla-compartida": "pantalla-compartida",
@@ -140,6 +160,8 @@
     "punto-circular": "punto-circular",
     "sin-acceso": "sin-acceso",
     "ver": "ver",
+    "ver-oculto": "ver-oculto",
+    "permiso-especifico": "permiso-especifico",
     "eliminar": "eliminar",
     "imprimir": "imprimir",
     "descargar": "descargar",
@@ -161,6 +183,7 @@
     "archivo-hoja": "archivo-hoja",
     "inicio-sesion": "inicio-sesion",
     "nuevo-usuario": "nuevo-usuario",
+    "persona-menos": "persona-menos",
     "clave": "clave",
     "ajustes-sistema": "ajustes-sistema",
     "respaldo": "respaldo",
@@ -194,6 +217,8 @@
   ],
   "titulo_menu": "Compartido",
   "nombres_iconos": [
+    "google",
+    "outlook",
     "banco",
     "celular",
     "copiar",
@@ -250,6 +275,10 @@
     "actualizar",
     "encendido",
     "linkedin",
+    "web",
+    "texto",
+    "paleta",
+    "camara",
     "escudo",
     "pantalla-compartida",
     "microfono-apagado",
@@ -287,6 +316,7 @@
     "moneda",
     "mundo",
     "nuevo-usuario",
+    "persona-menos",
     "panel",
     "planillas",
     "puntos",
@@ -297,6 +327,16 @@
     "respetado",
     "sentimiento",
     "silenciado",
+    "marcar-leido",
+    "marcar-no-leido",
+    "notificaciones-activas",
+    "reproducir",
+    "archivo-word",
+    "archivo-excel",
+    "archivo-generico",
+    "responder",
+    "pausa",
+    "detener",
     "sistema",
     "solicitudes",
     "soporte",
@@ -334,7 +374,6 @@
         "clave": "mensajes",
         "etiqueta": "Mensajes",
         "ruta": "/mensajes",
-        "insignia": 5,
         "icono": "mensajes"
       },
       {
@@ -596,8 +635,8 @@
     "md": "min-h-control",
     "cta": "min-h-10",
     "filtro": "h-8 px-3 rounded-lg text-chip",
-    "enlace": "text-boton",
-    "enlace_accion": "text-enlace-accion",
+    "enlace": "max-768:min-h-6 text-boton",
+    "enlace_accion": "max-768:min-h-6 text-enlace-accion",
     "pie_lista": "w-full rounded-none p-3.5 text-boton"
   },
   "boton_icono_variantes": {
@@ -611,6 +650,7 @@
     "flotante": "rounded-full border border-borde-flotante bg-white text-texto shadow-t8"
   },
   "boton_icono_tamanos": {
+    "control": { "boton": "aspect-square h-control", "icono": "w-5 h-5" },
     "default": {
       "boton": "h-8 w-8 max-600:h-7 max-600:w-7",
       "icono": "w-4.5 h-4.5 max-600:h-4 max-600:w-4"
@@ -622,6 +662,10 @@
     "md": {
       "boton": "h-7 w-7",
       "icono": "w-3.5 h-3.5"
+    },
+    "tactil": {
+      "boton": "h-11 w-11",
+      "icono": "w-4.5 h-4.5"
     }
   },
   "colores_icono_actividad": {
@@ -636,10 +680,31 @@
     "publico": "bg-fondo-categoria-azul text-azul-categoria-texto",
     "privado": "bg-fondo-categoria-rosa text-rojo-categoria-texto"
   },
+  "consultas": { "movil": "(max-width: 768px)" },
   "controles": {
+    "aviso_emergente": { "posicion": "abajo-derecha", "estilo": "contorno", "animacion": "slide", "duracion": 6000, "cerrable": true, "mostrarIcono": true, "mostrarProgreso": false },
     "casilla_tamano": "pequeno",
     "texto_vacio": "",
     "campo_texto": { "anchoCompleto": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem", "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } } } },
+    "campo_texto_claro": {"sx": {"& .MuiOutlinedInput-root": {"backgroundColor": "var(--color-white)", "borderRadius": "9999px", "color": "var(--color-texto)", "minHeight": "2.25rem"}, "& .MuiOutlinedInput-notchedOutline": {"borderColor": "transparent"}, "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {"borderColor": "var(--color-primario)"}, "& .MuiInputBase-input": {"paddingTop": "0.375rem", "paddingBottom": "0.375rem", "color": "var(--color-texto)", "&::placeholder": {"color": "var(--color-texto-suave)", "opacity": 1}}}},
+    "campo_texto_multilinea": {
+      "sx": {
+        "& .MuiInputBase-root": {
+          "padding": 0,
+          "paddingLeft": "var(--spacing-sm)",
+          "minHeight": "var(--height-control)"
+        },
+        "& .MuiInputBase-input": {
+          "paddingTop": "0.53125rem",
+          "paddingBottom": "0.53125rem",
+          "&::placeholder": {
+            "color": "var(--color-texto-suave)",
+            "opacity": 1
+          }
+        }
+      }
+    },
+    "campo_texto_multilinea_raiz": { "padding": 0 },
     "campo_texto_editor": { "className": "[&_.MuiInputBase-input]:!text-cuerpo [&_.MuiInputBase-input]:!leading-texto [&_.MuiInputBase-input]:!font-normal", "sx": { "& .MuiInputBase-root": { "padding": 0, "minHeight": 0 }, "& .MuiInputBase-input": { "padding": 0, "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } }, "& .MuiOutlinedInput-notchedOutline": { "border": 0, "boxShadow": "none" }, "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": { "border": 0, "boxShadow": "none" }, "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": { "border": 0, "boxShadow": "none" } } },
     "campo_numero": { "anchoCompleto": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiInputBase-input": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem", "&::placeholder": { "color": "var(--color-texto-suave)", "opacity": 1 } } } },
     "interruptor": { "color": "primario", "tamano": "pequeno" },
@@ -650,6 +715,7 @@
     "atributo_accesible": "aria-label"
   },
   "selector_atributo_accesible": "aria-label",
+  "selector_foco_opcion": "[role=\"option\"][aria-selected=\"true\"], [role=\"option\"]",
   "icono_libreria": {
     "id_fuente": "fuente-iconos-libreria",
     "url_fuente": "https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block",
@@ -667,7 +733,9 @@
       "transform": "scale(1.1)"
     }
   },
+  "valoracion": { "tamano": "p" },
   "iconos_libreria": {
+    "camara": "photo_camera",
     "banco": "account_balance",
     "ordenar": "unfold_more",
     "puntos-verticales": "more_vert",
@@ -753,6 +821,7 @@
     "moneda": "paid",
     "mundo": "language",
     "nuevo-usuario": "person_add",
+    "persona-menos": "person_remove",
     "panel": "dashboard",
     "pantalla-compartida": "screen_share",
     "planillas": "table_chart",
@@ -764,6 +833,16 @@
     "respaldo": "database",
     "sentimiento": "sentiment_satisfied",
     "silenciado": "notifications_off",
+    "marcar-leido": "mark_chat_read",
+    "marcar-no-leido": "mark_chat_unread",
+    "notificaciones-activas": "notifications_active",
+    "reproducir": "play_arrow",
+    "archivo-word": "article",
+    "archivo-excel": "grid_on",
+    "archivo-generico": "insert_drive_file",
+    "responder": "reply",
+    "pausa": "pause",
+    "detener": "stop",
     "sin-acceso": "block",
     "sistema": "memory",
     "soporte": "headphones",
@@ -773,6 +852,8 @@
     "ventas": "trending_up",
     "usuario": "person",
     "ver": "visibility",
+    "ver-oculto": "visibility_off",
+    "permiso-especifico": "fact_check",
     "verificado": "check_circle",
     "video": "videocam",
     "video-apagado": "videocam_off"
@@ -821,6 +902,17 @@
       "texto": "m-0 mt-0.5 text-cuerpo leading-texto text-texto-suave",
       "cerrar": "flex-none"
     },
+    "suave": {
+      "contenedor": "flex items-start gap-3.5 rounded-control bg-primario-suave p-4.5",
+      "icono_caja": "grid h-10 w-10 flex-none place-items-center bg-white/60 text-primario",
+      "icono_cuadrado": "rounded-control",
+      "icono_circular": "rounded-full",
+      "icono": "h-5 w-5",
+      "cuerpo": "min-w-0 flex-1",
+      "titulo": "mb-0.75 block text-subtitulo text-texto",
+      "texto": "m-0 text-cuerpo leading-texto text-texto-suave",
+      "cerrar": "flex-none"
+    },
     "nota": {
       "contenedor": "flex items-start gap-2 rounded-lg border border-borde-primario-suave bg-primario-suave px-3.5 py-2.5",
       "icono": "mt-px h-4 w-4 flex-none text-primario",
@@ -852,15 +944,18 @@
     "predeterminado": { "tamano": "sm", "color": "primario", "tipo": "borde" }
   },
   "insignia_superpuesta": {
-    "base": "[&_.MuiBadge-badge]:text-conteo! [&_.MuiBadge-badge]:[font-family:inherit]! [&_.MuiBadge-badge]:[line-height:inherit]! [&_.MuiBadge-badge]:after:hidden!",
-    "texto": "text-conteo",
+    "base": "[&>.MuiBadge-badge]:text-conteo-insignia! [&>.MuiBadge-badge]:[font-family:inherit]! [&>.MuiBadge-badge]:[line-height:inherit]! [&>.MuiBadge-badge]:after:hidden!",
+    "texto": "text-conteo-insignia",
+    "maximo_predeterminado": 99,
+    "inerte": "pointer-events-none",
+    "compacta": "[&>.MuiBadge-badge]:h-4! [&>.MuiBadge-badge]:min-w-4! [&>.MuiBadge-badge]:px-1! [&>.MuiBadge-badge]:text-auxiliar!",
     "colores": {
-      "primario": "[&_.MuiBadge-badge]:bg-primario! [&_.MuiBadge-badge]:text-white!",
-      "secundario": "[&_.MuiBadge-badge]:bg-texto-suave! [&_.MuiBadge-badge]:text-white!",
-      "error": "[&_.MuiBadge-badge]:bg-peligro-texto! [&_.MuiBadge-badge]:text-white!",
-      "info": "[&_.MuiBadge-badge]:bg-azul-categoria! [&_.MuiBadge-badge]:text-white!",
-      "advertencia": "[&_.MuiBadge-badge]:bg-naranja-categoria! [&_.MuiBadge-badge]:text-white!",
-      "exito": "[&_.MuiBadge-badge]:bg-exito-texto! [&_.MuiBadge-badge]:text-white!"
+      "primario": "[&>.MuiBadge-badge]:bg-primario! [&>.MuiBadge-badge]:text-white!",
+      "secundario": "[&>.MuiBadge-badge]:bg-texto-suave! [&>.MuiBadge-badge]:text-white!",
+      "error": "[&>.MuiBadge-badge]:bg-peligro-texto! [&>.MuiBadge-badge]:text-white!",
+      "info": "[&>.MuiBadge-badge]:bg-azul-categoria! [&>.MuiBadge-badge]:text-white!",
+      "advertencia": "[&>.MuiBadge-badge]:bg-naranja-categoria! [&>.MuiBadge-badge]:text-white!",
+      "exito": "[&>.MuiBadge-badge]:bg-exito-texto! [&>.MuiBadge-badge]:text-white!"
     }
   },
   "insignia_estado": {
@@ -888,8 +983,8 @@
     "privado": "inline-block rounded-3 bg-fondo-categoria-morado px-1.5 py-px text-badge text-morado-categoria",
     "contador": {
       "tamanos": {
-        "md": "inline-grid h-4.5 min-w-4.5 place-items-center rounded-full px-1.25 text-conteo",
-        "sm": "grid h-4 min-w-4 place-items-center rounded-lg px-1 text-conteo leading-none"
+        "md": "inline-grid h-4.5 min-w-4.5 place-items-center rounded-full px-1.25 text-conteo-insignia",
+        "sm": "grid h-4 min-w-4 place-items-center rounded-lg px-1 text-conteo-insignia leading-none"
       },
       "tonos": {
         "primario": "bg-primario text-white",
@@ -923,14 +1018,16 @@
     },
     "clases": {
       "base": "font-titulo",
-      "presencia": "inline-flex flex-none [&_.MuiBadge-badge]:shadow-[0_0_0_2px_var(--color-white)]! [&_.MuiBadge-badge]:after:hidden!",
+      "presencia": "inline-flex flex-none [&_.MuiBadge-badge]:rounded-full! [&_.MuiBadge-badge]:shadow-[0_0_0_2px_var(--color-white)]! [&_.MuiBadge-badge]:after:hidden!",
       "presencia_texto": "sr-only",
       "insignia": "inline-flex flex-none [&_.MuiBadge-badge]:rounded-full! [&_.MuiBadge-badge]:bg-transparent! [&_.MuiBadge-badge]:min-w-0! [&_.MuiBadge-badge]:p-0! [&_.MuiBadge-badge]:shadow-[0_0_0_2px_var(--color-white)]!",
-      "insignia_contenido": "grid size-full place-items-center rounded-full text-conteo leading-none",
+      "insignia_contenido": "grid size-full place-items-center rounded-full text-conteo-insignia leading-none",
       "grupo": "flex flex-none items-center [&_.MuiAvatar-root]:box-border!",
-      "resto_texto": "text-conteo"
+      "resto_texto": "text-conteo-insignia",
+      "resto_descripcion": "ml-1.5 whitespace-nowrap text-auxiliar text-texto-suave"
     },
-    "resto_sx": { "width": "auto", "paddingInline": "6px" },
+    "resto_sx": { "width": "auto", "paddingInline": "2px", "borderRadius": "9999px" },
+    "separador_resto": " ",
     "colores_insignia": {
       "primario": "bg-primario text-white",
       "secundario": "bg-texto-suave text-white",
@@ -946,6 +1043,12 @@
       "ausente": { "clase": "[&_.MuiBadge-badge]:bg-naranja-categoria!", "etiqueta": "Ausente" },
       "invisible": { "clase": "[&_.MuiBadge-badge]:bg-transparent!", "etiqueta": "Invisible" }
     }
+  },
+  "ayuda_contextual": {
+    "icono": "aviso",
+    "clase": "inline-flex",
+    "demora_toque": 0,
+    "permanencia_toque": 5000
   },
   "acordeon": {
     "sombra": "none",
@@ -964,6 +1067,7 @@
     "ayuda": "mt-1 block text-right text-auxiliar text-texto-suave"
   },
   "texto_truncable": "block truncate",
+  "texto_truncable_dos_lineas": "line-clamp-2 wrap-anywhere",
   "selector_buscable": {
     "contenedor": "relative min-w-0",
     "disparador": "flex h-control w-full min-w-0 items-center gap-sm rounded-control border border-borde bg-superficie px-3 text-left",
@@ -1056,14 +1160,72 @@
     }
   }
   },
+  "dona_progreso": {
+    "contenedor": "relative grid w-fit place-items-center rounded-full",
+    "anillo": "col-start-1 row-start-1",
+    "texto": "col-start-1 row-start-1 flex flex-col items-center text-center",
+    "valor": "dona-valor whitespace-nowrap text-valor-destacado text-texto",
+    "etiqueta": "text-auxiliar text-texto-suave",
+    "margen_texto": 8,
+    "variable_escala": "--escala-dona",
+    "relleno_segmento": "none",
+    "inicio_grados": -90,
+    "variable_ancho": "--ancho-dona",
+    "solo_lectores": "sr-only",
+    "compacto": {
+      "separador": " ",
+      "umbrales": [
+        { "desde": 1000000000000, "sufijo": "B" },
+        { "desde": 1000000000, "sufijo": "MM" },
+        { "desde": 1000000, "sufijo": "M" },
+        { "desde": 1000, "sufijo": "K" }
+      ]
+    }
+  },
+  "tarjetas_cuerpo": {
+    "cuerpo_centrado": "flex flex-1 flex-col justify-center",
+    "cuerpo_tabla": "flex-1 [&_table]:h-full",
+    "cuerpo_lista": "flex flex-1 flex-col [&>div]:flex-1 [&_ul]:h-full [&_ul]:content-evenly"
+  },
+  "tarjetas": {
+    "panel": "min-w-0 flex flex-col rounded-xl border border-borde bg-white py-4.5 px-5",
+    "mosaico": "min-w-0 rounded-xl border border-borde bg-white p-4",
+    "superficie": "min-w-0 rounded-xl border border-borde bg-white"
+  },
+  "aro_historia": {
+    "boton": "inline-flex flex-none cursor-pointer rounded-full border-0 bg-transparent p-0",
+    "estados": {
+      "nueva": "ring-2 ring-primario ring-offset-2 ring-offset-white",
+      "vista": "ring-2 ring-gris-categoria ring-offset-2 ring-offset-white"
+    }
+  },
+  "enlaces": {
+    "accion": "text-enlace-accion text-primario no-underline hover:underline",
+    "accion_pie": "flex items-center justify-center text-enlace-accion text-primario no-underline hover:bg-fondo-hover-suave",
+    "accion_secundario": "text-enlace-accion text-texto-suave no-underline hover:underline"
+  },
+  "acciones_tabla": {
+    "ver_detalle": "Ver detalle",
+    "editar": "Editar",
+    "dar_de_baja": "Dar de baja",
+    "desactivar": "Desactivar",
+    "activar": "Activar",
+    "opciones_de": "Más opciones de :nombre"
+  },
   "tabla_datos": {
-    "contenedor": "overflow-x-auto rounded-xl border border-gris-borde bg-white",
+    "contenedor": "relative overflow-x-auto rounded-xl border border-gris-borde bg-white",
     "tabla": "w-full border-collapse text-cuerpo",
     "encabezado": "whitespace-nowrap border-b border-gris-borde text-left text-encabezado-tabla text-texto-suave",
     "relleno_encabezado": "px-3.5 py-3.5 first:pl-5 last:pr-5",
     "celda": "px-3.5 py-3 align-middle first:pl-5 last:pr-5",
     "fila": "border-b border-borde-suave last:border-b-0 hover:bg-fondo",
     "columna_ajustada": "w-1 whitespace-nowrap",
+    "compacta": {
+      "tabla": "w-full border-collapse text-subtitulo tabla-ultima-fila-sin-borde",
+      "encabezado": "border-b border-borde-suave py-0 pb-2 pr-1.5 max-380:pr-1 pl-0 text-left text-encabezado-tabla uppercase text-texto-suave",
+      "celda": "whitespace-nowrap border-b border-borde-suave py-1.75 pr-1.5 max-380:pr-1 pl-0 text-texto",
+      "celda_nombre": "border-b border-borde-suave py-1.75 pr-1.5 max-380:pr-1 pl-0 text-texto"
+    },
     "columnas": {
       "etiquetas": "w-1/4",
       "iconos": "w-1/5",
@@ -1081,19 +1243,20 @@
   },
   "paginacion": { "color": "primary" },
   "selector_libreria": {
-    "default": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "default": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": false, "anchoEstable": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
     "colaboradores": { "conEtiqueta": true, "tamano": "small", "anchoCompleto": true, "sx": { "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
-    "mini": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
-    "integrado": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "sx": { "minWidth": 0, "& fieldset": { "border": 0 }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "mini": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "anchoEstable": true, "sx": { "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
+    "integrado": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": false, "anchoEstable": true, "sx": { "minWidth": 0, "& fieldset": { "border": 0 }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } },
     "compacto": { "conEtiqueta": false, "tamano": "small", "anchoCompleto": true, "sx": { "minWidth": 0, "& .MuiInputBase-root": { "minHeight": "var(--height-control)" }, "& .MuiSelect-select.MuiSelect-select": { "paddingTop": "0.53125rem", "paddingBottom": "0.53125rem" } } }
   },
   "selector_envoltorio": {
-    "default": "relative inline-flex max-900:flex-1",
+    "default": "relative inline-grid max-900:flex-1 [&>*]:col-start-1 [&>*]:row-start-1",
     "colaboradores": "relative flex w-full",
-    "mini": "relative inline-flex",
-    "integrado": "relative inline-flex",
+    "mini": "relative inline-grid [&>*]:col-start-1 [&>*]:row-start-1",
+    "integrado": "relative inline-grid [&>*]:col-start-1 [&>*]:row-start-1",
     "compacto": "relative flex w-full"
   },
+  "selector_estable": "selector-medida pointer-events-none invisible h-0 overflow-hidden whitespace-nowrap px-3.5 pr-8.25 after:content-[attr(data-etiqueta)]",
   "selector_label": {
     "default": "text-etiqueta text-texto-suave max-900:flex-1",
     "colaboradores": "text-etiqueta text-texto-suave"
@@ -1125,9 +1288,44 @@
       }
     }
   },
+  "audio": {
+    "barras": 32,
+    "tipo_barra": "range",
+    "reloj": { "separador": ":", "relleno": "0", "minutos": 60 },
+    "semilla": { "inicio": 7, "multiplicador": 31, "modulo": 9973 },
+    "picos_por_defecto": { "minimo": 0.15, "paso": 0.9, "variacion": 0.85 },
+    "animacion": { "pulso": "animate-pulse" },
+    "grabacion": { "duracion_maxima_segundos": null, "tipo_mime": "audio/webm", "medicion": { "centro": 128, "ganancia": 3, "intervalo_ms": 100 } },
+    "alturas": ["h-1", "h-1.5", "h-2.5", "h-4", "h-5", "h-6", "h-7", "h-8"],
+    "clases": {
+      "grabando": "flex min-w-0 flex-1 items-center gap-3 rounded-control border border-borde bg-white px-2 py-1.5 max-600:gap-2",
+      "vista_previa": "flex min-w-0 flex-1 items-center gap-2 rounded-control border border-borde bg-white px-2 py-1.5 max-600:gap-1",
+      "separador": "h-6 w-px flex-none bg-borde",
+      "punto": "size-2.5 flex-none rounded-full bg-peligro-texto",
+      "tiempo": "flex-none text-subtitulo tabular-nums text-texto",
+      "boton_suave": "flex-none rounded-lg bg-fondo-insignia-neutra text-texto-suave",
+      "boton_detener": "flex-none rounded-lg bg-fondo-categoria-rojo text-peligro-texto",
+      "boton_reproducir": "flex-none rounded-full",
+      "onda": "flex h-8 w-full min-w-0 flex-1 items-center justify-between overflow-hidden",
+      "onda_contenedor": "relative flex h-8 min-w-0 flex-1 items-center",
+      "barra": "w-full min-w-px max-w-0.5 rounded-full",
+      "barra_envoltura": "relative flex min-w-0 flex-1 basis-0 items-center justify-center",
+      "barra_hecha": { "primario": "bg-primario", "peligro": "bg-peligro-texto" },
+      "barra_pendiente": "bg-borde",
+      "cursor": { "primario": "absolute size-3 rounded-full bg-primario", "peligro": "absolute size-3 rounded-full bg-peligro-texto" },
+      "control_barra": "absolute inset-0 size-full cursor-pointer opacity-0",
+      "reproductor": "flex w-full min-w-0 items-center gap-3 max-600:gap-2",
+      "reproductor_enviado": "my-1 w-64 max-w-full rounded-xl px-2 py-1.5",
+      "reproductor_propio": "bg-fondo-activo-filtro text-texto",
+      "reproductor_ajeno": "border border-borde bg-white text-texto",
+      "tiempo_reproductor": "flex-none text-auxiliar tabular-nums text-texto-suave"
+    }
+  },
   "modal": {
     "clase_fondo": "fixed inset-0 flex items-center justify-center bg-black/45 p-4 max-600:p-0",
     "clase_dialogo": "flex max-h-full w-full flex-col overflow-hidden bg-white shadow-t13 outline-none",
+    "clase_fondo_oscuro": "fixed inset-0 flex items-center justify-center bg-black p-4 max-600:p-0",
+    "clase_dialogo_oscuro": "flex max-h-full w-full flex-col overflow-hidden bg-transparent outline-none",
     "clase_dialogo_suave": "flex max-h-full w-full flex-col overflow-hidden bg-fondo shadow-t13 outline-none",
     "clase_cabecera": "grid grid-cols-[2rem_1fr_2rem] items-center border-b border-borde px-5 py-3.5",
     "clase_titulo": "m-0 text-center text-titulo-banner text-texto",
@@ -1143,5 +1341,350 @@
       "textarea:not([disabled])",
       "[tabindex]:not([tabindex=\"-1\"])"
     ]
+  },
+  "flujo_pago": {
+    "clases": {
+      "dos_columnas": "grid grid-cols-2 gap-4 max-600:grid-cols-1",
+      "encabezado": "mb-4 flex items-start gap-3",
+      "numero": "grid h-7 w-7 flex-none place-items-center rounded-full bg-primario text-conteo text-white",
+      "cuerpo": "grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-5 max-600:p-4",
+      "columnas": "grid items-start gap-4 grid-cols-minmax400-1fr-minmax230-300 max-768:grid-cols-1",
+      "metodos_dos": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
+      "metodo": "flex w-full min-w-0 cursor-pointer items-center gap-3 rounded-xl border p-3.5 text-left",
+      "metodo_deshabilitado": "cursor-not-allowed opacity-60",
+      "metodo_texto": "min-w-0 flex-1",
+      "metodo_titulo": "flex flex-wrap items-center gap-x-2 gap-y-1 text-nombre-fila text-texto",
+      "metodo_detalle": "block text-auxiliar text-texto-suave",
+      "metodo_glifo": "h-5 w-5",
+      "indicador_glifo": "h-3 w-3",
+      "metodo_activo": "border-primario bg-fondo-hover-suave",
+      "metodo_inactivo": "border-borde bg-white hover:border-primario",
+      "metodo_icono": "grid h-9 w-9 flex-none place-items-center rounded-control bg-primario-suave text-primario",
+      "indicador": "grid h-4.5 w-4.5 flex-none place-items-center rounded-full border",
+      "indicador_activo": "border-primario bg-primario text-white",
+      "indicador_inactivo": "border-borde bg-white",
+      "panel": "grid grid-cols-1 gap-4",
+      "panel_titulo": "m-0 text-titulo-subseccion text-texto",
+      "panel_detalle": "m-0 mt-0.5 text-auxiliar text-texto-suave",
+      "datos": "grid grid-cols-1 rounded-xl border border-borde-suave bg-fondo px-3.5",
+      "destacados": "grid grid-cols-2 gap-3 max-600:grid-cols-1",
+      "destacado": "flex items-center justify-between gap-3 rounded-xl border border-borde-suave bg-fondo p-3.5",
+      "aviso": "flex items-start gap-2.5 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-primario",
+      "aviso_neutro": "flex items-start gap-2.5 rounded-lg bg-fondo p-3 text-auxiliar text-texto-suave",
+      "billetera_fila": "flex gap-4 max-600:flex-col",
+      "qr": "grid h-40 w-40 flex-none place-items-center rounded-xl border border-borde bg-white text-texto max-600:w-full",
+      "pasos": "m-0 grid grid-cols-1 flex-1 list-none content-center gap-2.5 rounded-xl bg-fondo p-4",
+      "paso": "flex items-start gap-2.5 text-auxiliar text-texto",
+      "paso_numero": "grid h-5 w-5 flex-none place-items-center rounded-full bg-primario-suave text-conteo text-primario",
+      "resumen_fijo": "sticky top-0 max-768:static",
+      "seccion": "rounded-xl border border-borde bg-white p-5 max-600:p-4",
+      "texto": "min-w-0 flex-1",
+      "linea_principal": "flex flex-wrap items-center gap-x-2 gap-y-1 text-nombre-fila text-texto",
+      "linea_secundaria": "text-auxiliar text-texto-suave",
+      "icono": "h-5 w-5 flex-none text-primario",
+      "aviso_estado": "flex flex-wrap items-center gap-3 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-texto",
+      "pie": "flex flex-wrap items-center justify-end gap-3",
+      "etiqueta_predeterminada": "bg-fondo-categoria-verde text-verde-categoria-texto",
+      "etiqueta_vencida": "bg-fondo-peligro-suave text-peligro-texto",
+      "contenido": "grid gap-4",
+      "texto_suave": "m-0 text-auxiliar text-texto-suave",
+      "modal": "max-w-130 rounded-2xl max-600:rounded-none",
+      "cuerpo_modal": "grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-5 max-600:p-4",
+      "lista_modal": "m-0 grid list-none gap-2.5 p-0",
+      "formulario": "grid gap-4 rounded-xl border border-borde-suave bg-fondo p-4",
+      "formulario_edicion": "grid gap-4",
+      "pie_editor": "flex flex-wrap items-center justify-between gap-3",
+      "confirmacion_quitar": "grid gap-3 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-texto",
+      "tarjeta_guardada": "flex items-center gap-3 rounded-lg border border-borde bg-fondo px-3.5 py-2.5",
+      "columna_pasos": "grid min-w-0 gap-4",
+      "encabezado_texto": "min-w-0",
+      "encabezado_titulo": "m-0 text-nombre-entidad text-texto",
+      "encabezado_detalle": "m-0 text-auxiliar text-texto-suave",
+      "grupo_campos": "grid gap-4",
+      "canales_titulo": "m-0 mb-1 mt-4 text-titulo-subseccion text-texto",
+      "canales_lista": "grid gap-1",
+      "aviso_icono": "mt-0.5 h-4 w-4 flex-none",
+      "qr_glifo": "h-14 w-14",
+      "fila_tarjeta": "flex items-center gap-2",
+      "fila_tarjeta_opcion": "min-w-0 flex-1",
+      "perfil_resumen": "grid gap-3 rounded-lg border border-borde bg-fondo px-3.5 py-3",
+      "perfil_cabecera": "flex items-start gap-3",
+      "perfil_icono": "mt-0.5 h-5 w-5 flex-none text-primario",
+      "perfil_texto": "min-w-0 flex-1",
+      "perfil_nombre": "truncate text-nombre-fila text-texto",
+      "perfil_documento": "truncate text-auxiliar text-texto-suave",
+      "perfil_datos": "m-0 grid grid-cols-2 gap-x-4 gap-y-2.5 border-t border-borde-suave pt-3 max-600:grid-cols-1",
+      "perfil_dato": "flex min-w-0 flex-col gap-0.5",
+      "perfil_dato_ancho": "col-span-2 flex min-w-0 flex-col gap-0.5 max-600:col-span-1",
+      "perfil_dato_titulo": "text-auxiliar text-texto-suave",
+      "perfil_dato_valor": "m-0 min-w-0 break-words text-subtitulo text-texto",
+      "perfil_acciones": "flex flex-wrap items-center gap-x-3 gap-y-1",
+      "perfil_formulario": "grid gap-4",
+      "perfil_pie": "flex flex-wrap items-center justify-end gap-3",
+      "perfil_aviso": "m-0 text-auxiliar text-texto-suave",
+      "modal_perfiles": "max-w-110 rounded-2xl max-600:rounded-none",
+      "modal_perfiles_cuerpo": "grid min-h-0 flex-1 content-start gap-2.5 overflow-y-auto p-5 max-600:p-4",
+      "perfil_opcion": "h-auto w-full py-2.5",
+      "perfil_opcion_texto": "grid min-w-0 flex-1 gap-0.5 text-left",
+      "perfil_opcion_titulo": "text-nombre-fila",
+      "perfil_opcion_detalle": "text-auxiliar text-texto-suave",
+      "perfil_opcion_marca": "h-4.5 w-4.5 flex-none text-exito-texto",
+      "calendario_fila": "flex items-start justify-between gap-3 border-t border-borde-suave py-2.5 first:border-t-0",
+      "calendario_texto": "min-w-0",
+      "calendario_titulo": "text-nombre-fila text-texto",
+      "calendario_detalle": "text-auxiliar text-texto-suave",
+      "calendario_valor": "flex-none text-nombre-fila text-texto",
+      "resumen": "grid content-start gap-3",
+      "resumen_titulo": "m-0 text-nombre-entidad text-texto",
+      "resumen_linea_pedido": "flex min-w-0 items-center gap-3",
+      "resumen_icono_caja": "grid h-9 w-9 flex-none place-items-center rounded-lg",
+      "resumen_icono": "h-5 w-5 text-white",
+      "resumen_texto": "min-w-0 flex-1",
+      "resumen_nombre": "truncate text-nombre-fila text-texto",
+      "resumen_detalle": "text-auxiliar text-texto-suave",
+      "resumen_precio": "flex-none text-nombre-fila text-texto",
+      "resumen_bloque": "grid gap-1.5 border-t border-borde-suave pt-3",
+      "resumen_fila": "flex items-center justify-between gap-3 text-auxiliar",
+      "resumen_fila_etiqueta": "text-texto-suave",
+      "resumen_fila_valor": "text-nombre-fila text-texto",
+      "resumen_total": "flex items-end justify-between gap-3 border-t border-borde-suave pt-3",
+      "resumen_total_etiqueta": "text-nombre-fila text-texto",
+      "resumen_total_detalle": "text-auxiliar text-texto-suave",
+      "resumen_total_valor": "text-valor-destacado text-texto",
+      "resumen_pie": "m-0 flex items-center justify-center gap-1.5 text-auxiliar text-texto-suave",
+      "resumen_pie_glifo": "h-3.5 w-3.5",
+      "boton_ancho": "w-full",
+      "ayuda_accion": "m-0 text-center text-auxiliar text-texto-suave",
+      "grupo_autorizaciones": "grid gap-3",
+      "autorizacion_item": "grid gap-1",
+      "error_campo": "m-0 pl-8 text-auxiliar text-peligro-texto",
+      "asterisco": "text-peligro-texto",
+      "sin_corte": "whitespace-nowrap",
+      "texto_autorizacion_error": "[&_.MuiTypography-root]:text-texto!",
+      "barra_accion": "sticky bottom-0 z-1 -mx-4 -mb-4 grid gap-2 border-t border-borde bg-white p-3",
+      "barra_accion_total": "flex items-center justify-between gap-3 text-nombre-fila text-texto"
+    },
+    "reglas": {
+      "autorizacion": {
+        "prefijo_id": "autorizacion-pago-",
+        "sufijo_error": "-error",
+        "asterisco": "*",
+        "separador_palabras": " ",
+        "duracion_aviso_error_ms": null,
+        "posicion_aviso_movil": "arriba-centro"
+      },
+      "perfil": {
+        "documento_maximo": 11,
+        "documento_longitudes": [8, 11],
+        "correo_patron": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+        "celular_maximo": 9
+      },
+      "tarjeta": {
+        "digitos_minimos": 13,
+        "digitos_maximos": 19,
+        "cvv_minimo": 3,
+        "cvv_maximo": 4,
+        "ultimos": 4,
+        "meses": 12,
+        "siglo": 2000
+      },
+      "formato": {
+        "separador_tarjeta": " ",
+        "separador_vencimiento": "/"
+      },
+      "marcas": {
+        "visa": "Visa",
+        "mastercard": "Mastercard",
+        "amex": "Amex",
+        "otra": "Tarjeta"
+      },
+      "prefijos": {
+        "visa": [
+          "4"
+        ],
+        "mastercard": [
+          "5"
+        ],
+        "amex": [
+          "34",
+          "37"
+        ]
+      }
+    },
+    "textos": {
+      "metodos": {
+        "titulo": "Método de pago",
+        "detalle": "Selecciona cómo deseas pagar.",
+        "etiqueta": "Método de pago",
+        "opciones": [
+          {
+            "id": "tarjeta",
+            "titulo": "Tarjeta",
+            "icono": "tarjeta-pago"
+          },
+          {
+            "id": "billetera",
+            "titulo": "Billeteras digitales",
+            "icono": "celular"
+          }
+        ],
+        "billetera": {
+          "titulo": "Selecciona tu billetera digital",
+          "pagar": "Paga con :billetera",
+          "escanea": "Escanea el código QR desde tu aplicación :billetera.",
+          "qr": "Código QR de :billetera",
+          "pasos": [
+            "Abre tu aplicación :billetera.",
+            "Escanea este código QR.",
+            "Confirma el pago por :monto.",
+            "Tu suscripción se activará automáticamente."
+          ],
+          "nota": "Una vez confirmado el pago, te enviaremos un correo con los detalles de tu suscripción."
+        }
+      },
+      "paso1": {
+        "titulo": "Datos de la tarjeta",
+        "detalle": "El cobro es recurrente y se hace por adelantado."
+      },
+      "campos": {
+        "numero": "Número de la tarjeta",
+        "numero_ph": "1234 5678 9012 3456",
+        "vencimiento": "Fecha de vencimiento",
+        "vencimiento_ph": "MM/AA",
+        "cvv": "CVV",
+        "cvv_ph": "123",
+        "propietario": "Nombre del propietario",
+        "propietario_ph": "Como aparece en tu tarjeta",
+        "documento": "RUC / DNI",
+        "documento_ph": "Ej: 20123456789",
+        "razon": "Razón social / nombre completo",
+        "razon_ph": "Ej: Inversiones Digitales S.A.C",
+        "pais": "País o región",
+        "direccion": "Dirección fiscal",
+        "direccion_ph": "Ej: Av. La Marina 2000, San Miguel, Lima",
+        "correo": "Correo electrónico",
+        "correo_ph": "correo@tuempresa.com",
+        "celular": "Número de celular (:prefijo)",
+        "celular_ph": "987 654 321"
+      },
+      "paso2": {
+        "titulo": "Datos de facturación",
+        "detalle": "Se usarán para emitir tu comprobante electrónico"
+      },
+      "canales": {
+        "titulo": "Canales adicionales de notificación",
+        "whatsapp": {
+          "etiqueta": "WhatsApp · Recibe tus comprobantes por WhatsApp"
+        },
+        "sms": {
+          "etiqueta": "SMS / teléfono · Avisos de cobro y renovación por mensaje"
+        }
+      },
+      "guardados": {
+        "usar_guardada": "Usar tarjeta guardada",
+        "ver_todas": "Ver todas mis tarjetas (:n)",
+        "cambiar": "Cambiar",
+        "vence": "Vence :fecha",
+        "titulo_perfiles": "Datos de facturación",
+        "nuevo_perfil": "Agregar nuevos datos",
+        "usar_perfil": "Usar datos de facturación guardados",
+        "ver_otras": "Ver otras empresas (:n)",
+        "documento": "RUC / DNI :documento",
+        "separador": " · "
+      },
+      "metodo_guardado": {
+        "editar_etiqueta": "Editar método de pago",
+        "titulo_tarjeta": ":marca •••• :ultimos",
+        "predeterminada": "Predeterminada",
+        "vencida": "Vencida",
+        "elegir_valida": "Selecciona o registra un método de pago válido para continuar.",
+        "predeterminada_vencida": "Tu tarjeta predeterminada está vencida. Elige otra tarjeta o registra una nueva.",
+        "guardar_futuras": "Guardar esta tarjeta para próximas compras",
+        "cargando": "Cargando tus métodos de pago…",
+        "error_lectura": "No pudimos recuperar tus métodos de pago.",
+        "error_escritura": "No pudimos guardar el cambio. Tu método de pago anterior se conserva.",
+        "reintentar": "Reintentar",
+        "procesando": "Procesando…",
+        "modal": {
+          "titulo": "Método de pago",
+          "lista_etiqueta": "Tarjetas guardadas",
+          "agregar": "Agregar otra tarjeta",
+          "nueva_titulo": "Datos de la nueva tarjeta",
+          "predeterminada_nueva": "Establecer como predeterminada",
+          "guardar": "Guardar tarjeta",
+          "descartar": "Descartar",
+          "cancelar": "Cancelar",
+          "usar_tarjeta": "Usar tarjeta",
+          "vacio": "Todavía no tienes tarjetas guardadas.",
+          "guardando": "Guardando…"
+        }
+      },
+      "errores": {
+        "numero": "Ingresa un número de tarjeta válido.",
+        "vencimiento": "Ingresa la fecha de vencimiento (MM/AA).",
+        "vencida": "La tarjeta está vencida.",
+        "cvv": "Ingresa el CVV de 3 o 4 dígitos.",
+        "propietario": "Ingresa el nombre del propietario."
+      },
+      "perfiles": {
+        "editar_etiqueta": "Editar datos de facturación",
+        "agregar": "Agregar perfil de facturación",
+        "guardar": "Guardar perfil",
+        "guardar_cambios": "Guardar cambios",
+        "cancelar": "Cancelar",
+        "telefono": "Teléfono",
+        "pais": "País o región",
+        "canales_titulo": "Notificaciones",
+        "sin_canales": "Sin canales adicionales",
+        "canales_union": " · ",
+        "canal_whatsapp": "WhatsApp",
+        "canal_sms": "SMS / teléfono",
+        "cargando": "Cargando tus datos de facturación…",
+        "error_lectura": "No pudimos recuperar tus datos de facturación.",
+        "error_escritura": "No pudimos guardar los datos de facturación. Se conservan los anteriores.",
+        "edicion_pendiente": "Guarda o cancela los cambios de facturación para continuar.",
+        "errores": {
+          "documento": "Ingresa un DNI (8 dígitos) o un RUC (11 dígitos).",
+          "razon": "Ingresa la razón social o el nombre completo.",
+          "correo": "Ingresa un correo electrónico válido."
+        },
+        "editando_titulo": "Editando datos de facturación",
+        "nuevo_titulo": "Nuevo perfil de facturación"
+      },
+      "tarjetas": {
+        "editar_tarjeta": "Editar tarjeta :tarjeta",
+        "editar_titulo": "Editar tarjeta",
+        "nota_seguridad": "Por seguridad solo se pueden modificar el vencimiento y el titular. El número y el CVV no se guardan.",
+        "predeterminada_edicion": "Establecer como predeterminada",
+        "guardar_cambios": "Guardar cambios",
+        "cancelar_edicion": "Cancelar",
+        "vencimiento_invalido": "Ingresa un vencimiento vigente (MM/AA).",
+        "quitar": "Quitar tarjeta",
+        "quitar_pregunta": "¿Quitar :tarjeta de tus métodos guardados?",
+        "quitar_confirmar": "Sí, quitar",
+        "quitar_conservar": "Conservar"
+      },
+      "autorizacion": {
+        "obligatoria_pendiente": "Debes aceptar esta autorización para continuar."
+      },
+      "avisos": {
+        "edicion_pendiente": "Tienes cambios de facturación sin guardar. Guárdalos o cancélalos antes de continuar.",
+        "datos_incompletos": "Revisa los datos del método de pago para continuar.",
+        "perfil_actualizado": "Los datos de facturación se actualizaron correctamente.",
+        "perfil_agregado": "El perfil de facturación se agregó correctamente.",
+        "perfil_error": "No se pudieron guardar los datos de facturación. Verifica la información e inténtalo nuevamente.",
+        "tarjeta_actualizada": "El método de pago se actualizó correctamente.",
+        "tarjeta_quitada": "La tarjeta se quitó de tus métodos guardados.",
+        "operacion_demostracion": "Solicitud de demostración completada. No se realizó ningún cobro.",
+        "operacion_exito": "La solicitud se completó correctamente."
+      },
+      "resumen": {
+        "titulo": "Resumen de pedido",
+        "procesando": "Procesando…"
+      },
+      "errores_flujo": {
+        "activar": "No se pudo completar la solicitud. Inténtalo nuevamente."
+      }
+    }
   }
 }

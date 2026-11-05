@@ -8,43 +8,47 @@ import type { MedioLocalPublicacion } from '@/tipos/inicio/contrato_crear_public
 
 const textos = catalogoInicio.publicacion.comentarios
 
-export function usarCajaComentario({ textoInicial = String(), onEnviar, onCancelar }: CajaComentarioProps) {
+export function usarCajaComentario({ textoInicial = String(), mediosIniciales, onEnviar, onCancelar }: CajaComentarioProps) {
   const [texto, setTexto] = useState(textoInicial)
-  const [medios, setMedios] = useState<MedioLocalPublicacion[]>([])
+  const [medios, setMedios] = useState<MedioLocalPublicacion[]>(mediosIniciales ?? [])
   const [emojis, setEmojis] = useState(false)
-  const selectorImagen = useRef<HTMLInputElement>(null)
-  const selectorVideo = useRef<HTMLInputElement>(null)
+  const selector = useRef<HTMLInputElement>(null)
   const contador = useRef(0)
+  const propias = useRef(new Set<string>())
   const vigentes = useRef<MedioLocalPublicacion[]>([])
   const vacio = texto.trim().length === 0 && medios.length === 0
+  const entregaSiempreMedios = mediosIniciales !== undefined
 
   useEffect(() => {
     vigentes.current = medios
   }, [medios])
 
-  useEffect(() => () => liberarMedios(vigentes.current), [])
+  useEffect(() => {
+    const creadas = propias.current
+    return () => liberarMedios(vigentes.current, creadas)
+  }, [])
 
   function siguienteId() {
     contador.current += 1
     return String(contador.current)
   }
 
-  function enviar(evento: FormEvent<HTMLFormElement>) {
-    evento.preventDefault()
-    enviarActual()
-  }
-
   function enviarActual() {
     if (vacio) return
-    if (medios.length > 0) {
-      vigentes.current = []
+    if (medios.length > 0 || entregaSiempreMedios) {
+      propias.current.clear()
       onEnviar(texto.trim(), medios)
     } else {
       onEnviar(texto.trim())
     }
-    setTexto('')
+    setTexto(String())
     setMedios([])
     setEmojis(false)
+  }
+
+  function enviar(evento: FormEvent<HTMLFormElement>) {
+    evento.preventDefault()
+    enviarActual()
   }
 
   function alTeclear(evento: KeyboardEvent) {
@@ -55,16 +59,17 @@ export function usarCajaComentario({ textoInicial = String(), onEnviar, onCancel
     }
   }
 
+  function agregarArchivos(archivos: File[]) {
+    const nuevos = mediosDesdeArchivos(archivos, medios.length, siguienteId)
+    nuevos.forEach((medio) => propias.current.add(medio.url))
+    setMedios((anteriores) => [...anteriores, ...nuevos])
+  }
+
   function alPegar(evento: ClipboardEvent) {
     const archivos = Array.from(evento.clipboardData.files)
     if (archivos.length === 0) return
     evento.preventDefault()
     agregarArchivos(archivos)
-  }
-
-  function agregarArchivos(archivos: File[]) {
-    const nuevos = mediosDesdeArchivos(archivos, medios.length, siguienteId)
-    setMedios((anteriores) => [...anteriores, ...nuevos])
   }
 
   function alElegirArchivos(evento: ChangeEvent<HTMLInputElement>) {
@@ -73,10 +78,9 @@ export function usarCajaComentario({ textoInicial = String(), onEnviar, onCancel
   }
 
   const alternarEmojis = () => setEmojis((abierto) => !abierto)
-  const abrirSelectorImagen = () => selectorImagen.current?.click()
-  const abrirSelectorVideo = () => selectorVideo.current?.click()
+  const abrirSelector = () => selector.current?.click()
   const quitarMedio = (id: string) => setMedios((anteriores) => sinMedio(anteriores, id))
   const agregarEmoji = (emoji: string) => setTexto((actual) => actual + emoji)
 
-  return { texto, setTexto, medios, emojis, selectorImagen, selectorVideo, vacio, enviar, alTeclear, alPegar, alElegirArchivos, alternarEmojis, abrirSelectorImagen, abrirSelectorVideo, quitarMedio, agregarEmoji }
+  return { texto, setTexto, medios, emojis, selector, vacio, enviar, alTeclear, alPegar, alElegirArchivos, alternarEmojis, abrirSelector, quitarMedio, agregarEmoji }
 }

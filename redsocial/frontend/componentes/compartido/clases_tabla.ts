@@ -8,6 +8,7 @@ export const CLASES_TABLA = {
   fila: base.fila,
   celda: base.celda,
   columnaAjustada: base.columna_ajustada,
+  compacta: base.compacta,
   columnas: base.columnas,
   celdaFija: base.acciones,
   identidad: base.identidad,

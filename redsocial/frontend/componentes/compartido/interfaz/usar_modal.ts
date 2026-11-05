@@ -1,21 +1,35 @@
 import { useEffect, useRef } from 'react'
-import type { KeyboardEvent as EventoTeclado } from 'react'
+import type { KeyboardEvent as EventoTeclado, MouseEvent as EventoRaton } from 'react'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
 const configuracion = catalogoCompartido.modal
 
+let bloqueos = 0
+let overflowOriginal = String()
+
+function bloquearScroll() {
+  if (bloqueos === 0) overflowOriginal = document.body.style.overflow
+  bloqueos += 1
+  document.body.style.overflow = 'hidden'
+}
+
+function liberarScroll() {
+  bloqueos -= 1
+  if (bloqueos === 0) document.body.style.overflow = overflowOriginal
+}
+
 export function usarModal(onCerrar: () => void) {
   const dialogoRef = useRef<HTMLDivElement>(null)
+  const pulsacionEnFondo = useRef(false)
 
   useEffect(() => {
     const elementoPrevio = document.activeElement instanceof HTMLElement ? document.activeElement : null
-    const overflowAnterior = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    bloquearScroll()
     const dialogo = dialogoRef.current
     const inicial = dialogo?.querySelector<HTMLElement>(configuracion.selector_foco_inicial)
     ;(inicial ?? dialogo)?.focus()
     return () => {
-      document.body.style.overflow = overflowAnterior
+      liberarScroll()
       elementoPrevio?.focus()
     }
   }, [])
@@ -44,5 +58,15 @@ export function usarModal(onCerrar: () => void) {
     ;(saleAtras ? ultimo : primero)?.focus()
   }
 
-  return { dialogoRef, mantenerFoco }
+  function registrarPulsacion(evento: EventoRaton<HTMLDivElement>) {
+    pulsacionEnFondo.current = evento.target === evento.currentTarget
+  }
+
+  function cerrarAlPulsarFuera(evento: EventoRaton<HTMLDivElement>) {
+    const empezoEnFondo = pulsacionEnFondo.current
+    pulsacionEnFondo.current = false
+    if (empezoEnFondo && evento.target === evento.currentTarget) onCerrar()
+  }
+
+  return { dialogoRef, mantenerFoco, registrarPulsacion, cerrarAlPulsarFuera }
 }

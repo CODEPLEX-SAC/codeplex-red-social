@@ -1,8 +1,9 @@
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import type { ElementoMenu } from '@/tipos/compartido/contrato_menu'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 import type { DatosAsistenteInvitacion, DatosColaboradorInvitado } from '@/tipos/colaboradores/contrato_invitar_colaborador'
 import { formatearFecha } from './logica_colaboradores'
+import type { ElementoMenu } from '@/tipos/compartido/contrato_menu'
+import type { AccionesColaborador } from '@/tipos/colaboradores/contrato_listado_colaboradores'
 
 const ROL_CLASE_PREDETERMINADO = 'predeterminado'
 const textosVigencia = catalogoColaboradores.celda_vigencia
@@ -11,17 +12,19 @@ export function puedeDarDeBaja(colaborador: Colaborador): boolean {
   return colaborador.estado !== 'baja'
 }
 
-export function puedeReenviar(colaborador: Colaborador): boolean {
-  return colaborador.estado === 'invitado'
+export function elementosMenuColaborador(colaborador: Colaborador, acciones: AccionesColaborador): ElementoMenu[] {
+  const botones = catalogoColaboradores.botones
+  if (puedeReenviar(colaborador)) return [{ etiqueta: botones.menu_reenviar, icono: 'enviar', alHacerClick: () => acciones.alReenviar(colaborador) }]
+  const opciones: ElementoMenu[] = [
+    { etiqueta: botones.menu_ver, icono: 'ver', alHacerClick: () => acciones.alVerColaborador(colaborador) },
+    { etiqueta: botones.menu_editar, icono: 'editar-oficial', alHacerClick: () => acciones.alEditarColaborador(colaborador) },
+  ]
+  if (!puedeDarDeBaja(colaborador)) return opciones
+  return [...opciones, { etiqueta: botones.dar_de_baja, icono: 'persona-menos', peligro: true, alHacerClick: () => acciones.alConfirmarBaja(colaborador) }]
 }
 
-export function opcionesMenuFila(colaborador: Colaborador, acciones: { alVer: () => void; alEditar: () => void; alDarDeBaja: () => void }): ElementoMenu[] {
-  const opciones: ElementoMenu[] = [
-    { etiqueta: catalogoColaboradores.botones.ver_colaborador, alHacerClick: acciones.alVer },
-    { etiqueta: catalogoColaboradores.botones.editar_colaborador, alHacerClick: acciones.alEditar },
-  ]
-  if (puedeDarDeBaja(colaborador)) opciones.push({ etiqueta: catalogoColaboradores.botones.dar_de_baja, peligro: true, alHacerClick: acciones.alDarDeBaja })
-  return opciones
+export function puedeReenviar(colaborador: Colaborador): boolean {
+  return colaborador.estado === 'invitado'
 }
 
 export function registrarBaja(colaborador: Colaborador, fecha: string): Colaborador {

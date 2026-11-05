@@ -52,10 +52,6 @@
   },
   "cabecera": {
     "estadisticas": "Resumen del perfil",
-    "publicaciones": "Publicaciones",
-    "amigos": "Amigos",
-    "en_comun_singular": "amigo en común",
-    "en_comun_plural": "amigos en común",
     "datos": [
       {
         "clave": "ubicacion",
@@ -71,6 +67,29 @@
         "clave": "empresa",
         "icono": "empresa",
         "fijado": "trabajo"
+      }
+    ],
+    "separador": "·",
+    "resenas": "— · 0 reseñas",
+    "etiqueta_calificacion": "Calificación del perfil",
+    "calificacion_valor": 0,
+    "calificacion_maximo": 5,
+    "estadisticas_items": [
+      {
+        "clave": "publicaciones",
+        "texto": "Publicaciones",
+        "solo_ajeno": false
+      },
+      {
+        "clave": "amigos",
+        "texto": "Amigos",
+        "solo_ajeno": false
+      },
+      {
+        "clave": "en_comun",
+        "texto": "amigos en común",
+        "texto_singular": "amigo en común",
+        "solo_ajeno": true
       }
     ]
   },
@@ -122,12 +141,12 @@
   "clases": {
     "tarjeta": "mb-4 overflow-hidden rounded-xl border border-borde/60 bg-white p-5 shadow-sombra max-600:p-4",
     "cuerpo": "flex flex-col gap-3",
-    "identidad": "flex items-start gap-5 max-600:flex-col",
-    "avatar": "border-4 border-white ring-1 ring-borde max-600:size-20!",
+    "identidad": "flex items-start gap-4 max-600:flex-col",
+    "avatar": "border-4 border-white ring-1 ring-borde",
     "acciones": "flex flex-col items-end gap-3 pt-3 max-600:items-start",
-    "pestanas": "mb-4 rounded-xl border border-borde/60 bg-white px-2 shadow-sombra",
+    "pestanas": "mb-4 rounded-xl border border-borde/60 bg-white px-6 pt-2 shadow-sombra max-480:px-3",
     "vacio": "rounded-xl border border-borde/60 bg-white p-8 shadow-sombra",
-    "estadisticas": "m-0 flex flex-wrap gap-x-4 gap-y-1 p-0 list-none",
+    "estadisticas": "m-0 flex flex-wrap items-baseline gap-x-2 gap-y-1 p-0 list-none",
     "seccion": "mb-4 rounded-xl border border-borde/60 bg-white p-5 shadow-sombra max-600:p-4",
     "datos": "m-0 grid list-none gap-3 p-0",
     "habilidades": "m-0 flex list-none flex-wrap gap-2 p-0",
@@ -139,7 +158,7 @@
       "tarjeta": "flex flex-col items-start gap-1 rounded-control border border-borde bg-fondo p-3.5",
       "titulo": "text-nombre-entidad text-texto",
       "etiqueta": "text-auxiliar text-texto-suave",
-      "valor": "text-titulo-seccion text-texto",
+      "valor": "text-valor-destacado text-texto",
       "estado": {
         "optimo": "bg-exito/15 text-exito-texto",
         "estable": "bg-fondo-categoria-azul text-azul-categoria-texto"
@@ -147,7 +166,7 @@
       "barra": "h-1.5 w-full appearance-none overflow-hidden rounded-full border-0 bg-fondo-hover-neutro [&::-webkit-progress-bar]:bg-fondo-hover-neutro [&::-webkit-progress-value]:rounded-full [&::-moz-progress-bar]:rounded-full [&::-webkit-progress-value]:bg-primario [&::-moz-progress-bar]:bg-primario"
     },
     "volver": "mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-texto-suave no-underline hover:bg-fondo hover:text-texto",
-    "datos_cabecera": "m-0 flex list-none flex-wrap gap-x-4 gap-y-1 p-0",
+    "datos_cabecera": "m-0 flex list-none flex-wrap items-center gap-x-3 gap-y-1.5 p-0",
     "red_social": {
       "rejilla": "grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start gap-4 max-900:grid-cols-1",
       "columna": "flex min-w-0 flex-col gap-4",
@@ -158,7 +177,7 @@
       "fotos": "m-0 grid list-none grid-cols-3 gap-1 p-0",
       "foto": "aspect-square w-full rounded-lg object-cover bg-fondo",
       "amigos": "m-0 grid list-none grid-cols-3 gap-2 p-0 max-480:grid-cols-2",
-      "subpestanas": "flex flex-wrap gap-2",
+      "subpestanas": "rounded-xl border border-borde/60 bg-white px-6 pt-2 shadow-sombra max-480:px-3",
       "foto_amigo": "aspect-square w-full rounded-lg object-cover bg-fondo",
       "resumen_preguntas": "flex flex-wrap items-center justify-between gap-3 border-b border-borde-suave px-5 py-3",
       "fila_pregunta": "flex flex-col gap-2 border-b border-borde-suave px-5 py-4 last:border-b-0",
@@ -169,7 +188,7 @@
       "formulario": "flex flex-col gap-3",
       "acciones": "mt-3 flex justify-end gap-2",
       "fila": "flex items-start gap-2.5",
-      "lista": "m-0 flex list-none flex-col gap-3 p-0",
+      "lista": "m-0 flex list-none flex-col p-0",
       "item": "flex items-start gap-3 rounded-control border border-borde p-3",
       "item_cuerpo": "flex min-w-0 flex-1 flex-col gap-0.5",
       "item_acciones": "flex flex-none gap-1",
@@ -179,19 +198,29 @@
       "paso": "flex items-center gap-2 text-subtitulo",
       "documento": "flex items-center gap-3 rounded-control border border-borde p-3",
       "oculto": "hidden",
-      "bloqueo": "flex flex-col items-center gap-3 py-8 text-center"
+      "bloqueo": "flex flex-col items-center gap-3 py-8 text-center",
+      "fila_lista": "flex items-start gap-3 border-b border-borde py-2.5 last:border-b-0",
+      "caja_icono": "grid h-9 w-9 flex-none place-items-center rounded-control border border-borde bg-fondo",
+      "fila_placeholder": "h-auto! w-full justify-start! gap-3 rounded-none! border-0! px-0! py-2.5 text-left text-subtitulo! text-texto-suave hover:text-primario",
+      "caja_placeholder": "grid h-9 w-9 flex-none place-items-center rounded-control border border-borde bg-fondo text-texto-suave",
+      "vacio_ajeno": "m-0 py-2 text-subtitulo italic text-texto-suave",
+      "insignia_tipo": "text-badge uppercase text-primario",
+      "columna_placeholder": "flex min-w-0 flex-col items-start"
     },
     "visor": {
       "cuerpo": "flex min-h-0 flex-1 flex-col items-center gap-3 p-4",
       "imagen": "max-h-[70vh] max-w-full rounded-lg object-contain",
       "controles": "flex w-full items-center justify-between gap-3"
-    }
+    },
+    "camara_foto": "absolute right-0 bottom-0",
+    "foto_envoltorio": "relative flex-none",
+    "foto_boton": "rounded-full p-0"
   },
   "experiencia": {
     "laboral": {
       "titulo": "Empleo",
       "agregar": "+ Agregar otra experiencia",
-      "vacio": "Aún no hay experiencia laboral registrada.",
+      "vacio": "Este usuario aún no ha cargado su experiencia laboral.",
       "icono": "maletin",
       "actual": "Actualmente",
       "campos": [
@@ -236,12 +265,13 @@
           "tipo": "multilinea",
           "marcador": "Describe tus responsabilidades y logros..."
         }
-      ]
+      ],
+      "placeholder": "Experiencia laboral"
     },
     "formacion": {
       "titulo": "Formación académica",
       "agregar": "+ Agregar formación",
-      "vacio": "Aún no hay formación académica registrada.",
+      "vacio": "Este usuario aún no ha cargado su formación académica.",
       "icono": "universidad",
       "campos": [
         {
@@ -280,7 +310,8 @@
           "tipo": "texto",
           "marcador": "AAAA"
         }
-      ]
+      ],
+      "placeholder": "Formación académica"
     },
     "editar_item": "Editar",
     "eliminar_item": "Eliminar",
@@ -289,8 +320,7 @@
   },
   "documentos": {
     "titulo": "Documentos",
-    "vacio_titulo": "Sin documentos",
-    "vacio_ajeno": "Este perfil aún no tiene documentos compartidos.",
+    "vacio_ajeno": "Este usuario aún no ha subido documentos.",
     "agregar": "+ Agregar documento",
     "subir_cv": "+ Subir CV actualizado",
     "subir_cv_detalle": "PDF o Word",
@@ -299,8 +329,9 @@
     "abrir": "Abrir :nombre",
     "tipos_aceptados": ".pdf,.doc,.docx,image/*",
     "etiqueta_archivo": "Seleccionar documento",
-    "nota_ajeno": "Los documentos que comparta este perfil aparecerán aquí.",
-    "idioma": "es-PE"
+    "idioma": "es-PE",
+    "subir_titulo_detalle": "Será verificado por Codeplex",
+    "subido": "Subido el :fecha"
   },
   "metricas": {
     "resumen_actividad": "Resumen de actividad",
@@ -432,7 +463,8 @@
     "tipos_aceptados": "image/*",
     "texto_alternativo": "Foto de perfil de :nombre",
     "visor_titulo": "Fotos de :nombre",
-    "etiqueta_entrada": "Elegir foto del perfil"
+    "etiqueta_entrada": "Archivo de la foto de perfil",
+    "camara": "Subir foto de perfil"
   },
   "visor": {
     "anterior": "Anterior",

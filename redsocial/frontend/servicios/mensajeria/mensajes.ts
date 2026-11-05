@@ -1,5 +1,4 @@
-import type { Conversacion, ConversacionActiva } from '../../tipos/mensajeria/contrato_mensajes'
+import type { EstadoMensajeria } from '../../tipos/mensajeria/contrato_mensajes'
 import datos from './mensajes.json'
 
-export const CONVERSACIONES = datos.conversaciones as readonly Conversacion[]
-export const CONVERSACION_ACTIVA = datos.conversacionActiva as ConversacionActiva
+export const ESTADO_INICIAL_MENSAJERIA = datos as unknown as EstadoMensajeria

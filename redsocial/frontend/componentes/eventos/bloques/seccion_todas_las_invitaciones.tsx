@@ -5,6 +5,7 @@ import { Icono } from '../../compartido/icono'
 import { TarjetaInvitacion } from './tarjeta_invitacion'
 import { BloqueInvitaciones } from './bloque_invitaciones'
 import type { Invitacion } from '@/tipos/eventos/modelo_eventos_invitaciones'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionTodasLasInvitaciones({
   CONTEO_PESTANAS_INVITACIONES,
@@ -33,7 +34,7 @@ export function SeccionTodasLasInvitaciones({
       <section className="mb-7">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="m-0 text-titulo-seccion text-texto">{catalogoEventos.secciones.invitaciones_pendientes} ({PENDIENTES.length})</h2>
-          <a href={catalogoEventos.rutas.invitaciones_pendientes} className="flex items-center gap-1 text-enlace-accion text-primario no-underline hover:underline">
+          <a href={catalogoEventos.rutas.invitaciones_pendientes} className={[CLASE_ENLACE_ACCION, 'flex items-center gap-1'].join(' ')}>
             {catalogoEventos.botones.ver_todas} <Icono name="flecha-derecha" className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -47,7 +48,7 @@ export function SeccionTodasLasInvitaciones({
       <section className="mb-7">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="m-0 text-titulo-seccion text-texto">{catalogoEventos.secciones.invitaciones_aceptadas} ({ACEPTADAS.length})</h2>
-          <a href={catalogoEventos.rutas.invitaciones_aceptadas} className="flex items-center gap-1 text-enlace-accion text-primario no-underline hover:underline">
+          <a href={catalogoEventos.rutas.invitaciones_aceptadas} className={[CLASE_ENLACE_ACCION, 'flex items-center gap-1'].join(' ')}>
             {catalogoEventos.botones.ver_todas} <Icono name="flecha-derecha" className="w-3.5 h-3.5" />
           </a>
         </div>
@@ -61,7 +62,7 @@ export function SeccionTodasLasInvitaciones({
       <section className="mb-7">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="m-0 text-titulo-seccion text-texto">{catalogoEventos.secciones.invitaciones_rechazadas} ({RECHAZADAS.length})</h2>
-          <a href={catalogoEventos.rutas.invitaciones_rechazadas} className="flex items-center gap-1 text-enlace-accion text-primario no-underline hover:underline">
+          <a href={catalogoEventos.rutas.invitaciones_rechazadas} className={[CLASE_ENLACE_ACCION, 'flex items-center gap-1'].join(' ')}>
             {catalogoEventos.botones.ver_todas} <Icono name="flecha-derecha" className="w-3.5 h-3.5" />
           </a>
         </div>

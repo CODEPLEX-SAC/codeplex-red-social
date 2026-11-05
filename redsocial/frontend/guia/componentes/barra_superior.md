@@ -43,3 +43,26 @@ Verificado el 2026-10-19 contra `barra_superior.tsx`, `compartido.json` y `index
 - El relleno izquierdo reservado para el botón de menú pasa de `max-800` a `max-900`, el mismo punto en que la barra lateral se colapsa: a 820 px el menú (x 4–44) ya no solapa el buscador (x 64–363).
 - Diferencia respecto a la medición previa: la altura de 72 px de la Fase 2 no estaba registrada como cambio aprobado.
 - **Excepciones conservadas (INC-18):** la campana (36 × 36 px) y el botón de usuario (40 px) son botones nativos registrados como excepción en `pruebas/compartido/registro_componentes_permitidos.ts`; coexisten con `BotonIcono` de 32 px y el buscador y el selector de 48 px. Excepción justificada, no una inconsistencia pendiente de corregir. «Cerrar sesión» (INC-15) y «Ver más» del panel de notificaciones (INC-26, enlace con ruta real) también se conservan; ver [excepciones_y_limitaciones.md](excepciones_y_limitaciones.md).
+
+## Ampliación (2026-10-26): componentes y acciones de la barra superior
+
+- **`BotonAvisosTopbar`** (`componentes/compartido/navegacion/boton_avisos_topbar.tsx`; consumidor: `barra_superior.tsx`). Botón nativo de 36 × 36 px (excepción INC-18) con `Insignia` superpuesta; el contador sale de `compartido.json › navegacion.navPrincipal` (elemento `avisos`, propiedad `insignia`). Al pulsarlo alterna `PanelNotificacionesTopbar` (módulo Avisos) y `FondoPanelFlotante`; el contenedor detiene la propagación del clic. Estado: `useState` local. Sin prueba que lo nombre.
+- **`MenuUsuarioTopbar`** (`menu_usuario_topbar.tsx`; consumidor: `barra_superior.tsx`). Botón de usuario con `AvatarUsuario`, nombre y chevron; devuelve `null` si no hay sesión (`usarSesionDemostracion`). `aria-haspopup="dialog"`, `aria-expanded` y `aria-controls`; al cerrar devuelve el foco al botón. «Cerrar sesión» llama a `cerrarSesion()` y navega a la ruta de Acceso con `irARuta`. La imagen del avatar es la del catálogo de imágenes (`imagenPerfilPedroSas`), no la de la sesión.
+- **`PanelUsuarioTopbar`** (`panel_usuario_topbar.tsx`; consumidor: `menu_usuario_topbar.tsx`). `role="dialog"` con cabecera (avatar `xxl`, nombre, empresa, rol), tres opciones de `acceso.json › panel_usuario.opciones` y «Cerrar sesión». Cierra con Escape (`compartido.json › modal.tecla_cerrar`) y con el botón ×. **Solo «Mi perfil» navega** (`<a href=perfil.json › rutas.principal>`); «Información de la empresa» y «Configuración» son `<button aria-disabled="true">` con la descripción «Disponible próximamente.» y sin manejador (control deshabilitado declarado; quedó fuera del recuento de los 180 controles porque contiene `disabled`). Prueba que lo nombra: `pruebas/compartido/avatar_variantes_migracion.test.tsx` (leída, no ejecutada hoy).
+- **Acciones sin efecto (COMPROBADO EN CÓDIGO, 2026-10-26):** «Crear» (BS-033), «Amigos» (BS-034), «Mensajes» (BS-035) y «Módulos» (BS-037) son `BotonIcono` sin manejador. «Amigos» y «Mensajes» tienen destino en el catálogo y están registrados como defecto F2-01 en `INFORME_SISTEMA_VISUAL_GLOBAL_2026.md`; «Crear» y «Módulos» esperan decisión de producto. El buscador de la barra no tiene estado ni lógica de búsqueda.
+
+## Ajuste (2026-10-28): contador de Mensajes y nombres accesibles
+
+- **`BotonMensajesTopbar`** (`boton_mensajes_topbar.tsx`; consumidor: `barra_superior.tsx`) envuelve el `BotonIcono` de Mensajes en `Insignia variant="superpuesta"` con `ContextoInsigniasNavegacion['mensajes']`: la cantidad de conversaciones con mensajes sin leer, la misma fuente del menú lateral y del chip «No leídos». Con 0 o sin proveedor la insignia queda invisible.
+- **Nombre accesible:** campana, carrito y Mensajes usan `nombreAccesibleConConteo` («Mensajes, 5 pendientes»); sin cantidad queda solo el nombre. El texto sale de `textos.json › NOMBRE_CON_PENDIENTES`.
+
+
+## Ajuste (2026-10-28): altura y botones alineados
+
+- La barra pasa de 64 a 72 px (--height-barra-superior: 4.5rem en index.css, de la que derivan los paneles) para dar aire a las insignias, que sobresalen del botón. Es una decisión pedida por la usuaria el 2026-10-28; sustituye a la de 64 px de la Fase 5.
+- La campana ya no es un botón nativo de 36 px (excepción INC-18 retirada del registro): usa BotonIcono (sutil, default, 32 px; 28 px bajo 600 px) como Mensajes y Carrito. Los tres botones comparten tamaño, eje vertical y posición de la insignia (medido a 1280 y 390 px).
+
+## Ajuste (2026-10-28): insignias de Mensajes y Notificaciones sin captura de puntero
+
+Medido a 1280 y 390 px: la insignia de Mensajes (5) invade 2,4 × 10 px (1280) y 4 × 10 px (390) la esquina superior del botón Carrito y capturaba el clic (pulsar ahí no hacía nada); la de Notificaciones (3) invade 2,5 × 10 px del botón Módulos (1280) y 4 × 16 px del botón de cuenta (390) sin capturar el clic (el vecino es posterior en el DOM). Ninguna toca el glifo de un botón vecino. Corrección: el badge de `Insignia variant="superpuesta"` lleva `pointer-events-none` (`insignia_superpuesta.inerte`), de modo que el clic llega al botón que hay debajo. No se cambiaron el espacio entre botones (8 px; 6 px a ≤800 px), la altura (72 px) ni los tamaños de la insignia.
+

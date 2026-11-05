@@ -1,14 +1,4 @@
 {
-  "colorGrafico": {
-    "#3b82f6": "info",
-    "#ef4444": "error",
-    "#7c3aed": "primario",
-    "#06b6d4": "secundario",
-    "#22c55e": "exito",
-    "#eab308": "advertencia",
-    "#f97316": "advertencia",
-    "#9ca3af": "secundario"
-  },
   "clasesIconoKpi": {
     "azul": "bg-fondo-categoria-azul text-azul-categoria-texto",
     "rojo": "bg-fondo-categoria-rojo text-rojo-categoria-texto",
@@ -27,8 +17,5 @@
     "aceptable": "Aceptable",
     "bajo": "Bajo",
     "riesgo": "En riesgo"
-  },
-  "claseTh": "border-b border-borde-suave py-0 pb-2 pr-1.5 max-380:pr-1 pl-0 text-left text-encabezado-tabla uppercase text-texto-suave",
-  "claseTd": "whitespace-nowrap border-b border-borde-suave py-1.75 pr-1.5 max-380:pr-1 pl-0 text-texto",
-  "claseTdNombre": "border-b border-borde-suave py-1.75 pr-1.5 max-380:pr-1 pl-0 text-texto"
+  }
 }

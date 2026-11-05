@@ -9,13 +9,6 @@ const COLUMNAS = Object.keys(catalogoColaboradores.tabla).length
 
 export function TablaColaboradores({ datos, filas }: TablaColaboradoresProps) {
   const {
-    ESTADO_CLASES,
-    ROL_CLASES,
-    setMenuAbierto,
-    setAnclaMenu,
-    menuAbierto,
-    anclaMenu,
-    cerrarMenus,
     alVerColaborador,
     alEditarColaborador,
     alConfirmarBaja,
@@ -41,21 +34,12 @@ export function TablaColaboradores({ datos, filas }: TablaColaboradoresProps) {
               <td colSpan={COLUMNAS} className={CLASES_TABLA.mensajeVacio}>{catalogoColaboradores.mensajes.sin_colaboradores}</td>
             </tr>
           )}
-          {filas.map((fila, i) => {
+          {filas.map((fila) => {
             const c = fila.original
-            const estado = ESTADO_CLASES[c.estado]
             return (
               <BloqueReenviar key={fila.id}
                 datos={{
                   c,
-                  ROL_CLASES,
-                  estado,
-                  setMenuAbierto,
-                  i,
-                  setAnclaMenu,
-                  menuAbierto,
-                  anclaMenu,
-                  cerrarMenus,
                   alVerColaborador,
                   alEditarColaborador,
                   alConfirmarBaja,

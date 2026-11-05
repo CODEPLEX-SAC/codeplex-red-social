@@ -1,6 +1,7 @@
 import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/marketplace.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Icono } from '../../compartido/icono'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 export function SeccionPopularEstaSemana({
   POPULARES,
@@ -13,7 +14,7 @@ export function SeccionPopularEstaSemana({
     <section className="rounded-xl border border-borde-suave bg-white">
       <div className="flex items-center justify-between px-4 pb-2.5 pt-3.5">
         <h2 className="m-0 text-titulo-banner text-texto">{catalogoMarketplace.secciones.popular_esta_semana}</h2>
-        <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{textosRedSocial.VER_TODOS}</a>
+        <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
       </div>
       <div className="px-4 pb-3">
         {POPULARES.map((p, i) => (

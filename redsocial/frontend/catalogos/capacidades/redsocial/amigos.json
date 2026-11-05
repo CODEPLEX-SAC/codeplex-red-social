@@ -12,7 +12,10 @@
   "mensajes": {
     "sin_amigos": "Aún no tienes amigos agregados.",
     "sin_solicitudes": "No tienes solicitudes de amistad pendientes.",
-    "sin_sugerencias": "No hay sugerencias de amigos por ahora."
+    "sin_sugerencias": "No hay sugerencias de amigos por ahora.",
+    "sin_enviadas": "No tienes solicitudes de amistad enviadas.",
+    "sin_ignoradas": "No hay solicitudes ignoradas: todavía no existe una fuente de datos para esta categoría.",
+    "sin_resultados_solicitudes": "Ninguna solicitud coincide con tu búsqueda."
   },
   "toast": {
     "solicitud_enviada": "Solicitud de amistad enviada.",
@@ -39,6 +42,7 @@
     "listas": "/amigos/listas"
   },
   "titulo_menu": "Amigos",
+  "icono_resumen_pendientes": "solicitudes",
   "pestanas": [
     {"clave": "todos", "etiqueta": "Todos", "ruta": "/amigos"},
     {"clave": "solicitudes", "etiqueta": "Solicitudes", "ruta": "/amigos/solicitudes"},
@@ -84,7 +88,6 @@
     "personas_conocer": "Personas que quizá conozcas",
     "tus_listas": "Tus listas",
     "actividad_reciente": "Actividad reciente",
-    "solicitudes_enviadas": "Solicitudes enviadas",
     "amplia_tu_red_titulo": "Amplía tu red profesional",
     "amplia_tu_red_desc": "Conecta con colegas, clientes y colaboradores que podrían interesarte.",
     "mis_listas": "Mis listas (6)",
@@ -100,5 +103,74 @@
   "placeholders": {
     "buscar_amigos": "Buscar amigos...",
     "buscar_solicitudes": "Buscar solicitudes..."
+  },
+  "tonos_conteo_chip": { "true": "blanco", "false": "neutro" },
+  "clases": {
+    "tarjeta_pagina": "rounded-xl border border-borde bg-white py-4.5 px-5",
+    "titulo_seccion": "mb-3.5 text-titulo-seccion text-texto",
+    "titulo_seccion_con_aire": "mb-3.5 mt-4.5 text-titulo-seccion text-texto",
+    "titulo_seccion_amplio": "mb-4 text-titulo-seccion text-texto",
+    "banner": "mb-5.5 mt-4.5",
+    "descripcion": "m-0 text-subtitulo leading-texto text-texto-suave",
+    "resumen": {
+      "rejilla": "mb-5 grid grid-cols-4 gap-3 max-900:grid-cols-2",
+      "tarjeta": "flex items-center gap-2.5 rounded-control border border-borde bg-white p-3.5",
+      "icono": "grid h-8.5 w-8.5 flex-none place-items-center rounded-9",
+      "icono_normal": "bg-primario-suave text-primario",
+      "icono_peligro": "bg-fondo-categoria-rojo text-peligro-texto",
+      "etiqueta": "block text-auxiliar text-texto-suave",
+      "valor": "mt-0.5 block text-valor-destacado text-texto"
+    },
+    "filtros": {
+      "fila": "my-4.5 flex gap-3 max-800:flex-col",
+      "buscador": "min-w-0 flex-1 max-800:w-full max-800:flex-none",
+      "selector": "min-w-47.5 flex-none self-center max-800:w-full"
+    },
+    "amigo": {
+      "fila": "flex items-center gap-3.5 border-b border-borde py-3.5 last:border-b-0",
+      "identidad": "w-42.5 min-w-0 shrink max-900:w-auto max-900:flex-1",
+      "nombre": "block truncate text-nombre-fila text-texto",
+      "estado": "mt-0.75 block text-badge",
+      "estado_en_linea": "text-exito-texto",
+      "estado_fuera": "text-texto-suave",
+      "comunes_compacto": "mt-0.5 hidden text-auxiliar text-texto-suave max-900:block",
+      "comunes_columna": "flex min-w-0 flex-1 items-center gap-2.5 max-900:hidden",
+      "comunes_texto": "whitespace-nowrap text-auxiliar text-texto-suave",
+      "acciones": "flex flex-none items-center gap-2",
+      "vacio": "col-span-full py-8"
+    },
+    "chips": {
+      "fila": "mb-4.5 flex flex-wrap items-center gap-2",
+      "chip": "flex-none",
+      "buscador": "mb-3.5"
+    },
+    "solicitud": {
+      "tarjeta": "relative mb-3 flex items-start gap-4 rounded-xl border border-borde bg-white p-4.5 last:mb-0 max-600:flex-wrap max-600:p-3.5",
+      "cuerpo": "min-w-0 flex-1",
+      "cabecera": "mb-0.5 flex items-baseline gap-2 pr-22.5",
+      "nombre": "text-nombre-fila text-texto",
+      "tiempo": "absolute right-4.5 top-4.5 whitespace-nowrap text-fecha-abreviada text-texto-suave",
+      "estado": "absolute right-4.5 top-4.5 whitespace-nowrap text-estado text-naranja-categoria-texto",
+      "descripcion": "m-0 mb-1.5 text-subtitulo leading-texto text-texto-suave",
+      "comunes_fila": "mb-3 flex items-center gap-2.5",
+      "comunes_texto": "text-auxiliar text-texto-suave",
+      "acciones": "ml-auto flex flex-none items-center gap-2 self-center max-900:flex-col max-900:self-start max-900:mt-1 max-600:w-full max-600:flex-row max-600:self-stretch max-600:ml-0 max-600:mt-3",
+      "boton": "max-600:flex-1",
+      "vacio": "col-span-full py-8"
+    },
+    "sugerencia": {
+      "rejilla": "mb-4.5 grid grid-cols-4 gap-3.5 max-900:grid-cols-2 max-600:grid-cols-1",
+      "tarjeta": "flex flex-col items-center rounded-control border border-borde bg-white p-3 pb-3.5 pt-4.5 text-center",
+      "avatar": "mb-2.5",
+      "cuerpo": "mb-2 w-full",
+      "nombre": "mb-0.5 block text-nombre-fila leading-compacto text-texto",
+      "descripcion": "m-0 text-subtitulo leading-texto text-texto-suave",
+      "comunes_fila": "mb-2 flex w-full items-center justify-center gap-2",
+      "comunes_texto": "whitespace-nowrap text-auxiliar text-texto-suave",
+      "grupo": "mb-2.5 justify-center",
+      "acciones": "flex w-full flex-col items-center gap-1.5",
+      "boton": "w-full max-w-30",
+      "vacio": "col-span-full py-8"
+    }
   }
 }

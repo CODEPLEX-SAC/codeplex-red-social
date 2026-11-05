@@ -11,7 +11,10 @@ const clases = configuracion.clases
 export function GrupoAvatares({ avatares, imagen = imagenUsuarioPredeterminada, tamano = configuracion.predeterminado.tamano_grupo as GrupoAvataresProps['tamano'], resto, tono = configuracion.predeterminado.tono_grupo as GrupoAvataresProps['tono'], className = '' }: GrupoAvataresProps) {
   const medidas = configuracion.tamanos[tamano as keyof typeof configuracion.tamanos]
   const tonoResto = configuracion.tonos[tono as keyof typeof configuracion.tonos]
-  const total = avatares + (resto === undefined ? 0 : 1)
+  const hayResto = resto !== undefined && resto !== String()
+  const total = avatares + (hayResto ? 1 : 0)
+  const [cifra, ...descripcion] = hayResto ? resto.split(configuracion.separador_resto) : []
+  const textoDescriptivo = descripcion.join(configuracion.separador_resto)
 
   return (
     <div className={[clases.grupo, className].join(' ').trim()}>
@@ -19,12 +22,13 @@ export function GrupoAvatares({ avatares, imagen = imagenUsuarioPredeterminada, 
         {posicionesDe(avatares).map((posicion) => (
           <AvatarUsuario key={posicion.id} tamano={tamano} imagen={imagen} />
         ))}
-        {resto === undefined ? null : (
-          <CodeplexAvatarUsuario tamano={medidas.px} sx={[configuracion.resto_sx, tonoResto]}>
-            <span className={clases.resto_texto}>{resto}</span>
+        {!hayResto ? null : (
+          <CodeplexAvatarUsuario tamano={medidas.px} sx={[configuracion.resto_sx, { minWidth: medidas.px }, tonoResto]}>
+            <span className={clases.resto_texto}>{cifra}</span>
           </CodeplexAvatarUsuario>
         )}
       </CodeplexGrupoAvatares>
+      {textoDescriptivo === String() ? null : <span className={clases.resto_descripcion}>{textoDescriptivo}</span>}
     </div>
   )
 }

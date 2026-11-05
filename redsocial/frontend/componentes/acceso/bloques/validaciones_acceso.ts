@@ -28,3 +28,7 @@ export function errorDeConfirmacion(contrasena: string, confirmacion: string) {
   if (confirmacion.length === 0) return textos.errores.confirmacion_obligatoria
   return confirmacion === contrasena ? SIN_ERROR : textos.errores.contrasenas_distintas
 }
+
+export function errorDeTerminos(aceptados: boolean) {
+  return aceptados ? SIN_ERROR : textos.errores.terminos_obligatorios
+}

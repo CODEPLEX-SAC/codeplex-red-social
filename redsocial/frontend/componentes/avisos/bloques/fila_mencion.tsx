@@ -37,11 +37,11 @@ export function FilaMencion({ mencion: m }: FilaMencionProps) {
       )}
 
       <div className="min-w-0 flex-1">
-        <p className="m-0 text-cuerpo text-texto">
+        <p className="m-0 text-subtitulo text-texto">
           <span className="font-titulo text-texto">{m.nombre}</span> <span className="text-texto-suave">{catalogoAvisos.acciones_mencion[m.tipo]}</span>
         </p>
         <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{m.tiempo}</span>
-        <p className="m-0 mt-1 text-cuerpo leading-texto text-texto-suave">
+        <p className="m-0 mt-1 text-subtitulo leading-texto text-texto-suave">
           {antes}
           <span className="font-titulo text-primario">@{SESION_ACTUAL.usuario}</span>
           {despues}

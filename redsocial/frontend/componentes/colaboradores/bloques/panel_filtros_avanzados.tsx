@@ -1,5 +1,7 @@
 import { CodeplexProveedorFechas } from '@codeplex-sac/selectores-fecha'
+import { useState } from 'react'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { Selector } from '../../compartido/interfaz/selector'
 import { Boton } from '../../compartido/interfaz/boton'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -7,15 +9,19 @@ import { BloqueFiltrosVigenciaFechas } from './bloque_filtros_vigencia_fechas'
 import { BloqueFiltrosEstadoCuenta } from './bloque_filtros_estado_cuenta'
 import { usarFiltrosAvanzados } from './usar_filtros_avanzados'
 import { crearFiltrosAvanzadosColaboradores } from './logica_filtros_avanzados_colaboradores'
-import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
+import type { BasicosFiltrosColaboradores, FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 
 const textos = catalogoColaboradores.panel_filtros_avanzados
+const clases = catalogoColaboradores.clases.filtros
+const selectores = catalogoColaboradores.selectores
 
 function detenerPropagacion(evento: { stopPropagation: () => void }) {
   evento.stopPropagation()
 }
 
-export function PanelFiltrosAvanzados({ aplicados, onAplicar, onCerrar }: { aplicados: FiltrosAvanzadosColaboradores; onAplicar: (valores: FiltrosAvanzadosColaboradores) => void; onCerrar: () => void }) {
+export function PanelFiltrosAvanzados({ aplicados, basicos, onAplicar, onCerrar }: { aplicados: FiltrosAvanzadosColaboradores; basicos?: BasicosFiltrosColaboradores; onAplicar: (valores: FiltrosAvanzadosColaboradores) => void; onCerrar: () => void }) {
+  const [rol, setRol] = useState(basicos?.rol ?? selectores.rol_perfil.opciones[0])
+  const [aplicacion, setAplicacion] = useState(basicos?.aplicacion ?? selectores.aplicaciones.opciones[0])
   const {
     valores,
     asignar,
@@ -31,12 +37,16 @@ export function PanelFiltrosAvanzados({ aplicados, onAplicar, onCerrar }: { apli
 
   function aplicar() {
     onAplicar(valores)
+    basicos?.alAplicar(rol, aplicacion)
     onCerrar()
   }
 
   function limpiarTodo() {
     limpiar()
+    setRol(selectores.rol_perfil.opciones[0])
+    setAplicacion(selectores.aplicaciones.opciones[0])
     onAplicar(crearFiltrosAvanzadosColaboradores())
+    basicos?.alAplicar(selectores.rol_perfil.opciones[0], selectores.aplicaciones.opciones[0])
   }
 
   return (
@@ -44,22 +54,32 @@ export function PanelFiltrosAvanzados({ aplicados, onAplicar, onCerrar }: { apli
       role="dialog"
       aria-label={textos.titulo}
       onClick={detenerPropagacion}
-      className="absolute right-0 top-tooltip z-20 max-900:left-0 max-900:right-auto flex max-h-150 w-125 flex-col overflow-hidden rounded-xl border border-gris-borde bg-white shadow-t13 max-600:fixed max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 max-600:w-full max-600:max-w-none max-600:rounded-b-none max-600:rounded-t-2xl panel-hoja-movil"
+      className={clases.panel}
     >
-      <div className="hidden flex-none pt-2.5 max-600:block">
-        <div className="mx-auto h-1 w-10 rounded-full bg-borde-flotante" />
+      <div className={clases.asa_movil}>
+        <div className={clases.asa_barra} />
       </div>
 
-      <div className="flex-none border-b border-borde-suave p-4 pb-3 max-600:border-b-0">
-        <div className="flex items-center justify-between">
-          <h3 className="m-0 text-titulo-banner text-texto">{textos.titulo}</h3>
+      <div className={clases.cabecera}>
+        <div className={clases.cabecera_fila}>
+          <h3 className={clases.titulo}>{textos.titulo}</h3>
           <BotonIcono icono="cerrar" type="button" aria-label={textosRedSocial.CERRAR} onClick={onCerrar} variant="discreto" size="sm" />
         </div>
       </div>
 
       <CodeplexProveedorFechas idioma={textos.idioma}>
-        <div className="flex-1 overflow-y-auto p-4">
-          <div className="grid grid-cols-2 gap-x-5 gap-y-4 max-600:grid-cols-1">
+        <div className={clases.cuerpo}>
+          {basicos && (
+            <div className={clases.basicos}>
+              <Selector variant="colaboradores" label={selectores.rol_perfil.etiqueta} value={rol} onChange={(evento) => setRol(String(evento.target.value))}>
+                {selectores.rol_perfil.opciones.map((o) => <option key={o}>{o}</option>)}
+              </Selector>
+              <Selector variant="colaboradores" label={selectores.aplicaciones.etiqueta} value={aplicacion} onChange={(evento) => setAplicacion(String(evento.target.value))}>
+                {selectores.aplicaciones.opciones.map((o) => <option key={o}>{o}</option>)}
+              </Selector>
+            </div>
+          )}
+          <div className={clases.rejilla}>
             <BloqueFiltrosVigenciaFechas
               fechaInicio={valores.fechaInicio}
               fechaFin={valores.fechaFin}
@@ -94,9 +114,9 @@ export function PanelFiltrosAvanzados({ aplicados, onAplicar, onCerrar }: { apli
         </div>
       </CodeplexProveedorFechas>
 
-      <div className="grid flex-none grid-cols-2 gap-2 border-t border-borde-suave p-4">
-        <Boton type="button" variant="secundario" onClick={limpiarTodo}>{textos.limpiar}</Boton>
-        <Boton type="button" variant="primario" onClick={aplicar}>{textos.aplicar}</Boton>
+      <div className={clases.pie}>
+        <Boton type="button" variant="secundario" size="md" onClick={limpiarTodo}>{textos.limpiar}</Boton>
+        <Boton type="button" variant="primario" size="md" onClick={aplicar}>{textos.aplicar}</Boton>
       </div>
     </div>
   )

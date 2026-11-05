@@ -4,6 +4,11 @@ import { Boton } from '../../compartido/interfaz/boton'
 import { BloqueColaborador2 } from './bloque_colaborador2'
 import type { PasoInvitacion } from '@/tipos/colaboradores/contrato_invitar_colaborador'
 import { BloqueVistaPreviaCorreo } from './bloque_vista_previa_correo'
+import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
+
+const clases = catalogoColaboradores.clases.invitar_resumen
+const comun = catalogoColaboradores.clases.invitar_comun
+const textos = catalogoColaboradores.campos_resumen
 
 export function BloqueColaborador({
   RESUMEN_COLABORADOR,
@@ -37,48 +42,48 @@ export function BloqueColaborador({
   }
 
   return (
-    <div className="grid grid-cols-2 gap-6 p-7 max-960:grid-cols-1 max-960:p-4">
+    <div className={clases.rejilla}>
       <div>
         <BloqueColaborador2 RESUMEN_COLABORADOR={RESUMEN_COLABORADOR} alEditar={editarColaborador} />
 
-        <div className="mb-4 rounded-xl border border-gris-borde px-5 py-4.5">
-          <div className="mb-3.5 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Icono name="escudo" className="w-5 h-5 text-primario" />
-              <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_resumen.rol_y_permisos}</h4>
+        <div className={`${comun.tarjeta_compacta} ${comun.separacion}`}>
+          <div className={clases.cabecera}>
+            <div className={clases.cabecera_titulo}>
+              <Icono name="escudo" className={comun.glifo_titulo} />
+              <h4 className={comun.titulo}>{textos.rol_y_permisos}</h4>
             </div>
-            <Boton type="button" variant="secundario" size="mini" onClick={editarRol} aria-label={catalogoColaboradores.campos_resumen.editar_rol}>
-              {catalogoColaboradores.campos_resumen.editar}
+            <Boton type="button" variant="secundario" size="mini" onClick={editarRol} aria-label={textos.editar_rol}>
+              {textos.editar}
             </Boton>
           </div>
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center gap-2">
-              <span className="min-w-32.5 text-auxiliar text-texto-suave">{catalogoColaboradores.campos_resumen.rol_asignado}</span>
-              <span className="inline-block rounded-md bg-fondo-categoria-morado px-2.5 py-0.75 text-badge text-morado-categoria">{RESUMEN_ROL.rolAsignado}</span>
+          <div className={clases.datos}>
+            <div className={clases.dato_fila}>
+              <span className={clases.dato_etiqueta}>{textos.rol_asignado}</span>
+              <span className={clases.dato_insignia}>{RESUMEN_ROL.rolAsignado}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="min-w-32.5 text-auxiliar text-texto-suave">{catalogoColaboradores.campos_resumen.modulos_y_permisos}</span>
-              <a href="#" className="text-enlace-accion text-primario no-underline hover:underline">{RESUMEN_ROL.modulosTexto}</a>
+            <div className={clases.dato_fila}>
+              <span className={clases.dato_etiqueta}>{textos.modulos_y_permisos}</span>
+              <a href="#" className={`${CLASE_ENLACE_ACCION} ${clases.dato_enlace}`}>{RESUMEN_ROL.modulosTexto}</a>
             </div>
           </div>
         </div>
 
-        <div className="rounded-xl border border-gris-borde px-5 py-4.5">
-          <div className="mb-3.5 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Icono name="calendario" className="w-5 h-5 text-primario" />
-              <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_resumen.vigencia}</h4>
+        <div className={comun.tarjeta_compacta}>
+          <div className={clases.cabecera}>
+            <div className={clases.cabecera_titulo}>
+              <Icono name="calendario" className={comun.glifo_titulo} />
+              <h4 className={comun.titulo}>{textos.vigencia}</h4>
             </div>
-            <Boton type="button" variant="secundario" size="mini" onClick={editarVigencia} aria-label={catalogoColaboradores.campos_resumen.editar_vigencia}>
-              {catalogoColaboradores.campos_resumen.editar}
+            <Boton type="button" variant="secundario" size="mini" onClick={editarVigencia} aria-label={textos.editar_vigencia}>
+              {textos.editar}
             </Boton>
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            <CampoResumen etiqueta={catalogoColaboradores.campos_resumen.fecha_de_inicio} valor={RESUMEN_VIGENCIA.fechaInicio} />
-            <CampoResumen etiqueta={catalogoColaboradores.campos_resumen.fecha_de_vencimiento} valor={RESUMEN_VIGENCIA.fechaVencimiento} />
-            <CampoResumen etiqueta={catalogoColaboradores.campos_resumen.al_vencer_la_vigencia} valor={RESUMEN_VIGENCIA.alVencer} />
-            <CampoResumen etiqueta={catalogoColaboradores.campos_resumen.recordatorios} valor={RESUMEN_VIGENCIA.recordatorios} />
-            <CampoResumen etiqueta={catalogoColaboradores.campos_resumen.zona_horaria} valor={RESUMEN_VIGENCIA.zonaHoraria} ancho="completo" />
+          <div className={clases.vigencia_rejilla}>
+            <CampoResumen etiqueta={textos.fecha_de_inicio} valor={RESUMEN_VIGENCIA.fechaInicio} />
+            <CampoResumen etiqueta={textos.fecha_de_vencimiento} valor={RESUMEN_VIGENCIA.fechaVencimiento} />
+            <CampoResumen etiqueta={textos.al_vencer_la_vigencia} valor={RESUMEN_VIGENCIA.alVencer} />
+            <CampoResumen etiqueta={textos.recordatorios} valor={RESUMEN_VIGENCIA.recordatorios} />
+            <CampoResumen etiqueta={textos.zona_horaria} valor={RESUMEN_VIGENCIA.zonaHoraria} ancho="completo" />
           </div>
         </div>
       </div>

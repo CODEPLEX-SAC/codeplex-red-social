@@ -3,6 +3,9 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import { Boton } from '../../compartido/interfaz/boton'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 
+const clases = catalogoColaboradores.clases.invitar_resumen
+const comun = catalogoColaboradores.clases.invitar_comun
+
 export function BloqueColaborador2({
   RESUMEN_COLABORADOR,
   alEditar,
@@ -11,23 +14,23 @@ export function BloqueColaborador2({
   alEditar: () => void
 }) {
   return (
-    <div className="mb-4 rounded-xl border border-gris-borde px-5 py-4.5">
-      <div className="mb-3.5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Icono name="nuevo-usuario" className="w-5 h-5 text-primario" />
-          <h4 className="m-0 text-nombre-entidad text-texto">{catalogoColaboradores.campos_resumen.colaborador}</h4>
+    <div className={`${comun.tarjeta_compacta} ${comun.separacion}`}>
+      <div className={clases.cabecera}>
+        <div className={clases.cabecera_titulo}>
+          <Icono name="nuevo-usuario" className={comun.glifo_titulo} />
+          <h4 className={comun.titulo}>{catalogoColaboradores.campos_resumen.colaborador}</h4>
         </div>
         <Boton type="button" variant="secundario" size="mini" onClick={alEditar} aria-label={catalogoColaboradores.botones.editar_colaborador}>
           {catalogoColaboradores.campos_resumen.editar}
         </Boton>
       </div>
-      <div className="flex items-center gap-3.5">
+      <div className={clases.colaborador_fila}>
         <AvatarUsuario tamano="lg" iniciales={RESUMEN_COLABORADOR.iniciales} />
-        <div className="flex min-w-0 flex-col gap-0.5">
-          <span className="text-nombre-entidad text-texto">{RESUMEN_COLABORADOR.nombreCompleto}</span>
-          <span className="text-auxiliar text-texto-suave">{RESUMEN_COLABORADOR.correo}</span>
-          <span className="flex items-center gap-1 text-auxiliar text-texto-suave">
-            <Icono name="llamada" className="w-3.5 h-3.5 text-positivo-kpi" /> {RESUMEN_COLABORADOR.telefono}
+        <div className={clases.colaborador_textos}>
+          <span className={clases.colaborador_nombre}>{RESUMEN_COLABORADOR.nombreCompleto}</span>
+          <span className={clases.colaborador_correo}>{RESUMEN_COLABORADOR.correo}</span>
+          <span className={clases.colaborador_telefono}>
+            <Icono name="llamada" className={clases.colaborador_glifo_telefono} /> {RESUMEN_COLABORADOR.telefono}
           </span>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import type { Theme } from '@mui/material/styles'
 import { CodeplexBarraLateral } from '@codeplex-sac/diseno'
@@ -6,16 +7,19 @@ import { ProveedorTemaGraficos } from '../proveedor_tema_graficos'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { BarraLateralProps } from '@/tipos/compartido/contrato_barra_lateral'
+import { ContextoInsigniasNavegacion } from './contexto_insignias_navegacion'
 import { elementosDeLaBarra } from './elementos_barra_lateral'
 
 const CONFIGURACION = catalogoCompartido.barra_lateral
 
 export function BarraLateral({ paginaActiva, colapsado = false, alAlternarColapsado }: BarraLateralProps) {
+  const insignias = useContext(ContextoInsigniasNavegacion)
+
   return (
     <ProveedorTemaGraficos>
       <ThemeProvider theme={(temaExterno: Theme) => createTheme({ ...temaExterno, breakpoints: { values: { ...temaExterno.breakpoints.values, ...CONFIGURACION.puntos_quiebre } } })}>
         <CodeplexBarraLateral
-          elementos={elementosDeLaBarra(paginaActiva)}
+          elementos={elementosDeLaBarra(paginaActiva, insignias)}
           ancho={CONFIGURACION.ancho}
           textoLogo={textosRedSocial.MARCA}
           colapsado={colapsado}

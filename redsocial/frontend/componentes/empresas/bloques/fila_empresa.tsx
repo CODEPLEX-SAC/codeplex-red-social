@@ -1,10 +1,11 @@
 import { imagenEmpresaPredeterminada } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { AccionesFilaTabla } from '../../compartido/interfaz/acciones_fila_tabla'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { TextoTruncable } from '../../compartido/interfaz/texto_truncable'
 import { CeldaModuloEmpresa } from './celda_modulo_empresa'
 import { CLASE_FILA_EMPRESA, MODULOS_EMPRESA, estaInactiva } from './logica_listado_empresas'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { FilaEmpresaProps } from '@/tipos/empresas/contrato_listado_empresas'
 import { CLASES_TABLA } from '../../compartido/clases_tabla'
@@ -14,6 +15,7 @@ const PLANTILLA_VER = catalogoEmpresas.botones.ver_detalle
 const PLANTILLA_DESACTIVAR = catalogoEmpresas.botones.desactivar
 const PLANTILLA_ACTIVAR = catalogoEmpresas.botones.activar
 const ACCIONES = catalogoEmpresas.acciones_fila
+const TEXTOS_ACCIONES = catalogoCompartido.acciones_tabla
 const PLANTILLA_CODIGO = catalogoEmpresas.codigo_empresa
 const CLASES_RUBRO: Record<string, string> = catalogoEmpresas.clases.rubro
 const CLASE_RUBRO_OTRO = CLASES_RUBRO.otro
@@ -57,11 +59,16 @@ export function FilaEmpresa({ empresa, alElegirAccion, alAlternarModulo }: FilaE
         <CeldaModuloEmpresa key={modulo.clave} empresa={empresa} modulo={modulo} alAlternar={() => alAlternarModulo(empresa, modulo.clave)} />
       ))}
       <td className={`${CLASES_TABLA.celda} ${CLASES_TABLA.celdaFija}`}>
-        <div className={clases.acciones_fila}>
-          <BotonIcono icono="ver" type="button" variant="contorno" aria-label={PLANTILLA_VER.replace(':nombre', empresa.nombre)} onClick={abrirDetalle} />
-          <BotonIcono icono="editar-oficial" type="button" variant="suave" aria-label={PLANTILLA_EDITAR.replace(':nombre', empresa.nombre)} className={catalogoEmpresas.clases.editar} onClick={abrirEdicion} />
-          <BotonIcono icono="encendido" type="button" variant="contorno" aria-label={(inactiva ? PLANTILLA_ACTIVAR : PLANTILLA_DESACTIVAR).replace(':nombre', empresa.nombre)} className={inactiva ? clases.boton_icono_exito : clases.boton_icono_peligro} onClick={pedirCambioEstado} />
-        </div>
+        <AccionesFilaTabla
+          nombre={empresa.nombre}
+          claseContenedor={clases.acciones_fila}
+          claseBoton={clases.objetivo_tactil}
+          acciones={[
+            { icono: 'ver', etiqueta: PLANTILLA_VER.replace(':nombre', empresa.nombre), etiquetaMenu: TEXTOS_ACCIONES.ver_detalle, alHacerClick: abrirDetalle },
+            { icono: 'editar-oficial', etiqueta: PLANTILLA_EDITAR.replace(':nombre', empresa.nombre), etiquetaMenu: TEXTOS_ACCIONES.editar, clase: clases.editar, alHacerClick: abrirEdicion },
+            { icono: 'encendido', etiqueta: (inactiva ? PLANTILLA_ACTIVAR : PLANTILLA_DESACTIVAR).replace(':nombre', empresa.nombre), etiquetaMenu: inactiva ? TEXTOS_ACCIONES.activar : TEXTOS_ACCIONES.desactivar, clase: inactiva ? clases.boton_icono_exito : clases.boton_icono_peligro, peligro: !inactiva, alHacerClick: pedirCambioEstado },
+          ]}
+        />
       </td>
     </tr>
   )

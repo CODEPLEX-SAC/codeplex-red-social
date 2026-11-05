@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { imagenUsuarioPredeterminada } from '../../compartido'
+import { imagenPerfilPedroRedSocial, imagenUsuarioPredeterminada } from '../../compartido'
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -38,7 +38,7 @@ export function DialogoCompartirPublicacion({ nombre, texto, onCompartir, onCerr
         <>
           <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-6 py-5">
             <div className="flex items-center gap-3">
-              <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
+              <AvatarUsuario tamano="md" imagen={imagenPerfilPedroRedSocial} />
               <div className="min-w-0">
                 <strong className="block truncate text-nombre-entidad text-texto">{usuario?.usuario}</strong>
                 <span className="block text-auxiliar text-texto-suave">{textos.contexto}</span>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { imagenUsuarioPredeterminada } from '../../compartido'
+import { imagenRedSocialDe } from '../../compartido'
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
@@ -22,13 +22,13 @@ export function CabeceraPublicacion({ autorId, nombre, tiempo, leyenda, publica,
   }
 
   return (
-    <div className="flex items-start gap-3 px-4 pb-3 pt-4">
+    <div className="flex items-start gap-3.5 pb-4.5">
       <EnlacePerfilUsuario autorId={autorId} nombre={nombre} className="flex-none">
-        <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
+        <AvatarUsuario tamano="lg" imagen={imagenRedSocialDe(autorId)} />
       </EnlacePerfilUsuario>
       <div className="min-w-0 flex-1">
         <EnlacePerfilUsuario autorId={autorId} className="block truncate text-nombre-entidad text-texto">
-          <strong>{nombre}</strong>
+          {nombre}
         </EnlacePerfilUsuario>
         {leyenda && <span className="mt-0.5 block text-auxiliar text-texto-suave">{leyenda}</span>}
         <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">

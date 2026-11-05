@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { Icono } from '../../compartido/icono'
-import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import { CampoPerfil } from './campo_perfil'
+import { FilaPlaceholderPerfil } from './fila_placeholder_perfil'
 import { itemNuevo } from './logica_edicion_perfil'
 import { MarcoSeccionPerfil } from './marco_seccion_perfil'
 import catalogoPerfil from '../../../catalogos/capacidades/redsocial/perfil.json'
@@ -19,11 +18,13 @@ function ItemListaPerfil({ item, datos, icono, propio, onEditar, onEliminar }: I
   const eliminar = () => onEliminar(item.id)
 
   return (
-    <li className={clases.item}>
-      <Icono name={icono as IconName} className="mt-0.5 h-4 w-4 flex-none text-texto-suave" />
+    <li className={clases.fila_lista}>
+      <span className={clases.caja_icono}>
+        <Icono name={icono as IconName} className="h-4.5 w-4.5 text-texto-suave" />
+      </span>
       <div className={clases.item_cuerpo}>
-        <strong className="text-campo-formulario text-texto">{datos.titulo}</strong>
-        {datos.subtitulo && <span className="text-subtitulo text-texto">{datos.subtitulo}</span>}
+        <strong className="truncate text-campo-formulario text-texto">{datos.titulo}</strong>
+        {datos.subtitulo && <span className="text-subtitulo text-texto-suave">{datos.subtitulo}</span>}
         {datos.periodo && <span className="text-auxiliar text-texto-suave">{datos.periodo}</span>}
         {datos.detalle && <span className="text-auxiliar text-texto-suave">{datos.detalle}</span>}
       </div>
@@ -54,8 +55,6 @@ export function SeccionListaPerfil({ definicion, items, propio, resumen, onGuard
     setEnEdicion(null)
   }
 
-  if (!propio && items.length === 0) return null
-
   return (
     <MarcoSeccionPerfil titulo={definicion.titulo} puedeEditar={false} editando={enEdicion !== null} guardarDeshabilitado={sinRequerido} onEditar={abrirNuevo} onCancelar={cancelar} onGuardar={guardar}>
       {enEdicion ? (
@@ -66,17 +65,13 @@ export function SeccionListaPerfil({ definicion, items, propio, resumen, onGuard
         </div>
       ) : (
         <>
-          {items.length === 0 && <MensajeVacio texto={definicion.vacio} />}
+          {!propio && items.length === 0 && <p className={clases.vacio_ajeno}>{definicion.vacio}</p>}
           <ul className={clases.lista}>
             {items.map((item) => (
               <ItemListaPerfil key={item.id} item={item} datos={resumen(item)} icono={definicion.icono} propio={propio} onEditar={setEnEdicion} onEliminar={onEliminar} />
             ))}
           </ul>
-          {propio && (
-            <Boton type="button" variant="enlace" size="enlace_accion" onClick={abrirNuevo} className="mt-3">
-              {definicion.agregar}
-            </Boton>
-          )}
+          {propio && <FilaPlaceholderPerfil etiqueta={definicion.placeholder} accesible={definicion.agregar} icono={definicion.icono} onClick={abrirNuevo} />}
         </>
       )}
     </MarcoSeccionPerfil>

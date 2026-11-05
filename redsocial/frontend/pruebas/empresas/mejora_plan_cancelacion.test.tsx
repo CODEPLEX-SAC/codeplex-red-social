@@ -18,6 +18,7 @@ const resumen = mejora.resumen
 const textosEdicion = catalogoEmpresas.edicion_empresa
 const pago = catalogoMarketplace.pago
 const carrito = catalogoMarketplace.carrito
+const nombreCarrito = new RegExp(`^${carrito.boton}(,|$)`)
 const [contabilidad] = catalogoEmpresas.modulos
 const GRIFO: SeleccionPlan = { aplicacion: 'gestionplex-grifo', tipo: 'unico', plan: 'grifo', periodo: 'mensual' }
 
@@ -57,7 +58,7 @@ function limite(dialogo: ReturnType<typeof within>) {
 }
 
 function abrirCarrito() {
-  fireEvent.click(screen.getByRole('button', { name: carrito.boton, hidden: true }))
+  fireEvent.click(screen.getByRole('button', { name: nombreCarrito, hidden: true }))
   return within(screen.getByRole('dialog', { name: carrito.titulo }))
 }
 
