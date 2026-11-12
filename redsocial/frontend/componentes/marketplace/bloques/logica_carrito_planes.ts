@@ -3,7 +3,7 @@ import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/market
 import { monto, precioNumerico, SUPER_VIP_HABILITADO } from './logica_pago_planes'
 import type { ElementoMenu } from '@/tipos/compartido/contrato_menu'
 import type { AccesoCarrito } from '@/tipos/compartido/contrato_acceso_carrito'
-import type { AccionesCarrito, AccionesCompra, CompraRealizada, ItemCarrito, ManejadoresCompra, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
+import type { AccionesCarrito, AccionesCompra, CompraRealizada, ItemCarrito, ManejadoresCompra, ServicioAdicional, VigenciaCompra } from '@/tipos/marketplace/modelo_carrito'
 import type { CarritoMarketplace } from '@/tipos/marketplace/contrato_proveedor_carrito'
 import type { ConfiguracionPago } from '@/tipos/marketplace/modelo_pago'
 import type { ConfiguracionPlanes, SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
@@ -58,10 +58,11 @@ export function aplicarMejora(compras: CompraRealizada[], mejora: ItemCarrito): 
   return compras.map((c) => (c.aplicacion === mejora.aplicacion ? crearCompras([mejora], c.fecha, c.vence, c.dias)[0] : c))
 }
 
-export function crearComprasIniciales(aplicaciones: Record<string, ConfiguracionPlanes>, selecciones: SeleccionPlan[], fecha: string, vence: string, dias: number): CompraRealizada[] {
+export function crearComprasIniciales(aplicaciones: Record<string, ConfiguracionPlanes>, selecciones: SeleccionPlan[], { fecha, vence, dias }: VigenciaCompra): CompraRealizada[] {
   const items = selecciones.flatMap((seleccion) => {
     const configuracion = aplicaciones[seleccion.aplicacion]
-    const item = configuracion ? crearItem(configuracion, seleccion) : null
+    if (!configuracion) return []
+    const item = crearItem(configuracion, seleccion)
     return item ? [item] : []
   })
   return crearCompras(items, fecha, vence, dias)

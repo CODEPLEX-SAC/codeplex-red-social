@@ -78,6 +78,7 @@ Complementa a [modulos_y_patrones.md](modulos_y_patrones.md) (inventario y patro
   - Fase 2.6: texto de los chips con peso 400 (`chip_filtro`); hover de «Nueva reunión» (`secundario`) y «Videollamar» (`contorno`) según sus variantes.
   - Fase 6 (ACC-01, **verificado**): la estrella de Mensajes > No leídas era un `span role="button"` dentro de un botón; ahora es un `BotonIcono sutil sm` hermano.
   - Fase 6: registro de excepciones nativas (videollamada, filas de opción).
+  - Noviembre de 2026: nueva sala de videollamada (`SalaVideollamada`, ver [sala_videollamada.md](sala_videollamada.md)) con fotografías de perfil, captura de pantalla real del navegador, paneles de participantes y chat, y pantalla de preparación con dispositivos reales; se eliminaron `BloqueEnLlamada`, `BloqueMicrofono`, `ControlLlamada` y `SeccionParticipantes`.
 - **Excepciones justificadas:** relleno de 8 px de los chips (INC-08); controles de videollamada (clase G) y filas de conversación como `<button>` nativos registrados (9 `<button>` nativos en Mensajería).
 - **No verificado:** 9 controles de Mensajes quedaron «no determinados» en la Fase 4.
 

@@ -23,9 +23,9 @@ export function ModalCrearPublicacion({ modo = 'crear', tipoInicial = 'publicaci
     onPublicar({
       tipo: borrador.tipo,
       texto: borrador.contenido.trim(),
-      prioridad: borrador.tipo === 'pregunta' ? borrador.prioridad : undefined,
-      opciones: borrador.tipo === 'encuesta' ? completas : undefined,
-      medios: medios.length > 0 || editando ? medios : undefined,
+      ...(borrador.tipo === 'pregunta' && { prioridad: borrador.prioridad }),
+      ...(borrador.tipo === 'encuesta' && { opciones: completas }),
+      ...((medios.length > 0 || editando) && { medios }),
     })
     onCerrar()
   }

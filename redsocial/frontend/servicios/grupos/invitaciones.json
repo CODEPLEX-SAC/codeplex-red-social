@@ -4,7 +4,7 @@
       "nombre": "Marketing Digital LATAM",
       "icono": "campana",
       "color": "rosa",
-      "tipo": "Grupo público · 9.5K miembros",
+      "tipo": "9.5K miembros",
       "masAvatares": "+4 más",
       "invitadoPor": "Ana García",
       "tiempo": "Hace 3 horas",
@@ -13,10 +13,9 @@
     },
     {
       "nombre": "Desarrolladores Codeplex",
-      "privado": true,
       "icono": "cuadricula",
       "color": "violeta",
-      "tipo": "Grupo privado · 3.2K miembros",
+      "tipo": "3.2K miembros",
       "masAvatares": "+8 más",
       "invitadoPor": "Diego Mendoza",
       "tiempo": "Hace 1 día",
@@ -29,7 +28,7 @@
       "nombre": "Equipo Codeplex",
       "icono": "amigos",
       "color": "morado",
-      "tipo": "Grupo privado · 25 miembros",
+      "tipo": "25 miembros",
       "invitadoPor": "Pedro Lozano",
       "tiempo": "Hace 2 semanas",
       "fecha": "12/05/2026"
@@ -38,7 +37,7 @@
       "nombre": "Proyecto Alfa",
       "icono": "maletin",
       "color": "naranja",
-      "tipo": "Grupo privado · 12 miembros",
+      "tipo": "12 miembros",
       "invitadoPor": "María Fernández",
       "tiempo": "Hace 3 semanas",
       "fecha": "05/05/2026"
@@ -47,7 +46,7 @@
       "nombre": "Programación Go",
       "icono": "cuadricula",
       "color": "morado",
-      "tipo": "Grupo público · 85 miembros",
+      "tipo": "85 miembros",
       "invitadoPor": "Luis Rodríguez",
       "tiempo": "Hace 1 mes",
       "fecha": "28/04/2026"
@@ -56,7 +55,7 @@
       "nombre": "Ideas y Feedback",
       "icono": "sentimiento",
       "color": "azul",
-      "tipo": "Grupo privado · 34 miembros",
+      "tipo": "34 miembros",
       "invitadoPor": "Carlos Herrera",
       "tiempo": "Hace 1 mes",
       "fecha": "20/04/2026"
@@ -65,7 +64,7 @@
       "nombre": "Contadores Perú",
       "icono": "estadisticas",
       "color": "morado",
-      "tipo": "Grupo público · 1.2K miembros",
+      "tipo": "1.2K miembros",
       "invitadoPor": "Carmen López",
       "tiempo": "Hace 2 meses",
       "fecha": "11/04/2026"

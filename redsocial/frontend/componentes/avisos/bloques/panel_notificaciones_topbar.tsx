@@ -16,9 +16,12 @@ const avisosPanelHoy = catalogoAvisos.panel_topbar_hoy as Aviso[]
 const avisosPanelAyer = catalogoAvisos.panel_topbar_ayer as Aviso[]
 const mapaIconoColor = catalogoAvisos.clases_icono_color as Record<ColorIconoAviso, string>
 
-export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopbarProps) {
+export function PanelNovedadesTopbar({ onCerrar }: PanelNotificacionesTopbarProps) {
   const [pestanaActiva, setPestanaActiva] = useState<PestanaAviso>('todas')
   const [ancla, setAncla] = useState<HTMLElement | null>(null)
+  const [leidas, setLeidas] = useState<ReadonlySet<string>>(new Set())
+  const marcarTodas = () => setLeidas(new Set([...avisosPanelHoy, ...avisosPanelAyer].map((aviso) => aviso.id)))
+  const elementosMenu = (catalogoAvisos.menu_panel_topbar as ElementoMenu[]).map((elemento, indice) => (indice === 0 ? { ...elemento, alHacerClick: marcarTodas } : elemento))
 
   return (
     <div
@@ -37,7 +40,7 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
           <Menu
             ancla={ancla}
             alCerrar={() => setAncla(null)}
-            elementos={catalogoAvisos.menu_panel_topbar as ElementoMenu[]}
+            elementos={elementosMenu}
           />
         </div>
       </div>
@@ -45,7 +48,7 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
       <div className="max-h-125 overflow-y-auto p-3.5">
         <div className="mb-1 text-titulo-subseccion text-texto">{catalogoAvisos.grupos_fecha.hoy}</div>
         {avisosPanelHoy.map((n) => (
-          <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} />
+          <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} leida={n.leida || leidas.has(n.id)} />
         ))}
         <a href={catalogoAvisos.rutas.todas} className={[CLASE_ENLACE_ACCION_PIE, 'mt-2 rounded-lg border border-borde py-2'].join(' ')}>
           {catalogoAvisos.panel_topbar.ver_mas}
@@ -53,7 +56,7 @@ export function PanelNotificacionesTopbar({ onCerrar }: PanelNotificacionesTopba
 
         <div className="mb-1 mt-3.5 text-titulo-subseccion text-texto">{catalogoAvisos.grupos_fecha.ayer}</div>
         {avisosPanelAyer.map((n) => (
-          <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} />
+          <FilaPanelTopbar key={n.id} aviso={n} claseIcono={mapaIconoColor[n.colorIcono]} leida={n.leida || leidas.has(n.id)} />
         ))}
       </div>
 

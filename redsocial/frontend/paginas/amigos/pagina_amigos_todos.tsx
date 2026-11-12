@@ -1,5 +1,5 @@
 import { PanelLateral, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, SuperficieColor } from '../../componentes/compartido'
-import { SeccionTusAmigos, SeccionSolicitudesAmistadLateral, FilaPersonaConocer, insigniaDePendientes, resumenConPendientes, rutaDeMensajeAmigo } from '../../componentes/amigos'
+import { SeccionTusAmigos, SeccionSolicitudesAmistadLateral, FilaPersonaConocer, insigniaDePendientes, rutaDeMensajeAmigo } from '../../componentes/amigos'
 import { navegar } from '../../rutas/compartido/navegacion'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { ALMACEN_MENSAJERIA, rutasMensajeria } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -17,12 +17,12 @@ export function PaginaAmigosTodos() {
     <EstructuraApp paginaActiva="amigos">
       <EstructuraTresColumnas
         principal={
-          <SeccionTusAmigos RESUMEN={resumenConPendientes(RESUMEN, RECIBIDAS.length)} AMIGOS={AMIGOS} insigniaSolicitudes={insigniaDePendientes(RECIBIDAS.length)} alMensaje={abrirMensaje} />
+          <SeccionTusAmigos RESUMEN={RESUMEN} AMIGOS={AMIGOS} insigniaSolicitudes={insigniaDePendientes(RECIBIDAS.length)} alMensaje={abrirMensaje} />
         }
         publicidad={<ColumnaPublicidad />}
         lateral={
           <aside className="grid gap-4">
-            <SeccionSolicitudesAmistadLateral SOLICITUDES={RECIBIDAS} />
+            <SeccionSolicitudesAmistadLateral SOLICITUDES={RECIBIDAS.slice(0, catalogoAmigos.limite_solicitudes_visibles)} />
 
             <PanelLateral titulo={catalogoAmigos.secciones.personas_conocer} enlace={textosRedSocial.VER_TODAS} ruta={catalogoAmigos.rutas.sugerencias}>
               {PERSONAS_CONOCER.map((p) => (

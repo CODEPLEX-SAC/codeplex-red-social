@@ -1,4 +1,5 @@
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
+import { finDelDia, inicioDelDia } from '../../compartido/limites_fecha'
 import type { Colaborador } from '@/tipos/colaboradores/modelo_colaboradores'
 import type { FiltrosAvanzadosColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 import { cumpleAcceso, periodoDeVigencia } from './reglas_acceso_colaboradores'
@@ -31,8 +32,8 @@ export function contarFiltrosAvanzadosColaboradores(filtros: FiltrosAvanzadosCol
 }
 
 function cumpleVigencia(colaborador: Colaborador, filtros: FiltrosAvanzadosColaboradores): boolean {
-  const desde = filtros.fechaInicio ? filtros.fechaInicio.startOf('day').valueOf() : -Infinity
-  const hasta = filtros.fechaFin ? filtros.fechaFin.endOf('day').valueOf() : Infinity
+  const desde = inicioDelDia(filtros.fechaInicio, -Infinity)
+  const hasta = finDelDia(filtros.fechaFin, Infinity)
   const periodo = periodoDeVigencia(colaborador)
   return periodo.desde <= hasta && periodo.hasta >= desde
 }
@@ -41,8 +42,8 @@ function cumpleInvitacion(colaborador: Colaborador, filtros: FiltrosAvanzadosCol
   if (!filtros.invitacionDesde && !filtros.invitacionHasta) return true
   const fecha = fechaDeInvitacion(colaborador)
   if (fecha === null) return false
-  const minimo = filtros.invitacionDesde ? filtros.invitacionDesde.startOf('day').valueOf() : -Infinity
-  const maximo = filtros.invitacionHasta ? filtros.invitacionHasta.endOf('day').valueOf() : Infinity
+  const minimo = inicioDelDia(filtros.invitacionDesde, -Infinity)
+  const maximo = finDelDia(filtros.invitacionHasta, Infinity)
   return fecha <= maximo && fecha >= minimo
 }
 

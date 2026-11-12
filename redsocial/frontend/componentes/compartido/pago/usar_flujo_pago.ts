@@ -1,19 +1,16 @@
 import { useRef, useState } from 'react'
-import { elegirTarjetaInicial, marcaTarjeta, predeterminadaVencida, tarjetaVencida } from './logica_tarjeta_pago'
-import { aceptacionesDe, enfocarControl, idControlAutorizacion, pendientesObligatorias } from './logica_autorizaciones_pago'
+import { elegirTarjetaInicial, predeterminadaVencida } from './logica_tarjeta_pago'
+import { aceptacionesDe, pendientesObligatorias } from './logica_autorizaciones_pago'
+import { avisarRechazo, erroresSinAutorizacion, rechazoDeIntento } from './logica_rechazo_pago'
 import { datosParaGuardar } from './validacion_tarjeta_pago'
 import { usarFacturacionPago } from './usar_facturacion_pago'
 import { usarFormularioTarjetaPago } from './usar_formulario_tarjeta_pago'
 import { usarTextosPago } from './usar_textos_pago'
-import type { AceptacionesPago } from './logica_autorizaciones_pago'
-import type { AvisoPago, BilleteraPago, ConfiguracionFlujoPago, ControlPerfilesPago, ControlTarjetasPago, FaseOperacionPago, FlujoPagoProps, MetodoPagoId, ResultadoOperacionPago, VarianteAvisoPago, VentanaFlujoPago } from '@/tipos/compartido/contrato_flujo_pago'
+import type { AceptacionesPago } from '@/tipos/compartido/contrato_flujo_pago'
+import type { AvisoPago, BilleteraPago, EntradaFlujoPago, FaseOperacionPago, MetodoPagoId, RechazoIntentoPago, ResultadoOperacionPago, VarianteAvisoPago, VentanaFlujoPago } from '@/tipos/compartido/contrato_flujo_pago'
+import { datosDeLaTarjeta, tarjetaGuardadaAUsar } from './logica_tarjeta_activa_pago'
 
-export function usarFlujoPago(
-  configuracion: ConfiguracionFlujoPago,
-  tarjetas: ControlTarjetasPago,
-  perfiles: ControlPerfilesPago,
-  alActivar: FlujoPagoProps['alActivar'],
-) {
+export function usarFlujoPago({ configuracion, tarjetas, perfiles, alActivar }: EntradaFlujoPago) {
   const textos = usarTextosPago()
   const [aviso, setAviso] = useState<AvisoPago | null>(null)
   const notificar = (variante: VarianteAvisoPago, mensaje: string) => setAviso({ variante, mensaje })
@@ -32,7 +29,7 @@ export function usarFlujoPago(
 
   const predeterminada = elegirTarjetaInicial(tarjetas.tarjetas)
   const elegida = tarjetas.tarjetas.find((tarjeta) => tarjeta.id === idElegido)
-  const tarjetaGuardada = nuevaElegida ? null : elegida && !tarjetaVencida(elegida.vencimiento) ? elegida : predeterminada
+  const tarjetaGuardada = tarjetaGuardadaAUsar(nuevaElegida, elegida, predeterminada)
   const billetera: BilleteraPago | null = configuracion.billeteras.find((opcion) => opcion.id === billeteraId) ?? configuracion.billeteras[0] ?? null
   const procesando = fase === 'validando' || fase === 'procesando'
   const puedeActivar = !procesando && fase !== 'exito'
@@ -52,13 +49,12 @@ export function usarFlujoPago(
 
   function alternarAceptacion(id: string, marcado: boolean) {
     setAceptaciones((previas) => ({ ...previas, [id]: marcado }))
-    if (marcado) setErroresAutorizacion((previos) => Object.fromEntries(Object.entries(previos).filter(([clave]) => clave !== id)))
+    setErroresAutorizacion((previos) => erroresSinAutorizacion(previos, id, marcado))
   }
 
-  function rechazarIntento(mensaje?: string, idControl?: string) {
+  function rechazarIntento(rechazo: RechazoIntentoPago) {
     setFase('inicial')
-    if (mensaje) notificar('advertencia', mensaje)
-    if (idControl) enfocarControl(idControl)
+    avisarRechazo(rechazo, notificar)
   }
 
   function resultadoDeFallo(resultado: void | ResultadoOperacionPago) {
@@ -76,19 +72,16 @@ export function usarFlujoPago(
       const pendientes = pendientesObligatorias(configuracion.autorizaciones.elementos, aceptaciones)
       setErroresAutorizacion(Object.fromEntries(pendientes.map((elemento) => [elemento.id, textos.autorizacion.obligatoria_pendiente])))
       const tarjetaValida = !conTarjeta || tarjetaGuardada !== null || formulario.validar()
-      if (pendientes.length > 0) return rechazarIntento(undefined, idControlAutorizacion(pendientes[0].id))
-      if (facturacion.modo === 'edicion') return rechazarIntento(textos.avisos.edicion_pendiente)
-      if (!tarjetaValida) return rechazarIntento(textos.avisos.datos_incompletos)
+      const rechazo = rechazoDeIntento({ pendientes, edicion: facturacion.modo === 'edicion', tarjetaValida, mensajes: { edicion: textos.avisos.edicion_pendiente, incompleto: textos.avisos.datos_incompletos } })
+      if (rechazo !== null) return rechazarIntento(rechazo)
       setFase('procesando')
       const datosNueva = datosParaGuardar(formulario.tarjeta)
-      if (conTarjeta && !tarjetaGuardada && guardarTarjeta) {
-        const registrada = await tarjetas.registrar(datosNueva, tarjetas.tarjetas.length === 0)
-        if (!registrada) return setFase('error')
-      }
+      const requiereRegistro = conTarjeta && !tarjetaGuardada && guardarTarjeta
+      const registrada = !requiereRegistro || (await tarjetas.registrar(datosNueva, tarjetas.tarjetas.length === 0))
+      if (!registrada) return setFase('error')
       const pendiente = facturacion.asegurar()
       const perfil = pendiente instanceof Promise ? await pendiente : pendiente
-      const marca = conTarjeta ? (tarjetaGuardada?.marca ?? datosNueva.marca) : marcaTarjeta('')
-      const ultimos4 = conTarjeta ? (tarjetaGuardada?.ultimos4 ?? datosNueva.ultimos4) : ''
+      const { marca, ultimos4 } = datosDeLaTarjeta(conTarjeta, tarjetaGuardada, datosNueva)
       const simulado = configuracion.demostracion !== undefined
       const respuesta = alActivar({ metodo, marca, ultimos4, billetera: conTarjeta ? null : (billetera?.nombre ?? null), perfil, autorizaciones: aceptacionesDe(configuracion.autorizaciones.elementos, aceptaciones), simulado })
       const motivo = resultadoDeFallo(respuesta instanceof Promise ? await respuesta : respuesta)

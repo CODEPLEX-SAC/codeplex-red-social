@@ -1,58 +1,52 @@
 import { Icono, EstructuraApp, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
+import { usarParametroDeRuta } from '../../rutas/compartido/navegacion'
 import { SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
-import { DISPOSITIVOS, CONFIGURACION_LLAMADA, PARTICIPANTES_INICIAR, CONTACTOS_INVITAR, OPCIONES_LLAMADA, DETALLE_REUNION, VOLVER_A_VIDEOLLAMADAS } from '../../rutas/mensajeria/rutas_mensajeria'
-import { SeccionVideollamadaIniciar, SeccionParticipantes2 } from '../../componentes/mensajeria'
+import { crearDispositivosNavegador, crearSalaNavegador, PARTICIPANTES_PREPARACION, DETALLE_REUNION, VOLVER_A_VIDEOLLAMADAS, participantesDemostracion } from '../../rutas/mensajeria/rutas_mensajeria'
+import { contactosInvitables, fotografiaDeParticipante } from '../../rutas/mensajeria/fotografias_participantes'
+import { enlacesDeSala, SeccionVideollamadaIniciar, SeccionParticipantes2, usarInvitaciones, usarPreparacionLlamada } from '../../componentes/mensajeria'
+
+const clases = catalogoMensajeria.videollamada.clases.preparacion
+const PUERTO_DISPOSITIVOS = crearDispositivosNavegador()
+const PUERTO_SALA = crearSalaNavegador()
+const parametros = catalogoMensajeria.parametros_ruta
 
 export function PaginaMensajesVideollamadaIniciar() {
+  const contacto = usarParametroDeRuta(parametros.contacto)
+  const esReunion = usarParametroDeRuta(parametros.modo) === catalogoMensajeria.videollamada.modo_reunion
+  const preparacion = usarPreparacionLlamada(PUERTO_DISPOSITIVOS)
+  const invitaciones = usarInvitaciones(PUERTO_SALA)
+  const base = contacto ? PARTICIPANTES_PREPARACION.map((participante, indice) => (indice === 0 ? participante : { ...participante, nombre: contacto })) : PARTICIPANTES_PREPARACION
+  const contactos = contactosInvitables([SESION_ACTUAL.usuario, contacto ?? String()])
+  const enlaces = enlacesDeSala(contacto, { microfono: preparacion.micActivo, camara: preparacion.camaraActiva })
+
   return (
     <EstructuraApp paginaActiva="mensajes">
-      <a href={catalogoMensajeria.rutas.videollamadas} className={[CLASE_ENLACE_ACCION, 'mb-4 inline-flex items-center gap-1.5'].join(' ')}>
+      <a href={catalogoMensajeria.rutas.videollamadas} className={[CLASE_ENLACE_ACCION, clases.enlace_volver].join(' ')}>
         <Icono name="flecha-izquierda" className="h-4 w-4" /> {VOLVER_A_VIDEOLLAMADAS}
       </a>
 
-      <div className="grid grid-cols-minmax400-720-minmax320-400 items-start gap-10 max-1100:grid-cols-1 max-1100:gap-5">
-        <SeccionVideollamadaIniciar
-          SESION_ACTUAL={SESION_ACTUAL}
-          DISPOSITIVOS={DISPOSITIVOS}
-          CONFIGURACION_LLAMADA={CONFIGURACION_LLAMADA}
-        />
+      <div className={clases.rejilla}>
+        <SeccionVideollamadaIniciar usuario={SESION_ACTUAL.usuario} contacto={contacto} esReunion={esReunion} preparacion={preparacion} enlaceInicio={enlaces.inicio} />
 
-        <aside className="grid min-w-0 grid-cols-1 gap-4">
-          <SeccionParticipantes2
-            PARTICIPANTES_INICIAR={PARTICIPANTES_INICIAR}
-            CONTACTOS_INVITAR={CONTACTOS_INVITAR}
-          />
+        <aside className={clases.lateral}>
+          <SeccionParticipantes2 participantes={participantesDemostracion(base, base.length, fotografiaDeParticipante)} contactos={contactos} invitaciones={invitaciones} enlaceReunion={enlaces.reunion} />
 
-          <section className="rounded-xl border border-borde bg-white p-4">
-            <h2 className="m-0 mb-2.5 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.opciones_llamada}</h2>
-            {OPCIONES_LLAMADA.map((o) => (
-              <button key={o.titulo} type="button" className="flex w-full items-center gap-2.5 border-0 bg-transparent py-2 text-left">
-                <span className="grid h-8 w-8 flex-none place-items-center rounded-lg bg-primario-suave text-primario">
-                  <Icono name={o.icono} className="h-4 w-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <strong className="block text-subtitulo text-texto">{o.titulo}</strong>
-                  <span className="block text-auxiliar text-texto-suave">{o.detalle}</span>
-                </div>
-                <Icono name="flecha-derecha" className="h-3.5 w-3.5 flex-none text-texto-suave" />
-              </button>
-            ))}
-          </section>
-
-          <section className="rounded-xl border border-borde bg-white p-4">
-            <h2 className="m-0 mb-2.5 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.detalles_reunion}</h2>
-            <strong className="mb-2.5 block text-nombre-entidad text-texto">{DETALLE_REUNION.titulo}</strong>
-            <div className="mb-2 flex items-center gap-2 text-campo-formulario text-texto-suave">
-              <Icono name="calendario" className="h-3.5 w-3.5 flex-none" /> {DETALLE_REUNION.fecha}
-            </div>
-            <div className="mb-2 flex items-center gap-2 text-campo-formulario text-texto-suave">
-              <Icono name="reloj" className="h-3.5 w-3.5 flex-none" /> {DETALLE_REUNION.horario}
-            </div>
-            <div className="flex items-center gap-2 text-campo-formulario text-texto-suave">
-              <Icono name="grupo" className="h-3.5 w-3.5 flex-none" /> {DETALLE_REUNION.participantes}
-            </div>
-          </section>
+          {!contacto && (
+            <section className="rounded-xl border border-borde bg-white p-4">
+              <h2 className="m-0 mb-2.5 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.detalles_reunion}</h2>
+              <strong className="mb-2.5 block text-nombre-entidad text-texto">{DETALLE_REUNION.titulo}</strong>
+              <div className="mb-2 flex items-center gap-2 text-campo-formulario text-texto-suave">
+                <Icono name="calendario" className="h-3.5 w-3.5 flex-none" /> {DETALLE_REUNION.fecha}
+              </div>
+              <div className="mb-2 flex items-center gap-2 text-campo-formulario text-texto-suave">
+                <Icono name="reloj" className="h-3.5 w-3.5 flex-none" /> {DETALLE_REUNION.horario}
+              </div>
+              <div className="flex items-center gap-2 text-campo-formulario text-texto-suave">
+                <Icono name="grupo" className="h-3.5 w-3.5 flex-none" /> {DETALLE_REUNION.participantes}
+              </div>
+            </section>
+          )}
         </aside>
       </div>
     </EstructuraApp>

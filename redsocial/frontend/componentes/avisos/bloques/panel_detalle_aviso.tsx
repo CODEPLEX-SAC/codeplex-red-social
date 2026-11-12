@@ -8,7 +8,7 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import type { PanelDetalleAvisoProps } from '@/tipos/avisos/contrato_detalle_aviso'
 import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
-export function PanelDetalleAviso({ detalle }: PanelDetalleAvisoProps) {
+export function PanelDetalleNovedad({ detalle }: PanelDetalleAvisoProps) {
   return (
     <section className="rounded-xl border border-borde bg-white p-4">
       <div className="mb-3.5 flex items-center gap-2.5">

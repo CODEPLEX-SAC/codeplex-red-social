@@ -1,5 +1,3 @@
-import { jsPDF } from 'jspdf'
-import autoTable from 'jspdf-autotable'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import type { OpcionesTablaPdf, ReporteColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
@@ -10,7 +8,7 @@ const estilo = config.estilo_pdf
 const etiquetas = config.etiquetas
 const SEPARACION_BLOQUES = 6
 
-function escribirCabecera(documento: jsPDF, reporte: ReporteColaboradores): number {
+function escribirCabecera(documento: import('jspdf').jsPDF, reporte: ReporteColaboradores): number {
   const anchoUtil = documento.internal.pageSize.getWidth() - estilo.margen * 2
   let y = estilo.margen
   documento.setTextColor(estilo.color_texto[0], estilo.color_texto[1], estilo.color_texto[2])
@@ -33,7 +31,7 @@ function escribirCabecera(documento: jsPDF, reporte: ReporteColaboradores): numb
   return y + SEPARACION_BLOQUES * 2
 }
 
-function escribirPies(documento: jsPDF) {
+function escribirPies(documento: import('jspdf').jsPDF) {
   const total = documento.getNumberOfPages()
   const alto = documento.internal.pageSize.getHeight()
   const ancho = documento.internal.pageSize.getWidth()
@@ -45,6 +43,8 @@ function escribirPies(documento: jsPDF) {
 }
 
 export async function generarPdf(reporte: ReporteColaboradores): Promise<ArrayBuffer> {
+  const { jsPDF } = await import('jspdf')
+  const { default: autoTable } = await import('jspdf-autotable')
   const documento = new jsPDF({ orientation: estilo.orientacion as 'landscape', unit: estilo.unidad as 'pt', format: estilo.formato })
   const inicioTabla = escribirCabecera(documento, reporte)
   const columnas = reporte.columnas.map((columna, indice) => ({ columna, indice })).filter(({ columna }) => columna.enPdf)

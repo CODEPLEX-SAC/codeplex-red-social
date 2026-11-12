@@ -26,7 +26,7 @@ export function PaginaDashboard() {
         <div className="mb-5 flex flex-wrap items-start justify-between gap-5 max-900:flex-col max-900:items-stretch">
           <div>
             <h1 className="m-0 text-titulo-pagina text-texto">
-              ¡Buenos días, {SESION_ACTUAL.usuario.split(' ')[0]}! <span>👋</span>
+              ¡Buenos días, {SESION_ACTUAL.usuario.split(' ')[0]}!
             </h1>
             <p className="m-0 mt-1 text-subtitulo text-texto-suave">Aquí tienes el resumen de tu empresa al {RESUMEN_DASHBOARD.fecha}.</p>
           </div>

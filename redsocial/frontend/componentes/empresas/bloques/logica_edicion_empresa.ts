@@ -8,7 +8,7 @@ const SEPARADOR_UBIGEO = catalogoEmpresas.edicion_empresa.separador_ubigeo
 const UBIGEOS = catalogoEmpresas.modal_empresa.opciones.ubigeos.map((ubigeo) => ubigeo.split(SEPARADOR_UBIGEO))
 
 function sinRepetidos(valores: string[]) {
-  return valores.filter((valor, indice) => valores.indexOf(valor) === indice)
+  return [...new Set(valores)]
 }
 
 export function opcionesDeUbigeo(departamento: string, provincia: string): OpcionesUbigeo {

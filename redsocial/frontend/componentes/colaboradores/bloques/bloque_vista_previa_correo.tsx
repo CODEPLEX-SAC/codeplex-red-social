@@ -26,9 +26,6 @@ export function BloqueVistaPreviaCorreo({
             <Icono name="correo" className={clases.correo_encabezado_glifo} />
             <span className={clases.correo_encabezado_texto}>{textos.vista_previa_correo}</span>
           </div>
-          <Boton type="button" variant="secundario" size="mini">
-            {textos.cambiar_plantilla}
-          </Boton>
         </div>
 
         <div className={clases.correo_cuerpo}>

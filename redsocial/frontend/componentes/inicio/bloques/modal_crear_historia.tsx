@@ -11,10 +11,16 @@ import type { ModalCrearHistoriaProps } from '@/tipos/inicio/contrato_historia'
 
 const textos = catalogoInicio.historias.flujo
 
+function tituloDelPaso(paso: string, tipo: string | null | undefined) {
+  if (paso === 'vista_previa') return textos.vista_previa.titulo
+  if (paso === 'editor') return tipo === 'media' ? textos.editor.titulo_media : textos.editor.titulo_texto
+  return textos.crear.titulo
+}
+
 export function ModalCrearHistoria({ onPublicar, onCerrar }: ModalCrearHistoriaProps) {
   const flujo = usarFlujoHistoria(onPublicar, onCerrar)
   const ancho = flujo.paso === 'editor' ? 'max-w-215' : 'max-w-120'
-  const titulo = flujo.paso === 'vista_previa' ? textos.vista_previa.titulo : flujo.paso === 'editor' ? (flujo.tipo === 'media' ? textos.editor.titulo_media : textos.editor.titulo_texto) : textos.crear.titulo
+  const titulo = tituloDelPaso(flujo.paso, flujo.tipo)
 
   return (
     <>

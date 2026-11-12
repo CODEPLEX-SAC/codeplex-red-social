@@ -64,6 +64,30 @@
               "respuestas": []
             }
           ]
+        },
+        {
+          "id": "perfil-pedro-2",
+          "tiempo": "3 días",
+          "texto": "Ya tenemos fecha para el webinar de integración con SIRE. Los esperamos este sábado.",
+          "imagenes": [
+            "foto1_red-social.jpg"
+          ],
+          "reaccionesPorTipo": {
+            "me_gusta": 18,
+            "me_encanta": 5
+          },
+          "comentarios": [
+            {
+              "id": "perfil-pedro-2-c1",
+              "autorId": "maria-fernandez",
+              "autor": "María Fernández",
+              "texto": "Excelente iniciativa, ahí estaré.",
+              "tiempo": "2 días",
+              "reaccion": null,
+              "editado": false,
+              "respuestas": []
+            }
+          ]
         }
       ]
     },
@@ -371,6 +395,790 @@
           ]
         }
       ]
+    },
+    {
+      "id": "valeria-quispe",
+      "nombre": "Valeria Quispe",
+      "titular": "Contadora",
+      "empresa": "Estudio Contable Quispe & Asociados",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Contadora con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "andres-salazar",
+      "nombre": "Andrés Salazar",
+      "titular": "Analista de Sistemas",
+      "empresa": "TechSolutions SAC",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Analista de Sistemas con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "paola-martinez",
+      "nombre": "Paola Martínez",
+      "titular": "Abogada",
+      "empresa": "Legal Solutions",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Abogada con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "camila-rojas",
+      "nombre": "Camila Rojas",
+      "titular": "Analista",
+      "empresa": "Banco Andino",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Analista con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "diego-salazar",
+      "nombre": "Diego Salazar",
+      "titular": "Diseñadora",
+      "empresa": "Estudio Pixel",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Diseñadora con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "lucia-paredes",
+      "nombre": "Lucía Paredes",
+      "titular": "Ingeniero",
+      "empresa": "Minera del Sur",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Ingeniero con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "mateo-medina",
+      "nombre": "Mateo Medina",
+      "titular": "Abogado",
+      "empresa": "Estudio Legal Peña",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Abogado con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "sofia-herrera",
+      "nombre": "Sofía Herrera",
+      "titular": "Gerente",
+      "empresa": "Logística Rápida",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Gerente con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "jorge-castillo",
+      "nombre": "Jorge Castillo",
+      "titular": "Contador",
+      "empresa": "Finanzas Plus",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Contador con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "patricia-rios",
+      "nombre": "Patricia Ríos",
+      "titular": "Analista",
+      "empresa": "Banco Andino",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Analista con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "renato-flores",
+      "nombre": "Renato Flores",
+      "titular": "Diseñadora",
+      "empresa": "Estudio Pixel",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Diseñadora con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "daniela-vega",
+      "nombre": "Daniela Vega",
+      "titular": "Ingeniero",
+      "empresa": "Minera del Sur",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Ingeniero con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "marco-torres",
+      "nombre": "Marco Torres",
+      "titular": "Abogado",
+      "empresa": "Estudio Legal Peña",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Abogado con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "elena-campos",
+      "nombre": "Elena Campos",
+      "titular": "Gerente",
+      "empresa": "Logística Rápida",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Gerente con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "hugo-navarro",
+      "nombre": "Hugo Navarro",
+      "titular": "Contador",
+      "empresa": "Finanzas Plus",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Contador con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "miguel-angel-vargas",
+      "nombre": "Miguel Ángel Vargas",
+      "titular": "Desarrollador",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Desarrollador con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "rosa-delgado",
+      "nombre": "Rosa Delgado",
+      "titular": "Directora",
+      "empresa": "Consultora Norte",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Directora con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "valeria-castaneda",
+      "nombre": "Valeria Castañeda",
+      "titular": "Analista Contable",
+      "empresa": "Finanzas Plus",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Analista Contable con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "carlos-herrera",
+      "nombre": "Carlos Herrera",
+      "titular": "Ingeniero de Software",
+      "empresa": "Innovatech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Ingeniero de Software con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "daniela-vargas",
+      "nombre": "Daniela Vargas",
+      "titular": "Abogada Corporativa",
+      "empresa": "Legal Solutions",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Abogada Corporativa con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "ricardo-guerrero",
+      "nombre": "Ricardo Guerrero",
+      "titular": "Gerente Comercial",
+      "empresa": "Ventas Pro",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Gerente Comercial con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "sofia-huaman",
+      "nombre": "Sofía Huamán",
+      "titular": "Diseñadora UX/UI",
+      "empresa": "Codeplex Studio",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Diseñadora UX/UI con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "roberto-silva",
+      "nombre": "Roberto Silva",
+      "titular": "Consultor TI",
+      "empresa": "Codeplex Consulting",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Consultor TI con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "fernando-diaz",
+      "nombre": "Fernando Díaz",
+      "titular": "Arquitecto de Soluciones",
+      "empresa": "Nubia Cloud",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Arquitecto de Soluciones con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "gabriela-nunez",
+      "nombre": "Gabriela Núñez",
+      "titular": "Directora de Operaciones",
+      "empresa": "Logística Andina",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Directora de Operaciones con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "hector-ramirez",
+      "nombre": "Héctor Ramírez",
+      "titular": "Analista de Datos",
+      "empresa": "Banco Pacífico",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Analista de Datos con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "isabel-mora",
+      "nombre": "Isabel Mora",
+      "titular": "Especialista",
+      "empresa": "Recursos Humanos en Talento Sur",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Especialista con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "julio-cardenas",
+      "nombre": "Julio Cárdenas",
+      "titular": "Ingeniero Civil",
+      "empresa": "Constructora Alfa",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Ingeniero Civil con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "karina-ponce",
+      "nombre": "Karina Ponce",
+      "titular": "Product Manager",
+      "empresa": "Codeplex Labs",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Product Manager con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "luis-alberto-soto",
+      "nombre": "Luis Alberto Soto",
+      "titular": "Consultor Financiero",
+      "empresa": "Capital Norte",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Consultor Financiero con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "javier-torres",
+      "nombre": "Javier Torres",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "roberto-perez",
+      "nombre": "Roberto Pérez",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red profesional.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "valentina-cruz",
+      "nombre": "Valentina Cruz",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "sebastian-rojas",
+      "nombre": "Sebastián Rojas",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "natalia-vega",
+      "nombre": "Natalia Vega",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "andres-gutierrez",
+      "nombre": "Andrés Gutiérrez",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "paula-ibanez",
+      "nombre": "Paula Ibáñez",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "martin-ortega",
+      "nombre": "Martín Ortega",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "claudia-salas",
+      "nombre": "Claudia Salas",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "rodrigo-pena",
+      "nombre": "Rodrigo Peña",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "fabiola-luna",
+      "nombre": "Fabiola Luna",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "gonzalo-ramos",
+      "nombre": "Gonzalo Ramos",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "veronica-arce",
+      "nombre": "Verónica Arce",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "tomas-quiroz",
+      "nombre": "Tomás Quiroz",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "alejandra-cano",
+      "nombre": "Alejandra Cano",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "esteban-lara",
+      "nombre": "Esteban Lara",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "rocio-mendoza",
+      "nombre": "Rocío Mendoza",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "ignacio-bravo",
+      "nombre": "Ignacio Bravo",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
+    },
+    {
+      "id": "monica-silva",
+      "nombre": "Mónica Silva",
+      "titular": "Profesional",
+      "empresa": "Codeplex Tech",
+      "ubicacion": "Lima, Perú",
+      "estudios": "Universidad Nacional Mayor de San Marcos",
+      "desde": "enero de 2025",
+      "acerca": "Profesional con interés en ampliar su red.",
+      "habilidades": [
+        "Comunicación",
+        "Trabajo en equipo"
+      ],
+      "amigos": [],
+      "publicaciones": []
     }
   ],
   "separadorUbicacion": ", "

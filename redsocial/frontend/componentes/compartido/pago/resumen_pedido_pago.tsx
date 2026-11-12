@@ -1,10 +1,12 @@
 import { Icono } from '../icono'
 import { TextoTruncable } from '../interfaz/texto_truncable'
 import { BotonActivarPago } from './boton_activar_pago'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { usarTextosPago } from './usar_textos_pago'
 import type { usarFlujoPago } from './usar_flujo_pago'
 import type { FilaResumenPago, PedidoPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 function Fila({ fila }: { fila: FilaResumenPago }) {
   return (

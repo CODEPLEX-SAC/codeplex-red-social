@@ -9,18 +9,21 @@ export function usarTarjetasPago(repositorio: RepositorioTarjetasPago): ControlT
   const [error, setError] = useState<CodigoErrorPago | null>(null)
   const enCurso = useRef(false)
 
-  function recargar() {
+  async function recargar() {
     setEstado('cargando')
-    repositorio.listar().then(
-      (lista) => {
-        setTarjetas(lista)
-        setEstado('listo')
-      },
-      () => setEstado('error'),
-    )
+    try {
+      const lista = await repositorio.listar()
+      setTarjetas(lista)
+      setEstado('listo')
+    } catch {
+      setEstado('error')
+    }
   }
 
-  async function ejecutar<R>(operacion: () => Promise<TarjetaPago[]>, resultado: (lista: TarjetaPago[]) => R) {
+  async function ejecutar<R>(
+    operacion: { (): Promise<TarjetaPago[]> },
+    resultado: (lista: TarjetaPago[]) => R,
+  ) {
     if (enCurso.current) return null
     enCurso.current = true
     setOcupado(true)

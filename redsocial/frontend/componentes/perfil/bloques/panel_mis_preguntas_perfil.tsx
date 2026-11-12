@@ -11,13 +11,19 @@ import type { FiltroPreguntas } from '@/tipos/perfil/modelo_perfil'
 const textos = catalogoPerfil.red_social.preguntas
 const clases = catalogoPerfil.clases.red_social
 const PRIORIDADES = catalogoInicio.modal_crear_publicacion.prioridad.opciones
+const PRIORIDAD_POR_VALOR = new Map(PRIORIDADES.map((prioridad) => [prioridad.valor, prioridad]))
 const CLASES_PRIORIDAD: Record<string, string> = catalogoInicio.publicacion.clases_prioridad
+
+function textoVacio(total: number, filtro: FiltroPreguntas) {
+  if (total === 0) return textos.vacio_propio
+  return filtro === 'resuelta' ? textos.vacio_resueltas : textos.vacio_pendientes
+}
 
 export function PanelMisPreguntasPerfil({ preguntas, acciones, propio }: PanelMisPreguntasPerfilProps) {
   const [filtro, setFiltro] = useState<FiltroPreguntas>('todas')
   const { total, resueltas, pendientes } = contarPreguntas(preguntas)
   const visibles = filtrarPreguntas(preguntas, filtro)
-  const vacio = total === 0 ? textos.vacio_propio : filtro === 'resuelta' ? textos.vacio_resueltas : textos.vacio_pendientes
+  const vacio = textoVacio(total, filtro)
 
   return (
     <section className={catalogoPerfil.clases.vacio}>
@@ -34,7 +40,7 @@ export function PanelMisPreguntasPerfil({ preguntas, acciones, propio }: PanelMi
       {visibles.length === 0 && <p className="m-0 px-5 py-8 text-center text-subtitulo text-texto-suave">{vacio}</p>}
       {visibles.map((pregunta) => {
         if (pregunta.clase !== 'texto') return null
-        const prioridad = PRIORIDADES.find((candidata) => candidata.valor === pregunta.prioridad)
+        const prioridad = PRIORIDAD_POR_VALOR.get(String(pregunta.prioridad))
         const util = pregunta.comentarioUtil
         return (
           <article key={pregunta.id} className={clases.fila_pregunta}>

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import type catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
+import type { usarFlujoPago } from '@/componentes/compartido/pago/usar_flujo_pago'
 import type { IconName } from './contrato_icono'
 
 export type MetodoPagoId = 'tarjeta' | 'billetera'
@@ -12,9 +13,18 @@ export type EstadoCargaPago = 'cargando' | 'listo' | 'error'
 
 export type CodigoErrorPago = 'lectura' | 'escritura'
 
+export type EntradaFlujoPago = Pick<FlujoPagoProps, 'configuracion' | 'tarjetas' | 'perfiles' | 'alActivar'>
+
+export type RespuestaActivacionPago = void | ResultadoOperacionPago | Promise<void | ResultadoOperacionPago>
+
 export type TextosFlujoPago = typeof catalogoCompartido.flujo_pago.textos
 
-export type Parcial<T> = { [K in keyof T]?: T[K] extends readonly unknown[] ? T[K] : T[K] extends object ? Parcial<T[K]> : T[K] }
+type ParcialDeObjeto<V> =
+  V extends object ? Parcial<V> : V
+
+export type Parcial<T> = {
+  [K in keyof T]?: T[K] extends readonly unknown[] ? T[K] : ParcialDeObjeto<T[K]>
+}
 
 export interface TarjetaPago {
   id: string
@@ -253,5 +263,45 @@ export interface FlujoPagoProps {
   tarjetas: ControlTarjetasPago
   perfiles: ControlPerfilesPago
   adicional?: ReactNode
-  alActivar: (resultado: ResultadoFlujoPago) => void | ResultadoOperacionPago | Promise<void | ResultadoOperacionPago>
+  alActivar: (resultado: ResultadoFlujoPago) => RespuestaActivacionPago
+}
+
+export type AceptacionesPago = Record<string, boolean>
+
+export interface VentanasFlujoPagoProps {
+  estado: ReturnType<typeof usarFlujoPago>
+  tarjetas: ControlTarjetasPago
+  perfiles: ControlPerfilesPago
+  configuracion: ConfiguracionFlujoPago
+  movil: boolean
+}
+
+export interface ParametrosGuardadoPerfilPago {
+  borrador: DatosPerfilPago
+  modo: ModoFacturacionPago
+  perfil: PerfilPago | null
+  control: ControlPerfilesPago
+  textos: TextosFlujoPago
+  notificar: (variante: VarianteAvisoPago, mensaje: string) => void
+  fijarErrores: (errores: ErroresPerfilPago) => void
+  volverAlResumen: (id: string) => void
+}
+
+export interface RechazoIntentoPago {
+  mensaje?: string
+  idControl?: string
+}
+
+export interface ParametrosRechazoPago {
+  pendientes: AutorizacionPago[]
+  edicion: boolean
+  tarjetaValida: boolean
+  mensajes: { edicion: string; incompleto: string }
+}
+
+export interface FilaTarjetaPagoProps {
+  tarjeta: TarjetaPago
+  activa: boolean
+  alElegir: () => void
+  alEditar: () => void
 }

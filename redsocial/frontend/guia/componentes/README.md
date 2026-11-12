@@ -4,7 +4,7 @@ Colección de archivos `.md`, uno por componente (o por variantes que comparten 
 
 **Ubicación:** `redsocial/frontend/guia/componentes/`. Esta carpeta es documental; los componentes React viven en `redsocial/frontend/componentes/`.
 
-**Última actualización:** 2026-10-19, contrastada con el código del repositorio (rama `codeplexMaster`, con cambios sin confirmar en Git). Cada archivo indica en su pie la fecha y el alcance de su verificación; los que conservan «2026-10-17» no han cambiado desde entonces en lo que describen.
+**Última actualización:** 2026-11-10 para la paginación, el cierre de la iniciativa de buscadores y `campo_busqueda.md`; el resto, 2026-10-19, contrastada con el código del repositorio (rama `codeplexMaster`, con cambios sin confirmar en Git). Cada archivo indica en su pie la fecha y el alcance de su verificación; los que conservan «2026-10-17» no han cambiado desde entonces en lo que describen.
 
 ## Por dónde empezar
 
@@ -15,6 +15,7 @@ Colección de archivos `.md`, uno por componente (o por variantes que comparten 
 | Tocar colores, tipografía, alturas o foco | [tokens_y_diseno_global.md](tokens_y_diseno_global.md) y [proveedor_tema_graficos.md](proveedor_tema_graficos.md) |
 | Cambiar un componente de librería | [procedencia_librerias_y_recursos.md](procedencia_librerias_y_recursos.md): no se modifica código de `@codeplex-sac/*` ni de MUI; se envuelve o se configura |
 | Entender qué se aprobó visualmente | [diferencias_aceptadas_linea_base.md](diferencias_aceptadas_linea_base.md) |
+| Trabajar con buscadores, tablas o paginación | [paginacion.md](paginacion.md) (cierre de la paginación local y pendiente de Backend), la sección «Buscadores: estado de la Fase 3 (2026-11-10)» de [excepciones_y_limitaciones.md](excepciones_y_limitaciones.md#buscadores-estado-de-la-fase-3-2026-11-10) y [campo_busqueda.md](campo_busqueda.md) |
 
 ## Cómo leerla
 
@@ -45,7 +46,7 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 | [iconos.md](iconos.md) | `Icono`, `@codeplex-sac/iconos` (Material Symbols Rounded), SVG propios y su origen, tamaños |
 | [proveedor_tema_graficos.md](proveedor_tema_graficos.md) | Tema MUI único del proyecto (incluye el estilo de `Tooltip`) |
 | [diferencias_aceptadas_linea_base.md](diferencias_aceptadas_linea_base.md) | Línea base visual vigente (hashes), diferencias aprobadas, decisiones sustituidas y diferencias pendientes de aprobación |
-| [excepciones_y_limitaciones.md](excepciones_y_limitaciones.md) | **Nuevo.** Excepciones justificadas, limitaciones funcionales, decisiones pendientes y lo no verificado (incluye CAR-01) |
+| [excepciones_y_limitaciones.md](excepciones_y_limitaciones.md) | **Nuevo.** Excepciones justificadas, limitaciones funcionales, decisiones pendientes y lo no verificado (incluye CAR-01); desde el 2026-11-10, cierre de la iniciativa de buscadores (Fase 3: criterios definitivos, fuentes intercambiables, pruebas y pendiente de Backend; inventario de 23) |
 
 ### Botones y chips
 | Archivo | Componentes |
@@ -62,7 +63,7 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 |---|---|
 | [campo_texto.md](campo_texto.md) | `CampoTexto` |
 | [campo_numero.md](campo_numero.md) | `CampoNumero` |
-| [campo_busqueda.md](campo_busqueda.md) | `CampoBusqueda` |
+| [campo_busqueda.md](campo_busqueda.md) | `CampoBusqueda` (consumidores y uso con fuentes intercambiables actualizados el 2026-11-10; estado de los buscadores en [excepciones_y_limitaciones.md](excepciones_y_limitaciones.md)) |
 | [campo_etiquetado.md](campo_etiquetado.md) | `CampoEtiquetado` (**nuevo**) |
 | [selector.md](selector.md) | `Selector` (variantes `default`, `colaboradores`, `mini`, `integrado`, `compacto`) |
 | [selector_buscable.md](selector_buscable.md), [panel_selector_buscable.md](panel_selector_buscable.md), [lista_opciones_buscables.md](lista_opciones_buscables.md) | Familia `SelectorBuscable` (**nueva**) |
@@ -78,7 +79,7 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 | [boton_carrito_topbar.md](boton_carrito_topbar.md) | `BotonCarritoTopbar` (**nuevo**) |
 | [barra_lateral.md](barra_lateral.md) | `BarraLateral` |
 | [estructura_app.md](estructura_app.md), [estructura_tres_columnas.md](estructura_tres_columnas.md) | Estructuras de página |
-| [menu.md](menu.md), [pestanas.md](pestanas.md), [paginacion.md](paginacion.md), [stepper.md](stepper.md) | Menú, pestañas, paginación y pasos |
+| [menu.md](menu.md), [pestanas.md](pestanas.md), [paginacion.md](paginacion.md), [stepper.md](stepper.md) | Menú, pestañas, paginación (con el cierre de la paginación local, 2026-11-10) y pasos |
 | [modal.md](modal.md), [fondo_panel_flotante.md](fondo_panel_flotante.md) | `Modal`, `usarModal`, `FondoPanelFlotante` |
 | [panel_lateral.md](panel_lateral.md), [columna_publicidad.md](columna_publicidad.md) | Paneles de la columna lateral |
 | [tabla_compartida.md](tabla_compartida.md), [tabla_colaboradores.md](tabla_colaboradores.md) | Clases de tabla y tabla de Colaboradores |
@@ -93,6 +94,13 @@ Cada afirmación relevante está en uno de estos estados (definidos en [excepcio
 | [visor_historia.md](visor_historia.md) | `VisorHistoria`: grupos por autor, segmentos, temporizador, respuestas y reacciones |
 | [flujo_creacion_historia.md](flujo_creacion_historia.md) | Creación, editores, almacén en memoria y configuración de Historias |
 | [avatar_usuario.md](avatar_usuario.md), [aro_historia.md](aro_historia.md) (**nuevo**), [fila_conversacion.md](fila_conversacion.md) (**nuevo**), [adjuntos_audio_respuestas_mensajeria.md](adjuntos_audio_respuestas_mensajeria.md) (**nuevo**), [grupo_avatares.md](grupo_avatares.md), [enlace_perfil_usuario.md](enlace_perfil_usuario.md), [indicador_carga.md](indicador_carga.md), [texto_truncable.md](texto_truncable.md), [valoracion.md](valoracion.md), [visor_medios.md](visor_medios.md) | Interfaces compartidas que no tenían ficha |
+
+### Mensajería: videollamadas (fichas añadidas el 2026-11-11)
+| Archivo | Componentes |
+|---|---|
+| [sala_videollamada.md](sala_videollamada.md) | **Nuevo.** `SalaVideollamada` y sus partes: cabecera, cuadrícula de participantes con fotografías de perfil, captura de pantalla real con `getDisplayMedia`, controles, paneles de participantes y chat, puertos de integración (WebRTC) y modo de demostración; incluye los estados (individual, varios, compartir, con panel, cámara y micrófono desactivados) |
+| [programar_reunion.md](programar_reunion.md) | **Nuevo.** Página «Programar reunión» (`FormularioProgramarReunion` y sus secciones), almacén en memoria de reuniones y enlace de unión |
+| [tooltip.md](tooltip.md) | **Nuevo.** `Tooltip` (envoltorio de `CodeplexTooltip`); variantes `llamada*` de `BotonIcono` |
 
 ### Presentación y utilidades
 [insignia.md](insignia.md), [avatar_imagen.md](avatar_imagen.md), [mensaje_vacio.md](mensaje_vacio.md), [dona_progreso.md](dona_progreso.md), [sparkline.md](sparkline.md), [superficie_color.md](superficie_color.md), [texto_color.md](texto_color.md), [medida_dinamica.md](medida_dinamica.md), [graficos_y_visualizacion.md](graficos_y_visualizacion.md) (gráficos de `@codeplex-sac/graficos`).

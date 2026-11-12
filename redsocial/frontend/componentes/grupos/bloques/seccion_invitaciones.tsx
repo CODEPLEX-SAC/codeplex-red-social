@@ -1,24 +1,45 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { coincideNombre, crearFuenteLocal } from '../../compartido/interfaz/fuente_busqueda_local'
+import { usarBusqueda } from '../../compartido/interfaz/usar_busqueda'
+import { MensajeEstadoBusqueda } from '../../compartido/interfaz/mensaje_estado_busqueda'
 import { clasesChip, Boton, Insignia, Selector, Icono, BotonIcono, CampoBusqueda } from '../../compartido'
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import { PestanasGrupos } from './pestanas_grupos'
 import { SeccionPendientes } from './seccion_pendientes'
 import { SeccionAceptadas } from './seccion_aceptadas'
-import type { InvitacionPendiente, ColorGrupo, InvitacionAceptada } from '@/tipos/grupos/modelo_grupos_invitaciones'
+import type { FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
+import type { InvitacionPendiente, ColorGrupo, InvitacionAceptada, ItemInvitacion } from '@/tipos/grupos/modelo_grupos_invitaciones'
+
+function esPendiente(item: ItemInvitacion): item is Extract<ItemInvitacion, { lista: 'pendientes' }> {
+  return item.lista === 'pendientes'
+}
+
+function esAceptada(item: ItemInvitacion): item is Extract<ItemInvitacion, { lista: 'aceptadas' }> {
+  return item.lista === 'aceptadas'
+}
 
 export function SeccionInvitaciones({
   CONTEO,
   PENDIENTES,
   CLASES_ICONO_INV,
   ACEPTADAS,
+  fuente,
 }: {
   CONTEO: { todas: number; pendientes: number; aceptadas: number; rechazadas: number; expiradas: number; }
   PENDIENTES: InvitacionPendiente[]
   CLASES_ICONO_INV: Record<ColorGrupo, string>
   ACEPTADAS: InvitacionAceptada[]
+  fuente?: FuenteBusqueda<ItemInvitacion>
 }) {
   const [orden, setOrden] = useState('recientes')
-  const ordenar = <T,>(lista: T[]) => (orden === 'recientes' ? lista : [...lista].reverse())
+  const ordenar = <T,>(lista: readonly T[]) => (orden === 'recientes' ? [...lista] : [...lista].reverse())
+  const fuenteLocal = useMemo(
+    () => crearFuenteLocal([...PENDIENTES.map((invitacion): ItemInvitacion => ({ lista: 'pendientes', invitacion })), ...ACEPTADAS.map((invitacion): ItemInvitacion => ({ lista: 'aceptadas', invitacion }))], (item, consulta) => coincideNombre(item.invitacion, consulta)),
+    [PENDIENTES, ACEPTADAS],
+  )
+  const busqueda = usarBusqueda(fuente ?? fuenteLocal, { modo: fuente ? 'remota' : 'local' })
+  const pendientesVisibles = busqueda.resultado.elementos.filter(esPendiente).map((item) => item.invitacion)
+  const aceptadasVisibles = busqueda.resultado.elementos.filter(esAceptada).map((item) => item.invitacion)
 
   return (
     <section>
@@ -53,16 +74,18 @@ export function SeccionInvitaciones({
       </div>
 
       <div className="mb-5 flex items-center gap-3">
-        <CampoBusqueda placeholder={catalogoGrupos.placeholders.buscar_invitaciones} className="flex-1" />
+        <CampoBusqueda placeholder={catalogoGrupos.placeholders.buscar_invitaciones} aria-label={catalogoGrupos.placeholders.buscar_invitaciones} value={busqueda.texto} onChange={(evento) => busqueda.cambiarTexto(evento.target.value)} className="flex-1" />
         <Selector variant="mini" value={orden} onChange={(evento) => setOrden(evento.target.value)} aria-label={catalogoGrupos.botones.ordenar_invitaciones} className="flex-none">
           <option value="recientes">{catalogoGrupos.botones.mas_recientes}</option>
           <option value="antiguas">{catalogoGrupos.botones.mas_antiguas}</option>
         </Selector>
       </div>
 
-      <SeccionPendientes CONTEO={CONTEO} PENDIENTES={ordenar(PENDIENTES)} CLASES_ICONO_INV={CLASES_ICONO_INV} />
+      <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} />
 
-      <SeccionAceptadas CONTEO={CONTEO} ACEPTADAS={ordenar(ACEPTADAS)} CLASES_ICONO_INV={CLASES_ICONO_INV} />
+      <SeccionPendientes CONTEO={CONTEO} PENDIENTES={ordenar(pendientesVisibles)} CLASES_ICONO_INV={CLASES_ICONO_INV} />
+
+      <SeccionAceptadas CONTEO={CONTEO} ACEPTADAS={ordenar(aceptadasVisibles)} CLASES_ICONO_INV={CLASES_ICONO_INV} />
     </section>
   )
 }

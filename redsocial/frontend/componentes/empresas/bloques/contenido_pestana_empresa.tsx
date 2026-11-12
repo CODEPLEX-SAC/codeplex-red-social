@@ -9,7 +9,7 @@ const [PESTANA_INFORMACION, PESTANA_USUARIOS, , PESTANA_PLANES] = Object.keys(ca
 
 export function ContenidoPestanaEmpresa({ empresa, pestana, datosDetalle, usuariosGuardados, edicionUsuarios, totalEmpresas }: ContenidoPestanaEmpresaProps) {
   if (pestana === PESTANA_INFORMACION) return <ContenidoInformacionEmpresa empresa={empresa} />
-  if (pestana === PESTANA_USUARIOS) return <PestanaUsuariosEmpresa empresa={empresa} usuariosBase={datosDetalle.usuariosBase} usuariosGuardados={usuariosGuardados} edicionUsuarios={edicionUsuarios} />
+  if (pestana === PESTANA_USUARIOS) return <PestanaUsuariosEmpresa empresa={empresa} usuariosBase={datosDetalle.usuariosBase} usuariosGuardados={usuariosGuardados} edicionUsuarios={edicionUsuarios} fuente={datosDetalle.fuenteUsuarios} />
   if (pestana === PESTANA_PLANES) return <PestanaPlanesEmpresa empresa={empresa} totalEmpresas={totalEmpresas} />
-  return <PestanaHistorialEmpresa empresa={empresa} historialBase={datosDetalle.historialBase} />
+  return <PestanaHistorialEmpresa empresa={empresa} historialBase={datosDetalle.historialBase} fuente={datosDetalle.fuenteHistorial} />
 }

@@ -94,47 +94,130 @@
   ],
   "llamadasRecientes": [
     {
+      "id": "llamada-01",
       "nombre": "María Fernández",
       "direccion": "entrante",
       "hora": "10:24 AM"
     },
     {
+      "id": "llamada-02",
       "nombre": "Luis Rodríguez",
       "direccion": "saliente",
       "hora": "09:15 AM"
     },
     {
+      "id": "llamada-03",
       "nombre": "Equipo de Proyectos",
       "esGrupo": true,
       "miembros": "4 miembros",
       "hora": "Ayer"
     },
     {
+      "id": "llamada-04",
       "nombre": "Carmen López",
       "direccion": "entrante",
       "hora": "Ayer"
     },
     {
+      "id": "llamada-05",
       "nombre": "Diego Mendoza",
       "direccion": "saliente",
       "hora": "2 días"
     },
     {
+      "id": "llamada-06",
       "nombre": "Grupo Contabilidad",
       "esGrupo": true,
       "miembros": "5 miembros",
       "hora": "2 días"
     },
     {
+      "id": "llamada-07",
       "nombre": "Ana García",
       "direccion": "entrante",
       "hora": "3 días"
     },
     {
+      "id": "llamada-08",
       "nombre": "Infraestructura TI",
       "esGrupo": true,
       "miembros": "3 miembros",
       "hora": "3 días"
+    },
+    {
+      "id": "llamada-09",
+      "nombre": "Ana García",
+      "direccion": "entrante",
+      "hora": "3 días"
+    },
+    {
+      "id": "llamada-10",
+      "nombre": "Javier Torres",
+      "direccion": "saliente",
+      "hora": "4 días"
+    },
+    {
+      "id": "llamada-11",
+      "nombre": "Sofía Paredes",
+      "direccion": "entrante",
+      "hora": "4 días"
+    },
+    {
+      "id": "llamada-12",
+      "nombre": "Equipo de Proyectos",
+      "esGrupo": true,
+      "miembros": "4 miembros",
+      "hora": "5 días"
+    },
+    {
+      "id": "llamada-13",
+      "nombre": "Rosa Alvarado",
+      "direccion": "entrante",
+      "hora": "5 días"
+    },
+    {
+      "id": "llamada-14",
+      "nombre": "Karla Medina",
+      "direccion": "saliente",
+      "hora": "6 días"
+    },
+    {
+      "id": "llamada-15",
+      "nombre": "María Fernández",
+      "direccion": "entrante",
+      "hora": "1 sem"
+    },
+    {
+      "id": "llamada-16",
+      "nombre": "Grupo Contabilidad",
+      "esGrupo": true,
+      "miembros": "5 miembros",
+      "hora": "1 sem"
+    },
+    {
+      "id": "llamada-17",
+      "nombre": "Carmen López",
+      "direccion": "entrante",
+      "hora": "1 sem"
+    },
+    {
+      "id": "llamada-18",
+      "nombre": "Diego Mendoza",
+      "direccion": "saliente",
+      "hora": "2 sem"
+    },
+    {
+      "id": "llamada-19",
+      "nombre": "Ana García",
+      "direccion": "entrante",
+      "hora": "2 sem"
+    },
+    {
+      "id": "llamada-20",
+      "nombre": "Infraestructura TI",
+      "esGrupo": true,
+      "miembros": "3 miembros",
+      "hora": "3 sem"
     }
   ],
   "contactosFrecuentes": [
@@ -154,6 +237,25 @@
       "nombre": "Equipo de Proyectos",
       "esGrupo": true,
       "miembros": "4 miembros"
+    },
+    {
+      "nombre": "Ana García"
+    },
+    {
+      "nombre": "Javier Torres"
+    },
+    {
+      "nombre": "Grupo Contabilidad",
+      "esGrupo": true,
+      "miembros": "5 miembros"
+    },
+    {
+      "nombre": "Sofía Paredes"
+    },
+    {
+      "nombre": "Infraestructura TI",
+      "esGrupo": true,
+      "miembros": "3 miembros"
     }
   ],
   "reunionesProgramadas": [
@@ -189,6 +291,39 @@
       "totalParticipantes": 6,
       "avatares": 3,
       "extra": "+3"
+    },
+    {
+      "id": "planificacion-trimestral",
+      "dia": "20",
+      "mes": "AGO",
+      "titulo": "Planificación trimestral de proyectos",
+      "hora": "09:00 AM - 10:30 AM",
+      "participantes": "8 participantes",
+      "totalParticipantes": 8,
+      "avatares": 3,
+      "extra": "+5"
+    },
+    {
+      "id": "revision-presupuesto-anual",
+      "dia": "22",
+      "mes": "AGO",
+      "titulo": "Revisión del presupuesto anual",
+      "hora": "03:00 PM - 04:00 PM",
+      "participantes": "5 participantes",
+      "totalParticipantes": 5,
+      "avatares": 3,
+      "extra": "+2"
+    },
+    {
+      "id": "retrospectiva-equipo-ti",
+      "dia": "25",
+      "mes": "AGO",
+      "titulo": "Retrospectiva del equipo de TI",
+      "hora": "11:00 AM - 12:00 PM",
+      "participantes": "7 participantes",
+      "totalParticipantes": 7,
+      "avatares": 3,
+      "extra": "+4"
     }
   ],
   "reunionEnCurso": {
@@ -205,20 +340,77 @@
   },
   "historial": [
     {
+      "id": "historial-01",
       "nombre": "Videollamada con María Fernández",
       "fecha": "Ayer, 04:32 PM",
       "duracion": "12 min 45 seg"
     },
     {
+      "id": "historial-02",
       "nombre": "Videollamada con Luis Rodríguez",
       "fecha": "Ayer, 11:15 AM",
       "duracion": "09 min 21 seg"
     },
     {
+      "id": "historial-03",
       "nombre": "Videollamada grupal - Equipo de Proyectos",
       "esGrupo": true,
       "fecha": "12 ago, 03:20 PM",
       "duracion": "25 min 10 seg"
+    },
+    {
+      "id": "historial-04",
+      "nombre": "Videollamada con Carmen López",
+      "fecha": "11 ago, 10:05 AM",
+      "duracion": "08 min 12 seg"
+    },
+    {
+      "id": "historial-05",
+      "nombre": "Videollamada con Diego Mendoza",
+      "fecha": "10 ago, 05:40 PM",
+      "duracion": "15 min 03 seg"
+    },
+    {
+      "id": "historial-06",
+      "nombre": "Videollamada grupal - Grupo Contabilidad",
+      "esGrupo": true,
+      "fecha": "09 ago, 09:30 AM",
+      "duracion": "31 min 48 seg"
+    },
+    {
+      "id": "historial-07",
+      "nombre": "Videollamada con Ana García",
+      "fecha": "08 ago, 02:15 PM",
+      "duracion": "06 min 55 seg"
+    },
+    {
+      "id": "historial-08",
+      "nombre": "Videollamada con Javier Torres",
+      "fecha": "07 ago, 11:50 AM",
+      "duracion": "19 min 27 seg"
+    },
+    {
+      "id": "historial-09",
+      "nombre": "Videollamada grupal - Infraestructura TI",
+      "esGrupo": true,
+      "fecha": "06 ago, 04:10 PM",
+      "duracion": "22 min 36 seg"
+    },
+    {
+      "id": "historial-10",
+      "nombre": "Videollamada con Sofía Paredes",
+      "fecha": "05 ago, 01:25 PM",
+      "duracion": "10 min 09 seg"
     }
-  ]
+  ],
+  "llamadaDirecta": {
+    "titulo": "Videollamada con :nombre",
+    "horario": "Llamada directa",
+    "rol": "En línea"
+  },
+  "reunionNueva": {
+    "titulo": "Reunión instantánea",
+    "horario": "Reunión iniciada",
+    "duracion": "00:00:00"
+  }
 }

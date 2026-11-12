@@ -44,7 +44,7 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(cabeceras).toEqual(Object.values(catalogoColaboradores.tabla))
   })
 
-  it('busca por nombre, correo o telefono y vuelve a la primera pagina', () => {
+  it('busca por nombre o correo sin distinguir mayusculas ni tildes y vuelve a la primera pagina', () => {
     render(<PaginaColaboradores />)
     fireEvent.click(screen.getByRole('button', { name: /page 2/i }))
     expect(screen.getByText(resumen(4, 6, total))).toBeInTheDocument()
@@ -53,8 +53,8 @@ describe('Tabla de colaboradores', { timeout: 30000 }, () => {
     expect(nombresVisibles()).toEqual(['María López'])
     expect(screen.getByText(resumen(1, 1, 1))).toBeInTheDocument()
 
-    buscar('987 111 222')
-    expect(nombresVisibles()).toEqual(['Rosa Jiménez'])
+    buscar('maria')
+    expect(nombresVisibles()).toEqual(['María López'])
 
     buscar('CARLOS')
     expect(nombresVisibles()).toEqual(['Carlos Mendoza'])

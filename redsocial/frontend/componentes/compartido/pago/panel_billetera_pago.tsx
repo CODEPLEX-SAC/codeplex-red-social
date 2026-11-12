@@ -1,13 +1,15 @@
 import { Icono } from '../icono'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { OpcionMetodoPago } from './opcion_metodo_pago'
 import { TituloPanelPago } from './titulo_panel_pago'
 import { usarTextosPago } from './usar_textos_pago'
 import type { BilleteraPago } from '@/tipos/compartido/contrato_flujo_pago'
 
+const clases = catalogoCompartido.flujo_pago.clases
+
 export function PanelBilleteraPago({ billeteras, elegida, total, alElegir }: { billeteras: BilleteraPago[]; elegida: BilleteraPago | null; total: string; alElegir: (id: string) => void }) {
   const textos = usarTextosPago().metodos.billetera
-  const conBilletera = (texto: string) => texto.replace(':billetera', elegida?.nombre ?? '').replace(':monto', total)
+  const conBilletera = (texto: string) => texto.replace(':billetera', elegida?.nombre ?? String()).replace(':monto', total)
 
   return (
     <div className={clases.panel}>

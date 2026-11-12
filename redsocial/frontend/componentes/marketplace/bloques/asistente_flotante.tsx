@@ -15,7 +15,7 @@ export function AsistenteFlotante({ configuracion, estado }: { configuracion: Co
           <PanelAsistentePlanes asistente={configuracion.asistente} mensajes={estado.mensajes} nombreCatalogo={estado.tipo.catalogo.nombre} alPreguntar={estado.preguntar} alVerCatalogo={estado.abrirVisor} alCerrar={estado.alternarAsistente} />
         </>
       )}
-      <BotonIcono icono={estado.asistenteAbierto ? 'cerrar' : 'comentario'} type="button" aria-label={estado.asistenteAbierto ? textos.cerrar : textos.abrir} variant="flotante" size="default" className="absolute bottom-4 right-4 z-30" onClick={estado.alternarAsistente} />
+      <BotonIcono icono={estado.asistenteAbierto ? 'cerrar' : 'comentario'} type="button" aria-label={estado.asistenteAbierto ? textos.cerrar : textos.abrir} variant="asistente" size="asistente" className="absolute bottom-4 right-4 z-30" onClick={estado.alternarAsistente} />
     </>
   )
 }

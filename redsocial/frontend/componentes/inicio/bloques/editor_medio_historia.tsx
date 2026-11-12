@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useState } from 'react'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Pestanas } from '../../compartido/interfaz/pestanas'
@@ -37,9 +38,9 @@ export function EditorMedioHistoria({ flujo }: FlujoHistoriaProps) {
                 {textos.cambiar_archivo}
               </Boton>
               {flujo.errorArchivo && (
-                <p role="alert" className={clases.error_archivo}>
+                <AlertaEstado className={clases.error_archivo}>
                   {catalogoInicio.historias.flujo.cargador.error}
-                </p>
+                </AlertaEstado>
               )}
             </>
           )}

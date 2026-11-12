@@ -1,6 +1,20 @@
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { ConfiguracionPlanes, SeleccionPlan } from './modelo_planes'
-import type { PerfilPago, TarjetaPago } from '../compartido/contrato_flujo_pago'
+import type { PerfilPago, RepositorioPerfilesPago, TarjetaPago } from '../compartido/contrato_flujo_pago'
+import type { RepositorioMetodosPago } from './modelo_pago'
+
+export interface VigenciaCompra {
+  fecha: string
+  vence: string
+  dias: number
+}
+
+export interface ConfiguracionCarritoMarketplace {
+  aplicaciones: Record<string, ConfiguracionPlanes>
+  repositorioMetodosPago: RepositorioMetodosPago
+  repositorioPerfiles: RepositorioPerfilesPago
+  iniciales?: SeleccionPlan[]
+}
 
 export interface ItemCarrito {
   aplicacion: string
@@ -72,6 +86,8 @@ export interface AccesosCabecera {
   busqueda: string
   alBuscar: (texto: string) => void
   abrirCompras: () => void
+  pestana: string | null
+  alElegirPestana: (nombre: string) => void
 }
 
 export interface AccionesCarrito {

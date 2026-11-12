@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { accionesDeMensaje, alternarConversacionFavorita, alternarMensajeFijado, eliminarMensajePropio, posicionEnGrupo, presenciaDe, reenviarMensaje, conversacionesFavoritas, conversacionesNoLeidas, editarMensajePropio, enviarMensajePropio, conversacionesConEtiqueta, etiquetaDeConversacion, etiquetaDeDia, extractoDe, formatearFecha, formatearHora, marcarConversacionLeida, proximaMedianoche, proximoCambioReloj, proximoVencimientoEdicion, puedeEditarMensaje } from '@/componentes/mensajeria'
 import { ESTADO_INICIAL_MENSAJERIA as INICIAL } from '../../servicios/mensajeria/mensajes'
 import { CONTACTOS_LINEA_MENSAJERIA } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -77,7 +76,7 @@ describe('Reloj sustituible', () => {
 
 describe('Envio de mensajes propios', () => {
   it('anade el mensaje al final del hilo correcto sin tocar los demas', () => {
-    const siguiente = enviarMensajePropio(INICIAL, LUIS.id, '  Gracias, Luis  ', PEDRO, T0)
+    const siguiente = enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: '  Gracias, Luis  ' }, { usuarioId: PEDRO, ahora: T0 })
     const hilo = siguiente.hilos[LUIS.id]
     const ultimo = hilo[hilo.length - 1]
     expect(hilo).toHaveLength(INICIAL.hilos[LUIS.id].length + 1)
@@ -87,7 +86,7 @@ describe('Envio de mensajes propios', () => {
   })
 
   it('actualiza extracto y hora de la fila sin reordenar ni cambiar los no leidos', () => {
-    const siguiente = enviarMensajePropio(INICIAL, EQUIPO.id, 'Listo', PEDRO, T0)
+    const siguiente = enviarMensajePropio(INICIAL, { conversacionId: EQUIPO.id, texto: 'Listo' }, { usuarioId: PEDRO, ahora: T0 })
     const fila = siguiente.conversaciones[2]
     expect(fila.extracto).toBe('Tú: Listo')
     expect(etiquetaDe(siguiente, EQUIPO.id, T0)).toBe('03:05 PM')
@@ -96,12 +95,12 @@ describe('Envio de mensajes propios', () => {
   })
 
   it('rechaza el texto vacio o con solo espacios devolviendo el mismo estado', () => {
-    expect(enviarMensajePropio(INICIAL, LUIS.id, '', PEDRO, T0)).toBe(INICIAL)
-    expect(enviarMensajePropio(INICIAL, LUIS.id, '   ', PEDRO, T0)).toBe(INICIAL)
+    expect(enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: '' }, { usuarioId: PEDRO, ahora: T0 })).toBe(INICIAL)
+    expect(enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: '   ' }, { usuarioId: PEDRO, ahora: T0 })).toBe(INICIAL)
   })
 
   it('el mensaje enviado no guarda la fecha como texto y se mantiene como una fecha derivable', () => {
-    const primero = enviarMensajePropio(INICIAL, LUIS.id, 'Uno', PEDRO, T0)
+    const primero = enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: 'Uno' }, { usuarioId: PEDRO, ahora: T0 })
     const ultimo = primero.hilos[LUIS.id][primero.hilos[LUIS.id].length - 1]
     expect(ultimo).not.toHaveProperty('fecha')
     expect(new Date(ultimo.creadoEn).getTime()).toBe(T0.getTime())
@@ -109,7 +108,7 @@ describe('Envio de mensajes propios', () => {
 })
 
 describe('Edicion durante 15 minutos', () => {
-  const enviado = enviarMensajePropio(INICIAL, LUIS.id, 'Texto original', PEDRO, T0)
+  const enviado = enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: 'Texto original' }, { usuarioId: PEDRO, ahora: T0 })
   const hilo = enviado.hilos[LUIS.id]
   const propio = hilo[hilo.length - 1]
   const ajeno = hilo[0].autorId === PEDRO ? hilo[1] : hilo[0]
@@ -126,20 +125,20 @@ describe('Edicion durante 15 minutos', () => {
   })
 
   it('al guardar cambia el contenido y actualiza el extracto solo si es el ultimo mensaje', () => {
-    const editado = editarMensajePropio(enviado, LUIS.id, propio.id, 'Texto corregido', PEDRO, minutosDespues(5))
+    const editado = editarMensajePropio(enviado, { conversacionId: LUIS.id, mensajeId: propio.id, texto: 'Texto corregido' }, { usuarioId: PEDRO, ahora: minutosDespues(5) })
     const hiloEditado = editado.hilos[LUIS.id]
     expect(hiloEditado[hiloEditado.length - 1].contenido).toBe('Texto corregido')
     expect(editado.conversaciones[1].extracto).toBe('Tú: Texto corregido')
     expect(etiquetaDe(editado, LUIS.id, T0)).toBe(etiquetaDe(enviado, LUIS.id, T0))
-    const intermedio = enviarMensajePropio(enviado, LUIS.id, 'Otro', PEDRO, minutosDespues(1))
-    const reeditado = editarMensajePropio(intermedio, LUIS.id, propio.id, 'Cambio antiguo', PEDRO, minutosDespues(2))
+    const intermedio = enviarMensajePropio(enviado, { conversacionId: LUIS.id, texto: 'Otro' }, { usuarioId: PEDRO, ahora: minutosDespues(1) })
+    const reeditado = editarMensajePropio(intermedio, { conversacionId: LUIS.id, mensajeId: propio.id, texto: 'Cambio antiguo' }, { usuarioId: PEDRO, ahora: minutosDespues(2) })
     expect(reeditado.conversaciones[1].extracto).toBe('Tú: Otro')
   })
 
   it('no edita fuera de plazo, ajenos ni con texto vacio', () => {
-    expect(editarMensajePropio(enviado, LUIS.id, propio.id, 'Tarde', PEDRO, minutosDespues(15))).toBe(enviado)
-    expect(editarMensajePropio(enviado, LUIS.id, ajeno.id, 'Ajeno', PEDRO, T0)).toBe(enviado)
-    expect(editarMensajePropio(enviado, LUIS.id, propio.id, '   ', PEDRO, minutosDespues(1))).toBe(enviado)
+    expect(editarMensajePropio(enviado, { conversacionId: LUIS.id, mensajeId: propio.id, texto: 'Tarde' }, { usuarioId: PEDRO, ahora: minutosDespues(15) })).toBe(enviado)
+    expect(editarMensajePropio(enviado, { conversacionId: LUIS.id, mensajeId: ajeno.id, texto: 'Ajeno' }, { usuarioId: PEDRO, ahora: T0 })).toBe(enviado)
+    expect(editarMensajePropio(enviado, { conversacionId: LUIS.id, mensajeId: propio.id, texto: '   ' }, { usuarioId: PEDRO, ahora: minutosDespues(1) })).toBe(enviado)
   })
 })
 
@@ -186,7 +185,7 @@ describe('Coherencia de los datos iniciales', () => {
   })
 
   it('proximoVencimientoEdicion devuelve el instante exacto del primer vencimiento o nulo', () => {
-    const enviado = enviarMensajePropio(INICIAL, LUIS.id, 'Uno', PEDRO, T0)
+    const enviado = enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: 'Uno' }, { usuarioId: PEDRO, ahora: T0 })
     const hilo = enviado.hilos[LUIS.id]
     expect(proximoVencimientoEdicion(hilo, PEDRO, T0)).toBe(T0.getTime() + 15 * 60000)
     expect(proximoVencimientoEdicion(hilo, PEDRO, minutosDespues(15))).toBeNull()
@@ -254,7 +253,7 @@ describe('Acciones, agrupacion, reenvio, fijado y eliminacion (logica pura)', ()
   it('los permisos dependen de quien envio el mensaje y del plazo de edicion', () => {
     expect(accionesDeMensaje(propioAntiguo, PEDRO, T0)).toEqual({ responder: true, editar: false, reenviar: true, fijar: true, eliminar: true })
     expect(accionesDeMensaje(ajeno, PEDRO, new Date(ajeno.creadoEn))).toEqual({ responder: true, editar: false, reenviar: true, fijar: true, eliminar: false })
-    const enviado = enviarMensajePropio(INICIAL, LUIS.id, 'Nuevo', PEDRO, T0).hilos[LUIS.id].at(-1)!
+    const enviado = enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: 'Nuevo' }, { usuarioId: PEDRO, ahora: T0 }).hilos[LUIS.id].at(-1)!
     expect(accionesDeMensaje(enviado, PEDRO, minutosDespues(14, 59)).editar).toBe(true)
     expect(accionesDeMensaje(enviado, PEDRO, minutosDespues(15)).editar).toBe(false)
   })
@@ -266,7 +265,7 @@ describe('Acciones, agrupacion, reenvio, fijado y eliminacion (logica pura)', ()
   })
 
   it('reenviar copia el mensaje al hilo de destino, actualiza su fila y no toca el origen ni los no leidos', () => {
-    const siguiente = reenviarMensaje(INICIAL, LUIS.id, ajeno.id, 'conversacion-004', PEDRO, T0)
+    const siguiente = reenviarMensaje(INICIAL, { origenId: LUIS.id, mensajeId: ajeno.id, destinoId: 'conversacion-004' }, { usuarioId: PEDRO, ahora: T0 })
     const destino = siguiente.hilos['conversacion-004']
     expect(destino.at(-1)).toMatchObject({ autorId: PEDRO, contenido: ajeno.contenido, reenviado: true, hora: '03:05 PM' })
     expect(siguiente.conversaciones[3]).toMatchObject({ extracto: `Tú: ${ajeno.contenido}`, noLeidos: INICIAL.conversaciones[3].noLeidos })
@@ -276,10 +275,10 @@ describe('Acciones, agrupacion, reenvio, fijado y eliminacion (logica pura)', ()
 
   it('reenviar un adjunto conserva el adjunto y no reenvia a la misma conversacion ni un mensaje inexistente', () => {
     const conAdjunto = INICIAL.hilos['conversacion-001'].find((mensaje) => mensaje.adjunto)!
-    const siguiente = reenviarMensaje(INICIAL, 'conversacion-001', conAdjunto.id, 'conversacion-004', PEDRO, T0)
+    const siguiente = reenviarMensaje(INICIAL, { origenId: 'conversacion-001', mensajeId: conAdjunto.id, destinoId: 'conversacion-004' }, { usuarioId: PEDRO, ahora: T0 })
     expect(siguiente.hilos['conversacion-004'].at(-1)).toMatchObject({ adjunto: conAdjunto.adjunto, reenviado: true })
-    expect(reenviarMensaje(INICIAL, LUIS.id, ajeno.id, LUIS.id, PEDRO, T0)).toBe(INICIAL)
-    expect(reenviarMensaje(INICIAL, LUIS.id, 'mensaje-inexistente', 'conversacion-004', PEDRO, T0)).toBe(INICIAL)
+    expect(reenviarMensaje(INICIAL, { origenId: LUIS.id, mensajeId: ajeno.id, destinoId: LUIS.id }, { usuarioId: PEDRO, ahora: T0 })).toBe(INICIAL)
+    expect(reenviarMensaje(INICIAL, { origenId: LUIS.id, mensajeId: 'mensaje-inexistente', destinoId: 'conversacion-004' }, { usuarioId: PEDRO, ahora: T0 })).toBe(INICIAL)
   })
 
   it('fijar alterna el mensaje fijado, sustituye al anterior y rechaza mensajes que no pertenecen al hilo', () => {
@@ -292,7 +291,7 @@ describe('Acciones, agrupacion, reenvio, fijado y eliminacion (logica pura)', ()
 
   it('eliminar solo afecta a mensajes propios, retira el fijado y recalcula extracto y hora si era el ultimo', () => {
     expect(eliminarMensajePropio(INICIAL, LUIS.id, ajeno.id, PEDRO)).toBe(INICIAL)
-    const enviado = enviarMensajePropio(INICIAL, LUIS.id, 'Temporal', PEDRO, T0)
+    const enviado = enviarMensajePropio(INICIAL, { conversacionId: LUIS.id, texto: 'Temporal' }, { usuarioId: PEDRO, ahora: T0 })
     const id = enviado.hilos[LUIS.id].at(-1)!.id
     const fijado = alternarMensajeFijado(enviado, LUIS.id, id)
     const eliminado = eliminarMensajePropio(fijado, LUIS.id, id, PEDRO)
@@ -312,7 +311,7 @@ describe('Acciones, agrupacion, reenvio, fijado y eliminacion (logica pura)', ()
     expect(vacio.conversaciones[1]).toMatchObject({ extracto: 'Sin mensajes' })
     expect(etiquetaDe(vacio, LUIS.id, T0)).toBe('')
     const sinIntermedio = eliminarMensajePropio(INICIAL, LUIS.id, propioAntiguo.id, PEDRO)
-    const nuevo = enviarMensajePropio(sinIntermedio, LUIS.id, 'Otro', PEDRO, T0).hilos[LUIS.id].at(-1)!
+    const nuevo = enviarMensajePropio(sinIntermedio, { conversacionId: LUIS.id, texto: 'Otro' }, { usuarioId: PEDRO, ahora: T0 }).hilos[LUIS.id].at(-1)!
     expect(sinIntermedio.hilos[LUIS.id].map((mensaje) => mensaje.id)).not.toContain(nuevo.id)
   })
 

@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
-import L from 'leaflet'
-import 'leaflet/dist/leaflet.css'
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { DetalleEventoProps } from '@/tipos/eventos/contrato_detalle_evento'
 import { SeccionDescripcion } from './seccion_descripcion'
+import { usarIconoMarcadorMapa } from './usar_icono_marcador_mapa'
+import 'leaflet/dist/leaflet.css'
 
 const textos = catalogoEventos.detalle_evento
 
@@ -41,16 +41,10 @@ function FilaDato({ icono, principal, secundario }: { icono: IconName; principal
 export function DetalleEvento({ evento, onVolver }: DetalleEventoProps) {
   const detalle = evento.detalle
   const posicion: [number, number] = [detalle.lat, detalle.lng]
+  const icono = usarIconoMarcadorMapa(textos.clase_marcador, textos.tamano_marcador)
   const marcadores = useMemo(
-    () => [
-      {
-        id: evento.nombre,
-        posicion: [detalle.lat, detalle.lng] as [number, number],
-        icono: L.divIcon({ className: 'h-4 w-4 rounded-full border-3 border-white bg-primario shadow-t8', iconSize: [16, 16] }),
-        titulo: detalle.lugar,
-      },
-    ],
-    [evento.nombre, detalle.lugar, detalle.lat, detalle.lng],
+    () => (icono ? [{ id: evento.nombre, posicion: [detalle.lat, detalle.lng] as [number, number], icono, titulo: detalle.lugar }] : []),
+    [icono, evento.nombre, detalle.lugar, detalle.lat, detalle.lng],
   )
 
   return (

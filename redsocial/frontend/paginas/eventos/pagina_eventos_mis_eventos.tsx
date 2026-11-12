@@ -26,6 +26,8 @@ export function PaginaEventosMisEventos() {
     setAnclaMenuOrganizas(null)
   }
 
+  const filtros = { setFiltroEstadoAbierto, filtroEstadoAbierto, setFiltroFechaAbierto, filtroFechaAbierto, filtroFecha, setFiltroFecha }
+  const menu = { alAbrirMenuOrganizas, menuOrganizasAbierto, anclaMenuOrganizas, cerrarMenuOrganizas, setEventoEditando }
   const eventoEnEdicion = EVENTOS_ORGANIZAS.find((ev) => ev.nombre === eventoEditando) ?? null
 
   return (
@@ -48,24 +50,7 @@ export function PaginaEventosMisEventos() {
               />
             ) : (
               <SeccionEventosOrganizas
-                datos={{
-                  setFiltroEstadoAbierto,
-                  filtroEstadoAbierto,
-                  setFiltroFechaAbierto,
-                  filtroFechaAbierto,
-                  filtroFecha,
-                  setFiltroFecha,
-                  RESULTADOS_FILTRO_FECHA,
-                  EVENTOS_ORGANIZAS,
-                  ESTADO_ESTILO,
-                  ESTADO_ETIQUETA,
-                  alAbrirMenuOrganizas,
-                  menuOrganizasAbierto,
-                  anclaMenuOrganizas,
-                  cerrarMenuOrganizas,
-                  setEventoEditando,
-                  EVENTO_COLABORAS,
-                }}
+                datos={{ ...filtros, ...menu, RESULTADOS_FILTRO_FECHA, EVENTOS_ORGANIZAS, ESTADO_ESTILO, ESTADO_ETIQUETA, EVENTO_COLABORAS }}
               />
             )}
           </section>

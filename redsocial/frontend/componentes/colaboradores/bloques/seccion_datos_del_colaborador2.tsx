@@ -1,6 +1,7 @@
 import { Icono } from '../../compartido/icono'
 import { BannerInformativo } from '../../compartido/interfaz/banner_informativo'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
+import { GrupoRadio } from '../../compartido/interfaz/grupo_radio'
 import { Radio } from '../../compartido/interfaz/radio'
 import { SeccionDatosDelColaborador3 } from './seccion_datos_del_colaborador3'
 import type { CambiarCampoColaborador, DatosColaboradorInvitado } from '@/tipos/colaboradores/contrato_invitar_colaborador'
@@ -24,20 +25,22 @@ export function SeccionDatosDelColaborador2({
         </div>
         <p className={clases.metodo_ayuda}>{textos.metodo_invitacion_ayuda}</p>
         <div className={clases.metodo_opciones}>
+          <GrupoRadio name="metodo-inv" defaultValue="correo" aria-label={catalogoColaboradores.secciones.metodo_de_invitacion}>
           <label className={clases.metodo_opcion}>
-            <Radio name="metodo-inv" defaultChecked />
+            <Radio value="correo" />
             <div className={comun.opcion_textos}>
               <span className={comun.opcion_titulo}>{textos.enviar_correo}</span>
               <span className={clases.ayuda}>{textos.enviar_correo_ayuda}</span>
             </div>
           </label>
           <label className={clases.metodo_opcion}>
-            <Radio name="metodo-inv" />
+            <Radio value="whatsapp" />
             <div className={comun.opcion_textos}>
               <span className={comun.opcion_titulo}>{textos.enviar_whatsapp}</span>
               <span className={clases.ayuda}>{textos.enviar_whatsapp_ayuda}</span>
             </div>
           </label>
+          </GrupoRadio>
         </div>
         <BannerInformativo icono="aviso" descripcion={textos.nota_registro} variante="nota" className={clases.metodo_banner} />
       </div>

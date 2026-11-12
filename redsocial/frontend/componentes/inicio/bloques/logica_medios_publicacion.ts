@@ -14,3 +14,8 @@ export function restantesDe(medios: MedioLocalPublicacion[]) {
 export function imagenesDePublicacion(medios: MedioLocalPublicacion[]) {
   return medios.filter((medio) => !medio.esVideo)
 }
+
+export function disenoMosaico(cantidad: number) {
+  const mosaico = catalogoInicio.medios.mosaico
+  return mosaico[Math.min(Math.max(cantidad, 1), mosaico.length) - 1]
+}

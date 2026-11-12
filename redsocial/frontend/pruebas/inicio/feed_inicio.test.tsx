@@ -20,23 +20,11 @@ function pestana(etiqueta: string) {
   return screen.getByRole('tab', { name: etiqueta })
 }
 
-function tarjetaEstadistica(titulo: string) {
-  return within(screen.getByText(titulo).closest('div') as HTMLElement)
-}
-
-describe('Estadisticas de actividad', () => {
-  it('parten de las publicaciones propias existentes y suman las nuevas', () => {
+describe('Inicio sin tarjetas de actividad', () => {
+  it('no muestra las tarjetas Tus publicaciones, Tus videos ni Compartidos', () => {
     render(<PaginaInicio />)
-    const [publicaciones, videos, compartidos] = catalogoInicio.estadisticas.tarjetas
-    expect(tarjetaEstadistica(publicaciones.titulo).getByText('1')).toBeInTheDocument()
-
-    const dialogo = abrirCreador()
-    fireEvent.change(dialogo.getByRole('textbox', { name: modal.etiqueta_editor }), { target: { value: 'Una publicacion' } })
-    fireEvent.click(dialogo.getByRole('button', { name: modal.publicar }))
-
-    expect(tarjetaEstadistica(publicaciones.titulo).getByText('2')).toBeInTheDocument()
-    expect(tarjetaEstadistica(videos.titulo).getByText('0')).toBeInTheDocument()
-    expect(tarjetaEstadistica(compartidos.titulo).getByText('0')).toBeInTheDocument()
+    expect(screen.queryByRole('region', { name: 'Tu actividad' })).toBeNull()
+    ;['Tus publicaciones', 'Tus videos', 'Compartidos'].forEach((titulo) => expect(screen.queryByText(titulo)).toBeNull())
   })
 })
 
@@ -146,11 +134,24 @@ describe('Mensajes flotantes', () => {
 
     fireEvent.click(boton)
     const panel = within(screen.getByRole('region', { name: textos.titulo }))
-    for (const conversacion of ESTADO_INICIAL_MENSAJERIA.conversaciones) expect(panel.getByText(conversacion.nombre)).toBeInTheDocument()
+    ESTADO_INICIAL_MENSAJERIA.conversaciones.forEach((conversacion) => expect(panel.getByText(conversacion.nombre)).toBeInTheDocument())
     expect(panel.getByRole('link', { name: textos.ver_todos })).toBeInTheDocument()
     expect(panel.getByRole('button', { name: textos.ampliar })).toBeInTheDocument()
 
     fireEvent.click(panel.getByRole('button', { name: textos.cerrar }))
     expect(screen.queryByRole('region', { name: textos.titulo })).toBeNull()
+  })
+})
+
+describe('Publicaciones de ejemplo de Pedro Lozano en Inicio', () => {
+  it('muestra una con imagen, otra solo con texto y otra compartida con su origen al pie', () => {
+    render(<PaginaInicio />)
+    expect(screen.getByText(/Hoy cerramos la revisión/)).toBeInTheDocument()
+    const conImagen = screen.getByText(/Así quedó el tablero/).closest('article') as HTMLElement
+    expect(within(conImagen).getAllByRole('img').length).toBeGreaterThan(0)
+    const compartida = screen.getByText(/Buenas prácticas para mantener ordenados/).closest('article') as HTMLElement
+    expect(within(compartida).getByText('Ingenieros Unidos')).toBeInTheDocument()
+    expect(within(compartida).getByText(/7 de noviembre a las 22:07/)).toBeInTheDocument()
+    expect(within(compartida).getAllByRole('img').length).toBeGreaterThan(0)
   })
 })

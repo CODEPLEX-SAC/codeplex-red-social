@@ -5,5 +5,5 @@ import datos from './solicitudes.json'
 export const RECIBIDAS = datos.recibidas as SolicitudRecibida[]
 export const PERSONAS_CONOCER_SOLICITUDES = datos.personasConocerSolicitudes as { nombre: string; comunes: string }[]
 export const TUS_LISTAS_SOLICITUDES = datos.tusListasSolicitudes as { icono: IconName; color: string; nombre: string; miembros: string }[]
-export const ENVIADAS = [datos.solicitudEnviadaEjemplo] as SolicitudEnviada[]
+export const ENVIADAS = datos.enviadas as SolicitudEnviada[]
 export const ACTIVIDAD_RECIENTE_SOLICITUDES = datos.actividadRecienteSolicitudes as { nombre: string; accion: string; tiempo: string }[]

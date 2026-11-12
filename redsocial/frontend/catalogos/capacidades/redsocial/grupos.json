@@ -1,5 +1,12 @@
 {
-  "acciones": ["listar", "descubrir", "crear", "unirse", "aceptar_invitacion", "rechazar_invitacion"],
+  "acciones": [
+    "listar",
+    "descubrir",
+    "crear",
+    "unirse",
+    "aceptar_invitacion",
+    "rechazar_invitacion"
+  ],
   "alertas": {
     "confirmar_salir_grupo": "Vas a salir de este grupo y dejarás de ver su actividad."
   },
@@ -33,14 +40,27 @@
   },
   "rutas": {
     "mis_grupos": "/grupos",
-    "descubrir": "/grupos/descubrir",
-    "invitaciones": "/grupos/invitaciones"
+    "descubrir": "/grupos/administras",
+    "invitaciones": "/grupos/sugerencias",
+    "detalle": "/grupos/detalle"
   },
   "titulo_menu": "Grupos",
   "pestanas": [
-    {"clave": "mis_grupos", "etiqueta": "Mis grupos", "ruta": "/grupos"},
-    {"clave": "descubrir", "etiqueta": "Descubrir", "ruta": "/grupos/descubrir"},
-    {"clave": "invitaciones", "etiqueta": "Invitaciones", "ruta": "/grupos/invitaciones", "insignia": 2}
+    {
+      "clave": "mis_grupos",
+      "etiqueta": "Tus grupos",
+      "ruta": "/grupos"
+    },
+    {
+      "clave": "invitaciones",
+      "etiqueta": "Sugerencias",
+      "ruta": "/grupos/sugerencias"
+    },
+    {
+      "clave": "descubrir",
+      "etiqueta": "Grupos que administras",
+      "ruta": "/grupos/administras"
+    }
   ],
   "titulos_pestanas": {
     "mis_grupos": "Mis grupos",
@@ -48,14 +68,13 @@
     "invitaciones": "Invitaciones"
   },
   "titulos": {
-    "mis_grupos": "Mis grupos",
-    "descubrir": "Grupos",
-    "invitaciones": "Invitaciones"
+    "mis_grupos": "Tus grupos",
+    "descubrir": "Grupos que administras",
+    "invitaciones": "Sugerencias"
   },
   "banner": {
     "titulo": "Conecta, colabora y comparte en grupos",
-    "descripcion": "Únete a grupos de tu interés o crea los tuyos propios.",
-    "descripcion_mis_grupos": "Únete a grupos que te interesan o crea los tuyos para colaborar con personas que comparten tus objetivos."
+    "descripcion": "Únete a grupos de tu interés o crea los tuyos propios."
   },
   "secciones": {
     "destacados": "Grupos destacados",
@@ -63,9 +82,6 @@
     "mis_grupos": "Mis grupos",
     "actividad_reciente": "Actividad reciente",
     "actividad_reciente_grupos": "Actividad reciente en tus grupos",
-    "resumen_invitaciones": "Resumen de invitaciones",
-    "grupos_que_administro": "Grupos que administro",
-    "mis_grupos_titulo": "Mis grupos",
     "grupos_populares": "Grupos populares"
   },
   "botones": {
@@ -80,19 +96,16 @@
     "mas_recientes": "Más recientes",
     "mas_antiguas": "Más antiguas",
     "ordenar_invitaciones": "Ordenar invitaciones",
-    "ir_a_configuracion": "Ir a configuración",
     "ver_grupo": "Ver grupo",
     "explorar_grupos": "Explorar grupos"
   },
   "leyendas": {
     "admin": "Admin",
     "ver_toda": "Ver toda",
-    "privado": "Privado",
     "en_grupo": "En grupo",
     "expira_en": "Expira en",
     "aceptaste_el": "Aceptaste el",
-    "ver_todas_aceptadas": "Ver todas las invitaciones aceptadas",
-    "ver_todas_invitaciones": "Ver todas las invitaciones"
+    "ver_todas_aceptadas": "Ver todas las invitaciones aceptadas"
   },
   "filtros": {
     "todas": "Todas",
@@ -102,7 +115,7 @@
     "expiradas": "Expiradas"
   },
   "placeholders": {
-    "buscar_invitaciones": "Buscar invitaciones por grupo o persona..."
+    "buscar_invitaciones": "Buscar invitación por nombre del grupo..."
   },
   "ayuda": {
     "titulo": "¿Necesitas ayuda?",
@@ -112,5 +125,1249 @@
     "titulo": "Consejo",
     "texto": "Únete a grupos relacionados con tus intereses para aprender, compartir y hacer crecer tu red profesional.",
     "texto_mis_grupos": "Explora grupos que se alineen con tus intereses para aprender, compartir y hacer crecer tu red."
+  },
+  "parametros_ruta": {
+    "grupo": "grupo",
+    "separador_id": "-",
+    "inicio_consulta": "?",
+    "vista": "vista",
+    "vista_contenido": "tu_contenido",
+    "normalizacion": "NFD"
+  },
+  "crear": {
+    "titulo": "Crear grupo",
+    "subtitulo": "Crea una comunidad para compartir conocimientos, colaborar en proyectos y conectar con personas con tus mismos intereses.",
+    "nombre": "Nombre del grupo",
+    "error_nombre": "Escribe el nombre del grupo.",
+    "invitar_seguidores": "Invitar a seguidores",
+    "invitar_ayuda": "Puedes invitar a personas que te siguen en CodePlex para que se unan al grupo.",
+    "boton": "Crear grupo",
+    "cancelar": "Cancelar",
+    "cerrar": "Cerrar",
+    "descripcion": "Descripción (opcional)",
+    "contador": ":n/:max",
+    "maximo_descripcion": 300,
+    "titulo_editar": "Editar grupo",
+    "guardar": "Guardar cambios",
+    "creado_titulo": "Grupo creado",
+    "creado_texto": "Tu grupo «:nombre» ya aparece en Grupos que administras.",
+    "editado": "Cambios guardados.",
+    "ver_grupo": "Ver grupo",
+    "cerrar_confirmacion": "Cerrar",
+    "sin_seguidores": "Todavía no hay seguidores de tu perfil para invitar."
+  },
+  "menu": {
+    "opciones": "Opciones de :nombre",
+    "elementos": [
+      {
+        "clave": "ver_solicitudes",
+        "etiqueta": "Ver solicitudes de miembros",
+        "icono": "solicitudes"
+      },
+      {
+        "clave": "estado",
+        "etiqueta": "Estado del grupo",
+        "icono": "estadisticas"
+      },
+      {
+        "clave": "editar",
+        "etiqueta": "Editar grupo",
+        "icono": "editar-oficial"
+      },
+      {
+        "clave": "tu_contenido",
+        "etiqueta": "Tu contenido",
+        "icono": "documento"
+      },
+      {
+        "clave": "compartir",
+        "etiqueta": "Compartir",
+        "icono": "compartir"
+      },
+      {
+        "clave": "novedades",
+        "etiqueta": "Administrar notificaciones",
+        "icono": "campana"
+      },
+      {
+        "clave": "fijar",
+        "etiqueta": "Fijar grupo",
+        "icono": "fijar"
+      },
+      {
+        "clave": "desfijar",
+        "etiqueta": "Dejar de fijar grupo",
+        "icono": "fijar"
+      },
+      {
+        "clave": "abandonar",
+        "etiqueta": "Abandonar grupo",
+        "icono": "inicio-sesion"
+      },
+      {
+        "clave": "eliminar",
+        "etiqueta": "Eliminar grupo",
+        "icono": "eliminar"
+      }
+    ],
+    "enlace_copiado": "Enlace del grupo copiado.",
+    "error_copia": "No se pudo copiar el enlace.",
+    "fijado": "Grupo fijado.",
+    "desfijado": "Grupo desfijado.",
+    "gestion": {
+      "cerrar": "Cerrar",
+      "cancelar": "Cancelar",
+      "guardar": "Guardar",
+      "solicitudes": {
+        "titulo": "Solicitudes de miembros",
+        "vacio": "No hay solicitudes de miembros pendientes."
+      },
+      "estado": {
+        "titulo": "Estado del grupo",
+        "miembros": "Miembros",
+        "publicaciones": "Publicaciones",
+        "creado": "Creado"
+      },
+      "novedades": {
+        "titulo": "Administrar notificaciones",
+        "opciones": [
+          {
+            "valor": "todas",
+            "etiqueta": "Todas las publicaciones"
+          },
+          {
+            "valor": "destacadas",
+            "etiqueta": "Solo destacadas"
+          },
+          {
+            "valor": "ninguna",
+            "etiqueta": "Desactivadas"
+          }
+        ],
+        "guardado": "Preferencia de notificaciones guardada para esta demostración."
+      },
+      "confirmaciones": {
+        "abandonar": {
+          "titulo": "¿Abandonar el grupo?",
+          "texto": "Dejarás de ver este grupo en Tus grupos. Podrás volver a unirte desde Sugerencias.",
+          "confirmar": "Abandonar grupo"
+        },
+        "eliminar": {
+          "titulo": "¿Eliminar el grupo?",
+          "texto": "El grupo dejará de aparecer en Grupos que administras. Esta acción se aplica solo a esta demostración.",
+          "confirmar": "Eliminar grupo"
+        }
+      },
+      "titulos": {
+        "solicitudes": "Solicitudes de miembros",
+        "estado": "Estado del grupo",
+        "novedades": "Administrar notificaciones",
+        "abandonar": "¿Abandonar el grupo?",
+        "eliminar": "¿Eliminar el grupo?",
+        "editar": "Estado del grupo"
+      }
+    }
+  },
+  "detalle": {
+    "pestanas": [
+      {
+        "clave": "conversacion",
+        "etiqueta": "Conversación"
+      },
+      {
+        "clave": "miembros",
+        "etiqueta": "Miembros"
+      },
+      {
+        "clave": "eventos",
+        "etiqueta": "Eventos"
+      },
+      {
+        "clave": "multimedia",
+        "etiqueta": "Archivos multimedia"
+      },
+      {
+        "clave": "archivos",
+        "etiqueta": "Archivos"
+      }
+    ],
+    "tipo": "Grupo",
+    "invitar": "Invitar",
+    "compartir": "Compartir",
+    "volver": "Volver a Tus grupos",
+    "portada": "Portada de :nombre",
+    "editar_portada": "Editar portada",
+    "avatar": "Imagen de :nombre",
+    "configuracion": {
+      "titulo": "Termina de configurar tu grupo",
+      "ayuda": "Sigue añadiendo detalles importantes y empieza a interactuar con la comunidad.",
+      "progreso": ":n de :total pasos completados",
+      "cerrar": "Cerrar la guía de configuración",
+      "barra": [
+        "w-0",
+        "w-1/4",
+        "w-2/4",
+        "w-3/4",
+        "w-full"
+      ],
+      "elementos": [
+        {
+          "clave": "invitar",
+          "etiqueta": "Invitar a personas a unirse",
+          "icono": "nuevo-usuario"
+        },
+        {
+          "clave": "portada",
+          "etiqueta": "Añadir una foto de portada",
+          "icono": "cuadricula-oficial"
+        },
+        {
+          "clave": "descripcion",
+          "etiqueta": "Añadir una descripción",
+          "icono": "editar-oficial"
+        },
+        {
+          "clave": "publicacion",
+          "etiqueta": "Crear una publicación",
+          "icono": "editar"
+        }
+      ]
+    },
+    "informacion": {
+      "titulo": "Información del grupo",
+      "administrador": "Administrador: :nombre"
+    },
+    "publicar": {
+      "placeholder": "¿Qué quieres compartir con el grupo?",
+      "acciones": [
+        {
+          "clave": "foto",
+          "etiqueta": "Foto/video",
+          "icono": "adjuntar"
+        },
+        {
+          "clave": "etiquetar",
+          "etiqueta": "Etiquetar personas",
+          "icono": "amigos"
+        },
+        {
+          "clave": "encuesta",
+          "etiqueta": "Encuesta",
+          "icono": "encuesta"
+        },
+        {
+          "clave": "evento",
+          "etiqueta": "Evento",
+          "icono": "calendario"
+        }
+      ],
+      "miembro": {
+        "placeholder": "Escribe algo...",
+        "acciones": [
+          {
+            "clave": "foto",
+            "etiqueta": "Foto/video",
+            "icono": "adjuntar"
+          },
+          {
+            "clave": "encuesta",
+            "etiqueta": "Encuesta",
+            "icono": "encuesta"
+          }
+        ]
+      }
+    },
+    "publicacion": {
+      "administrador": "Administrador",
+      "cuando": "Hace un momento",
+      "saludo": "¡Bienvenidos al grupo :nombre!",
+      "acciones": [
+        {
+          "clave": "me_gusta",
+          "etiqueta": "Me gusta",
+          "icono": "me-gusta"
+        },
+        {
+          "clave": "comentar",
+          "etiqueta": "Comentar",
+          "icono": "comentario"
+        },
+        {
+          "clave": "compartir",
+          "etiqueta": "Compartir",
+          "icono": "compartir"
+        }
+      ],
+      "menu": [
+        {
+          "clave": "fijar",
+          "etiqueta": "Fijar en destacados",
+          "icono": "fijar"
+        },
+        {
+          "clave": "editar",
+          "etiqueta": "Editar",
+          "icono": "editar-oficial"
+        },
+        {
+          "clave": "guardar",
+          "etiqueta": "Guardar publicación",
+          "icono": "guardados"
+        },
+        {
+          "clave": "eliminar",
+          "etiqueta": "Eliminar",
+          "icono": "eliminar",
+          "peligro": true
+        }
+      ],
+      "sin_descripcion": "Todavía no hay una descripción.",
+      "clave_bienvenida": "bienvenida",
+      "separador": "\n\n",
+      "marcador_nombre": ":nombre"
+    },
+    "vacio": {
+      "eventos": "Este grupo todavía no tiene eventos."
+    },
+    "miembros_uno": "1 miembro",
+    "miembros_otros": ":n miembros",
+    "buscar_en_grupo": "Buscar en el grupo",
+    "mas_opciones": "Más opciones del grupo",
+    "miembros": {
+      "titulo": "Miembros · :n",
+      "ayuda": "Las personas y las páginas nuevas que se unan a este grupo aparecerán aquí.",
+      "buscar": "Busca un miembro",
+      "sin_resultados": "No encontramos miembros con ese nombre.",
+      "administradores": "Administradores y moderadores: · :n",
+      "voces": "Voces destacadas",
+      "voces_texto": "Las voces destacadas comparten contenido que tu grupo valora de forma periódica.",
+      "anadir": "Añadir miembros",
+      "nuevos": "Nuevos miembros del grupo",
+      "nuevos_ayuda": "Esta lista incluye a las personas que se han unido al grupo.",
+      "insignia": "Administrador",
+      "subtitulo_administrador": "Administrador del grupo",
+      "subtitulo_miembro": "Miembro del grupo",
+      "creo": "Creó el grupo el :fecha",
+      "opciones": "Opciones de :nombre",
+      "acciones": [
+        {
+          "clave": "administrador",
+          "etiqueta": "Hacer administrador",
+          "icono": "corona"
+        },
+        {
+          "clave": "quitar",
+          "etiqueta": "Quitar del grupo",
+          "icono": "persona-menos",
+          "peligro": true
+        }
+      ],
+      "mostrando": "Mostrando :n de :total miembros",
+      "nuevos_maximo": 5
+    },
+    "multimedia": {
+      "titulo": "Contenido multimedia",
+      "pestanas": [
+        {
+          "clave": "fotos",
+          "etiqueta": "Fotos"
+        },
+        {
+          "clave": "videos",
+          "etiqueta": "Vídeos"
+        },
+        {
+          "clave": "albumes",
+          "etiqueta": "Álbumes"
+        }
+      ],
+      "crear_album": "Crear álbum",
+      "anadir": "Añadir fotos o vídeos",
+      "vacio": "No hay resultados",
+      "vacio_fotos": "Aún no hay fotos en este grupo.",
+      "vacio_videos": "Aún no hay vídeos en este grupo.",
+      "vacio_albumes": "Aún no hay álbumes en este grupo.",
+      "foto": "Foto :n de :nombre",
+      "video": "Vídeo :n de :nombre",
+      "visor": "Fotos de :nombre",
+      "selector": "Elegir fotos o vídeos",
+      "tipos_aceptados": "image/*,video/*",
+      "albumes_iniciales": [
+        "Datos y análisis",
+        "Eventos del grupo"
+      ],
+      "album_portada": "Portada del álbum :nombre",
+      "aviso_anadido": "Archivos añadidos solo en esta demostración.",
+      "crear": {
+        "titulo": "Crear álbum",
+        "nombre": "Nombre del álbum",
+        "marcador": "Escribe un nombre",
+        "error": "Escribe un nombre para el álbum.",
+        "confirmar": "Crear",
+        "cancelar": "Cancelar",
+        "cerrar": "Cerrar"
+      }
+    },
+    "archivos": {
+      "titulo": "Archivos",
+      "subir": "Subir archivos",
+      "etiqueta_selector": "Elegir archivos para el grupo",
+      "pendiente": "Los archivos elegidos solo se muestran aquí: todavía no se suben porque falta el servicio de grupos.",
+      "quitar": "Quitar :nombre",
+      "vacio": "Aún no hay archivos en este grupo."
+    },
+    "localidad_fecha": "es-PE",
+    "creado_hoy": "Creado hoy, :fecha",
+    "volver_grupo": "Volver al grupo",
+    "publicado": "Tu publicación se agregó al grupo.",
+    "enlace_copiado": "Enlace del grupo copiado.",
+    "error_copia": "No se pudo copiar el enlace.",
+    "sin_publicaciones_busqueda": "Ninguna publicación coincide con tu búsqueda.",
+    "portada_selector": "Elegir una foto de portada",
+    "portada_tipos": "image/*",
+    "pestanas_miembro": [
+      {
+        "clave": "informacion",
+        "etiqueta": "Información"
+      },
+      {
+        "clave": "conversacion",
+        "etiqueta": "Conversación"
+      },
+      {
+        "clave": "miembros",
+        "etiqueta": "Miembros"
+      },
+      {
+        "clave": "eventos",
+        "etiqueta": "Eventos"
+      },
+      {
+        "clave": "multimedia",
+        "etiqueta": "Archivos multimedia"
+      },
+      {
+        "clave": "archivos",
+        "etiqueta": "Archivos"
+      }
+    ],
+    "membresia": {
+      "etiqueta": "Eres miembro",
+      "elementos": [
+        {
+          "clave": "novedades",
+          "etiqueta": "Administrar notificaciones",
+          "icono": "campana"
+        },
+        {
+          "clave": "seguir",
+          "etiqueta": "Seguir el grupo",
+          "icono": "campana"
+        },
+        {
+          "clave": "dejar_seguir",
+          "etiqueta": "Dejar de seguir el grupo",
+          "icono": "silenciado"
+        },
+        {
+          "clave": "abandonar",
+          "etiqueta": "Abandonar grupo",
+          "icono": "inicio-sesion"
+        }
+      ],
+      "siguiendo": "Ahora sigues el grupo.",
+      "sin_seguir": "Dejaste de seguir el grupo."
+    },
+    "recientes": {
+      "titulo": "Archivos multimedia recientes",
+      "imagen": "Archivo multimedia :n de :nombre",
+      "visor": "Archivos multimedia de :nombre",
+      "ver_todo": "Ver todo"
+    },
+    "miembros_avatares": "Miembros del grupo",
+    "compartir_grupo": {
+      "titulo": "Compartir grupo"
+    },
+    "avatares_maximo": 12,
+    "separador_miles": ".",
+    "minimo_miembros": 30
+  },
+  "clases": {
+    "crear": {
+      "dialogo": "max-w-130 rounded-2xl max-600:max-w-full max-600:rounded-none",
+      "cabecera": "flex items-start gap-3 px-5 pt-5",
+      "icono": "grid h-11 w-11 flex-none place-items-center rounded-xl bg-primario-suave text-primario",
+      "titulos": "min-w-0 flex-1",
+      "titulo": "m-0 text-titulo-banner text-texto",
+      "subtitulo": "m-0 mt-1 text-auxiliar leading-texto text-texto-suave",
+      "formulario": "grid gap-4 p-5",
+      "ilustracion": "h-40 w-full rounded-xl object-cover max-600:h-28",
+      "contador": "justify-self-end text-auxiliar text-texto-suave",
+      "invitar": "flex items-center gap-3 rounded-xl border border-borde p-3",
+      "invitar_icono": "grid h-10 w-10 flex-none place-items-center rounded-lg bg-fondo text-primario",
+      "invitar_textos": "min-w-0 flex-1",
+      "invitar_titulo": "block text-nombre-entidad text-texto",
+      "ayuda": "m-0 text-auxiliar text-texto-suave",
+      "pie": "flex flex-wrap justify-end gap-3",
+      "aviso": "m-0 rounded-lg bg-fondo-info-suave px-3 py-2 text-auxiliar text-azul-categoria-texto",
+      "exito": "grid justify-items-center gap-3 p-8 text-center",
+      "exito_icono": "grid h-14 w-14 place-items-center rounded-full bg-fondo-exito-suave text-exito-texto"
+    },
+    "menu": {
+      "aviso": "m-0 mt-2 rounded-lg bg-fondo px-3 py-2 text-auxiliar text-texto-suave"
+    },
+    "tarjeta": {
+      "enlace": "no-underline hover:underline"
+    },
+    "detalle": {
+      "pagina": "grid gap-4",
+      "portada": "rounded-xl border border-borde bg-white",
+      "portada_imagen": "relative mx-auto h-64 max-w-250 overflow-hidden rounded-xl bg-fondo max-600:h-40",
+      "portada_foto": "h-full w-full object-cover object-center",
+      "portada_cuerpo": "flex flex-wrap items-center justify-between gap-4 p-5 max-600:p-4",
+      "portada_identidad": "flex min-w-0 items-center gap-4",
+      "avatar": "h-16 w-16 flex-none rounded-xl object-cover",
+      "titulo": "m-0 text-titulo-pagina text-texto",
+      "subtitulo": "m-0 flex items-center gap-1.5 text-subtitulo text-texto-suave",
+      "acciones": "flex flex-wrap items-center gap-2",
+      "pestanas": "flex min-w-0 flex-1 overflow-x-auto",
+      "rejilla": "grid grid-cols-[minmax(0,1fr)_minmax(0,22rem)] items-start gap-4 max-1100:grid-cols-1",
+      "columna": "grid min-w-0 gap-4",
+      "tarjeta": "grid gap-3 rounded-xl border border-borde bg-white p-5 max-600:p-4",
+      "tarjeta_cabecera": "flex items-start justify-between gap-3",
+      "titulo_tarjeta": "m-0 text-nombre-entidad text-texto",
+      "ayuda": "m-0 text-auxiliar text-texto-suave",
+      "progreso_texto": "m-0 text-auxiliar text-exito-texto",
+      "barra": "h-1.5 w-full overflow-hidden rounded-full bg-fondo-hover-neutro",
+      "barra_relleno": "h-full rounded-full bg-exito",
+      "paso": "flex w-full items-center justify-start gap-3 text-left",
+      "paso_texto": "min-w-0 flex-1",
+      "datos": "grid gap-3",
+      "dato": "flex items-center gap-3 text-subtitulo text-texto",
+      "dato_icono": "h-4.5 w-4.5 flex-none text-texto-suave",
+      "descripcion": "m-0 text-subtitulo leading-texto text-texto",
+      "publicador": "grid gap-3",
+      "publicador_fila": "flex items-center gap-3",
+      "publicador_campo": "min-w-0 flex-1 justify-start rounded-full bg-fondo text-texto-suave",
+      "publicador_acciones": "grid grid-cols-4 gap-1 border-t border-borde pt-2 max-600:grid-cols-2",
+      "publicador_accion": "justify-center gap-2",
+      "insignia": "rounded-md bg-primario-suave px-2 py-px text-badge text-primario",
+      "vacio": "py-10",
+      "aviso": "m-0 rounded-lg bg-fondo-info-suave px-3 py-2 text-auxiliar text-azul-categoria-texto",
+      "portada_marco": "px-4 pt-4 max-600:px-2 max-600:pt-2",
+      "pestanas_fila": "flex items-center justify-between gap-2 border-t border-borde px-5 max-600:px-2",
+      "pestanas_acciones": "flex flex-none items-center gap-2",
+      "multimedia_cabecera": "flex flex-wrap items-center justify-between gap-3",
+      "multimedia_acciones": "flex flex-wrap items-center gap-3",
+      "miembros_seccion": "grid gap-3 border-t border-borde pt-4",
+      "miembro_fila": "flex items-center gap-3",
+      "miembro_textos": "grid min-w-0 flex-1 gap-0.5",
+      "miembro_nombre": "text-nombre-entidad text-texto",
+      "miembro_detalle": "text-auxiliar text-texto-suave",
+      "miembro_menu": "w-10 flex-none bg-fondo-hover-neutro px-0 text-texto-icono hover:bg-fondo-hover-suave",
+      "voces": "grid justify-items-center gap-3 py-4 text-center",
+      "archivos_lista": "m-0 grid list-none gap-2 p-0",
+      "archivo_fila": "flex items-center gap-3 rounded-lg border border-borde p-3",
+      "archivo_nombre": "min-w-0 flex-1 truncate text-subtitulo text-texto",
+      "archivo_tamano": "text-auxiliar text-texto-suave",
+      "portada_editar": "absolute bottom-3 right-3",
+      "busqueda": "min-w-0",
+      "avatares_miembros": "flex items-center -space-x-1.5 pt-1",
+      "recientes": "grid grid-cols-2 gap-2",
+      "reciente_imagen": "aspect-square w-full rounded-lg object-cover",
+      "reciente_boton": "h-auto w-full overflow-hidden rounded-lg border-transparent p-0",
+      "fotos_rejilla": "grid grid-cols-6 gap-2 max-1100:grid-cols-4 max-600:grid-cols-3",
+      "foto_boton": "aspect-square h-auto w-full overflow-hidden rounded-md border-transparent p-0",
+      "foto_imagen": "h-full w-full object-cover",
+      "video_rejilla": "grid grid-cols-3 gap-2 max-600:grid-cols-2",
+      "video_medio": "aspect-video w-full rounded-md bg-fondo object-cover",
+      "albumes_rejilla": "grid grid-cols-4 gap-3 max-900:grid-cols-3 max-600:grid-cols-2",
+      "album": "grid min-w-0 gap-2",
+      "album_portada": "aspect-square w-full rounded-lg border border-borde bg-fondo object-cover",
+      "album_nombre": "truncate text-nombre-fila text-texto",
+      "reciente_ver_todo": "w-full justify-center",
+      "modal_album_campo": "grid gap-3 p-5"
+    },
+    "tus_grupos": {
+      "pagina": "grid gap-4",
+      "filtros": "flex flex-wrap items-center justify-between gap-3",
+      "buscador": "min-w-0 flex-1 max-w-120",
+      "orden": "w-48 max-600:w-full",
+      "titulo": "m-0 text-titulo-seccion text-texto",
+      "rejilla": "grid grid-cols-3 gap-4 max-1100:grid-cols-2 max-600:grid-cols-1",
+      "tarjeta": "grid min-w-0 gap-3 rounded-xl border border-borde bg-white p-4",
+      "cabecera": "flex min-w-0 items-start gap-3",
+      "miniatura": "h-16 w-16 flex-none rounded-lg object-cover",
+      "textos": "min-w-0 flex-1",
+      "nombre": "m-0 text-nombre-entidad text-texto",
+      "visita": "block text-auxiliar leading-texto text-texto-suave",
+      "acciones": "flex items-start gap-2",
+      "ver": "min-w-0 flex-1 justify-center bg-primario-suave text-campo-formulario text-primario no-underline hover:bg-primario hover:text-white hover:no-underline",
+      "paginacion": "flex justify-center py-2",
+      "vacio": "col-span-full py-8",
+      "titulo_fila": "flex items-center justify-between gap-3",
+      "menu_relleno": "w-10 flex-none bg-fondo-hover-neutro px-0 text-texto-icono hover:bg-fondo-hover-suave",
+      "fijado": "inline-flex w-fit rounded-md bg-primario-suave px-2 py-px text-badge text-primario"
+    },
+    "sugerencias": {
+      "pagina": "grid gap-5",
+      "filtros": "flex flex-wrap items-center gap-3",
+      "buscador": "min-w-0 flex-1",
+      "categoria": "w-56 max-600:w-full",
+      "titulo": "m-0 text-titulo-seccion text-texto",
+      "rejilla": "grid grid-cols-5 gap-4 max-1100:grid-cols-3 max-780:grid-cols-2 max-480:grid-cols-1",
+      "tarjeta": "flex h-full min-w-0 flex-col overflow-hidden rounded-xl border border-borde bg-white pb-3",
+      "portada": "block h-28 w-full object-cover",
+      "cuerpo": "flex flex-1 flex-col gap-2 px-3 pt-2",
+      "nombre": "m-0 min-h-12 text-nombre-entidad text-texto",
+      "meta": "m-0 text-auxiliar text-texto-suave",
+      "unirme": "mt-auto w-full",
+      "aviso": "m-0 rounded-lg bg-fondo-info-suave px-3 py-2 text-auxiliar text-azul-categoria-texto",
+      "seccion": "grid gap-3"
+    },
+    "gestion": {
+      "dialogo": "max-w-120 rounded-2xl max-600:max-w-full max-600:rounded-none",
+      "cuerpo": "grid gap-3 p-5",
+      "texto": "m-0 text-subtitulo leading-texto text-texto-suave",
+      "pie": "flex flex-wrap justify-end gap-3 px-5 pb-5",
+      "dato": "flex items-center justify-between gap-3 text-subtitulo text-texto",
+      "dato_valor": "text-nombre-entidad text-texto",
+      "confirmacion": "m-0 text-auxiliar text-exito-texto"
+    },
+    "invitar": {
+      "dialogo": "max-w-120 rounded-2xl max-600:max-w-full max-600:rounded-none",
+      "cuerpo": "grid gap-3 p-5",
+      "lista": "m-0 grid max-h-72 list-none gap-1 overflow-y-auto p-0",
+      "fila": "flex items-center gap-3 py-1.5",
+      "textos": "grid min-w-0 flex-1",
+      "nombre": "text-nombre-entidad text-texto",
+      "detalle": "text-auxiliar text-texto-suave",
+      "estado": "text-auxiliar text-exito-texto",
+      "nota": "m-0 text-auxiliar text-texto-suave",
+      "vacio": "py-4"
+    },
+    "contenido": {
+      "cabecera": "flex flex-wrap items-center justify-between gap-3",
+      "titulo": "m-0 text-titulo-seccion text-texto",
+      "orden": "w-48 max-600:w-full",
+      "tarjeta": "grid gap-3 rounded-xl border border-borde bg-white p-5 max-600:p-4",
+      "autor": "flex items-center gap-3",
+      "nombre": "text-nombre-entidad text-texto",
+      "meta": "text-auxiliar text-texto-suave",
+      "texto": "m-0 whitespace-pre-line text-subtitulo leading-texto text-texto",
+      "vacio": "grid justify-items-center gap-3 rounded-xl border border-borde bg-white py-16 text-center",
+      "ilustracion": "grid h-28 w-28 place-items-center rounded-full bg-primario-suave text-primario",
+      "vacio_texto": "m-0 text-titulo-banner text-texto-suave",
+      "pagina": "grid gap-4"
+    },
+    "administracion": {
+      "fila": "flex items-start gap-4 max-900:flex-col max-900:items-stretch",
+      "aside_abierto": "w-80 flex-none max-1250:w-64 max-900:w-full max-900:block",
+      "aside_cerrado": "w-80 flex-none max-1250:w-64 max-900:hidden",
+      "boton_movil_contenedor": "hidden max-900:block",
+      "boton_movil": "w-full justify-center gap-2",
+      "contenido": "min-w-0 flex-1",
+      "panel": "grid min-w-0 grid-cols-1 content-start gap-0.5 rounded-xl border border-borde bg-white p-4 text-left",
+      "identidad": "flex items-center gap-3 px-1 pb-3",
+      "logo": "h-12 w-12 flex-none rounded-lg object-cover",
+      "identidad_textos": "grid min-w-0 justify-items-start gap-0.5 text-left",
+      "titulo": "m-0 mt-1 border-b border-borde px-1 pb-3 text-left text-etiqueta text-texto-suave",
+      "nombre": "truncate text-nombre-entidad text-texto",
+      "categoria": "mt-2 grid grid-cols-1 gap-0.5 border-t border-borde-suave pt-2",
+      "categoria_cabecera": "h-10 w-full gap-2 bg-transparent px-2.5 text-left text-subtitulo text-texto-suave hover:bg-fondo",
+      "opcion": "min-h-11 w-full min-w-0 justify-start gap-3 whitespace-normal px-2.5 text-left text-nombre-fila",
+      "opcion_activa": "bg-primario-suave text-primario",
+      "opcion_inactiva": "bg-transparent text-texto hover:bg-fondo",
+      "vista": "grid gap-4 rounded-xl border border-borde bg-white p-5 max-600:p-4",
+      "vista_cabecera": "flex flex-wrap items-start justify-between gap-3",
+      "vista_titulo": "m-0 text-titulo-seccion text-texto",
+      "vista_descripcion": "m-0 text-auxiliar text-texto-suave",
+      "demostracion": "rounded-md bg-fondo-info-suave px-2 py-0.5 text-badge text-azul-categoria-texto",
+      "indicadores": "grid grid-cols-4 gap-3 max-1100:grid-cols-2 max-480:grid-cols-1",
+      "indicador": "grid gap-1 rounded-lg border border-borde p-4",
+      "indicador_etiqueta": "text-auxiliar text-texto-suave",
+      "indicador_valor": "text-titulo-pagina text-texto",
+      "lista": "m-0 grid list-none gap-2 p-0",
+      "fila_lista": "flex flex-wrap items-center gap-3 rounded-lg border border-borde p-3",
+      "fila_textos": "grid min-w-0 flex-1 gap-0.5",
+      "fila_titulo": "text-nombre-entidad text-texto",
+      "fila_detalle": "text-auxiliar text-texto-suave",
+      "fila_acciones": "flex flex-wrap gap-2",
+      "aviso": "m-0 rounded-lg bg-fondo px-3 py-2 text-auxiliar text-texto-suave",
+      "formulario": "flex flex-wrap items-end gap-3",
+      "campo": "min-w-0 flex-1",
+      "barras": [
+        "w-0",
+        "w-1/12",
+        "w-2/12",
+        "w-3/12",
+        "w-4/12",
+        "w-5/12",
+        "w-6/12",
+        "w-7/12",
+        "w-8/12",
+        "w-9/12",
+        "w-11/12",
+        "w-full"
+      ],
+      "barra_fila": "grid grid-cols-[4rem_minmax(0,1fr)_3rem] items-center gap-3",
+      "barra_pista": "h-3 overflow-hidden rounded-full bg-fondo-hover-neutro",
+      "barra": "h-full rounded-full bg-primario",
+      "barra_valor": "text-right text-auxiliar text-texto",
+      "nota": "m-0 text-auxiliar text-texto-suave",
+      "vacio": "py-8",
+      "miembros_identidad": "text-auxiliar text-texto-suave",
+      "principal": "grid grid-cols-1 gap-0.5 pt-2",
+      "opcion_icono": "h-4.5 w-4.5 flex-none",
+      "vista_miembros": "grid gap-4",
+      "categoria_titulo": "min-w-0 flex-1 text-left"
+    },
+    "pagina_lateral": {
+      "rejilla": "grid grid-cols-[minmax(0,1fr)_minmax(0,20rem)] items-start gap-x-6 max-1250:grid-cols-1",
+      "principal": "min-w-0",
+      "lateral": "grid min-w-0 content-start gap-4",
+      "cabecera": "flex min-w-0 items-start gap-3",
+      "icono_caja": "grid h-10 w-10 flex-none place-items-center rounded-lg bg-primario-suave text-primario",
+      "icono": "h-5 w-5",
+      "textos": "grid min-w-0 gap-0.5",
+      "titulo": "m-0 text-nombre-entidad text-texto",
+      "texto": "m-0 text-auxiliar leading-texto text-texto-suave",
+      "cabecera_fila": "flex items-center justify-between gap-3",
+      "lista": "m-0 grid list-none gap-1 p-0",
+      "fila": "flex min-w-0 items-center gap-3 rounded-lg px-1 py-1.5 text-left text-subtitulo text-texto no-underline",
+      "fila_icono": "grid h-9 w-9 flex-none place-items-center rounded-lg",
+      "fila_textos": "grid min-w-0 flex-1",
+      "fila_titulo": "truncate text-nombre-fila text-texto",
+      "fila_detalle": "truncate text-auxiliar text-texto-suave",
+      "indicadores": "grid grid-cols-2 gap-2",
+      "indicador": "grid gap-0.5 rounded-lg border border-borde p-3",
+      "indicador_valor": "text-titulo-seccion text-texto",
+      "indicador_etiqueta": "text-auxiliar text-texto-suave",
+      "boton_ancho": "w-full justify-center no-underline",
+      "aviso": "m-0 text-auxiliar text-texto-suave",
+      "variantes": {
+        "normal": "grid min-w-0 gap-3 rounded-xl border border-borde bg-white p-4",
+        "suave": "grid min-w-0 gap-3 rounded-xl border border-borde bg-fondo-activo-filtro p-4",
+        "verde": "grid min-w-0 gap-3 rounded-xl border border-borde bg-fondo-categoria-verde p-4"
+      },
+      "tarjeta": "grid min-w-0 gap-3 rounded-xl border border-borde bg-white p-4",
+      "encabezado": "mb-4 flex min-w-0 flex-wrap items-start justify-between gap-x-5 gap-y-3",
+      "titulo_pagina": "m-0 text-titulo-pagina text-texto",
+      "navegacion": "col-span-2 min-w-0 max-1250:col-span-1"
+    }
+  },
+  "tus_grupos": {
+    "buscar": "Buscar en tus grupos...",
+    "orden": "Ordenar grupos",
+    "ordenes": [
+      {
+        "valor": "recientes",
+        "etiqueta": "Más recientes"
+      },
+      {
+        "valor": "antiguos",
+        "etiqueta": "Más antiguos"
+      },
+      {
+        "valor": "nombre",
+        "etiqueta": "Nombre (A-Z)"
+      }
+    ],
+    "titulo": "Todos los grupos a los que te has unido (:n)",
+    "ultima_visita": "Última visita:",
+    "sin_resultados": "No encontramos grupos con ese nombre.",
+    "paginacion": "Paginación de tus grupos",
+    "tamano_pagina": 6,
+    "titulo_administrados": "Grupos que administras (:n)",
+    "buscar_administrados": "Buscar en los grupos que administras...",
+    "fijado": "Fijado",
+    "visita_ahora": "hace un momento",
+    "fijado_etiqueta": "Fijado"
+  },
+  "sugerencias": {
+    "buscar": "Buscar grupos por nombre...",
+    "categoria": "Filtrar por categoría",
+    "todas": "Todas las categorías",
+    "para_ti": "Sugerencias para ti",
+    "mas": "Más sugerencias",
+    "unirme": "Unirme al grupo",
+    "sin_resultados": "No encontramos grupos con esos criterios.",
+    "unido": "Te uniste a «:nombre». Ya aparece en Tus grupos."
+  },
+  "invitar": {
+    "titulo": "Invitar a personas al grupo",
+    "buscar": "Buscar personas de tu red...",
+    "etiqueta_busqueda": "Buscar personas para invitar",
+    "sin_resultados": "No encontramos personas con ese nombre.",
+    "invitar": "Invitar",
+    "preparada": "Invitación preparada",
+    "nota": "Las invitaciones quedan preparadas en esta demostración; todavía no se envían a nadie.",
+    "invitar_a": "Invitar a :nombre",
+    "cerrar": "Cerrar",
+    "maximo": 6
+  },
+  "tus_contenido": {
+    "titulo": "Tu contenido",
+    "publicado": "Publicado · :n",
+    "orden": "Ordenar publicaciones",
+    "ordenes": [
+      {
+        "valor": "recientes",
+        "etiqueta": "Más recientes"
+      },
+      {
+        "valor": "antiguos",
+        "etiqueta": "Más antiguos"
+      }
+    ],
+    "ver_en_grupo": "Ver en el grupo",
+    "en_el_grupo": ":autor · :grupo",
+    "vacio": "No hay publicaciones para mostrar",
+    "ilustracion": "Sin publicaciones"
+  },
+  "administracion": {
+    "titulo": "Administrar",
+    "boton_movil": "Administrar grupo",
+    "navegacion": "Navegación para administrar el grupo",
+    "demostracion": "Datos de demostración",
+    "logo": "Imagen de :nombre",
+    "categorias": [
+      {
+        "clave": "herramientas",
+        "titulo": "Herramientas para administradores",
+        "opciones": [
+          {
+            "clave": "sugerencias",
+            "etiqueta": "Sugerencias de miembros",
+            "icono": "nuevo-usuario"
+          },
+          {
+            "clave": "solicitudes",
+            "etiqueta": "Solicitudes de miembros",
+            "icono": "solicitudes"
+          },
+          {
+            "clave": "preguntas",
+            "etiqueta": "Preguntas para miembros",
+            "icono": "informacion"
+          },
+          {
+            "clave": "pendientes",
+            "etiqueta": "Publicaciones pendientes",
+            "icono": "documento"
+          },
+          {
+            "clave": "programadas",
+            "etiqueta": "Publicaciones programadas",
+            "icono": "calendario"
+          },
+          {
+            "clave": "registro",
+            "etiqueta": "Registro de actividad",
+            "icono": "actividad"
+          },
+          {
+            "clave": "incidencias",
+            "etiqueta": "Alertas de moderación",
+            "icono": "aviso"
+          },
+          {
+            "clave": "estado",
+            "etiqueta": "Estado del grupo",
+            "icono": "escudo"
+          }
+        ]
+      },
+      {
+        "clave": "configuracion",
+        "titulo": "Configuración",
+        "opciones": [
+          {
+            "clave": "roles",
+            "etiqueta": "Roles de la comunidad",
+            "icono": "permiso-especifico"
+          },
+          {
+            "clave": "configuracion",
+            "etiqueta": "Configuración del grupo",
+            "icono": "configuracion"
+          }
+        ]
+      },
+      {
+        "clave": "estadisticas",
+        "titulo": "Estadísticas",
+        "opciones": [
+          {
+            "clave": "crecimiento",
+            "etiqueta": "Crecimiento",
+            "icono": "estadisticas"
+          },
+          {
+            "clave": "interaccion",
+            "etiqueta": "Interacción",
+            "icono": "reportes-barra"
+          },
+          {
+            "clave": "administradores",
+            "etiqueta": "Administradores y moderadores",
+            "icono": "usuarios"
+          },
+          {
+            "clave": "miembros",
+            "etiqueta": "Miembros",
+            "icono": "grupos"
+          }
+        ]
+      }
+    ],
+    "vistas": {
+      "resumen": {
+        "titulo": "Resumen",
+        "descripcion": "Panorama administrativo de tu grupo.",
+        "indicadores": {
+          "miembros": "Miembros",
+          "publicaciones": "Publicaciones",
+          "comentarios": "Comentarios",
+          "reacciones": "Reacciones"
+        },
+        "solicitudes": "Solicitudes de miembros",
+        "sin_solicitudes": "Ninguna pendiente"
+      },
+      "preguntas": {
+        "titulo": "Preguntas para miembros",
+        "descripcion": "Define lo que quieres preguntar a quienes quieran unirse al grupo.",
+        "nueva": "Nueva pregunta",
+        "placeholder": "Escribe una pregunta",
+        "agregar": "Añadir pregunta",
+        "quitar": "Quitar la pregunta «:pregunta»",
+        "vacio": "Todavía no hay preguntas para los nuevos miembros.",
+        "lista": "Preguntas del grupo",
+        "resultado": "Cambio aplicado solo en esta demostración."
+      },
+      "pendientes": {
+        "titulo": "Publicaciones pendientes",
+        "descripcion": "Publicaciones que esperan tu revisión.",
+        "vacio": "No hay publicaciones pendientes de revisión.",
+        "acciones": [
+          "Aprobar",
+          "Rechazar"
+        ],
+        "resultado": "«:accion» aplicado a «:titulo». Solo en esta demostración."
+      },
+      "programadas": {
+        "titulo": "Publicaciones programadas",
+        "descripcion": "Publicaciones que se publicarán en una fecha elegida.",
+        "vacio": "No hay publicaciones programadas.",
+        "acciones": [
+          "Cancelar publicación"
+        ],
+        "resultado": "«:accion» aplicado a «:titulo». Solo en esta demostración."
+      },
+      "registro": {
+        "titulo": "Registro de actividad",
+        "descripcion": "Historial de lo que ocurre en el grupo.",
+        "vacio": "Todavía no hay actividad registrada.",
+        "acciones": [],
+        "resultado": ""
+      },
+      "roles": {
+        "titulo": "Roles y permisos",
+        "descripcion": "Roles disponibles hoy en el grupo.",
+        "personas": ":n personas",
+        "nota": "Los moderadores todavía no forman parte del modelo de grupos, por eso no se muestran.",
+        "roles": [
+          {
+            "clave": "administrador",
+            "etiqueta": "Administrador",
+            "detalle": "Gestiona el grupo y su contenido. El creador es el administrador principal."
+          },
+          {
+            "clave": "miembro",
+            "etiqueta": "Miembro",
+            "detalle": "Participa en la conversación y consulta el contenido del grupo."
+          }
+        ]
+      },
+      "crecimiento": {
+        "titulo": "Crecimiento",
+        "descripcion": "Nuevos miembros por mes.",
+        "unidad": "nuevos miembros",
+        "serie": [
+          {
+            "etiqueta": "Jun",
+            "valor": 4
+          },
+          {
+            "etiqueta": "Jul",
+            "valor": 7
+          },
+          {
+            "etiqueta": "Ago",
+            "valor": 9
+          },
+          {
+            "etiqueta": "Sep",
+            "valor": 12
+          },
+          {
+            "etiqueta": "Oct",
+            "valor": 15
+          },
+          {
+            "etiqueta": "Nov",
+            "valor": 18
+          }
+        ]
+      },
+      "interaccion": {
+        "titulo": "Interacción",
+        "descripcion": "Actividad del grupo.",
+        "indicadores": {
+          "publicaciones": "Publicaciones",
+          "comentarios": "Comentarios",
+          "reacciones": "Reacciones"
+        },
+        "unidad": "interacciones",
+        "serie": [
+          {
+            "etiqueta": "Sem 1",
+            "valor": 14
+          },
+          {
+            "etiqueta": "Sem 2",
+            "valor": 22
+          },
+          {
+            "etiqueta": "Sem 3",
+            "valor": 19
+          },
+          {
+            "etiqueta": "Sem 4",
+            "valor": 31
+          }
+        ]
+      },
+      "incidencias": {
+        "titulo": "Alertas de moderación",
+        "descripcion": "Avisos sobre contenido que conviene revisar.",
+        "vacio": "No hay alertas de moderación.",
+        "acciones": [
+          "Marcar como revisada"
+        ],
+        "resultado": "«:accion» aplicado a «:titulo». Solo en esta demostración."
+      },
+      "sugerencias": {
+        "titulo": "Sugerencias de miembros",
+        "descripcion": "Personas que podrían interesarse por el grupo.",
+        "vacio": "No hay sugerencias de miembros.",
+        "acciones": [
+          "Invitar",
+          "Descartar"
+        ],
+        "resultado": "«:accion» aplicado a :titulo. Solo en esta demostración."
+      },
+      "administradores": {
+        "titulo": "Administradores y moderadores",
+        "vacio": "Este grupo no tiene administradores."
+      }
+    },
+    "demo": {
+      "preguntas": [
+        {
+          "id": "p1",
+          "titulo": "¿Por qué quieres unirte a este grupo?",
+          "detalle": ""
+        },
+        {
+          "id": "p2",
+          "titulo": "¿A qué te dedicas?",
+          "detalle": ""
+        }
+      ],
+      "pendientes": [
+        {
+          "id": "d1",
+          "titulo": "Recursos para empezar con el tema del grupo",
+          "detalle": "Carmen López · hace 2 horas"
+        },
+        {
+          "id": "d2",
+          "titulo": "Pregunta sobre herramientas recomendadas",
+          "detalle": "Luis Rodríguez · hace 5 horas"
+        }
+      ],
+      "programadas": [
+        {
+          "id": "g1",
+          "titulo": "Resumen semanal de novedades",
+          "detalle": "Programada para el viernes a las 9:00"
+        },
+        {
+          "id": "g2",
+          "titulo": "Encuentro mensual de la comunidad",
+          "detalle": "Programada para el día 28 a las 18:00"
+        }
+      ],
+      "registro": [
+        {
+          "id": "r1",
+          "titulo": "Se actualizó la descripción del grupo",
+          "detalle": "Hace 1 día"
+        },
+        {
+          "id": "r2",
+          "titulo": "Se invitó a nuevas personas",
+          "detalle": "Hace 2 días"
+        }
+      ],
+      "creacion": "Creaste el grupo",
+      "incidencias": [
+        {
+          "id": "a1",
+          "titulo": "Una publicación recibió varios reportes",
+          "detalle": "Revisa el contenido antes de que se difunda"
+        },
+        {
+          "id": "a2",
+          "titulo": "Comentarios con lenguaje inapropiado",
+          "detalle": "Detectados en una publicación reciente"
+        }
+      ],
+      "sugerencias": [
+        {
+          "id": "s1",
+          "titulo": "Lucía Fernández",
+          "detalle": "3 amigos en común"
+        },
+        {
+          "id": "s2",
+          "titulo": "Marcos Rivas",
+          "detalle": "Interesado en temas del grupo"
+        },
+        {
+          "id": "s3",
+          "titulo": "Elena Torres",
+          "detalle": "2 amigos en común"
+        }
+      ]
+    },
+    "principal": [
+      {
+        "clave": "inicio",
+        "etiqueta": "Inicio de la comunidad",
+        "icono": "inicio"
+      },
+      {
+        "clave": "resumen",
+        "etiqueta": "Resumen",
+        "icono": "indicadores"
+      }
+    ],
+    "miembros_grupo": "Grupo · :n miembros",
+    "familias": {
+      "resumen": "resumen",
+      "preguntas": "comunidad",
+      "roles": "comunidad",
+      "miembros": "comunidad",
+      "administradores": "comunidad",
+      "crecimiento": "estadistica",
+      "interaccion": "estadistica",
+      "pendientes": "lista",
+      "programadas": "lista",
+      "registro": "lista",
+      "incidencias": "lista",
+      "sugerencias": "lista"
+    },
+    "solo_administradores": "administradores"
+  },
+  "lateral": {
+    "tus_grupos": {
+      "informacion": {
+        "titulo": "Información de Tus grupos",
+        "texto": "Grupos a los que te has unido para compartir, aprender y colaborar."
+      },
+      "actividad": {
+        "titulo": "Actividad reciente",
+        "ver_todo": "Ver todo",
+        "items": [
+          {
+            "detalle": "Nueva publicación · hace 1 hora",
+            "icono": "documento",
+            "tono": "morado"
+          },
+          {
+            "detalle": "3 nuevos comentarios · hace 2 horas",
+            "icono": "comentario",
+            "tono": "naranja"
+          },
+          {
+            "detalle": "Próximo evento · en 3 días",
+            "icono": "calendario",
+            "tono": "azul"
+          }
+        ]
+      },
+      "descubrir": {
+        "titulo": "Descubre más grupos",
+        "texto": "Explora comunidades con temas de tu interés y sigue aprendiendo.",
+        "boton": "Explorar sugerencias"
+      }
+    },
+    "sugerencias": {
+      "categorias": {
+        "titulo": "Explorar por categorías",
+        "texto": "Encuentra grupos según tus intereses.",
+        "iconos": {
+          "Negocios": "maletin",
+          "Tecnología": "cuadricula",
+          "Educación": "universidad",
+          "Entretenimiento": "video"
+        },
+        "etiqueta": "Filtrar por :categoria"
+      },
+      "motivo": {
+        "titulo": "¿Por qué ves estas sugerencias?",
+        "texto": "Te recomendamos grupos según tus intereses, tu actividad y las comunidades populares en CodePlex."
+      },
+      "crear": {
+        "titulo": "Crea tu propio grupo",
+        "texto": "¿No encuentras el grupo que buscas? Crea una comunidad y reúne a personas con tus mismos intereses."
+      }
+    },
+    "administrados": {
+      "resumen": {
+        "titulo": "Resumen de administración",
+        "texto": "Información general de los grupos que administras.",
+        "grupos": "Grupos administrados",
+        "miembros": "Miembros totales"
+      },
+      "pendientes": {
+        "titulo": "Pendientes de administración",
+        "demostracion": "Datos de demostración",
+        "filas": [
+          {
+            "clave": "solicitudes",
+            "etiqueta": "Solicitudes de miembros",
+            "icono": "nuevo-usuario"
+          },
+          {
+            "clave": "publicaciones",
+            "etiqueta": "Publicaciones pendientes",
+            "icono": "documento"
+          },
+          {
+            "clave": "incidencias",
+            "etiqueta": "Alertas de moderación",
+            "icono": "aviso"
+          }
+        ]
+      },
+      "gestion": {
+        "titulo": "Gestiona tus comunidades",
+        "texto": "Administra configuración, miembros, permisos y reglas de tus grupos.",
+        "boton": "Ir a la administración"
+      }
+    }
   }
 }

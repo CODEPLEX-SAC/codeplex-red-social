@@ -20,11 +20,10 @@ function sanear(tarjeta: TarjetaGuardada): TarjetaGuardada {
   return { id: tarjeta.id, marca: tarjeta.marca, ultimos4: tarjeta.ultimos4, vencimiento: tarjeta.vencimiento, titular: tarjeta.titular, predeterminada: tarjeta.predeterminada === true }
 }
 
-function modificar(cambio: (actual: TarjetaGuardada[]) => TarjetaGuardada[]) {
-  return Promise.resolve().then(() => {
-    guardadas = cambio(leerMetodosPago()).map(sanear)
-    return leerMetodosPago()
-  })
+async function modificar(cambio: (actual: TarjetaGuardada[]) => TarjetaGuardada[]) {
+  await Promise.resolve()
+  guardadas = cambio(leerMetodosPago()).map(sanear)
+  return leerMetodosPago()
 }
 
 function esLaMisma(tarjeta: TarjetaGuardada, datos: DatosMetodoGuardado) {
@@ -51,8 +50,9 @@ export function codigoDeFallo(fallo: unknown): CodigoErrorMetodosPago {
   return fallo instanceof ErrorMetodosPago ? fallo.codigo : 'escritura'
 }
 
-export function listarMetodosPago() {
-  return Promise.resolve().then(leerMetodosPago)
+export async function listarMetodosPago() {
+  await Promise.resolve()
+  return leerMetodosPago()
 }
 
 export function registrarMetodoPago(datos: DatosMetodoGuardado, predeterminada: boolean) {

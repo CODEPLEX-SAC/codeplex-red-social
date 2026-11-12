@@ -51,7 +51,7 @@ export function usarPublicacionesInicio(almacen: AlmacenPublicaciones) {
   }
 
   function compartir(origen: OrigenCompartido, comentario: string) {
-    if (autor) almacen.modificar((actual) => agregarCompartida(actual, autor, origen, comentario, TIEMPO_AHORA))
+    if (autor) almacen.modificar((actual) => agregarCompartida(actual, { autor, origen, comentario, tiempo: TIEMPO_AHORA }))
   }
 
   function votar(id: string, opcionId: string) {
@@ -86,7 +86,7 @@ export function usarPublicacionesInicio(almacen: AlmacenPublicaciones) {
       if (!autor || comentarioVacio(texto, medios)) return
       almacen.modificar((actual) => {
         const { secuencia, id: idComentario } = siguienteIdComentario(actual)
-        const nuevo = nuevoComentario(idComentario, autor, texto, TIEMPO_AHORA, medios, mencion)
+        const nuevo = nuevoComentario({ id: idComentario, autor, texto, tiempo: TIEMPO_AHORA, medios, mencion })
         return actualizarComentarios({ ...actual, secuencia }, id, comentariosBase, (lista) => alAgregar(lista, nuevo))
       })
     }

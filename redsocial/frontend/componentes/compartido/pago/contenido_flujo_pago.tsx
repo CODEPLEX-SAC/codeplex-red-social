@@ -1,23 +1,19 @@
-import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
-import { AvisoEmergente } from '../interfaz/aviso_emergente'
 import { usarVistaMovil } from '../interfaz/usar_vista_movil'
 import { BarraAccionPago } from './barra_accion_pago'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
-import { ModalPerfilesPago } from './modal_perfiles_pago'
-import { ModalTarjetasPago } from './modal_tarjetas_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { ResumenPedidoPago } from './resumen_pedido_pago'
 import { SeccionAutorizacionPago } from './seccion_autorizacion_pago'
 import { SeccionCalendarioPago } from './seccion_calendario_pago'
 import { SeccionFacturacionPago } from './seccion_facturacion_pago'
 import { SeccionMetodoPago } from './seccion_metodo_pago'
 import { usarFlujoPago } from './usar_flujo_pago'
-import type { CodeplexNotificacionPosicion } from '@codeplex-sac/feedback'
+import { VentanasFlujoPago } from './ventanas_flujo_pago'
 import type { FlujoPagoProps } from '@/tipos/compartido/contrato_flujo_pago'
 
-const reglasAutorizacion = catalogoCompartido.flujo_pago.reglas.autorizacion
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function ContenidoFlujoPago({ configuracion, pedido, tarjetas, perfiles, adicional, alActivar }: FlujoPagoProps) {
-  const estado = usarFlujoPago(configuracion, tarjetas, perfiles, alActivar)
+  const estado = usarFlujoPago({ configuracion, tarjetas, perfiles, alActivar })
   const movil = usarVistaMovil()
   const calendario = configuracion.calendario
   const numeroAutorizacion = calendario ? 4 : 3
@@ -37,24 +33,7 @@ export function ContenidoFlujoPago({ configuracion, pedido, tarjetas, perfiles, 
         </div>
         {movil && <BarraAccionPago pedido={pedido} estado={estado} />}
       </div>
-      {estado.aviso && <AvisoEmergente abierto {...(movil ? { posicion: reglasAutorizacion.posicion_aviso_movil as CodeplexNotificacionPosicion } : {})} variante={estado.aviso.variante} mensaje={estado.aviso.mensaje} alCerrar={estado.cerrarAviso} {...(estado.aviso.variante === 'error' ? { duracion: reglasAutorizacion.duracion_aviso_error_ms } : {})} />}
-      {estado.ventana === 'tarjetas' && <ModalTarjetasPago control={tarjetas} alNotificar={estado.notificar} seleccionadaId={estado.tarjetaGuardada?.id ?? null} aviso={configuracion.demostracion?.tarjetas} alUsar={estado.usarTarjeta} alCerrar={estado.cerrarVentana} />}
-      {estado.ventana === 'perfiles' && (
-        <ModalPerfilesPago
-          perfiles={perfiles.perfiles}
-          seleccionadoId={estado.facturacion.perfil?.id ?? null}
-          aviso={configuracion.demostracion?.perfiles}
-          alSeleccionar={(id) => {
-            estado.facturacion.elegir(id)
-            estado.cerrarVentana()
-          }}
-          alAgregar={() => {
-            estado.facturacion.agregar()
-            estado.cerrarVentana()
-          }}
-          alCerrar={estado.cerrarVentana}
-        />
-      )}
+      <VentanasFlujoPago estado={estado} tarjetas={tarjetas} perfiles={perfiles} configuracion={configuracion} movil={movil} />
     </>
   )
 }

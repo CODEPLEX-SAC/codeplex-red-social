@@ -1,4 +1,3 @@
-import { vi } from 'vitest'
 import { ValueType } from 'exceljs'
 import { generarExcel } from '@/componentes/colaboradores/bloques/exportar_excel_colaboradores'
 import { construirReporte } from '@/componentes/colaboradores/bloques/reporte_colaboradores'

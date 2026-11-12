@@ -1,5 +1,12 @@
 {
-  "acciones": ["listar", "buscar", "solicitar", "aceptar", "rechazar", "crear_lista"],
+  "acciones": [
+    "listar",
+    "buscar",
+    "solicitar",
+    "aceptar",
+    "rechazar",
+    "crear_lista"
+  ],
   "alertas": {
     "confirmar_eliminar_amigo": "Vas a eliminar a este amigo de tu lista de contactos."
   },
@@ -14,7 +21,7 @@
     "sin_solicitudes": "No tienes solicitudes de amistad pendientes.",
     "sin_sugerencias": "No hay sugerencias de amigos por ahora.",
     "sin_enviadas": "No tienes solicitudes de amistad enviadas.",
-    "sin_ignoradas": "No hay solicitudes ignoradas: todavía no existe una fuente de datos para esta categoría.",
+    "solicitud_aceptada_corta": "Solicitud aceptada",
     "sin_resultados_solicitudes": "Ninguna solicitud coincide con tu búsqueda."
   },
   "toast": {
@@ -44,10 +51,26 @@
   "titulo_menu": "Amigos",
   "icono_resumen_pendientes": "solicitudes",
   "pestanas": [
-    {"clave": "todos", "etiqueta": "Todos", "ruta": "/amigos"},
-    {"clave": "solicitudes", "etiqueta": "Solicitudes", "ruta": "/amigos/solicitudes"},
-    {"clave": "sugerencias", "etiqueta": "Sugerencias", "ruta": "/amigos/sugerencias"},
-    {"clave": "listas", "etiqueta": "Listas", "ruta": "/amigos/listas"}
+    {
+      "clave": "todos",
+      "etiqueta": "Todos",
+      "ruta": "/amigos"
+    },
+    {
+      "clave": "solicitudes",
+      "etiqueta": "Solicitudes",
+      "ruta": "/amigos/solicitudes"
+    },
+    {
+      "clave": "sugerencias",
+      "etiqueta": "Sugerencias",
+      "ruta": "/amigos/sugerencias"
+    },
+    {
+      "clave": "listas",
+      "etiqueta": "Listas",
+      "ruta": "/amigos/listas"
+    }
   ],
   "titulos_pestanas": {
     "todos": "Todos",
@@ -62,7 +85,6 @@
     "listas": "Amigos"
   },
   "botones": {
-    "agregar_amigos": "Agregar amigos",
     "crear_listas": "Crear listas",
     "todos_los_amigos": "Todos los amigos",
     "amigos_en_linea": "En línea",
@@ -72,17 +94,20 @@
     "ver_mas_amigos": "Ver más amigos",
     "aceptar": "Aceptar",
     "eliminar": "Eliminar",
-    "ignorar": "Ignorar",
     "ver_mas_solicitudes_recibidas": "Ver más solicitudes recibidas",
     "cancelar_solicitud": "Cancelar solicitud",
-    "ver_todas_solicitudes_enviadas": "Ver todas las solicitudes enviadas",
+    "ver_menos_solicitudes_recibidas": "Ver menos solicitudes recibidas",
     "agregar": "Agregar",
-    "ver_perfil": "Ver perfil",
+    "anadir_amigo": "Agregar amigo",
+    "suprimir": "Suprimir",
     "ver_mas_sugerencias": "Ver más sugerencias",
-    "crear_nueva_lista": "Crear nueva lista"
+    "ver_menos_sugerencias": "Ver menos sugerencias",
+    "ver_menos_amigos": "Ver menos amigos",
+    "editar_lista": "Editar lista",
+    "eliminar_lista": "Eliminar lista"
   },
   "secciones": {
-    "tus_amigos": "Tus amigos (128)",
+    "tus_amigos": "Tus amigos (25)",
     "solicitudes_amistad": "Solicitudes de amistad",
     "solicitudes_amistad_lateral": "Solicitudes de amistad (3)",
     "personas_conocer": "Personas que quizá conozcas",
@@ -90,26 +115,75 @@
     "actividad_reciente": "Actividad reciente",
     "amplia_tu_red_titulo": "Amplía tu red profesional",
     "amplia_tu_red_desc": "Conecta con colegas, clientes y colaboradores que podrían interesarte.",
-    "mis_listas": "Mis listas (6)",
-    "listas_sugeridas": "Listas sugeridas",
+    "mis_listas": "Mis listas (:n)",
     "organiza_contactos_titulo": "Organiza a tus contactos en listas personalizadas",
     "organiza_contactos_desc": "Crea listas para mantener mejor contacto con las personas que más te importan."
   },
   "pestanas_solicitudes": {
     "recibidas": "Recibidas",
-    "enviadas": "Enviadas",
-    "ignoradas": "Ignoradas"
+    "enviadas": "Enviadas"
   },
   "placeholders": {
-    "buscar_amigos": "Buscar amigos...",
-    "buscar_solicitudes": "Buscar solicitudes..."
+    "buscar_amigos": "Buscar amigo por nombre..."
   },
-  "tonos_conteo_chip": { "true": "blanco", "false": "neutro" },
+  "limite_solicitudes_visibles": 3,
+  "limite_sugerencias_visibles": 8,
+  "limite_amigos_visibles": 8,
+  "listas": {
+    "cantidad_varias": ":n amigos",
+    "cantidad_una": "1 amigo",
+    "sin_amigos": "Aún no hay amigos en esta lista",
+    "vacio": "Todavía no tienes listas. Crea la primera con el botón Crear listas.",
+    "abrir": "Añadir o suprimir amigos de :nombre",
+    "mas_opciones": "Opciones de :nombre",
+    "crear": {
+      "titulo": "Crear lista",
+      "descripcion": "Crea una lista de personas para que puedas compartir fácilmente con ellos y ver sus actualizaciones en un solo lugar.",
+      "marcador": "Nombre de la lista",
+      "confirmar": "Confirmar",
+      "cancelar": "Cancelar",
+      "cerrar": "Cerrar"
+    },
+    "editar": {
+      "titulo": "Editar lista",
+      "confirmar": "Guardar"
+    },
+    "eliminar": {
+      "titulo": "Eliminar lista",
+      "mensaje": "¿Seguro que quieres eliminar la lista :nombre? Tus amigos no se eliminarán.",
+      "confirmar": "Eliminar"
+    },
+    "miembros": {
+      "titulo": "Añadir/suprimir",
+      "buscar": "Buscar a un amigo",
+      "sin_resultados": "Ningún amigo coincide con tu búsqueda",
+      "ayuda": "El amigo que selecciones aparecerá aquí.",
+      "quitar": "Quitar a :nombre",
+      "marcar": "Seleccionar a :nombre",
+      "guardar": "Guardar"
+    }
+  },
+  "tonos_conteo_chip": {
+    "true": "blanco",
+    "false": "neutro"
+  },
   "clases": {
+    "lateral": {
+      "fila": "flex items-center gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0",
+      "fila_actividad": "flex items-start gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0",
+      "icono_caja": "grid h-8.5 w-8.5 flex-none place-items-center rounded-9",
+      "icono": "h-4 w-4 text-white",
+      "cuerpo": "min-w-0 flex-1",
+      "nombre": "block text-nombre-fila text-texto",
+      "auxiliar": "text-auxiliar text-texto-suave",
+      "boton": "flex-none",
+      "actividad_cuerpo": "min-w-0 flex-1 text-subtitulo leading-texto text-texto",
+      "actividad_nombre": "font-titulo",
+      "actividad_tiempo": "mt-0.5 block text-fecha-abreviada text-texto-suave"
+    },
     "tarjeta_pagina": "rounded-xl border border-borde bg-white py-4.5 px-5",
     "titulo_seccion": "mb-3.5 text-titulo-seccion text-texto",
     "titulo_seccion_con_aire": "mb-3.5 mt-4.5 text-titulo-seccion text-texto",
-    "titulo_seccion_amplio": "mb-4 text-titulo-seccion text-texto",
     "banner": "mb-5.5 mt-4.5",
     "descripcion": "m-0 text-subtitulo leading-texto text-texto-suave",
     "resumen": {
@@ -128,6 +202,7 @@
     },
     "amigo": {
       "fila": "flex items-center gap-3.5 border-b border-borde py-3.5 last:border-b-0",
+      "enlace_avatar": "flex-none",
       "identidad": "w-42.5 min-w-0 shrink max-900:w-auto max-900:flex-1",
       "nombre": "block truncate text-nombre-fila text-texto",
       "estado": "mt-0.75 block text-badge",
@@ -156,21 +231,53 @@
       "comunes_texto": "text-auxiliar text-texto-suave",
       "acciones": "ml-auto flex flex-none items-center gap-2 self-center max-900:flex-col max-900:self-start max-900:mt-1 max-600:w-full max-600:flex-row max-600:self-stretch max-600:ml-0 max-600:mt-3",
       "boton": "max-600:flex-1",
+      "aceptada": "m-0 text-subtitulo text-texto",
       "vacio": "col-span-full py-8"
     },
     "sugerencia": {
-      "rejilla": "mb-4.5 grid grid-cols-4 gap-3.5 max-900:grid-cols-2 max-600:grid-cols-1",
-      "tarjeta": "flex flex-col items-center rounded-control border border-borde bg-white p-3 pb-3.5 pt-4.5 text-center",
-      "avatar": "mb-2.5",
-      "cuerpo": "mb-2 w-full",
-      "nombre": "mb-0.5 block text-nombre-fila leading-compacto text-texto",
-      "descripcion": "m-0 text-subtitulo leading-texto text-texto-suave",
-      "comunes_fila": "mb-2 flex w-full items-center justify-center gap-2",
+      "cabecera": "mb-4 flex items-center justify-between gap-3",
+      "titulo": "m-0 text-titulo-seccion text-texto",
+      "contenedor": "@container",
+      "rejilla": "mb-4.5 grid grid-cols-1 gap-3.5 @min-[900px]:grid-cols-2",
+      "tarjeta": "flex items-center gap-4 rounded-xl border border-borde bg-white p-4 max-600:flex-wrap",
+      "enlace_avatar": "flex-none",
+      "cuerpo": "min-w-0 flex-1",
+      "nombre": "block truncate text-nombre-fila leading-compacto text-texto",
+      "descripcion": "m-0 mt-0.5 text-subtitulo leading-texto text-texto-suave",
+      "comunes_fila": "mt-2 flex items-center gap-2",
       "comunes_texto": "whitespace-nowrap text-auxiliar text-texto-suave",
-      "grupo": "mb-2.5 justify-center",
-      "acciones": "flex w-full flex-col items-center gap-1.5",
-      "boton": "w-full max-w-30",
+      "acciones": "flex w-40 flex-none flex-col items-stretch gap-2 max-600:w-full",
+      "boton": "w-full",
       "vacio": "col-span-full py-8"
+    },
+    "listas": {
+      "rejilla": "mb-4.5 grid grid-cols-3 gap-3.5 max-900:grid-cols-2 max-600:grid-cols-1",
+      "tarjeta": "relative rounded-control border border-borde bg-white",
+      "abrir": "h-auto w-full flex-col items-stretch justify-start gap-0 whitespace-normal rounded-control p-4 pr-12 text-left",
+      "opciones": "absolute right-3.5 top-3.5",
+      "nombre": "mb-0.5 block text-nombre-entidad text-texto",
+      "cantidad": "mb-2.5 block text-auxiliar text-texto-suave",
+      "avatares": "mb-3 flex items-center gap-1.5",
+      "avatares_resto": "text-conteo text-texto-suave",
+      "descripcion": "m-0 block whitespace-normal text-cuerpo leading-texto text-texto-suave",
+      "vacio": "col-span-full py-8",
+      "modal": "max-w-120 rounded-2xl max-600:h-full max-600:rounded-none",
+      "cuerpo": "flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-5 pb-3 pt-4",
+      "texto": "m-0 text-cuerpo text-texto",
+      "lista": "m-0 flex max-h-72 min-h-0 list-none flex-col gap-1 overflow-y-auto p-0",
+      "fila": "flex items-center gap-3 rounded-lg px-1 py-1.5",
+      "fila_nombre": "min-w-0 flex-1 truncate text-nombre-fila text-texto",
+      "seleccionados": "mx-5 mb-3 max-h-28 overflow-y-auto rounded-lg border border-borde p-2.5",
+      "seleccionados_ayuda": "m-0 mb-2 text-auxiliar text-texto-suave",
+      "chips": "m-0 flex list-none flex-wrap gap-2 p-0",
+      "chip_glifo": "h-3.5 w-3.5",
+      "pie": "flex items-center justify-between px-5 pb-5 pt-3",
+      "pie_final": "flex items-center justify-end gap-3 px-5 pb-5 pt-3"
     }
+  },
+  "tipos_modal_lista": {
+    "crear": "crear",
+    "editar": "editar",
+    "eliminar": "eliminar"
   }
 }

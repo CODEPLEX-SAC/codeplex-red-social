@@ -3,7 +3,7 @@
     {
       "icono": "amigos-todos",
       "etiqueta": "Todos los amigos",
-      "valor": "128"
+      "valor": "25"
     },
     {
       "icono": "colaboradores",
@@ -13,7 +13,7 @@
     {
       "icono": "solicitudes",
       "etiqueta": "Pendientes",
-      "valor": "3"
+      "valor": "15"
     },
     {
       "icono": "bloqueado",
@@ -73,6 +73,108 @@
       "estado": "Hace 5 horas",
       "comunes": "5 amigos en común",
       "masAvatares": "+2"
+    },
+    {
+      "nombre": "Valentina Cruz",
+      "estado": "Hace 6 horas",
+      "comunes": "23 amigos en común",
+      "masAvatares": "+20"
+    },
+    {
+      "nombre": "Sebastián Rojas",
+      "estado": "Hace 7 horas",
+      "comunes": "22 amigos en común",
+      "masAvatares": "+19"
+    },
+    {
+      "nombre": "Natalia Vega",
+      "estado": "Hace 8 horas",
+      "comunes": "21 amigos en común",
+      "masAvatares": "+18"
+    },
+    {
+      "nombre": "Andrés Gutiérrez",
+      "estado": "Ayer",
+      "comunes": "20 amigos en común",
+      "masAvatares": "+17"
+    },
+    {
+      "nombre": "Paula Ibáñez",
+      "estado": "Ayer",
+      "comunes": "19 amigos en común",
+      "masAvatares": "+16"
+    },
+    {
+      "nombre": "Martín Ortega",
+      "estado": "Hace 1 día",
+      "comunes": "17 amigos en común",
+      "masAvatares": "+14"
+    },
+    {
+      "nombre": "Claudia Salas",
+      "estado": "Hace 2 días",
+      "comunes": "16 amigos en común",
+      "masAvatares": "+13"
+    },
+    {
+      "nombre": "Rodrigo Peña",
+      "estado": "Hace 2 días",
+      "comunes": "14 amigos en común",
+      "masAvatares": "+11"
+    },
+    {
+      "nombre": "Fabiola Luna",
+      "estado": "Hace 3 días",
+      "comunes": "13 amigos en común",
+      "masAvatares": "+10"
+    },
+    {
+      "nombre": "Gonzalo Ramos",
+      "estado": "Hace 3 días",
+      "comunes": "11 amigos en común",
+      "masAvatares": "+8"
+    },
+    {
+      "nombre": "Verónica Arce",
+      "estado": "Hace 4 días",
+      "comunes": "9 amigos en común",
+      "masAvatares": "+6"
+    },
+    {
+      "nombre": "Tomás Quiroz",
+      "estado": "Hace 4 días",
+      "comunes": "7 amigos en común",
+      "masAvatares": "+4"
+    },
+    {
+      "nombre": "Alejandra Cano",
+      "estado": "Hace 5 días",
+      "comunes": "4 amigos en común",
+      "masAvatares": "+1"
+    },
+    {
+      "nombre": "Esteban Lara",
+      "estado": "Hace 5 días",
+      "comunes": "3 amigos en común",
+      "masAvatares": "+0"
+    },
+    {
+      "nombre": "Rocío Mendoza",
+      "estado": "Hace 6 días",
+      "comunes": "2 amigos en común",
+      "masAvatares": "+0"
+    },
+    {
+      "nombre": "Ignacio Bravo",
+      "estado": "Hace 1 semana",
+      "comunes": "25 amigos en común",
+      "masAvatares": "+22"
+    },
+    {
+      "nombre": "Mónica Silva",
+      "estado": "Hace 1 semana",
+      "comunes": "26 amigos en común",
+      "masAvatares": "+23"
     }
   ],
   "personasConocerTodos": [
@@ -98,25 +200,25 @@
       "icono": "guardados",
       "color": "morado",
       "nombre": "Mejores amigos",
-      "cantidad": "24 amigos"
+      "cantidad": "10 amigos"
     },
     {
       "icono": "amigos-todos",
       "color": "naranja",
       "nombre": "Familia",
-      "cantidad": "16 amigos"
+      "cantidad": "6 amigos"
     },
     {
       "icono": "maletin",
       "color": "azul",
       "nombre": "Trabajo",
-      "cantidad": "38 amigos"
+      "cantidad": "12 amigos"
     },
     {
       "icono": "universidad",
       "color": "verde",
       "nombre": "Universidad",
-      "cantidad": "22 amigos"
+      "cantidad": "8 amigos"
     }
   ]
 }

@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { sembrarTarjetas } from './ayudas_pago'
 import { ProveedorEmpresaActiva } from '@/componentes/compartido/sesion/proveedor_empresa_activa'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'

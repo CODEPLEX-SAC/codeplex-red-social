@@ -5,32 +5,19 @@ import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { TextoColor } from '../../compartido/interfaz/texto_color'
-import { columnasDisponibles, estadoDelRecurso } from './logica_permisos_invitacion'
-import type { ClavePermiso, ConfiguracionPermisos, RecursoPermiso } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import { alternarNombre, columnasDisponibles, estadoDelRecurso } from './logica_permisos_invitacion'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
+import type { FilaPermisoProps, SeccionRecursoProps, ListaRecursosPermisosProps } from '@/tipos/colaboradores/contrato_lista_recursos_permisos'
 
 const clases = catalogoColaboradores.clases.invitar_permisos
 const textos = catalogoColaboradores.campos_rol_permisos
 const seleccion = catalogoColaboradores.seleccion_jerarquica
 const COLORES: Record<string, string> = catalogoColaboradores.colores_casilla_permiso
-const ICONO_ESPECIFICO = 'permiso-especifico' as IconName
-const COLOR_ESPECIFICO = 'azul'
 const SEPARADOR_ID = catalogoColaboradores.ids_permisos.separador
 const ICONOS_RECURSOS = catalogoColaboradores.iconos_recursos as Record<string, string>
 
 function idRecurso(prefijo: string, recurso: string) {
   return [prefijo, recurso].join(SEPARADOR_ID)
-}
-
-interface FilaPermisoProps {
-  icono: IconName
-  color: string
-  etiqueta: string
-  colorCasilla?: CodeplexCasillaProps['color']
-  nombreAccesible: string
-  activo: boolean
-  alCambiar: (activo: boolean) => void
-  soloLectura: boolean
 }
 
 function FilaPermiso({ icono, color, etiqueta, colorCasilla, nombreAccesible, activo, alCambiar, soloLectura }: FilaPermisoProps) {
@@ -47,24 +34,12 @@ function FilaPermiso({ icono, color, etiqueta, colorCasilla, nombreAccesible, ac
   )
 }
 
-interface SeccionRecursoProps {
-  prefijoId: string
-  recurso: RecursoPermiso
-  configuracion: ConfiguracionPermisos
-  abierto: boolean
-  soloLectura: boolean
-  alAlternarApertura: () => void
-  alSeleccionar: (activo: boolean) => void
-  alAlternar: (clave: ClavePermiso, activo: boolean) => void
-  alAlternarEspecifico: (id: string, activo: boolean) => void
-  alAgregar: () => void
-}
-
 function SeccionRecurso({ prefijoId, recurso, configuracion, abierto, soloLectura, alAlternarApertura, alSeleccionar, alAlternar, alAlternarEspecifico, alAgregar }: SeccionRecursoProps) {
   const estado = estadoDelRecurso(recurso, configuracion)
   const id = idRecurso(prefijoId, recurso.nombre)
   const idCabecera = `${seleccion.prefijo_cabecera}${id}`
   const idContenido = `${seleccion.prefijo_contenido}${id}`
+  const operacionesActivas = new Set(configuracion.operaciones[recurso.nombre] ?? [])
 
   return (
     <section className={abierto ? clases.recurso_abierto : clases.recurso}>
@@ -94,7 +69,7 @@ function SeccionRecurso({ prefijoId, recurso, configuracion, abierto, soloLectur
                 etiqueta={columna.etiqueta_fila}
                 colorCasilla={COLORES[columna.clave] as CodeplexCasillaProps['color']}
                 nombreAccesible={textos.casilla_etiqueta.replace(':permiso', columna.etiqueta_fila).replace(':recurso', recurso.nombre)}
-                activo={(configuracion.operaciones[recurso.nombre] ?? []).includes(columna.clave)}
+                activo={operacionesActivas.has(columna.clave)}
                 alCambiar={(activo) => alAlternar(columna.clave, activo)}
                 soloLectura={soloLectura}
               />
@@ -102,8 +77,8 @@ function SeccionRecurso({ prefijoId, recurso, configuracion, abierto, soloLectur
             {(configuracion.especificos[recurso.nombre] ?? []).map((permiso) => (
               <FilaPermiso
                 key={permiso.id}
-                icono={ICONO_ESPECIFICO}
-                color={COLOR_ESPECIFICO}
+                icono={seleccion.icono_permiso_especifico as IconName}
+                color={seleccion.color_permiso_especifico}
                 etiqueta={permiso.etiqueta}
                 nombreAccesible={textos.casilla_etiqueta.replace(':permiso', permiso.etiqueta).replace(':recurso', recurso.nombre)}
                 activo={permiso.activo}
@@ -125,22 +100,11 @@ function SeccionRecurso({ prefijoId, recurso, configuracion, abierto, soloLectur
   )
 }
 
-export interface ListaRecursosPermisosProps {
-  prefijoId: string
-  recursos: RecursoPermiso[]
-  configuracion: ConfiguracionPermisos
-  expandidos: string[]
-  soloLectura: boolean
-  alCambiarExpandidos: (nombres: string[]) => void
-  alSeleccionarRecurso: (recurso: string, activo: boolean) => void
-  alAlternar: (recurso: string, clave: ClavePermiso, activo: boolean) => void
-  alAlternarEspecifico: (recurso: string, id: string, activo: boolean) => void
-  alAgregar: (recurso: string) => void
-}
+export function ListaRecursosPermisos({ prefijoId, recursos, configuracion, expandidos, soloLectura, alCambiarExpandidos, manejadores }: ListaRecursosPermisosProps) {
+  const abiertos = new Set(expandidos)
 
-export function ListaRecursosPermisos({ prefijoId, recursos, configuracion, expandidos, soloLectura, alCambiarExpandidos, alSeleccionarRecurso, alAlternar, alAlternarEspecifico, alAgregar }: ListaRecursosPermisosProps) {
   function alternarApertura(nombre: string) {
-    alCambiarExpandidos(expandidos.includes(nombre) ? expandidos.filter((abierto) => abierto !== nombre) : [...expandidos, nombre])
+    alCambiarExpandidos(alternarNombre(expandidos, nombre))
   }
 
   return (
@@ -151,13 +115,13 @@ export function ListaRecursosPermisos({ prefijoId, recursos, configuracion, expa
           prefijoId={prefijoId}
           recurso={recurso}
           configuracion={configuracion}
-          abierto={expandidos.includes(recurso.nombre)}
+          abierto={abiertos.has(recurso.nombre)}
           soloLectura={soloLectura}
           alAlternarApertura={() => alternarApertura(recurso.nombre)}
-          alSeleccionar={(activo) => alSeleccionarRecurso(recurso.nombre, activo)}
-          alAlternar={(clave, activo) => alAlternar(recurso.nombre, clave, activo)}
-          alAlternarEspecifico={(id, activo) => alAlternarEspecifico(recurso.nombre, id, activo)}
-          alAgregar={() => alAgregar(recurso.nombre)}
+          alSeleccionar={(activo) => manejadores.alSeleccionarRecurso(recurso.nombre, activo)}
+          alAlternar={(clave, activo) => manejadores.alAlternar(recurso.nombre, clave, activo)}
+          alAlternarEspecifico={(id, activo) => manejadores.alAlternarEspecifico(recurso.nombre, id, activo)}
+          alAgregar={() => manejadores.alAgregar(recurso.nombre)}
         />
       ))}
     </div>

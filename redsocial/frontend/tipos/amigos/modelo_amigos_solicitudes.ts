@@ -4,7 +4,7 @@ export interface SolicitudEnviada {
   descripcion: string
   comunes: string
 }
-export type CategoriaSolicitud = 'recibidas' | 'enviadas' | 'ignoradas'
+export type CategoriaSolicitud = 'recibidas' | 'enviadas'
 export interface SolicitudRecibida {
   nombre: string
   tiempo: string

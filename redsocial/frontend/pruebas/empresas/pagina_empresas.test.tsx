@@ -383,7 +383,7 @@ describe('Pestana Usuarios del detalle', { timeout: 30000 }, () => {
     expect(dialogo.getAllByRole('img', { name: /Foto de/ })).toHaveLength(textosUsuarios.tamano_pagina)
   })
 
-  it('busca por nombre, correo o rol y filtra por rol y por estado', () => {
+  it('busca por nombre o correo y filtra por rol y por estado como controles independientes', () => {
     renderEmpresas()
     const dialogo = abrirUsuarios(EMPRESAS[0].nombre)
 
@@ -450,7 +450,7 @@ describe('Pestana Historial del detalle', { timeout: 30000 }, () => {
     expect(dialogo.getAllByText(textosHistorial.tipos.plan).length).toBeGreaterThan(0)
   })
 
-  it('busca por accion, usuario o detalle y filtra por tipo', () => {
+  it('busca solo por usuario y filtra por tipo como control independiente', () => {
     renderEmpresas()
     const dialogo = abrirHistorial(EMPRESAS[0].nombre)
 

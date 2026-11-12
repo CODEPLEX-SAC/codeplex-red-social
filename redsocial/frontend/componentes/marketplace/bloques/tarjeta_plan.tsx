@@ -2,9 +2,20 @@ import catalogoMarketplace from '../../../catalogos/capacidades/redsocial/market
 import { Boton } from '../../compartido/interfaz/boton'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { ItemCaracteristica } from './item_caracteristica'
+import type { BotonVariant } from '@/tipos/compartido/contrato_boton'
 import type { DetalleCaracteristica, EstiloPlanDestacado, EstiloSelectorPlanes, PaquetesPlanes, PlanAplicacion, SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
 
 const textos = catalogoMarketplace.planes
+
+function clasesDelPlan(plan: PlanAplicacion, estilo: EstiloSelectorPlanes, estiloDestacado: EstiloPlanDestacado) {
+  if (plan.destacado) return { claseBase: estiloDestacado.fondo, claseAtenuada: estiloDestacado.auxiliar, claseNombre: String(), claseEtiqueta: estiloDestacado.pildora, claseTop: 'pt-8' }
+  return { claseBase: 'border border-borde bg-white text-texto', claseAtenuada: 'text-texto-suave', claseNombre: estilo.texto, claseEtiqueta: estilo.relleno, claseTop: plan.cinta ? 'pt-8' : '' }
+}
+
+function varianteDelBoton(seleccionado: boolean, destacado: boolean | undefined): BotonVariant {
+  if (seleccionado) return 'primario'
+  return destacado ? 'secundario' : 'contorno'
+}
 
 export function TarjetaPlan({
   plan,
@@ -31,11 +42,7 @@ export function TarjetaPlan({
   alSeleccionar: () => void
   alAbrirDetalle: (texto: string) => void
 }) {
-  const claseBase = plan.destacado ? estiloDestacado.fondo : 'border border-borde bg-white text-texto'
-  const claseAtenuada = plan.destacado ? estiloDestacado.auxiliar : 'text-texto-suave'
-  const claseNombre = plan.destacado ? '' : estilo.texto
-  const claseEtiqueta = plan.destacado ? estiloDestacado.pildora : estilo.relleno
-  const claseTop = plan.destacado || plan.cinta ? 'pt-8' : ''
+  const { claseBase, claseAtenuada, claseNombre, claseEtiqueta, claseTop } = clasesDelPlan(plan, estilo, estiloDestacado)
 
   return (
     <article className={`relative flex min-w-0 flex-col gap-3 rounded-xl p-4 ${claseBase} ${claseTop} ${seleccionado ? `ring-2 ${estilo.seleccion}` : ''} ${className}`}>
@@ -62,7 +69,7 @@ export function TarjetaPlan({
           <Boton type="button" variant={plan.destacado ? 'secundario' : 'contorno'} size="mini" onClick={alVerPaquetes}>{paquetes.ver}</Boton>
         </div>
       )}
-      <Boton type="button" variant={seleccionado ? 'primario' : plan.destacado ? 'secundario' : 'contorno'} size="cta" className="w-full" aria-pressed={seleccionado} onClick={alSeleccionar}>
+      <Boton type="button" variant={varianteDelBoton(seleccionado, plan.destacado)} size="cta" className="w-full" aria-pressed={seleccionado} onClick={alSeleccionar}>
         {seleccionado ? textos.seleccionado : (plan.textoElegir ?? textos.elegir)}
       </Boton>
     </article>

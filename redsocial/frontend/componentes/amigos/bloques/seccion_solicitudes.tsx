@@ -1,38 +1,35 @@
-import { useState } from 'react'
-import { BotonPieLista } from '../../compartido/interfaz/boton_pie_lista'
-import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
-import { clasesChip } from '../../compartido/interfaz/chip_filtro'
-import { Insignia } from '../../compartido/interfaz/insignia'
-import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
-import { CATEGORIAS, CATEGORIA_ENVIADAS, CATEGORIA_RECIBIDAS, ETIQUETAS, SIN_FUENTE, filtrarSolicitudes, mensajeVacio, pieDeLista, tonoDelConteo } from './logica_solicitudes'
-import { TarjetaSolicitudEnviada, TarjetaSolicitudRecibida } from './tarjeta_solicitud'
+import { useMemo, useState } from 'react'
+import { BotonPieLista, clasesChip, Insignia, MensajeVacio, MensajeEstadoBusqueda, usarBusqueda, crearFuenteLocal } from '../../compartido'
+import { CATEGORIAS, ETIQUETAS, LIMITE_VISIBLES, admiteSolicitud, armarItemsSolicitudes, coincideSolicitud, mensajeVacio, textoDelPie, tonoDelConteo } from './logica_solicitudes'
+import { TarjetaSolicitudRecibida } from './tarjeta_solicitud'
+import { TarjetaSolicitudEnviada } from './tarjeta_solicitud_enviada'
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
 import type { CategoriaSolicitud } from '@/tipos/amigos/modelo_amigos_solicitudes'
-import type { SeccionSolicitudesProps } from '@/tipos/amigos/contrato_solicitudes'
+import type { FiltrosSolicitudes, ItemSolicitud, SeccionSolicitudesProps } from '@/tipos/amigos/contrato_solicitudes'
 
 const clases = catalogoAmigos.clases.chips
 
-export function SeccionSolicitudes({ recibidas, enviadas }: SeccionSolicitudesProps) {
+function tarjetaDeSolicitud(item: ItemSolicitud) {
+  return item.categoria === 'recibidas' ? <TarjetaSolicitudRecibida key={item.solicitud.nombre} solicitud={item.solicitud} /> : <TarjetaSolicitudEnviada key={item.solicitud.nombre} solicitud={item.solicitud} />
+}
+
+export function SeccionSolicitudes({ recibidas, enviadas, fuente }: SeccionSolicitudesProps) {
   const [categoria, setCategoria] = useState<CategoriaSolicitud>(CATEGORIAS[0])
-  const [texto, setTexto] = useState(String())
-  const fuentes: Record<CategoriaSolicitud, readonly { nombre: string; descripcion: string }[]> = { recibidas, enviadas, ignoradas: SIN_FUENTE }
-  const recibidasVisibles = filtrarSolicitudes(recibidas, texto)
-  const enviadasVisibles = filtrarSolicitudes(enviadas, texto)
-  const visibles = { recibidas: recibidasVisibles, enviadas: enviadasVisibles, ignoradas: SIN_FUENTE }[categoria]
-  const total = fuentes[categoria].length
-  const vacio = mensajeVacio(categoria, total > 0)
-  const hayPie = visibles.length > 0 && pieDeLista(categoria) !== String()
+  const [expandida, setExpandida] = useState(false)
+  const filtros = useMemo<FiltrosSolicitudes>(() => ({ categoria }), [categoria])
+  const fuenteLocal = useMemo(() => crearFuenteLocal(armarItemsSolicitudes(recibidas, enviadas), coincideSolicitud, admiteSolicitud), [recibidas, enviadas])
+  const busqueda = usarBusqueda(fuente ?? fuenteLocal, { modo: fuente ? 'remota' : 'local', filtros })
+  const coincidentes = busqueda.resultado.elementos
+  const recortada = categoria === 'recibidas' && !expandida
+  const visibles = recortada ? coincidentes.slice(0, LIMITE_VISIBLES) : coincidentes
+  const fuentes: Record<CategoriaSolicitud, readonly unknown[]> = { recibidas, enviadas }
+  const vacio = mensajeVacio(categoria, fuentes[categoria].length > 0)
+  const hayPie = categoria === 'recibidas' && coincidentes.length > LIMITE_VISIBLES
+  const sinResultados = visibles.length === 0 && (busqueda.estado === 'inicial' || busqueda.estado === 'sin_coincidencias')
   const conteos: Partial<Record<CategoriaSolicitud, number>> = { recibidas: recibidas.length, enviadas: enviadas.length }
 
   return (
     <>
-      <CampoBusqueda
-        placeholder={catalogoAmigos.placeholders.buscar_solicitudes}
-        aria-label={catalogoAmigos.placeholders.buscar_solicitudes}
-        value={texto}
-        onChange={(evento) => setTexto(evento.target.value)}
-        className={clases.buscador}
-      />
       <div role="group" aria-label={catalogoAmigos.secciones.solicitudes_amistad} className={clases.fila}>
         {CATEGORIAS.map((clave) => (
           <button key={clave} type="button" aria-pressed={clave === categoria} onClick={() => setCategoria(clave)} className={clasesChip({ activo: clave === categoria, className: clases.chip })}>
@@ -43,10 +40,10 @@ export function SeccionSolicitudes({ recibidas, enviadas }: SeccionSolicitudesPr
           </button>
         ))}
       </div>
-      {visibles.length === 0 && <MensajeVacio texto={vacio} className={catalogoAmigos.clases.solicitud.vacio} />}
-      {categoria === CATEGORIA_RECIBIDAS && recibidasVisibles.map((solicitud) => <TarjetaSolicitudRecibida key={solicitud.nombre} solicitud={solicitud} />)}
-      {categoria === CATEGORIA_ENVIADAS && enviadasVisibles.map((solicitud) => <TarjetaSolicitudEnviada key={solicitud.nombre} solicitud={solicitud} />)}
-      {hayPie && <BotonPieLista>{pieDeLista(categoria)}</BotonPieLista>}
+      <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} sinCoincidencias={false} />
+      {sinResultados && <MensajeVacio texto={vacio} className={catalogoAmigos.clases.solicitud.vacio} />}
+      {visibles.map(tarjetaDeSolicitud)}
+      {hayPie && <BotonPieLista onClick={() => setExpandida((actual) => !actual)}>{textoDelPie(expandida)}</BotonPieLista>}
     </>
   )
 }

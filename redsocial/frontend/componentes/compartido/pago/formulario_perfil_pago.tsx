@@ -5,13 +5,13 @@ import { CampoEtiquetado } from '../interfaz/campo_etiquetado'
 import { CampoTexto } from '../interfaz/campo_texto'
 import { IndicadorCarga } from '../interfaz/indicador_carga'
 import { Selector } from '../interfaz/selector'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
-import { prefijoDePais } from './logica_perfil_pago'
-import { soloDigitos } from './logica_tarjeta_pago'
+import { limitarDigitos, prefijoDePais } from './logica_perfil_pago'
 import { TituloPanelPago } from './titulo_panel_pago'
 import { usarTextosPago } from './usar_textos_pago'
 import type { usarFacturacionPago } from './usar_facturacion_pago'
 import type { PaisPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 const reglas = catalogoCompartido.flujo_pago.reglas
 
@@ -30,7 +30,7 @@ export function FormularioPerfilPago({ facturacion, paises, ocupado, cancelable 
       {!editando && facturacion.hayPerfiles && <TituloPanelPago titulo={perfiles.nuevo_titulo} />}
       <div className={clases.grupo_campos}>
         <CampoEtiquetado etiqueta={campos.documento}>
-          <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.documento }} marcador={campos.documento_ph} error={errores.documento !== undefined} mensajeError={errores.documento} valor={datos.documento} alCambiar={(valor) => cambiar('documento', soloDigitos(valor).slice(0, reglas.perfil.documento_maximo))} />
+          <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.documento }} marcador={campos.documento_ph} error={errores.documento !== undefined} mensajeError={errores.documento} valor={datos.documento} alCambiar={(valor) => cambiar('documento', limitarDigitos(valor, reglas.perfil.documento_maximo))} />
         </CampoEtiquetado>
         <CampoEtiquetado etiqueta={campos.razon}>
           <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.razon }} marcador={campos.razon_ph} error={errores.razon !== undefined} mensajeError={errores.razon} valor={datos.razon} alCambiar={(valor) => cambiar('razon', valor)} />
@@ -48,7 +48,7 @@ export function FormularioPerfilPago({ facturacion, paises, ocupado, cancelable 
             <CampoTexto anchoCompleto inputProps={{ 'aria-label': campos.correo }} marcador={campos.correo_ph} tipo="email" error={errores.correo !== undefined} mensajeError={errores.correo} valor={datos.correo} alCambiar={(valor) => cambiar('correo', valor)} />
           </CampoEtiquetado>
           <CampoEtiquetado etiqueta={etiquetaCelular}>
-            <CampoTexto anchoCompleto inputProps={{ 'aria-label': etiquetaCelular }} marcador={campos.celular_ph} valor={datos.celular} alCambiar={(valor) => cambiar('celular', soloDigitos(valor).slice(0, reglas.perfil.celular_maximo))} />
+            <CampoTexto anchoCompleto inputProps={{ 'aria-label': etiquetaCelular }} marcador={campos.celular_ph} valor={datos.celular} alCambiar={(valor) => cambiar('celular', limitarDigitos(valor, reglas.perfil.celular_maximo))} />
           </CampoEtiquetado>
         </div>
       </div>

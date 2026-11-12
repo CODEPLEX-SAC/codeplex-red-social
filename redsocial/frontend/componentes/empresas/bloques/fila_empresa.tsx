@@ -23,6 +23,11 @@ const CLASE_RUBRO_OTRO = CLASES_RUBRO.otro
 const clases = catalogoEmpresas.clases
 const identidad = CLASES_TABLA.identidad
 
+function opcionDeEstado(inactiva: boolean, nombre: string) {
+  if (inactiva) return { etiqueta: PLANTILLA_ACTIVAR.replace(':nombre', nombre), etiquetaMenu: TEXTOS_ACCIONES.activar, clase: clases.boton_icono_exito }
+  return { etiqueta: PLANTILLA_DESACTIVAR.replace(':nombre', nombre), etiquetaMenu: TEXTOS_ACCIONES.desactivar, clase: clases.boton_icono_peligro }
+}
+
 export function FilaEmpresa({ empresa, alElegirAccion, alAlternarModulo }: FilaEmpresaProps) {
   const inactiva = estaInactiva(empresa)
 
@@ -66,7 +71,7 @@ export function FilaEmpresa({ empresa, alElegirAccion, alAlternarModulo }: FilaE
           acciones={[
             { icono: 'ver', etiqueta: PLANTILLA_VER.replace(':nombre', empresa.nombre), etiquetaMenu: TEXTOS_ACCIONES.ver_detalle, alHacerClick: abrirDetalle },
             { icono: 'editar-oficial', etiqueta: PLANTILLA_EDITAR.replace(':nombre', empresa.nombre), etiquetaMenu: TEXTOS_ACCIONES.editar, clase: clases.editar, alHacerClick: abrirEdicion },
-            { icono: 'encendido', etiqueta: (inactiva ? PLANTILLA_ACTIVAR : PLANTILLA_DESACTIVAR).replace(':nombre', empresa.nombre), etiquetaMenu: inactiva ? TEXTOS_ACCIONES.activar : TEXTOS_ACCIONES.desactivar, clase: inactiva ? clases.boton_icono_exito : clases.boton_icono_peligro, peligro: !inactiva, alHacerClick: pedirCambioEstado },
+            { icono: 'encendido', ...opcionDeEstado(inactiva, empresa.nombre), peligro: !inactiva, alHacerClick: pedirCambioEstado },
           ]}
         />
       </td>

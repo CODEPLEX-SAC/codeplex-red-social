@@ -3,24 +3,28 @@ import type {
   ClavePermiso,
   ColumnaPermiso,
   ConfiguracionPermisos,
-  PermisoEspecifico,
   PermisosModulo,
   RecursoPermiso,
 } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import type { EstadoSeleccion } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
 
 const COLUMNAS: ColumnaPermiso[] = catalogoColaboradores.columnas_permisos as ColumnaPermiso[]
 const ORDEN = COLUMNAS.map((columna) => columna.clave)
 const SIN_ACCESO: ClavePermiso = 'sin-acceso'
-const errores = catalogoColaboradores.dialogos_rol.errores
 
 export function ordenar(permisos: ClavePermiso[]): ClavePermiso[] {
-  return ORDEN.filter((clave) => permisos.includes(clave))
+  const presentes = new Set(permisos)
+  return ORDEN.filter((clave) => presentes.has(clave))
 }
 
 export function aplicarPermiso(actuales: ClavePermiso[], clave: ClavePermiso, activo: boolean): ClavePermiso[] {
   if (!activo) return actuales.filter((permiso) => permiso !== clave)
   if (clave === SIN_ACCESO) return [SIN_ACCESO]
   return ordenar([...actuales.filter((permiso) => permiso !== SIN_ACCESO), clave])
+}
+
+export function alternarNombre(lista: readonly string[], nombre: string): string[] {
+  return lista.includes(nombre) ? lista.filter((actual) => actual !== nombre) : [...lista, nombre]
 }
 
 export function estaDisponible(recurso: RecursoPermiso, clave: ClavePermiso): boolean {
@@ -68,28 +72,9 @@ export function conEspecifico(configuracion: ConfiguracionPermisos, recurso: str
   return { ...configuracion, especificos: { ...configuracion.especificos, [recurso]: lista } }
 }
 
-export function etiquetasDelRecurso(recurso: RecursoPermiso, configuracion: ConfiguracionPermisos): string[] {
-  const estandar = columnasDisponibles(recurso).flatMap((columna) => [columna.etiqueta, columna.etiqueta_fila])
-  return [...estandar, ...(configuracion.especificos[recurso.nombre] ?? []).map((permiso) => permiso.etiqueta)]
-}
-
-export function normalizarEtiqueta(etiqueta: string): string {
-  return etiqueta.trim().replace(/\s+/g, ' ')
-}
-
-export function existeEtiqueta(etiquetas: string[], etiqueta: string): boolean {
-  const buscada = normalizarEtiqueta(etiqueta).toLowerCase()
-  return etiquetas.some((existente) => normalizarEtiqueta(existente).toLowerCase() === buscada)
-}
-
-export function conPermisoEspecifico(configuracion: ConfiguracionPermisos, recurso: string, permiso: PermisoEspecifico): ConfiguracionPermisos {
-  return { ...configuracion, especificos: { ...configuracion.especificos, [recurso]: [...(configuracion.especificos[recurso] ?? []), permiso] } }
-}
-
-export type EstadoSeleccion = 'ninguno' | 'parcial' | 'todos'
-
 function entradasDelRecurso(recurso: RecursoPermiso, configuracion: ConfiguracionPermisos): boolean[] {
-  const operaciones = columnasDisponibles(recurso).map((columna) => (configuracion.operaciones[recurso.nombre] ?? []).includes(columna.clave))
+  const activas = new Set(configuracion.operaciones[recurso.nombre] ?? [])
+  const operaciones = columnasDisponibles(recurso).map((columna) => activas.has(columna.clave))
   return [...operaciones, ...(configuracion.especificos[recurso.nombre] ?? []).map((permiso) => permiso.activo)]
 }
 
@@ -119,6 +104,11 @@ export function conSeleccionModulo(recursos: RecursoPermiso[], configuracion: Co
   return recursos.reduce((acumulada, recurso) => conSeleccionRecurso(recurso, acumulada, activo), configuracion)
 }
 
+function clavesConAcceso(configuracion: ConfiguracionPermisos, recurso: string): ClavePermiso[] {
+  const claves = configuracion.operaciones[recurso] ?? []
+  return claves.filter((clave) => clave !== SIN_ACCESO)
+}
+
 function mismasClaves(a: ClavePermiso[], b: ClavePermiso[]): boolean {
   const primero = ordenar(a)
   const segundo = ordenar(b)
@@ -127,17 +117,8 @@ function mismasClaves(a: ClavePermiso[], b: ClavePermiso[]): boolean {
 
 export function mismaConfiguracion(a: ConfiguracionPermisos, b: ConfiguracionPermisos): boolean {
   const recursos = new Set([...Object.keys(a.operaciones), ...Object.keys(b.operaciones)])
-  const operaciones = [...recursos].every((recurso) => mismasClaves((a.operaciones[recurso] ?? []).filter((clave) => clave !== SIN_ACCESO), (b.operaciones[recurso] ?? []).filter((clave) => clave !== SIN_ACCESO)))
+  const operaciones = [...recursos].every((recurso) => mismasClaves(clavesConAcceso(a, recurso), clavesConAcceso(b, recurso)))
   const activos = (configuracion: ConfiguracionPermisos) => Object.values(configuracion.especificos).flat().filter((permiso) => permiso.activo).map((permiso) => permiso.id).sort().join()
   const total = (configuracion: ConfiguracionPermisos) => Object.values(configuracion.especificos).flat().length
   return operaciones && activos(a) === activos(b) && total(a) === total(b)
-}
-
-export function agregarPermisoEspecifico(configuracion: ConfiguracionPermisos, recurso: RecursoPermiso | undefined, etiqueta: string): { configuracion: ConfiguracionPermisos; error: string | null } {
-  if (!recurso) return { configuracion, error: errores.recurso_inexistente }
-  const texto = normalizarEtiqueta(etiqueta)
-  if (!texto) return { configuracion, error: errores.permiso_vacio }
-  if (existeEtiqueta(etiquetasDelRecurso(recurso, configuracion), texto)) return { configuracion, error: errores.permiso_repetido }
-  const id = `${recurso.nombre}-${texto.toLowerCase().replace(/\s+/g, '-')}-${(configuracion.especificos[recurso.nombre] ?? []).length}`
-  return { configuracion: conPermisoEspecifico(configuracion, recurso.nombre, { id, etiqueta: texto, activo: true }), error: null }
 }

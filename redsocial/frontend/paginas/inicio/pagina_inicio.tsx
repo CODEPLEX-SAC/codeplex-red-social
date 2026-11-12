@@ -1,4 +1,7 @@
-import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, imagenUsuarioPredeterminada } from '../../componentes/compartido'
+import { usarVersionGrupos } from '../../componentes/grupos'
+import { AMIGOS } from '../../rutas/amigos/rutas_amigos'
+import { PUERTO_GRUPOS, destinosDeGrupos } from '../../rutas/grupos/rutas_grupos'
 import { ALMACEN_HISTORIAS, ALMACEN_PUBLICACIONES, HISTORIAS, HISTORIAS_CONTACTOS, CONTACTOS_LINEA, PUBLICACION_INICIO, PUBLICACION_COMPARTIDA_INICIO } from '../../rutas/inicio/rutas_inicio'
 import { GRUPOS_RECOMENDADOS, EVENTOS_PROXIMOS, SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
 import { ALMACEN_MENSAJERIA, RELOJ_MENSAJERIA, rutasMensajeria } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -6,7 +9,7 @@ import { PanelConversacion, conversacionesConEtiqueta, proximoCambioReloj, usarA
 import { navegar } from '../../rutas/compartido/navegacion'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
-import { BloqueFotoVideo, EstadisticasActividadInicio, MensajesFlotantesInicio, SeccionContactosEnLinea, SeccionHistoriasInicio, usarHistoriasInicio, usarPublicacionesInicio } from '../../componentes/inicio'
+import { BloqueFotoVideo, MensajesFlotantesInicio, ProveedorDestinosCompartir, SeccionContactosEnLinea, SeccionHistoriasInicio, usarHistoriasInicio, usarPublicacionesInicio } from '../../componentes/inicio'
 
 
 function Historias() {
@@ -15,8 +18,11 @@ function Historias() {
   return <SeccionHistoriasInicio historias={HISTORIAS} publicadas={publicadas} deContactos={deContactos} acciones={acciones} onPublicar={publicar} />
 }
 
+const DESTINOS_AMIGOS = AMIGOS.map((amigo) => ({ id: amigo.nombre, nombre: amigo.nombre, imagen: imagenUsuarioPredeterminada }))
+
 export function PaginaInicio() {
-  const { feed, estadisticas, publicar, acciones } = usarPublicacionesInicio(ALMACEN_PUBLICACIONES)
+  usarVersionGrupos(PUERTO_GRUPOS)
+  const { feed, publicar, acciones } = usarPublicacionesInicio(ALMACEN_PUBLICACIONES)
   const mensajeria = usarMensajeria(ALMACEN_MENSAJERIA, RELOJ_MENSAJERIA, SESION_ACTUAL.id)
   const ahora = usarAhora(RELOJ_MENSAJERIA, (instante) => proximoCambioReloj(Object.values(mensajeria.estado.hilos).flat(), SESION_ACTUAL.id, instante))
 
@@ -46,13 +52,13 @@ export function PaginaInicio() {
 
   const placeholderPublicar =catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', SESION_ACTUAL.usuario.split(' ')[0])
   return (
+    <ProveedorDestinosCompartir grupos={destinosDeGrupos()} amigos={DESTINOS_AMIGOS} almacenDeGrupo={PUERTO_GRUPOS.publicaciones} almacenHistorias={ALMACEN_HISTORIAS}>
     <EstructuraApp paginaActiva="inicio">
       <EstructuraTresColumnas
         distribucion="social"
         principal={
           <>
             <h1 className="sr-only">{catalogoInicio.titulos.principal}</h1>
-            <EstadisticasActividadInicio estadisticas={estadisticas} />
             <BloqueFotoVideo
               placeholderPublicar={placeholderPublicar}
               Historias={Historias}
@@ -80,5 +86,6 @@ export function PaginaInicio() {
         renderHilo={renderizarHilo}
       />
     </EstructuraApp>
+    </ProveedorDestinosCompartir>
   )
 }

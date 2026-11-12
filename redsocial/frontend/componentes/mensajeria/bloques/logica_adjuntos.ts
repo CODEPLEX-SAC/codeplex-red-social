@@ -16,8 +16,13 @@ export const ACEPTA_DOCUMENTOS = Object.values(formatos)
   .map((extension) => `${PUNTO}${extension}`)
   .join(SEPARADOR_LISTA)
 
+function exponenteDePeso(bytes: number) {
+  if (bytes <= 0) return 0
+  return Math.min(Math.floor(Math.log(bytes) / Math.log(formato.base)), formato.unidades.length - 1)
+}
+
 export function pesoLegible(bytes: number): string {
-  const exponente = bytes <= 0 ? 0 : Math.min(Math.floor(Math.log(bytes) / Math.log(formato.base)), formato.unidades.length - 1)
+  const exponente = exponenteDePeso(bytes)
   const valor = bytes / formato.base ** exponente
   const texto = exponente === 0 ? String(bytes) : valor.toFixed(formato.decimales)
   return [texto, formato.unidades[exponente]].join(formato.separador)
@@ -61,14 +66,14 @@ export function adjuntoDeGrabacion(grabacion: GrabacionAudio): AdjuntoMensaje {
   return { nombre: formato.etiquetas.audio, peso: pesoLegible(grabacion.bytes), tipo: 'audio', mime: grabacion.tipo, bytes: grabacion.bytes, url: grabacion.url, duracion: grabacion.duracion, picos: grabacion.picos }
 }
 
+function crearAdjunto(archivo: File): AdjuntoMensaje {
+  const clasificacion = clasificarArchivo(archivo)
+  return { nombre: archivo.name, peso: pesoLegible(archivo.size), tipo: clasificacion.tipo, formato: clasificacion.formato, extension: clasificacion.extension, mime: archivo.type, bytes: archivo.size, url: URL.createObjectURL(archivo) }
+}
+
 export function prepararAdjuntos(archivos: readonly File[]): { adjuntos: AdjuntoMensaje[]; errores: string[] } {
-  const adjuntos: AdjuntoMensaje[] = []
-  const errores: string[] = []
-  archivos.forEach((archivo) => {
-    const error = errorDeArchivo(archivo)
-    if (error !== null) return void errores.push(error)
-    const clasificacion = clasificarArchivo(archivo)
-    adjuntos.push({ nombre: archivo.name, peso: pesoLegible(archivo.size), tipo: clasificacion.tipo, formato: clasificacion.formato, extension: clasificacion.extension, mime: archivo.type, bytes: archivo.size, url: URL.createObjectURL(archivo) })
-  })
+  const evaluados = archivos.map((archivo) => ({ archivo, error: errorDeArchivo(archivo) }))
+  const errores = evaluados.flatMap(({ error }) => (error === null ? [] : [error]))
+  const adjuntos = evaluados.flatMap(({ archivo, error }) => (error === null ? [crearAdjunto(archivo)] : []))
   return { adjuntos, errores }
 }

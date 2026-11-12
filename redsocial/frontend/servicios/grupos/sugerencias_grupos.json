@@ -1,0 +1,86 @@
+{
+  "paraTi": [
+    {
+      "nombre": "Programación en Python",
+      "categoria": "Tecnología",
+      "miembros": "39 mil miembros",
+      "publicaciones": "+4 publicaciones al día",
+      "masAvatares": "+18",
+      "miembrosTotal": 39000
+    },
+    {
+      "nombre": "Proyectos Freelance para Desarrolladores",
+      "categoria": "Negocios",
+      "miembros": "10 mil miembros",
+      "publicaciones": "+8 publicaciones al mes",
+      "masAvatares": "+7",
+      "miembrosTotal": 10000
+    },
+    {
+      "nombre": "Python Desde Cero a Experto",
+      "categoria": "Educación",
+      "miembros": "66 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+32",
+      "miembrosTotal": 66000
+    },
+    {
+      "nombre": "Diseño Web y Desarrollo de Software",
+      "categoria": "Tecnología",
+      "miembros": "27 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+15",
+      "miembrosTotal": 27000
+    },
+    {
+      "nombre": "Automatización con n8n, Zapier y Make",
+      "categoria": "Negocios",
+      "miembros": "118 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+54",
+      "miembrosTotal": 118000
+    }
+  ],
+  "mas": [
+    {
+      "nombre": "Ferias de Lima - Emprendedores",
+      "categoria": "Negocios",
+      "miembros": "14 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+6",
+      "miembrosTotal": 14000
+    },
+    {
+      "nombre": "Plantillas Gratis N8N y Cursos Gratis IA",
+      "categoria": "Educación",
+      "miembros": "19 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+12",
+      "miembrosTotal": 19000
+    },
+    {
+      "nombre": "Fortnite Colombia",
+      "categoria": "Entretenimiento",
+      "miembros": "46 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+27",
+      "miembrosTotal": 46000
+    },
+    {
+      "nombre": "Tareas y proyectos de Ingeniería Electrónica MX",
+      "categoria": "Tecnología",
+      "miembros": "27 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+11",
+      "miembrosTotal": 27000
+    },
+    {
+      "nombre": "Linux",
+      "categoria": "Tecnología",
+      "miembros": "30 mil miembros",
+      "publicaciones": "+10 publicaciones al día",
+      "masAvatares": "+20",
+      "miembrosTotal": 30000
+    }
+  ]
+}

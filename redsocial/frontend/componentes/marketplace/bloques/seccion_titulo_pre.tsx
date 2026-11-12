@@ -19,6 +19,8 @@ export function SeccionTituloPre({
   contenidoCompras,
   CATEGORIAS,
   CLASES_CATEGORIA_COLOR,
+  estadoBusqueda,
+  imagenesCarrusel,
 }: {
   carrusel: { pistaRef: React.RefObject<HTMLDivElement | null>; }
   DESTACADOS: Destacado[]
@@ -29,6 +31,8 @@ export function SeccionTituloPre({
   contenidoCompras: ReactNode
   CATEGORIAS: { icono: string; color: 'verde' | 'azul' | 'morado' | 'naranja' | 'rosa'; nombre: string; cantidad: string; }[]
   CLASES_CATEGORIA_COLOR: Record<'verde' | 'azul' | 'morado' | 'naranja' | 'rosa', string>
+  estadoBusqueda?: ReactNode
+  imagenesCarrusel: readonly string[]
 }) {
   return (
     <section>
@@ -44,17 +48,17 @@ export function SeccionTituloPre({
         </div>
       </div>
 
-      <SeccionTituloPre2 busqueda={accesos.busqueda} alBuscar={accesos.alBuscar} />
+      <SeccionTituloPre2 busqueda={accesos.busqueda} alBuscar={accesos.alBuscar} imagenes={imagenesCarrusel} />
 
       <div
         ref={carrusel.pistaRef}
         className="mb-6 flex flex-wrap items-center gap-2 max-600:flex-nowrap max-600:overflow-x-auto max-600:scrollbar-oculto"
       >
-        <Boton type="button" variant="filtro" size="filtro" activo>
+        <Boton type="button" variant="filtro" size="filtro" activo={accesos.pestana === null} aria-pressed={accesos.pestana === null} onClick={() => accesos.pestana !== null && accesos.alElegirPestana(accesos.pestana)}>
           <Icono name="cuadricula-oficial" className="h-3.5 w-3.5" /> {catalogoMarketplace.filtros.todas}
         </Boton>
         {catalogoMarketplace.filtros.pestanas.map((p) => (
-          <Boton key={p} type="button" variant="filtro" size="filtro">
+          <Boton key={p} type="button" variant="filtro" size="filtro" activo={accesos.pestana === p} aria-pressed={accesos.pestana === p} onClick={() => accesos.alElegirPestana(p)}>
             {p}
           </Boton>
         ))}
@@ -65,11 +69,13 @@ export function SeccionTituloPre({
 
       {contenidoCompras ?? (
         <>
+        {estadoBusqueda}
         <SeccionDestacados3
           DESTACADOS={DESTACADOS}
           CLASES_MODULO={CLASES_MODULO}
           CLASES_INSIGNIA_CATEGORIA={CLASES_INSIGNIA_CATEGORIA}
           alVerPlanes={alVerPlanes}
+          filtrado={accesos.pestana !== null}
         />
 
         <section>

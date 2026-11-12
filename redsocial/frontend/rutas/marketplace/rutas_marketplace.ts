@@ -15,4 +15,7 @@ export const REPOSITORIO_METODOS_PAGO: RepositorioMetodosPago = {
 }
 
 export * from '../../servicios/marketplace/estilos_marketplace'
+export { IMAGENES_CARRUSEL_MARKETPLACE } from '../../servicios/marketplace/imagenes_carrusel'
 export * from '../../servicios/marketplace/marketplace'
+export { crearRepositorioPerfiles, idPerfilDeEmpresa, perfilesDesdeEmpresas } from '../../servicios/marketplace/perfiles_facturacion'
+export { BUSQUEDA_DESTACADOS_MARKETPLACE } from './busqueda_destacados'

@@ -7,7 +7,7 @@ import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
 
 const consejos = catalogoAvisos.consejos_solicitudes.items as { icono: IconName; titulo: string; descripcion: string }[]
 
-export function PanelLateralSolicitudesAviso() {
+export function PanelLateralSolicitudesNovedad() {
   return (
     <div className="grid gap-4">
       <section className="degradado-violeta-suave rounded-xl p-5 text-center text-white">

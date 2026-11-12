@@ -1,4 +1,6 @@
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function EncabezadoPasoPago({ numero, titulo, detalle }: { numero: number; titulo: string; detalle: string }) {
   return (

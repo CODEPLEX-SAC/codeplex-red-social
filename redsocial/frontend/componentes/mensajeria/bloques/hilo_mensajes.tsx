@@ -8,6 +8,14 @@ import type { HiloMensajesProps } from '@/tipos/mensajeria/contrato_conversacion
 const clases = catalogoMensajeria.clases.chat
 
 export function HiloMensajes({ conversacion, mensajes, participantes, conversaciones, usuarioId, ahora, acciones: accionesHilo }: HiloMensajesProps) {
+  const participantePorId = new Map(participantes.map((participante) => [participante.id, participante]))
+
+  function remitenteDe(mostrar: boolean | undefined, autorId: string) {
+    const autor = participantePorId.get(autorId)
+    if (!mostrar || !autor) return undefined
+    return { autor, presencia: presenciaDe(conversaciones, autorId) }
+  }
+
   return (
     <div className={clases.hilo}>
       {mensajes.map((mensaje, indice) => {
@@ -19,17 +27,12 @@ export function HiloMensajes({ conversacion, mensajes, participantes, conversaci
             mensaje={mensaje}
             fecha={etiquetaDeDia(mensaje, mensajes[indice - 1], ahora)}
             propio={propio}
-            autor={remitente ? participantes.find((participante) => participante.id === mensaje.autorId) : undefined}
-            presencia={remitente ? presenciaDe(conversaciones, mensaje.autorId) : undefined}
+            remitente={remitenteDe(remitente, mensaje.autorId)}
             posicion={posicionEnGrupo(mensajes, indice)}
             acciones={accionesDeMensaje(mensaje, usuarioId, ahora)}
             fijado={conversacion.mensajeFijadoId === mensaje.id}
-            cita={citaDeRespuesta(mensaje.respuestaA, mensajes, conversacion, participantes, usuarioId)}
-            onResponder={accionesHilo.onResponder}
-            onEditar={accionesHilo.onEditar}
-            onReenviar={accionesHilo.onReenviar}
-            onFijar={accionesHilo.onFijar}
-            onEliminar={accionesHilo.onEliminar}
+            cita={citaDeRespuesta(mensaje.respuestaA, mensajes, { conversacion, participantes, usuarioId })}
+            manejadores={accionesHilo}
           />
         )
       })}

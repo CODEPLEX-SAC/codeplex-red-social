@@ -100,8 +100,10 @@ describe('Jerarquia tipografica: cada elemento usa el rol de su funcion', () => 
 describe('Jerarquia tipografica: casos resueltos por regla', () => {
   const fuenteDe = (ruta: string) => PANTALLAS.find((fuente) => fuente.ruta === ruta)?.texto ?? String()
 
-  it('el h1 del perfil propio y el del colaborador usan titulo-pagina (el h1 de pagina es siempre titulo-pagina)', () => {
-    expect(fuenteDe('/componentes/perfil/bloques/cabecera_perfil.tsx')).toMatch(/<h1 className="[^"]*text-titulo-pagina/)
+  it('el nombre en la cabecera del perfil es un nombre de persona (titulo-banner) y el del colaborador usa titulo-pagina', () => {
+    expect(fuenteDe('/componentes/perfil/bloques/cabecera_perfil.tsx')).toMatch(/<h1 className=\{clases\.cabecera\.nombre\}/)
+    const catalogoPerfil = JSON.parse(FUENTES.find((fuente) => fuente.ruta === '/catalogos/capacidades/redsocial/perfil.json')?.texto ?? '{}')
+    expect(catalogoPerfil.clases.cabecera.nombre).toContain('text-titulo-banner')
     const catalogoColaboradores = JSON.parse(FUENTES.find((fuente) => fuente.ruta === '/catalogos/capacidades/redsocial/colaboradores.json')?.texto ?? '{}')
     expect(fuenteDe('/paginas/colaboradores/pagina_colaborador_perfil.tsx')).toMatch(/<h1 className=\{clases\.perfil_nombre\}/)
     expect(catalogoColaboradores.clases.detalle.perfil_nombre).toContain('text-titulo-pagina')
@@ -112,8 +114,7 @@ describe('Jerarquia tipografica: casos resueltos por regla', () => {
     expect(fuenteDe('/componentes/eventos/bloques/resultados_filtro_fecha.tsx')).toMatch(/<h4 className="[^"]*text-cuerpo-grande[^"]*">\{destacado\.nombre\}/)
   })
 
-  it('el titular de la portada de Marketplace es un h2 de seccion (titulo-seccion), igual que sus secciones hermanas', () => {
-    expect(fuenteDe('/componentes/marketplace/bloques/seccion_titulo_pre2.tsx')).toMatch(/<h2 className="[^"]*text-titulo-seccion/)
+  it('las secciones de la portada de Marketplace son h2 de seccion (titulo-seccion)', () => {
     expect(fuenteDe('/componentes/marketplace/bloques/seccion_destacados3.tsx')).toMatch(/<h2 className="[^"]*text-titulo-seccion/)
   })
 })

@@ -19,7 +19,7 @@ export function TarjetaContactoEmpresa({ empresa }: DetalleEmpresaProps) {
         <FilaDatoEmpresa etiqueta={campos.email}><span className={clases.valor}>{empresa.correo}</span></FilaDatoEmpresa>
         <span className="max-768:hidden" />
         <FilaDatoEmpresa etiqueta={campos.web}>
-          <a href={empresa.web} target="_blank" rel="noreferrer" aria-label={textos.abrir_web} className="inline-flex min-w-0 items-center gap-2 break-all text-titulo-subseccion text-primario hover:underline">
+          <a href={empresa.web} target="_blank" rel="noopener noreferrer" aria-label={textos.abrir_web} className="inline-flex min-w-0 items-center gap-2 break-all text-titulo-subseccion text-primario hover:underline">
             {empresa.web}
             <Icono name="flecha-arriba-derecha" className="h-4 w-4 flex-none" />
           </a>

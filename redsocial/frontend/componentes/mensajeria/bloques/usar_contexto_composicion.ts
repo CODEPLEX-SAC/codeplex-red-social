@@ -7,7 +7,7 @@ export function usarContextoComposicion(mensajes: readonly Mensaje[], usuarioId:
   const [respondiendoId, setRespondiendoId] = useState<string | null>(null)
   const respondiendo = mensajes.find((mensaje) => mensaje.id === respondiendoId)
   const referencia: RespuestaMensaje | undefined = respondiendo ? { mensajeId: respondiendo.id, autorId: respondiendo.autorId } : undefined
-  const original = seleccion ? mensajes.find((mensaje) => mensaje.id === seleccion.id) : undefined
+  const original = seleccion && mensajes.find((mensaje) => mensaje.id === seleccion.id)
   const editando = seleccion && original && puedeEditarMensaje(original, usuarioId, ahora) ? seleccion : null
 
   function iniciarEdicion(mensajeId: string) {

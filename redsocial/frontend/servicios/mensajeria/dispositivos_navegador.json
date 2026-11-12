@@ -1,0 +1,10 @@
+{
+  "etiquetas": {
+    "camara": "Cámara",
+    "microfono": "Micrófono",
+    "altavoz": "Altavoces"
+  },
+  "propiedadSalida": "setSinkId",
+  "frecuenciaTono": 660,
+  "duracionTonoMs": 350
+}

@@ -9,8 +9,6 @@ export const dialogosRol = catalogoColaboradores.dialogos_rol
 export const seleccion = catalogoColaboradores.seleccion_jerarquica
 export const columnas = catalogoColaboradores.columnas_permisos
 
-export type Dialogo = ReturnType<typeof abrirPasoDos>
-
 const matchMediaOriginal = window.matchMedia
 
 export function simularMovil(activo: boolean) {
@@ -53,39 +51,39 @@ export function expandir(recurso: string, prefijo: string = catalogoColaboradore
   return cabecera
 }
 
-export function casilla(dialogo: Dialogo, permiso: string, recurso: string) {
+export function casilla(dialogo: ReturnType<typeof abrirPasoDos>, permiso: string, recurso: string) {
   return dialogo.getByRole('checkbox', { name: textosPermisos.casilla_etiqueta.replace(':permiso', permiso).replace(':recurso', recurso) }) as HTMLInputElement
 }
 
-export function hayCasilla(dialogo: Dialogo, permiso: string, recurso: string) {
+export function hayCasilla(dialogo: ReturnType<typeof abrirPasoDos>, permiso: string, recurso: string) {
   return dialogo.queryByRole('checkbox', { name: textosPermisos.casilla_etiqueta.replace(':permiso', permiso).replace(':recurso', recurso) }) !== null
 }
 
-export function irAModulo(dialogo: Dialogo, nombre: string) {
+export function irAModulo(dialogo: ReturnType<typeof abrirPasoDos>, nombre: string) {
   fireEvent.click(dialogo.getAllByRole('button', { name: new RegExp(`^${nombre}`) }).filter((boton) => !boton.hasAttribute('aria-controls') && !boton.id.startsWith('acordeon'))[0])
 }
 
-export function selectorRol(dialogo: Dialogo, modulo: string) {
+export function selectorRol(dialogo: ReturnType<typeof abrirPasoDos>, modulo: string) {
   return dialogo.getAllByRole('combobox', { name: `${textosPermisos.rol_modulo}: ${modulo}` })[0]
 }
 
-export function opcionesDeRol(dialogo: Dialogo, modulo: string) {
+export function opcionesDeRol(dialogo: ReturnType<typeof abrirPasoDos>, modulo: string) {
   fireEvent.mouseDown(selectorRol(dialogo, modulo))
   const opciones = within(screen.getByRole('listbox')).getAllByRole('option').map((opcion) => opcion.textContent)
   fireEvent.keyDown(screen.getByRole('listbox'), { key: 'Escape' })
   return opciones
 }
 
-export function elegirRol(dialogo: Dialogo, modulo: string, etiqueta: string) {
+export function elegirRol(dialogo: ReturnType<typeof abrirPasoDos>, modulo: string, etiqueta: string) {
   fireEvent.mouseDown(selectorRol(dialogo, modulo))
   fireEvent.click(within(screen.getByRole('listbox')).getByRole('option', { name: etiqueta }))
 }
 
-export function casillaModulo(contenedor: Dialogo | ReturnType<typeof within>) {
+export function casillaModulo(contenedor: ReturnType<typeof abrirPasoDos>) {
   return contenedor.getByRole('checkbox', { name: seleccion.seleccionar_todos }) as HTMLInputElement
 }
 
-export function casillaRecurso(contenedor: Dialogo | ReturnType<typeof within>, recurso: string) {
+export function casillaRecurso(contenedor: ReturnType<typeof abrirPasoDos>, recurso: string) {
   return contenedor.getByRole('checkbox', { name: seleccion.seleccionar_recurso.replace(':recurso', recurso) }) as HTMLInputElement
 }
 
@@ -94,7 +92,7 @@ export function estadoDe(casillaMarcada: HTMLInputElement) {
   return casillaMarcada.checked ? 'todos' : 'ninguno'
 }
 
-export function agregarPermiso(dialogo: Dialogo, recurso: string, nombre: string) {
+export function agregarPermiso(dialogo: ReturnType<typeof abrirPasoDos>, recurso: string, nombre: string) {
   fireEvent.click(dialogo.getByRole('button', { name: textosPermisos.agregar_permiso_recurso.replace(':recurso', recurso) }))
   const modal = within(screen.getByRole('dialog', { name: dialogosRol.titulo_agregar.replace(':recurso', recurso) }))
   fireEvent.change(modal.getByRole('textbox', { name: dialogosRol.permiso_etiqueta }), { target: { value: nombre } })
@@ -102,7 +100,7 @@ export function agregarPermiso(dialogo: Dialogo, recurso: string, nombre: string
   return modal
 }
 
-export function abrirAdministracion(dialogo: Dialogo, modulo: string) {
+export function abrirAdministracion(dialogo: ReturnType<typeof abrirPasoDos>, modulo: string) {
   fireEvent.click(dialogo.getByRole('button', { name: dialogosRol.menu_rol }))
   fireEvent.click(screen.getByRole('menuitem', { name: dialogosRol.opciones_rol.administrar }))
   return within(screen.getByRole('dialog', { name: dialogosRol.titulos.administrar.replace(':modulo', modulo) }))
@@ -112,24 +110,24 @@ export function accionDeRol(administracion: ReturnType<typeof abrirAdministracio
   fireEvent.click(administracion.getByRole('button', { name: dialogosRol.acciones[accion].replace(':rol', rol) }))
 }
 
-export function crearRolSimple(dialogo: Dialogo, modulo: string, nombre: string) {
+export function crearRolSimple(dialogo: ReturnType<typeof abrirPasoDos>, modulo: string, nombre: string) {
   fireEvent.click(dialogo.getByRole('button', { name: textosPermisos.crear_rol }))
   const modal = within(screen.getByRole('dialog', { name: dialogosRol.titulos.crear.replace(':modulo', modulo) }))
   fireEvent.change(modal.getByRole('textbox', { name: dialogosRol.nombre_etiqueta }), { target: { value: nombre } })
   fireEvent.click(modal.getByRole('button', { name: dialogosRol.boton_guardar.crear }))
 }
 
-export function guardarYContinuar(dialogo: Dialogo) {
+export function guardarYContinuar(dialogo: ReturnType<typeof abrirPasoDos>) {
   fireEvent.click(dialogo.getByRole('button', { name: dialogosRol.guardar_y_continuar }))
 }
 
-export function registrarRol(dialogo: Dialogo, modulo: string, nombre: string) {
+export function registrarRol(dialogo: ReturnType<typeof abrirPasoDos>, modulo: string, nombre: string) {
   crearRolSimple(dialogo, modulo, nombre)
   fireEvent.click(casillaDelModulo(dialogo))
   guardarYContinuar(dialogo)
   fireEvent.click(dialogo.getByRole('button', { name: textosPermisos.anterior }))
 }
 
-export function casillaDelModulo(dialogo: Dialogo) {
+export function casillaDelModulo(dialogo: ReturnType<typeof abrirPasoDos>) {
   return dialogo.getByRole('checkbox', { name: seleccion.seleccionar_todos }) as HTMLInputElement
 }

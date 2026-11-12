@@ -1,8 +1,10 @@
 import { Boton } from '../interfaz/boton'
 import { IndicadorCarga } from '../interfaz/indicador_carga'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { usarTextosPago } from './usar_textos_pago'
 import type { usarFlujoPago } from './usar_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function BotonActivarPago({ estado, accion }: { estado: ReturnType<typeof usarFlujoPago>; accion: string }) {
   const textos = usarTextosPago()

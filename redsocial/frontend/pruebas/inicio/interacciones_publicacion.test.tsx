@@ -1,3 +1,4 @@
+import { ALMACEN_HISTORIAS } from '../../rutas/inicio/rutas_inicio'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { PaginaInicio } from '@/paginas/inicio/pagina_inicio'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
@@ -38,7 +39,7 @@ describe('Propiedad de la publicacion', () => {
     publicar('Mi publicacion')
     expect(tarjeta('Mi publicacion').getByRole('button', { name: botones.mas_opciones })).toBeInTheDocument()
     expect(ejemplo().queryByRole('button', { name: botones.mas_opciones })).toBeNull()
-    expect(within(screen.getByText(catalogoInicio.leyendas.compartio_una_publicacion).closest('article') as HTMLElement).queryByRole('button', { name: botones.mas_opciones })).toBeNull()
+    screen.getAllByText(catalogoInicio.leyendas.compartio_una_publicacion).forEach((leyenda) => expect(within(leyenda.closest('article') as HTMLElement).queryByRole('button', { name: botones.mas_opciones })).toBeNull())
   })
 })
 
@@ -171,28 +172,27 @@ describe('Compartir', () => {
     expect(tarjeta('Mi publicacion').getByRole('button', { name: new RegExp(botones.compartir) })).toBeDisabled()
   })
 
-  it('compartir una publicacion ajena crea una publicacion compartida en el feed y cuenta el compartido', () => {
+  it('compartir en Historia no muestra vista previa y agrega la historia a las del usuario', () => {
     render(<PaginaInicio />)
+    const antes = ALMACEN_HISTORIAS.leer().historias.length
     fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.compartir) }))
 
     const dialogo = within(screen.getByRole('dialog', { name: publicacion.compartir.titulo }))
-    expect(dialogo.getByText(PUBLICACION_INICIO.texto)).toBeInTheDocument()
+    expect(dialogo.queryByText(PUBLICACION_INICIO.texto)).toBeNull()
+    publicacion.compartir.destinos.forEach((destino) => expect(dialogo.getByRole('button', { name: destino.etiqueta })).toBeInTheDocument())
     fireEvent.click(dialogo.getByRole('button', { name: publicacion.compartir.cerrar }))
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(ejemplo().queryByText(/compartido/)).toBeNull()
 
     fireEvent.click(ejemplo().getByRole('button', { name: new RegExp(botones.compartir) }))
     const confirmacion = within(screen.getByRole('dialog'))
     fireEvent.change(confirmacion.getByLabelText(publicacion.compartir.etiqueta_campo), { target: { value: 'Vale la pena verlo' } })
     fireEvent.click(confirmacion.getByRole('button', { name: publicacion.compartir.confirmar }))
-    const estado = within(screen.getByRole('status'))
-    expect(estado.getByText(publicacion.compartir.exito_titulo)).toBeInTheDocument()
-    fireEvent.click(estado.getByRole('button', { name: publicacion.compartir.listo }))
+    expect(screen.getByText(publicacion.compartir.exito_historia)).toBeInTheDocument()
     expect(screen.queryByRole('dialog')).toBeNull()
 
-    expect(ejemplo().getByText(`1 ${catalogoInicio.contadores.compartido_singular}`)).toBeInTheDocument()
-    const compartida = within(screen.getByText('Vale la pena verlo').closest('article') as HTMLElement)
-    expect(compartida.getByText(catalogoInicio.leyendas.compartio_una_publicacion)).toBeInTheDocument()
-    expect(compartida.getByText(catalogoCompartido.sesion_actual.usuario)).toBeInTheDocument()
+    const historias = ALMACEN_HISTORIAS.leer().historias
+    expect(historias).toHaveLength(antes + 1)
+    expect(historias.at(-1)?.borrador.texto).toContain('Vale la pena verlo')
+    expect(historias.at(-1)?.autorId).toBe(catalogoCompartido.sesion_actual.id)
   })
 })

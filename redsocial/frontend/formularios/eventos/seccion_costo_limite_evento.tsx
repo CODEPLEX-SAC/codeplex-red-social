@@ -3,7 +3,8 @@ import { Interruptor } from '../../componentes/compartido/interfaz/interruptor'
 import { Radio } from '../../componentes/compartido/interfaz/radio'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import { CampoEtiquetado } from '../../componentes/compartido/interfaz/campo_etiquetado'
-import { OpcionCostoEvento, TarjetaFormularioEvento } from './formulario_evento'
+import { TarjetaFormularioEvento } from './formulario_evento'
+import { OpcionCostoEvento } from './opcion_costo_evento'
 import type { AsignadoresFormularioEvento, ValoresFormularioEvento } from './modelo_formulario_evento'
 
 const textos = catalogoEventos.modal_crear_evento

@@ -83,6 +83,7 @@ export function referenciaDeRol(colaborador: Colaborador, rol: string, lista: Co
 
 export function aplicarBorrador(colaborador: Colaborador, borrador: BorradorColaborador, lista: Colaborador[], disponibles: Aplicacion[]): Colaborador {
   const referencia = referenciaDeRol(colaborador, borrador.rol, lista)
+  const marcadas = new Set(borrador.aplicaciones)
   return {
     ...colaborador,
     nombre: borrador.nombre.trim(),
@@ -91,7 +92,7 @@ export function aplicarBorrador(colaborador: Colaborador, borrador: BorradorCola
     rol: borrador.rol,
     rolClase: referencia.rolClase,
     descripcionRol: referencia.descripcionRol,
-    aplicaciones: disponibles.filter((app) => borrador.aplicaciones.includes(app.nombre)),
+    aplicaciones: disponibles.filter((app) => marcadas.has(app.nombre)),
     estado: borrador.estado,
     ...(borrador.ultimoAcceso ? { ultimoAcceso: borrador.ultimoAcceso } : {}),
     acciones: borrador.estado === 'invitado' ? 'reenviar' : 'menu',

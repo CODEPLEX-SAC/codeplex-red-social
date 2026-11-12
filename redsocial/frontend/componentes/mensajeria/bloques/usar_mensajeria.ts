@@ -11,11 +11,11 @@ export function usarMensajeria(almacen: AlmacenMensajeria, reloj: RelojMensajeri
   const estado = useSyncExternalStore(almacen.suscribir, almacen.leer)
 
   function enviar(conversacionId: string, texto: string, respuestaA?: RespuestaMensaje) {
-    almacen.modificar((actual) => enviarMensajePropio(actual, conversacionId, texto, usuarioId, reloj.ahora(), respuestaA))
+    almacen.modificar((actual) => enviarMensajePropio(actual, { conversacionId, texto, respuestaA }, { usuarioId, ahora: reloj.ahora() }))
   }
 
   function adjuntar(conversacionId: string, adjuntos: readonly AdjuntoMensaje[], respuestaA?: RespuestaMensaje) {
-    adjuntos.forEach((adjunto, indice) => almacen.modificar((actual) => agregarMensajePropio(actual, conversacionId, { adjunto, respuestaA: indice === 0 ? respuestaA : undefined }, usuarioId, reloj.ahora())))
+    adjuntos.forEach((adjunto, indice) => almacen.modificar((actual) => agregarMensajePropio(actual, conversacionId, { adjunto, respuestaA: indice === 0 ? respuestaA : undefined }, { usuarioId, ahora: reloj.ahora() })))
   }
 
   function eliminar(conversacionId: string, mensajeId: string) {
@@ -24,7 +24,7 @@ export function usarMensajeria(almacen: AlmacenMensajeria, reloj: RelojMensajeri
 
   function reenviar(origenId: string, mensajeId: string, destinoId: string): boolean {
     const antes = almacen.leer()
-    almacen.modificar((actual) => reenviarMensaje(actual, origenId, mensajeId, destinoId, usuarioId, reloj.ahora()))
+    almacen.modificar((actual) => reenviarMensaje(actual, { origenId, mensajeId, destinoId }, { usuarioId, ahora: reloj.ahora() }))
     return almacen.leer() !== antes
   }
 
@@ -35,7 +35,7 @@ export function usarMensajeria(almacen: AlmacenMensajeria, reloj: RelojMensajeri
   function editar(conversacionId: string, mensajeId: string, texto: string): boolean {
     const original = (almacen.leer().hilos[conversacionId] ?? []).find((mensaje) => mensaje.id === mensajeId)
     if (!original || !puedeEditarMensaje(original, usuarioId, reloj.ahora())) return false
-    almacen.modificar((actual) => editarMensajePropio(actual, conversacionId, mensajeId, texto, usuarioId, reloj.ahora()))
+    almacen.modificar((actual) => editarMensajePropio(actual, { conversacionId, mensajeId, texto }, { usuarioId, ahora: reloj.ahora() }))
     return true
   }
 

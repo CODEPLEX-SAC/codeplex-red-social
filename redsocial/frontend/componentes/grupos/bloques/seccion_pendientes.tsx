@@ -1,7 +1,6 @@
 import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
 import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import { Icono } from '../../compartido/icono'
-import { Insignia } from '../../compartido/interfaz/insignia'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -29,10 +28,7 @@ export function SeccionPendientes({
               <Icono name={p.icono} className="h-5 w-5" />
             </div>
             <div className="min-w-0">
-              <h3 className="m-0 mb-px flex items-center gap-1.5 text-nombre-entidad text-texto">
-                {p.nombre}
-                {p.privado && <Insignia variant="privado">{catalogoGrupos.leyendas.privado}</Insignia>}
-              </h3>
+              <h3 className="m-0 mb-px flex items-center gap-1.5 text-nombre-entidad text-texto">{p.nombre}</h3>
               <span className="text-auxiliar text-texto-suave">{p.tipo}</span>
               <GrupoAvatares avatares={4} tamano="xs" resto={p.masAvatares} className="mt-1.5" />
             </div>

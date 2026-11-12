@@ -1,18 +1,16 @@
 import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
-import { Boton } from '../../compartido/interfaz/boton'
+import { AccionesSolicitud } from './acciones_solicitud'
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
-import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { FilaAvisoProps } from '@/tipos/avisos/contrato_aviso'
 
-export function FilaAviso({ aviso: n, claseIcono, seleccionable }: FilaAvisoProps) {
+export function FilaNovedad({ aviso: n, claseIcono, seleccionable, leida = n.leida, seleccionada = false, alSeleccionar }: FilaAvisoProps) {
   return (
     <article className="flex items-start gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo">
-      {seleccionable && <Casilla />}
+      {seleccionable && <Casilla seleccionado={seleccionada} alCambiar={(_, marcada) => alSeleccionar?.(marcada)} inputProps={{ 'aria-label': catalogoAvisos.campos_lista.seleccionar_una.replace(':nombre', n.nombreUsuario) }} />}
 
       {n.tipo === 'avatar' ? (
         <AvatarUsuario tamano="md" imagen={usuarioImg} insignia={n.conInsigniaIcono ? <Icono name={n.icono} className="h-3 w-3" /> : undefined} claseInsignia={claseIcono} />
@@ -37,18 +35,10 @@ export function FilaAviso({ aviso: n, claseIcono, seleccionable }: FilaAvisoProp
       )}
 
       {n.solicitud ? (
-        <div className="flex flex-none items-center gap-2">
-          <Boton type="button" variant="primario" size="default">
-            {catalogoAvisos.botones.confirmar}
-          </Boton>
-          <Boton type="button" variant="secundario" size="default">
-            {catalogoAvisos.botones.eliminar}
-          </Boton>
-        </div>
+        <AccionesSolicitud primaria="confirmar" secundaria="eliminar" />
       ) : (
         <>
-          <span className={'mt-1.5 h-2 w-2 flex-none rounded-full ' + (n.leida ? 'bg-transparent' : 'bg-primario')} />
-          <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="discreto" size="sm" className="flex-none" />
+          <span className={'mt-1.5 h-2 w-2 flex-none rounded-full ' + (leida ? 'bg-transparent' : 'bg-primario')} />
         </>
       )}
     </article>

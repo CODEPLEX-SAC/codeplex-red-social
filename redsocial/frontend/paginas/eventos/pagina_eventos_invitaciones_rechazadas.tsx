@@ -1,6 +1,6 @@
-import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Icono } from '../../componentes/compartido'
+import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
-import { PestanasEventos, PestanasFiltroInvitaciones, TarjetaInvitacion, SeccionCalendario3 } from '../../componentes/eventos'
+import { BloqueInvitaciones, PestanasEventos, PestanasFiltroInvitaciones, TarjetaInvitacion, SeccionCalendario3 } from '../../componentes/eventos'
 import { RECHAZADAS, PROXIMOS_LATERAL_INVITACIONES as PROXIMOS_LATERAL, MES_CALENDARIO_INVITACIONES, RESUMEN_INVITACIONES, CONTEO_PESTANAS_INVITACIONES, SEMANAS_CALENDARIO_INVITACIONES } from '../../rutas/eventos/rutas_eventos'
 
 
@@ -10,19 +10,7 @@ export function PaginaEventosInvitacionesRechazadas() {
       <EstructuraTresColumnas
         principal={
         <section>
-          <div className="mb-4 flex items-start justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="grid h-10 w-10 flex-none place-items-center rounded-control bg-primario-suave text-primario">
-                <Icono name="calendario" className="w-5 h-5" />
-              </div>
-              <div>
-                <h1 className="m-0 text-titulo-pagina text-texto">
-                  {catalogoEventos.titulos.seccion} <span className="text-primario">/ {catalogoEventos.titulos.invitaciones}</span>
-                </h1>
-                <p className="m-0 mt-0.5 text-subtitulo text-texto-suave">{catalogoEventos.subtitulos.invitaciones}</p>
-              </div>
-            </div>
-          </div>
+          <BloqueInvitaciones />
 
           <PestanasEventos activa="invitaciones" insigniaInvitaciones={{ valor: 2, estilo: 'pill' }} />
 

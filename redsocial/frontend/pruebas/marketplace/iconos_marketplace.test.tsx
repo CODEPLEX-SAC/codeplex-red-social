@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { vi } from 'vitest'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'
 import catalogoMarketplace from '@/catalogos/capacidades/redsocial/marketplace.json'

@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useState } from 'react'
 import type { FormEvent, KeyboardEvent } from 'react'
 import { BotonesAdjuntar } from './botones_adjuntar'
@@ -67,7 +68,7 @@ export function ComposicionMensaje({ onEnviar, onAdjuntar, textoInicial = String
 
   return (
     <form onSubmit={enviar} className={clases.composicion}>
-      {aviso !== String() && <p role="alert" className={clases.grabacion_error}>{aviso}</p>}
+      {aviso !== String() && <AlertaEstado className={clases.grabacion_error}>{aviso}</AlertaEstado>}
       <ControlesAudioComposicion grabacion={grabacion} onAdjuntar={onAdjuntar} />
       {!grabacion.grabando && !grabacion.borrador && campo}
     </form>

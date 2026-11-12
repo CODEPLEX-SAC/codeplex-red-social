@@ -1,6 +1,6 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { formatearHora, proximaMedianoche } from './logica_fecha_mensajeria'
-import type { Conversacion, EstadoMensajeria, Mensaje, ParteMensaje, RespuestaMensaje } from '@/tipos/mensajeria/contrato_mensajes'
+import type { ContextoEscrituraMensaje, Conversacion, EstadoMensajeria, Mensaje, ParteMensaje, SolicitudEdicionMensaje, SolicitudEnvioMensaje } from '@/tipos/mensajeria/contrato_mensajes'
 
 const textos = catalogoMensajeria.conversacion
 const LIMITE_EDICION_MS = textos.edicion.limite_minutos * 60000
@@ -40,7 +40,7 @@ function siguienteNumeroMensaje(hilo: readonly Mensaje[]): number {
   return hilo.reduce((mayor, mensaje) => Math.max(mayor, Number(mensaje.id.split('-').pop())), 0) + 1
 }
 
-export function agregarMensajePropio(estado: EstadoMensajeria, conversacionId: string, parte: ParteMensaje, usuarioId: string, ahora: Date): EstadoMensajeria {
+export function agregarMensajePropio(estado: EstadoMensajeria, conversacionId: string, parte: ParteMensaje, { usuarioId, ahora }: ContextoEscrituraMensaje): EstadoMensajeria {
   const conversacion = estado.conversaciones.find((candidata) => candidata.id === conversacionId)
   if (!conversacion) return estado
   const hilo = estado.hilos[conversacionId] ?? []
@@ -56,13 +56,13 @@ export function agregarMensajePropio(estado: EstadoMensajeria, conversacionId: s
   return conCambioEn(siguiente, conversacionId, (actual) => ({ ...actual, extracto: extractoDe(estado, actual, mensaje, usuarioId) }))
 }
 
-export function enviarMensajePropio(estado: EstadoMensajeria, conversacionId: string, texto: string, usuarioId: string, ahora: Date, respuestaA?: RespuestaMensaje): EstadoMensajeria {
+export function enviarMensajePropio(estado: EstadoMensajeria, { conversacionId, texto, respuestaA }: SolicitudEnvioMensaje, contexto: ContextoEscrituraMensaje): EstadoMensajeria {
   const contenido = texto.trim()
   if (contenido === '') return estado
-  return agregarMensajePropio(estado, conversacionId, { contenido, respuestaA }, usuarioId, ahora)
+  return agregarMensajePropio(estado, conversacionId, { contenido, respuestaA }, contexto)
 }
 
-export function editarMensajePropio(estado: EstadoMensajeria, conversacionId: string, mensajeId: string, texto: string, usuarioId: string, ahora: Date): EstadoMensajeria {
+export function editarMensajePropio(estado: EstadoMensajeria, { conversacionId, mensajeId, texto }: SolicitudEdicionMensaje, { usuarioId, ahora }: ContextoEscrituraMensaje): EstadoMensajeria {
   const contenido = texto.trim()
   const hilo = estado.hilos[conversacionId] ?? []
   const original = hilo.find((mensaje) => mensaje.id === mensajeId)

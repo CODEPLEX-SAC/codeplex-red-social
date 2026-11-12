@@ -1,5 +1,12 @@
 {
-  "acciones": ["listar", "invitar", "ver_detalle", "cambiar_rol", "dar_de_baja", "exportar"],
+  "acciones": [
+    "listar",
+    "invitar",
+    "ver_detalle",
+    "cambiar_rol",
+    "dar_de_baja",
+    "exportar"
+  ],
   "alertas": {
     "confirmar_dar_de_baja": "El colaborador perderá el acceso a todos los sistemas asignados.",
     "confirmar_desactivar_acceso": "El colaborador no podrá volver a ingresar hasta que reactives su acceso."
@@ -55,7 +62,12 @@
   "subtitulos": {
     "listado": "Gestiona a las personas que forman parte de tu equipo y acceden a los sistemas."
   },
-  "stepper_invitar": ["Información", "Rol y permisos", "Vigencia", "Resumen"],
+  "stepper_invitar": [
+    "Información",
+    "Rol y permisos",
+    "Vigencia",
+    "Resumen"
+  ],
   "secciones": {
     "como_funciona": "¿Cómo funciona?",
     "detalle_colaborador": "Detalle del colaborador",
@@ -73,10 +85,22 @@
     "seguridad": "Seguridad"
   },
   "pasos_invitar": {
-    "informacion": { "titulo": "1. Información", "subtitulo": "Completa los datos del colaborador que deseas invitar." },
-    "rol_permisos": { "titulo": "2. Rol y permisos", "subtitulo": "Selecciona el módulo, el rol y configura los permisos del colaborador." },
-    "vigencia": { "titulo": "3. Vigencia", "subtitulo": "Define el período de acceso del colaborador y qué ocurrirá al finalizar la vigencia." },
-    "resumen": { "titulo": "4. Resumen", "subtitulo": "Revisa la información de la invitación. El colaborador recibirá un correo con los detalles y el acceso para unirse al equipo." }
+    "informacion": {
+      "titulo": "1. Información",
+      "subtitulo": "Completa los datos del colaborador que deseas invitar."
+    },
+    "rol_permisos": {
+      "titulo": "2. Rol y permisos",
+      "subtitulo": "Selecciona el módulo, el rol y configura los permisos del colaborador."
+    },
+    "vigencia": {
+      "titulo": "3. Vigencia",
+      "subtitulo": "Define el período de acceso del colaborador y qué ocurrirá al finalizar la vigencia."
+    },
+    "resumen": {
+      "titulo": "4. Resumen",
+      "subtitulo": "Revisa la información de la invitación. El colaborador recibirá un correo con los detalles y el acceso para unirse al equipo."
+    }
   },
   "campos_resumen": {
     "modulos_asignados_uno": "1 módulo con permisos asignados",
@@ -93,7 +117,6 @@
     "recordatorios": "Recordatorios",
     "zona_horaria": "Zona horaria",
     "vista_previa_correo": "Vista previa del correo que recibirá el colaborador",
-    "cambiar_plantilla": "Cambiar plantilla",
     "hola_saludo": "Hola {nombre},",
     "invitacion_intro": "te ha invitado a formar parte del equipo de",
     "en_codeplex": "en",
@@ -161,7 +184,6 @@
       "dia_otros": ":n días"
     }
   },
-  "campo_telefono": { "sx": { "& .MuiOutlinedInput-notchedOutline": { "border": 0 } } },
   "iconos_recursos": {
     "Empleados": "colaboradores",
     "Planillas": "planillas",
@@ -191,6 +213,8 @@
     "predeterminado": "archivo-generico"
   },
   "seleccion_jerarquica": {
+    "icono_permiso_especifico": "permiso-especifico",
+    "color_permiso_especifico": "azul",
     "permisos_de": "Permisos de :modulo",
     "seleccionar_todos": "Seleccionar todos",
     "permisos_subtitulo": "Define los permisos del colaborador en este módulo.",
@@ -199,7 +223,11 @@
     "prefijo_cabecera": "acordeon-cabecera-",
     "prefijo_contenido": "acordeon-contenido-"
   },
-  "ids_permisos": { "separador": "--", "asignacion": "perm-asignacion", "rol": "perm-rol" },
+  "ids_permisos": {
+    "separador": "--",
+    "asignacion": "perm-asignacion",
+    "rol": "perm-rol"
+  },
   "dialogos_rol": {
     "prefijo_clave": "rol-",
     "ambito_predeterminado": "sin-empresa",
@@ -212,9 +240,19 @@
       "administrar": "Administrar roles: :modulo"
     },
     "menu_rol": "Más opciones del rol",
-    "opciones_rol": { "administrar": "Administrar roles" },
-    "columnas": { "rol": "Rol", "tipo": "Tipo", "acciones": "Acciones" },
-    "boton_guardar": { "crear": "Crear rol", "duplicar": "Duplicar rol", "editar": "Guardar cambios" },
+    "opciones_rol": {
+      "administrar": "Administrar roles"
+    },
+    "columnas": {
+      "rol": "Rol",
+      "tipo": "Tipo",
+      "acciones": "Acciones"
+    },
+    "boton_guardar": {
+      "crear": "Crear rol",
+      "duplicar": "Duplicar rol",
+      "editar": "Guardar cambios"
+    },
     "etiqueta_borrador": ":rol (borrador)",
     "guardar_y_continuar": "Guardar y continuar",
     "editar_confirmar_titulo": "Editar definición del rol",
@@ -232,8 +270,15 @@
     "cerrar": "Cerrar",
     "cancelar": "Cancelar",
     "nota_administrar": "Roles disponibles en este módulo para la empresa. Todos se pueden editar y duplicar; los de la empresa también se pueden eliminar.",
-    "tipos": { "predefinido": "Predefinido", "empresa": "Empresa" },
-    "acciones": { "editar": "Editar :rol", "duplicar": "Duplicar :rol", "eliminar": "Eliminar :rol" },
+    "tipos": {
+      "predefinido": "Predefinido",
+      "empresa": "Empresa"
+    },
+    "acciones": {
+      "editar": "Editar :rol",
+      "duplicar": "Duplicar :rol",
+      "eliminar": "Eliminar :rol"
+    },
     "copia_de": "Copia de :rol",
     "eliminar_titulo": "Eliminar rol",
     "eliminar_pregunta": "¿Eliminar el rol :rol?",
@@ -273,11 +318,26 @@
     }
   },
   "perfiles_permisos": [
-    { "clave": "administrador", "etiqueta": "Administrador" },
-    { "clave": "supervisor", "etiqueta": "Supervisor" },
-    { "clave": "operador", "etiqueta": "Operador" },
-    { "clave": "consulta", "etiqueta": "Consulta" },
-    { "clave": "sin-acceso", "etiqueta": "Sin acceso" }
+    {
+      "clave": "administrador",
+      "etiqueta": "Administrador"
+    },
+    {
+      "clave": "supervisor",
+      "etiqueta": "Supervisor"
+    },
+    {
+      "clave": "operador",
+      "etiqueta": "Operador"
+    },
+    {
+      "clave": "consulta",
+      "etiqueta": "Consulta"
+    },
+    {
+      "clave": "sin-acceso",
+      "etiqueta": "Sin acceso"
+    }
   ],
   "dialogos_permisos": {
     "perfiles": {
@@ -286,9 +346,18 @@
       "separador": ", "
     }
   },
-  "colores_casilla_permiso": { "sin-acceso": "error", "ver": "info", "crear": "exito", "editar": "advertencia", "eliminar": "error", "imprimir": "secundario", "exportar": "exito" },
+  "colores_casilla_permiso": {
+    "sin-acceso": "error",
+    "ver": "info",
+    "crear": "exito",
+    "editar": "advertencia",
+    "eliminar": "error",
+    "imprimir": "secundario",
+    "exportar": "exito"
+  },
   "campos_rol_permisos": {
     "rol_modulo": "Rol del módulo",
+    "separador_rol_modulo": ": ",
     "rol_titulo": "Seleccionar rol",
     "rol_subtitulo": "Los permisos del rol seleccionado se pueden ajustar para este colaborador.",
     "crear_rol": "Crear rol",
@@ -318,13 +387,55 @@
     "anterior": "Anterior"
   },
   "columnas_permisos": [
-    { "clave": "sin-acceso", "icono": "sin-acceso", "color": "rojo", "etiqueta": "Sin acceso", "etiqueta_fila": "Sin acceso" },
-    { "clave": "ver", "icono": "ver", "color": "azul", "etiqueta": "Ver", "etiqueta_fila": "Ver" },
-    { "clave": "crear", "icono": "mas", "color": "verde", "etiqueta": "Crear", "etiqueta_fila": "Crear" },
-    { "clave": "editar", "icono": "editar-oficial", "color": "naranja", "etiqueta": "Editar", "etiqueta_fila": "Modificar" },
-    { "clave": "eliminar", "icono": "eliminar", "color": "rojo", "etiqueta": "Eliminar", "etiqueta_fila": "Eliminar" },
-    { "clave": "imprimir", "icono": "imprimir", "color": "violeta", "etiqueta": "Imprimir", "etiqueta_fila": "Imprimir" },
-    { "clave": "exportar", "icono": "descargar", "color": "verde", "etiqueta": "Exportar", "etiqueta_fila": "Exportar" }
+    {
+      "clave": "sin-acceso",
+      "icono": "sin-acceso",
+      "color": "rojo",
+      "etiqueta": "Sin acceso",
+      "etiqueta_fila": "Sin acceso"
+    },
+    {
+      "clave": "ver",
+      "icono": "ver",
+      "color": "azul",
+      "etiqueta": "Ver",
+      "etiqueta_fila": "Ver"
+    },
+    {
+      "clave": "crear",
+      "icono": "mas",
+      "color": "verde",
+      "etiqueta": "Crear",
+      "etiqueta_fila": "Crear"
+    },
+    {
+      "clave": "editar",
+      "icono": "editar-oficial",
+      "color": "naranja",
+      "etiqueta": "Editar",
+      "etiqueta_fila": "Modificar"
+    },
+    {
+      "clave": "eliminar",
+      "icono": "eliminar",
+      "color": "rojo",
+      "etiqueta": "Eliminar",
+      "etiqueta_fila": "Eliminar"
+    },
+    {
+      "clave": "imprimir",
+      "icono": "imprimir",
+      "color": "violeta",
+      "etiqueta": "Imprimir",
+      "etiqueta_fila": "Imprimir"
+    },
+    {
+      "clave": "exportar",
+      "icono": "descargar",
+      "color": "verde",
+      "etiqueta": "Exportar",
+      "etiqueta_fila": "Exportar"
+    }
   ],
   "campos_informacion": {
     "nombres": "Nombres",
@@ -369,14 +480,31 @@
     "volver_a_colaboradores": "Volver a colaboradores"
   },
   "placeholders": {
-    "buscar_colaborador": "Buscar colaborador por nombre, correo o teléfono...",
+    "buscar_colaborador": "Buscar colaborador por nombre o correo electrónico...",
     "fecha": "DD/MM/AAAA"
   },
   "menu_exportar": [
-    { "clave": "excel", "etiqueta": "Exportar a Excel", "icono": "planillas" },
-    { "clave": "pdf", "etiqueta": "Exportar a PDF", "icono": "documento" },
-    { "clave": "excel_filtrados", "etiqueta": "Exportar filtrados a Excel", "icono": "filtro", "divisor": true },
-    { "clave": "pdf_filtrados", "etiqueta": "Exportar filtrados a PDF", "icono": "filtro" }
+    {
+      "clave": "excel",
+      "etiqueta": "Exportar a Excel",
+      "icono": "planillas"
+    },
+    {
+      "clave": "pdf",
+      "etiqueta": "Exportar a PDF",
+      "icono": "documento"
+    },
+    {
+      "clave": "excel_filtrados",
+      "etiqueta": "Exportar filtrados a Excel",
+      "icono": "filtro",
+      "divisor": true
+    },
+    {
+      "clave": "pdf_filtrados",
+      "etiqueta": "Exportar filtrados a PDF",
+      "icono": "filtro"
+    }
   ],
   "celda_aplicaciones": {
     "max_iconos_perfil": 6
@@ -392,11 +520,20 @@
     "hoja": "Colaboradores",
     "formato_fecha_hora": "DD/MM/YYYY HH:mm",
     "formato_fecha_archivo": "YYYYMMDD",
-    "archivos": { "vista": "colaboradores", "filtrados": "colaboradores_filtrados" },
+    "archivos": {
+      "vista": "colaboradores",
+      "filtrados": "colaboradores_filtrados"
+    },
     "separador_archivo": "_",
     "formatos": {
-      "excel": { "extension": ".xlsx", "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" },
-      "pdf": { "extension": ".pdf", "tipo": "application/pdf" }
+      "excel": {
+        "extension": ".xlsx",
+        "tipo": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      },
+      "pdf": {
+        "extension": ".pdf",
+        "tipo": "application/pdf"
+      }
     },
     "separador_aplicaciones": ", ",
     "etiquetas": {
@@ -518,7 +655,20 @@
     }
   },
   "filtros_activos": {
-    "claves": { "rol": "rol", "aplicacion": "aplicacion", "vigencia_desde": "fechaInicio", "vigencia_hasta": "fechaFin", "invitacion_desde": "invitacionDesde", "invitacion_hasta": "invitacionHasta", "ultimo_acceso": "ultimoAcceso", "acceso_vigente": "accesoVigente", "acceso_vencido": "accesoVencido", "aplicacion_asignada": "aplicaciones", "cuenta_creada": "cuentaCreada", "cuenta_invitada": "cuentaInvitada" }
+    "claves": {
+      "rol": "rol",
+      "aplicacion": "aplicacion",
+      "vigencia_desde": "fechaInicio",
+      "vigencia_hasta": "fechaFin",
+      "invitacion_desde": "invitacionDesde",
+      "invitacion_hasta": "invitacionHasta",
+      "ultimo_acceso": "ultimoAcceso",
+      "acceso_vigente": "accesoVigente",
+      "acceso_vencido": "accesoVencido",
+      "aplicacion_asignada": "aplicaciones",
+      "cuenta_creada": "cuentaCreada",
+      "cuenta_invitada": "cuentaInvitada"
+    }
   },
   "panel_filtros_avanzados": {
     "titulo": "Filtros avanzados",
@@ -527,15 +677,44 @@
     "fecha_invitacion": "Fecha de invitación",
     "desde": "Desde",
     "hasta": "Hasta",
-    "ultimo_acceso": { "etiqueta": "Último acceso", "opciones": ["Todos", "Últimas 24 horas", "Últimos 7 días", "Últimos 30 días", "Nunca"] },
+    "ultimo_acceso": {
+      "etiqueta": "Último acceso",
+      "opciones": [
+        "Todos",
+        "Últimas 24 horas",
+        "Últimos 7 días",
+        "Últimos 30 días",
+        "Nunca"
+      ]
+    },
     "estado_acceso": "Estado de acceso",
     "acceso_vigente": "Con acceso vigente",
     "acceso_vencido": "Sin acceso (vencido)",
-    "aplicaciones_asignadas": { "etiqueta": "Aplicaciones asignadas", "opciones": ["Todas las aplicaciones", "Planillas", "Contabilidad", "Inventario", "Ventas", "Compras", "Proyectos", "Reportes", "Configuración"] },
+    "aplicaciones_asignadas": {
+      "etiqueta": "Aplicaciones asignadas",
+      "opciones": [
+        "Todas las aplicaciones",
+        "Planillas",
+        "Contabilidad",
+        "Inventario",
+        "Ventas",
+        "Compras",
+        "Proyectos",
+        "Reportes",
+        "Configuración"
+      ]
+    },
     "tipo_cuenta": "Tipo de cuenta",
     "cuenta_creada": "Cuenta creada",
     "cuenta_invitada": "Cuenta invitada (pendiente)",
-    "metodo_invitacion": { "etiqueta": "Método de invitación", "opciones": ["Todos", "Correo electrónico", "WhatsApp"] },
+    "metodo_invitacion": {
+      "etiqueta": "Método de invitación",
+      "opciones": [
+        "Todos",
+        "Correo electrónico",
+        "WhatsApp"
+      ]
+    },
     "aplicar": "Aplicar filtros",
     "idioma": "es",
     "marcador_fecha": "Selecciona la fecha",
@@ -549,7 +728,12 @@
     "motivo": {
       "etiqueta": "Motivo de baja",
       "placeholder": "Selecciona un motivo",
-      "opciones": ["Renuncia voluntaria", "Término de contrato", "Despido", "Otro"]
+      "opciones": [
+        "Renuncia voluntaria",
+        "Término de contrato",
+        "Despido",
+        "Otro"
+      ]
     },
     "fecha_baja": "Fecha de baja",
     "tecla_cerrar": "Escape"
@@ -559,25 +743,101 @@
     "subtitulo": "Modifica la información, el rol y los accesos de la persona.",
     "cambiar_foto": "Cambiar foto",
     "nombre_completo": "Nombre completo",
-    "telefono": "Teléfono",
+    "telefono": "flex items-start gap-2",
     "descripcion_del_rol": "Descripción del rol",
     "fecha_inicio": "Fecha de inicio",
     "fecha_fin": "Fecha de fin",
     "estado_de_acceso": "Estado de acceso",
     "aplicaciones_subtitulo": "Selecciona las aplicaciones a las que tendrá acceso.",
     "guardar_cambios": "Guardar cambios",
-    "clave_borrador": { "fecha_inicio": "fechaInicio", "fecha_fin": "fechaFin", "ultimo_acceso": "ultimoAcceso" },
-    "hora_acceso": { "patron": "(\\d{1,2}):(\\d{2})\\s*([AaPp])[Mm]", "formato": "hh:mm A", "inicial_pm": "p" }
+    "clave_borrador": {
+      "fecha_inicio": "fechaInicio",
+      "fecha_fin": "fechaFin",
+      "ultimo_acceso": "ultimoAcceso"
+    },
+    "hora_acceso": {
+      "patron": "(\\d{1,2}):(\\d{2})\\s*([AaPp])[Mm]",
+      "formato": "hh:mm A",
+      "inicial_pm": "p"
+    }
   },
   "selectores": {
-    "estado": { "etiqueta": "Estado", "opciones": ["Todos", "Activo", "Invitado", "Inactivo", "Baja"] },
-    "rol_perfil": { "etiqueta": "Rol / Perfil", "opciones": ["Todos", "Administrador", "Contador", "Vendedor", "Almacenero", "Analista", "Asistente"] },
-    "aplicaciones": { "etiqueta": "Aplicaciones", "opciones": ["Todas", "Planillas", "Contabilidad", "Inventario", "Ventas", "Compras", "Proyectos", "Reportes", "Configuración"] },
-    "ordenar_por": { "etiqueta": "Ordenar por", "opciones": ["Más recientes", "Más antiguos", "Nombre A-Z", "Nombre Z-A"] },
-    "codigo_pais": { "opciones": ["+51", "+52", "+54", "+57", "+56"] },
-    "tipo_documento": { "opciones": ["DNI", "RUC", "C.E."] },
-    "empresa_colaborador": { "opciones": ["AI Robotics Peru SAC", "Otra empresa"] },
-    "area_departamento": { "opciones": ["Contabilidad", "Ventas", "Tecnología", "Recursos Humanos", "Marketing"] }
+    "estado": {
+      "etiqueta": "Estado",
+      "opciones": [
+        "Todos",
+        "Activo",
+        "Invitado",
+        "Inactivo",
+        "Baja"
+      ]
+    },
+    "rol_perfil": {
+      "etiqueta": "Rol / Perfil",
+      "opciones": [
+        "Todos",
+        "Administrador",
+        "Contador",
+        "Vendedor",
+        "Almacenero",
+        "Analista",
+        "Asistente"
+      ]
+    },
+    "aplicaciones": {
+      "etiqueta": "Aplicaciones",
+      "opciones": [
+        "Todas",
+        "Planillas",
+        "Contabilidad",
+        "Inventario",
+        "Ventas",
+        "Compras",
+        "Proyectos",
+        "Reportes",
+        "Configuración"
+      ]
+    },
+    "ordenar_por": {
+      "etiqueta": "Ordenar por",
+      "opciones": [
+        "Más recientes",
+        "Más antiguos",
+        "Nombre A-Z",
+        "Nombre Z-A"
+      ]
+    },
+    "codigo_pais": {
+      "opciones": [
+        "+51",
+        "+52",
+        "+54",
+        "+57",
+        "+56"
+      ]
+    },
+    "tipo_documento": {
+      "opciones": [
+        "DNI",
+        "RUC",
+        "C.E."
+      ]
+    },
+    "empresa_colaborador": {
+      "opciones": [
+        "AI Robotics Peru SAC",
+        "Otra empresa"
+      ]
+    },
+    "area_departamento": {
+      "opciones": [
+        "Contabilidad",
+        "Ventas",
+        "Tecnología",
+        "Recursos Humanos",
+        "Marketing"
+      ]
+    }
   },
   "tabla": {
     "colaborador": "Colaborador",
@@ -759,7 +1019,7 @@
       "seccion": "mt-4 border-t border-borde-suave pt-4",
       "titulo_seccion": "m-0 mb-2.5 text-nombre-entidad text-texto",
       "titulo_seccion_en_cabecera": "m-0 text-nombre-entidad text-texto",
-    "cabecera_seccion": "mb-2.5 flex items-center justify-between",
+      "cabecera_seccion": "mb-2.5 flex items-center justify-between",
       "cabecera_seccion_contador": "mb-2.5 flex items-center gap-2",
       "lista_datos": "m-0 grid list-none gap-3 p-0",
       "dato": "flex items-start gap-2.5",
@@ -777,7 +1037,7 @@
       "pagina_tarjeta": "rounded-xl border border-gris-borde bg-white p-5",
       "pagina_lateral": "grid gap-4",
       "pagina_seccion": "mb-4",
-    "titulo_seccion_pagina_en_cabecera": "m-0 text-titulo-seccion text-texto",
+      "titulo_seccion_pagina_en_cabecera": "m-0 text-titulo-seccion text-texto",
       "pagina_titulo_seccion": "m-0 mb-2.5 text-titulo-seccion text-texto",
       "pagina_aplicaciones": "flex flex-wrap items-center gap-1.5",
       "pagina_historial_item": "relative pl-4 text-cuerpo before:absolute before:left-0 before:top-1.25 before:h-1.75 before:w-1.75 before:rounded-full before:bg-verde-categoria before:content-vacio",
@@ -903,8 +1163,7 @@
       "significado_nombre": "text-campo-formulario text-texto",
       "significado_texto": "text-auxiliar text-texto-suave"
     },
-    "invitar_dialogos": {
-    },
+    "invitar_dialogos": {},
     "invitar_comun": {
       "stepper": "flex-none border-b border-borde px-6 py-4 max-480:px-2",
       "stepper_movil_texto": "m-0 mt-2 text-center text-campo-formulario text-texto",
@@ -968,8 +1227,7 @@
       "documento_tipo": "w-24 flex-none max-480:w-full",
       "documento_numero": "min-w-0 flex-1",
       "telefono": "flex min-h-control items-stretch overflow-hidden rounded-control border border-borde bg-superficie focus-within:border-primario",
-      "telefono_pais": "flex flex-none items-center gap-1 border-r border-borde pl-3",
-      "telefono_bandera": "h-3.25 w-4.5 rounded-sm degradado-bandera",
+      "telefono_pais": "flex-none",
       "telefono_numero": "min-w-0 flex-1"
     },
     "invitar_vigencia": {
@@ -982,8 +1240,8 @@
       "duracion": "mt-2 inline-flex items-center rounded-md bg-fondo-hover-neutro px-3 py-1 text-badge text-texto-suave",
       "opcion_indefinida": "mt-4 flex cursor-pointer items-start gap-2.5",
       "nota_indefinida": "mt-3",
-      "vencer_cabecera": "mb-1 flex items-center gap-2",
-      "vencer_subtitulo": "-mt-2 mb-4 text-auxiliar leading-texto text-texto-suave",
+      "vencer_cabecera": "mb-2 flex items-center gap-2",
+      "vencer_subtitulo": "m-0 mb-4 text-auxiliar leading-texto text-texto-suave",
       "opcion_amplia": "mb-4 flex cursor-pointer items-start gap-2.5",
       "opcion_media": "mb-3 flex cursor-pointer items-start gap-2.5",
       "cabecera": "mb-3.5 flex items-center gap-2",
@@ -1046,5 +1304,8 @@
   },
   "filtros_avanzados_reglas": {
     "ultimo_acceso_reciente": "Hoy"
+  },
+  "roles_aria": {
+    "dialogo": "dialog"
   }
 }

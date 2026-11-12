@@ -1,3 +1,4 @@
+import type { FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
 import type { ControlGrabacionAudio } from '@/tipos/compartido/contrato_audio'
 import type { EstadoPresencia } from '@/tipos/compartido/contrato_avatar'
 import type { AccionesMensaje, AdjuntoMensaje, Conversacion, PosicionEnGrupo, Mensaje, ParticipanteMensajeria, RespuestaMensaje } from '@/tipos/mensajeria/contrato_mensajes'
@@ -67,22 +68,17 @@ export interface BurbujaMensajeProps {
   mensaje: Mensaje
   fecha?: string
   propio: boolean
-  autor?: ParticipanteMensajeria
-  presencia?: EstadoPresencia
+  remitente?: { autor: ParticipanteMensajeria; presencia?: EstadoPresencia }
   posicion: PosicionEnGrupo
   acciones: AccionesMensaje
   fijado: boolean
   cita?: CitaMensaje
-  onResponder: (mensajeId: string) => void
-  onEditar: (mensajeId: string) => void
-  onReenviar: (mensajeId: string) => void
-  onFijar: (mensajeId: string) => void
-  onEliminar: (mensajeId: string) => void
+  manejadores: AccionesHilo
 }
 
 export interface FranjaMensajeFijadoProps {
   mensaje: Mensaje
-  onCerrar: () => void
+  onIrAlMensaje: (mensajeId: string) => void
 }
 
 export interface ModalEliminarMensajeProps {
@@ -92,6 +88,7 @@ export interface ModalEliminarMensajeProps {
 
 export interface ModalReenviarMensajeProps {
   destinos: readonly Conversacion[]
+  fuente?: FuenteBusqueda<Conversacion>
   onConfirmar: (destinoIds: readonly string[]) => boolean | void
   onCancelar: () => void
 }

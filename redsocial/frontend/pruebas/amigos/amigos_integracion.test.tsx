@@ -9,7 +9,7 @@ import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.jso
 import { ESTADO_INICIAL_MENSAJERIA } from '@/servicios/mensajeria/mensajes'
 import catalogoAmigos from '@/catalogos/capacidades/redsocial/amigos.json'
 import textosRedSocial from '@/mensajes/capacidades/redsocial/textos.json'
-import { AMIGOS, ENVIADAS, RECIBIDAS, RESUMEN_AMIGOS } from '@/rutas/amigos/rutas_amigos'
+import { AMIGOS, ENVIADAS, MIS_LISTAS, RECIBIDAS, RESUMEN_AMIGOS, SUGERENCIAS } from '@/rutas/amigos/rutas_amigos'
 
 const PAGINAS = [
   ['Todos', PaginaAmigosTodos],
@@ -33,7 +33,7 @@ describe('Amigos: contadores derivados de la fuente de solicitudes recibidas', {
     expect(resumen.filter((tarjeta) => tarjeta !== pendientes).map((tarjeta) => tarjeta.valor)).toEqual(RESUMEN_AMIGOS.filter((tarjeta) => tarjeta.icono !== catalogoAmigos.icono_resumen_pendientes).map((tarjeta) => tarjeta.valor))
     render(<PaginaAmigosTodos />)
     const tarjeta = screen.getByText(RESUMEN_AMIGOS.find((candidata) => candidata.icono === catalogoAmigos.icono_resumen_pendientes)?.etiqueta ?? '').closest('article') as HTMLElement
-    expect(within(tarjeta).getByText(String(RECIBIDAS.length))).toBeInTheDocument()
+    expect(within(tarjeta).getByText(RESUMEN_AMIGOS.find((candidata) => candidata.icono === catalogoAmigos.icono_resumen_pendientes)?.valor ?? '')).toBeInTheDocument()
   })
 
   it('sin solicitudes pendientes no se muestra insignia', () => {
@@ -45,34 +45,42 @@ describe('Amigos: contadores derivados de la fuente de solicitudes recibidas', {
     render(<PaginaAmigosSolicitudes />)
     expect(screen.getByRole('button', { name: new RegExp(catalogoAmigos.pestanas_solicitudes.recibidas) })).toHaveTextContent(String(RECIBIDAS.length))
     expect(screen.getByRole('button', { name: new RegExp(catalogoAmigos.pestanas_solicitudes.enviadas) })).toHaveTextContent(String(ENVIADAS.length))
-    expect(screen.getByRole('button', { name: catalogoAmigos.pestanas_solicitudes.ignoradas })).toHaveTextContent(catalogoAmigos.pestanas_solicitudes.ignoradas)
+    expect(screen.queryByRole('button', { name: /Ignoradas/ })).toBeNull()
   })
 
-  it('el panel lateral de Todos lista exactamente las solicitudes recibidas', () => {
+  it('el panel lateral de Todos lista las primeras solicitudes recibidas', () => {
     render(<PaginaAmigosTodos />)
     const panel = screen.getByRole('heading', { name: catalogoAmigos.secciones.solicitudes_amistad_lateral }).closest('section') as HTMLElement
-    expect(within(panel).getAllByRole('article').map((fila) => within(fila).getByText(/\S/, { selector: 'strong' }).textContent)).toEqual(RECIBIDAS.map((solicitud) => solicitud.nombre))
+    expect(within(panel).getAllByRole('article').map((fila) => within(fila).getByText(/\S/, { selector: 'strong a' }).textContent)).toEqual(RECIBIDAS.slice(0, catalogoAmigos.limite_solicitudes_visibles).map((solicitud) => solicitud.nombre))
   })
 })
+
+const expandirAmigos = () => {
+  const boton = screen.queryByRole('button', { name: catalogoAmigos.botones.ver_mas_amigos })
+  if (boton) fireEvent.click(boton)
+}
 
 describe('Amigos: avatares y presencia respaldados por los datos', { timeout: 30000 }, () => {
   it('Todos muestra presencia exactamente para los amigos de la lista, con el estado que indican los datos', () => {
     render(<PaginaAmigosTodos />)
+    expandirAmigos()
     const conPresencia = document.querySelectorAll('main [data-estado]')
     expect(conPresencia).toHaveLength(AMIGOS.length)
     expect(document.querySelectorAll('main [data-estado="conectado"]')).toHaveLength(AMIGOS.filter((amigo) => amigo.enLinea).length)
     expect(document.querySelectorAll('main [data-estado="desconectado"]')).toHaveLength(AMIGOS.filter((amigo) => !amigo.enLinea).length)
   })
 
-  it('las listas de personas que aun no son amigas no inventan presencia', () => {
+  it('Sugerencias muestra presencia solo para las personas que los datos marcan en linea', () => {
     render(<PaginaAmigosSugerencias />)
-    expect(document.querySelectorAll('main [data-estado]')).toHaveLength(0)
+    expect(document.querySelectorAll('main [data-estado="desconectado"]')).toHaveLength(0)
+    expect(document.querySelectorAll('main [data-estado="conectado"]').length).toBeGreaterThan(0)
   })
 })
 
 describe('Amigos: informacion en comun en pantallas pequenas', { timeout: 30000 }, () => {
   it('cada amigo conserva «en comun» en una linea compacta que solo se muestra cuando la columna se oculta', () => {
     render(<PaginaAmigosTodos />)
+    expandirAmigos()
     AMIGOS.forEach((amigo) => {
       const compactos = screen.getAllByText(amigo.comunes).filter((nodo) => nodo.className.includes('max-900:block'))
       expect(compactos).toHaveLength(1)
@@ -111,7 +119,7 @@ describe('Amigos: boton Mensaje, indicador de presencia y filtros', { timeout: 3
 
   it('pulsar Mensaje en la fila de un amigo navega a Mensajes', () => {
     render(<PaginaAmigosTodos />)
-    const fila = screen.getByText('María Fernández', { selector: 'strong' }).closest('article') as HTMLElement
+    const fila = screen.getByText('María Fernández', { selector: 'strong a' }).closest('article') as HTMLElement
     fireEvent.click(within(fila).getByRole('button', { name: catalogoAmigos.botones.mensaje }))
     expect(window.location.pathname).toBe('/mensajes')
     expect(window.location.search).toContain('conversacion=')
@@ -134,26 +142,26 @@ describe('Amigos: patron compartido de botones, buscador, chips y paneles', { ti
 
   it('las acciones de la columna principal usan el mismo tamano de boton del catalogo', () => {
     const { unmount } = render(<PaginaAmigosTodos />)
+    expandirAmigos()
     const mensajes = screen.getAllByRole('button', { name: catalogoAmigos.botones.mensaje })
     expect(mensajes).toHaveLength(AMIGOS.length)
     mensajes.forEach((boton) => expect(clases(boton)).toContain(tamanoDefault))
     unmount()
     const solicitudes = render(<PaginaAmigosSolicitudes />)
     const principal = solicitudes.container.querySelector('main') as HTMLElement
-    ;[catalogoAmigos.botones.aceptar, catalogoAmigos.botones.eliminar, catalogoAmigos.botones.ignorar].forEach((nombre) => {
+    ;[catalogoAmigos.botones.aceptar, catalogoAmigos.botones.eliminar].forEach((nombre) => {
       within(principal).getAllByRole('button', { name: nombre }).forEach((boton) => expect(clases(boton)).toContain(tamanoDefault))
     })
     solicitudes.unmount()
     render(<PaginaAmigosSugerencias />)
-    const tarjetas = screen.getAllByRole('button', { name: catalogoAmigos.botones.agregar })
+    const tarjetas = screen.getAllByRole('button', { name: catalogoAmigos.botones.anadir_amigo })
     expect(tarjetas.length).toBeGreaterThan(0)
   })
 
-  it('en Solicitudes el buscador va sobre los chips y los chips conservan la altura compartida de chip', () => {
+  it('Solicitudes no tiene buscador y los chips conservan la altura compartida de chip', () => {
     render(<PaginaAmigosSolicitudes />)
-    const buscador = screen.getByRole('searchbox', { name: catalogoAmigos.placeholders.buscar_solicitudes })
+    expect(screen.queryByPlaceholderText('Buscar por nombre...')).toBeNull()
     const recibidas = screen.getByRole('button', { name: new RegExp(catalogoAmigos.pestanas_solicitudes.recibidas) })
-    expect(buscador.compareDocumentPosition(recibidas) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
     expect(clases(recibidas)).toContain(catalogoCompartido.chip_filtro.base.split(' ')[1])
   })
 
@@ -184,38 +192,54 @@ describe('Amigos: chips de Solicitudes como filtros de la lista', { timeout: 300
     const { container } = render(<PaginaAmigosSolicitudes />)
     expect(chip(catalogoAmigos.pestanas_solicitudes.recibidas)).toHaveAttribute('aria-pressed', 'true')
     expect(chip(catalogoAmigos.pestanas_solicitudes.enviadas)).toHaveAttribute('aria-pressed', 'false')
-    expect(Array.from(principal().querySelectorAll('article strong')).map((nodo) => nodo.textContent)).toEqual(RECIBIDAS.map((solicitud) => solicitud.nombre))
+    expect(Array.from(principal().querySelectorAll('article strong')).map((nodo) => nodo.textContent)).toEqual(RECIBIDAS.slice(0, catalogoAmigos.limite_solicitudes_visibles).map((solicitud) => solicitud.nombre))
     expect(principal().querySelectorAll('a[href="#"]')).toHaveLength(0)
     expect(container).toBeTruthy()
   })
 
-  it('Enviadas lista solo las enviadas, con su estado y su accion', () => {
+  it('Enviadas lista solo las enviadas, solo con cancelar solicitud y sin pie', () => {
     render(<PaginaAmigosSolicitudes />)
     fireEvent.click(chip(catalogoAmigos.pestanas_solicitudes.enviadas))
     expect(chip(catalogoAmigos.pestanas_solicitudes.enviadas)).toHaveAttribute('aria-pressed', 'true')
     expect(tarjetas()).toHaveLength(ENVIADAS.length)
-    expect(screen.getByText(ENVIADAS[0].estado)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: catalogoAmigos.botones.cancelar_solicitud })).toBeInTheDocument()
+    expect(screen.queryByText(ENVIADAS[0].estado)).toBeNull()
+    expect(screen.queryByRole('button', { name: catalogoAmigos.botones.ver_mas_solicitudes_recibidas })).toBeNull()
+    expect(screen.getAllByRole('button', { name: catalogoAmigos.botones.cancelar_solicitud })).toHaveLength(ENVIADAS.length)
     expect(screen.queryByRole('button', { name: catalogoAmigos.botones.aceptar })).toBeNull()
   })
 
-  it('Ignoradas no tiene fuente de datos: muestra un estado vacio explicado y ningun registro inventado', () => {
+  it('Recibidas tiene 3 y Enviadas 2; sin ver mas porque no hay mas que mostrar', () => {
     render(<PaginaAmigosSolicitudes />)
-    fireEvent.click(chip(catalogoAmigos.pestanas_solicitudes.ignoradas))
-    expect(tarjetas()).toHaveLength(0)
-    expect(screen.getByText(catalogoAmigos.mensajes.sin_ignoradas)).toBeInTheDocument()
+    expect(RECIBIDAS).toHaveLength(3)
+    expect(ENVIADAS).toHaveLength(2)
+    expect(tarjetas()).toHaveLength(3)
+    expect(screen.queryByRole('button', { name: catalogoAmigos.botones.ver_mas_solicitudes_recibidas })).toBeNull()
+    expect(screen.queryByRole('button', { name: /Ignorar/ })).toBeNull()
   })
 
-  it('el buscador filtra la categoria activa sin distinguir tildes ni mayusculas y avisa si no hay coincidencias', () => {
+  it('en Sugerencias anadir amigo deja solo cancelar solicitud y cancelar restaura Agregar amigo y Suprimir', () => {
+    render(<PaginaAmigosSugerencias />)
+    const tarjeta = screen.getAllByRole('article')[0]
+    fireEvent.click(within(tarjeta).getByRole('button', { name: catalogoAmigos.botones.anadir_amigo }))
+    expect(within(tarjeta).getByRole('button', { name: catalogoAmigos.botones.cancelar_solicitud })).toBeInTheDocument()
+    expect(within(tarjeta).queryByRole('button', { name: catalogoAmigos.botones.anadir_amigo })).toBeNull()
+    expect(within(tarjeta).queryByRole('button', { name: catalogoAmigos.botones.suprimir })).toBeNull()
+    fireEvent.click(within(tarjeta).getByRole('button', { name: catalogoAmigos.botones.cancelar_solicitud }))
+    expect(within(tarjeta).getByRole('button', { name: catalogoAmigos.botones.anadir_amigo })).toBeInTheDocument()
+    expect(within(tarjeta).queryByText(/Ver perfil/)).toBeNull()
+    expect(within(tarjeta).getByRole('button', { name: catalogoAmigos.botones.suprimir })).toBeInTheDocument()
+  })
+
+  it('en Sugerencias suprimir quita la tarjeta', () => {
+    render(<PaginaAmigosSugerencias />)
+    const antes = screen.getAllByRole('article').length
+    fireEvent.click(within(screen.getAllByRole('article')[0]).getByRole('button', { name: catalogoAmigos.botones.suprimir }))
+    expect(screen.getAllByRole('article')).toHaveLength(antes - 1)
+  })
+
+  it('el encabezado de Amigos ya no tiene el boton de tres puntos', () => {
     render(<PaginaAmigosSolicitudes />)
-    const buscador = screen.getByRole('searchbox', { name: catalogoAmigos.placeholders.buscar_solicitudes })
-    fireEvent.change(buscador, { target: { value: 'ANDRES' } })
-    expect(tarjetas()).toHaveLength(1)
-    expect(within(principal()).getByText('Andrés Salazar')).toBeInTheDocument()
-    fireEvent.change(buscador, { target: { value: 'zzz' } })
-    expect(screen.getByText(catalogoAmigos.mensajes.sin_resultados_solicitudes)).toBeInTheDocument()
-    fireEvent.click(chip(catalogoAmigos.pestanas_solicitudes.enviadas))
-    expect(screen.getByText(catalogoAmigos.mensajes.sin_resultados_solicitudes)).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: textosRedSocial.MAS_OPCIONES })).toBeNull()
   })
 
   it('los chips se alcanzan con teclado y se activan con Enter o Espacio', () => {
@@ -225,5 +249,109 @@ describe('Amigos: chips de Solicitudes como filtros de la lista', { timeout: 300
     expect(enviadas).toHaveFocus()
     expect(enviadas.tagName).toBe('BUTTON')
     expect(enviadas).toHaveAttribute('type', 'button')
+  })
+})
+
+describe('Amigos: solicitudes aceptadas, sugerencias ampliables y enlaces al perfil', { timeout: 30000 }, () => {
+  it('aceptar una solicitud muestra Solicitud aceptada y ya no ofrece cancelar', () => {
+    render(<PaginaAmigosSolicitudes />)
+    const tarjeta = screen.getAllByRole('article')[0]
+    fireEvent.click(within(tarjeta).getByRole('button', { name: catalogoAmigos.botones.aceptar }))
+    expect(within(tarjeta).getByText(catalogoAmigos.mensajes.solicitud_aceptada_corta)).toBeInTheDocument()
+    expect(within(tarjeta).queryAllByRole('button')).toHaveLength(0)
+  })
+
+  it('el avatar y el nombre de cada persona llevan a su perfil', () => {
+    render(<PaginaAmigosSolicitudes />)
+    const enlaces = within(screen.getAllByRole('article')[0]).getAllByRole('link')
+    expect(enlaces).toHaveLength(2)
+    enlaces.forEach((enlace) => expect(enlace.getAttribute('href')).toContain('valeria-quispe'))
+  })
+
+  it('Sugerencias tiene 15 personas con 8 visibles: ver mas y ver menos las despliegan y recogen', () => {
+    render(<PaginaAmigosSugerencias />)
+    expect(SUGERENCIAS).toHaveLength(15)
+    const visibles = () => (document.querySelector('main section') as HTMLElement).querySelectorAll('article').length
+    expect(visibles()).toBe(catalogoAmigos.limite_sugerencias_visibles)
+    fireEvent.click(screen.getByRole('button', { name: catalogoAmigos.botones.ver_mas_sugerencias }))
+    expect(visibles()).toBe(SUGERENCIAS.length)
+    fireEvent.click(screen.getByRole('button', { name: catalogoAmigos.botones.ver_menos_sugerencias }))
+    expect(visibles()).toBe(catalogoAmigos.limite_sugerencias_visibles)
+  })
+
+  it('Sugerencias ya no tiene Actualizar sugerencias ni Agregar amigos y el boton de agregar no lleva icono', () => {
+    render(<PaginaAmigosSugerencias />)
+    expect(screen.queryByRole('button', { name: /Actualizar sugerencias/ })).toBeNull()
+    expect(screen.queryByRole('button', { name: /^Agregar amigos$/ })).toBeNull()
+    expect(screen.getAllByRole('button', { name: catalogoAmigos.botones.anadir_amigo })[0].querySelector('svg')).toBeNull()
+  })
+})
+
+describe('Amigos: totales y ver mas amigos', { timeout: 30000 }, () => {
+  it('Pedro Lozano tiene 25 amigos, 24 en comun, 15 pendientes y 2 bloqueados', () => {
+    expect(AMIGOS).toHaveLength(25)
+    expect(RESUMEN_AMIGOS.map((tarjeta) => tarjeta.valor)).toEqual(['25', '24', '15', '2'])
+  })
+
+  it('ver mas amigos muestra los 25 y ver menos vuelve a recoger la lista', () => {
+    render(<PaginaAmigosTodos />)
+    const filas = () => screen.getAllByRole('button', { name: catalogoAmigos.botones.mensaje }).length
+    expect(filas()).toBe(catalogoAmigos.limite_amigos_visibles)
+    fireEvent.click(screen.getByRole('button', { name: catalogoAmigos.botones.ver_mas_amigos }))
+    expect(filas()).toBe(25)
+    fireEvent.click(screen.getByRole('button', { name: catalogoAmigos.botones.ver_menos_amigos }))
+    expect(filas()).toBe(catalogoAmigos.limite_amigos_visibles)
+    expect(screen.queryByRole('button', { name: textosRedSocial.MAS_OPCIONES })).toBeNull()
+  })
+})
+
+describe('Amigos: listas', { timeout: 30000 }, () => {
+  it('no hay tarjeta punteada ni iconos en las listas y cada lista ofrece editar y eliminar', () => {
+    render(<PaginaAmigosListas />)
+    expect(screen.queryByText('Crear nueva lista')).toBeNull()
+    const tarjeta = screen.getAllByRole('article')[0]
+    expect(tarjeta.querySelector('svg')).toBeNull()
+    fireEvent.click(within(tarjeta).getByRole('button', { name: new RegExp(catalogoAmigos.listas.mas_opciones.replace(':nombre', '')) }))
+    expect(screen.getByRole('menuitem', { name: catalogoAmigos.botones.editar_lista })).toBeInTheDocument()
+    expect(screen.getByRole('menuitem', { name: catalogoAmigos.botones.eliminar_lista })).toBeInTheDocument()
+  })
+
+  it('crear lista: confirmar esta deshabilitado sin nombre y la lista nueva aparece', () => {
+    render(<PaginaAmigosListas />)
+    const antes = MIS_LISTAS.length
+    fireEvent.click(screen.getAllByRole('button', { name: catalogoAmigos.botones.crear_listas })[0])
+    const dialogo = screen.getByRole('dialog', { name: catalogoAmigos.listas.crear.titulo })
+    const confirmar = within(dialogo).getByRole('button', { name: catalogoAmigos.listas.crear.confirmar })
+    expect(confirmar).toBeDisabled()
+    fireEvent.change(within(dialogo).getByLabelText(catalogoAmigos.listas.crear.marcador), { target: { value: 'Vecinos' } })
+    expect(confirmar).not.toBeDisabled()
+    fireEvent.click(confirmar)
+    expect(screen.queryByRole('dialog')).toBeNull()
+    expect(screen.getByText('Vecinos')).toBeInTheDocument()
+    expect(screen.getAllByRole('article').filter((nodo) => nodo.querySelector('strong')).length).toBeGreaterThanOrEqual(antes + 1)
+  })
+
+  it('al abrir una lista se puede anadir y suprimir amigos y guardar', () => {
+    render(<PaginaAmigosListas />)
+    fireEvent.click(screen.getByRole('button', { name: catalogoAmigos.listas.abrir.replace(':nombre', 'Familia') }))
+    const dialogo = screen.getByRole('dialog', { name: catalogoAmigos.listas.miembros.titulo })
+    const marcar = (nombre: string) => within(dialogo).getByRole('checkbox', { name: catalogoAmigos.listas.miembros.marcar.replace(':nombre', nombre) })
+    const ajeno = AMIGOS[0].nombre
+    expect(marcar(ajeno)).not.toBeChecked()
+    expect(within(dialogo).queryByText(catalogoAmigos.listas.miembros.ayuda)).toBeInTheDocument()
+    fireEvent.click(marcar(ajeno))
+    expect(marcar(ajeno)).toBeChecked()
+    fireEvent.click(within(dialogo).getByRole('button', { name: catalogoAmigos.listas.miembros.guardar }))
+    expect(screen.queryByRole('dialog')).toBeNull()
+    expect(screen.getByText('7 amigos')).toBeInTheDocument()
+  })
+
+  it('eliminar lista pide confirmacion y la quita', () => {
+    render(<PaginaAmigosListas />)
+    const nombre = MIS_LISTAS[0].nombre
+    fireEvent.click(screen.getByRole('button', { name: catalogoAmigos.listas.mas_opciones.replace(':nombre', nombre) }))
+    fireEvent.click(screen.getByRole('menuitem', { name: catalogoAmigos.botones.eliminar_lista }))
+    fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: catalogoAmigos.listas.eliminar.confirmar }))
+    expect(screen.queryByRole('button', { name: catalogoAmigos.listas.abrir.replace(':nombre', nombre) })).toBeNull()
   })
 })

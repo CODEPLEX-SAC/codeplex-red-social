@@ -1,3 +1,4 @@
+import type { FuentesBusquedaEmpresas } from './contrato_fuentes_busqueda_empresas'
 import type { SuscripcionContratada } from '@/tipos/compartido/contrato_suscripciones'
 import type { ModuloEmpresaCatalogo } from './contrato_listado_empresas'
 import type { ReactNode } from 'react'
@@ -10,6 +11,8 @@ import type { UsuarioBaseEmpresa, UsuarioEmpresa } from './modelo_usuarios_empre
 export interface DatosDetalleEmpresa {
   usuariosBase: UsuarioBaseEmpresa[]
   historialBase: RegistroHistorialBase[]
+  fuenteUsuarios?: FuentesBusquedaEmpresas['usuarios']
+  fuenteHistorial?: FuentesBusquedaEmpresas['historial']
 }
 
 export type PestanaDetalleEmpresa = 'informacion' | 'usuarios' | 'historial' | 'planes'

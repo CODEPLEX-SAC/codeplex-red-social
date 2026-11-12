@@ -1,4 +1,4 @@
-import { EstructuraApp, ColumnaPublicidad, AvisoEmergente } from '../../componentes/compartido'
+import { EstructuraApp, ColumnaPublicidad, MensajeEmergente } from '../../componentes/compartido'
 import { useState } from 'react'
 import catalogoColaboradores from '../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { IconName } from '../../tipos/compartido/contrato_icono'
@@ -56,7 +56,7 @@ export function PaginaColaboradores() {
 
   return (
     <EstructuraApp paginaActiva={catalogoColaboradores.claves.modulo}>
-      {gestion.aviso && <AvisoEmergente abierto titulo={gestion.aviso.titulo} mensaje={gestion.aviso.texto} variante={gestion.aviso.error ? 'error' : 'exito'} alCerrar={gestion.cerrarAviso} />}
+      {gestion.aviso && <MensajeEmergente abierto titulo={gestion.aviso.titulo} mensaje={gestion.aviso.texto} variante={gestion.aviso.error ? 'error' : 'exito'} alCerrar={gestion.cerrarAviso} />}
       <div
         className={[clases.pagina_rejilla, panelAbierto ? clases.pagina_rejilla_panel_abierto : clases.pagina_rejilla_panel_cerrado].join(' ')}
       >

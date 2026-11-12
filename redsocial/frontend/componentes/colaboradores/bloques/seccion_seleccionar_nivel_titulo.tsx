@@ -1,6 +1,6 @@
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Icono } from '../../compartido/icono'
-import { AvisoEmergente } from '../../compartido/interfaz/aviso_emergente'
+import { MensajeEmergente } from '../../compartido/interfaz/aviso_emergente'
 import { usarVistaMovil } from '../../compartido/interfaz/usar_vista_movil'
 import { SeccionSeleccionarNivelTitulo2 } from './seccion_seleccionar_nivel_titulo2'
 import type { CodeplexNotificacionPosicion } from '@codeplex-sac/feedback'
@@ -41,7 +41,7 @@ export function SeccionSeleccionarNivelTitulo({ MODULOS, PERMISOS }: { MODULOS: 
       )}
 
       <SeccionSeleccionarNivelTitulo2 MODULO={moduloActivo} MODULOS={MODULOS} PERMISOS={PERMISOS} />
-      {PERMISOS.aviso && <AvisoEmergente abierto {...(movil ? { posicion: catalogoColaboradores.dialogos_rol.posicion_aviso_movil as CodeplexNotificacionPosicion } : {})} variante={PERMISOS.aviso.variante} titulo={PERMISOS.aviso.titulo} mensaje={PERMISOS.aviso.mensaje} alCerrar={PERMISOS.cerrarAviso} />}
+      {PERMISOS.aviso && <MensajeEmergente abierto {...(movil ? { posicion: catalogoColaboradores.dialogos_rol.posicion_aviso_movil as CodeplexNotificacionPosicion } : {})} variante={PERMISOS.aviso.variante} titulo={PERMISOS.aviso.titulo} mensaje={PERMISOS.aviso.mensaje} alCerrar={PERMISOS.cerrarAviso} />}
     </div>
   )
 }

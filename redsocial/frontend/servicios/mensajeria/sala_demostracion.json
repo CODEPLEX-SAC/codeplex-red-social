@@ -1,0 +1,8 @@
+{
+  "imagenPresentacion": "carrusel1.jpg",
+  "rolInvitado": "Invitado",
+  "indiceHablando": 1,
+  "prefijoIdentificador": "participante",
+  "separadorIdentificador": "-",
+  "normalizacion": "NFD"
+}

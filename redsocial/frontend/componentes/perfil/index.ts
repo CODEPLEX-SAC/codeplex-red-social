@@ -1,5 +1,4 @@
 export * from './bloques/cabecera_perfil'
-export * from './bloques/pestana_amigos_perfil'
 export * from './bloques/pestana_resumen_perfil'
 export * from './bloques/pestanas_perfil'
 export * from './bloques/pestana_experiencia_perfil'

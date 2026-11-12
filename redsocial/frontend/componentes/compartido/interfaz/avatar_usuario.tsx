@@ -1,10 +1,15 @@
 import { CodeplexAvatarUsuario, avatarCadena } from '@codeplex-sac/ui'
 import { Icono } from '../icono'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
-import type { AvatarUsuarioProps } from '@/tipos/compartido/contrato_avatar'
+import type { AvatarUsuarioProps, ColorInsigniaAvatar } from '@/tipos/compartido/contrato_avatar'
 
 const configuracion = catalogoCompartido.avatar
 const clases = configuracion.clases
+
+function colorDeInsignia(color: ColorInsigniaAvatar | undefined) {
+  if (color === undefined) return ''
+  return configuracion.colores_insignia[color]
+}
 
 export function AvatarUsuario({ tamano = configuracion.predeterminado.tamano as AvatarUsuarioProps['tamano'], imagen, iniciales, nombre, icono, tono = configuracion.predeterminado.tono as AvatarUsuarioProps['tono'], etiqueta, estado, etiquetaEstado, insignia, colorInsignia, claseInsignia, className = '' }: AvatarUsuarioProps) {
   const medidas = configuracion.tamanos[tamano as keyof typeof configuracion.tamanos]
@@ -13,7 +18,7 @@ export function AvatarUsuario({ tamano = configuracion.predeterminado.tamano as 
   const accesible = etiqueta !== undefined && imagen === undefined ? { role: 'img', 'aria-label': etiqueta } : {}
   const textoVisible = texto === undefined ? null : <span className={medidas.fuente}>{texto}</span>
   const contenido = icono ? <Icono name={icono} className={medidas.icono} /> : textoVisible
-  const colorContenido = colorInsignia === undefined ? '' : configuracion.colores_insignia[colorInsignia]
+  const colorContenido = colorDeInsignia(colorInsignia)
   const distintivo = insignia === undefined ? undefined : <span className={[clases.insignia_contenido, colorContenido, claseInsignia].join(' ').trim()}>{insignia}</span>
   const avatar = (
     <CodeplexAvatarUsuario

@@ -1,4 +1,5 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+import { soloDigitos } from './logica_tarjeta_pago'
 import type { DatosPerfilPago, ErroresPerfilPago, PaisPago, PerfilPago, TextosFlujoPago } from '@/tipos/compartido/contrato_flujo_pago'
 
 const VACIO = catalogoCompartido.controles.texto_vacio
@@ -48,4 +49,8 @@ export function validarPerfil(datos: DatosPerfilPago, textos: TextosFlujoPago): 
 
 export function mismosDatosDePerfil(a: DatosPerfilPago, b: DatosPerfilPago) {
   return (Object.keys(a) as (keyof DatosPerfilPago)[]).every((clave) => a[clave] === b[clave])
+}
+
+export function limitarDigitos(valor: string, maximo: number): string {
+  return soloDigitos(valor).slice(0, maximo)
 }

@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
 import { SeccionHistoriasInicio, usarHistoriasInicio } from '@/componentes/inicio'
 import { ALMACEN_HISTORIAS, HISTORIAS, HISTORIAS_CONTACTOS } from '../../rutas/inicio/rutas_inicio'
 import { reiniciarHistoriasDemostracion } from '../../servicios/inicio/almacen_historias'

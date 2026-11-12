@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
 import { CajaComentario } from '@/componentes/inicio/bloques/caja_comentario'
 import { ModalCrearPublicacion } from '@/componentes/inicio/bloques/modal_crear_publicacion'
 import catalogoInicio from '@/catalogos/capacidades/redsocial/inicio.json'

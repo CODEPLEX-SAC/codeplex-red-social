@@ -6,7 +6,7 @@ import type { AvisosLimitePlanProps } from '@/tipos/empresas/contrato_mejora_pla
 
 const edicion = catalogoEmpresas.planes_asignados.edicion
 
-export function AvisosLimitePlan({ avisos }: AvisosLimitePlanProps) {
+export function LimitesDelPlan({ avisos }: AvisosLimitePlanProps) {
   if (avisos.length === 0) return null
 
   return (

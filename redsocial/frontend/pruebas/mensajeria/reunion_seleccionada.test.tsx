@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import { PaginaMensajesVideollamadaEnCurso } from '@/paginas/mensajeria/pagina_mensajes_videollamada_en_curso'
 import { SeccionReunionesProgramadas } from '@/componentes/mensajeria/bloques/seccion_reuniones_programadas'
 import { PARTICIPANTES, REUNIONES_PROGRAMADAS, REUNION_EN_CURSO } from '../../rutas/mensajeria/rutas_mensajeria'
@@ -10,8 +10,17 @@ function cabeceraDeSala(titulo: string): HTMLElement {
   return screen.getByText(titulo).closest('header') as HTMLElement
 }
 
+const SALA = catalogoMensajeria.videollamada.textos
+
+const SECCION = new RegExp(`^(${Object.values(SALA.panel.secciones).join('|')})`)
+
 function listaDeParticipantes(): HTMLElement {
-  return screen.getByRole('heading', { level: 2, name: new RegExp(`^${catalogoMensajeria.botones.participantes}`) }).closest('aside') as HTMLElement
+  fireEvent.click(screen.getByRole('button', { name: SALA.sala.participantes_boton }))
+  const lista = screen.getByRole('heading', { level: 2, name: new RegExp(`^${SALA.panel.titulo}`) }).closest('aside') as HTMLElement
+  within(lista)
+    .queryAllByRole('button', { expanded: false, name: SECCION })
+    .forEach((encabezado) => fireEvent.click(encabezado))
+  return lista
 }
 
 function abrirSala(id: string | null) {
@@ -30,6 +39,7 @@ describe('Unirse conserva la identidad de la reunion seleccionada', () => {
 
   it('el enlace Unirse de cada tarjeta apunta a la sala con el identificador de esa reunion, tomando ruta y parametro del catalogo', () => {
     render(<SeccionReunionesProgramadas REUNIONES_PROGRAMADAS={REUNIONES_PROGRAMADAS} />)
+    fireEvent.click(screen.getByRole('button', { name: catalogoMensajeria.botones.ver_todas_las_reuniones }))
     const enlaces = screen.getAllByRole('link', { name: catalogoMensajeria.botones.unirse })
     expect(enlaces.map((enlace) => enlace.getAttribute('href'))).toEqual(
       REUNIONES_PROGRAMADAS.map((reunion) => `${catalogoMensajeria.rutas.videollamada_en_curso}?${PARAMETRO}=${reunion.id}`),
@@ -40,7 +50,8 @@ describe('Unirse conserva la identidad de la reunion seleccionada', () => {
     abrirSala(id)
     const cabecera = cabeceraDeSala(reunion.titulo)
     expect(within(cabecera).getByText(reunion.titulo)).toBeInTheDocument()
-    expect(within(cabecera).getByText(reunion.hora)).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: catalogoMensajeria.videollamada.textos.sala.detalles }))
+    expect(within(screen.getByRole('region', { name: catalogoMensajeria.videollamada.textos.sala.detalles })).getByText(reunion.hora)).toBeInTheDocument()
   })
 
   it('dos reuniones distintas no se resuelven como una sola sala fija', () => {
@@ -69,16 +80,16 @@ describe('Unirse conserva la identidad de la reunion seleccionada', () => {
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
   })
 
-  it('sin identificador se conserva la sala de la llamada iniciada, con sus 15 participantes y sus controles', () => {
+  it('sin identificador se conserva la sala de la llamada iniciada, con sus 20 participantes de prueba y sus controles', () => {
     abrirSala(null)
     expect(screen.getByText(REUNION_EN_CURSO.titulo)).toBeInTheDocument()
-    expect(within(listaDeParticipantes()).getAllByRole('article')).toHaveLength(PARTICIPANTES.length)
-    expect(screen.getAllByRole('link', { name: new RegExp(catalogoMensajeria.botones.salir_de_la_llamada) }).length).toBeGreaterThan(0)
+    expect(within(listaDeParticipantes()).getAllByRole('article')).toHaveLength(catalogoMensajeria.videollamada.cantidad_predeterminada)
+    expect(screen.getAllByRole('button', { name: new RegExp(SALA.sala.salir) }).length).toBeGreaterThan(0)
   })
 
   it('una reunion programada conserva los mismos controles de la sala', () => {
     abrirSala(REUNIONES_PROGRAMADAS[0].id)
-    expect(screen.getAllByRole('link', { name: new RegExp(catalogoMensajeria.botones.salir_de_la_llamada) }).length).toBeGreaterThan(0)
-    expect(screen.getByRole('button', { name: new RegExp(catalogoMensajeria.botones.ver_participantes) })).toBeInTheDocument()
+    expect(screen.getAllByRole('button', { name: new RegExp(SALA.sala.salir) }).length).toBeGreaterThan(0)
+    expect(screen.getByRole('button', { name: new RegExp(SALA.sala.participantes_boton) })).toBeInTheDocument()
   })
 })

@@ -1,21 +1,11 @@
 import { CampoTexto } from '../../componentes/compartido/interfaz/campo_texto'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
-import { AvisoFormularioEvento, FilaInterruptorEvento, TarjetaFormularioEvento } from './formulario_evento'
+import { TarjetaFormularioEvento } from './formulario_evento'
+import { NotaFormularioEvento } from './aviso_formulario_evento'
+import { FilaInterruptorEvento } from './fila_interruptor_evento'
 import type { AsignadoresFormularioEvento, ValoresFormularioEvento } from './modelo_formulario_evento'
 
 const textos = catalogoEventos.modal_crear_evento
-
-export function SeccionOrganizadorEvento() {
-  return (
-    <TarjetaFormularioEvento icono="grupos" titulo={textos.organizador}>
-      <div>
-        <span className="block text-nombre-entidad text-texto">{textos.organizador_nombre}</span>
-        <span className="block text-auxiliar text-texto-suave">{textos.organizador_detalle}</span>
-      </div>
-      <AvisoFormularioEvento texto={textos.organizador_aviso} />
-    </TarjetaFormularioEvento>
-  )
-}
 
 export function SeccionConfiguracionEvento({ valores, asignar }: { valores: ValoresFormularioEvento; asignar: AsignadoresFormularioEvento }) {
   return (
@@ -35,7 +25,7 @@ export function SeccionConfiguracionEvento({ valores, asignar }: { valores: Valo
         <CampoTexto anchoCompleto valor={valores.etiquetas} alCambiar={asignar.etiquetas} marcador={textos.etiquetas_marcador} />
         <span className="mt-1 block text-auxiliar text-texto-suave">{textos.etiquetas_ayuda}</span>
       </div>
-      <AvisoFormularioEvento texto={textos.configuracion_aviso} />
+      <NotaFormularioEvento texto={textos.configuracion_aviso} />
     </TarjetaFormularioEvento>
   )
 }

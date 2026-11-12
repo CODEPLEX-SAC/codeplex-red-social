@@ -30,6 +30,9 @@ export interface PublicacionCompartidaInicio {
   texto: string
   comentario?: string
   conMedio: boolean
+  medios?: MedioLocalPublicacion[]
+  origenEsGrupo?: boolean
+  origenRuta?: string
 }
 
 export interface ComentarioUtil {
@@ -87,4 +90,6 @@ export interface OrigenCompartido {
   nombre: string
   tiempo: string
   texto: string
+  medios?: MedioLocalPublicacion[]
+  esGrupo?: boolean
 }

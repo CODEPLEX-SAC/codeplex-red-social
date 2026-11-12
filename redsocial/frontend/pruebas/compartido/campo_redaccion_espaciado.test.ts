@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 
 const multilinea = catalogoCompartido.controles.campo_texto_multilinea.sx['& .MuiInputBase-root']

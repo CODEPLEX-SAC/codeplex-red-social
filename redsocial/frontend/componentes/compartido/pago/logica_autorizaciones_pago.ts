@@ -1,9 +1,8 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import type { AceptacionAutorizacionPago, AutorizacionPago } from '@/tipos/compartido/contrato_flujo_pago'
+import type { AceptacionesPago } from '@/tipos/compartido/contrato_flujo_pago'
 
 const reglas = catalogoCompartido.flujo_pago.reglas.autorizacion
-
-export type AceptacionesPago = Record<string, boolean>
 
 export function idControlAutorizacion(id: string) {
   return [reglas.prefijo_id, id].join('')

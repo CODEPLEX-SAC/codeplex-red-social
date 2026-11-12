@@ -1,3 +1,4 @@
+import { agruparEventosPorDia } from '../agrupar_eventos_por_dia'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import type { DiaSemanaCal, EventoSemanaCal } from '@/tipos/eventos/modelo_eventos_calendario'
 
@@ -19,7 +20,7 @@ export function BloqueTodoElDia({
   EVENTOS_SEMANA: EventoSemanaCal[]
   COLOR_EVENTO_CAL: Record<'empresa' | 'negocios' | 'tecnologia' | 'musica' | 'educacion', string>
 }) {
-  const eventosPorDia = DIAS_SEMANA_CAL.map((_, diaIndex) => EVENTOS_SEMANA.filter((ev) => ev.dia === diaIndex))
+  const eventosPorDia = agruparEventosPorDia(EVENTOS_SEMANA, DIAS_SEMANA_CAL.length)
 
   return (
     <div className="mt-4 max-h-130 overflow-auto rounded-xl border border-gris-borde bg-fondo">

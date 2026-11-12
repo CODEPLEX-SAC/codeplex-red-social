@@ -14,10 +14,6 @@ export interface CabeceraPerfilProps {
   onGuardar: (edicion: EdicionPerfil) => void
 }
 
-export interface PestanaAmigosPerfilProps {
-  amigos: readonly PerfilUsuario[]
-}
-
 export interface PestanasPerfilProps {
   activa: PestanaPerfil
   onCambiar: (pestana: PestanaPerfil) => void
@@ -48,7 +44,6 @@ export interface PestanaRedSocialPerfilProps {
   acciones: AccionesFeedInicio
   propio: boolean
   onPublicar: (contenido: ContenidoPublicacion) => void
-  onVerAmigos: () => void
   onIrA: (pestana: PestanaPerfil) => void
   onGuardar: (edicion: EdicionPerfil) => void
 }
@@ -71,7 +66,6 @@ export interface MiniaturaFotoPerfil {
 
 export interface PanelAmigosRedSocialProps {
   amigos: readonly PerfilUsuario[]
-  onVerTodos: () => void
 }
 
 export interface PanelDatosPersonalesPerfilProps {
@@ -80,7 +74,7 @@ export interface PanelDatosPersonalesPerfilProps {
   onIrA: (pestana: PestanaPerfil) => void
 }
 
-export type ActividadRedSocialPerfilProps = Omit<PestanaRedSocialPerfilProps, 'amigos' | 'onVerAmigos' | 'onIrA' | 'onGuardar'>
+export type ActividadRedSocialPerfilProps = Omit<PestanaRedSocialPerfilProps, 'amigos' | 'onIrA' | 'onGuardar'>
 
 export interface ConsultasRelacionPerfil {
   contarAmigosEnComun: (perfil: PerfilUsuario, otro?: PerfilUsuario) => number
@@ -183,11 +177,31 @@ export interface EstadisticaCabeceraPerfil {
   clave: string
   valor: number
   texto: string
+  icono: string
 }
 
 export interface ItemEstadisticaCabeceraPerfil {
   clave: string
   texto: string
   texto_singular?: string
+  icono: string
   solo_ajeno: boolean
+}
+
+export interface EstadisticasCabeceraPerfilProps {
+  estadisticas: EstadisticaCabeceraPerfil[]
+}
+
+export interface DetallesCabeceraPerfilProps {
+  perfil: PerfilUsuario
+}
+
+export interface AccionesCabeceraPerfilProps {
+  relacion: RelacionPerfil
+  onAlternarSolicitud: () => void
+  onEditar: () => void
+}
+
+export interface MenuOpcionesPerfilProps {
+  onEditar: () => void
 }

@@ -11,7 +11,7 @@ const clasesIcono: Record<string, string> = catalogoCompartido.boton_icono_clase
 export function clasesBoton({ variant, size = 'default', activo, className }: ClasesBotonOpciones) {
   return [
     catalogoCompartido.boton_base,
-    tamanosMedios.includes(size) ? catalogoCompartido.boton_medio : '',
+    tamanosMedios.includes(size) && catalogoCompartido.boton_medio,
     mapaTamano[size],
     clasesIcono[iconoPorTamano[size]] ?? '',
     variant ? (activo && mapaActivo[variant]) || mapaVariante[variant] : 'border-transparent',

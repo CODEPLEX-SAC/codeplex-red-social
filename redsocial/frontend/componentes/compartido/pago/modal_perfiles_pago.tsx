@@ -2,9 +2,11 @@ import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json
 import { Boton } from '../interfaz/boton'
 import { Icono } from '../icono'
 import { Modal } from '../interfaz/modal'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { usarTextosPago } from './usar_textos_pago'
 import type { PerfilPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function ModalPerfilesPago({ perfiles, seleccionadoId, aviso, alSeleccionar, alAgregar, alCerrar }: { perfiles: PerfilPago[]; seleccionadoId: string | null; aviso?: string; alSeleccionar: (id: string) => void; alAgregar: () => void; alCerrar: () => void }) {
   const { guardados } = usarTextosPago()

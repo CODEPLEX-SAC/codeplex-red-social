@@ -7,7 +7,7 @@ import type { CabeceraModalEmpresaProps } from '@/tipos/empresas/contrato_formul
 const textos = catalogoEmpresas.modal_empresa
 const clases = textos.clases
 
-export function CabeceraModalEmpresa({ titulo, subtitulo, alCerrar }: CabeceraModalEmpresaProps) {
+export function CabeceraFichaEmpresa({ titulo, subtitulo, alCerrar }: CabeceraModalEmpresaProps) {
   return (
     <div className={clases.cabecera}>
       <span className={clases.icono_cabecera}>

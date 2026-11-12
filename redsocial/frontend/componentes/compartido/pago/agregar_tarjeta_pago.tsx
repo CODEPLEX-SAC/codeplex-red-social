@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { Boton } from '../interfaz/boton'
 import { Casilla } from '../interfaz/casilla'
 import { IndicadorCarga } from '../interfaz/indicador_carga'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { FormularioTarjetaPagoCampos } from './formulario_tarjeta_pago'
 import { TituloPanelPago } from './titulo_panel_pago'
 import { usarFormularioTarjetaPago } from './usar_formulario_tarjeta_pago'
 import { usarTextosPago } from './usar_textos_pago'
 import { datosParaGuardar } from './validacion_tarjeta_pago'
 import type { ControlTarjetasPago, TarjetaPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function AgregarTarjetaPago({ control, alGuardar }: { control: ControlTarjetasPago; alGuardar: (tarjeta: TarjetaPago) => void }) {
   const modal = usarTextosPago().metodo_guardado.modal

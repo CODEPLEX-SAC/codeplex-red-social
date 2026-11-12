@@ -9,18 +9,21 @@ export function usarPerfilesPago(repositorio: RepositorioPerfilesPago): ControlP
   const [error, setError] = useState<CodigoErrorPago | null>(null)
   const enCurso = useRef(false)
 
-  function recargar() {
+  async function recargar() {
     setEstado('cargando')
-    repositorio.listar().then(
-      (lista) => {
-        setPerfiles(lista)
-        setEstado('listo')
-      },
-      () => setEstado('error'),
-    )
+    try {
+      const lista = await repositorio.listar()
+      setPerfiles(lista)
+      setEstado('listo')
+    } catch {
+      setEstado('error')
+    }
   }
 
-  async function ejecutar(operacion: () => Promise<PerfilPago[]>, resultado: (lista: PerfilPago[]) => PerfilPago | null) {
+  async function ejecutar(
+    operacion: { (): Promise<PerfilPago[]> },
+    resultado: (lista: PerfilPago[]) => PerfilPago | null,
+  ) {
     if (enCurso.current) return null
     enCurso.current = true
     setOcupado(true)

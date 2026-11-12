@@ -1,9 +1,9 @@
 import type { MedioLocalPublicacion } from '@/tipos/inicio/contrato_crear_publicacion'
-import type { ComentarioPublicacion, MencionComentario } from '@/tipos/inicio/contrato_interacciones_publicacion'
+import type { ComentarioPublicacion } from '@/tipos/inicio/contrato_interacciones_publicacion'
 import type { ContenidoPublicacion } from '@/tipos/inicio/contrato_crear_publicacion'
-import type { EstadoPublicaciones } from '@/tipos/inicio/contrato_almacen_publicaciones'
+import type { DatosComentarioNuevo, DatosPublicacionCompartida, EstadoPublicaciones } from '@/tipos/inicio/contrato_almacen_publicaciones'
 import type { ClaveReaccion } from '@/tipos/inicio/contrato_reacciones'
-import type { AutorSesion, ElementoFeed, OpcionVotable, OrigenCompartido } from '@/tipos/inicio/modelo_inicio'
+import type { AutorSesion, ElementoFeed, OpcionVotable } from '@/tipos/inicio/modelo_inicio'
 
 const SIN_REACCIONES = { me_gusta: 0, me_encanta: 0, asombroso: 0 }
 
@@ -46,7 +46,7 @@ export function quitarPublicacion(estado: EstadoPublicaciones, id: string): Esta
   return { ...estado, feed: estado.feed.filter((elemento) => elemento.id !== id), interacciones }
 }
 
-export function agregarCompartida(estado: EstadoPublicaciones, autor: AutorSesion, origen: OrigenCompartido, comentario: string, tiempo: string): EstadoPublicaciones {
+export function agregarCompartida(estado: EstadoPublicaciones, { autor, origen, comentario, tiempo }: DatosPublicacionCompartida): EstadoPublicaciones {
   const { secuencia, id } = conSecuencia(estado)
   const compartida: ElementoFeed = {
     clase: 'compartida',
@@ -61,6 +61,8 @@ export function agregarCompartida(estado: EstadoPublicaciones, autor: AutorSesio
     texto: origen.texto,
     comentario: comentario || undefined,
     conMedio: false,
+    medios: origen.medios,
+    origenEsGrupo: origen.esGrupo,
   }
   return { ...estado, secuencia, feed: [compartida, ...estado.feed] }
 }
@@ -75,7 +77,7 @@ export function registrarVoto(estado: EstadoPublicaciones, id: string, opcionId:
     ...estado,
     feed: estado.feed.map((elemento) => {
       if (elemento.clase !== 'texto' || elemento.id !== id || elemento.miVoto === opcionId) return elemento
-      const opciones = elemento.opciones.map((opcion) => ({ ...opcion, votos: opcion.votos + (opcion.id === opcionId ? 1 : 0) - (opcion.id === elemento.miVoto ? 1 : 0) }))
+      const opciones = elemento.opciones.map((opcion) => ({ ...opcion, votos: opcion.votos + Number(opcion.id === opcionId) - Number(opcion.id === elemento.miVoto) }))
       return { ...elemento, opciones, miVoto: opcionId }
     }),
   }
@@ -91,7 +93,7 @@ export function actualizarComentarios(estado: EstadoPublicaciones, id: string, b
   return { ...estado, interacciones: { ...estado.interacciones, [id]: { ...actual, comentarios: cambio(actual.comentarios ?? base) } } }
 }
 
-export function nuevoComentario(id: string, autor: AutorSesion, texto: string, tiempo: string, medios: MedioLocalPublicacion[] = [], mencion?: MencionComentario): ComentarioPublicacion {
+export function nuevoComentario({ id, autor, texto, tiempo, medios = [], mencion }: DatosComentarioNuevo): ComentarioPublicacion {
   return { id, autorId: autor.id, autor: autor.usuario, texto, tiempo, reaccion: null, editado: false, medios, mencion, respuestas: [] }
 }
 
@@ -107,8 +109,12 @@ export function conTextoEditado(lista: ComentarioPublicacion[], id: string, text
   return cambiarComentario(lista, id, (comentario) => ({ ...comentario, texto, medios: medios ?? comentario.medios, editado: true }))
 }
 
+function sinRespuesta(comentario: ComentarioPublicacion, id: string): ComentarioPublicacion {
+  return { ...comentario, respuestas: comentario.respuestas.filter((respuesta) => respuesta.id !== id) }
+}
+
 export function sinComentario(lista: ComentarioPublicacion[], id: string) {
-  return lista.filter((comentario) => comentario.id !== id).map((comentario) => ({ ...comentario, respuestas: comentario.respuestas.filter((respuesta) => respuesta.id !== id) }))
+  return lista.filter((comentario) => comentario.id !== id).map((comentario) => sinRespuesta(comentario, id))
 }
 
 export function conReaccionDeComentario(lista: ComentarioPublicacion[], id: string, clave: ClaveReaccion) {
@@ -133,7 +139,8 @@ export function renombrarAutor(estado: EstadoPublicaciones, autorId: string, nom
 }
 
 export function liberarMediosQuitados(previos: MedioLocalPublicacion[], vigentes: MedioLocalPublicacion[]) {
-  previos.filter((medio) => !vigentes.some((otro) => otro.id === medio.id)).forEach((medio) => URL.revokeObjectURL(medio.url))
+  const idsVigentes = new Set(vigentes.map((medio) => medio.id))
+  previos.filter((medio) => !idsVigentes.has(medio.id)).forEach((medio) => URL.revokeObjectURL(medio.url))
 }
 
 export function mediosDe(feed: ElementoFeed[], id: string): MedioLocalPublicacion[] {

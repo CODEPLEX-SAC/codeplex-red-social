@@ -6,20 +6,11 @@ import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { Modal } from '../../compartido/interfaz/modal'
-import type { RolModulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import type { ModalAdministrarRolesProps } from '@/tipos/colaboradores/contrato_modal_administrar_roles'
 
 const clases = catalogoColaboradores.clases.invitar_permisos
 const textos = catalogoColaboradores.dialogos_rol
 const encabezado = claseEncabezadoTabla()
-
-export interface ModalAdministrarRolesProps {
-  modulo: string
-  roles: RolModulo[]
-  alEditar: (rol: RolModulo) => void
-  alDuplicar: (rol: RolModulo) => void
-  alEliminar: (rol: RolModulo) => void
-  alCerrar: () => void
-}
 
 export function ModalAdministrarRoles({ modulo, roles, alEditar, alDuplicar, alEliminar, alCerrar }: ModalAdministrarRolesProps) {
   const titulo = textos.titulos.administrar.replace(':modulo', modulo)

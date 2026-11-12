@@ -7,7 +7,7 @@ import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compart
 
 const clases = catalogoCompartido.modal
 
-export function Modal({
+function Superposicion({
   titulo,
   etiquetaCerrar,
   onCerrar,
@@ -33,8 +33,7 @@ export function Modal({
       <Box sx={{ zIndex: (tema) => tema.zIndex.modal }} className={oscuro ? clases.clase_fondo_oscuro : clases.clase_fondo} onMouseDown={registrarPulsacion} onClick={cerrarAlPulsarFuera}>
         <div
           ref={dialogoRef}
-          role="dialog"
-          aria-modal="true"
+          {...catalogoCompartido.atributos_dialogo}
           aria-label={titulo}
           tabIndex={-1}
           onKeyDown={mantenerFoco}
@@ -53,3 +52,5 @@ export function Modal({
     </ProveedorTemaGraficos>
   )
 }
+
+export { Superposicion as Modal }

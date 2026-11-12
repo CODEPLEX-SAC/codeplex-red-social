@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { usarEmpresaActiva } from '../../compartido/sesion/usar_empresa_activa'
-import { claveDeRolNuevo, configuracionDelRol, nombreDeRolRepetido, rolesDelModulo } from './logica_perfiles_permisos'
-import { agregarPermisoEspecifico, conEspecifico, conOperacion, conSeleccionModulo, conSeleccionRecurso, configuracionVacia, copiarConfiguracion, mismaConfiguracion, normalizarEtiqueta, tieneAcceso } from './logica_permisos_invitacion'
+import { crearConsolidacionRoles } from './crear_consolidacion_roles'
+import { crearEdicionRoles } from './crear_edicion_roles'
+import { sinRegistro } from './logica_gestion_roles'
+import { configuracionDelRol, rolesDelModulo } from './logica_perfiles_permisos'
+import { conEspecifico, conOperacion, conSeleccionModulo, conSeleccionRecurso, configuracionVacia, copiarConfiguracion, mismaConfiguracion } from './logica_permisos_invitacion'
+import { agregarPermisoEspecifico } from './logica_permisos_especificos'
+import type { ContextoRolesPermisos } from '@/tipos/colaboradores/contrato_gestion_roles_permisos'
 import type { DatosAsistenteInvitacion } from '@/tipos/colaboradores/contrato_invitar_colaborador'
-import type { AvisoPermisos, ClavePermiso, ConfiguracionPermisos, EstadoPermisosInvitacion, ModoGuardadoRol, ResultadoCreacionRol, RolModulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import type { AvisoPermisos, ClavePermiso, ConfiguracionPermisos, EstadoPermisosInvitacion, RolModulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
 
 const dialogos = catalogoColaboradores.dialogos_rol
-const errores = dialogos.errores
-const SIN_ROL = dialogos.valor_sin_rol
 
 function inicializarRoles(datos: DatosAsistenteInvitacion, ambito: string): Record<string, RolModulo[]> {
   return Object.fromEntries(Object.keys(datos.perfilesModulos).map((modulo) => [modulo, rolesDelModulo(datos.perfilesModulos[modulo], datos.repositorioRoles.listar(ambito, modulo))]))
@@ -31,11 +34,7 @@ export function usarPermisosInvitacion(datos: DatosAsistenteInvitacion): EstadoP
     const rol = rolDe(modulo, perfiles[modulo])
     return [modulo, rol === undefined || !mismaConfiguracion(asignaciones[modulo], rol.configuracion)]
   }))
-  const hayBorradores = Object.values(roles).some((lista) => lista.some((rol) => rol.borrador))
-
-  function sinRegistro(modulo: string) {
-    return (anterior: Record<string, string>) => Object.fromEntries(Object.entries(anterior).filter(([clave]) => clave !== modulo))
-  }
+  const hayBorradores = Object.values(roles).flat().some((rol) => rol.borrador)
 
   function modificar(modulo: string, cambio: (actual: ConfiguracionPermisos) => ConfiguracionPermisos) {
     setCargados(sinRegistro(modulo))
@@ -56,7 +55,7 @@ export function usarPermisosInvitacion(datos: DatosAsistenteInvitacion): EstadoP
     setPerfiles((anterior) => ({ ...anterior, [modulo]: perfil }))
     setAsignaciones((anterior) => ({ ...anterior, [modulo]: copiarConfiguracion(rol.configuracion) }))
     setSinAccesoConfirmado((anterior) => ({ ...anterior, [modulo]: false }))
-    if (!rol.borrador) setCargados((anterior) => ({ ...anterior, [modulo]: dialogos.avisos.cargado.replace(':rol', rol.etiqueta) }))
+    setCargados(rol.borrador ? sinRegistro(modulo) : (anterior) => ({ ...anterior, [modulo]: dialogos.avisos.cargado.replace(':rol', rol.etiqueta) }))
   }
 
   function agregarEspecifico(modulo: string, recurso: string, etiqueta: string): string | null {
@@ -76,87 +75,14 @@ export function usarPermisosInvitacion(datos: DatosAsistenteInvitacion): EstadoP
     if (rol) setAsignaciones((anterior) => ({ ...anterior, [modulo]: copiarConfiguracion(rol.configuracion) }))
   }
 
-  function validarNombre(modulo: string, clave: string | null, etiqueta: string): ResultadoCreacionRol | null {
-    if (!etiqueta) return { rol: null, error: errores.nombre_vacio, campo: 'nombre' }
-    if (nombreDeRolRepetido(roles[modulo] ?? [], etiqueta, clave)) return { rol: null, error: errores.nombre_repetido, campo: 'nombre' }
-    return null
+  const contexto: ContextoRolesPermisos = {
+    datos,
+    ambito,
+    valores: { roles, perfiles, asignaciones, ajustados, sinAccesoConfirmado },
+    acciones: { setRoles, setPerfiles, setAsignaciones, setCargados, setSinAccesoConfirmado, setAviso, rolDe, guardarBorradorActual, sinRegistro },
   }
-
-  function crearBorrador(modulo: string, nombre: string): ResultadoCreacionRol {
-    const etiqueta = normalizarEtiqueta(nombre)
-    const invalido = validarNombre(modulo, null, etiqueta)
-    if (invalido) return invalido
-    guardarBorradorActual(modulo)
-    const vacia = configuracionVacia(datos.recursosModulos[modulo] ?? [])
-    const rol: RolModulo = { clave: claveDeRolNuevo(roles[modulo] ?? [], etiqueta), etiqueta, configuracion: vacia, creado: true, borrador: true }
-    setRoles((anterior) => ({ ...anterior, [modulo]: [...(anterior[modulo] ?? []), rol] }))
-    setPerfiles((anterior) => ({ ...anterior, [modulo]: rol.clave }))
-    setAsignaciones((anterior) => ({ ...anterior, [modulo]: copiarConfiguracion(vacia) }))
-    setCargados(sinRegistro(modulo))
-    setSinAccesoConfirmado((anterior) => ({ ...anterior, [modulo]: false }))
-    setAviso({ variante: 'exito', titulo: dialogos.avisos.creado_titulo, mensaje: dialogos.avisos.creado.replace(':rol', etiqueta).replace(':modulo', modulo) })
-    return { rol, error: null }
-  }
-
-  function guardarRol(modulo: string, modo: ModoGuardadoRol, clave: string | null, nombre: string, configuracion: ConfiguracionPermisos): ResultadoCreacionRol {
-    const etiqueta = normalizarEtiqueta(nombre)
-    const invalido = validarNombre(modulo, modo === 'editar' ? clave : null, etiqueta)
-    if (invalido) return invalido
-    if (modo === 'editar') {
-      if (!tieneAcceso(configuracion)) return { rol: null, error: errores.sin_permisos, campo: 'permisos' }
-      const actual = rolDe(modulo, clave ?? SIN_ROL)
-      if (!actual || actual.borrador) return { rol: null, error: errores.rol_no_editable }
-      const rol = datos.repositorioRoles.actualizar(ambito, modulo, { ...actual, etiqueta, configuracion: copiarConfiguracion(configuracion) })
-      if (!rol) return { rol: null, error: errores.rol_no_editable }
-      setRoles((anterior) => ({ ...anterior, [modulo]: (anterior[modulo] ?? []).map((existente) => (existente.clave === rol.clave ? rol : existente)) }))
-      setAviso({ variante: 'exito', mensaje: dialogos.avisos.actualizado })
-      return { rol, error: null }
-    }
-    const rol = datos.repositorioRoles.registrar(ambito, modulo, { clave: claveDeRolNuevo(roles[modulo] ?? [], etiqueta), etiqueta, configuracion: copiarConfiguracion(configuracion), creado: true })
-    guardarBorradorActual(modulo)
-    setRoles((anterior) => ({ ...anterior, [modulo]: [...(anterior[modulo] ?? []), rol] }))
-    setPerfiles((anterior) => ({ ...anterior, [modulo]: rol.clave }))
-    setAsignaciones((anterior) => ({ ...anterior, [modulo]: copiarConfiguracion(rol.configuracion) }))
-    setCargados((anterior) => ({ ...anterior, [modulo]: dialogos.avisos.cargado.replace(':rol', rol.etiqueta) }))
-    setAviso({ variante: 'exito', titulo: dialogos.avisos.duplicado_titulo, mensaje: dialogos.avisos.duplicado.replace(':rol', rol.etiqueta).replace(':modulo', modulo) })
-    return { rol, error: null }
-  }
-
-  function eliminarRol(modulo: string, clave: string): boolean {
-    const rol = rolDe(modulo, clave)
-    if (!rol?.creado || rol.borrador || !datos.repositorioRoles.eliminar(ambito, modulo, clave)) {
-      setAviso({ variante: 'error', mensaje: dialogos.avisos.no_eliminado })
-      return false
-    }
-    setRoles((anterior) => ({ ...anterior, [modulo]: (anterior[modulo] ?? []).filter((existente) => existente.clave !== clave) }))
-    if (perfiles[modulo] === clave) setPerfiles((anterior) => ({ ...anterior, [modulo]: SIN_ROL }))
-    setAviso({ variante: 'exito', mensaje: dialogos.avisos.eliminado.replace(':modulo', modulo) })
-    return true
-  }
-
-  function revisarAvance(confirmados: string[] = []): string[] {
-    const sinAcceso = (modulo: string) => confirmados.includes(modulo) || sinAccesoConfirmado[modulo] === true
-    const pendientes = Object.keys(roles).filter((modulo) => {
-      const seleccionado = rolDe(modulo, perfiles[modulo])
-      const vacio = !tieneAcceso(asignaciones[modulo])
-      return vacio && !sinAcceso(modulo) && (seleccionado?.borrador === true || ajustados[modulo])
-    })
-    if (pendientes.length > 0) return pendientes
-    const resultado: Record<string, RolModulo[]> = {}
-    for (const modulo of Object.keys(roles)) {
-      resultado[modulo] = []
-      for (const rol of roles[modulo]) {
-        const seleccionado = rol.clave === perfiles[modulo]
-        const configuracion = seleccionado ? asignaciones[modulo] : rol.configuracion
-        if (!rol.borrador) resultado[modulo].push(rol)
-        else if (tieneAcceso(configuracion)) resultado[modulo].push(datos.repositorioRoles.registrar(ambito, modulo, { ...rol, configuracion: copiarConfiguracion(configuracion), borrador: false }))
-        else if (seleccionado) setPerfiles((anterior) => ({ ...anterior, [modulo]: SIN_ROL }))
-      }
-    }
-    setRoles(resultado)
-    setSinAccesoConfirmado((anterior) => ({ ...anterior, ...Object.fromEntries(confirmados.map((modulo) => [modulo, true])) }))
-    return []
-  }
+  const { crearBorrador, guardarRol } = crearEdicionRoles(contexto)
+  const { eliminarRol, revisarAvance } = crearConsolidacionRoles(contexto)
 
   return {
     recursos: datos.recursosModulos,

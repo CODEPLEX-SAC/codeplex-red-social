@@ -1,79 +1,31 @@
-import { useState } from 'react'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { Modal } from '../../compartido/interfaz/modal'
-import { agregarPermisoEspecifico, conEspecifico, conOperacion, conSeleccionModulo, conSeleccionRecurso, copiarConfiguracion, mismaConfiguracion } from './logica_permisos_invitacion'
+import { conEspecifico, conOperacion, conSeleccionModulo, conSeleccionRecurso } from './logica_permisos_invitacion'
 import { ModalConfirmacionRol } from './modal_confirmacion_rol'
 import { PanelEdicionPermisos } from './panel_edicion_permisos'
-import type { CampoErrorRol, ConfiguracionPermisos, RecursoPermiso, ResultadoCreacionRol } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import { usarModalRol } from './usar_modal_rol'
+import type { ModalRolProps } from '@/tipos/colaboradores/contrato_modal_rol'
 
 const clases = catalogoColaboradores.clases.invitar_permisos
 const textos = catalogoColaboradores.dialogos_rol
 
-export type ModoModalRol = 'crear' | 'duplicar' | 'editar'
-
-export interface ModalRolProps {
-  modo: ModoModalRol
-  modulo: string
-  recursos: RecursoPermiso[]
-  nombreInicial: string
-  configuracionInicial: ConfiguracionPermisos
-  alGuardar: (nombre: string, configuracion: ConfiguracionPermisos) => ResultadoCreacionRol
-  alCerrar: () => void
-}
-
-export function ModalRol({ modo, modulo, recursos, nombreInicial, configuracionInicial, alGuardar, alCerrar }: ModalRolProps) {
-  const conPermisos = modo === 'editar'
-  const [nombre, setNombre] = useState(nombreInicial)
-  const [configuracion, setConfiguracion] = useState(() => copiarConfiguracion(configuracionInicial))
-  const [expandidos, setExpandidos] = useState<string[]>([])
-  const [error, setError] = useState<{ campo: CampoErrorRol; mensaje: string } | null>(null)
-  const [guardando, setGuardando] = useState(false)
-  const [confirmandoSalida, setConfirmandoSalida] = useState(false)
-  const pendiente = nombre !== nombreInicial || (conPermisos && !mismaConfiguracion(configuracion, configuracionInicial))
-
-  function intentarCerrar() {
-    if (pendiente && conPermisos) setConfirmandoSalida(true)
-    else alCerrar()
-  }
-
-  function guardar() {
-    if (guardando) return
-    setGuardando(true)
-    const resultado = alGuardar(nombre, configuracion)
-    if (resultado.error === null) {
-      alCerrar()
-      return
-    }
-    setGuardando(false)
-    setError({ campo: resultado.campo ?? 'nombre', mensaje: resultado.error })
-  }
-
-  function cambiar(cambio: (actual: ConfiguracionPermisos) => ConfiguracionPermisos) {
-    setConfiguracion(cambio)
-    setError((actual) => (actual?.campo === 'permisos' ? null : actual))
-  }
-
-  function agregar(recurso: string, etiqueta: string) {
-    const resultado = agregarPermisoEspecifico(configuracion, recursos.find((candidato) => candidato.nombre === recurso), etiqueta)
-    if (resultado.error === null) setConfiguracion(resultado.configuracion)
-    return resultado.error
-  }
+export function ModalRol(props: ModalRolProps) {
+  const { modo, modulo, recursos, nombreInicial, alCerrar } = props
+  const estado = usarModalRol(props)
+  const { conPermisos, nombre, configuracion, expandidos, error, guardando, confirmandoSalida, cambiar } = estado
 
   return (
-    <Modal titulo={textos.titulos[modo].replace(':modulo', modulo).replace(':rol', nombreInicial)} etiquetaCerrar={textosRedSocial.CERRAR} onCerrar={intentarCerrar} className={conPermisos ? clases.modal_rol : clases.modal_permiso}>
+    <Modal titulo={textos.titulos[modo].replace(':modulo', modulo).replace(':rol', nombreInicial)} etiquetaCerrar={textosRedSocial.CERRAR} onCerrar={estado.intentarCerrar} className={conPermisos ? clases.modal_rol : clases.modal_permiso}>
       <div className={clases.rol_cuerpo}>
         <CampoTexto
           id={textos.id_nombre}
           etiqueta={textos.nombre_etiqueta}
           required
           valor={nombre}
-          alCambiar={(valor) => {
-            setNombre(valor)
-            setError((actual) => (actual?.campo === 'nombre' ? null : actual))
-          }}
+          alCambiar={estado.cambiarNombre}
           error={error?.campo === 'nombre'}
           mensajeError={error?.campo === 'nombre' ? error.mensaje : undefined}
         />
@@ -88,7 +40,7 @@ export function ModalRol({ modo, modulo, recursos, nombreInicial, configuracionI
             configuracion={configuracion}
             expandidos={expandidos}
             errorPermisos={error?.campo === 'permisos' ? error.mensaje : null}
-            alCambiarExpandidos={setExpandidos}
+            alCambiarExpandidos={estado.setExpandidos}
             alSeleccionarModulo={(activo) => cambiar((actual) => conSeleccionModulo(recursos, actual, activo))}
             alSeleccionarRecurso={(recurso, activo) => cambiar((actual) => {
               const definicion = recursos.find((candidato) => candidato.nombre === recurso)
@@ -96,13 +48,13 @@ export function ModalRol({ modo, modulo, recursos, nombreInicial, configuracionI
             })}
             alAlternar={(recurso, clave, activo) => cambiar((actual) => conOperacion(actual, recurso, clave, activo))}
             alAlternarEspecifico={(recurso, id, activo) => cambiar((actual) => conEspecifico(actual, recurso, id, activo))}
-            alAgregar={agregar}
+            alAgregar={estado.agregar}
           />
         )}
       </div>
       <div className={clases.rol_pie}>
-        <Boton type="button" variant="secundario" size="md" onClick={intentarCerrar}>{textosRedSocial.CANCELAR}</Boton>
-        <Boton type="button" variant="primario" size="md" disabled={guardando} aria-busy={guardando} onClick={guardar}>{textos.boton_guardar[modo]}</Boton>
+        <Boton type="button" variant="secundario" size="md" onClick={estado.intentarCerrar}>{textosRedSocial.CANCELAR}</Boton>
+        <Boton type="button" variant="primario" size="md" disabled={guardando} aria-busy={guardando} onClick={estado.guardar}>{textos.boton_guardar[modo]}</Boton>
       </div>
       {confirmandoSalida && (
         <ModalConfirmacionRol
@@ -110,7 +62,7 @@ export function ModalRol({ modo, modulo, recursos, nombreInicial, configuracionI
           mensaje={textos.descartar_mensaje}
           etiquetaCancelar={textos.seguir_editando}
           etiquetaConfirmar={textos.descartar}
-          alCancelar={() => setConfirmandoSalida(false)}
+          alCancelar={() => estado.setConfirmandoSalida(false)}
           alConfirmar={alCerrar}
         />
       )}

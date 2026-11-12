@@ -4,4 +4,7 @@ export interface FilaAvisoProps {
   aviso: Aviso
   claseIcono: string
   seleccionable?: boolean
+  leida?: boolean
+  seleccionada?: boolean
+  alSeleccionar?: (marcada: boolean) => void
 }

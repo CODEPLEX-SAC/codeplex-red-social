@@ -1,6 +1,3 @@
-import { Menu } from '../../compartido/interfaz/menu'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { useState } from 'react'
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
@@ -8,7 +5,6 @@ import { CLASE_SUPERFICIE } from '../../compartido/paleta_colores'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
-import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { FilaMencionProps } from '@/tipos/avisos/contrato_mencion'
 
 const claseInsigniaMencion = CLASE_SUPERFICIE.morado + ' text-white'
@@ -23,7 +19,6 @@ const BADGE_ICONO_POR_TIPO = {
 } as const
 
 export function FilaMencion({ mencion: m }: FilaMencionProps) {
-  const [ancla, setAncla] = useState<HTMLElement | null>(null)
   const [antes, despues] = m.texto.split(':usuario')
 
   return (
@@ -65,23 +60,6 @@ export function FilaMencion({ mencion: m }: FilaMencionProps) {
           <strong className="block truncate text-subtitulo text-texto">{m.vistaPrevia.titulo}</strong>
           {m.vistaPrevia.subtitulo && <span className="block truncate text-auxiliar text-texto-suave">{m.vistaPrevia.subtitulo}</span>}
         </div>
-      </div>
-
-      <div className="flex-none">
-        <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} onClick={(evento) => setAncla(evento.currentTarget)} variant="discreto" size="sm" className="flex-none" />
-        <Menu
-          ancla={ancla}
-          alCerrar={() => setAncla(null)}
-          elementos={[
-            { icono: 'ver', etiqueta: catalogoAvisos.menu_mencion.ver_publicacion },
-            { icono: 'comentario', etiqueta: catalogoAvisos.menu_mencion.responder },
-            { icono: 'me-gusta', etiqueta: catalogoAvisos.menu_mencion.dar_me_gusta },
-            { icono: 'compartir', etiqueta: catalogoAvisos.menu_mencion.compartir },
-            { icono: 'verificado', etiqueta: catalogoAvisos.menu_mencion.marcar_como_leida },
-            { icono: 'silenciado', etiqueta: [catalogoAvisos.menu_mencion.silenciar_menciones_de, m.nombre].join(' ') },
-            { icono: 'aviso-critico', etiqueta: catalogoAvisos.menu_mencion.reportar, peligro: true },
-          ]}
-        />
       </div>
     </article>
   )

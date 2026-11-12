@@ -1,46 +1,64 @@
-import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { Icono } from '../../compartido/icono'
+import { Boton } from '../../compartido/interfaz/boton'
 import { Interruptor } from '../../compartido/interfaz/interruptor'
-import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
+import { dispositivosPorTipo, idSeleccionado } from './logica_preparacion_llamada'
+import { SelectorDispositivo } from './selector_dispositivo'
+import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
+import type { IconName } from '@/tipos/compartido/contrato_icono'
+import type { ConfiguracionLlamada, EstadoAcceso, TipoDispositivo } from '@/tipos/mensajeria/contrato_integracion_llamada'
+import type { usarPreparacionLlamada } from './usar_preparacion_llamada'
 
-export function SeccionDispositivos({
-  DISPOSITIVOS,
-  CONFIGURACION_LLAMADA,
-}: {
-  DISPOSITIVOS: { icono: string; titulo: string; detalle: string; }[]
-  CONFIGURACION_LLAMADA: { icono: string; titulo: string; detalle: string; }[]
-}) {
+const textos = catalogoMensajeria.videollamada.textos
+const clases = catalogoMensajeria.videollamada.clases.dispositivos
+const TIPOS = textos.dispositivos.tipos as { tipo: TipoDispositivo; icono: IconName }[]
+
+export function SeccionDispositivos({ preparacion }: { preparacion: ReturnType<typeof usarPreparacionLlamada> }) {
+  const { inventario, seleccion, resultados, probando } = preparacion
+  const avisoAcceso = textos.dispositivos.avisos_acceso[inventario.acceso as EstadoAcceso]
+  const avisos = [avisoAcceso, preparacion.salidaNoSoportada ? textos.dispositivos.salida_no_soportada : String(), textos.preparacion.microfono_nota].filter(Boolean)
+
   return (
-    <div className="grid grid-cols-2 items-start gap-4 max-900:grid-cols-1">
-      <section className="rounded-xl border border-borde bg-white p-4">
-        <h2 className="m-0 mb-3 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.dispositivos}</h2>
-        {DISPOSITIVOS.map((d, i, arr) => (
-          <div key={d.titulo} className={'flex items-center gap-2.5 py-2.5 ' + (i < arr.length - 1 ? 'border-b border-borde' : '')}>
-            <Icono name={d.icono} className="h-4 w-4 flex-none text-texto-suave" />
-            <div className="min-w-0 flex-1">
-              <strong className="block text-subtitulo text-texto">{d.titulo}</strong>
-              <span className="block truncate text-auxiliar text-texto-suave">{d.detalle}</span>
-            </div>
-            <Icono name="flecha-abajo" className="h-3.5 w-3.5 flex-none text-texto-suave" />
-          </div>
+    <div className={clases.rejilla}>
+      <section className={clases.tarjeta}>
+        <h2 className={clases.titulo}>{catalogoMensajeria.secciones.dispositivos}</h2>
+        {TIPOS.map(({ tipo, icono }) => (
+          <SelectorDispositivo key={tipo} tipo={tipo} icono={icono} dispositivos={dispositivosPorTipo(inventario, tipo)} valor={idSeleccionado(seleccion, inventario, tipo)} onElegir={(t, id) => void preparacion.elegir(t, id)} />
         ))}
-        <a href="#" className={[CLASE_ENLACE_ACCION, 'mt-3 inline-flex items-center gap-1.5'].join(' ')}>
-          <Icono name="actualizar" className="h-3.5 w-3.5" /> {catalogoMensajeria.botones.probar_dispositivos}
-        </a>
+        {avisos.map((aviso) => (
+          <p key={aviso} aria-live="polite" className={clases.ayuda}>
+            {aviso}
+          </p>
+        ))}
+        <div className={clases.acciones}>
+          <Boton type="button" variant="secundario" size="mini" disabled={probando} onClick={() => void preparacion.probar()}>
+            <Icono name="actualizar" className="h-3.5 w-3.5" /> {probando ? textos.dispositivos.probando : textos.dispositivos.probar}
+          </Boton>
+          <Boton type="button" variant="enlace" size="enlace_accion" onClick={() => void preparacion.actualizar()}>
+            {textos.dispositivos.actualizar}
+          </Boton>
+        </div>
+        <ul aria-label={textos.dispositivos.resultados} className={clases.resultados}>
+          {TIPOS.map(({ tipo }) => (
+            <li key={tipo}>
+              <span className={clases.resultado_nombre}>{textos.dispositivos[tipo]}:</span> {textos.dispositivos.estado[resultados[tipo]]}
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <section className="rounded-xl border border-borde bg-white p-4">
-        <h2 className="m-0 mb-3 text-titulo-seccion text-texto">{catalogoMensajeria.secciones.configuracion_llamada}</h2>
-        {CONFIGURACION_LLAMADA.map((c, i, arr) => (
-          <div key={c.titulo} className={'flex items-center gap-2.5 py-2.5 ' + (i < arr.length - 1 ? 'border-b border-borde' : '')}>
-            <Icono name={c.icono} className="h-4 w-4 flex-none text-texto-suave" />
-            <div className="min-w-0 flex-1">
-              <strong className="block text-subtitulo text-texto">{c.titulo}</strong>
-              <span className="block truncate text-auxiliar text-texto-suave">{c.detalle}</span>
+      <section className={clases.tarjeta}>
+        <h2 className={clases.titulo}>{catalogoMensajeria.secciones.configuracion_llamada}</h2>
+        {textos.configuracion.elementos.map((elemento) => (
+          <div key={elemento.clave} className={clases.fila}>
+            <Icono name={elemento.icono as IconName} className={clases.icono} />
+            <div className={clases.cuerpo}>
+              <strong className={clases.nombre}>{elemento.titulo}</strong>
+              <span className={clases.detalle}>{elemento.detalle}</span>
             </div>
-            <Interruptor porDefectoSeleccionado />
+            <Interruptor seleccionado={preparacion.configuracion[elemento.clave as keyof ConfiguracionLlamada]} alCambiar={(_, valor) => preparacion.cambiarConfiguracion(elemento.clave as keyof ConfiguracionLlamada, valor)} inputProps={{ 'aria-label': elemento.titulo }} />
           </div>
         ))}
+        <p className={clases.ayuda}>{textos.configuracion.nota}</p>
       </section>
     </div>
   )

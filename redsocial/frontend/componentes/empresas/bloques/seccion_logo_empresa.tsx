@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useRef } from 'react'
 import { Icono } from '../../compartido/icono'
 import { AvatarImagen } from '../../compartido/interfaz/avatar_imagen'
@@ -39,7 +40,7 @@ export function SeccionLogoEmpresa({ formulario }: FormularioEmpresaProps) {
         </div>
         <input ref={selectorArchivos} type="file" hidden tabIndex={-1} aria-label={textos.cambiar} accept={textos.tipos_aceptados} onChange={formulario.elegirLogo} />
       </div>
-      {formulario.errorLogo ? <p role="alert" className={`m-0 ${textoError}`}>{formulario.errorLogo}</p> : null}
+      {formulario.errorLogo ? <AlertaEstado className={`m-0 ${textoError}`}>{formulario.errorLogo}</AlertaEstado> : null}
     </div>
   )
 }

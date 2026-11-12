@@ -1,3 +1,4 @@
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { CodeplexProveedorFechas } from '@codeplex-sac/selectores-fecha'
 import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
@@ -22,7 +23,7 @@ export function PanelFiltrosAvanzadosEmpresas({ listado, alCerrar }: PanelFiltro
 
   return (
     <div
-      role="dialog"
+      role={catalogoCompartido.roles_aria.dialogo}
       aria-label={textos.titulo}
       onClick={detenerPropagacion}
       className="absolute right-0 top-tooltip z-20 flex max-h-150 w-112 flex-col overflow-hidden rounded-xl border border-borde bg-white shadow-t13 max-600:fixed max-600:max-h-4/5 max-600:inset-x-0 max-600:bottom-0 max-600:top-auto max-600:z-30 max-600:w-full max-600:max-w-none max-600:rounded-b-none max-600:rounded-t-2xl panel-hoja-movil"

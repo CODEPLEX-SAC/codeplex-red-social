@@ -9,7 +9,7 @@ const encabezado = claseEncabezadoTabla()
 
 export function TablaUsuariosEmpresa({ listado, editable, edicionUsuarios }: TablaUsuariosEmpresaProps) {
   const mensaje = listado.hayUsuarios ? textos.sin_resultados : textos.vacio
-  const columnas = ENCABEZADOS.length + (editable ? 1 : 0)
+  const columnas = ENCABEZADOS.length + Number(editable)
 
   return (
     <div className={CLASES_TABLA.contenedor}>

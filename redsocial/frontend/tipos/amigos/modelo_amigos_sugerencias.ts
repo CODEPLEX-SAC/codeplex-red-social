@@ -3,4 +3,5 @@ export interface Sugerencia {
   descripcion: string
   comunes: string
   masAvatares: string
+  enLinea?: boolean
 }

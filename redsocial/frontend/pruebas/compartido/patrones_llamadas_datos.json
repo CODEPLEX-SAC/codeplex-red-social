@@ -1,0 +1,7 @@
+{
+  "patrones": [
+    "\\bfetch\\(",
+    "axios",
+    "XMLHttpRequest"
+  ]
+}

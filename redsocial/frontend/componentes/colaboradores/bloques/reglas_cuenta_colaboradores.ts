@@ -26,5 +26,6 @@ export function cumpleAplicacion(colaborador: Colaborador, opcion: string): bool
 export function fechaDeInvitacion(colaborador: Colaborador): number | null {
   const { vigencia } = colaborador
   const fecha = colaborador.fechaInvitacion ?? (colaborador.estado === 'invitado' && vigencia.tipo === 'simple' ? vigencia.fecha : null)
-  return fecha === null ? null : fechaDeTexto(fecha)
+  if (fecha === null) return null
+  return fechaDeTexto(fecha)
 }

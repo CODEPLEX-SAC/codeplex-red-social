@@ -7,4 +7,5 @@ export interface PanelNotificacionesTopbarProps {
 export interface FilaPanelTopbarProps {
   aviso: Aviso
   claseIcono: string
+  leida?: boolean
 }

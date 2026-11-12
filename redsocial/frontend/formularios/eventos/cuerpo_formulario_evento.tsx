@@ -1,6 +1,7 @@
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import type { Dayjs } from 'dayjs'
-import { SeccionConfiguracionEvento, SeccionOrganizadorEvento } from './seccion_configuracion_evento'
+import { SeccionConfiguracionEvento } from './seccion_configuracion_evento'
+import { SeccionOrganizadorEvento } from './seccion_organizador_evento'
 import { SeccionCostoLimiteEvento } from './seccion_costo_limite_evento'
 import { SeccionImagenEvento } from './seccion_imagen_evento'
 import { SeccionInformacionEvento } from './seccion_informacion_evento'

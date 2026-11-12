@@ -51,7 +51,7 @@ export function PanelFiltrosAvanzados({ aplicados, basicos, onAplicar, onCerrar 
 
   return (
     <div
-      role="dialog"
+      role={catalogoColaboradores.roles_aria.dialogo}
       aria-label={textos.titulo}
       onClick={detenerPropagacion}
       className={clases.panel}

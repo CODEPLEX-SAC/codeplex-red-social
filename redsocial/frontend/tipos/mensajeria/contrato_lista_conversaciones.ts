@@ -1,3 +1,4 @@
+import type { FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
 import type { ConversacionConEtiqueta, ParticipanteMensajeria } from '@/tipos/mensajeria/contrato_mensajes'
 import type { AccionesConversacion, EstadoHistorias, HistoriasDeParticipante } from '@/tipos/mensajeria/contrato_acciones_conversacion'
 
@@ -6,8 +7,18 @@ export interface HistoriasEnLista {
   abrir: (participantId: string) => void
 }
 
+export interface FiltrosConversaciones {
+  soloGrupos: boolean
+  filtro: FiltroConversaciones
+}
+
+export interface FiltrosParticipantes {
+  excluir: readonly string[]
+}
+
 export interface ListaConversacionesProps {
   conversaciones: readonly ConversacionConEtiqueta[]
+  fuente?: FuenteBusqueda<ConversacionConEtiqueta, FiltrosConversaciones>
   activa: string | null
   onSeleccionar: (id: string) => void
   oculta: boolean
@@ -27,6 +38,7 @@ export interface DatosNuevoGrupo {
 
 export interface ModalCrearGrupoProps {
   participantes: readonly ParticipanteMensajeria[]
+  fuente?: FuenteBusqueda<ParticipanteMensajeria, FiltrosParticipantes>
   nombresExistentes: readonly string[]
   onCrear: (datos: DatosNuevoGrupo) => void
   onCerrar: () => void

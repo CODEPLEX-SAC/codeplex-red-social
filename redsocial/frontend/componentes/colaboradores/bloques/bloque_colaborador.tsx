@@ -1,6 +1,6 @@
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import { Boton } from '../../compartido/interfaz/boton'
+import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { BloqueColaborador2 } from './bloque_colaborador2'
 import type { PasoInvitacion } from '@/tipos/colaboradores/contrato_invitar_colaborador'
 import { BloqueVistaPreviaCorreo } from './bloque_vista_previa_correo'
@@ -52,9 +52,7 @@ export function BloqueColaborador({
               <Icono name="escudo" className={comun.glifo_titulo} />
               <h4 className={comun.titulo}>{textos.rol_y_permisos}</h4>
             </div>
-            <Boton type="button" variant="secundario" size="mini" onClick={editarRol} aria-label={textos.editar_rol}>
-              {textos.editar}
-            </Boton>
+            <BotonIcono icono="editar-oficial" type="button" variant="discreto" size="default" onClick={editarRol} aria-label={textos.editar_rol} />
           </div>
           <div className={clases.datos}>
             <div className={clases.dato_fila}>
@@ -74,9 +72,7 @@ export function BloqueColaborador({
               <Icono name="calendario" className={comun.glifo_titulo} />
               <h4 className={comun.titulo}>{textos.vigencia}</h4>
             </div>
-            <Boton type="button" variant="secundario" size="mini" onClick={editarVigencia} aria-label={textos.editar_vigencia}>
-              {textos.editar}
-            </Boton>
+            <BotonIcono icono="editar-oficial" type="button" variant="discreto" size="default" onClick={editarVigencia} aria-label={textos.editar_vigencia} />
           </div>
           <div className={clases.vigencia_rejilla}>
             <CampoResumen etiqueta={textos.fecha_de_inicio} valor={RESUMEN_VIGENCIA.fechaInicio} />

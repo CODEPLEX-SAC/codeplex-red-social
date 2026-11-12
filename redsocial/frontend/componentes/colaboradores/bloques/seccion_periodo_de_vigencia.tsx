@@ -1,6 +1,7 @@
 import { CodeplexProveedorFechas } from '@codeplex-sac/selectores-fecha'
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
+import { GrupoRadio } from '../../compartido/interfaz/grupo_radio'
 import { Radio } from '../../compartido/interfaz/radio'
 import { SeccionPeriodoDeVigencia2 } from './seccion_periodo_de_vigencia2'
 import { BloqueRenovacion } from './bloque_renovacion'
@@ -32,8 +33,9 @@ export function SeccionPeriodoDeVigencia({
             </div>
             <p className={clases.vencer_subtitulo}>{textos.al_vencer_subtitulo}</p>
 
+            <GrupoRadio name="al-vencer" defaultValue="desactivar" aria-label={textos.al_vencer_vigencia}>
             <label className={clases.opcion_amplia}>
-              <Radio name="al-vencer" value="desactivar" defaultChecked />
+              <Radio value="desactivar" />
               <span className={comun.opcion_textos}>
                 <span className={comun.opcion_titulo}>{textos.desactivar_automaticamente}</span>
                 <span className={comun.opcion_detalle}>{textos.desactivar_automaticamente_detalle}</span>
@@ -41,12 +43,13 @@ export function SeccionPeriodoDeVigencia({
             </label>
 
             <label className={comun.opcion}>
-              <Radio name="al-vencer" value="revision" />
+              <Radio value="revision" />
               <span className={comun.opcion_textos}>
                 <span className={comun.opcion_titulo}>{textos.mantener_con_revision}</span>
                 <span className={comun.opcion_detalle}>{textos.mantener_con_revision_detalle}</span>
               </span>
             </label>
+            </GrupoRadio>
           </div>
         </div>
 

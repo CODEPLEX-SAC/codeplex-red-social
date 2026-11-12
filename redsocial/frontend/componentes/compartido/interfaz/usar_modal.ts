@@ -1,22 +1,9 @@
 import { useEffect, useRef } from 'react'
 import type { KeyboardEvent as EventoTeclado, MouseEvent as EventoRaton } from 'react'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+import { bloquearScroll, liberarScroll } from './bloqueo_scroll_modal'
 
 const configuracion = catalogoCompartido.modal
-
-let bloqueos = 0
-let overflowOriginal = String()
-
-function bloquearScroll() {
-  if (bloqueos === 0) overflowOriginal = document.body.style.overflow
-  bloqueos += 1
-  document.body.style.overflow = 'hidden'
-}
-
-function liberarScroll() {
-  bloqueos -= 1
-  if (bloqueos === 0) document.body.style.overflow = overflowOriginal
-}
 
 export function usarModal(onCerrar: () => void) {
   const dialogoRef = useRef<HTMLDivElement>(null)

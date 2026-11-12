@@ -3,9 +3,14 @@ import type { MedioLocalPublicacion } from '@/tipos/inicio/contrato_crear_public
 
 const medios = catalogoInicio.modal_crear_publicacion.medios
 
+function esArchivoAceptado(archivo: File) {
+  const tipoAceptado = medios.prefijos_aceptados.some((prefijo) => archivo.type.startsWith(prefijo))
+  return tipoAceptado && medios.tamano_maximo >= archivo.size
+}
+
 export function mediosDesdeArchivos(archivos: File[], actuales: number, siguienteId: () => string): MedioLocalPublicacion[] {
   const cupo = Math.max(medios.maximo_archivos - actuales, 0)
-  const validos = archivos.filter((archivo) => medios.prefijos_aceptados.some((prefijo) => archivo.type.startsWith(prefijo)) && medios.tamano_maximo >= archivo.size)
+  const validos = archivos.filter(esArchivoAceptado)
   return validos.slice(0, cupo).map((archivo) => ({ id: siguienteId(), url: URL.createObjectURL(archivo), esVideo: archivo.type.startsWith(medios.prefijo_video) }))
 }
 

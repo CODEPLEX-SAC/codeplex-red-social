@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import { PaginaAvisos } from '@/paginas/avisos/pagina_avisos'
+import { PaginaNovedades } from '@/paginas/avisos/pagina_avisos'
 
-describe('PaginaAvisos', () => {
+describe('PaginaNovedades', () => {
   it('renderiza sin errores y muestra al menos un titulo', () => {
-    render(<PaginaAvisos />)
+    render(<PaginaNovedades />)
     expect(screen.getAllByRole('heading').length).toBeGreaterThan(0)
   })
 })

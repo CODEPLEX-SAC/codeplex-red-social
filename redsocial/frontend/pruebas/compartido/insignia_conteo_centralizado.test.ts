@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { leerCssGlobal } from './leer_css'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'

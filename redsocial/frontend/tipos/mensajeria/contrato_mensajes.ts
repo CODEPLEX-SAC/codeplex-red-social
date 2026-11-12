@@ -27,6 +27,35 @@ export interface RespuestaMensaje {
 
 export type ParteMensaje = Pick<Mensaje, 'contenido' | 'adjunto' | 'reenviado' | 'respuestaA'>
 
+export interface ContextoEscrituraMensaje {
+  usuarioId: string
+  ahora: Date
+}
+
+export interface SolicitudEnvioMensaje {
+  conversacionId: string
+  texto: string
+  respuestaA?: RespuestaMensaje
+}
+
+export interface SolicitudEdicionMensaje {
+  conversacionId: string
+  mensajeId: string
+  texto: string
+}
+
+export interface SolicitudReenvioMensaje {
+  origenId: string
+  mensajeId: string
+  destinoId: string
+}
+
+export interface EntornoCitaMensaje {
+  conversacion: Conversacion
+  participantes: readonly ParticipanteMensajeria[]
+  usuarioId: string
+}
+
 export interface Mensaje {
   id: string
   autorId: string

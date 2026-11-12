@@ -42,7 +42,7 @@ export function PestanaDocumentosPerfil({ perfil, propio, onGuardar }: PestanaEd
           <li key={documento.id} className={clases.fila_lista}>
             <span className={`${clases.caja_icono} ${clases.insignia_tipo}`}>{documento.tipo}</span>
             <div className={clases.item_cuerpo}>
-              <a href={documento.url} target="_blank" rel="noreferrer" aria-label={textos.abrir.replace(':nombre', documento.nombre)} className="truncate text-campo-formulario text-texto no-underline hover:text-primario">
+              <a href={documento.url} target="_blank" rel="noopener noreferrer" aria-label={textos.abrir.replace(':nombre', documento.nombre)} className="truncate text-campo-formulario text-texto no-underline hover:text-primario">
                 <strong>{documento.nombre}</strong>
               </a>
               <span className="text-auxiliar text-texto-suave">{`${documento.tipo} · ${textos.subido.replace(':fecha', documento.fecha)}`}</span>

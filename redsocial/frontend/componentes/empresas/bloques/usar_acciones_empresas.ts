@@ -8,6 +8,11 @@ import type { SolicitudDetalleEmpresa } from '@/tipos/empresas/contrato_detalle_
 import type { ClaveModuloEmpresa, Empresa } from '@/tipos/empresas/modelo_empresas'
 import type { UsuarioEmpresa } from '@/tipos/empresas/modelo_usuarios_empresa'
 
+function empresaDeSolicitud(empresas: Empresa[], solicitud: SolicitudDetalleEmpresa | null) {
+  if (!solicitud) return undefined
+  return empresas.find((empresa) => empresa.codigo === solicitud.codigo)
+}
+
 export function usarAccionesEmpresas(empresas: Empresa[]): AccionesEmpresas {
   const suscripciones = usarSuscripciones()
   const [registradas, setRegistradas] = useState<Empresa[]>([])
@@ -19,8 +24,8 @@ export function usarAccionesEmpresas(empresas: Empresa[]): AccionesEmpresas {
   const [edicion, setEdicion] = useState<SolicitudDetalleEmpresa | null>(null)
   const [usuariosEditados, setUsuariosEditados] = useState<Record<string, UsuarioEmpresa[]>>({})
   const todas = useMemo(() => aplicarEdiciones([...registradas, ...empresas], ediciones), [registradas, empresas, ediciones])
-  const empresaDetalle = detalle ? todas.find((empresa) => empresa.codigo === detalle.codigo) : undefined
-  const empresaEdicion = edicion ? todas.find((empresa) => empresa.codigo === edicion.codigo) : undefined
+  const empresaDetalle = empresaDeSolicitud(todas, detalle)
+  const empresaEdicion = empresaDeSolicitud(todas, edicion)
 
   function abrirModal() {
     const mostrar = limiteAlcanzado(todas.length, suscripciones) ? setAvisoLimiteAbierto : setModalAbierto

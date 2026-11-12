@@ -12,7 +12,7 @@ export function GrupoAvatares({ avatares, imagen = imagenUsuarioPredeterminada, 
   const medidas = configuracion.tamanos[tamano as keyof typeof configuracion.tamanos]
   const tonoResto = configuracion.tonos[tono as keyof typeof configuracion.tonos]
   const hayResto = resto !== undefined && resto !== String()
-  const total = avatares + (hayResto ? 1 : 0)
+  const total = avatares + Number(hayResto)
   const [cifra, ...descripcion] = hayResto ? resto.split(configuracion.separador_resto) : []
   const textoDescriptivo = descripcion.join(configuracion.separador_resto)
 

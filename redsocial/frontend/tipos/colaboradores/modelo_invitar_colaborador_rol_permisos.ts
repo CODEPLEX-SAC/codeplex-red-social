@@ -58,6 +58,14 @@ export interface RepositorioRolesModulo {
 
 export type ModoGuardadoRol = 'duplicar' | 'editar'
 
+export type SolicitudGuardadoRol = {
+  modulo: string
+  modo: ModoGuardadoRol
+  clave: string | null
+  nombre: string
+  configuracion: ConfiguracionPermisos
+}
+
 export type CampoErrorRol = 'nombre' | 'permisos'
 
 export interface ResultadoCreacionRol {
@@ -91,7 +99,7 @@ export interface EstadoPermisosInvitacion {
   aplicarPerfil: (modulo: string, perfil: string) => void
   restablecer: (modulo: string) => void
   crearBorrador: (modulo: string, nombre: string) => ResultadoCreacionRol
-  guardarRol: (modulo: string, modo: ModoGuardadoRol, clave: string | null, nombre: string, configuracion: ConfiguracionPermisos) => ResultadoCreacionRol
+  guardarRol: (solicitud: SolicitudGuardadoRol) => ResultadoCreacionRol
   revisarAvance: (confirmados?: string[]) => string[]
   hayBorradores: boolean
   eliminarRol: (modulo: string, clave: string) => boolean
@@ -100,3 +108,5 @@ export interface EstadoPermisosInvitacion {
   cerrarAviso: () => void
   cambiarExpandidos: (modulo: string, ids: string[]) => void
 }
+
+export type EstadoSeleccion = 'ninguno' | 'parcial' | 'todos'

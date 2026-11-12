@@ -127,6 +127,15 @@ export interface OpcionPosicionHistoria extends PosicionHistoria {
   etiqueta: string
 }
 
+export interface CarruselHistoriasInicioProps {
+  historias: Historia[]
+  publicadas: HistoriaPublicada[]
+  deContactos: HistoriaPublicada[]
+  autoresConHistorias: string[]
+  onCrear: () => void
+  onVer: (historia: HistoriaPublicada) => void
+}
+
 export interface BotonCrearHistoriaProps {
   nombre: string
   limiteAlcanzado: boolean

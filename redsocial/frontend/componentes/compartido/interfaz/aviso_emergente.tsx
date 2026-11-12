@@ -3,7 +3,7 @@ import type { CodeplexNotificacionProps } from '@codeplex-sac/feedback'
 import { ProveedorTemaGraficos } from '../proveedor_tema_graficos'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
-export function AvisoEmergente(props: CodeplexNotificacionProps) {
+export function MensajeEmergente(props: CodeplexNotificacionProps) {
   return (
     <ProveedorTemaGraficos>
       <CodeplexNotificacion

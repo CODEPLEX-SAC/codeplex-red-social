@@ -48,21 +48,63 @@
     "principal": "Mantente al día con lo que ocurre en tu red y en tu empresa"
   },
   "pestanas": [
-    {"clave": "todas", "etiqueta": "Todas", "ruta": "/notificaciones"},
-    {"clave": "no_leidas", "etiqueta": "No leídas", "ruta": "/notificaciones/no-leidas"},
-    {"clave": "menciones", "etiqueta": "Menciones", "ruta": "/notificaciones/menciones"},
-    {"clave": "solicitudes", "etiqueta": "Solicitudes", "ruta": "/notificaciones/solicitudes"},
-    {"clave": "eventos", "etiqueta": "Eventos", "ruta": "/notificaciones/eventos"},
-    {"clave": "sistema", "etiqueta": "Sistema", "ruta": "/notificaciones/sistema"}
+    {
+      "clave": "todas",
+      "etiqueta": "Todas",
+      "ruta": "/notificaciones"
+    },
+    {
+      "clave": "no_leidas",
+      "etiqueta": "No leídas",
+      "ruta": "/notificaciones/no-leidas"
+    },
+    {
+      "clave": "menciones",
+      "etiqueta": "Menciones",
+      "ruta": "/notificaciones/menciones"
+    },
+    {
+      "clave": "solicitudes",
+      "etiqueta": "Solicitudes",
+      "ruta": "/notificaciones/solicitudes"
+    },
+    {
+      "clave": "eventos",
+      "etiqueta": "Eventos",
+      "ruta": "/notificaciones/eventos"
+    },
+    {
+      "clave": "sistema",
+      "etiqueta": "Sistema",
+      "ruta": "/notificaciones/sistema"
+    }
   ],
   "pestanas_panel_topbar": [
-    {"clave": "todas", "etiqueta": "Todas", "insignia": 12},
-    {"clave": "no_leidas", "etiqueta": "No leídas", "insignia": 8}
+    {
+      "clave": "todas",
+      "etiqueta": "Todas",
+      "insignia": 12
+    },
+    {
+      "clave": "no_leidas",
+      "etiqueta": "No leídas",
+      "insignia": 8
+    }
   ],
   "menu_panel_topbar": [
-    {"icono": "verificado", "etiqueta": "Marcar todas como leidas"},
-    {"icono": "configuracion", "etiqueta": "Configuracion de notificaciones"},
-    {"icono": "flecha-arriba-derecha", "etiqueta": "Ver todas las notificaciones", "ruta": "/notificaciones"}
+    {
+      "icono": "verificado",
+      "etiqueta": "Marcar todas como leidas"
+    },
+    {
+      "icono": "configuracion",
+      "etiqueta": "Configuracion de notificaciones"
+    },
+    {
+      "icono": "flecha-arriba-derecha",
+      "etiqueta": "Ver todas las notificaciones",
+      "ruta": "/notificaciones"
+    }
   ],
   "titulos_pestanas": {
     "todas": "Todas",
@@ -90,7 +132,8 @@
     "ver_evento": "Ver evento",
     "ver_todas": "Ver todas",
     "buscar_personas": "Buscar personas",
-    "ver_mas": "Ver más"
+    "ver_mas": "Ver más",
+    "marcar_seleccionadas_leidas": "Marcar seleccionadas como leídas"
   },
   "secciones": {
     "comentaron_en_tu_publicacion": "Comentaron en tu publicación",
@@ -115,9 +158,21 @@
   "consejos_solicitudes": {
     "titulo": "Consejos",
     "items": [
-      { "icono": "escudo", "titulo": "Verifica los perfiles", "descripcion": "Revisa la informacion antes de aceptar." },
-      { "icono": "amigos", "titulo": "Conecta con profesionales", "descripcion": "Amplia tu red con personas de tu sector." },
-      { "icono": "estrella", "titulo": "Unete a grupos de interes", "descripcion": "Descubre comunidades que impulsen tu crecimiento." }
+      {
+        "icono": "escudo",
+        "titulo": "Verifica los perfiles",
+        "descripcion": "Revisa la informacion antes de aceptar."
+      },
+      {
+        "icono": "amigos",
+        "titulo": "Conecta con profesionales",
+        "descripcion": "Amplia tu red con personas de tu sector."
+      },
+      {
+        "icono": "estrella",
+        "titulo": "Unete a grupos de interes",
+        "descripcion": "Descubre comunidades que impulsen tu crecimiento."
+      }
     ]
   },
   "cta_lateral_solicitudes": {
@@ -131,7 +186,8 @@
   "campos_lista": {
     "seleccionar_todas": "Seleccionar todas",
     "mas_recientes": "Más recientes",
-    "mas_antiguas": "Más antiguas"
+    "mas_antiguas": "Más antiguas",
+    "seleccionar_una": "Seleccionar notificación de :nombre"
   },
   "banner_menciones": {
     "titulo": "Te mencionaron",
@@ -143,27 +199,12 @@
     "grupo": "te mencionó en un grupo",
     "evento": "te mencionó en un evento"
   },
-  "menu_mencion": {
-    "ver_publicacion": "Ver publicación",
-    "responder": "Responder",
-    "dar_me_gusta": "Dar me gusta",
-    "compartir": "Compartir",
-    "marcar_como_leida": "Marcar como leída",
-    "silenciar_menciones_de": "Silenciar menciones de",
-    "reportar": "Reportar"
-  },
   "botones_lista": {
     "cargar_mas_notificaciones": "Cargar más notificaciones"
   },
   "banner_eventos": {
     "titulo": "Notificaciones de eventos",
     "descripcion": "Aquí verás invitaciones, recordatorios, actualizaciones y toda la actividad relacionada con eventos."
-  },
-  "menu_evento": {
-    "ver_evento": "Ver evento",
-    "marcar_como_leida": "Marcar como leída",
-    "silenciar_este_tipo": "Silenciar este tipo",
-    "eliminar_notificacion": "Eliminar notificación"
   },
   "panel_topbar": {
     "ver_mas": "Ver más",
@@ -241,7 +282,8 @@
       "nombreUsuario": "Carlos Mendoza",
       "accion": "te envió una solicitud de amistad",
       "tiempo": "Ayer, 4:20 p. m.",
-      "leida": false
+      "leida": false,
+      "solicitud": true
     },
     {
       "id": "2",
@@ -267,5 +309,25 @@
       "tiempo": "Ayer, 11:30 a. m.",
       "leida": false
     }
-  ]
+  ],
+  "resultados_solicitud": {
+    "confirmar": "Solicitud confirmada",
+    "eliminar": "Solicitud eliminada",
+    "aceptar": "Solicitud aceptada",
+    "rechazar": "Solicitud rechazada",
+    "aprobar": "Solicitud aprobada"
+  },
+  "resultados_invitacion": {
+    "aceptar": "Invitación aceptada",
+    "rechazar": "Invitación rechazada"
+  },
+  "clases_solicitud": {
+    "acciones": "flex flex-none items-center gap-2 max-800:flex-wrap",
+    "acciones_compactas": "mt-2 flex items-center gap-2",
+    "resultado": "m-0 flex-none text-subtitulo text-exito-texto",
+    "resultado_compacto": "m-0 mt-2 text-subtitulo text-exito-texto",
+    "barra_seleccion": "mb-3 flex flex-wrap items-center justify-between gap-3",
+    "fila_acciones": "flex-none max-800:order-3 max-800:ml-15 max-800:mt-1",
+    "punto": "mt-1.5 h-2 w-2 flex-none rounded-full"
+  }
 }

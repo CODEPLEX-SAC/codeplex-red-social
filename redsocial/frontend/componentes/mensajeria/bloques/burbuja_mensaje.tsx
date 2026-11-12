@@ -11,17 +11,19 @@ import type { BurbujaMensajeProps } from '@/tipos/mensajeria/contrato_conversaci
 const clases = catalogoMensajeria.clases.chat
 const textos = catalogoMensajeria.conversacion
 
-export function BurbujaMensaje({ mensaje, fecha, propio, autor, presencia, posicion, acciones, fijado, cita, onResponder, onEditar, onReenviar, onFijar, onEliminar }: BurbujaMensajeProps) {
+export function BurbujaMensaje({ mensaje, fecha, propio, remitente, posicion, acciones, fijado, cita, manejadores }: BurbujaMensajeProps) {
+  const autor = remitente?.autor
+  const presencia = remitente?.presencia
   const [ancla, setAncla] = useState<HTMLElement | null>(null)
   const inicioDeGrupo = posicion === 'sola' || posicion === 'primera'
   const finDeGrupo = posicion === 'sola' || posicion === 'ultima'
   const esquinas = propio ? clases.esquinas_propia[posicion] : clases.esquinas_ajena[posicion]
   const elementos: ElementoMenu[] = [
-    ...(acciones.responder ? [{ etiqueta: textos.acciones.responder, icono: 'responder' as const, alHacerClick: () => onResponder(mensaje.id) }] : []),
-    ...(acciones.editar ? [{ etiqueta: textos.acciones.editar, icono: 'editar-oficial' as const, alHacerClick: () => onEditar(mensaje.id) }] : []),
-    ...(acciones.reenviar ? [{ etiqueta: textos.acciones.reenviar, icono: 'flecha-derecha' as const, alHacerClick: () => onReenviar(mensaje.id) }] : []),
-    ...(acciones.fijar ? [{ etiqueta: fijado ? textos.acciones.desfijar : textos.acciones.fijar, icono: 'fijar' as const, alHacerClick: () => onFijar(mensaje.id) }] : []),
-    ...(acciones.eliminar ? [{ etiqueta: textos.acciones.eliminar, icono: 'eliminar' as const, peligro: true, divisor: true, alHacerClick: () => onEliminar(mensaje.id) }] : []),
+    ...(acciones.responder ? [{ etiqueta: textos.acciones.responder, icono: 'responder' as const, alHacerClick: () => manejadores.onResponder(mensaje.id) }] : []),
+    ...(acciones.editar ? [{ etiqueta: textos.acciones.editar, icono: 'editar-oficial' as const, alHacerClick: () => manejadores.onEditar(mensaje.id) }] : []),
+    ...(acciones.reenviar ? [{ etiqueta: textos.acciones.reenviar, icono: 'flecha-derecha' as const, alHacerClick: () => manejadores.onReenviar(mensaje.id) }] : []),
+    ...(acciones.fijar ? [{ etiqueta: fijado ? textos.acciones.desfijar : textos.acciones.fijar, icono: 'fijar' as const, alHacerClick: () => manejadores.onFijar(mensaje.id) }] : []),
+    ...(acciones.eliminar ? [{ etiqueta: textos.acciones.eliminar, icono: 'eliminar' as const, peligro: true, divisor: true, alHacerClick: () => manejadores.onEliminar(mensaje.id) }] : []),
   ]
   const menu = (
     <span className={`${clases.menu_ranura} ${propio ? clases.menu_ranura_propia : clases.menu_ranura_ajena}`}>

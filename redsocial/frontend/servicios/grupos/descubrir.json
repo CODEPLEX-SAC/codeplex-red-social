@@ -5,7 +5,7 @@
       "icono": "amigos",
       "fondo": "azul-oscuro",
       "overlay": "morado",
-      "tipo": "Público · 12.4K miembros",
+      "tipo": "12.4K miembros",
       "descripcion": "Comunidad para emprendedores y dueños de negocio en Perú."
     },
     {
@@ -13,7 +13,7 @@
       "icono": "maletin",
       "fondo": "naranja",
       "overlay": "naranja",
-      "tipo": "Público · 8.7K miembros",
+      "tipo": "8.7K miembros",
       "descripcion": "Profesionales del sector construcción compartiendo conocimiento."
     },
     {
@@ -21,7 +21,7 @@
       "icono": "cuadricula",
       "fondo": "violeta",
       "overlay": "violeta",
-      "tipo": "Privado · 3.2K miembros",
+      "tipo": "3.2K miembros",
       "descripcion": "Grupo para desarrolladores que usan Codeplex y comparten soluciones."
     },
     {
@@ -29,7 +29,7 @@
       "icono": "campana",
       "fondo": "rosa-oscuro",
       "overlay": "rosa",
-      "tipo": "Público · 9.5K miembros",
+      "tipo": "9.5K miembros",
       "descripcion": "Estrategias, herramientas y tendencias de marketing digital en LATAM."
     }
   ],

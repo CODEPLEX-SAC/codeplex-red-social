@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useState } from 'react'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Icono } from '../../compartido/icono'
@@ -16,6 +17,7 @@ export function SelectorRolModulo({ modulo, PERMISOS, alCrearRol, alAdministrar 
   const roles = PERMISOS.roles[modulo] ?? []
   const seleccionado = PERMISOS.perfiles[modulo]
   const cargado = PERMISOS.cargados[modulo]
+  const rolDesconocido = !roles.some((rol) => rol.clave === seleccionado)
 
   return (
     <>
@@ -25,8 +27,8 @@ export function SelectorRolModulo({ modulo, PERMISOS, alCrearRol, alAdministrar 
           <p className={clases.nivel_subtitulo}>{textos.rol_subtitulo}</p>
         </div>
         <div className={clases.nivel_controles}>
-          <Selector variant="colaboradores" aria-label={`${textos.rol_modulo}: ${modulo}`} value={seleccionado} onChange={(evento) => PERMISOS.aplicarPerfil(modulo, String(evento.target.value))} className={clases.nivel_selector}>
-            {roles.some((rol) => rol.clave === seleccionado) ? null : <option value={seleccionado}>{dialogos.sin_rol}</option>}
+          <Selector variant="colaboradores" aria-label={[textos.rol_modulo, modulo].join(textos.separador_rol_modulo)} value={seleccionado} onChange={(evento) => PERMISOS.aplicarPerfil(modulo, String(evento.target.value))} className={clases.nivel_selector}>
+            {rolDesconocido && <option value={seleccionado}>{dialogos.sin_rol}</option>}
             {roles.map((rol) => <option key={rol.clave} value={rol.clave}>{rol.borrador ? dialogos.etiqueta_borrador.replace(':rol', rol.etiqueta) : rol.etiqueta}</option>)}
           </Selector>
           <Boton type="button" variant="contorno" size="md" className={clases.nivel_crear} onClick={alCrearRol}>
@@ -43,10 +45,10 @@ export function SelectorRolModulo({ modulo, PERMISOS, alCrearRol, alAdministrar 
         </div>
       </div>
       {cargado && (
-        <div role="status" className={clases.rol_cargado}>
+        <AlertaEstado tipo="estado" className={clases.rol_cargado}>
           <Icono name="verificado" className={clases.rol_cargado_glifo} />
           <span>{cargado}</span>
-        </div>
+        </AlertaEstado>
       )}
     </>
   )

@@ -2,19 +2,9 @@ import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/cola
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Modal } from '../../compartido/interfaz/modal'
+import type { ModalConfirmacionRolProps } from '@/tipos/colaboradores/contrato_modal_confirmacion_rol'
 
 const clases = catalogoColaboradores.clases.invitar_permisos
-
-export interface ModalConfirmacionRolProps {
-  titulo: string
-  mensaje: string
-  detalle?: string
-  etiquetaCancelar: string
-  etiquetaConfirmar: string
-  peligro?: boolean
-  alCancelar: () => void
-  alConfirmar: () => void
-}
 
 export function ModalConfirmacionRol({ titulo, mensaje, detalle, etiquetaCancelar, etiquetaConfirmar, peligro = false, alCancelar, alConfirmar }: ModalConfirmacionRolProps) {
   return (

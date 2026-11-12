@@ -5,12 +5,13 @@ import { Casilla } from '../interfaz/casilla'
 import { CampoEtiquetado } from '../interfaz/campo_etiquetado'
 import { CampoTexto } from '../interfaz/campo_texto'
 import { IndicadorCarga } from '../interfaz/indicador_carga'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
 import { formatearVencimiento, tituloTarjeta } from './logica_tarjeta_pago'
 import { TituloPanelPago } from './titulo_panel_pago'
 import { usarTextosPago } from './usar_textos_pago'
-import { sinErrores, validarCambiosTarjeta } from './validacion_tarjeta_pago'
+import { sinErrores, validarCambiosTarjeta } from './validacion_cambios_tarjeta_pago'
 import type { CambiosTarjetaPago, ErroresTarjetaPago, TarjetaPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 const VACIO = catalogoCompartido.controles.texto_vacio
 
@@ -57,7 +58,7 @@ export function EditorTarjetaPago({ tarjeta, ocupado, alGuardar, alCancelar, alQ
       </CampoEtiquetado>
       <Casilla seleccionado={predeterminada} deshabilitado={tarjeta.predeterminada === true} alCambiar={(_, marcado) => setPredeterminada(marcado)} etiqueta={textos.tarjetas.predeterminada_edicion} />
       {confirmando ? (
-        <div className={clases.confirmacion_quitar} role="alertdialog" aria-label={textos.tarjetas.quitar}>
+        <div className={clases.confirmacion_quitar} role={catalogoCompartido.roles_aria.dialogo_alerta} aria-label={textos.tarjetas.quitar}>
           <p className={clases.texto_suave}>{textos.tarjetas.quitar_pregunta.replace(':tarjeta', tituloTarjeta(tarjeta, textos))}</p>
           <div className={clases.pie}>
             <Boton type="button" variant="secundario" size="md" disabled={ocupado} onClick={() => setConfirmando(false)}>{textos.tarjetas.quitar_conservar}</Boton>

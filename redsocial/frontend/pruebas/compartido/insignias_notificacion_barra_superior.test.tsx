@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { BarraSuperior } from '@/componentes/compartido/navegacion/barra_superior'
-import { BotonAvisosTopbar } from '@/componentes/compartido/navegacion/boton_avisos_topbar'
+import { AccesoNovedadesTopbar } from '@/componentes/compartido/navegacion/boton_avisos_topbar'
 import { BotonCarritoTopbar } from '@/componentes/compartido/navegacion/boton_carrito_topbar'
 import { ContextoAccesoCarrito } from '@/componentes/compartido/carrito/contexto_acceso_carrito'
 import { ContextoInsigniasNavegacion } from '@/componentes/compartido/navegacion/contexto_insignias_navegacion'
@@ -8,7 +8,7 @@ import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 
 describe('Insignias de notificación en la barra superior', () => {
     it('la campana usa la insignia oficial superpuesta al icono con el conteo del catálogo', () => {
-      const { container } = render(<BotonAvisosTopbar />)
+      const { container } = render(<AccesoNovedadesTopbar />)
       const boton = screen.getByRole('button', { name: `${textosRedSocial.AVISO_CAMPANA}, 3 pendientes` })
       const insignia = container.querySelector('.MuiBadge-root') as HTMLElement
       expect(insignia).toContainElement(boton)
@@ -51,7 +51,7 @@ describe('Insignias de notificación en la barra superior', () => {
     })
 
     it('los nombres accesibles de campana y carrito comunican la cantidad pendiente', () => {
-      render(<ContextoAccesoCarrito.Provider value={{ cantidad: 2, etiqueta: 'Carrito', abrir: () => undefined }}><BotonCarritoTopbar /><BotonAvisosTopbar /></ContextoAccesoCarrito.Provider>)
+      render(<ContextoAccesoCarrito.Provider value={{ cantidad: 2, etiqueta: 'Carrito', abrir: () => undefined }}><BotonCarritoTopbar /><AccesoNovedadesTopbar /></ContextoAccesoCarrito.Provider>)
       expect(screen.getByRole('button', { name: 'Carrito, 2 pendientes' })).toBeInTheDocument()
       expect(screen.getByRole('button', { name: 'Notificaciones, 3 pendientes' })).toBeInTheDocument()
     })

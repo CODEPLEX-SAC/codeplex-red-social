@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { usarMejoraPlan } from '../../compartido/carrito/contexto_mejora_plan'
 import { usarSuscripciones } from '../../compartido/carrito/contexto_suscripciones'
-import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
-import { AvisosLimitePlan } from './avisos_limite_plan'
+import { LimitesDelPlan } from './avisos_limite_plan'
 import { CabeceraPlanesAsignados } from './cabecera_planes_asignados'
-import { aplicativosContratados, avisosDeLimite, capacidadDeFila } from './logica_mejora_plan'
+import { capacidadDeFila } from './logica_mejora_plan'
+import { aplicativosContratados, avisosDeLimite } from './logica_avisos_limite_plan'
 import { ModalMejoraPlan } from './modal_mejora_plan'
 import { TablaPlanesAsignados } from './tabla_planes_asignados'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
@@ -30,14 +30,10 @@ export function PestanaPlanesEdicionEmpresa({ edicion: borrador, totalEmpresas }
 
   return (
     <div role="tabpanel" aria-label={textos.titulo} className={textos.clases.contenedor}>
-      <AvisosLimitePlan avisos={avisosDeLimite(totalEmpresas, suscripciones, configuracion, borrador.modulos)} />
+      <LimitesDelPlan avisos={avisosDeLimite(totalEmpresas, suscripciones, configuracion, borrador.modulos)} />
       <section className={clases.panel}>
         <CabeceraPlanesAsignados />
-        {contratados.length === 0 ? (
-          <MensajeVacio titulo={textos.vacio_titulo} texto={textos.vacio_detalle} className="pb-6" />
-        ) : (
-          <TablaPlanesAsignados contratados={contratados} activos={borrador.modulos} totalEmpresas={totalEmpresas} configuracion={configuracion} alAlternar={borrador.alternarModulo} alMejorar={setMejorando} />
-        )}
+        <TablaPlanesAsignados contratados={contratados} activos={borrador.modulos} totalEmpresas={totalEmpresas} configuracion={configuracion} alAlternar={borrador.alternarModulo} alMejorar={setMejorando} />
       </section>
       {enMejora && configuracionMejora && (
         <ModalMejoraPlan

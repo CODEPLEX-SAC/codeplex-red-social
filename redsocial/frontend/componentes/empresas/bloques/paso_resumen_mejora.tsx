@@ -1,6 +1,6 @@
 import { BannerInformativo } from '../../compartido/interfaz/banner_informativo'
 import { Boton } from '../../compartido/interfaz/boton'
-import { filasDeResumen, lineasDeResumen } from './logica_mejora_plan'
+import { filasDeResumen, lineasDeResumen } from './logica_resumen_mejora_plan'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { PasoResumenMejoraProps } from '@/tipos/empresas/contrato_mejora_plan'

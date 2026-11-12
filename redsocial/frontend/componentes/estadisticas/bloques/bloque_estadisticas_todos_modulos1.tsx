@@ -1,5 +1,6 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
+import { CabeceraTarjetaKpi } from '../../compartido/interfaz/cabecera_tarjeta_kpi'
 import { Sparkline } from '../../compartido/interfaz/sparkline'
 import { Icono } from '../../compartido/icono'
 import type { Kpi } from '@/tipos/estadisticas/modelo_estadisticas_todos_modulos'
@@ -18,12 +19,7 @@ export function BloqueEstadisticasTodosModulos1({
     <div className="mb-5 grid grid-cols-5 gap-4 max-1250:grid-cols-3 max-900:grid-cols-2 max-480:grid-cols-1">
       {KPIS.map((kpi) => (
         <article key={kpi.etiqueta} className={CLASES_TARJETA.mosaico}>
-          <div className="mb-2.5 flex items-center gap-2 text-titulo-subseccion text-texto-suave">
-            <span className={`grid h-7.5 w-7.5 flex-none place-items-center rounded-lg ${CLASES_ICONO_KPI[kpi.color]}`}>
-              <Icono name={kpi.icono} className="h-4 w-4" />
-            </span>
-            <span>{kpi.etiqueta}</span>
-          </div>
+          <CabeceraTarjetaKpi etiqueta={kpi.etiqueta} icono={kpi.icono} claseIcono={CLASES_ICONO_KPI[kpi.color]} />
           <strong className="mb-2 block text-valor-destacado text-texto">{kpi.valor}</strong>
           <div className="flex items-center justify-between gap-2.5">
             <small

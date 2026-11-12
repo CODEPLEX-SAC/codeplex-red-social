@@ -1,5 +1,5 @@
-import { BotonIcono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
-import { useEffect, useState } from 'react'
+import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas } from '../../componentes/compartido'
+import { useEffect, useMemo, useState } from 'react'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import { PestanasMensajes, PanelLateralMensajeria, ListaConversaciones, PanelConversacion, PanelVacioMensajes, conversacionesConEtiqueta, usarHistoriasConversacion, marcarConversacionLeida, totalMensajesSinLeer, proximoCambioReloj, usarAhora, usarMensajeria } from '../../componentes/mensajeria'
 import { usarParametroDeRuta } from '../../rutas/compartido/navegacion'
@@ -13,6 +13,7 @@ export function PaginaMensajesTodos() {
   const [parametroAplicado, setParametroAplicado] = useState(solicitada)
   const [conversacionActiva, setConversacionActiva] = useState<string | null>(solicitada)
   const mensajeria = usarMensajeria(ALMACEN_MENSAJERIA, RELOJ_MENSAJERIA, SESION_ACTUAL.id)
+  const otrosParticipantes = useMemo(() => mensajeria.estado.participantes.filter((persona) => persona.id !== SESION_ACTUAL.id), [mensajeria.estado.participantes])
   const historias = usarHistoriasConversacion(HISTORIAS_CONTACTOS, ALMACEN_HISTORIAS_VISTAS)
   const { acciones: accionesVisor } = usarHistoriasInicio(ALMACEN_HISTORIAS, HISTORIAS_CONTACTOS)
   const activa = mensajeria.estado.conversaciones.find((conversacion) => conversacion.id === conversacionActiva)
@@ -55,9 +56,6 @@ export function PaginaMensajesTodos() {
           <section className="flex h-full flex-col">
             <div className="mb-5 flex items-start justify-between gap-5">
               <h1 className="m-0 text-titulo-pagina text-texto">{catalogoMensajeria.titulos.todos}</h1>
-              <div className="flex items-center gap-2.5">
-                <BotonIcono icono="editar-oficial" type="button" aria-label={catalogoMensajeria.botones.nuevo_mensaje} variant="contorno" size="default" />
-              </div>
             </div>
 
             <PestanasMensajes
@@ -76,7 +74,7 @@ export function PaginaMensajesTodos() {
                 oculta={conversacionActiva !== null}
                 contadorNoLeidos={totalMensajesSinLeer(mensajeria.estado.conversaciones)}
                 acciones={accionesConversacion}
-                participantes={mensajeria.estado.participantes.filter((persona) => persona.id !== SESION_ACTUAL.id)}
+                participantes={otrosParticipantes}
                 onCrearGrupo={mensajeria.crearGrupo}
                 historias={{ porParticipante: historias.porParticipante, abrir: historias.abrir }}
               />
@@ -85,7 +83,7 @@ export function PaginaMensajesTodos() {
                   key={activa.id}
                   conversacion={activa}
                   mensajes={mensajeria.estado.hilos[activa.id] ?? []}
-                  participantes={mensajeria.estado.participantes.filter((persona) => persona.id !== SESION_ACTUAL.id)}
+                  participantes={otrosParticipantes}
                   usuarioId={SESION_ACTUAL.id}
                   ahora={ahora}
                   conversaciones={mensajeria.estado.conversaciones}

@@ -198,7 +198,9 @@ describe('ModalCrearPublicacion', () => {
     const validos = Array.from({ length: textos.medios.maximo_archivos + 2 }, (_, i) => new File(['x'], `f${i}.png`, { type: 'image/png' }))
     fireEvent.change(entrada, { target: { files: [pdf, ...validos] } })
     const lista = screen.getByRole('list', { name: textos.medios.vista_previa })
-    expect(within(lista).getAllByRole('listitem')).toHaveLength(textos.medios.maximo_archivos)
+    const visibles = catalogoInicio.medios.maximo_visibles
+    expect(within(lista).getAllByRole('listitem')).toHaveLength(visibles)
+    expect(within(lista).getByText(catalogoInicio.medios.mas.replace(':cantidad', String(textos.medios.maximo_archivos - visibles)))).toBeInTheDocument()
     expect(dialogo.getByRole('button', { name: textos.foto_video })).toBeDisabled()
   })
 

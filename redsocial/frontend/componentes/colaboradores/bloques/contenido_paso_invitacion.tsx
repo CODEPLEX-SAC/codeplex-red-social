@@ -1,5 +1,7 @@
 import { BloqueColaborador } from './bloque_colaborador'
-import { CampoResumenInvitacion, FilaCorreoInvitacion, NotaAceptacionInvitacion } from './elementos_resumen_invitacion'
+import { CampoResumenInvitacion } from './elementos_resumen_invitacion'
+import { FilaCorreoInvitacion } from './fila_correo_invitacion'
+import { NotaAceptacionInvitacion } from './nota_aceptacion_invitacion'
 import { contarModulosConAcceso } from './logica_permisos_invitacion'
 import { fechasDeVigencia } from './logica_vigencia_invitacion'
 import { SeccionDatosDelColaborador } from './seccion_datos_del_colaborador'

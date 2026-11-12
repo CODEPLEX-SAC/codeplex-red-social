@@ -1,0 +1,36 @@
+{
+  "porDefecto": {
+    "texto": "hace 1 año",
+    "dias": 365
+  },
+  "grupos": {
+    "Equipo Codeplex": {
+      "texto": "hace 2 días",
+      "dias": 2
+    },
+    "Proyecto Alfa": {
+      "texto": "hace 1 semana",
+      "dias": 7
+    },
+    "Programación Go": {
+      "texto": "hace 37 semanas",
+      "dias": 259
+    },
+    "Ideas y Feedback": {
+      "texto": "hace 3 semanas",
+      "dias": 21
+    },
+    "Contadores Perú": {
+      "texto": "hace 1 año",
+      "dias": 365
+    },
+    "Marketing Digital LATAM": {
+      "texto": "hace 1 año",
+      "dias": 370
+    },
+    "Diseño UX Perú": {
+      "texto": "hace 2 años",
+      "dias": 730
+    }
+  }
+}

@@ -8,6 +8,8 @@ import type { AccionFilaTabla, AccionesFilaTablaProps } from '@/tipos/compartido
 const textos = catalogoCompartido.acciones_tabla
 
 function BotonAccion({ accion, claseBoton }: { accion: AccionFilaTabla; claseBoton?: string }) {
+  const clase = [accion.clase, claseBoton].filter(Boolean).join(' ')
+
   return (
     <BotonIcono
       icono={accion.icono}
@@ -15,7 +17,7 @@ function BotonAccion({ accion, claseBoton }: { accion: AccionFilaTabla; claseBot
       variant="suave"
       aria-label={accion.etiqueta}
       title={accion.etiqueta}
-      className={[accion.clase, claseBoton].filter(Boolean).join(' ')}
+      className={clase}
       onClick={accion.alHacerClick}
     />
   )

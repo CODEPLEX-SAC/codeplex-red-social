@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { imagenDeRecurso } from '@/componentes/inicio/bloques/imagenes_historia'
 import { ESTILOS_TEXTO_HISTORIA, FONDOS_HISTORIA, POSICIONES_HISTORIA } from '@/componentes/inicio'
 import catalogoInicio from '@/catalogos/capacidades/redsocial/inicio.json'

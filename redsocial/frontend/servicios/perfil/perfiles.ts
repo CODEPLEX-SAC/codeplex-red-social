@@ -14,7 +14,8 @@ export function buscarPerfil(id?: string | null): PerfilUsuario | undefined {
 }
 
 export function amigosDe(perfil?: PerfilUsuario): PerfilUsuario[] {
-  return (perfil?.amigos ?? []).flatMap((id) => buscarPerfil(id) ?? [])
+  const ids = perfil?.amigos ?? []
+  return ids.flatMap((id) => buscarPerfil(id) ?? [])
 }
 
 export function sonAmigos(perfil: PerfilUsuario, otroId?: string): boolean {
@@ -22,5 +23,6 @@ export function sonAmigos(perfil: PerfilUsuario, otroId?: string): boolean {
 }
 
 export function contarAmigosEnComun(perfil: PerfilUsuario, otro?: PerfilUsuario): number {
-  return perfil.amigos.flatMap((id) => (otro?.amigos.includes(id) ? [id] : [])).length
+  const amigosDelOtro = new Set(otro?.amigos ?? [])
+  return perfil.amigos.filter((id) => amigosDelOtro.has(id)).length
 }

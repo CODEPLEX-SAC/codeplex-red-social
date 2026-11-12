@@ -1,10 +1,11 @@
 import { useId, useState } from 'react'
-import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
+import { Icono } from '../../compartido/icono'
+import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import { Pestanas } from '../../compartido/interfaz/pestanas'
-import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
+import { FilaConversacionFlotante } from './fila_conversacion_flotante'
 import { conversacionesDePestana, sumarNoLeidos } from './logica_mensajes_flotantes'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
@@ -61,18 +62,7 @@ export function MensajesFlotantesInicio({ conversaciones, onAbrirConversacion, o
               <ul className={clases.lista}>
                 {visibles.map((conversacion) => (
                   <li key={conversacion.id}>
-                    <button type="button" onClick={() => abrirHilo(conversacion.id)} className={clases.fila}>
-                      <Insignia variant="superpuesta" contenido={conversacion.noLeidos > 0 ? conversacion.noLeidos : undefined} maximo={99} compacta superposicion="circular">
-                        {conversacion.esGrupo ? <AvatarUsuario tamano="md" icono="grupo" tono="solido" /> : <AvatarUsuario tamano="md" imagen={usuarioImg} estado={conversacion.enLinea ? 'conectado' : undefined} />}
-                      </Insignia>
-                      <span className="flex min-w-0 flex-1 flex-col">
-                        <strong className="truncate text-nombre-entidad text-texto">{conversacion.nombre}</strong>
-                        <span className="truncate text-auxiliar text-texto-suave">{conversacion.extracto}</span>
-                      </span>
-                      <span className="flex flex-none flex-col items-end gap-1">
-                        <span className="text-fecha-abreviada text-texto-suave">{conversacion.etiquetaTiempo}</span>
-                      </span>
-                    </button>
+                    <FilaConversacionFlotante conversacion={conversacion} alAbrir={abrirHilo} />
                   </li>
                 ))}
               </ul>
@@ -84,7 +74,9 @@ export function MensajesFlotantesInicio({ conversaciones, onAbrirConversacion, o
         </section>
       )}
       <Insignia variant="superpuesta" contenido={total}>
-        <BotonIcono icono="mensaje" type="button" aria-label={textos.boton} aria-expanded={abierto} aria-controls={abierto ? idPanel : undefined} onClick={() => (abierto ? cerrar() : setAbierto(true))} variant="primario" size="md" />
+        <Boton type="button" aria-label={textos.boton} aria-expanded={abierto} aria-controls={abierto ? idPanel : undefined} onClick={() => (abierto ? cerrar() : setAbierto(true))} variant="primario" size="md" className={clases.boton_flotante}>
+          <Icono name="mensaje" className="h-5 w-5" /> {textos.texto_boton}
+        </Boton>
       </Insignia>
     </div>
   )

@@ -1,14 +1,33 @@
 {
   "menu_organizas": {
     "publicado": [
-      { "etiqueta": "Gestionar asistentes", "icono": "grupos" },
-      { "etiqueta": "Duplicar evento", "icono": "documento" },
-      { "etiqueta": "Compartir evento", "icono": "compartir" },
-      { "etiqueta": "Cerrar inscripciones", "icono": "bloqueado" }
+      {
+        "etiqueta": "Gestionar asistentes",
+        "icono": "grupos"
+      },
+      {
+        "etiqueta": "Duplicar evento",
+        "icono": "documento"
+      },
+      {
+        "etiqueta": "Compartir evento",
+        "icono": "compartir"
+      },
+      {
+        "etiqueta": "Cerrar inscripciones",
+        "icono": "bloqueado"
+      }
     ],
     "borrador": [
-      { "etiqueta": "Duplicar evento", "icono": "documento" },
-      { "etiqueta": "Eliminar borrador", "icono": "eliminar", "peligro": true }
+      {
+        "etiqueta": "Duplicar evento",
+        "icono": "documento"
+      },
+      {
+        "etiqueta": "Eliminar borrador",
+        "icono": "eliminar",
+        "peligro": true
+      }
     ]
   },
   "acciones": [
@@ -86,12 +105,36 @@
   },
   "titulo_menu": "Eventos",
   "pestanas": [
-    {"clave": "para_ti", "etiqueta": "Para ti", "ruta": "/eventos"},
-    {"clave": "proximos", "etiqueta": "Próximos", "ruta": "/eventos/proximos"},
-    {"clave": "populares", "etiqueta": "Populares", "ruta": "/eventos/populares"},
-    {"clave": "mis_eventos", "etiqueta": "Mis eventos", "ruta": "/eventos/mis-eventos"},
-    {"clave": "invitaciones", "etiqueta": "Invitaciones", "ruta": "/eventos/invitaciones"},
-    {"clave": "calendario", "etiqueta": "Calendario", "ruta": "/eventos/calendario"}
+    {
+      "clave": "para_ti",
+      "etiqueta": "Para ti",
+      "ruta": "/eventos"
+    },
+    {
+      "clave": "proximos",
+      "etiqueta": "Próximos",
+      "ruta": "/eventos/proximos"
+    },
+    {
+      "clave": "populares",
+      "etiqueta": "Populares",
+      "ruta": "/eventos/populares"
+    },
+    {
+      "clave": "mis_eventos",
+      "etiqueta": "Mis eventos",
+      "ruta": "/eventos/mis-eventos"
+    },
+    {
+      "clave": "invitaciones",
+      "etiqueta": "Invitaciones",
+      "ruta": "/eventos/invitaciones"
+    },
+    {
+      "clave": "calendario",
+      "etiqueta": "Calendario",
+      "ruta": "/eventos/calendario"
+    }
   ],
   "titulos_pestanas": {
     "para_ti": "Para ti",
@@ -185,7 +228,12 @@
     "estado_aceptada": "Aceptada",
     "estado_rechazada": "Rechazada"
   },
-  "ids_filtros": { "fecha": "panel-filtro-fecha", "categoria": "panel-filtro-categoria", "ubicacion": "panel-filtro-ubicacion", "estado": "panel-filtro-estado" },
+  "ids_filtros": {
+    "fecha": "panel-filtro-fecha",
+    "categoria": "panel-filtro-categoria",
+    "ubicacion": "panel-filtro-ubicacion",
+    "estado": "panel-filtro-estado"
+  },
   "filtros": {
     "todos_los_eventos": "Todos los eventos",
     "fecha": "Fecha",
@@ -200,10 +248,28 @@
     "separador_conteo": ": "
   },
   "pestanas_filtro_invitaciones": [
-    {"clave": "todas", "etiqueta": "Todas", "ruta": "/eventos/invitaciones"},
-    {"clave": "pendientes", "etiqueta": "Pendientes", "ruta": "/eventos/invitaciones/pendientes"},
-    {"clave": "aceptadas", "etiqueta": "Aceptadas", "ruta": "/eventos/invitaciones/aceptadas", "icono": "verificado"},
-    {"clave": "rechazadas", "etiqueta": "Rechazadas", "ruta": "/eventos/invitaciones/rechazadas", "icono": "cerrar"}
+    {
+      "clave": "todas",
+      "etiqueta": "Todas",
+      "ruta": "/eventos/invitaciones"
+    },
+    {
+      "clave": "pendientes",
+      "etiqueta": "Pendientes",
+      "ruta": "/eventos/invitaciones/pendientes"
+    },
+    {
+      "clave": "aceptadas",
+      "etiqueta": "Aceptadas",
+      "ruta": "/eventos/invitaciones/aceptadas",
+      "icono": "verificado"
+    },
+    {
+      "clave": "rechazadas",
+      "etiqueta": "Rechazadas",
+      "ruta": "/eventos/invitaciones/rechazadas",
+      "icono": "cerrar"
+    }
   ],
   "dias_semana": [
     "Lun",
@@ -237,16 +303,83 @@
     "Noviembre",
     "Diciembre"
   ],
+  "clases_evento_lateral": {
+    "item": "grid grid-cols-64-1fr gap-2.5 py-2",
+    "borde": "border-b border-borde-suave",
+    "imagen_caja": "relative h-16 w-16 flex-none overflow-hidden rounded-lg",
+    "imagen": "h-full w-full",
+    "insignia": "absolute left-1 top-1 rounded-sm bg-white px-1 py-0.5 text-center leading-none shadow-t2",
+    "dia": "block text-dia-evento text-texto",
+    "mes": "block text-mes-evento uppercase text-texto-suave",
+    "cuerpo": "flex min-w-0 flex-col justify-center gap-0.75",
+    "nombre": "text-nombre-entidad leading-compacto text-texto",
+    "dato": "flex items-center gap-1 text-auxiliar leading-texto text-texto-suave",
+    "dato_asistentes": "flex items-center gap-1 text-auxiliar text-texto-suave",
+    "icono": "h-3 w-3"
+  },
+  "clases_resultado_filtro": {
+    "datos": "flex flex-wrap gap-x-3 gap-y-1 text-auxiliar text-texto-suave",
+    "dato": "flex items-center gap-1",
+    "icono_dato": "h-3.5 w-3.5 text-primario",
+    "insignia": "absolute left-3.5 top-3.5 rounded-control bg-white px-3 py-2 text-center shadow-t5",
+    "insignia_dia": "block text-dia-evento leading-none text-texto",
+    "insignia_mes": "mt-px block text-mes-evento uppercase text-texto-suave"
+  },
+  "clases_formulario_evento": {
+    "tarjeta": "rounded-14 border border-borde-suave bg-white p-4",
+    "cabecera": "mb-3.5 flex items-center gap-2.5",
+    "icono_caja": "grid h-9 w-9 flex-none place-items-center rounded-control bg-primario-suave text-primario",
+    "icono": "h-4.5 w-4.5",
+    "titulo": "m-0 min-w-0 flex-1 text-nombre-entidad text-texto",
+    "opcional": "font-normal text-texto-suave",
+    "aviso": "mt-3 flex items-start gap-2.5 rounded-lg bg-fondo-hover-suave p-3 text-auxiliar text-primario",
+    "aviso_icono": "mt-0.5 h-4 w-4 flex-none",
+    "interruptor": "flex items-center justify-between gap-3",
+    "interruptor_etiqueta": "flex items-center gap-2.5 text-cuerpo text-texto",
+    "interruptor_icono": "h-4 w-4 text-texto-suave",
+    "costo": "flex items-start",
+    "costo_cuerpo": "min-w-0 cursor-pointer",
+    "costo_etiqueta": "block text-cuerpo text-texto",
+    "costo_detalle": "block text-auxiliar text-texto-suave",
+    "modalidad": "flex h-12 min-w-0 cursor-pointer items-center justify-center gap-2.5 rounded-lg border text-cuerpo font-etiqueta",
+    "modalidad_activa": "border-primario bg-fondo-hover-suave text-primario",
+    "modalidad_inactiva": "border-borde bg-white text-texto hover:border-primario",
+    "modalidad_icono": "h-5 w-5 flex-none"
+  },
   "panel_filtro_fecha": {
     "opciones_rapidas": [
-      {"clave": "cualquiera", "etiqueta": "Cualquier fecha", "detalle": "Sin filtro de fechas"},
-      {"clave": "hoy", "etiqueta": "Hoy", "detalle": "Solo eventos de hoy"},
-      {"clave": "manana", "etiqueta": "Mañana", "detalle": "Solo eventos de mañana"},
-      {"clave": "fin_de_semana", "etiqueta": "Fin de semana", "detalle": "Eventos de sábado y domingo"}
+      {
+        "clave": "cualquiera",
+        "etiqueta": "Cualquier fecha",
+        "detalle": "Sin filtro de fechas"
+      },
+      {
+        "clave": "hoy",
+        "etiqueta": "Hoy",
+        "detalle": "Solo eventos de hoy"
+      },
+      {
+        "clave": "manana",
+        "etiqueta": "Mañana",
+        "detalle": "Solo eventos de mañana"
+      },
+      {
+        "clave": "fin_de_semana",
+        "etiqueta": "Fin de semana",
+        "detalle": "Eventos de sábado y domingo"
+      }
     ],
     "opciones_avanzadas": [
-      {"clave": "especifica", "etiqueta": "Fecha específica", "detalle": "Selecciona una fecha en el calendario"},
-      {"clave": "rango", "etiqueta": "Rango de fechas", "detalle": "Selecciona un rango de fechas"}
+      {
+        "clave": "especifica",
+        "etiqueta": "Fecha específica",
+        "detalle": "Selecciona una fecha en el calendario"
+      },
+      {
+        "clave": "rango",
+        "etiqueta": "Rango de fechas",
+        "detalle": "Selecciona un rango de fechas"
+      }
     ],
     "clase_contenedor": "max-h-135 overflow-y-auto overflow-x-hidden panel-hoja-movil-fija max-600:flex-col",
     "titulo": "Filtrar por fecha",
@@ -273,11 +406,26 @@
   },
   "panel_filtro_estado": {
     "opciones": [
-      {"clave": "todos", "etiqueta": "Todos los estados"},
-      {"clave": "publicados", "etiqueta": "Publicados"},
-      {"clave": "borradores", "etiqueta": "Borradores"},
-      {"clave": "finalizados", "etiqueta": "Finalizados"},
-      {"clave": "cancelados", "etiqueta": "Cancelados"}
+      {
+        "clave": "todos",
+        "etiqueta": "Todos los estados"
+      },
+      {
+        "clave": "publicados",
+        "etiqueta": "Publicados"
+      },
+      {
+        "clave": "borradores",
+        "etiqueta": "Borradores"
+      },
+      {
+        "clave": "finalizados",
+        "etiqueta": "Finalizados"
+      },
+      {
+        "clave": "cancelados",
+        "etiqueta": "Cancelados"
+      }
     ],
     "titulo": "Filtrar por estado",
     "limpiar": "Limpiar",
@@ -295,6 +443,15 @@
     "ver_en_el_mapa": "Ver en el mapa",
     "cambiar_ubicacion": "Cambiar ubicación",
     "separador_lugar": ", ",
+    "clases_fila_ciudad": {
+      "base": "flex cursor-pointer items-center gap-1 rounded-lg pr-3",
+      "activa": "bg-fondo-categoria-morado",
+      "inactiva": "hover:bg-fondo",
+      "icono": "h-4 w-4 flex-none text-texto-suave",
+      "nombre": "ml-1.5 min-w-0 flex-1 truncate text-cuerpo",
+      "nombre_activo": "font-etiqueta text-primario",
+      "nombre_inactivo": "text-texto"
+    },
     "cancelar": "Cancelar",
     "volver": "Volver",
     "zoom_mapa": 11,
@@ -306,12 +463,14 @@
   },
   "placeholders": {
     "buscar_eventos": "Buscar eventos...",
-    "ubicacion": "Ubicación",
+    "ubicacion": "Buscar ciudad o lugar...",
     "buscar_categorias": "Buscar categorías...",
-    "buscar_ubicacion": "Buscar ciudad, distrito o lugar...",
-    "buscar_lugar_mapa": "Buscar un lugar en el mapa..."
+    "buscar_ubicacion": "Buscar ciudad...",
+    "buscar_lugar_mapa": "Buscar lugar en el mapa..."
   },
   "detalle_evento": {
+    "clase_marcador": "h-4 w-4 rounded-full border-3 border-white bg-primario shadow-t8",
+    "tamano_marcador": 16,
     "volver": "Volver a Eventos",
     "guardar": "Guardar",
     "compartir": "Compartir",
@@ -470,5 +629,9 @@
     "texto": "Por el momento no hay eventos programados en esta ubicación. Puedes probar con otra ciudad o quitar este filtro.",
     "cambiar": "Cambiar ubicación",
     "ver_todos": "Ver todos los eventos"
+  },
+  "clases_calendario_lateral": {
+    "columna_flex": "flex flex-col gap-4",
+    "columna_grid": "grid gap-4"
   }
 }

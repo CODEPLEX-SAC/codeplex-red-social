@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { BotonIcono } from '../interfaz/boton_icono'
+import { irARuta } from '../interfaz/menu'
 import { Insignia } from '../interfaz/insignia'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
@@ -11,7 +12,7 @@ export function BotonMensajesTopbar() {
 
   return (
     <Insignia variant="superpuesta" contenido={pendientes}>
-      <BotonIcono icono="mensajes" type="button" aria-label={nombreAccesibleConConteo(textosRedSocial.MENSAJES, pendientes)} variant="sutil" size="default" />
+      <BotonIcono icono="mensajes" type="button" aria-label={nombreAccesibleConConteo(textosRedSocial.MENSAJES, pendientes)} variant="sutil" size="default" onClick={() => irARuta(catalogoMensajeria.rutas.todos)} />
     </Insignia>
   )
 }

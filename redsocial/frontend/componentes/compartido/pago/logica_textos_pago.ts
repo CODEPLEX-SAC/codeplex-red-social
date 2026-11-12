@@ -1,7 +1,6 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import type { Parcial, TextosFlujoPago } from '@/tipos/compartido/contrato_flujo_pago'
-
-type Registro = Record<string, unknown>
+import type { Registro } from '@/tipos/compartido/contrato_textos_pago'
 
 function esRegistro(valor: unknown): valor is Registro {
   return typeof valor === 'object' && valor !== null && !Array.isArray(valor)

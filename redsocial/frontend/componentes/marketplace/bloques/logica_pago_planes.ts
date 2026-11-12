@@ -28,7 +28,8 @@ export function textoTotal(items: ItemCarrito[]) {
   const periodos = new Set(items.map((i) => i.periodo))
   const sufijo = periodos.has('anual') ? catalogoMarketplace.planes.sufijo_anual : catalogoMarketplace.planes.sufijo_mensual
   const total = monto(sumarPrecios(items.map((i) => i.precio)), separador)
-  return periodos.size > 1 ? total : [total, sufijo].join(separador)
+  if (periodos.size > 1) return total
+  return [total, sufijo].join(separador)
 }
 
 export function fechaCorta(meses = 0) {

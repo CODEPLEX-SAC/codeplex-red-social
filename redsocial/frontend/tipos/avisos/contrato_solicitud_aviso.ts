@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
+import type { ClaveAccionSolicitud } from './contrato_acciones_solicitud'
 
 export type MiniaturaSolicitud =
   | { tipo: 'avatar' }
@@ -12,6 +13,6 @@ export interface FilaSolicitudAvisoProps {
   lineaSecundaria: ReactNode
   lineaTerciaria?: ReactNode
   tiempo: string
-  accionPrimaria: string
-  accionSecundaria: string
+  accionPrimaria: ClaveAccionSolicitud
+  accionSecundaria: ClaveAccionSolicitud
 }

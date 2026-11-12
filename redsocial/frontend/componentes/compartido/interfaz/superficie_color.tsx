@@ -4,6 +4,11 @@ import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compart
 
 void catalogoCompartido
 
+function claseDeSuperficie(degradado?: string, variante?: string) {
+  if (degradado) return CLASE_DEGRADADO[degradado]
+  return variante ? CLASE_SUPERFICIE[variante] : undefined
+}
+
 export function SuperficieColor({
   variante,
   degradado,
@@ -17,7 +22,7 @@ export function SuperficieColor({
   children?: ReactNode
   as?: ElementType
 }) {
-  const clase = degradado ? CLASE_DEGRADADO[degradado] : variante ? CLASE_SUPERFICIE[variante] : undefined
+  const clase = claseDeSuperficie(degradado, variante)
   return (
     <Tag className={`${clase ?? 'bg-gris-categoria'} bg-cover bg-center ${className}`}>
       {children}

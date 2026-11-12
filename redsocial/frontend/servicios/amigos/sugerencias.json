@@ -4,7 +4,8 @@
       "nombre": "Miguel Ángel Vargas",
       "descripcion": "Desarrollador en Codeplex Tech",
       "comunes": "8 amigos en común",
-      "masAvatares": "+5"
+      "masAvatares": "+5",
+      "enLinea": true
     },
     {
       "nombre": "Valeria Castañeda",
@@ -22,7 +23,8 @@
       "nombre": "Daniela Vargas",
       "descripcion": "Abogada Corporativa en Legal Solutions",
       "comunes": "4 amigos en común",
-      "masAvatares": "+2"
+      "masAvatares": "+2",
+      "enLinea": true
     },
     {
       "nombre": "Ricardo Guerrero",
@@ -47,6 +49,49 @@
       "descripcion": "Jefe de Marketing en Marketing Digital",
       "comunes": "5 amigos en común",
       "masAvatares": "+2"
+    },
+    {
+      "nombre": "Fernando Díaz",
+      "descripcion": "Arquitecto de Soluciones en Nubia Cloud",
+      "comunes": "3 amigos en común",
+      "masAvatares": "+3"
+    },
+    {
+      "nombre": "Gabriela Núñez",
+      "descripcion": "Directora de Operaciones en Logística Andina",
+      "comunes": "6 amigos en común",
+      "masAvatares": "+6",
+      "enLinea": true
+    },
+    {
+      "nombre": "Héctor Ramírez",
+      "descripcion": "Analista de Datos en Banco Pacífico",
+      "comunes": "2 amigos en común",
+      "masAvatares": "+2"
+    },
+    {
+      "nombre": "Isabel Mora",
+      "descripcion": "Especialista en Recursos Humanos en Talento Sur",
+      "comunes": "5 amigos en común",
+      "masAvatares": "+5"
+    },
+    {
+      "nombre": "Julio Cárdenas",
+      "descripcion": "Ingeniero Civil en Constructora Alfa",
+      "comunes": "4 amigos en común",
+      "masAvatares": "+4"
+    },
+    {
+      "nombre": "Karina Ponce",
+      "descripcion": "Product Manager en Codeplex Labs",
+      "comunes": "7 amigos en común",
+      "masAvatares": "+7"
+    },
+    {
+      "nombre": "Luis Alberto Soto",
+      "descripcion": "Consultor Financiero en Capital Norte",
+      "comunes": "3 amigos en común",
+      "masAvatares": "+3"
     }
   ]
 }

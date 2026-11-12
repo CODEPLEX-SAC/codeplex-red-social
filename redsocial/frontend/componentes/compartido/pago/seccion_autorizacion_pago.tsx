@@ -1,10 +1,12 @@
+import { AlertaEstado } from '../interfaz/alerta_estado'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { Casilla } from '../interfaz/casilla'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
 import { EncabezadoPasoPago } from './encabezado_paso_pago'
 import { idControlAutorizacion, idErrorAutorizacion, partirEtiqueta } from './logica_autorizaciones_pago'
-import type { AceptacionesPago } from './logica_autorizaciones_pago'
+import type { AceptacionesPago } from '@/tipos/compartido/contrato_flujo_pago'
 import type { ConfiguracionAutorizacionesPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 const reglasAutorizacion = catalogoCompartido.flujo_pago.reglas.autorizacion
 
@@ -36,7 +38,7 @@ export function SeccionAutorizacionPago({ numero, autorizaciones, aceptaciones, 
                   </>
                 }
               />
-              {error !== undefined && <p id={idErrorAutorizacion(elemento.id)} role="alert" className={clases.error_campo}>{error}</p>}
+              {error !== undefined && <AlertaEstado id={idErrorAutorizacion(elemento.id)} className={clases.error_campo}>{error}</AlertaEstado>}
             </div>
           )
         })}

@@ -6,5 +6,6 @@ export function contarOcultos(fila: HTMLElement, anchoInsignia: number): number 
   if (ocultos === 0) return 0
   const brecha = hijos.length > 1 ? Math.max(0, hijos[1].offsetLeft - hijos[0].offsetLeft - hijos[0].offsetWidth) : 0
   const necesario = hijos.reduce((suma, hijo) => suma + hijo.offsetWidth, 0) + brecha * (hijos.length - 1)
-  return necesario <= fila.clientWidth + anchoInsignia + brecha ? 0 : ocultos
+  if (necesario <= fila.clientWidth + anchoInsignia + brecha) return 0
+  return ocultos
 }

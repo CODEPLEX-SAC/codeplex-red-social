@@ -1,69 +1,18 @@
-import { Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
+import { EstructuraApp } from '../../componentes/compartido'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
-import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { SeccionDescubrir } from '../../componentes/grupos'
-import { FilaActividadGrupo } from '../../componentes/actividad'
-import { DESTACADOS, CATEGORIAS, MIS_GRUPOS_LATERAL, ACTIVIDAD_DESCUBRIR as ACTIVIDAD, CLASES_FONDO, CLASES_OVERLAY, CLASES_CATEGORIA, CLASES_LATERAL } from '../../rutas/grupos/rutas_grupos'
+import { LateralAdministradosGrupos, PaginaConLateralGrupos, SeccionTusGrupos, usarVersionGrupos } from '../../componentes/grupos'
+import { IMAGEN_VISTA_PREVIA_CREAR_GRUPO, PUERTO_GRUPOS } from '../../rutas/grupos/rutas_grupos'
 
 export function PaginaGruposDescubrir() {
+  usarVersionGrupos(PUERTO_GRUPOS)
+
+  const grupos = PUERTO_GRUPOS.gruposQueAdministras()
+
   return (
     <EstructuraApp paginaActiva="grupos">
-      <EstructuraTresColumnas
-        principal={
-          <SeccionDescubrir
-            DESTACADOS={DESTACADOS}
-            CLASES_FONDO={CLASES_FONDO}
-            CLASES_OVERLAY={CLASES_OVERLAY}
-            CATEGORIAS={CATEGORIAS}
-            CLASES_CATEGORIA={CLASES_CATEGORIA}
-          />
-        }
-        publicidad={<ColumnaPublicidad />}
-        lateral={
-          <aside className="grid gap-4">
-            <section className="rounded-xl border border-borde-suave bg-white p-4">
-              <div className="mb-3.5 flex items-center justify-between">
-                <h2 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.mis_grupos}</h2>
-                <a href={catalogoGrupos.rutas.mis_grupos} className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
-              </div>
-              {MIS_GRUPOS_LATERAL.map((g) => (
-                <article key={g.nombre} className="flex items-center gap-2.5 border-b border-borde-suave py-2.25 last:border-b-0">
-                  <div className={`grid h-9 w-9 flex-none place-items-center rounded-control text-white ${CLASES_LATERAL[g.color]}`}>
-                    <Icono name="grupos" className="h-4.5 w-4.5" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-nombre-entidad text-texto">{g.nombre}</span>
-                      {g.admin && <span className="rounded bg-fondo-categoria-morado px-1.5 py-px text-badge text-morado-categoria">{catalogoGrupos.leyendas.admin}</span>}
-                    </div>
-                    <span className="text-auxiliar text-texto-suave">{g.miembros}</span>
-                  </div>
-                </article>
-              ))}
-            </section>
-
-            <section className="rounded-xl border border-borde-suave bg-white p-4">
-              <div className="mb-3.5 flex items-center justify-between">
-                <h2 className="m-0 text-titulo-banner text-texto">{catalogoGrupos.secciones.actividad_reciente}</h2>
-                <a href="#" className={CLASE_ENLACE_ACCION}>{catalogoGrupos.leyendas.ver_toda}</a>
-              </div>
-              {ACTIVIDAD.map((a) => (
-                <FilaActividadGrupo key={a.nombre + a.grupo} nombre={a.nombre} accion={a.accion} grupo={a.grupo} tiempo={a.tiempo} />
-              ))}
-            </section>
-
-            <section className="flex items-start gap-3 rounded-xl degradado-lavanda-media p-5">
-              <span className="grid h-8 w-8 flex-none place-items-center rounded-lg bg-overlay-13 text-primario">
-                <Icono name="grupo" className="h-4 w-4" />
-              </span>
-              <div className="flex-1">
-                <strong className="mb-1 block text-subtitulo text-texto">{catalogoGrupos.consejo.titulo}</strong>
-                <p className="m-0 text-cuerpo leading-texto text-texto-suave">{catalogoGrupos.consejo.texto}</p>
-              </div>
-            </section>
-          </aside>
-        }
-      />
+      <PaginaConLateralGrupos cabecera={{ titulo: catalogoGrupos.titulos.descubrir, activa: 'descubrir' as const, imagenCrear: IMAGEN_VISTA_PREVIA_CREAR_GRUPO, puerto: PUERTO_GRUPOS }} lateral={<LateralAdministradosGrupos grupos={grupos} puerto={PUERTO_GRUPOS} />}>
+        <SeccionTusGrupos grupos={grupos} puerto={PUERTO_GRUPOS} administrados />
+      </PaginaConLateralGrupos>
     </EstructuraApp>
   )
 }

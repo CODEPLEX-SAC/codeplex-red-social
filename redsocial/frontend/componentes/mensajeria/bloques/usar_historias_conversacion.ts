@@ -10,8 +10,7 @@ export function usarHistoriasConversacion(historias: HistoriaPublicada[], almace
   const grupos = agruparPorAutor(historias)
   const ubicacion = ubicacionDe(grupos, viendo)
   const abierto = ubicacion.grupo !== -1 && ubicacion.segmento !== -1
-  const siguiente = abierto ? siguienteHistoria(grupos, ubicacion.grupo, ubicacion.segmento) : null
-  const anterior = abierto ? anteriorHistoria(grupos, ubicacion.grupo, ubicacion.segmento) : null
+  const { siguiente, anterior } = abierto ? { siguiente: siguienteHistoria(grupos, ubicacion.grupo, ubicacion.segmento), anterior: anteriorHistoria(grupos, ubicacion.grupo, ubicacion.segmento) } : { siguiente: null, anterior: null }
   const idVista = viendo?.id
 
   useEffect(() => {

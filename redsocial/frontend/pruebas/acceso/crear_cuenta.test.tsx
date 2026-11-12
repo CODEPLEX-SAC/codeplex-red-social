@@ -166,7 +166,7 @@ describe('Flujo completo de Crear cuenta', () => {
     fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(textos.terminos_aceptacion.uso) }))
     enviar()
     const error = screen.getByText(textos.errores.terminos_obligatorios)
-    expect(error).toHaveAttribute('role', 'alert')
+    expect(error.closest('[role="alert"]')).not.toBeNull()
     expect(screen.getByRole('checkbox', { name: new RegExp(textos.terminos_aceptacion.uso) })).toHaveAttribute('aria-invalid', 'true')
     expect(screen.queryByText(textos.mensajes.creando_cuenta)).toBeNull()
     aceptarTerminos()

@@ -62,7 +62,8 @@
     "videollamada_iniciar": "Iniciar videollamada"
   },
   "subtitulos": {
-    "videollamada_iniciar": "Revisa tu configuración antes de ingresar a la llamada"
+    "videollamada_iniciar": "Revisa tu configuración antes de ingresar a la llamada",
+    "videollamada_con": "Videollamada con :nombre. Revisa tu configuración antes de ingresar a la llamada"
   },
   "botones": {
     "nuevo_mensaje": "Nuevo mensaje",
@@ -70,36 +71,32 @@
     "quitar_favorito": "Quitar de favoritos",
     "ver_todos": "Ver todos",
     "ver_mas_llamadas": "Ver más llamadas",
+    "ver_menos_llamadas": "Ver menos llamadas",
+    "ver_menos_contactos": "Ver menos",
+    "videollamar_a": "Videollamar a :nombre",
+    "ver_menos_historial": "Ver menos historial",
+    "ver_menos_reuniones": "Ver menos reuniones",
+    "menu_videollamadas": "Más opciones de videollamadas",
+    "volver_a_llamadas": "Volver a las llamadas",
     "ver_todas_las_reuniones": "Ver todas las reuniones",
     "ver_todo_el_historial": "Ver todo el historial",
     "unirse": "Unirse",
     "videollamar": "Videollamar",
-    "nueva_reunion": "Nueva reunión",
+    "programar_reunion": "Programar reunión",
     "iniciar_videollamada": "Iniciar videollamada",
-    "cambiar_camara": "Cambiar cámara",
     "silenciar_microfono": "Silenciar micrófono",
     "apagar_camara": "Apagar cámara",
     "configuracion": "Configuración",
-    "probar_dispositivos": "Probar dispositivos",
     "invitar": "Invitar",
-    "copiar_enlace_reunion": "Copiar enlace de la reunión",
     "cancelar": "Cancelar",
-    "ver_participantes": "Ver participantes",
     "chat": "Chat",
-    "seguridad_llamada": "Seguridad de la llamada",
-    "grabando_llamada": "Grabando la llamada",
     "mas_opciones": "Más opciones",
-    "salir_de_la_llamada": "Salir de la llamada",
     "microfono": "Micrófono",
     "camara": "Cámara",
-    "compartir_pantalla": "Compartir pantalla",
     "participantes": "Participantes",
     "reacciones": "Reacciones",
     "mas": "Más",
-    "cerrar": "Cerrar",
-    "mas_filtros": "Más filtros",
-    "invitar_por_enlace": "Invitar por enlace",
-    "silenciar_a_todos": "Silenciar a todos"
+    "cerrar": "Cerrar"
   },
   "filtros": {
     "recientes": "Recientes",
@@ -116,26 +113,25 @@
     "historial_reciente": "Historial reciente",
     "dispositivos": "Dispositivos",
     "configuracion_llamada": "Configuración de la llamada",
-    "detalles_reunion": "Detalles de la reunión",
-    "opciones_llamada": "Opciones de llamada",
-    "invitar_mas_personas": "Invitar a más personas"
+    "detalles_reunion": "Detalles de la reunión"
   },
   "leyendas": {
     "historial_de_llamadas": "Historial de llamadas",
     "videollamada_entrante": "Videollamada entrante",
     "videollamada_saliente": "Videollamada saliente",
     "completada": "Completada",
+    "sin_llamadas": "No se encontraron llamadas con ese nombre.",
     "organizador": "Organizador",
-    "en_llamada": "En llamada",
     "colaborador": "Colaborador",
     "mostrando_favoritos": "Mostrando :n de :total mensajes favoritos",
     "mostrando_no_leidos": "Mostrando :n de :total mensajes no leídos"
   },
+  "selectores": {
+    "mensaje": "[data-mensaje=\":id\"]"
+  },
   "placeholders": {
-    "buscar_videollamadas": "Buscar videollamadas...",
-    "buscar_contactos_o_correo": "Buscar contactos o ingresar correo...",
-    "buscar_participantes": "Buscar participantes...",
-    "buscar_mensajes": "Buscar mensajes...",
+    "buscar_videollamadas": "Buscar contacto o grupo...",
+    "buscar_mensajes": "Buscar contacto...",
     "escribe_un_mensaje": "Envía un mensaje..."
   },
   "panel_lateral": {
@@ -143,7 +139,16 @@
   },
   "parametros_ruta": {
     "reunion": "reunion",
+    "contacto": "contacto",
+    "modo": "modo",
+    "microfono": "microfono",
+    "camara": "camara",
     "conversacion": "conversacion"
+  },
+  "limites_listas": {
+    "llamadas": 8,
+    "historial": 3,
+    "reuniones": 3
   },
   "grupos": {
     "opcion": "Grupos",
@@ -158,7 +163,7 @@
       "cerrar": "Cerrar",
       "id_nombre": "campo-nombre-grupo",
       "participantes": "Participantes",
-      "buscar": "Buscar amigos o colaboradores",
+      "buscar": "Buscar amigo o colaborador por nombre...",
       "buscar_vacio": "No se encontraron personas con ese nombre.",
       "agregar": "Agregar a :nombre",
       "quitar": "Quitar a :nombre",
@@ -204,6 +209,15 @@
       "contador": "flex flex-none items-center gap-1 transition-all group-hover:pr-7 group-data-[abierto=true]:pr-7 group-has-[:focus-visible]:pr-7 pointer-coarse:group-data-[tactil=true]:pr-7 pointer-coarse:group-data-[activa=true]:pr-7",
       "chip_conteo": "text-conteo-insignia",
       "vacia": "m-0 px-3 py-6 text-center text-subtitulo text-texto-suave",
+      "videollamadas_contenedor": "min-w-0 rounded-control border border-borde bg-white",
+      "videollamadas_filtros": "flex items-center gap-1.5 border-b border-borde px-3 pb-4",
+      "videollamadas_chips": "flex min-w-0 flex-1 gap-1.5 overflow-x-auto scrollbar-oculto",
+      "videollamadas_menu": "flex-none",
+      "videollamadas_lista": "flex flex-col gap-0.5 p-3",
+      "videollamadas_cabecera": "flex items-center gap-2 border-b border-borde px-3 py-3",
+      "videollamadas_cabecera_titulo": "m-0 min-w-0 flex-1 truncate text-nombre-entidad text-texto",
+      "videollamadas_reuniones": "flex flex-col gap-px overflow-hidden",
+      "videollamadas_pie": "px-3.5 pb-3 text-center",
       "grupo_modal": "max-w-120 rounded-2xl max-600:rounded-none",
       "grupo_formulario": "flex flex-col gap-4 overflow-y-auto p-5 max-600:p-4",
       "grupo_seccion": "flex flex-col gap-3",
@@ -234,11 +248,12 @@
       "nombre": "block truncate text-nombre-entidad text-texto",
       "estado": "mt-0.5 block text-estado text-exito-texto",
       "acciones": "flex flex-none gap-1.5",
-      "fijado": "flex items-start gap-3 border-b border-borde bg-fondo px-4 py-3",
-      "fijado_texto": "min-w-0 flex-1",
-      "fijado_titulo": "mb-0.5 flex items-center gap-1.25 text-nombre-entidad text-texto",
+      "fijado": "border-b border-borde bg-fondo",
+      "fijado_boton": "flex w-full min-w-0 max-w-full justify-start overflow-hidden rounded-none px-4 py-3 text-left hover:bg-fondo-hover-suave hover:no-underline",
+      "fijado_texto": "flex min-w-0 flex-1 flex-col",
+      "fijado_titulo": "mb-0.5 flex items-center gap-1.25 text-etiqueta text-texto-suave",
       "fijado_icono": "h-3.5 w-3.5 text-primario",
-      "fijado_cuerpo": "m-0 truncate text-subtitulo text-texto-suave",
+      "fijado_cuerpo": "block truncate text-subtitulo text-texto",
       "volver_compacto": "block",
       "destino": "flex w-full items-center gap-3 rounded-control border border-borde bg-white px-3 py-2 text-left hover:bg-fondo",
       "destinos": "m-0 flex max-h-72 list-none flex-col gap-2 overflow-y-auto p-0",
@@ -338,20 +353,89 @@
     "cancelar_edicion": "Cancelar edición",
     "guardar_edicion": "Guardar cambios",
     "adjuntos": {
-      "unidades": ["B", "KB", "MB", "GB"], "base": 1024, "decimales": 1, "separador": " ",
-      "tipo_entrada": "file", "prefijo_imagen": "image/", "prefijo_audio": "audio/",
-      "tipos_imagen": ["image/jpeg", "image/png", "image/gif", "image/webp"],
+      "unidades": [
+        "B",
+        "KB",
+        "MB",
+        "GB"
+      ],
+      "base": 1024,
+      "decimales": 1,
+      "separador": " ",
+      "tipo_entrada": "file",
+      "prefijo_imagen": "image/",
+      "prefijo_audio": "audio/",
+      "tipos_imagen": [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "image/webp"
+      ],
       "tamano_maximo_bytes": null,
       "formatos": {
-        "pdf": { "etiqueta": "PDF", "icono": "archivo-pdf", "tono": "bg-fondo-categoria-rojo text-negativo-kpi", "extensiones": ["pdf"], "mimes": ["application/pdf"] },
-        "word": { "etiqueta": "Word", "icono": "archivo-word", "tono": "bg-fondo-categoria-azul text-azul-categoria-texto", "extensiones": ["doc", "docx"], "mimes": ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"] },
-        "excel": { "etiqueta": "Excel", "icono": "archivo-excel", "tono": "bg-fondo-categoria-verde text-verde-categoria-texto", "extensiones": ["xls", "xlsx", "csv"], "mimes": ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "text/csv"] },
-        "otro": { "etiqueta": "Archivo", "icono": "archivo-generico", "tono": "bg-fondo-insignia-neutra text-texto-suave", "extensiones": ["txt", "ppt", "pptx", "zip"], "mimes": [] }
+        "pdf": {
+          "etiqueta": "PDF",
+          "icono": "archivo-pdf",
+          "tono": "bg-fondo-categoria-rojo text-negativo-kpi",
+          "extensiones": [
+            "pdf"
+          ],
+          "mimes": [
+            "application/pdf"
+          ]
+        },
+        "word": {
+          "etiqueta": "Word",
+          "icono": "archivo-word",
+          "tono": "bg-fondo-categoria-azul text-azul-categoria-texto",
+          "extensiones": [
+            "doc",
+            "docx"
+          ],
+          "mimes": [
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          ]
+        },
+        "excel": {
+          "etiqueta": "Excel",
+          "icono": "archivo-excel",
+          "tono": "bg-fondo-categoria-verde text-verde-categoria-texto",
+          "extensiones": [
+            "xls",
+            "xlsx",
+            "csv"
+          ],
+          "mimes": [
+            "application/vnd.ms-excel",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "text/csv"
+          ]
+        },
+        "otro": {
+          "etiqueta": "Archivo",
+          "icono": "archivo-generico",
+          "tono": "bg-fondo-insignia-neutra text-texto-suave",
+          "extensiones": [
+            "txt",
+            "ppt",
+            "pptx",
+            "zip"
+          ],
+          "mimes": []
+        }
       },
       "etiquetas": {
-        "audio": "Mensaje de voz", "adjuntar_documento": "Adjuntar documento", "reproducir": "Reproducir audio", "pausar": "Pausar audio",
-        "posicion": "Posición del audio", "progreso": ":actual de :total", "ver_imagen": "Ver imagen", "cerrar_imagen": "Cerrar imagen",
-        "descargar_archivo": "Descargar :nombre", "sin_archivo": "Archivo no disponible en la demostración"
+        "audio": "Mensaje de voz",
+        "adjuntar_documento": "Adjuntar documento",
+        "reproducir": "Reproducir audio",
+        "pausar": "Pausar audio",
+        "posicion": "Posición del audio",
+        "progreso": ":actual de :total",
+        "ver_imagen": "Ver imagen",
+        "cerrar_imagen": "Cerrar imagen",
+        "descargar_archivo": "Descargar :nombre",
+        "sin_archivo": "Archivo no disponible en la demostración"
       },
       "errores": {
         "tipo": "«:nombre» no es un formato permitido.",
@@ -359,12 +443,25 @@
       }
     },
     "grabacion": {
-      "grabando": "Grabando…", "cancelar": "Cancelar grabación", "detener": "Detener grabación", "descartar": "Descartar audio", "vista_previa": "Vista previa del mensaje de voz", "enviar": "Enviar mensaje de voz", "sin_permiso": "No se pudo acceder al micrófono. Revisa los permisos del navegador.", "sin_soporte": "Tu navegador no permite grabar audio.", "limite_duracion": "Se alcanzó la duración máxima del mensaje de voz."
+      "grabando": "Grabando…",
+      "cancelar": "Cancelar grabación",
+      "detener": "Detener grabación",
+      "descartar": "Descartar audio",
+      "vista_previa": "Vista previa del mensaje de voz",
+      "enviar": "Enviar mensaje de voz",
+      "sin_permiso": "No se pudo acceder al micrófono. Revisa los permisos del navegador.",
+      "sin_soporte": "Tu navegador no permite grabar audio.",
+      "limite_duracion": "Se alcanzó la duración máxima del mensaje de voz."
     },
     "opciones_mensaje": "Opciones del mensaje",
     "sin_mensajes": "Sin mensajes",
     "reenviado": "Reenviado",
-    "cerrar_fijado": "Ocultar mensaje fijado",
+    "ir_al_fijado": "Ir al mensaje fijado",
+    "fijado": {
+      "imagen": "Imagen",
+      "imagen_con_extension": "Imagen (.:extension)",
+      "audio": "Audio"
+    },
     "acciones": {
       "responder": "Responder",
       "editar": "Editar",
@@ -375,7 +472,7 @@
     },
     "reenviar_modal": {
       "titulo": "Reenviar",
-      "buscar": "Buscar personas o grupos",
+      "buscar": "Buscar persona o grupo por nombre...",
       "recientes": "Recientes",
       "grupos": "Grupos",
       "sin_resultados": "No hay personas ni grupos con ese nombre",
@@ -402,8 +499,29 @@
     "formato_fecha": {
       "plantilla": ":dia, :n de :mes",
       "sufijo_anio": " de :anio",
-      "dias": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-      "meses": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+      "dias": [
+        "Domingo",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+      ],
+      "meses": [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
     },
     "etiqueta_tiempo": {
       "ayer": "Ayer",
@@ -440,18 +558,670 @@
     "aria_sin_leer_singular": "1 mensaje sin leer",
     "aria_sin_leer_plural": ":n mensajes sin leer",
     "elementos": {
-      "marcar_favorito": { "etiqueta": "Agregar a favoritos", "icono": "estrella" },
-      "quitar_favorito": { "etiqueta": "Quitar de favoritos", "icono": "estrella" },
-      "marcar_leido": { "etiqueta": "Marcar como leído", "icono": "marcar-leido" },
-      "marcar_no_leido": { "etiqueta": "Marcar como no leído", "icono": "marcar-no-leido" },
-      "silenciar": { "etiqueta": "Silenciar notificaciones", "icono": "silenciado" },
-      "activar_notificaciones": { "etiqueta": "Activar notificaciones", "icono": "notificaciones-activas" },
-      "ver_perfil": { "etiqueta": "Ver perfil", "icono": "usuario" },
-      "eliminar_chat": { "etiqueta": "Eliminar chat", "icono": "eliminar" },
-      "abandonar_grupo": { "etiqueta": "Abandonar grupo", "icono": "despedida" }
+      "marcar_favorito": {
+        "etiqueta": "Agregar a favoritos",
+        "icono": "estrella"
+      },
+      "quitar_favorito": {
+        "etiqueta": "Quitar de favoritos",
+        "icono": "estrella"
+      },
+      "marcar_leido": {
+        "etiqueta": "Marcar como leído",
+        "icono": "marcar-leido"
+      },
+      "marcar_no_leido": {
+        "etiqueta": "Marcar como no leído",
+        "icono": "marcar-no-leido"
+      },
+      "silenciar": {
+        "etiqueta": "Silenciar notificaciones",
+        "icono": "silenciado"
+      },
+      "activar_notificaciones": {
+        "etiqueta": "Activar notificaciones",
+        "icono": "notificaciones-activas"
+      },
+      "ver_perfil": {
+        "etiqueta": "Ver perfil",
+        "icono": "usuario"
+      },
+      "eliminar_chat": {
+        "etiqueta": "Eliminar chat",
+        "icono": "eliminar"
+      },
+      "abandonar_grupo": {
+        "etiqueta": "Abandonar grupo",
+        "icono": "despedida"
+      }
     },
-    "lista_vacia": { "no_leidos": "No tienes mensajes sin leer", "favoritos": "Aún no tienes chats favoritos" },
-    "modal_eliminar_chat": { "titulo": "Eliminar chat", "texto": "Se quitará de tu lista la conversación con :nombre. Esta acción no se puede deshacer.", "confirmar": "Eliminar", "cancelar": "Cancelar", "cerrar": "Cerrar" },
-    "modal_abandonar_grupo": { "titulo": "Abandonar grupo", "texto": "Dejarás de recibir los mensajes de :nombre y la conversación se quitará de tu lista.", "confirmar": "Abandonar", "cancelar": "Cancelar", "cerrar": "Cerrar" }
+    "sin_resultados_busqueda": "No se encontraron conversaciones con ese nombre.",
+    "lista_vacia": {
+      "no_leidos": "No tienes mensajes sin leer",
+      "favoritos": "Aún no tienes chats favoritos"
+    },
+    "modal_eliminar_chat": {
+      "titulo": "Eliminar chat",
+      "texto": "Se quitará de tu lista la conversación con :nombre. Esta acción no se puede deshacer.",
+      "confirmar": "Eliminar",
+      "cancelar": "Cancelar",
+      "cerrar": "Cerrar"
+    },
+    "modal_abandonar_grupo": {
+      "titulo": "Abandonar grupo",
+      "texto": "Dejarás de recibir los mensajes de :nombre y la conversación se quitará de tu lista.",
+      "confirmar": "Abandonar",
+      "cancelar": "Cancelar",
+      "cerrar": "Cerrar"
+    }
+  },
+  "videollamada": {
+    "modo_demostracion": true,
+    "modo_reunion": "reunion",
+    "consulta_panel_lateral": "(min-width: 1100px)",
+    "ancla_historial": "historial-llamadas",
+    "cantidades_demostracion": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      9,
+      15,
+      20
+    ],
+    "tamano_pagina": 9,
+    "segundos_reaccion": 3,
+    "textos": {
+      "demostracion_aviso": "Modo demostración: participantes simulados con las fotografías de sus perfiles, sin transmisión real.",
+      "demostracion_selector": "Participantes de prueba",
+      "tu": "Tú",
+      "preparacion": {
+        "vista_previa": "Vista previa de tu cámara",
+        "camara_desactivada": "Cámara desactivada",
+        "camara_mensajes": {
+          "sin_permiso": "El navegador no tiene permiso para usar la cámara. Revisa los permisos del sitio.",
+          "no_soportado": "Este navegador no permite acceder a la cámara.",
+          "no_disponible": "No se encontró ninguna cámara disponible.",
+          "error": "No se pudo iniciar la cámara."
+        },
+        "activar_microfono": "Activar micrófono",
+        "silenciar_microfono": "Silenciar micrófono",
+        "activar_camara": "Activar cámara",
+        "apagar_camara": "Desactivar cámara",
+        "microfono_nota": "La captura de audio se conectará con la integración multimedia; por ahora solo se guarda tu preferencia.",
+        "microfono_desactivado": "Micrófono desactivado",
+        "microfono_activado": "Micrófono activado",
+        "camara_activada": "Cámara activada",
+        "iniciar": "Iniciar videollamada",
+        "cancelar": "Cancelar",
+        "nueva_reunion": "Nueva reunión",
+        "nueva_reunion_detalle": "Prepara tu reunión y revisa tu configuración antes de ingresar"
+      },
+      "dispositivos": {
+        "camara": "Cámara",
+        "microfono": "Micrófono",
+        "altavoz": "Altavoces",
+        "sin_dispositivos": "No se encontraron dispositivos",
+        "avisos_acceso": {
+          "sin_consultar": "",
+          "disponible": "",
+          "sin_permiso": "Permite el acceso del navegador a la cámara para ver el nombre de tus dispositivos.",
+          "no_soportado": "Este navegador no permite listar dispositivos."
+        },
+        "tipos": [
+          {
+            "tipo": "camara",
+            "icono": "video"
+          },
+          {
+            "tipo": "microfono",
+            "icono": "microfono"
+          },
+          {
+            "tipo": "altavoz",
+            "icono": "altavoz"
+          }
+        ],
+        "salida_no_soportada": "Este navegador no permite elegir la salida de audio: se usa la predeterminada del sistema.",
+        "actualizar": "Actualizar lista",
+        "probar": "Probar dispositivos",
+        "probando": "Probando...",
+        "resultados": "Resultado de la prueba",
+        "estado": {
+          "sin_probar": "Sin probar",
+          "correcto": "Funciona",
+          "fallo": "Sin acceso",
+          "pendiente_integracion": "Prueba pendiente de la integración multimedia"
+        }
+      },
+      "configuracion": {
+        "nota": "Se aplicará cuando se conecte el procesamiento multimedia; hoy solo se guarda tu preferencia.",
+        "elementos": [
+          {
+            "clave": "fondo",
+            "icono": "video",
+            "titulo": "Fondo virtual",
+            "detalle": "Desenfocar mi fondo"
+          },
+          {
+            "clave": "iluminacion",
+            "icono": "sentimiento",
+            "titulo": "Mejorar iluminación",
+            "detalle": "Ajustar automáticamente"
+          },
+          {
+            "clave": "ruido",
+            "icono": "microfono",
+            "titulo": "Reducir ruido",
+            "detalle": "Filtrar sonidos de fondo"
+          }
+        ]
+      },
+      "invitaciones": {
+        "participantes": "Participantes",
+        "invitar_mas": "Invitar a más personas",
+        "buscar": "Buscar contactos de la red...",
+        "etiqueta_busqueda": "Buscar contactos para invitar",
+        "sin_resultados": "No se encontraron contactos.",
+        "invitar": "Invitar",
+        "preparada": "Invitación preparada",
+        "preparada_nota": "El envío requiere el servicio de invitaciones, aún no conectado.",
+        "enviada": "Invitación enviada",
+        "copiar": "Copiar enlace de la reunión",
+        "copiado": "Enlace copiado",
+        "copiar_error": "No se pudo copiar el enlace.",
+        "en_linea": "En línea",
+        "invitado": "Invitado",
+        "microfono_activo": "Micrófono activado",
+        "microfono_inactivo": "Micrófono desactivado",
+        "camara_activa": "Cámara activada",
+        "camara_inactiva": "Cámara desactivada",
+        "maximo_resultados": 6
+      },
+      "sala": {
+        "estado": "En llamada",
+        "participantes_boton": "Ver participantes",
+        "salir": "Salir de la llamada",
+        "chat": "Chat",
+        "seguridad": "Seguridad de la llamada",
+        "mas_opciones": "Más opciones",
+        "controles": "Controles de la llamada",
+        "microfono_silenciar": "Silenciar micrófono",
+        "microfono_activar": "Activar micrófono",
+        "camara_apagar": "Desactivar cámara",
+        "camara_activar": "Activar cámara",
+        "compartir": "Compartir pantalla",
+        "dejar_de_compartir": "Dejar de compartir",
+        "participantes": "Participantes",
+        "reacciones": "Reacciones",
+        "finalizar": "Salir de la llamada",
+        "pagina": "Página :actual de :total",
+        "pagina_anterior": "Página anterior",
+        "pagina_siguiente": "Página siguiente",
+        "presentacion_demostracion": "Presentación de demostración: el navegador de este equipo no permite capturar la pantalla.",
+        "organizador": "Organizador",
+        "hablando": "Hablando",
+        "reaccion_enviada": "Reacción enviada",
+        "compartiendo_tu_pantalla": "Estás compartiendo tu pantalla",
+        "sin_transmision": "Sin transmisión de vídeo (demostración)",
+        "region_presentacion": "Contenido compartido",
+        "cerrar_aviso": "Cerrar aviso",
+        "errores_captura": {
+          "cancelado": "No se compartió la pantalla: se canceló la selección o el navegador no concedió el permiso.",
+          "sin_permiso": "El navegador bloqueó la captura de pantalla en este sitio.",
+          "no_disponible": "No hay contenido disponible para compartir.",
+          "no_soportado": "Este navegador no permite compartir la pantalla.",
+          "error": "No se pudo iniciar la captura de pantalla."
+        },
+        "mensajes_llamada": "Mensajes en la llamada",
+        "levantar_mano": "Levantar la mano",
+        "bajar_mano": "Bajar la mano",
+        "informar_problema": "Informar un problema",
+        "mano_levantada": "Mano levantada",
+        "fijado": "Fijado en tu pantalla",
+        "detalles": "Detalles de la reunión",
+        "informacion": "Información de la reunión",
+        "solo": "Estás solo en la reunión. Invita a otras personas para empezar.",
+        "pantalla_completa": "Pantalla completa",
+        "detalles_participantes": "Participantes: :n",
+        "detalles_enlace": "Enlace de la reunión"
+      },
+      "panel": {
+        "titulo": "Personas",
+        "cerrar": "Cerrar panel",
+        "buscar": "Buscar contactos de la red...",
+        "etiqueta_busqueda": "Buscar contactos de la llamada",
+        "sin_resultados": "No hay participantes en esta lista.",
+        "gestion": "Opciones de :nombre",
+        "silenciar": "Silenciar participante",
+        "quitar": "Quitar de la llamada",
+        "aviso_gestion": "Esta acción requiere el servicio de la sala, aún no conectado.",
+        "estado_copia": {
+          "ninguna": "",
+          "copiado": "Enlace copiado",
+          "error": "No se pudo copiar el enlace."
+        },
+        "agregar": "Agregar personas",
+        "ocultar_agregar": "Ocultar contactos",
+        "fijar": "Fijar en mi pantalla",
+        "quitar_fijacion": "Dejar de fijar",
+        "silenciado": "Participante silenciado.",
+        "retirado": "Participante retirado de la llamada.",
+        "sin_permiso": "Solo el organizador puede realizar esta acción.",
+        "manos": "Manos levantadas: :n",
+        "en_la_reunion": "En la reunión",
+        "secciones": {
+          "manos": "Levantaron la mano",
+          "colaboradores": "Colaboradores",
+          "invitados": "También invitados"
+        },
+        "enlace_titulo": "Enlace de la reunión",
+        "copiar_enlace": "Copiar enlace de la reunión"
+      },
+      "chat": {
+        "titulo": "Chat de la llamada",
+        "cerrar": "Cerrar chat",
+        "placeholder": "Escribe un mensaje",
+        "etiqueta_campo": "Mensaje de la llamada",
+        "enviar": "Enviar",
+        "vacio": "Aún no hay mensajes.",
+        "nota": "Chat local de demostración: los mensajes no se envían a otros participantes."
+      },
+      "reacciones": [
+        {
+          "clave": "me_gusta",
+          "icono": "pulgar-arriba",
+          "etiqueta": "Me gusta"
+        },
+        {
+          "clave": "divertido",
+          "icono": "sentimiento",
+          "etiqueta": "Me divierte"
+        },
+        {
+          "clave": "genial",
+          "icono": "fuego",
+          "etiqueta": "Genial"
+        },
+        {
+          "clave": "excelente",
+          "icono": "corona",
+          "etiqueta": "Excelente"
+        }
+      ],
+      "informe": {
+        "titulo": "Informar un problema",
+        "descripcion": "Cuéntanos qué ocurrió en la llamada.",
+        "etiqueta_campo": "Descripción del problema",
+        "placeholder": "Escribe aquí lo que ocurrió",
+        "enviar": "Enviar informe",
+        "cancelar": "Cancelar",
+        "cerrar": "Cerrar",
+        "preparado": "Informe preparado. El envío requiere el servicio de reportes, aún no conectado.",
+        "enviado": "Informe enviado."
+      },
+      "salida": {
+        "titulo": "¿Quieres finalizar la llamada o solo abandonarla?",
+        "descripcion": "Si no quieres finalizar la llamada para todos los participantes, puedes solo abandonarla.",
+        "abandonar": "Solo abandonar la llamada",
+        "finalizar_todos": "Finalizar la llamada para todos",
+        "cerrar": "Cerrar"
+      },
+      "mas_tarde": {
+        "boton": "Crear reunión para más tarde",
+        "titulo": "Esta es la información para unirse",
+        "descripcion": "Envía este vínculo a las personas con quienes quieras reunirte. No olvides guardarlo para poder usarlo más tarde si es necesario.",
+        "etiqueta_enlace": "Enlace de la reunión",
+        "copiar": "Copiar enlace",
+        "copiado": "Enlace copiado",
+        "error_copia": "No se pudo copiar el enlace.",
+        "cerrar": "Cerrar",
+        "nombre_reunion": "Reunión para más tarde",
+        "duracion_minutos": 60
+      }
+    },
+    "columnas": {
+      "1": "grid-cols-1",
+      "2": "grid-cols-2 max-600:grid-cols-1",
+      "3": "grid-cols-3 max-780:grid-cols-2 max-480:grid-cols-1"
+    },
+    "clases": {
+      "preparacion": {
+        "vista": "relative my-5 grid h-105 place-items-center overflow-hidden rounded-14 degradado-violeta-oscuro max-900:h-80",
+        "video": "absolute inset-0 h-full w-full -scale-x-100 object-cover",
+        "apagada": "flex flex-col items-center gap-3 px-4 text-center text-white",
+        "apagada_texto": "m-0 text-subtitulo text-white",
+        "aviso": "m-0 max-w-sm text-auxiliar text-white/90",
+        "nombre": "absolute bottom-3.5 left-3.5 rounded-lg bg-overlay-4 px-3 py-1.25 text-nombre-entidad text-white",
+        "indicadores": "absolute left-3.5 top-3.5 flex items-center gap-1.5",
+        "indicador": "grid h-7 w-7 place-items-center rounded-full bg-overlay-3 p-1.5 text-white",
+        "indicador_alerta": "grid h-7 w-7 place-items-center rounded-full bg-peligro-texto p-1.5 text-white",
+        "controles": "absolute bottom-3.5 left-1/2 flex -translate-x-1/2 items-center gap-2.5",
+        "nota": "m-0 -mt-2 mb-4 text-auxiliar text-texto-suave",
+        "enlace_volver": "mb-4 inline-flex items-center gap-1.5",
+        "rejilla": "grid grid-cols-minmax400-720-minmax320-400 items-start gap-10 max-1100:grid-cols-1 max-1100:gap-5",
+        "lateral": "grid min-w-0 grid-cols-1 gap-4",
+        "cabecera": "flex items-start justify-between",
+        "titulo": "m-0 text-titulo-pagina text-texto",
+        "subtitulo": "m-0 mt-1 text-subtitulo text-texto-suave",
+        "accion_principal": "mt-5 w-full",
+        "accion_cancelar": "mt-2.5 block text-center"
+      },
+      "dispositivos": {
+        "rejilla": "grid grid-cols-2 items-start gap-4 max-900:grid-cols-1",
+        "tarjeta": "rounded-xl border border-borde bg-white p-4",
+        "titulo": "m-0 mb-3 text-titulo-seccion text-texto",
+        "fila": "flex items-center gap-2.5 border-b border-borde py-2.5 last:border-b-0",
+        "fila_selector": "flex flex-col gap-1.5 border-b border-borde py-2.5",
+        "etiqueta_selector": "flex items-center gap-2 text-subtitulo text-texto",
+        "cuerpo": "min-w-0 flex-1",
+        "nombre": "block text-subtitulo text-texto",
+        "detalle": "block text-auxiliar text-texto-suave",
+        "icono": "h-4 w-4 flex-none text-texto-suave",
+        "ayuda": "m-0 mt-2 text-auxiliar text-texto-suave",
+        "acciones": "mt-3 flex flex-wrap items-center gap-2",
+        "resultados": "m-0 mt-3 flex list-none flex-col gap-1 p-0 text-auxiliar text-texto-suave",
+        "resultado_nombre": "text-texto"
+      },
+      "invitaciones": {
+        "tarjeta": "rounded-xl border border-borde bg-white p-4",
+        "titulo": "m-0 mb-2.5 text-titulo-banner text-texto",
+        "subtitulo": "mb-2 mt-3.5 text-titulo-banner text-texto",
+        "fila": "flex items-center gap-2.5 py-2",
+        "cuerpo": "min-w-0 flex-1",
+        "nombre": "block truncate text-nombre-fila text-texto",
+        "detalle": "block truncate text-auxiliar text-texto-suave",
+        "estado": "block text-estado text-exito-texto",
+        "estado_preparada": "block text-estado text-texto-suave",
+        "indicadores": "flex flex-none items-center gap-1.5",
+        "icono_activo": "h-4 w-4 flex-none text-exito-texto",
+        "icono_inactivo": "h-4 w-4 flex-none text-peligro-texto",
+        "buscador": "mb-1.5 w-full",
+        "lista": "flex max-h-64 flex-col overflow-y-auto",
+        "aviso": "m-0 mt-2 text-auxiliar text-texto-suave",
+        "vacio": "py-3 text-subtitulo text-texto-suave",
+        "copiar": "mt-3 w-full",
+        "icono_mano": "h-4 w-4 flex-none text-primario",
+        "icono_fijado": "h-4 w-4 flex-none text-texto-suave"
+      },
+      "sala": {
+        "pagina": "-mx-6 -mt-6.25 -mb-10.5 flex h-vh-navbar min-w-0 flex-col gap-3.5 px-5 pb-5 pt-5 max-800:-mx-3 max-800:-mt-4.5 max-800:-mb-4.5 bg-fondo-escenario",
+        "cuerpo": "relative flex min-h-0 flex-1 gap-4",
+        "escenario": "flex min-h-0 min-w-0 flex-1 flex-col gap-2.5",
+        "lienzo": "flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto rounded-14 p-0",
+        "cuadricula": "grid min-h-0 flex-1 auto-rows-fr gap-3 max-600:flex-none max-600:auto-rows-[15rem] max-600:gap-2",
+        "aviso_demostracion": "m-0 rounded-lg bg-overlay-4 px-3 py-1.5 text-auxiliar text-white",
+        "tarjeta": "relative h-full min-h-24 w-full overflow-hidden rounded-control degradado-nocturno-profundo",
+        "tarjeta_activa": "ring-2 ring-primario",
+        "organizador": "absolute left-2 top-2 z-1 rounded-md bg-overlay-4 px-2.25 py-0.75 text-badge text-white",
+        "pie": "absolute inset-x-2 bottom-2 z-1 flex items-center gap-1.5",
+        "nombre": "min-w-0 flex-1 truncate rounded-md bg-overlay-4 px-2.25 py-1 text-nombre-entidad text-white",
+        "indicador_activo": "grid h-6 w-6 flex-none place-items-center rounded-full bg-overlay-9 p-1.25 text-white",
+        "indicador_inactivo": "grid h-6 w-6 flex-none place-items-center rounded-full bg-overlay-4 p-1.25 text-texto-sobre-oscuro-peligro",
+        "reaccion": "absolute right-2 top-10 z-1 grid h-8 w-8 place-items-center rounded-full bg-white p-1.5 text-primario",
+        "paginacion": "flex flex-none items-center justify-center gap-3 text-auxiliar text-white",
+        "presentacion": "flex min-h-0 flex-1 flex-col gap-2",
+        "barra_superior": "flex flex-wrap items-center gap-4 rounded-xl border border-white/10 bg-overlay-5 px-4 py-3 text-white",
+        "barra_titulo": "flex min-w-0 items-center gap-2",
+        "barra_nombre": "block text-nombre-entidad text-white",
+        "barra_acciones": "flex max-w-full flex-none flex-wrap items-center gap-2 max-600:w-full",
+        "barra_salir": "flex-none",
+        "controles": "relative z-40 flex max-w-full flex-none items-center gap-2 self-center rounded-14 bg-overlay-5 px-3 py-2 max-600:w-full max-600:justify-between max-600:gap-1 max-600:px-2 max-480:gap-0.5",
+        "control_separador": "ml-2 inline-flex max-600:ml-0",
+        "fondo_panel": "fixed inset-x-0 top-0 bottom-24 z-29 hidden bg-overlay-2 max-1100:block",
+        "panel": "z-30 flex w-80 flex-none flex-col gap-3 overflow-hidden rounded-xl border border-borde bg-white p-4 max-1100:fixed max-1100:bottom-24 max-1100:right-2 max-1100:top-20 max-1100:w-[min(24rem,calc(100%-1rem))]",
+        "panel_cabecera": "flex items-center justify-between gap-2",
+        "panel_titulo": "m-0 text-titulo-banner text-texto",
+        "panel_aviso": "m-0 rounded-lg bg-fondo px-3 py-2 text-auxiliar text-texto-suave",
+        "panel_acciones": "flex flex-col gap-2",
+        "panel_vacio": "py-3 text-subtitulo text-texto-suave",
+        "chat_mensajes": "m-0 flex min-h-0 flex-1 list-none flex-col gap-2 overflow-y-auto p-0",
+        "chat_mensaje": "flex flex-col gap-0.5 rounded-lg bg-fondo px-3 py-2",
+        "chat_autor": "text-auxiliar text-texto-suave",
+        "chat_texto": "text-subtitulo text-texto",
+        "chat_pie": "flex items-center gap-2",
+        "chat_nota": "m-0 text-auxiliar text-texto-suave",
+        "selector_demostracion": "flex items-center gap-2 text-auxiliar text-white/70",
+        "media": "absolute inset-0 h-full w-full object-cover",
+        "foto_difuminada": "absolute inset-0 h-full w-full scale-110 object-cover opacity-40 blur-2xl",
+        "avatar": "absolute inset-0 grid place-items-center",
+        "foto": "aspect-square h-[45%] max-h-72 min-h-20 rounded-full border-4 border-white/25 object-cover shadow-t13",
+        "texto_camara": "absolute inset-x-0 bottom-12 text-center text-auxiliar text-white/80",
+        "presentacion_barra": "flex flex-none flex-wrap items-center justify-between gap-3 rounded-lg bg-primario px-4 py-2 text-white",
+        "presentacion_texto": "m-0 text-nombre-entidad text-white",
+        "presentacion_principal": "relative min-h-0 flex-1 overflow-hidden rounded-control bg-black max-600:min-h-56",
+        "presentacion_video": "h-full w-full object-contain",
+        "presentacion_simulada": "absolute left-3 top-3 max-w-md rounded-lg bg-overlay-4 px-3 py-1.5 text-auxiliar text-white",
+        "error_captura": "m-0 flex flex-none items-center justify-between gap-2 rounded-lg bg-fondo-categoria-rojo px-3 py-2 text-auxiliar text-peligro-texto",
+        "barra_marca": "border-r border-white/20 pr-3 text-nombre-entidad text-white",
+        "barra_identidad": "flex min-w-0 flex-1 items-center gap-3",
+        "control_boton": "max-600:h-9 max-600:w-9 max-480:h-8 max-480:w-8",
+        "mano": "absolute right-2 top-2 z-1 grid h-7 w-7 place-items-center rounded-full bg-white p-1.5 text-primario",
+        "fijado_contenedor": "flex min-h-0 flex-1 gap-2 max-900:flex-col",
+        "fijado_principal": "min-h-0 min-w-0 flex-1",
+        "fijado_otros": "flex w-44 flex-none flex-col gap-2 overflow-y-auto max-900:h-28 max-900:w-full max-900:flex-row max-900:overflow-x-auto max-900:overflow-y-hidden",
+        "panel_manos": "m-0 text-auxiliar text-texto-suave",
+        "informe_cuerpo": "flex flex-col gap-3 p-4",
+        "informe_pie": "flex justify-end gap-2 px-4 pb-4",
+        "informe_aviso": "m-0 px-4 pb-4 text-auxiliar text-texto-suave",
+        "fijado_otro": "h-28 w-full flex-none max-900:h-full max-900:w-40",
+        "panel_secciones": "flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overflow-x-hidden",
+        "panel_etiqueta": "m-0 text-etiqueta uppercase text-texto-suave",
+        "lista_seccion": "m-0 flex list-none flex-col p-0",
+        "salida_dialogo": "max-w-120 rounded-2xl max-600:max-w-full max-600:rounded-none",
+        "salida_texto": "m-0 px-6 pb-5 pt-2 text-subtitulo text-texto-suave",
+        "salida_pie": "flex flex-col gap-2 px-6 pb-6",
+        "barra_temporizador": "rounded-full bg-overlay-4 px-2.5 py-0.5 text-auxiliar tabular-nums text-white",
+        "barra_info": "inline-flex text-white/70",
+        "solitaria": "relative grid min-h-0 flex-1 place-items-center overflow-hidden rounded-control degradado-nocturno-profundo",
+        "solitaria_contenido": "relative z-1 flex flex-col items-center gap-3 px-6 text-center max-600:pb-24",
+        "solitaria_foto": "h-44 w-44 rounded-full border-4 border-white/25 object-cover shadow-t13 max-600:h-28 max-600:w-28",
+        "solitaria_nombre": "m-0 text-titulo-banner text-white",
+        "solitaria_mensaje": "m-0 max-w-120 text-subtitulo text-white/80",
+        "solitaria_estados": "absolute bottom-3 left-3 z-1 flex flex-wrap gap-2",
+        "estado_pastilla": "inline-flex items-center gap-1.5 rounded-full bg-overlay-4 px-3 py-1.5 text-auxiliar text-white",
+        "estado_pastilla_alerta": "inline-flex items-center gap-1.5 rounded-full bg-overlay-4 px-3 py-1.5 text-auxiliar text-texto-sobre-oscuro-peligro",
+        "pantalla_completa": "absolute right-3 top-3 z-1",
+        "panel_enlace": "flex flex-col gap-1.5 rounded-lg bg-fondo p-3",
+        "panel_enlace_titulo": "m-0 text-etiqueta text-texto",
+        "panel_enlace_fila": "flex items-center gap-2",
+        "panel_enlace_texto": "min-w-0 flex-1 truncate text-auxiliar text-texto-suave",
+        "pie_sala": "relative flex flex-none items-center justify-center gap-3 max-900:flex-col max-900:items-stretch",
+        "pie_detalles": "relative flex flex-1 justify-start max-900:flex-none max-900:justify-center",
+        "pie_equilibrio": "flex-1 max-900:hidden",
+        "detalles": "absolute bottom-full left-0 z-40 mb-2 flex w-[min(22rem,100%)] flex-col gap-2 rounded-xl border border-borde bg-white p-4 text-texto",
+        "detalles_titulo": "m-0 text-nombre-entidad text-texto",
+        "detalles_dato": "m-0 text-auxiliar text-texto-suave",
+        "solitaria_rol": "rounded-full bg-primario px-3 py-0.75 text-badge text-white",
+        "solitaria_aviso_video": "absolute inset-x-3 top-3 z-1 m-0 mx-auto w-fit max-w-120 rounded-lg bg-overlay-4 px-3 py-1.5 text-center text-auxiliar text-white",
+        "control_contenedor": "relative inline-flex",
+        "control_insignia": "pointer-events-none absolute -right-1 -top-1 grid h-4.5 min-w-4.5 place-items-center rounded-full bg-primario px-1 text-badge text-white",
+        "salida_cabecera": "flex items-start justify-between gap-3 px-6 pt-5",
+        "salida_titulo": "m-0 text-titulo-banner text-texto",
+        "salida_boton": "w-full"
+      },
+      "mas_tarde": {
+        "dialogo": "max-w-120 rounded-2xl max-600:max-w-full max-600:rounded-none",
+        "cabecera": "flex justify-end px-4 pt-4",
+        "cuerpo": "flex flex-col items-center gap-3 px-8 pb-8 text-center",
+        "icono": "grid h-16 w-16 place-items-center rounded-2xl bg-primario-suave text-primario",
+        "titulo": "m-0 text-titulo-banner text-texto",
+        "descripcion": "m-0 text-subtitulo text-texto-suave",
+        "enlace": "flex w-full items-center gap-2 rounded-xl border border-borde bg-white py-1.5 pl-4 pr-2 text-left",
+        "enlace_texto": "min-w-0 flex-1 truncate text-subtitulo text-texto",
+        "aviso": "m-0 text-auxiliar text-texto-suave"
+      }
+    },
+    "cantidad_predeterminada": 20,
+    "estado_activo": "1",
+    "estado_inactivo": "0",
+    "programar": {
+      "maximo_descripcion": 500,
+      "minutos_duracion_inicial": 60,
+      "invitados_iniciales": [
+        "María Fernández",
+        "Luis Rodríguez",
+        "Ana García"
+      ],
+      "maximo_resultados": 6,
+      "formato_fecha": "ddd, D [de] MMMM [de] YYYY",
+      "formato_hora": "hh:mm A",
+      "sufijos_hora": [
+        "AM",
+        "PM"
+      ],
+      "zona_inicial": "America/Lima",
+      "localidad_fecha_iso": "en-CA",
+      "zonas": [
+        {
+          "valor": "America/Lima",
+          "etiqueta": "Lima (GMT-05:00)"
+        },
+        {
+          "valor": "America/Bogota",
+          "etiqueta": "Bogotá (GMT-05:00)"
+        },
+        {
+          "valor": "America/Guayaquil",
+          "etiqueta": "Quito (GMT-05:00)"
+        },
+        {
+          "valor": "America/Mexico_City",
+          "etiqueta": "Ciudad de México (GMT-06:00)"
+        },
+        {
+          "valor": "America/Argentina/Buenos_Aires",
+          "etiqueta": "Buenos Aires (GMT-03:00)"
+        }
+      ],
+      "textos": {
+        "titulo": "Programar reunión",
+        "subtitulo": "Organiza una videollamada para una fecha futura y comparte la invitación con tus colaboradores.",
+        "informacion": {
+          "titulo": "Información de la reunión",
+          "nombre": "Nombre de la reunión",
+          "placeholder_nombre": "Escribe el nombre de la reunión",
+          "descripcion": "Descripción",
+          "opcional": "(opcional)",
+          "placeholder_descripcion": "Escribe de qué trata la reunión",
+          "contador": ":n/:max"
+        },
+        "fecha_horario": {
+          "titulo": "Fecha y horario",
+          "fecha": "Fecha de la reunión",
+          "zona": "Zona horaria",
+          "inicio": "Hora de inicio",
+          "fin": "Hora de finalización",
+          "duracion": "Duración",
+          "marcador_fecha": "Selecciona la fecha",
+          "marcador_hora": "Selecciona la hora"
+        },
+        "duracion": {
+          "sin_datos": "—",
+          "minutos": ":n min",
+          "hora": "1 hora",
+          "horas": ":n horas",
+          "horas_minutos": ":h h :m min"
+        },
+        "invitar": {
+          "titulo": "Agregar colaboradores",
+          "subtitulo": "Invita a los colaboradores de tu red en CodePlex.",
+          "buscar": "Buscar colaboradores...",
+          "etiqueta_busqueda": "Buscar colaboradores para invitar",
+          "limpiar": "Limpiar búsqueda",
+          "sin_resultados": "No se encontró ningún colaborador con ese nombre.",
+          "invitar": "Invitar",
+          "invitar_a": "Invitar a :nombre",
+          "invitar_texto": "Invitar a «:nombre»",
+          "invitados": "Colaboradores invitados (:n)",
+          "invitado": "Invitado",
+          "quitar": "Quitar a :nombre",
+          "lista": "Colaboradores invitados"
+        },
+        "acceso": {
+          "titulo": "Configuración de acceso",
+          "compartir": "Permitir que los invitados compartan el enlace de la reunión.",
+          "admision": "Solicitar admisión de participantes por el organizador.",
+          "ayuda_admision": "Los participantes esperan hasta que el organizador los admita en la reunión.",
+          "etiqueta_ayuda": "Más información sobre la admisión"
+        },
+        "acciones": {
+          "cancelar": "Cancelar",
+          "programar": "Programar reunión"
+        },
+        "errores": {
+          "nombre": "Escribe el nombre de la reunión.",
+          "fecha": "Selecciona la fecha de la reunión.",
+          "inicio": "Selecciona la hora de inicio.",
+          "fin": "Selecciona la hora de finalización.",
+          "orden": "La hora de finalización debe ser posterior a la de inicio.",
+          "pasado": "La reunión debe programarse para una fecha y hora futuras."
+        },
+        "confirmacion": {
+          "titulo": "Reunión programada",
+          "detalle": "Tu reunión quedó programada. Comparte el enlace con tus invitados para que puedan unirse.",
+          "cuando": ":fecha, :hora",
+          "invitados": ":n invitados",
+          "enlace": "Enlace de la reunión",
+          "etiqueta_enlace": "Enlace para unirse a la reunión",
+          "copiar": "Copiar enlace",
+          "copiado": "Enlace copiado.",
+          "error_copia": "No se pudo copiar el enlace.",
+          "unirme": "Unirme a la reunión",
+          "volver": "Volver a Videollamadas"
+        }
+      },
+      "clases": {
+        "titulo": "m-0 text-titulo-pagina text-texto",
+        "rejilla": "grid grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] items-start gap-4 max-900:grid-cols-1",
+        "columna": "grid min-w-0 gap-4",
+        "tarjeta": "grid gap-4 rounded-xl border border-borde bg-white p-5 max-600:p-4",
+        "titulo_tarjeta": "m-0 text-titulo-seccion text-texto",
+        "rejilla_fechas": "grid grid-cols-2 items-end gap-4 max-600:grid-cols-1",
+        "rejilla_horas": "grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)] items-end gap-4 max-600:grid-cols-1",
+        "duracion": "flex min-h-control items-center gap-2 rounded-control bg-primario-suave px-3 text-subtitulo text-texto",
+        "contador": "justify-self-end text-auxiliar text-texto-suave",
+        "error": "m-0 text-auxiliar text-peligro-texto",
+        "lista": "m-0 flex list-none flex-col gap-1 p-0",
+        "fila": "flex items-center gap-3 py-1.5",
+        "cuerpo": "min-w-0 flex-1",
+        "nombre": "block truncate text-nombre-fila text-texto",
+        "rol": "block text-auxiliar text-texto-suave",
+        "resultados": "m-0 flex max-h-44 list-none flex-col overflow-y-auto rounded-control border border-borde p-1",
+        "vacio": "m-0 px-3 py-2 text-subtitulo text-texto-suave",
+        "opcion": "flex w-full items-center gap-3 text-left",
+        "opciones": "grid gap-3",
+        "fila_ayuda": "flex items-center gap-2",
+        "pie": "flex flex-wrap justify-end gap-3 pt-2",
+        "confirmacion": "grid gap-4",
+        "selector_zona": "w-full",
+        "confirmacion_datos": "m-0 grid gap-1 text-subtitulo text-texto-suave",
+        "confirmacion_acciones": "flex flex-wrap gap-3",
+        "aviso": "m-0 text-auxiliar text-texto-suave",
+        "dialogo": "max-w-250 rounded-2xl max-600:max-w-full max-600:rounded-none",
+        "cabecera_modal": "flex items-start gap-4 border-b border-borde px-6 py-5 max-600:px-4",
+        "icono_modal": "grid h-12 w-12 flex-none place-items-center rounded-xl bg-primario-suave text-primario",
+        "titulos_modal": "min-w-0 flex-1",
+        "cuerpo_modal": "min-h-0 flex-1 overflow-y-auto p-6 max-600:p-4",
+        "subtitulo_tarjeta": "m-0 -mt-2 text-auxiliar text-texto-suave",
+        "boton_invitar": "flex-none",
+        "alternar_lista": "flex w-full items-center justify-between gap-2 text-left text-nombre-entidad text-texto",
+        "sin_resultados_accion": "flex flex-col gap-2 px-3 py-2"
+      },
+      "relleno_hora": "0",
+      "campos_acceso": {
+        "compartir": "permitirCompartir",
+        "admision": "solicitarAdmision"
+      },
+      "formato_mes": {
+        "idioma": "es-PE",
+        "mes": "short"
+      },
+      "formatos": {
+        "fecha": "YYYY-MM-DD",
+        "hora": "HH:mm"
+      }
+    }
   }
 }

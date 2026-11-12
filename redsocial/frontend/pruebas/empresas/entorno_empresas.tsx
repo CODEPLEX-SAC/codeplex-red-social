@@ -5,7 +5,7 @@ import { suscripcionesDeCompras } from '../../componentes/marketplace'
 import { crearComprasIniciales } from '../../componentes/marketplace/bloques/logica_carrito_planes'
 import { PLANES_APLICACIONES, SUSCRIPCIONES_DEMOSTRACION } from '../../rutas/marketplace/rutas_marketplace'
 
-export const SUSCRIPCIONES = suscripcionesDeCompras(crearComprasIniciales(PLANES_APLICACIONES, SUSCRIPCIONES_DEMOSTRACION, '', '', 0), PLANES_APLICACIONES)
+export const SUSCRIPCIONES = suscripcionesDeCompras(crearComprasIniciales(PLANES_APLICACIONES, SUSCRIPCIONES_DEMOSTRACION, { fecha: '', vence: '', dias: 0 }), PLANES_APLICACIONES)
 
 export function renderEmpresas() {
   return render(

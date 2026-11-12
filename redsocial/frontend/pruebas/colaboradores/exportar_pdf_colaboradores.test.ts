@@ -1,4 +1,3 @@
-import { vi } from 'vitest'
 import { generarPdf } from '@/componentes/colaboradores/bloques/exportar_pdf_colaboradores'
 import { construirReporte } from '@/componentes/colaboradores/bloques/reporte_colaboradores'
 import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'

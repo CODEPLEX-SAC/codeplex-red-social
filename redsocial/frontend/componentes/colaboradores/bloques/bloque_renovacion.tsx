@@ -1,5 +1,6 @@
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
+import { GrupoRadio } from '../../compartido/interfaz/grupo_radio'
 import { Radio } from '../../compartido/interfaz/radio'
 import { Selector } from '../../compartido/interfaz/selector'
 import { BloqueRecordatorios } from './bloque_recordatorios'
@@ -24,8 +25,9 @@ export function BloqueRenovacion({
         </div>
         <p className={comun.subtitulo}>{textos.renovacion_subtitulo}</p>
 
+        <GrupoRadio name="renovacion" defaultValue="permitir" aria-label={textos.renovacion}>
         <label className={clases.opcion_media}>
-          <Radio name="renovacion" value="permitir" defaultChecked />
+          <Radio value="permitir" />
           <span className={comun.opcion_textos}>
             <span className={comun.opcion_titulo}>{textos.permitir_renovacion}</span>
             <span className={comun.opcion_detalle}>{textos.permitir_renovacion_detalle}</span>
@@ -33,12 +35,13 @@ export function BloqueRenovacion({
         </label>
 
         <label className={comun.opcion}>
-          <Radio name="renovacion" value="no-permitir" />
+          <Radio value="no-permitir" />
           <span className={comun.opcion_textos}>
             <span className={comun.opcion_titulo}>{textos.no_permitir_renovacion}</span>
             <span className={comun.opcion_detalle}>{textos.no_permitir_renovacion_detalle}</span>
           </span>
         </label>
+        </GrupoRadio>
       </div>
 
       <BloqueRecordatorios OPCIONES_RECORDATORIO={OPCIONES_RECORDATORIO} />

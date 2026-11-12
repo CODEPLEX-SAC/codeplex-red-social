@@ -1,14 +1,19 @@
 import { CLASES_TABLA, claseEncabezadoTabla } from '../../compartido/clases_tabla'
+import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
 import { FilaPlanAsignado } from './fila_plan_asignado'
 import { capacidadDeFila, datosDeMejora, puedeMejorar } from './logica_mejora_plan'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { TablaPlanesAsignadosProps } from '@/tipos/empresas/contrato_mejora_plan'
 
-const edicion = catalogoEmpresas.planes_asignados.edicion
+const textos = catalogoEmpresas.planes_asignados
+const edicion = textos.edicion
 const columnas = edicion.columnas
 const encabezado = claseEncabezadoTabla()
 
 export function TablaPlanesAsignados({ contratados, activos, totalEmpresas, configuracion, alAlternar, alMejorar }: TablaPlanesAsignadosProps) {
+  const asignados = new Set(activos)
+  if (contratados.length === 0) return <MensajeVacio titulo={textos.vacio_titulo} texto={textos.vacio_detalle} className="pb-6" />
+
   return (
     <div className={edicion.clases.tabla_envoltorio}>
       <table className={`${CLASES_TABLA.tabla} ${edicion.clases.tabla}`}>
@@ -26,7 +31,7 @@ export function TablaPlanesAsignados({ contratados, activos, totalEmpresas, conf
               key={modulo.clave}
               modulo={modulo}
               suscripcion={suscripcion}
-              activo={activos.includes(modulo.clave)}
+              activo={asignados.has(modulo.clave)}
               totalEmpresas={totalEmpresas}
               puedeMejorar={puedeMejorar(datosDeMejora(configuracion(suscripcion.aplicacion), suscripcion, capacidadDeFila(suscripcion, totalEmpresas)))}
               onAlternar={() => alAlternar(modulo.clave)}

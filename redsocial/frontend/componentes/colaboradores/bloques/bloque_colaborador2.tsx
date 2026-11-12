@@ -1,6 +1,6 @@
 import { Icono } from '../../compartido/icono'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import { Boton } from '../../compartido/interfaz/boton'
+import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 
 const clases = catalogoColaboradores.clases.invitar_resumen
@@ -20,9 +20,7 @@ export function BloqueColaborador2({
           <Icono name="nuevo-usuario" className={comun.glifo_titulo} />
           <h4 className={comun.titulo}>{catalogoColaboradores.campos_resumen.colaborador}</h4>
         </div>
-        <Boton type="button" variant="secundario" size="mini" onClick={alEditar} aria-label={catalogoColaboradores.botones.editar_colaborador}>
-          {catalogoColaboradores.campos_resumen.editar}
-        </Boton>
+        <BotonIcono icono="editar-oficial" type="button" variant="discreto" size="default" onClick={alEditar} aria-label={catalogoColaboradores.botones.editar_colaborador} />
       </div>
       <div className={clases.colaborador_fila}>
         <AvatarUsuario tamano="lg" iniciales={RESUMEN_COLABORADOR.iniciales} />

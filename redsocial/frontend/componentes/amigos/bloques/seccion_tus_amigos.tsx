@@ -1,41 +1,53 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { EncabezadoAmigos } from './encabezado_amigos'
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
 import { PestanasAmigos } from './pestanas_amigos'
-import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
-import { Selector } from '../../compartido/interfaz/selector'
-import { BotonPieLista } from '../../compartido/interfaz/boton_pie_lista'
-import { Icono } from '../../compartido/icono'
+import { CampoBusqueda, usarBusqueda, MensajeEstadoBusqueda, Selector, BotonPieLista, Icono, coincideNombre, crearFuenteLocal } from '../../compartido'
 import { BloqueMensaje } from './bloque_mensaje'
-import type { Amigo } from '@/tipos/amigos/modelo_amigos_todos'
+import type { FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
+import type { Amigo, FiltrosAmigos } from '@/tipos/amigos/modelo_amigos_todos'
 
 const clases = catalogoAmigos.clases
 
 const TODOS = 'todos'
+const LIMITE = catalogoAmigos.limite_amigos_visibles
+
+function admiteAmigo(amigo: Amigo, { estado }: FiltrosAmigos): boolean {
+  return estado === TODOS || (estado === 'en_linea' ? amigo.enLinea === true : amigo.enLinea !== true)
+}
 
 export function SeccionTusAmigos({
   RESUMEN,
   AMIGOS,
+  fuente,
   insigniaSolicitudes,
   alMensaje,
 }: {
   RESUMEN: { icono: string; peligro?: boolean | undefined; etiqueta: string; valor: string; }[]
   AMIGOS: Amigo[]
+  fuente?: FuenteBusqueda<Amigo, FiltrosAmigos> | undefined
   insigniaSolicitudes?: number | undefined
   alMensaje?: ((nombre: string) => void) | undefined
 }) {
   const [estado, setEstado] = useState(TODOS)
-  const visibles = AMIGOS.filter((a) => estado === TODOS || (estado === 'en_linea' ? a.enLinea === true : a.enLinea !== true))
+  const filtros = useMemo<FiltrosAmigos>(() => ({ estado }), [estado])
+  const fuenteLocal = useMemo(() => crearFuenteLocal(AMIGOS, coincideNombre, admiteAmigo), [AMIGOS])
+  const busqueda = usarBusqueda(fuente ?? fuenteLocal, { modo: fuente ? 'remota' : 'local', filtros })
+  const [expandida, setExpandida] = useState(false)
+  const coincidentes = busqueda.resultado.elementos
+  const visibles = coincidentes.slice(0, expandida ? coincidentes.length : LIMITE)
 
   return (
     <section className={clases.tarjeta_pagina}>
-      <EncabezadoAmigos textoBoton={catalogoAmigos.botones.agregar_amigos} />
+      <EncabezadoAmigos />
       <PestanasAmigos activa="todos" insigniaSolicitudes={insigniaSolicitudes} />
 
       <div className={clases.filtros.fila}>
         <CampoBusqueda
           placeholder={catalogoAmigos.placeholders.buscar_amigos}
           aria-label={catalogoAmigos.placeholders.buscar_amigos}
+          value={busqueda.texto}
+          onChange={(evento) => busqueda.cambiarTexto(evento.target.value)}
           className={clases.filtros.buscador}
         />
         <Selector variant="default" value={estado} onChange={(evento) => setEstado(evento.target.value)} aria-label={catalogoAmigos.botones.filtrar_amigos} className={clases.filtros.selector}>
@@ -60,8 +72,13 @@ export function SeccionTusAmigos({
       </div>
 
       <h2 className={clases.titulo_seccion}>{catalogoAmigos.secciones.tus_amigos}</h2>
-      <BloqueMensaje AMIGOS={visibles} alMensaje={alMensaje} />
-      <BotonPieLista>{catalogoAmigos.botones.ver_mas_amigos}</BotonPieLista>
+      <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} />
+      {(busqueda.estado === 'inicial' || busqueda.estado === 'con_resultados' || busqueda.estado === 'escribiendo') && <BloqueMensaje AMIGOS={[...visibles]} alMensaje={alMensaje} />}
+      {coincidentes.length > LIMITE && (
+        <BotonPieLista onClick={() => setExpandida((actual) => !actual)}>
+          {expandida ? catalogoAmigos.botones.ver_menos_amigos : catalogoAmigos.botones.ver_mas_amigos}
+        </BotonPieLista>
+      )}
     </section>
   )
 }

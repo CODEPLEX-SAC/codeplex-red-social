@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { vi } from 'vitest'
 import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradores'
 import { formatearFecha } from '@/componentes/colaboradores/bloques/logica_colaboradores'
 import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'

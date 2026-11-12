@@ -1,10 +1,10 @@
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { BannerInformativo, BotonIcono, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
+import { BannerInformativo, Boton, Icono, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
-import { PestanasAvisos, FilaMencion, PanelDetalleAviso } from '../../componentes/avisos'
+import { PestanasNovedades, FilaMencion, PanelDetalleNovedad } from '../../componentes/avisos'
 import { MENCIONES, CONTEOS_AVISOS, DETALLE_AVISO } from '../../rutas/avisos/rutas_avisos'
 
-export function PaginaAvisosMenciones() {
+export function PaginaNovedadesMenciones() {
   return (
     <EstructuraApp paginaActiva="avisos">
       <EstructuraTresColumnas
@@ -19,11 +19,10 @@ export function PaginaAvisosMenciones() {
                 <Boton type="button" variant="secundario" size="default" className="flex-none">
                   <Icono name="verificado" className="h-3.5 w-3.5" /> {catalogoAvisos.botones.marcar_todas_leidas}
                 </Boton>
-                <BotonIcono icono="puntos" type="button" aria-label={catalogoAvisos.botones.mas_opciones} variant="contorno" size="default" className="flex-none" />
               </div>
             </div>
 
-            <PestanasAvisos activa="menciones" conteos={CONTEOS_AVISOS} />
+            <PestanasNovedades activa="menciones" conteos={CONTEOS_AVISOS} />
 
             <BannerInformativo
               icono="comentario"
@@ -47,7 +46,7 @@ export function PaginaAvisosMenciones() {
           </section>
         }
         publicidad={<ColumnaPublicidad />}
-        lateral={<PanelDetalleAviso detalle={DETALLE_AVISO} />}
+        lateral={<PanelDetalleNovedad detalle={DETALLE_AVISO} />}
       />
     </EstructuraApp>
   )

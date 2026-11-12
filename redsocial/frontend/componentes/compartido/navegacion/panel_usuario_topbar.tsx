@@ -43,7 +43,7 @@ export function PanelUsuarioTopbar({ usuario, onCerrar, onCerrarSesion }: PanelU
     <div
       ref={panel}
       id={textos.id}
-      role="dialog"
+      role={catalogoCompartido.roles_aria.dialogo}
       aria-label={textos.titulo}
       tabIndex={-1}
       className="fixed right-md top-bajo-barra z-20 w-95 overflow-hidden rounded-xl border border-borde bg-white shadow-t13 outline-none max-600:left-3 max-600:right-3 max-600:w-auto"

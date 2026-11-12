@@ -34,7 +34,6 @@ export const ICONOS_DECORATIVOS_PERMITIDOS: string[] = [
   '/paginas/avisos/pagina_avisos_solicitudes.tsx',
 ]
 
-const SUPERFICIE_SOBRE_VIDEO = 'control sobre el video con paleta de superposicion propia'
 const FILA_DE_OPCION = 'fila de opcion o de seleccion con estado propio, no es una accion estandar'
 
 export const BOTONES_NATIVOS_PERMITIDOS: Record<string, ExcepcionDeBoton> = {
@@ -58,18 +57,15 @@ export const BOTONES_NATIVOS_PERMITIDOS: Record<string, ExcepcionDeBoton> = {
   '/componentes/eventos/bloques/seccion_destacados2.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'punto de paginacion del carrusel con aria-label' },
   '/componentes/eventos/bloques/seccion_titulo_buscar2.tsx': { cantidad: 2, clasificacion: 'C', motivo: FILA_DE_OPCION },
   '/componentes/inicio/bloques/compositor_inicio.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'disparador con forma de campo que abre el dialogo de publicacion' },
+  '/componentes/marketplace/bloques/carrusel_marketplace.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'indicador de posicion del carrusel: punto de 10 px sin texto ni altura minima; Boton impone alto y relleno de control' },
   '/componentes/marketplace/bloques/item_caracteristica.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'texto de caracteristica que abre su detalle y hereda el color de la tarjeta clara u oscura; Boton no tiene variante heredada' },
-  '/componentes/mensajeria/bloques/control_llamada.tsx': { cantidad: 1, clasificacion: 'G', motivo: SUPERFICIE_SOBRE_VIDEO },
   '/componentes/amigos/bloques/seccion_solicitudes.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'chip de filtro con estado seleccionado (aria-pressed), con el aspecto del chip compartido; no es una accion estandar' },
   '/componentes/mensajeria/bloques/lista_conversaciones.tsx': { cantidad: 1, clasificacion: 'A', motivo: 'chip de filtro de la lista (Todos, No leidos, Favoritos) con aria-pressed; usa las clases de chip compartidas' },
   '/componentes/mensajeria/bloques/fila_conversacion.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'control principal estirado de la fila de conversacion: abre el chat y lleva aria-current; los demas controles de la fila son componentes compartidos' },
-  '/componentes/inicio/bloques/mensajes_flotantes_inicio.tsx': { cantidad: 1, clasificacion: 'C', motivo: FILA_DE_OPCION },
-  '/componentes/mensajeria/bloques/seccion_videollamada_iniciar.tsx': { cantidad: 4, clasificacion: 'G', motivo: SUPERFICIE_SOBRE_VIDEO },
-  '/formularios/eventos/formulario_evento.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'tarjeta con role radio y aria-checked' },
+  '/componentes/inicio/bloques/fila_conversacion_flotante.tsx': { cantidad: 1, clasificacion: 'C', motivo: FILA_DE_OPCION },
+  '/formularios/eventos/opcion_modalidad_evento.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'tarjeta con role radio y aria-checked' },
   '/componentes/colaboradores/bloques/lista_recursos_permisos.tsx': { cantidad: 1, clasificacion: 'C', motivo: 'cabecera de recurso que expande y contrae: la libreria de acordeon no admite una casilla independiente dentro de su cabecera' },
   '/componentes/compartido/pago/opcion_metodo_pago.tsx': { cantidad: 1, clasificacion: 'B', motivo: 'tarjeta de metodo de pago con role radio y aria-checked' },
-  '/paginas/amigos/pagina_amigos_listas.tsx': { cantidad: 1, clasificacion: 'F', motivo: 'tarjeta punteada de alta de lista, patron unico' },
   '/paginas/mensajeria/pagina_mensajes_favoritos.tsx': { cantidad: 1, clasificacion: 'C', motivo: FILA_DE_OPCION },
   '/paginas/mensajeria/pagina_mensajes_no_leidos.tsx': { cantidad: 1, clasificacion: 'C', motivo: FILA_DE_OPCION },
-  '/paginas/mensajeria/pagina_mensajes_videollamada_iniciar.tsx': { cantidad: 1, clasificacion: 'C', motivo: FILA_DE_OPCION },
 }

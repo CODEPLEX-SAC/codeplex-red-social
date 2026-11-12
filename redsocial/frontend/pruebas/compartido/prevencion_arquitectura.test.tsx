@@ -54,10 +54,10 @@ describe('Prevencion de arquitectura: el frontend presenta y no define rutas ni 
   it('los enlaces con ruta de negocio resuelta leen su destino del catalogo del modulo', () => {
     const texto = (sufijo: string) => FUENTES.find((fuente) => fuente.ruta.endsWith(sufijo))?.texto ?? ''
     expect(texto('/eventos/bloques/seccion_proximos2.tsx')).toContain('href={catalogoEventos.rutas.calendario}')
-    expect(texto('/eventos/bloques/seccion_calendario11.tsx')).toContain('href={catalogoEventos.rutas.proximos}')
+    expect(texto('/eventos/bloques/tarjeta_proximos_eventos.tsx')).toContain('href={catalogoEventos.rutas.proximos}')
     expect(texto('/paginas/avisos/pagina_avisos_solicitudes.tsx')).toContain('catalogoAmigos.rutas.solicitudes')
     expect(texto('/paginas/amigos/pagina_amigos_todos.tsx')).toContain('ruta={catalogoAmigos.rutas.sugerencias}')
-    expect(texto('/mensajeria/bloques/seccion_reuniones_programadas.tsx')).toContain('catalogoMensajeria.rutas.videollamada_en_curso')
+    expect(texto('/mensajeria/bloques/fila_reunion_programada.tsx')).toContain('catalogoMensajeria.rutas.videollamada_en_curso')
   })
 
   it('la configuracion de los componentes compartidos nuevos vive en el catalogo y no en el TSX', () => {

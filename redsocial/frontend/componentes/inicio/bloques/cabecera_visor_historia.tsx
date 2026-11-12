@@ -21,7 +21,7 @@ function SegmentoProgreso({ estado, clave }: { estado: EstadoSegmentoHistoria; c
   )
 }
 
-export function CabeceraVisorHistoria({ historia, segmentos, propia, onEliminar }: CabeceraVisorHistoriaProps) {
+export function CabeceraReproductorHistoria({ historia, segmentos, propia, onEliminar }: CabeceraVisorHistoriaProps) {
   return (
     <div className={clases.cabecera_visor}>
       <ul aria-label={textos.etiqueta_progreso} className={clases.progreso}>

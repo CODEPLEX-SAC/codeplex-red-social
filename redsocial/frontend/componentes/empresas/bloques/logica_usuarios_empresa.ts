@@ -1,5 +1,6 @@
+import { contieneTexto } from '../../compartido/interfaz/fuente_busqueda_local'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
-import type { CriteriosUsuariosEmpresa, DatosNuevoUsuario, OpcionMenuUsuarioEmpresa } from '@/tipos/empresas/contrato_usuarios_empresa'
+import type { CriteriosUsuariosEmpresa, DatosNuevoUsuario, FiltrosBusquedaUsuariosEmpresa, OpcionMenuUsuarioEmpresa } from '@/tipos/empresas/contrato_usuarios_empresa'
 import type { Empresa } from '@/tipos/empresas/modelo_empresas'
 import type { EstadoUsuarioEmpresa, RolUsuarioEmpresa, UsuarioBaseEmpresa, UsuarioEmpresa } from '@/tipos/empresas/modelo_usuarios_empresa'
 
@@ -21,14 +22,18 @@ export function armarUsuarios(empresa: Empresa, base: UsuarioBaseEmpresa[]): Usu
   }))
 }
 
+export function coincideUsuario(usuario: UsuarioEmpresa, consulta: string) {
+  return [usuario.nombre, usuario.correo].some((campo) => contieneTexto(campo, consulta))
+}
+
+export function admiteUsuario(usuario: UsuarioEmpresa, criterios: FiltrosBusquedaUsuariosEmpresa) {
+  const rolAdmitido = criterios.rol === TODOS_LOS_ROLES || ETIQUETAS_ROL[usuario.rol] === criterios.rol
+  const estadoAdmitido = criterios.estado === TODOS_LOS_ESTADOS || ETIQUETAS_ESTADO[usuario.estado] === criterios.estado
+  return rolAdmitido && estadoAdmitido
+}
+
 export function filtrarUsuarios(usuarios: UsuarioEmpresa[], criterios: CriteriosUsuariosEmpresa) {
-  const termino = criterios.busqueda.trim().toLowerCase()
-  return usuarios.filter(
-    (usuario) =>
-      [usuario.nombre, usuario.correo, ETIQUETAS_ROL[usuario.rol]].some((campo) => campo.toLowerCase().includes(termino)) &&
-      (criterios.rol === TODOS_LOS_ROLES || ETIQUETAS_ROL[usuario.rol] === criterios.rol) &&
-      (criterios.estado === TODOS_LOS_ESTADOS || ETIQUETAS_ESTADO[usuario.estado] === criterios.estado),
-  )
+  return usuarios.filter((usuario) => coincideUsuario(usuario, criterios.busqueda) && admiteUsuario(usuario, criterios))
 }
 
 export function usuarioEditadoValido(usuario: UsuarioEmpresa) {

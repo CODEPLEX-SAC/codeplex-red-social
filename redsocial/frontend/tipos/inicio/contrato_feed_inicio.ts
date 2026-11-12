@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { ElementoFeed, EstadisticasActividad, OpcionVotable, OrigenCompartido, PestanaFeed, ComentarioUtil, PublicacionCompartidaInicio, PublicacionInicio, PublicacionTextoInicio } from './modelo_inicio'
+import type { ElementoFeed, OpcionVotable, OrigenCompartido, PestanaFeed, ComentarioUtil, PublicacionCompartidaInicio, PublicacionInicio, PublicacionTextoInicio } from './modelo_inicio'
 import type { MedioLocalPublicacion, TipoPublicacion } from './contrato_crear_publicacion'
 import type { ComentarioPublicacion, InteraccionPublicacion } from './contrato_interacciones_publicacion'
 import type { ReaccionesPorTipo } from './contrato_reacciones'
@@ -47,10 +47,6 @@ export interface SeccionFeedInicioProps {
   compartidaDemostracion: PublicacionCompartidaInicio
 }
 
-export interface EstadisticasActividadInicioProps {
-  estadisticas: EstadisticasActividad
-}
-
 export interface CuerpoPublicacionProps {
   publicacion: PublicacionTextoInicio
   onVotar: (opcionId: string) => void
@@ -88,4 +84,9 @@ export interface MensajesFlotantesInicioProps {
   onAbrirConversacion: (id: string) => void
   onAmpliar: (id: string | null) => void
   renderHilo: (id: string, volver: () => void) => ReactNode
+}
+
+export interface FilaConversacionFlotanteProps {
+  conversacion: ConversacionFlotanteInicio
+  alAbrir: (id: string) => void
 }

@@ -1,43 +1,26 @@
-import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, MensajeVacio } from '../../componentes/compartido'
+import { EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, MensajeVacio, MensajeEstadoBusqueda } from '../../componentes/compartido'
 import { useRef, useState } from 'react'
-import { PestanasEventos, ModalCrearEvento, DetalleEvento, SeccionParaTi, BloqueBuscar, SeccionProximos2, BloqueCategoria, SinEventosUbicacion, ResultadosFiltroFecha, SeccionDestacados2, usarFiltrosEventos, filtrarEventosPorCategoria } from '../../componentes/eventos'
-import { RESULTADOS_FILTRO_FECHA, DESTACADOS, PROXIMOS, PROXIMOS_LATERAL_PARA_TI as PROXIMOS_LATERAL, CATEGORIAS_LATERAL_PARA_TI as CATEGORIAS_LATERAL, CATEGORIAS_FILTRO_PARA_TI, CIUDADES_FILTRO_PARA_TI, MARCADORES_MAPA_PARA_TI, CIUDADES_CON_EVENTOS } from '../../rutas/eventos/rutas_eventos'
+import { PestanasEventos, ModalCrearEvento, DetalleEvento, SeccionParaTi, BloqueBuscar, SeccionProximos2, BloqueCategoria, SinEventosUbicacion, ResultadosFiltroFecha, SeccionDestacados2, usarFiltrosEventos, usarEventosParaTi } from '../../componentes/eventos'
+import { DATOS_EXPLORAR_EVENTOS, BUSQUEDA_EVENTOS_PARA_TI, PROXIMOS, PROXIMOS_LATERAL_PARA_TI as PROXIMOS_LATERAL, CATEGORIAS_LATERAL_PARA_TI as CATEGORIAS_LATERAL } from '../../rutas/eventos/rutas_eventos'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 
 export function PaginaEventosParaTi() {
-  const [indiceDestacado, setIndiceDestacado] = useState(0)
   const [detalleAbierto, setDetalleAbierto] = useState(false)
   const [creandoEvento, setCreandoEvento] = useState(false)
-  const {
-    filtroFechaAbierto,
-    setFiltroFechaAbierto,
-    filtroFecha,
-    setFiltroFecha,
-    filtroCategoriaAbierto,
-    setFiltroCategoriaAbierto,
-    categoriasSeleccionadas,
-    setCategoriasSeleccionadas,
-    filtroUbicacionAbierto,
-    setFiltroUbicacionAbierto,
-    filtroUbicacion,
-    setFiltroUbicacion,
-  } = usarFiltrosEventos()
+  const filtros = usarFiltrosEventos()
+  const { filtroFecha, filtroUbicacion } = filtros
   const pistaProximosRef = useRef<HTMLDivElement>(null)
-
-  function alCambiarDestacado(direccion: -1 | 1) {
-    setIndiceDestacado((actual) => (Math.min(actual, destacadosVisibles.length - 1) + direccion + destacadosVisibles.length) % destacadosVisibles.length)
-  }
+  const { ubicacion, setUbicacion, busquedaEvento, estadoParaTi, destacadosVisibles, proximosVisibles, indiceVisible, destacado, setIndiceDestacado, alCambiarDestacado } = usarEventosParaTi({
+    configuracionBusqueda: BUSQUEDA_EVENTOS_PARA_TI,
+    proximos: PROXIMOS,
+    categoriasSeleccionadas: filtros.categoriasSeleccionadas,
+  })
 
   function alDesplazarProximos(direccion: -1 | 1) {
     const pista = pistaProximosRef.current
     if (!pista) return
     pista.scrollBy({ left: direccion * pista.clientWidth * 0.9, behavior: catalogoEventos.claves.desplazamiento_suave as ScrollBehavior })
   }
-
-  const destacadosVisibles = filtrarEventosPorCategoria(DESTACADOS, categoriasSeleccionadas)
-  const proximosVisibles = filtrarEventosPorCategoria(PROXIMOS, categoriasSeleccionadas)
-  const indiceVisible = Math.min(indiceDestacado, destacadosVisibles.length - 1)
-  const destacado = destacadosVisibles[indiceVisible]
 
   function cerrarCreacion() {
     setCreandoEvento(false)
@@ -48,15 +31,15 @@ export function PaginaEventosParaTi() {
   }
 
   function abrirFiltroUbicacion() {
-    setFiltroUbicacionAbierto(true)
+    filtros.setFiltroUbicacionAbierto(true)
   }
 
   function quitarFiltroUbicacion() {
-    setFiltroUbicacion(null)
+    filtros.setFiltroUbicacion(null)
   }
 
   function quitarFiltroFecha() {
-    setFiltroFecha(null)
+    filtros.setFiltroFecha(null)
   }
 
   return (
@@ -66,7 +49,7 @@ export function PaginaEventosParaTi() {
           <section>
             <SeccionParaTi setCreandoEvento={setCreandoEvento} />
 
-            <BloqueBuscar />
+            <BloqueBuscar evento={busquedaEvento.texto} ubicacion={ubicacion} alCambiarEvento={busquedaEvento.cambiarTexto} alCambiarUbicacion={setUbicacion} />
 
             <PestanasEventos activa={catalogoEventos.claves.pestanas.para_ti} insigniaInvitaciones={{ valor: 7, estilo: catalogoEventos.claves.insignia.pill }} />
 
@@ -76,32 +59,18 @@ export function PaginaEventosParaTi() {
             ) : (
               <>
               <BloqueCategoria
-                datos={{
-                  setFiltroFechaAbierto,
-                  filtroFechaAbierto,
-                  filtroFecha,
-                  setFiltroFecha,
-                  setFiltroCategoriaAbierto,
-                  filtroCategoriaAbierto,
-                  categoriasSeleccionadas,
-                  setCategoriasSeleccionadas,
-                  CATEGORIAS_FILTRO_PARA_TI,
-                  setFiltroUbicacionAbierto,
-                  filtroUbicacionAbierto,
-                  filtroUbicacion,
-                  setFiltroUbicacion,
-                  CIUDADES_FILTRO_PARA_TI,
-                  MARCADORES_MAPA_PARA_TI,
-                }}
+                datos={{ ...filtros, ...DATOS_EXPLORAR_EVENTOS }}
               />
 
-              {filtroUbicacion !== null && !CIUDADES_CON_EVENTOS.includes(filtroUbicacion) ? (
+              {filtroUbicacion !== null && !DATOS_EXPLORAR_EVENTOS.CIUDADES_CON_EVENTOS.includes(filtroUbicacion) ? (
                 <SinEventosUbicacion ciudad={filtroUbicacion} onCambiar={abrirFiltroUbicacion} onVerTodos={quitarFiltroUbicacion} />
               ) : filtroFecha !== null ? (
-                <ResultadosFiltroFecha filtro={filtroFecha} resultados={RESULTADOS_FILTRO_FECHA} onExplorar={quitarFiltroFecha} />
+                <ResultadosFiltroFecha filtro={filtroFecha} resultados={DATOS_EXPLORAR_EVENTOS.RESULTADOS_FILTRO_FECHA} onExplorar={quitarFiltroFecha} />
               ) : destacado === undefined && proximosVisibles.length === 0 ? (
                 <MensajeVacio texto={catalogoEventos.mensajes.sin_eventos} className="py-10" />
               ) : (
+                <>
+                <MensajeEstadoBusqueda estado={estadoParaTi} error={busquedaEvento.error} className="mb-5" />
                 <SeccionDestacados2
                   destacado={destacado}
                   alCambiarDestacado={alCambiarDestacado}
@@ -113,6 +82,7 @@ export function PaginaEventosParaTi() {
                   pistaProximosRef={pistaProximosRef}
                   PROXIMOS={proximosVisibles}
                 />
+                </>
               )}
                 </>
             )}

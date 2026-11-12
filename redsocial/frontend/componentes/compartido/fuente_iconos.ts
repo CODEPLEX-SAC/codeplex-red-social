@@ -12,8 +12,9 @@ export function asegurarFuenteLibreria() {
   enlace.id = CONFIGURACION_LIBRERIA.id_fuente
   enlace.rel = 'stylesheet'
   enlace.href = CONFIGURACION_LIBRERIA.url_fuente
-  enlace.onload = () => {
-    document.fonts.load(CONFIGURACION_LIBRERIA.fuente_carga).then(() => document.documentElement.classList.add(CONFIGURACION_LIBRERIA.clase_lista))
+  enlace.onload = async () => {
+    await document.fonts.load(CONFIGURACION_LIBRERIA.fuente_carga)
+    document.documentElement.classList.add(CONFIGURACION_LIBRERIA.clase_lista)
   }
   document.head.appendChild(enlace)
 }

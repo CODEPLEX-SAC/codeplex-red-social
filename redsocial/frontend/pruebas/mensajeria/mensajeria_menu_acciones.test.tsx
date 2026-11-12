@@ -1,5 +1,4 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { PanelConversacion, conversacionesConEtiqueta, etiquetaDeConversacion } from '@/componentes/mensajeria'
 import { PaginaMensajesTodos } from '@/paginas/mensajeria/pagina_mensajes_todos'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
@@ -150,7 +149,7 @@ describe('Fijar, desfijar y cerrar la franja', () => {
     expect(etiquetas(fijadoId)).toContain(textos.acciones.desfijar)
   })
 
-  it('fijar muestra el mensaje en la franja, cerrar solo la oculta y desfijar cambia el estado', () => {
+  it('fijar muestra el mensaje en la franja, sin botón para ocultarla, y desfijar cambia el estado', () => {
     render(<PaginaMensajesTodos />)
     abrir('Luis Rodríguez')
     expect(franja()).toBeNull()
@@ -159,9 +158,7 @@ describe('Fijar, desfijar y cerrar la franja', () => {
     expect(fila('conversacion-002').mensajeFijadoId).toBe(original.id)
     expect(franja()?.textContent).toContain(original.contenido)
 
-    fireEvent.click(panel().getByRole('button', { name: textos.cerrar_fijado }))
-    expect(franja()).toBeNull()
-    expect(fila('conversacion-002').mensajeFijadoId).toBe(original.id)
+    expect(panel().queryByRole('button', { name: /ocultar/i })).toBeNull()
     expect(hilo('conversacion-002')).toContain(original)
     expect(etiquetas(original.id)).toContain(textos.acciones.desfijar)
 

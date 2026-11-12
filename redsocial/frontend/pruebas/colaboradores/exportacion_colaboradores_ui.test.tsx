@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { Workbook } from 'exceljs'
-import { vi } from 'vitest'
 import { PaginaColaboradores } from '@/paginas/colaboradores/pagina_colaboradores'
 import { COLABORADORES } from '@/servicios/colaboradores/colaboradores'
 import catalogoColaboradores from '@/catalogos/capacidades/redsocial/colaboradores.json'

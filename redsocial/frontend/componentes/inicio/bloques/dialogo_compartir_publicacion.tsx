@@ -1,67 +1,36 @@
-import { useState } from 'react'
-import { imagenPerfilPedroRedSocial, imagenUsuarioPredeterminada } from '../../compartido'
-import { Icono } from '../../compartido/icono'
-import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
-import { Boton } from '../../compartido/interfaz/boton'
+import { MensajeEmergente } from '../../compartido/interfaz/aviso_emergente'
 import { Modal } from '../../compartido/interfaz/modal'
-import { usarSesionDemostracion } from '../../compartido/sesion/usar_sesion_demostracion'
-import { EditorPublicacion } from './editor_publicacion'
+import { CabeceraCompartir } from './cabecera_compartir'
+import { ContenidoPrincipalCompartir } from './contenido_principal_compartir'
+import { ListaDestinosCompartir } from './lista_destinos_compartir'
+import { RedactarCompartir } from './redactar_compartir'
+import { usarCompartirPublicacion } from './usar_compartir_publicacion'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
 import type { DialogoCompartirPublicacionProps } from '@/tipos/inicio/contrato_interacciones_publicacion'
 
 const textos = catalogoInicio.publicacion.compartir
 
-export function DialogoCompartirPublicacion({ nombre, texto, onCompartir, onCerrar }: DialogoCompartirPublicacionProps) {
-  const { usuario } = usarSesionDemostracion()
-  const [compartida, setCompartida] = useState(false)
-  const [comentario, setComentario] = useState('')
-
-  function confirmar() {
-    onCompartir(comentario.trim())
-    setCompartida(true)
+export function DialogoCompartirPublicacion({ nombre, texto, simple = false, titulo = textos.titulo, onCompartir, onCerrar }: DialogoCompartirPublicacionProps) {
+  const compartir = usarCompartirPublicacion({ nombre, texto, onCompartir })
+  const enPrincipal = compartir.paso === 'principal'
+  const tituloPaso = { principal: titulo, grupos: textos.grupos.titulo, amigos: textos.amigos.titulo, redactar: textos.redactar.titulo }[compartir.paso]
+  const cerrarAviso = () => {
+    compartir.cerrarAviso()
+    if (compartir.terminado) onCerrar()
   }
 
   return (
-    <Modal titulo={textos.titulo} etiquetaCerrar={textos.cerrar} onCerrar={onCerrar} className="max-w-140 rounded-2xl max-600:h-full max-600:rounded-none">
-      {compartida ? (
-        <div role="status" className="flex flex-col items-center gap-3 px-6 py-10 text-center">
-          <div className="grid h-14 w-14 place-items-center rounded-full bg-primario-suave text-primario">
-            <Icono name="verificado" className="h-7 w-7" />
-          </div>
-          <strong className="text-nombre-entidad text-texto">{textos.exito_titulo}</strong>
-          <p className="m-0 text-subtitulo text-texto-suave">{textos.exito_mensaje}</p>
-          <Boton type="button" variant="primario" size="md" autoFocus onClick={onCerrar}>
-            {textos.listo}
-          </Boton>
-        </div>
-      ) : (
-        <>
-          <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto px-6 py-5">
-            <div className="flex items-center gap-3">
-              <AvatarUsuario tamano="md" imagen={imagenPerfilPedroRedSocial} />
-              <div className="min-w-0">
-                <strong className="block truncate text-nombre-entidad text-texto">{usuario?.usuario}</strong>
-                <span className="block text-auxiliar text-texto-suave">{textos.contexto}</span>
-              </div>
-            </div>
-            <div className="shrink-0">
-              <EditorPublicacion valor={comentario} marcador={textos.marcador} etiqueta={textos.etiqueta_campo} filasMinimas={4} onCambiar={setComentario} />
-            </div>
-            <blockquote aria-label={textos.etiqueta_vista_previa} className="m-0 flex shrink-0 flex-col gap-3 rounded-xl border border-borde bg-fondo p-4">
-              <div className="flex items-center gap-3">
-                <AvatarUsuario tamano="md" imagen={imagenUsuarioPredeterminada} />
-                <strong className="min-w-0 truncate text-nombre-entidad text-texto">{nombre}</strong>
-              </div>
-              <p className="m-0 line-clamp-6 whitespace-pre-wrap break-words text-subtitulo leading-texto text-texto">{texto}</p>
-            </blockquote>
-          </div>
-          <div className="flex justify-end border-t border-borde px-6 py-4 max-600:flex-col">
-            <Boton type="button" variant="primario" size="md" onClick={confirmar}>
-              {textos.confirmar}
-            </Boton>
-          </div>
-        </>
+    <>
+      {!compartir.terminado && (
+        <Modal titulo={tituloPaso} etiquetaCerrar={textos.cerrar} onCerrar={onCerrar} className="max-w-140 rounded-2xl max-600:h-full max-600:rounded-none" cabecera={<CabeceraCompartir titulo={tituloPaso} alVolver={enPrincipal ? undefined : compartir.volver} onCerrar={onCerrar} />}>
+          {enPrincipal && <ContenidoPrincipalCompartir comentario={compartir.comentario} simple={simple} alCambiarComentario={compartir.cambiarComentario} alElegir={compartir.elegirPrincipal} alCompartir={compartir.compartirEnHistoria} />}
+          {(compartir.paso === 'grupos' || compartir.paso === 'amigos') && <ListaDestinosCompartir tipo={compartir.paso === 'grupos' ? 'grupo' : 'amigo'} alElegir={compartir.elegirDestino} />}
+          {compartir.paso === 'redactar' && compartir.destino && (
+            <RedactarCompartir destino={compartir.destino} comentario={compartir.comentario} etiquetados={compartir.etiquetados} alCambiarComentario={compartir.cambiarComentario} alAlternarEtiqueta={compartir.alternarEtiqueta} alPublicar={compartir.publicar} />
+          )}
+        </Modal>
       )}
-    </Modal>
+      {compartir.aviso && <MensajeEmergente abierto variante={compartir.aviso.variante} mensaje={compartir.aviso.mensaje} alCerrar={cerrarAviso} />}
+    </>
   )
 }

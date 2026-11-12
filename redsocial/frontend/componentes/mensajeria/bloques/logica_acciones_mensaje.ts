@@ -1,6 +1,6 @@
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import { agregarMensajePropio, conCambioEn, extractoDe, puedeEditarMensaje } from './logica_mensajeria'
-import type { AccionesMensaje, EstadoMensajeria, Mensaje } from '@/tipos/mensajeria/contrato_mensajes'
+import type { AccionesMensaje, ContextoEscrituraMensaje, EstadoMensajeria, Mensaje, SolicitudReenvioMensaje } from '@/tipos/mensajeria/contrato_mensajes'
 
 const textos = catalogoMensajeria.conversacion
 
@@ -9,10 +9,10 @@ export function accionesDeMensaje(mensaje: Mensaje, usuarioId: string, ahora: Da
   return { responder: true, editar: puedeEditarMensaje(mensaje, usuarioId, ahora), reenviar: true, fijar: true, eliminar: propio }
 }
 
-export function reenviarMensaje(estado: EstadoMensajeria, origenId: string, mensajeId: string, destinoId: string, usuarioId: string, ahora: Date): EstadoMensajeria {
+export function reenviarMensaje(estado: EstadoMensajeria, { origenId, mensajeId, destinoId }: SolicitudReenvioMensaje, contexto: ContextoEscrituraMensaje): EstadoMensajeria {
   const original = (estado.hilos[origenId] ?? []).find((mensaje) => mensaje.id === mensajeId)
   if (!original || origenId === destinoId) return estado
-  return agregarMensajePropio(estado, destinoId, { contenido: original.contenido, adjunto: original.adjunto, reenviado: true }, usuarioId, ahora)
+  return agregarMensajePropio(estado, destinoId, { contenido: original.contenido, adjunto: original.adjunto, reenviado: true }, contexto)
 }
 
 export function alternarMensajeFijado(estado: EstadoMensajeria, conversacionId: string, mensajeId: string): EstadoMensajeria {

@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
 import { LienzoHistoria, borradorInicial, conElemento, conFondo, conMedio, conTexto } from '@/componentes/inicio'
 import catalogoInicio from '@/catalogos/capacidades/redsocial/inicio.json'
 

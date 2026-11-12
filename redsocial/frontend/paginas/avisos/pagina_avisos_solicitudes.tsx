@@ -2,12 +2,12 @@ import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
-import { BannerInformativo, BotonIcono, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
+import { BannerInformativo, Boton, Icono, MensajeVacio, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
-import { PestanasAvisos, FilaSolicitudAviso, PanelLateralSolicitudesAviso } from '../../componentes/avisos'
+import { PestanasNovedades, FilaNovedadSolicitud, PanelLateralSolicitudesNovedad } from '../../componentes/avisos'
 import { CONTEOS_AVISOS, SOLICITUDES_AMISTAD, SOLICITUDES_GRUPO, SOLICITUDES_EVENTO, SOLICITUDES_COLABORACION } from '../../rutas/avisos/rutas_avisos'
 
-export function PaginaAvisosSolicitudes() {
+export function PaginaNovedadesSolicitudes() {
   return (
     <EstructuraApp paginaActiva="avisos">
       <EstructuraTresColumnas
@@ -22,11 +22,10 @@ export function PaginaAvisosSolicitudes() {
                 <Boton type="button" variant="secundario" size="default" className="flex-none">
                   <Icono name="verificado" className="h-3.5 w-3.5" /> {catalogoAvisos.botones.marcar_todas_leidas}
                 </Boton>
-                <BotonIcono icono="puntos" type="button" aria-label={catalogoAvisos.botones.mas_opciones} variant="contorno" size="default" className="flex-none" />
               </div>
             </div>
 
-            <PestanasAvisos activa="solicitudes" conteos={CONTEOS_AVISOS} />
+            <PestanasNovedades activa="solicitudes" conteos={CONTEOS_AVISOS} />
 
             <BannerInformativo
               icono="campana"
@@ -45,15 +44,15 @@ export function PaginaAvisosSolicitudes() {
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_AMISTAD.map((s) => (
-                <FilaSolicitudAviso
+                <FilaNovedadSolicitud
                   key={s.id}
                   miniatura={{ tipo: 'avatar' }}
                   titulo={s.nombre}
                   lineaSecundaria={s.rol}
                   lineaTerciaria={s.comunes}
                   tiempo={s.tiempo}
-                  accionPrimaria={catalogoAvisos.botones.aceptar}
-                  accionSecundaria={catalogoAvisos.botones.eliminar}
+                  accionPrimaria="aceptar"
+                  accionSecundaria="eliminar"
                 />
               ))}
             </section>
@@ -66,15 +65,15 @@ export function PaginaAvisosSolicitudes() {
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_GRUPO.map((s) => (
-                <FilaSolicitudAviso
+                <FilaNovedadSolicitud
                   key={s.id}
                   miniatura={{ tipo: 'icono', icono: s.iconoMiniatura, color: s.colorMiniatura }}
                   titulo={s.nombreGrupo}
                   lineaSecundaria={s.miembros}
                   lineaTerciaria={<><strong className="font-titulo text-texto">{s.solicitanteNombre}</strong> {s.solicitanteTexto}</>}
                   tiempo={s.tiempo}
-                  accionPrimaria={catalogoAvisos.botones.aprobar}
-                  accionSecundaria={catalogoAvisos.botones.rechazar}
+                  accionPrimaria="aprobar"
+                  accionSecundaria="rechazar"
                 />
               ))}
             </section>
@@ -87,15 +86,15 @@ export function PaginaAvisosSolicitudes() {
             </div>
             <section className="mb-5 rounded-control border border-borde bg-white">
               {SOLICITUDES_EVENTO.map((s) => (
-                <FilaSolicitudAviso
+                <FilaNovedadSolicitud
                   key={s.id}
                   miniatura={{ tipo: 'calendario', dia: s.dia, mes: s.mes, color: s.colorMiniatura }}
                   titulo={s.nombreEvento}
                   lineaSecundaria={s.organizador}
                   lineaTerciaria={<><strong className="font-titulo text-texto">{s.solicitanteNombre}</strong> {s.solicitanteTexto}</>}
                   tiempo={s.tiempo}
-                  accionPrimaria={catalogoAvisos.botones.aprobar}
-                  accionSecundaria={catalogoAvisos.botones.rechazar}
+                  accionPrimaria="aprobar"
+                  accionSecundaria="rechazar"
                 />
               ))}
             </section>
@@ -110,7 +109,7 @@ export function PaginaAvisosSolicitudes() {
           </section>
         }
         publicidad={<ColumnaPublicidad />}
-        lateral={<PanelLateralSolicitudesAviso />}
+        lateral={<PanelLateralSolicitudesNovedad />}
       />
     </EstructuraApp>
   )

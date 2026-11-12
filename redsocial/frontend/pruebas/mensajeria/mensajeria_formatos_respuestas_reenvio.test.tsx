@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { beforeEach, describe, expect, it } from 'vitest'
 import { ACEPTA_DOCUMENTOS, ACEPTA_IMAGENES, clasificarArchivo, errorDeArchivo, formatoDeAdjunto, prepararAdjuntos } from '@/componentes/mensajeria'
 import { PaginaMensajesTodos } from '@/paginas/mensajeria/pagina_mensajes_todos'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'

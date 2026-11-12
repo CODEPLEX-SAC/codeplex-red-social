@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { PaginaAvisosSistema } from '@/paginas/avisos/pagina_avisos_sistema'
+import { PaginaNovedadesSistema } from '@/paginas/avisos/pagina_avisos_sistema'
 import { RUTAS } from '@/rutas/compartido/rutas'
 import catalogoAvisos from '../../catalogos/capacidades/redsocial/avisos.json'
 
@@ -13,7 +13,7 @@ describe('Notificaciones: pestanas y ruta de Sistema', () => {
   })
 
   it('la pagina de Sistema renderiza su estado vacio con la pestana activa', () => {
-    render(<PaginaAvisosSistema />)
+    render(<PaginaNovedadesSistema />)
     expect(screen.getByText(catalogoAvisos.mensajes.sin_notificaciones)).not.toBeNull()
     expect(screen.getByRole('tab', { name: /Sistema/, selected: true })).not.toBeNull()
   })

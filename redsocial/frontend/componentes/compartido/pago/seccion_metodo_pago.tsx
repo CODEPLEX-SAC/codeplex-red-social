@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Acordeon } from '../interfaz/acordeon'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { EncabezadoPasoPago } from './encabezado_paso_pago'
 import { PanelBilleteraPago } from './panel_billetera_pago'
 import { SeccionTarjetaPago } from './seccion_tarjeta_pago'
@@ -9,14 +9,17 @@ import type { usarFlujoPago } from './usar_flujo_pago'
 import type { ConfiguracionFlujoPago, ControlTarjetasPago, MetodoPagoId } from '@/tipos/compartido/contrato_flujo_pago'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 
+const clases = catalogoCompartido.flujo_pago.clases
+
 export function SeccionMetodoPago({ estado, tarjetas, configuracion, total, numero }: { estado: ReturnType<typeof usarFlujoPago>; tarjetas: ControlTarjetasPago; configuracion: ConfiguracionFlujoPago; total: string; numero: number }) {
   const textos = usarTextosPago().metodos
   const contenidos: Record<MetodoPagoId, ReactNode> = {
     tarjeta: <SeccionTarjetaPago estado={estado} tarjetas={tarjetas} avisoRenovacion={configuracion.avisoRenovacion} demostracion={configuracion.demostracion?.tarjetas} />,
     billetera: <PanelBilleteraPago billeteras={configuracion.billeteras} elegida={estado.billetera} total={total} alElegir={estado.elegirBilletera} />,
   }
+  const habilitados = new Set<string>(configuracion.metodos)
   const elementos = textos.opciones
-    .filter((opcion) => configuracion.metodos.includes(opcion.id as MetodoPagoId))
+    .filter((opcion) => habilitados.has(opcion.id))
     .map((opcion) => ({ id: opcion.id, titulo: opcion.titulo, icono: opcion.icono as IconName, contenido: contenidos[opcion.id as MetodoPagoId] }))
 
   function alCambiar(abiertos: string[]) {

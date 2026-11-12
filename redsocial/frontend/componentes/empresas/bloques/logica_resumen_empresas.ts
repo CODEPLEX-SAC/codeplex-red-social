@@ -1,8 +1,8 @@
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
-import { estadoModuloEmpresa } from './logica_suscripciones_empresas'
+import { estadoDeModulo, indexarSuscripciones, suscripcionDelModulo } from './logica_suscripciones_empresas'
 import { MODULOS_EMPRESA } from './modulos_empresa'
 import type { SuscripcionContratada } from '@/tipos/compartido/contrato_suscripciones'
-import type { ResumenEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
+import type { ModuloEmpresaCatalogo, ResumenEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
 import type { Empresa } from '@/tipos/empresas/modelo_empresas'
 
 const POSICION_MES = 1
@@ -27,14 +27,20 @@ export function contarAltasDelUltimoMes(empresas: Empresa[]) {
   return meses.filter((mes) => mes === ultimo).length
 }
 
+function contarEmpresasActivas(empresas: Empresa[], modulo: ModuloEmpresaCatalogo, suscripcion: SuscripcionContratada | undefined) {
+  return empresas.filter((empresa) => estadoDeModulo(empresa, modulo, suscripcion).activo).length
+}
+
 export function calcularResumenEmpresas(empresas: Empresa[], suscripciones: SuscripcionContratada[]): ResumenEmpresas {
   const total = empresas.length
+  const indice = indexarSuscripciones(suscripciones)
   return {
     total,
     nuevasMes: contarAltasDelUltimoMes(empresas),
     modulos: MODULOS_EMPRESA.map((modulo) => {
       const clave = modulo.clave
-      const cantidad = empresas.filter((empresa) => estadoModuloEmpresa(empresa, modulo, suscripciones).activo).length
+      const suscripcion = suscripcionDelModulo(modulo, indice)
+      const cantidad = contarEmpresasActivas(empresas, modulo, suscripcion)
       return { clave, cantidad, porcentaje: total === 0 ? 0 : Math.round((cantidad / total) * CIEN) }
     }),
   }

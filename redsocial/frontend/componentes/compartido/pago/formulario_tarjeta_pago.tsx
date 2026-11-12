@@ -1,8 +1,10 @@
 import { CampoEtiquetado } from '../interfaz/campo_etiquetado'
 import { CampoTexto } from '../interfaz/campo_texto'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { usarTextosPago } from './usar_textos_pago'
 import type { FormularioTarjetaPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function FormularioTarjetaPagoCampos({ formulario }: { formulario: FormularioTarjetaPago }) {
   const { campos } = usarTextosPago()

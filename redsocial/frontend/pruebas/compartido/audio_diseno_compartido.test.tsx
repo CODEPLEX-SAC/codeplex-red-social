@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
 import { limiteAlcanzado, AudioGrabando, AudioVistaPrevia, OndaAudio, ReproductorAudio, barrasDeOnda, claseDeAltura, completarPicos, duracionLegible, picosPorDefecto, resumirNiveles, ventanaDeNiveles } from '@/componentes/compartido'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 

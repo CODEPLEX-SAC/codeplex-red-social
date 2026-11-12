@@ -1,4 +1,4 @@
-import { MarcoPanelFiltro } from '../../compartido/interfaz/filtro_desplegable'
+import { MarcoPanelFiltro } from '../../compartido/interfaz/marco_panel_filtro'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { Boton } from '../../compartido/interfaz/boton'

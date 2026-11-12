@@ -1,7 +1,7 @@
 import { useState, useSyncExternalStore } from 'react'
 import { BloqueAnuncio, ColumnaPublicidad, ContactosPanel, EstructuraApp, EstructuraTresColumnas, MensajeVacio, clasesBoton, usarSesionDemostracion } from '../../componentes/compartido'
 import { usarPublicacionesInicio } from '../../componentes/inicio'
-import { CabeceraPerfil, ModalEditarPerfil, PestanaAmigosPerfil, PestanaDocumentosPerfil, PestanaExperienciaPerfil, PestanaMetricasPerfil, PestanaRedSocialPerfil, PestanaResumenPerfil, PestanasPerfil, usarRelacionPerfil } from '../../componentes/perfil'
+import { CabeceraPerfil, ModalEditarPerfil, PestanaDocumentosPerfil, PestanaExperienciaPerfil, PestanaMetricasPerfil, PestanaRedSocialPerfil, PestanaResumenPerfil, PestanasPerfil, usarRelacionPerfil } from '../../componentes/perfil'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import catalogoPerfil from '../../catalogos/capacidades/redsocial/perfil.json'
 import { usarParametroDeRuta } from '../../rutas/compartido/navegacion'
@@ -40,13 +40,12 @@ function ContenidoPerfil({ perfil, propioId }: { perfil: PerfilUsuario; propioId
       <PestanasPerfil activa={pestana} onCambiar={setPestana} />
       <div role="tabpanel">
         {pestana === 'red_social' && (
-          <PestanaRedSocialPerfil perfil={perfil} amigos={amigos} publicaciones={publicaciones} acciones={acciones} propio={esPropio} onPublicar={publicar} onVerAmigos={() => setPestana('amigos')} onIrA={setPestana} onGuardar={guardarEdicion} />
+          <PestanaRedSocialPerfil perfil={perfil} amigos={amigos} publicaciones={publicaciones} acciones={acciones} propio={esPropio} onPublicar={publicar} onIrA={setPestana} onGuardar={guardarEdicion} />
         )}
         {pestana === 'resumen' && <PestanaResumenPerfil perfil={perfil} propio={esPropio} onGuardar={guardarEdicion} onIrA={setPestana} />}
         {pestana === 'experiencia' && <PestanaExperienciaPerfil perfil={perfil} propio={esPropio} onGuardar={guardarEdicion} />}
         {pestana === 'documentos' && <PestanaDocumentosPerfil perfil={perfil} propio={esPropio} onGuardar={guardarEdicion} />}
         {pestana === 'metricas' && <PestanaMetricasPerfil perfil={perfil} propio={esPropio} publicaciones={publicaciones} metricas={METRICAS_DEMOSTRACION} onIrA={setPestana} />}
-        {pestana === 'amigos' && <PestanaAmigosPerfil amigos={amigos} />}
       </div>
     </section>
   )

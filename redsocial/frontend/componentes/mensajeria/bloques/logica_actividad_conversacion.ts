@@ -11,11 +11,8 @@ export function tipoDeConversacion(conversacion: Conversacion): TipoConversacion
 
 export function identificadoresDe(conversacion: Conversacion): IdentificadoresConversacion {
   const grupal = tipoDeConversacion(conversacion) === 'grupal'
-  return {
-    conversationId: conversacion.id,
-    participantId: grupal ? null : (conversacion.participantes[0] ?? null),
-    groupId: grupal ? (conversacion.grupoId ?? null) : null,
-  }
+  if (grupal) return { conversationId: conversacion.id, participantId: null, groupId: conversacion.grupoId ?? null }
+  return { conversationId: conversacion.id, participantId: conversacion.participantes[0] ?? null, groupId: null }
 }
 
 function vistaPreviaDeHistorias(nombre: string, cantidad: number | undefined): string {

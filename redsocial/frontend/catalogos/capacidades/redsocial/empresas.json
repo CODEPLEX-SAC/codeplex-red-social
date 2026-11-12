@@ -350,7 +350,7 @@
       "email": "Correo electrónico",
       "web": "Página web",
       "aplicativos": "Aplicativos asignados",
-    "tipo_plan_cuenta": "Tipo de plan de cuenta"
+      "tipo_plan_cuenta": "Tipo de plan de cuenta"
     },
     "clases": {
       "valor": "min-w-0 flex-1 break-words rounded-lg bg-fondo px-3 py-2 text-subtitulo text-texto",
@@ -371,7 +371,7 @@
   "usuarios_empresa": {
     "titulo": "Usuarios de la empresa",
     "subtitulo": "Personas que tienen acceso a esta empresa en la plataforma.",
-    "placeholder_busqueda": "Buscar por nombre, correo o rol...",
+    "placeholder_busqueda": "Buscar por nombre o correo…",
     "etiquetas": {
       "busqueda": "Buscar usuarios",
       "rol": "Filtrar por rol",
@@ -497,9 +497,9 @@
   "historial_empresa": {
     "titulo": "Historial de actividades",
     "subtitulo": "Registro de cambios y acciones realizadas en esta empresa.",
-    "placeholder_busqueda": "Buscar por acción, usuario o detalle...",
+    "placeholder_busqueda": "Buscar por usuario…",
     "etiquetas": {
-      "busqueda": "Buscar en el historial",
+      "busqueda": "Buscar por usuario en el historial",
       "desde": "Desde",
       "hasta": "Hasta",
       "tipo": "Filtrar por tipo",
@@ -820,5 +820,8 @@
       "icono": "h-8 w-8",
       "botones": "mt-2 flex w-full gap-3 max-480:flex-col-reverse"
     }
+  },
+  "claves_modal": {
+    "separador": ""
   }
 }

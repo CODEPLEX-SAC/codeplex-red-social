@@ -1,3 +1,5 @@
+import type { FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
+
 export interface CiudadFiltroEvento {
   nombre: string
   conteo: number
@@ -17,6 +19,8 @@ export interface PanelFiltroUbicacionProps {
   id?: string
   ciudades: CiudadFiltroEvento[]
   marcadores: MarcadorMapaEvento[]
+  fuenteCiudades?: FuenteBusqueda<CiudadFiltroEvento>
+  fuenteLugares?: FuenteBusqueda<MarcadorMapaEvento>
   ciudadActual: string | null
   onAplicar: (ciudad: string | null) => void
   onCerrar: () => void

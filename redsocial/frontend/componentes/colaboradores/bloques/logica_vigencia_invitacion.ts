@@ -15,11 +15,16 @@ export function duracionVigencia(inicio: Dayjs | null, vencimiento: Dayjs | null
   return { unidad: 'dia', cantidad: Math.max(1, vencimiento.diff(inicio, 'day')) }
 }
 
+function formatear(fecha: { format: (formato: string) => string } | null, formato: string) {
+  if (!fecha) return ''
+  return fecha.format(formato)
+}
+
 export function fechasDeVigencia({ inicio, vencimiento }: EstadoVigenciaInvitacion) {
   const completa = inicio !== null && vencimiento !== null
   return {
-    inicio: inicio ? inicio.format(formatos.formato_resumen) : '',
-    vencimiento: vencimiento ? vencimiento.format(formatos.formato_resumen) : '',
+    inicio: formatear(inicio, formatos.formato_resumen),
+    vencimiento: formatear(vencimiento, formatos.formato_resumen),
     rango: completa ? `${inicio.format(formatos.formato_fecha)} ${CONECTOR} ${vencimiento.format(formatos.formato_fecha)}` : '',
   }
 }

@@ -1,9 +1,14 @@
 import type { ElementoFeed } from '@/tipos/inicio/modelo_inicio'
 import type { FiltroPreguntas, PerfilUsuario } from '@/tipos/perfil/modelo_perfil'
 
+function fotosDeElemento(elemento: ElementoFeed) {
+  if (elemento.clase !== 'texto') return []
+  return elemento.medios.filter((medio) => !medio.esVideo).map((medio) => ({ id: medio.id, url: medio.url }))
+}
+
 export function fotosDe(publicaciones: ElementoFeed[], perfil: PerfilUsuario) {
   const propia = perfil.avatar ? [{ id: `${perfil.id}-avatar`, url: perfil.avatar }] : []
-  return [...propia, ...publicaciones.flatMap((elemento) => (elemento.clase === 'texto' ? elemento.medios.filter((medio) => !medio.esVideo).map((medio) => ({ id: medio.id, url: medio.url })) : []))]
+  return [...propia, ...publicaciones.flatMap(fotosDeElemento)]
 }
 
 export function preguntasDe(publicaciones: ElementoFeed[]) {

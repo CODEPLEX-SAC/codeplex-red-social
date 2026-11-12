@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { CabeceraConversacion } from './cabecera_conversacion'
 import { ZonaComposicion } from './zona_composicion'
 import { FranjaMensajeFijado } from './franja_mensaje_fijado'
@@ -17,7 +17,7 @@ const textos = catalogoMensajeria.conversacion
 export function PanelConversacion({ conversacion, mensajes, participantes, usuarioId, ahora, conversaciones, onEnviar, onAdjuntar, onEditar, onEliminar, onReenviar, onFijar, onVolver, oculta, compacto = false }: PanelConversacionProps) {
   const [porEliminar, setPorEliminar] = useState<string | null>(null)
   const [porReenviar, setPorReenviar] = useState<string | null>(null)
-  const [franjaOculta, setFranjaOculta] = useState<string | null>(null)
+  const panel = useRef<HTMLElement>(null)
   const contexto = usarContextoComposicion(mensajes, usuarioId, ahora)
   const fijado = mensajes.find((mensaje) => mensaje.id === conversacion.mensajeFijadoId)
 
@@ -33,9 +33,8 @@ export function PanelConversacion({ conversacion, mensajes, participantes, usuar
     contexto.cancelarRespuesta()
   }
 
-  function alternarFijado(mensajeId: string) {
-    setFranjaOculta(null)
-    onFijar(mensajeId)
+  function irAlMensaje(mensajeId: string) {
+    panel.current?.querySelector<HTMLElement>(catalogoMensajeria.selectores.mensaje.replace(':id', mensajeId))?.scrollIntoView?.({ block: 'center' })
   }
 
   function confirmarEliminacion() {
@@ -49,10 +48,10 @@ export function PanelConversacion({ conversacion, mensajes, participantes, usuar
   }
 
   return (
-    <section data-zona="panel-conversacion" className={`${clases.contenedor} ${oculta ? clases.oculta : ''}`}>
+    <section ref={panel} data-zona="panel-conversacion" className={`${clases.contenedor} ${oculta ? clases.oculta : ''}`}>
       <CabeceraConversacion conversacion={conversacion} compacto={compacto} onVolver={onVolver} />
 
-      {fijado && franjaOculta !== fijado.id ? <FranjaMensajeFijado mensaje={fijado} onCerrar={() => setFranjaOculta(fijado.id)} /> : <div />}
+      {fijado ? <FranjaMensajeFijado mensaje={fijado} onIrAlMensaje={irAlMensaje} /> : <div />}
 
       <HiloMensajes
         conversacion={conversacion}
@@ -61,7 +60,7 @@ export function PanelConversacion({ conversacion, mensajes, participantes, usuar
         conversaciones={conversaciones}
         usuarioId={usuarioId}
         ahora={ahora}
-        acciones={{ onResponder: contexto.iniciarRespuesta, onEditar: contexto.iniciarEdicion, onReenviar: setPorReenviar, onFijar: alternarFijado, onEliminar: setPorEliminar }}
+        acciones={{ onResponder: contexto.iniciarRespuesta, onEditar: contexto.iniciarEdicion, onReenviar: setPorReenviar, onFijar, onEliminar: setPorEliminar }}
       />
 
       <ZonaComposicion

@@ -6,7 +6,7 @@ const DOCE_HORAS = 12
 
 export function formatearHora(fecha: Date): string {
   const horas = fecha.getHours()
-  const hora12 = horas % DOCE_HORAS === 0 ? DOCE_HORAS : horas % DOCE_HORAS
+  const hora12 = horas % DOCE_HORAS || DOCE_HORAS
   const meridiano = horas >= DOCE_HORAS ? textos.meridiano.pm : textos.meridiano.am
   const formato = textos.formato_hora
   const reloj = [hora12, fecha.getMinutes()].map((valor) => String(valor).padStart(2, formato.relleno)).join(formato.separador)

@@ -4,13 +4,12 @@ import { aplicarMejora, crearCompras, crearComprasIniciales, crearItem, reemplaz
 import { diasPrueba, fechaCorta } from './logica_pago_planes'
 import { usarPerfilesPago } from '../../compartido/pago/usar_perfiles_pago'
 import { usarTarjetasPago } from '../../compartido/pago/usar_tarjetas_pago'
-import type { CompraRealizada, ItemCarrito, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
-import type { RepositorioPerfilesPago } from '@/tipos/compartido/contrato_flujo_pago'
-import type { RepositorioMetodosPago, ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
-import type { ConfiguracionPlanes, SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
+import type { CompraRealizada, ConfiguracionCarritoMarketplace, ItemCarrito, ServicioAdicional } from '@/tipos/marketplace/modelo_carrito'
+import type { ResumenActivacion } from '@/tipos/marketplace/modelo_pago'
+import type { SeleccionPlan } from '@/tipos/marketplace/modelo_planes'
 
 
-export function usarCarritoMarketplace(aplicaciones: Record<string, ConfiguracionPlanes>, repositorio: RepositorioMetodosPago, repositorioPerfiles: RepositorioPerfilesPago, iniciales: SeleccionPlan[] = []) {
+export function usarCarritoMarketplace({ aplicaciones, repositorioMetodosPago, repositorioPerfiles, iniciales = [] }: ConfiguracionCarritoMarketplace) {
   const [planesAbiertos, setPlanesAbiertos] = useState<string | null>(null)
   const [carritoAbierto, setCarritoAbierto] = useState(false)
   const [pagoAbierto, setPagoAbierto] = useState(false)
@@ -18,9 +17,9 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
   const [comprasAbiertas, setComprasAbiertas] = useState(false)
   const [porDesinstalar, setPorDesinstalar] = useState<string | null>(null)
   const [items, setItems] = useState<ItemCarrito[]>([])
-  const [compras, setCompras] = useState<CompraRealizada[]>(() => crearComprasIniciales(aplicaciones, iniciales, fechaCorta(), fechaCorta(1), diasPrueba()))
+  const [compras, setCompras] = useState<CompraRealizada[]>(() => crearComprasIniciales(aplicaciones, iniciales, { fecha: fechaCorta(), vence: fechaCorta(1), dias: diasPrueba() }))
   const [servicios, setServicios] = useState<ServicioAdicional[]>([])
-  const metodosPago = usarTarjetasPago(repositorio)
+  const metodosPago = usarTarjetasPago(repositorioMetodosPago)
   const perfilesPago = usarPerfilesPago(repositorioPerfiles)
 
   function agregar(seleccion: SeleccionPlan) {
@@ -50,7 +49,8 @@ export function usarCarritoMarketplace(aplicaciones: Record<string, Configuracio
       return
     }
     const nuevas = crearCompras(items, fechaCorta(), fechaCorta(1), diasPrueba())
-    setCompras((previas) => [...nuevas, ...previas.filter((c) => !nuevas.some((n) => n.aplicacion === c.aplicacion))])
+    const aplicacionesNuevas = new Set(nuevas.map((nueva) => nueva.aplicacion))
+    setCompras((previas) => [...nuevas, ...previas.filter((c) => !aplicacionesNuevas.has(c.aplicacion))])
     if (resumen.vip) nuevas.forEach((c) => contratarVip(c.aplicacion, c.nombre))
     setItems([])
   }

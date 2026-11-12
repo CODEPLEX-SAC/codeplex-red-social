@@ -10,6 +10,11 @@ const textos = catalogoMarketplace.pago.exito
 const mejora = catalogoMarketplace.pago.mejora.exito
 const separadores = catalogoCompartido.flujo_pago
 
+function detalleDelPago(esMejora: boolean | undefined, cantidad: number) {
+  if (esMejora) return mejora.detalle
+  return cantidad === 1 ? textos.detalle : textos.detalle_varias
+}
+
 function Fila({ etiqueta, valor }: { etiqueta: string; valor: string }) {
   return (
     <div className="flex items-center justify-between gap-3 py-1.5 text-auxiliar">
@@ -28,7 +33,7 @@ export function ExitoPagoPlanes({ items, resumen, alVolver }: { items: ItemCarri
       </span>
       <div className="text-center">
         <h3 className="m-0 text-titulo-banner text-texto">{resumen.mejora ? mejora.titulo : textos.titulo}</h3>
-        <p className="m-0 text-cuerpo text-texto-suave">{resumen.mejora ? mejora.detalle : items.length === 1 ? textos.detalle : textos.detalle_varias}</p>
+        <p className="m-0 text-cuerpo text-texto-suave">{detalleDelPago(resumen.mejora, items.length)}</p>
       </div>
       <div className="w-full max-w-100 rounded-xl border border-borde bg-fondo px-4 py-2">
         {items.map((item) => (

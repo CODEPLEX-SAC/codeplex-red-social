@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { resumirNiveles } from './logica_audio'
+import { liberarGrabacion, resumirNiveles } from './logica_audio'
 import { usarCronometroAudio } from './usar_cronometro_audio'
 import { usarNivelesAudio } from './usar_niveles_audio'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
@@ -26,7 +26,7 @@ export function usarGrabacionAudio(mensajes: MensajesGrabacionAudio) {
   }
 
   function soltarBorrador() {
-    if (pendiente.current) URL.revokeObjectURL(pendiente.current.url)
+    liberarGrabacion(pendiente.current)
     pendiente.current = null
     setBorrador(null)
   }
@@ -94,8 +94,9 @@ export function usarGrabacionAudio(mensajes: MensajesGrabacionAudio) {
     return actual
   }
 
-  function entregar(alTerminar: (grabacion: GrabacionAudio) => void) {
-    void finalizar().then((grabacion) => grabacion && alTerminar(grabacion))
+  async function entregar(alTerminar: (grabacion: GrabacionAudio) => void) {
+    const grabacion = await finalizar()
+    if (grabacion) alTerminar(grabacion)
   }
 
   return { grabando, segundos: cronometro.segundos, error, borrador, niveles: medidor.niveles, iniciar, cancelar, detener: () => detener(), entregar, descartar: soltarBorrador, tomarBorrador }

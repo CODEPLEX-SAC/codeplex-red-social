@@ -1,5 +1,3 @@
-import { Workbook } from 'exceljs'
-import type { Worksheet } from 'exceljs'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import type { ReporteColaboradores } from '@/tipos/colaboradores/contrato_gestion_colaboradores'
 
@@ -14,7 +12,7 @@ function bordeFino() {
   return { top: borde, left: borde, bottom: borde, right: borde }
 }
 
-function escribirLineaCombinada(hoja: Worksheet, numero: number, texto: string, columnas: number, negrita: boolean, tamano: number) {
+function escribirLineaCombinada(hoja: import('exceljs').Worksheet, numero: number, texto: string, columnas: number, negrita: boolean, tamano: number) {
   hoja.mergeCells(numero, 1, numero, columnas)
   const celda = hoja.getCell(numero, 1)
   celda.value = texto
@@ -22,7 +20,7 @@ function escribirLineaCombinada(hoja: Worksheet, numero: number, texto: string, 
   celda.alignment = { vertical: 'top', wrapText: true }
 }
 
-function escribirEncabezados(hoja: Worksheet, numero: number, reporte: ReporteColaboradores) {
+function escribirEncabezados(hoja: import('exceljs').Worksheet, numero: number, reporte: ReporteColaboradores) {
   const fila = hoja.getRow(numero)
   reporte.columnas.forEach((columna, indice) => {
     const celda = fila.getCell(indice + 1)
@@ -34,7 +32,7 @@ function escribirEncabezados(hoja: Worksheet, numero: number, reporte: ReporteCo
   })
 }
 
-function escribirFilas(hoja: Worksheet, primera: number, reporte: ReporteColaboradores) {
+function escribirFilas(hoja: import('exceljs').Worksheet, primera: number, reporte: ReporteColaboradores) {
   reporte.filas.forEach((valores, desplazamiento) => {
     const fila = hoja.getRow(primera + desplazamiento)
     valores.forEach((texto, indice) => {
@@ -50,6 +48,7 @@ function escribirFilas(hoja: Worksheet, primera: number, reporte: ReporteColabor
 }
 
 export async function generarExcel(reporte: ReporteColaboradores): Promise<ArrayBuffer> {
+  const { Workbook } = await import('exceljs')
   const libro = new Workbook()
   const hoja = libro.addWorksheet(config.hoja, { properties: { defaultRowHeight: 18 } })
   const columnas = reporte.columnas.length

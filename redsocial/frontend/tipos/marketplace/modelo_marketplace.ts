@@ -9,6 +9,11 @@ export interface Destacado {
   precio: string
   gratis: boolean
   categoria: string
+  modulos: string[]
   publicador: string
   caracteristicas: string[]
+}
+
+export interface CarruselMarketplaceProps {
+  imagenes: readonly string[]
 }

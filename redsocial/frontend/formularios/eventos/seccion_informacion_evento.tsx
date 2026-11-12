@@ -4,7 +4,9 @@ import { CampoTexto } from '../../componentes/compartido/interfaz/campo_texto'
 import { Selector } from '../../componentes/compartido/interfaz/selector'
 import catalogoEventos from '../../catalogos/capacidades/redsocial/eventos.json'
 import { CampoEtiquetado } from '../../componentes/compartido/interfaz/campo_etiquetado'
-import { CampoFechaHoraEvento, OpcionModalidadEvento, TarjetaFormularioEvento } from './formulario_evento'
+import { TarjetaFormularioEvento } from './formulario_evento'
+import { CampoFechaHoraEvento } from './campo_fecha_hora_evento'
+import { OpcionFormatoEvento } from './opcion_modalidad_evento'
 import type { AsignadoresFormularioEvento, OpcionModalidadCatalogo, ValoresFormularioEvento } from './modelo_formulario_evento'
 
 const textos = catalogoEventos.modal_crear_evento
@@ -52,7 +54,7 @@ export function SeccionInformacionEvento({
         <CampoEtiquetado etiqueta={textos.modalidad} requerido>
           <div role="radiogroup" aria-label={textos.modalidad} className="grid grid-cols-3 gap-3 max-600:grid-cols-1">
             {modalidades.map((opcion) => (
-              <OpcionModalidadEvento key={opcion.valor} icono={opcion.icono} etiqueta={opcion.etiqueta} activa={valores.modalidad === opcion.valor} onElegir={() => asignar.modalidad(opcion.valor)} />
+              <OpcionFormatoEvento key={opcion.valor} icono={opcion.icono} etiqueta={opcion.etiqueta} activa={valores.modalidad === opcion.valor} onElegir={() => asignar.modalidad(opcion.valor)} />
             ))}
           </div>
         </CampoEtiquetado>

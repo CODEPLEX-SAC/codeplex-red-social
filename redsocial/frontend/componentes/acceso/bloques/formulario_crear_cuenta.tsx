@@ -4,7 +4,7 @@ import { Icono } from '../../compartido/icono'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { CampoContrasena } from './campo_contrasena'
 import { CampoCorreoAcceso } from './campo_correo_acceso'
-import { ConfirmacionCorreoAcceso } from './confirmacion_correo_acceso'
+import { VerificacionCorreoAcceso } from './confirmacion_correo_acceso'
 import { TerminosAceptacionAcceso } from './terminos_aceptacion_acceso'
 import { usarCrearCuenta } from './usar_crear_cuenta'
 import catalogoAcceso from '../../../catalogos/capacidades/redsocial/acceso.json'
@@ -17,7 +17,7 @@ export function FormularioCrearCuenta({ onVolverAIniciarSesion }: FormularioCrea
   const formulario = usarCrearCuenta()
   const { errores, cargando, exitoso } = formulario
 
-  if (formulario.correoEnviado) return <ConfirmacionCorreoAcceso correo={formulario.correo.trim()} onVolver={onVolverAIniciarSesion} />
+  if (formulario.correoEnviado) return <VerificacionCorreoAcceso correo={formulario.correo.trim()} onVolver={onVolverAIniciarSesion} />
 
   return (
     <form noValidate onSubmit={formulario.enviar} aria-busy={cargando} className="flex flex-col gap-3.5">

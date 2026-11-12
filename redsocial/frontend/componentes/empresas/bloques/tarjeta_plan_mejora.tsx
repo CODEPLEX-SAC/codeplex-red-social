@@ -1,7 +1,7 @@
 import { Boton } from '../../compartido/interfaz/boton'
 import { Insignia } from '../../compartido/interfaz/insignia'
 import { rellenarPlantilla } from './logica_resumen_empresas'
-import { textoCapacidad, textoPrecio } from './logica_mejora_plan'
+import { textoCapacidad, textoPrecio } from './logica_resumen_mejora_plan'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { TarjetaPlanMejoraProps } from '@/tipos/empresas/contrato_mejora_plan'
 

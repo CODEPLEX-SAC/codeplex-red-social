@@ -12,15 +12,16 @@ export function accionesDeConversacion(conversacion: ConversacionConEtiqueta): A
   const individual = conversacion.tipo === 'individual'
   const participantId = conversacion.identificadores.participantId
   const accion = (actionId: AccionConversacionId, extra: Partial<AccionConversacion> = {}): AccionConversacion => ({ actionId, conversationId, peligro: false, confirmacion: false, ...extra })
-  const acciones: (AccionConversacion | null)[] = [
-    estaSinLeer(conversacion) ? accion('marcar_leido') : accion('marcar_no_leido'),
-    conversacion.favorita ? accion('quitar_favorito') : accion('marcar_favorito'),
-    conversacion.estadoNotificaciones === 'silenciadas' ? accion('activar_notificaciones') : accion('silenciar'),
-    individual && participantId !== null ? accion('ver_perfil', { ruta: rutaPerfilUsuario(participantId) }) : null,
-    individual ? null : accion('abandonar_grupo', { peligro: true, confirmacion: true }),
+  const alternar = (condicion: boolean, siVerdadero: AccionConversacionId, siFalso: AccionConversacionId) => accion(condicion ? siVerdadero : siFalso)
+  const acciones: (AccionConversacion | false)[] = [
+    alternar(estaSinLeer(conversacion), 'marcar_leido', 'marcar_no_leido'),
+    alternar(conversacion.favorita, 'quitar_favorito', 'marcar_favorito'),
+    alternar(conversacion.estadoNotificaciones === 'silenciadas', 'activar_notificaciones', 'silenciar'),
+    individual && participantId !== null && accion('ver_perfil', { ruta: rutaPerfilUsuario(participantId) }),
+    !individual && accion('abandonar_grupo', { peligro: true, confirmacion: true }),
     accion('eliminar_chat', { peligro: true, confirmacion: true }),
   ]
-  return acciones.filter((elemento): elemento is AccionConversacion => elemento !== null)
+  return acciones.filter((elemento): elemento is AccionConversacion => elemento !== false)
 }
 
 export function totalMensajesSinLeer(conversaciones: readonly Conversacion[]): number {

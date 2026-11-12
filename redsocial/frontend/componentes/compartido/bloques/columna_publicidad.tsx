@@ -72,7 +72,10 @@ export function ColumnaPublicidad() {
         </p>
         <ul className="m-0 mb-3.5 grid list-none gap-1.5 p-0 text-auxiliar text-texto-sobre-oscuro-claro">
           {ANUNCIO_PUBLICIDAD_DESTACADO.beneficios.map((b) => (
-            <li key={b}>✓ {b}</li>
+            <li key={b} className="flex items-center gap-1">
+              <Icono name="verificado" className="h-3 w-3" />
+              {b}
+            </li>
           ))}
         </ul>
         <a href="#" className={clasesBoton({ variant: 'secundario', size: 'mini', className: 'text-texto-suave!' })}>{ANUNCIO_PUBLICIDAD_DESTACADO.textoBoton}</a>

@@ -1,69 +1,25 @@
-import { useRef, useState } from 'react'
-import type { ChangeEvent } from 'react'
-import { Icono, imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
-import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
-import { Boton } from '../../compartido/interfaz/boton'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
-import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
-import { CampoTexto } from '../../compartido/interfaz/campo_texto'
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
+import { Icono, imagenUsuarioPredeterminada as usuarioImg, AvatarUsuario, Boton, BotonIcono, CampoBusqueda, CampoEtiquetado, CampoTexto, MensajeEstadoBusqueda } from '../../compartido'
 import { Modal } from '../../compartido/interfaz/modal'
-import { nombreDeGrupoRepetido } from './logica_grupos_mensajeria'
+import { usarModalCrearGrupo } from './usar_modal_crear_grupo'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import type { ModalCrearGrupoProps } from '@/tipos/mensajeria/contrato_lista_conversaciones'
 
 const clases = catalogoMensajeria.clases.lista
 const textos = catalogoMensajeria.grupos.modal
-const tiposImagen = textos.tipos_aceptados.split(',')
 
-function normalizar(texto: string) {
-  return texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim()
-}
-
-export function ModalCrearGrupo({ participantes, nombresExistentes, onCrear, onCerrar }: ModalCrearGrupoProps) {
-  const selectorArchivos = useRef<HTMLInputElement>(null)
-  const [consulta, setConsulta] = useState('')
-  const [elegidos, setElegidos] = useState<readonly string[]>([])
-  const [nombre, setNombre] = useState('')
-  const [descripcion, setDescripcion] = useState('')
-  const [imagen, setImagen] = useState<string | null>(null)
-  const [error, setError] = useState<{ campo: 'nombre' | 'imagen'; mensaje: string } | null>(null)
-  const habilitado = elegidos.length > 0
-  const buscado = normalizar(consulta)
-  const resultados = buscado ? participantes.filter((persona) => !elegidos.includes(persona.id) && normalizar(persona.nombre).includes(buscado)) : []
-  const seleccionados = elegidos.flatMap((id) => participantes.filter((persona) => persona.id === id))
-
-  function agregar(id: string) {
-    setElegidos((actual) => [...actual, id])
-    setConsulta('')
-  }
-
-  function elegirImagen(evento: ChangeEvent<HTMLInputElement>) {
-    const archivo = evento.target.files?.[0]
-    evento.target.value = ''
-    if (!archivo) return
-    if (!tiposImagen.includes(archivo.type)) {
-      setError({ campo: 'imagen', mensaje: textos.errores.imagen_invalida })
-      return
-    }
-    setImagen(URL.createObjectURL(archivo))
-    setError((actual) => (actual?.campo === 'imagen' ? null : actual))
-  }
-
-  function crear() {
-    const limpio = nombre.trim()
-    if (!limpio) return setError({ campo: 'nombre', mensaje: textos.errores.nombre_vacio })
-    if (nombreDeGrupoRepetido(nombresExistentes, limpio)) return setError({ campo: 'nombre', mensaje: textos.errores.nombre_repetido })
-    onCrear({ nombre: limpio, descripcion: descripcion.trim(), imagen, participantes: elegidos })
-  }
+export function ModalCrearGrupo(props: ModalCrearGrupoProps) {
+  const { onCerrar } = props
+  const { selectorArchivos, nombre, descripcion, imagen, error, habilitado, busqueda, buscado, resultados, seleccionados, setDescripcion, cambiarNombre, quitar, agregar, elegirImagen, crear } = usarModalCrearGrupo(props)
 
   return (
     <Modal titulo={textos.titulo} etiquetaCerrar={textos.cerrar} onCerrar={onCerrar} className={clases.grupo_modal}>
       <div className={clases.grupo_formulario}>
         <div className={clases.grupo_seccion}>
           <CampoEtiquetado etiqueta={textos.participantes} requerido>
-            <CampoBusqueda placeholder={textos.buscar} aria-label={textos.buscar} value={consulta} onChange={(evento) => setConsulta(evento.target.value)} />
+            <CampoBusqueda placeholder={textos.buscar} aria-label={textos.buscar} value={busqueda.texto} onChange={(evento) => busqueda.cambiarTexto(evento.target.value)} />
           </CampoEtiquetado>
+          <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} sinCoincidencias={false} />
           {buscado && (
             resultados.length > 0 ? (
               <ul className={clases.grupo_resultados} aria-label={textos.participantes}>
@@ -77,13 +33,13 @@ export function ModalCrearGrupo({ participantes, nombresExistentes, onCrear, onC
                   </li>
                 ))}
               </ul>
-            ) : <p className={clases.vacia}>{textos.buscar_vacio}</p>
+            ) : busqueda.estado === 'sin_coincidencias' ? <p className={clases.vacia}>{textos.buscar_vacio}</p> : null
           )}
           {seleccionados.length > 0 ? (
             <ul className={clases.grupo_chips}>
               {seleccionados.map((persona) => (
                 <li key={persona.id}>
-                  <Boton type="button" variant="filtro" size="filtro" aria-label={textos.quitar.replace(':nombre', persona.nombre)} onClick={() => setElegidos((actual) => actual.filter((id) => id !== persona.id))}>
+                  <Boton type="button" variant="filtro" size="filtro" aria-label={textos.quitar.replace(':nombre', persona.nombre)} onClick={() => quitar(persona.id)}>
                     {persona.nombre}
                     <Icono name="cerrar" className={clases.grupo_chip_glifo} />
                   </Boton>
@@ -105,16 +61,13 @@ export function ModalCrearGrupo({ participantes, nombresExistentes, onCrear, onC
               deshabilitado={!habilitado}
               marcador={textos.nombre_marcador}
               valor={nombre}
-              alCambiar={(valor) => {
-                setNombre(valor)
-                setError((actual) => (actual?.campo === 'nombre' ? null : actual))
-              }}
+              alCambiar={cambiarNombre}
               error={error?.campo === 'nombre'}
               mensajeError={error?.campo === 'nombre' ? error.mensaje : undefined}
             />
           </CampoEtiquetado>
         </div>
-        {error?.campo === 'imagen' && <p role="alert" className={clases.grupo_error}>{error.mensaje}</p>}
+        {error?.campo === 'imagen' && <AlertaEstado className={clases.grupo_error}>{error.mensaje}</AlertaEstado>}
         <CampoEtiquetado etiqueta={textos.descripcion}>
           <CampoTexto anchoCompleto multilinea filasMinimas={3} deshabilitado={!habilitado} inputProps={{ 'aria-label': textos.descripcion }} marcador={textos.descripcion_marcador} valor={descripcion} alCambiar={setDescripcion} />
         </CampoEtiquetado>

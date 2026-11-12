@@ -1,5 +1,4 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react'
-import { afterEach, describe, expect, it, vi } from 'vitest'
 import { SeccionHistoriasInicio, agruparPorAutor, conHistoria, ordenarHistorias, usarHistoriasInicio } from '@/componentes/inicio'
 import { ALMACEN_HISTORIAS, HISTORIAS, HISTORIAS_CONTACTOS } from '../../rutas/inicio/rutas_inicio'
 import type { EstadoHistorias } from '@/tipos/inicio/contrato_almacen_historias'

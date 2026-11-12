@@ -1,5 +1,4 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { PaginaMensajesTodos } from '@/paginas/mensajeria/pagina_mensajes_todos'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'

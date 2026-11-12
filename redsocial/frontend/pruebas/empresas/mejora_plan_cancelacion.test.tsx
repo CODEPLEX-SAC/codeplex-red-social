@@ -1,4 +1,3 @@
-import { beforeEach } from 'vitest'
 import { sembrarTarjetas } from '../marketplace/ayudas_pago'
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { ProveedorCarritoMarketplace } from '@/paginas/marketplace/proveedor_carrito_marketplace'
@@ -76,7 +75,11 @@ describe('Cancelación y contratación de una mejora de plan', { timeout: 30000 
     expect(pantalla.getByText(pago.mejora.importe)).toBeInTheDocument()
     expect(pantalla.getByText(pago.mejora.importe_valor)).toBeInTheDocument()
     expect(pantalla.getByText(pago.mejora.demostrativo)).toBeInTheDocument()
-    expect(pantalla.getByRole('button', { name: pago.mejora.activar })).toBeDisabled()
+    const activar = pantalla.getByRole('button', { name: pago.mejora.activar })
+    expect(activar).toBeEnabled()
+    fireEvent.click(activar)
+    expect(pantalla.getByRole('checkbox', { name: new RegExp(pago.paso4.acepto.slice(0, 20)) })).toHaveAttribute('aria-invalid', 'true')
+    expect(pantalla.queryByText(pago.mejora.exito.titulo)).toBeNull()
     expect(pantalla.queryByText(pago.paso3.titulo)).toBeNull()
   })
 

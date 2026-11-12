@@ -1,7 +1,6 @@
 import { ProveedorTemaGraficos } from '../../compartido/proveedor_tema_graficos'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
-import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import { CodeplexMapa } from '@codeplex-sac/mapas'
 import { Icono } from '../../compartido/icono'
@@ -18,10 +17,14 @@ export function SeccionTituloBuscar({ datos }: {
     setEnMapa: (valor: boolean | ((actual: boolean) => boolean)) => void
     onCerrar: () => void
     buscadorLista: React.JSX.Element
+    buscadorMapa: React.JSX.Element
+    estadoCiudades: React.JSX.Element
+    estadoLugares: React.JSX.Element
     setCiudadElegida: (valor: string | ((actual: string) => string)) => void
     ciudadElegida: string
     alElegirCiudad: (nombre: string) => void
     ciudades: CiudadFiltroEvento[]
+    ciudadesVisibles: readonly CiudadFiltroEvento[]
     FilaCiudad: ({ nombre, activa, onElegir }: FilaCiudadProps) => React.JSX.Element
     centro: [number, number]
     marcadoresMapa: CodeplexMapaMarcador[]
@@ -37,10 +40,14 @@ export function SeccionTituloBuscar({ datos }: {
     setEnMapa,
     onCerrar,
     buscadorLista,
+    buscadorMapa,
+    estadoCiudades,
+    estadoLugares,
     setCiudadElegida,
     ciudadElegida,
     alElegirCiudad,
     ciudades,
+    ciudadesVisibles,
     FilaCiudad,
     centro,
     marcadoresMapa,
@@ -71,16 +78,15 @@ export function SeccionTituloBuscar({ datos }: {
           ciudadElegida={ciudadElegida}
           alElegirCiudad={alElegirCiudad}
           ciudades={ciudades}
+          ciudadesVisibles={ciudadesVisibles}
+          estadoCiudades={estadoCiudades}
           FilaCiudad={FilaCiudad}
         />
 
         <div className={'w-110 flex-none overflow-y-auto p-4 max-900:w-full max-900:overflow-visible max-600:pt-2 ' + (enMapa ? 'max-600:flex max-600:min-h-0 max-600:flex-1 max-600:flex-col' : 'max-600:hidden')}>
           <h3 className="m-0 mb-2 text-titulo-seccion text-texto max-600:hidden">{textos.vista_en_el_mapa}</h3>
-          <CampoBusqueda
-            placeholder={catalogoEventos.placeholders.buscar_lugar_mapa}
-            aria-label={catalogoEventos.placeholders.buscar_lugar_mapa}
-            className="mb-3 hidden w-full max-600:flex"
-          />
+          {buscadorMapa}
+          {estadoLugares}
           <div className="overflow-hidden rounded-lg border border-borde-suave">
             <CodeplexMapa
               key={String(enMapa)}

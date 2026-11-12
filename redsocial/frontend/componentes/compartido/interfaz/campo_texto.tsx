@@ -4,11 +4,12 @@ import type { CodeplexCampoTextoProps } from '@codeplex-sac/formularios'
 import { ProveedorTemaGraficos } from '../proveedor_tema_graficos'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
-const sxBase = catalogoCompartido.controles.campo_texto.sx
-const raizBase = sxBase['& .MuiInputBase-root']
+const SELECTOR_RAIZ = catalogoCompartido.controles.selector_raiz_input
+const sxBase: Record<string, object> = catalogoCompartido.controles.campo_texto.sx
+const raizBase = sxBase[SELECTOR_RAIZ]
 
 function sxDelCampo(multilinea: boolean, propio: CodeplexCampoTextoProps['sx']): CodeplexCampoTextoProps['sx'] {
-  const base = multilinea ? { ...sxBase, '& .MuiInputBase-root': { ...raizBase, ...catalogoCompartido.controles.campo_texto_multilinea_raiz } } : sxBase
+  const base = multilinea ? { ...sxBase, [SELECTOR_RAIZ]: { ...raizBase, ...catalogoCompartido.controles.campo_texto_multilinea_raiz } } : sxBase
   return (propio ? { ...base, ...(propio as object) } : base) as CodeplexCampoTextoProps['sx']
 }
 

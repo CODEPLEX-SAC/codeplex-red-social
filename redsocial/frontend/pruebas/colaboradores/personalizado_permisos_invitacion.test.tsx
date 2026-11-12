@@ -74,13 +74,13 @@ describe('Invitar colaborador: asignación individual aislada de la definición 
     expect(pie).toContainElement(siguiente)
     expect(pie).toContainElement(anterior)
     expect(pie.className).not.toMatch(/grid/)
-    for (const clase of comun.pie_primario.split(' ')) expect(siguiente).toHaveClass(clase)
-    for (const clase of comun.pie_secundario.split(' ')) expect(anterior).toHaveClass(clase)
-    for (const clase of comun.pie_cancelar.split(' ')) expect(cancelar).toHaveClass(clase)
-    for (const boton of [siguiente, anterior, cancelar]) {
+    comun.pie_primario.split(' ').forEach((clase) => expect(siguiente).toHaveClass(clase))
+    comun.pie_secundario.split(' ').forEach((clase) => expect(anterior).toHaveClass(clase))
+    comun.pie_cancelar.split(' ').forEach((clase) => expect(cancelar).toHaveClass(clase))
+    ;[siguiente, anterior, cancelar].forEach((boton) => {
       expect(boton).toHaveClass('min-h-control')
       expect(boton.className).not.toMatch(/(^| )w-full( |$)/)
-    }
+    })
     expect(comun.pie_primario).not.toMatch(/(^| )(min-h-|h-)/)
     expect(comun.pie_primario).toMatch(/max-600:min-h-11/)
   })
@@ -94,10 +94,10 @@ describe('Invitar colaborador: asignación individual aislada de la definición 
     expect(comun.pie).not.toMatch(/border|shadow/)
     expect(pie.className).not.toMatch(/border|shadow/)
     expect(comun).not.toHaveProperty('pie_terciario')
-    for (const boton of [cancelar, anterior]) {
+    ;[cancelar, anterior].forEach((boton) => {
       expect(boton).toHaveClass('border-gris-borde', 'bg-white')
       expect(boton.className).not.toMatch(/(^| )max-600:(border-transparent|bg-transparent)/)
-    }
+    })
     expect(dialogo.getByRole('button', { name: textosRedSocial.SIGUIENTE })).toHaveClass('bg-primario')
   })
 
@@ -138,7 +138,7 @@ describe('Invitar colaborador: asignación individual aislada de la definición 
     const clases = catalogoColaboradores.clases.invitar_permisos
     const activo = dialogo.getAllByRole('button', { name: /^Planillas/ }).filter((boton) => boton.hasAttribute('aria-current'))[0]
     expect(activo).toHaveAttribute('aria-current', 'true')
-    for (const clase of clases.modulo_activo.split(' ')) expect(activo).toHaveClass(clase)
+    clases.modulo_activo.split(' ').forEach((clase) => expect(activo).toHaveClass(clase))
     expect(activo.querySelector(`.${clases.modulo_marca.split(' ')[0]}`)).not.toBeNull()
     expect(dialogo.queryAllByRole('img')).toHaveLength(0)
     expect(activo.querySelectorAll('svg, .material-symbols-rounded')).toHaveLength(1)

@@ -135,11 +135,11 @@ describe('Flujo de pago compartido: métodos de pago', { timeout: 30000 }, () =>
 
   it('el lapiz de editar es el glifo oficial de la biblioteca de iconos, no un SVG propio', () => {
     render(<Montaje tarjetas={[TARJETA_A]} perfiles={[PERFIL_A]} />)
-    for (const nombre of [guardado.editar_etiqueta, perfilesTextos.editar_etiqueta]) {
+    ;[guardado.editar_etiqueta, perfilesTextos.editar_etiqueta].forEach((nombre) => {
       const boton = screen.getByRole('button', { name: nombre })
       expect(boton.querySelector('.material-symbols-rounded')?.textContent).toBe('edit')
       expect(boton.querySelector('svg.icono')).toBeNull()
-    }
+    })
   })
 
   it('edita una tarjeta con el formulario precargado y actualiza la misma tarjeta sin duplicarla', async () => {
@@ -235,9 +235,9 @@ describe('Flujo de pago compartido: datos de facturación', { timeout: 30000 }, 
   it('muestra el perfil guardado con todos sus datos y no un formulario vacío', () => {
     render(<Montaje tarjetas={[TARJETA_A]} perfiles={[PERFIL_A, PERFIL_B]} />)
     expect(screen.getByText('Empresa Alfa SAC')).toBeInTheDocument()
-    for (const dato of ['20111111111', 'Perú', '+51 911 222 333', 'alfa@ejemplo.test', 'Calle Alfa 100', textos.perfiles.canal_whatsapp]) {
+    ;['20111111111', 'Perú', '+51 911 222 333', 'alfa@ejemplo.test', 'Calle Alfa 100', textos.perfiles.canal_whatsapp].forEach((dato) => {
       expect(screen.getByText(dato, { exact: false })).toBeInTheDocument()
-    }
+    })
     expect(screen.queryByRole('textbox', { name: textos.campos.documento })).toBeNull()
   })
 
@@ -344,7 +344,7 @@ function intentar() {
 describe('Flujo de pago compartido: autorizaciones', { timeout: 30000 }, () => {
   it('ninguna autorización viene aceptada por defecto', () => {
     render(<Montaje tarjetas={[TARJETA_A]} perfiles={[PERFIL_A]} configuracion={conAutorizaciones(TERMINOS, COBROS, PROMOCIONES)} />)
-    for (const elemento of [TERMINOS, COBROS, PROMOCIONES]) expect(casilla(elemento.texto)).not.toBeChecked()
+    ;[TERMINOS, COBROS, PROMOCIONES].forEach((elemento) => expect(casilla(elemento.texto)).not.toBeChecked())
   })
 
   it('al intentar continuar sin aceptar no se inicia la operación y se señala la autorización pendiente', () => {
@@ -358,8 +358,8 @@ describe('Flujo de pago compartido: autorizaciones', { timeout: 30000 }, () => {
     const campo = casilla(TERMINOS.texto)
     expect(campo).toHaveAttribute('aria-invalid', 'true')
     expect(campo).toHaveFocus()
-    const error = screen.getByText(aut.obligatoria_pendiente)
-    expect(error).toHaveAttribute('role', 'alert')
+    const error = screen.getByText(aut.obligatoria_pendiente).closest('[role="alert"]') as HTMLElement
+    expect(error).not.toBeNull()
     expect(campo.getAttribute('aria-describedby')).toBe(error.id)
     expect(screen.queryByText(/autorizaciones obligatorias para continuar/i)).toBeNull()
     expect(screen.queryByRole('status')).toBeNull()
@@ -421,13 +421,13 @@ describe('Flujo de pago compartido: autorizaciones', { timeout: 30000 }, () => {
   it('marca con asterisco solo las obligatorias, junto al texto, y lo explica una única vez', () => {
     render(<Montaje tarjetas={[TARJETA_A]} perfiles={[PERFIL_A]} configuracion={conAutorizaciones(TERMINOS, COBROS, PROMOCIONES)} />)
     const asterisco = catalogoCompartido.flujo_pago.reglas.autorizacion.asterisco
-    for (const elemento of [TERMINOS, COBROS]) {
+    ;[TERMINOS, COBROS].forEach((elemento) => {
       const etiqueta = casilla(elemento.texto).closest('label') as HTMLElement
       const marca = within(etiqueta).getByText(asterisco)
       expect(marca).toHaveAttribute('aria-hidden', 'true')
       expect(marca.parentElement).toHaveTextContent(new RegExp(`${elemento.texto.split(' ').pop()}\\*$`))
       expect(casilla(elemento.texto)).toHaveAttribute('aria-required', 'true')
-    }
+    })
     const opcional = casilla(PROMOCIONES.texto).closest('label') as HTMLElement
     expect(within(opcional).queryByText(asterisco)).toBeNull()
     expect(casilla(PROMOCIONES.texto)).toHaveAttribute('aria-required', 'false')

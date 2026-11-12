@@ -15,7 +15,7 @@ export function BarraHerramientasColaboradores(props: BarraHerramientasColaborad
   return (
     <>
       <div className={clases.barra_herramientas}>
-        <CampoBusqueda placeholder={catalogoColaboradores.placeholders.buscar_colaborador} className={clases.busqueda} value={busqueda} onChange={cambiarBusqueda} />
+        <CampoBusqueda placeholder={catalogoColaboradores.placeholders.buscar_colaborador} aria-label={catalogoColaboradores.placeholders.buscar_colaborador} className={clases.busqueda} value={busqueda} onChange={cambiarBusqueda} />
         <div className={clases.acciones_barra}>
           <BloqueFiltrosAvanzados
             aplicados={filtrosAvanzados}

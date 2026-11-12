@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { Boton } from '../../compartido/interfaz/boton'
 import { CampoTexto } from '../../compartido/interfaz/campo_texto'
 import { CampoEtiquetado } from '../../compartido/interfaz/campo_etiquetado'
@@ -30,10 +31,10 @@ export function SeccionIdentificacionEmpresa({ formulario }: FormularioEmpresaPr
         </CampoEtiquetado>
       </div>
       {estadoRuc === 'valido' ? (
-        <p role="status" className="m-0 text-auxiliar font-control text-exito-texto">{textos.ruc_valido}</p>
+        <AlertaEstado tipo="estado" className="m-0 text-auxiliar font-control text-exito-texto">{textos.ruc_valido}</AlertaEstado>
       ) : null}
       {estadoRuc === 'invalido' ? (
-        <p role="alert" className={`m-0 ${textoError}`}>{textos.ruc_invalido}</p>
+        <AlertaEstado className={`m-0 ${textoError}`}>{textos.ruc_invalido}</AlertaEstado>
       ) : null}
       <CampoEtiquetado variante="compacta" tono="suave" envolver etiqueta={campos.razon_social} requerido>
         <CampoTexto anchoCompleto valor={datos.razon_social} alCambiar={formulario.manejarTexto('razon_social')} />

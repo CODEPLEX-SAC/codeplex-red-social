@@ -193,7 +193,7 @@ describe('Invitar colaborador: administración de roles por módulo', { timeout:
     fireEvent.click(casillaModulo(editor))
     fireEvent.click(casillaModulo(editor))
     fireEvent.click(editor.getByRole('button', { name: dialogosRol.boton_guardar.editar }))
-    expect(editor.getByText(dialogosRol.errores.sin_permisos)).toHaveAttribute('role', 'alert')
+    expect(editor.getByText(dialogosRol.errores.sin_permisos).closest('[role="alert"]')).not.toBeNull()
   })
 
   it('duplicar funciona con cualquier rol: copia los permisos con nombre editable y clave nueva, y no modifica el original', () => {

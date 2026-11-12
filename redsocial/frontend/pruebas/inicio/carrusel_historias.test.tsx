@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
 import { CarruselHistorias, ventanaCarrusel } from '@/componentes/inicio'
 
 const historias = ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id }))

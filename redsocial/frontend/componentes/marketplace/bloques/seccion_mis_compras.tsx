@@ -36,6 +36,7 @@ export function SeccionMisCompras({
 }) {
   const [pestana, setPestana] = useState(pestanaAplicaciones.clave)
   const [detalle, setDetalle] = useState<string | null>(null)
+  const aplicacionesConVip = new Set(servicios.map((servicio) => servicio.aplicacion))
   const elegida = compras.find((c) => c.aplicacion === desinstalacion.pendiente)
   const enDetalle = compras.find((c) => c.aplicacion === detalle)
   const manejadores = { detalles: setDetalle, mejorar: alMejorar, contratarVip: alContratarVip, desinstalar: desinstalacion.pedir }
@@ -57,7 +58,7 @@ export function SeccionMisCompras({
                 key={c.aplicacion}
                 compra={c}
                 claseModulo={clasesModulo[c.tema]}
-                vipContratado={servicios.some((s) => s.aplicacion === c.aplicacion)}
+                vipContratado={aplicacionesConVip.has(c.aplicacion)}
                 acciones={accionesDeCompra(c.aplicacion, manejadores)}
               />
             ))}

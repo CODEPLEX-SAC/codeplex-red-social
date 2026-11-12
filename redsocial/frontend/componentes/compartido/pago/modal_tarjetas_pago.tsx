@@ -1,16 +1,17 @@
+import { AlertaEstado } from '../interfaz/alerta_estado'
 import { useState } from 'react'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import { Boton } from '../interfaz/boton'
-import { BotonIcono } from '../interfaz/boton_icono'
 import { Modal } from '../interfaz/modal'
 import { AgregarTarjetaPago } from './agregar_tarjeta_pago'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { EditorTarjetaPago } from './editor_tarjeta_pago'
-import { detalleTarjeta, tarjetaVencida, tituloTarjeta } from './logica_tarjeta_pago'
-import { OpcionMetodoPago } from './opcion_metodo_pago'
-import { EtiquetasTarjetaPago } from './resumen_tarjeta_pago'
+import { FilaTarjetaPago } from './fila_tarjeta_pago'
+import { tarjetaVencida } from './logica_tarjeta_pago'
 import { usarTextosPago } from './usar_textos_pago'
 import type { CambiosTarjetaPago, ControlTarjetasPago, VarianteAvisoPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function ModalTarjetasPago({ control, alNotificar, seleccionadaId, aviso, alUsar, alCerrar }: { control: ControlTarjetasPago; alNotificar: (variante: VarianteAvisoPago, mensaje: string) => void; seleccionadaId: string | null; aviso?: string; alUsar: (id: string) => void; alCerrar: () => void }) {
   const textos = usarTextosPago()
@@ -48,7 +49,7 @@ export function ModalTarjetasPago({ control, alNotificar, seleccionadaId, aviso,
   return (
     <Modal titulo={modal.titulo} etiquetaCerrar={textosRedSocial.CERRAR} onCerrar={alCerrar} className={clases.modal}>
       <div className={clases.cuerpo_modal}>
-        {control.error && <div role="alert" className={clases.aviso_estado}>{control.error === 'lectura' ? textos.metodo_guardado.error_lectura : textos.metodo_guardado.error_escritura}</div>}
+        {control.error && <AlertaEstado className={clases.aviso_estado}>{control.error === 'lectura' ? textos.metodo_guardado.error_lectura : textos.metodo_guardado.error_escritura}</AlertaEstado>}
         {enEdicion ? (
           <EditorTarjetaPago key={enEdicion.id} tarjeta={enEdicion} ocupado={control.ocupado} alGuardar={guardarCambios} alCancelar={cancelarEdicion} alQuitar={quitar} />
         ) : (
@@ -58,12 +59,7 @@ export function ModalTarjetasPago({ control, alNotificar, seleccionadaId, aviso,
             ) : (
               <div role="radiogroup" aria-label={modal.lista_etiqueta} className={clases.lista_modal}>
                 {control.tarjetas.map((tarjeta) => (
-                  <div key={tarjeta.id} className={clases.fila_tarjeta}>
-                    <div className={clases.fila_tarjeta_opcion}>
-                      <OpcionMetodoPago titulo={tituloTarjeta(tarjeta, textos)} detalle={detalleTarjeta(tarjeta, textos)} icono="tarjeta-pago" activa={tarjeta.id === elegidaId} deshabilitada={tarjetaVencida(tarjeta.vencimiento)} adicional={<EtiquetasTarjetaPago tarjeta={tarjeta} />} alElegir={() => setElegidaId(tarjeta.id)} />
-                    </div>
-                    <BotonIcono icono="editar-oficial" type="button" variant="sutil" aria-label={textos.tarjetas.editar_tarjeta.replace(':tarjeta', tituloTarjeta(tarjeta, textos))} onClick={() => setEdicionId(tarjeta.id)} />
-                  </div>
+                  <FilaTarjetaPago key={tarjeta.id} tarjeta={tarjeta} activa={tarjeta.id === elegidaId} alElegir={() => setElegidaId(tarjeta.id)} alEditar={() => setEdicionId(tarjeta.id)} />
                 ))}
               </div>
             )}

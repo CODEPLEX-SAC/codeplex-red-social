@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useEffect, useRef } from 'react'
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
@@ -6,13 +7,13 @@ import type { ConfirmacionCorreoAccesoProps } from '@/tipos/acceso/contrato_acce
 
 const mensajes = catalogoAcceso.mensajes
 
-export function ConfirmacionCorreoAcceso({ correo, onVolver }: ConfirmacionCorreoAccesoProps) {
+export function VerificacionCorreoAcceso({ correo, onVolver }: ConfirmacionCorreoAccesoProps) {
   const contenedor = useRef<HTMLDivElement>(null)
 
   useEffect(() => contenedor.current?.focus(), [])
 
   return (
-    <div ref={contenedor} role="status" tabIndex={-1} className="flex flex-col items-center gap-4 py-6 text-center outline-none">
+    <AlertaEstado ref={contenedor} tipo="estado" tabIndex={-1} className="flex flex-col items-center gap-4 py-6 text-center outline-none">
       <div className="grid h-14 w-14 place-items-center rounded-full bg-primario-suave text-primario">
         <Icono name="correo" className="h-7 w-7" />
       </div>
@@ -24,6 +25,6 @@ export function ConfirmacionCorreoAcceso({ correo, onVolver }: ConfirmacionCorre
       <Boton type="button" variant="enlace" size="enlace" onClick={onVolver}>
         <Icono name="flecha-izquierda" className="h-4 w-4" /> {catalogoAcceso.botones.volver_a_iniciar_sesion}
       </Boton>
-    </div>
+    </AlertaEstado>
   )
 }

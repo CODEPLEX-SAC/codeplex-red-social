@@ -1,3 +1,4 @@
+import { AlertaEstado } from './alerta_estado'
 import { useRef } from 'react'
 import type { KeyboardEvent } from 'react'
 import { BotonIcono } from './boton_icono'
@@ -22,7 +23,7 @@ export function PanelSelectorBuscable({ seleccionadaId, resultado, texto, textos
   }
 
   return (
-    <div ref={panel} id={clases.id_panel} role="dialog" aria-label={textos.panel} className={clases.panel} onKeyDown={moverFoco}>
+    <div ref={panel} id={clases.id_panel} role={catalogoCompartido.roles_aria.dialogo} aria-label={textos.panel} className={clases.panel} onKeyDown={moverFoco}>
       <div className={clases.buscador}>
         <CampoBusqueda
           value={texto}
@@ -33,12 +34,12 @@ export function PanelSelectorBuscable({ seleccionadaId, resultado, texto, textos
         />
       </div>
       {resultado.opciones.length === 0 ? (
-        <p role="status" className={clases.vacio}>{textos.sin_resultados}</p>
+        <AlertaEstado tipo="estado" className={clases.vacio}>{textos.sin_resultados}</AlertaEstado>
       ) : (
         <ListaOpcionesBuscables opciones={resultado.opciones} seleccionadaId={seleccionadaId} etiqueta={textos.lista} alElegir={alElegir} />
       )}
       {resultado.total > resultado.opciones.length && (
-        <p role="status" className={clases.pie}>{textos.resumen.replace(':mostradas', String(resultado.opciones.length)).replace(':total', String(resultado.total))}</p>
+        <AlertaEstado tipo="estado" className={clases.pie}>{textos.resumen.replace(':mostradas', String(resultado.opciones.length)).replace(':total', String(resultado.total))}</AlertaEstado>
       )}
     </div>
   )

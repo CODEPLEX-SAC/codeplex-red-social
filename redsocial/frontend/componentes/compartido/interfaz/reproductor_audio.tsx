@@ -8,11 +8,16 @@ import type { ReproductorAudioProps } from '@/tipos/compartido/contrato_audio'
 const audio = catalogoCompartido.audio
 const clases = audio.clases
 
+function claseEnvoltura(propio: boolean | undefined) {
+  if (propio === undefined) return clases.reproductor
+  return `${clases.reproductor} ${clases.reproductor_enviado} ${propio ? clases.reproductor_propio : clases.reproductor_ajeno}`
+}
+
 export function ReproductorAudio({ url, duracion = 0, picos, semilla, propio, etiquetas }: ReproductorAudioProps) {
   const reproductor = usarReproductorAudio(duracion)
   const sinArchivo = url === undefined
   const progreso = reproductor.duracion > 0 ? reproductor.posicion / reproductor.duracion : 0
-  const envoltura = propio === undefined ? clases.reproductor : `${clases.reproductor} ${clases.reproductor_enviado} ${propio ? clases.reproductor_propio : clases.reproductor_ajeno}`
+  const envoltura = claseEnvoltura(propio)
   return (
     <div className={envoltura}>
       <audio ref={reproductor.audio} src={url} preload="metadata" {...reproductor.eventos} />

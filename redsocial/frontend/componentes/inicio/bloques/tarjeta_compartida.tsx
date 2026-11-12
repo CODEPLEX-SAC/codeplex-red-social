@@ -1,30 +1,53 @@
 import { imagenFotoRedSocial4, imagenUsuarioPredeterminada } from '../../compartido'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
+import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
+import { BloqueMediosPublicacion } from './bloque_medios_publicacion'
 import { CabeceraPublicacion } from './cabecera_publicacion'
 import { InteraccionesPublicacion } from './interacciones_publicacion'
 import { MarcoPublicacion } from './marco_publicacion'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
+import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { TarjetaCompartidaProps } from '@/tipos/inicio/contrato_publicacion_visual'
-import { CLASE_ENLACE_ACCION } from '../../compartido/clases_enlace'
+
+const clases = catalogoInicio.compartida.clases
+const audiencia = catalogoInicio.publicacion.audiencia
 
 export function TarjetaCompartida({ publicacion, compartidos, interaccion, puedeCompartir, onCompartir }: TarjetaCompartidaProps) {
+  const medios = publicacion.medios ?? []
+  const conMedios = medios.length > 0
+  const conImagenDemostracion = publicacion.conMedio && !conMedios
+
   return (
     <MarcoPublicacion>
       <CabeceraPublicacion autorId={publicacion.autorId} nombre={publicacion.nombre} tiempo={publicacion.tiempoCompartio} publica={publicacion.publica} leyenda={catalogoInicio.leyendas.compartio_una_publicacion} />
-      {publicacion.comentario && <p className="m-0 whitespace-pre-wrap break-words pb-3 text-cuerpo leading-texto text-texto">{publicacion.comentario}</p>}
-      <div className="mb-4 overflow-hidden rounded-control border border-borde">
-        <div className="flex items-center gap-2.5 px-3.5 pb-2 pt-3">
-          <AvatarUsuario tamano="sm" imagen={imagenUsuarioPredeterminada} />
-          <div className="min-w-0 flex-1">
-            <strong className="block text-nombre-entidad text-texto">{publicacion.origenNombre}</strong>
-            <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{publicacion.origenTiempo}</span>
+      {publicacion.comentario && <p className={clases.comentario}>{publicacion.comentario}</p>}
+      <article aria-label={catalogoInicio.compartida.etiqueta_origen.replace(':nombre', publicacion.origenNombre)} className={clases.origen}>
+        {publicacion.texto && <p className={clases.texto}>{publicacion.texto}</p>}
+        {conMedios && (
+          <div className={clases.medios}>
+            <BloqueMediosPublicacion medios={medios} />
+          </div>
+        )}
+        {conImagenDemostracion && <img src={imagenFotoRedSocial4} alt={catalogoCompartido.campos.alt_decorativo} className={clases.demo_medio} />}
+        <div className={clases.pie}>
+          {publicacion.origenEsGrupo ? <AvatarUsuario tamano="sm" icono="grupo" tono="solido" /> : <AvatarUsuario tamano="sm" imagen={imagenUsuarioPredeterminada} />}
+          <div className={clases.pie_textos}>
+            {publicacion.origenRuta ? (
+              <a href={publicacion.origenRuta} className={clases.pie_enlace}>
+                {publicacion.origenNombre}
+              </a>
+            ) : (
+              <strong className={clases.pie_nombre}>{publicacion.origenNombre}</strong>
+            )}
+            <span className={clases.pie_tiempo}>
+              {publicacion.origenTiempo}
+              {` ${audiencia.separador}`}
+              <Icono name={audiencia.icono as IconName} className={audiencia.clase} />
+            </span>
           </div>
         </div>
-        <p className="m-0 px-3.5 pb-2.5 text-cuerpo leading-texto text-texto">{publicacion.texto}</p>
-        {publicacion.conMedio && <div className="mx-3.5 mb-3 h-35 overflow-hidden rounded-lg"><img src={imagenFotoRedSocial4} alt={catalogoCompartido.campos.alt_decorativo} className="h-full w-full object-cover" /></div>}
-        {publicacion.conMedio && <a href="#" className={[CLASE_ENLACE_ACCION, 'mx-3.5 mb-3 block'].join(' ')}>{catalogoInicio.botones.ver_mas}</a>}
-      </div>
+      </article>
       <InteraccionesPublicacion
         nombre={publicacion.origenNombre}
         texto={publicacion.texto}

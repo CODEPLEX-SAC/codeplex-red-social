@@ -335,5 +335,32 @@
         ]
       }
     }
-  ]
+  ],
+  "ejemplosPedro": {
+    "texto": {
+      "id": "pedro-ejemplo-texto",
+      "tiempo": "1 día",
+      "texto": "Hoy cerramos la revisión de los avances del proyecto. Gracias al equipo por el esfuerzo de esta semana."
+    },
+    "imagen": {
+      "id": "pedro-ejemplo-imagen",
+      "tiempo": "2 días",
+      "texto": "Así quedó el tablero de seguimiento que presentamos al cliente.",
+      "imagenes": [
+        "data-analytics.jpg"
+      ]
+    },
+    "compartida": {
+      "id": "pedro-ejemplo-compartida",
+      "tiempoCompartio": "3 días",
+      "comentario": "Vale la pena leer esto con calma.",
+      "origenNombre": "Ingenieros Unidos",
+      "origenTiempo": "7 de noviembre a las 22:07",
+      "origenEsGrupo": true,
+      "texto": "Buenas prácticas para mantener ordenados los comprobantes de cada proyecto.",
+      "imagenes": [
+        "python.jpg"
+      ]
+    }
+  }
 }

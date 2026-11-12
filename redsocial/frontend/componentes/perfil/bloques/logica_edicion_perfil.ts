@@ -28,12 +28,9 @@ export function resumenEmpleo(empleo: EmpleoPerfil, textoActual: string): Resume
 }
 
 export function resumenFormacion(formacion: FormacionPerfil): ResumenItemPerfil {
-  return {
-    titulo: formacion.carrera || formacion.institucion,
-    subtitulo: formacion.carrera ? formacion.institucion : formacion.tipo,
-    periodo: [formacion.inicio, formacion.fin].filter(Boolean).join(' - '),
-    detalle: formacion.carrera ? formacion.tipo : '',
-  }
+  const periodo = [formacion.inicio, formacion.fin].filter(Boolean).join(' - ')
+  if (!formacion.carrera) return { titulo: formacion.institucion, subtitulo: formacion.tipo, periodo, detalle: '' }
+  return { titulo: formacion.carrera, subtitulo: formacion.institucion, periodo, detalle: formacion.tipo }
 }
 
 export function pasosCumplidos(perfil: PerfilUsuario): Record<string, boolean> {

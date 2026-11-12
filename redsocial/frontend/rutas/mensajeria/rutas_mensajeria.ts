@@ -16,3 +16,7 @@ export const RELOJ_MENSAJERIA: RelojMensajeria = { ahora: ahoraMensajeria }
 export * from '../../servicios/mensajeria/panel_lateral'
 export * from '../../servicios/mensajeria/videollamada_iniciar'
 export * from '../../servicios/mensajeria/videollamadas'
+export * from '../../servicios/mensajeria/sala_demostracion'
+export * from '../../servicios/mensajeria/dispositivos_navegador'
+export * from '../../servicios/mensajeria/sala_navegador'
+export * from '../../servicios/mensajeria/almacen_reuniones'

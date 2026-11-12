@@ -2,9 +2,10 @@ import type { IconName } from '@/tipos/compartido/contrato_icono'
 
 export type ColorGrupo = 'rosa' | 'violeta' | 'morado' | 'naranja' | 'azul' | 'verde'
 
+export type ItemInvitacion = { lista: 'pendientes'; invitacion: InvitacionPendiente } | { lista: 'aceptadas'; invitacion: InvitacionAceptada }
+
 export interface InvitacionPendiente {
   nombre: string
-  privado?: boolean
   icono: IconName
   color: ColorGrupo
   tipo: string

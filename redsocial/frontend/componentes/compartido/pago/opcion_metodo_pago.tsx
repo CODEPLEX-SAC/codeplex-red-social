@@ -1,6 +1,8 @@
 import { Icono } from '../icono'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import type { OpcionMetodoPagoProps } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function OpcionMetodoPago({ titulo, detalle, icono, activa, deshabilitada = false, adicional, alElegir }: OpcionMetodoPagoProps) {
   const estado = activa ? clases.metodo_activo : clases.metodo_inactivo

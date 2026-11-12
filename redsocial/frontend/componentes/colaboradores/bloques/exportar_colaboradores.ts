@@ -50,10 +50,14 @@ export function crearAccionesExportar(
   const lanzar = (formato: FormatoExportacion, ambito: AmbitoExportacion, datos: Colaborador[]) => () => {
     exportarColaboradores(formato, ambito, datos, criterios).catch(alFallo)
   }
+  function lanzarFiltrados(formato: FormatoExportacion) {
+    if (!hayCriterios) return undefined
+    return lanzar(formato, 'filtrados', filtrados)
+  }
   return {
     excel: lanzar('excel', 'vista', vista),
     pdf: lanzar('pdf', 'vista', vista),
-    excel_filtrados: hayCriterios ? lanzar('excel', 'filtrados', filtrados) : undefined,
-    pdf_filtrados: hayCriterios ? lanzar('pdf', 'filtrados', filtrados) : undefined,
+    excel_filtrados: lanzarFiltrados('excel'),
+    pdf_filtrados: lanzarFiltrados('pdf'),
   }
 }

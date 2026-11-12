@@ -156,14 +156,73 @@
     "compartir": {
       "titulo": "Compartir publicación",
       "cerrar": "Cerrar",
-      "contexto": "Compartiendo en tu red",
+      "contexto": "Compartiendo en CodePlex",
       "marcador": "Di algo sobre esto...",
       "etiqueta_campo": "Comentario opcional",
-      "etiqueta_vista_previa": "Publicación original",
-      "confirmar": "Compartir ahora",
-      "exito_titulo": "Publicación compartida",
+      "confirmar": "Compartir",
       "exito_mensaje": "Tu red ya puede ver esta publicación.",
-      "listo": "Listo"
+      "listo": "Listo",
+      "compartir_en": "Compartir en",
+      "destinos": [
+        {
+          "clave": "historia",
+          "etiqueta": "Historia",
+          "icono": "crear-evento"
+        },
+        {
+          "clave": "enlace",
+          "etiqueta": "Copiar enlace",
+          "icono": "enlace"
+        },
+        {
+          "clave": "grupo",
+          "etiqueta": "Grupo",
+          "icono": "grupos"
+        },
+        {
+          "clave": "amigo",
+          "etiqueta": "Perfil de un amigo",
+          "icono": "amigos"
+        }
+      ],
+      "enlace_copiado": "Enlace copiado.",
+      "error_copia": "No se pudo copiar el enlace.",
+      "volver": "Volver",
+      "grupos": {
+        "titulo": "Compartir en un grupo",
+        "buscar": "Busca grupos",
+        "lista": "Todos los grupos",
+        "vacio": "No encontramos grupos con ese nombre."
+      },
+      "amigos": {
+        "titulo": "Compartir en el perfil de un amigo",
+        "buscar": "Buscar personas",
+        "lista": "Todos mis amigos",
+        "vacio": "No encontramos personas con ese nombre."
+      },
+      "redactar": {
+        "titulo": "Crear publicación",
+        "marcador_grupo": "Crea una publicación pública...",
+        "marcador_amigo": "Escribe algo a :nombre...",
+        "etiqueta_campo": "Contenido de la publicación compartida",
+        "agregar": "Añadir a tu publicación",
+        "etiquetar": "Etiquetar a una persona",
+        "emoji": "Añadir un emoji",
+        "etiquetados": "Con :nombres",
+        "personas": "Personas para etiquetar",
+        "publicar": "Publicar",
+        "compartir": "Compartir",
+        "separador_nombres": ", ",
+        "separador_texto": " · "
+      },
+      "exito_grupo": "Tu publicación se agregó al grupo «:destino».",
+      "exito_amigo": "Compartido en el perfil de :destino. Es una demostración: no se envió ninguna notificación.",
+      "compartir_grupo": {
+        "titulo": "Compartir grupo",
+        "contexto": "Compartiendo en CodePlex"
+      },
+      "exito_historia": "Tu historia ya está publicada.",
+      "separador_parrafo": "\n\n"
     },
     "comentarios": {
       "etiqueta_seccion": "Comentarios",
@@ -318,6 +377,7 @@
   },
   "mensajes_flotantes": {
     "boton": "Abrir mensajes",
+    "texto_boton": "Mensajes",
     "cerrar": "Cerrar mensajes",
     "ampliar": "Ampliar mensajes",
     "titulo": "Mensajes",
@@ -337,8 +397,9 @@
       "pestanas": "px-2",
       "recientes": "m-0 px-4 pb-1 pt-3 text-auxiliar font-control uppercase text-texto-suave",
       "lista": "m-0 min-h-0 flex-1 list-none overflow-y-auto p-0",
-      "fila": "flex w-full items-center gap-3 border-0 border-b border-borde-suave bg-transparent px-4 py-3 text-left hover:bg-fondo",
+      "fila": "flex w-full items-center gap-3 border-0 bg-transparent px-4 py-3 text-left hover:bg-fondo",
       "hilo": "grid min-h-0 flex-1 grid-rows-1",
+      "boton_flotante": "gap-2 rounded-full px-5 shadow-t13",
       "ver_todos": "block px-4 py-3 text-center text-enlace-accion text-primario no-underline hover:bg-fondo"
     }
   },
@@ -348,38 +409,6 @@
       "tarjeta": "mb-4 rounded-xl border border-borde bg-white p-5 shadow-sombra max-480:px-4",
       "fila": "flex items-center gap-3.5",
       "disparador": "block w-full cursor-pointer rounded-control border border-borde bg-white px-4 py-3 text-left text-campo-formulario text-texto-suave hover:bg-fondo"
-    }
-  },
-  "estadisticas": {
-    "etiqueta": "Tu actividad",
-    "tarjetas": [
-      {
-        "clave": "publicaciones",
-        "titulo": "Tus publicaciones",
-        "icono": "actividad",
-        "tono": "azul"
-      },
-      {
-        "clave": "videos",
-        "titulo": "Tus videos",
-        "icono": "video",
-        "tono": "rojo"
-      },
-      {
-        "clave": "compartidos",
-        "titulo": "Compartidos",
-        "icono": "compartir",
-        "tono": "morado"
-      }
-    ],
-    "clases": {
-      "rejilla": "mb-4 grid grid-cols-3 gap-4 max-600:grid-cols-1",
-      "tarjeta": "flex min-w-0 items-center gap-3 rounded-xl border border-gris-borde bg-white p-4",
-      "icono_caja": "grid h-11 w-11 flex-none place-items-center rounded-xl",
-      "icono": "h-6 w-6",
-      "cuerpo": "flex min-w-0 flex-1 flex-col gap-1",
-      "etiqueta": "text-auxiliar text-texto-suave",
-      "valor": "text-valor-destacado text-texto"
     }
   },
   "encuesta": {
@@ -404,16 +433,59 @@
     "texto_alternativo": "Archivo :numero de la publicación",
     "clases": {
       "uno": "pb-4.5",
-      "varios": "grid grid-cols-2 gap-1 pb-4.5",
-      "medio_unico": "max-h-120 w-full rounded-lg bg-fondo object-cover",
-      "medio": "aspect-square w-full rounded-lg bg-fondo object-cover",
-      "item": "relative overflow-hidden rounded-lg",
+      "varios": "mb-4.5 grid gap-0.5 overflow-hidden rounded-lg",
+      "medio_unico": "max-h-120 w-full rounded-lg bg-fondo object-contain",
+      "medio": "block h-full w-full bg-fondo object-contain",
+      "item": "relative min-h-0 overflow-hidden",
       "boton": "block h-auto w-full p-0",
-      "restantes": "pointer-events-none absolute inset-0 grid place-items-center rounded-lg bg-overlay-14 text-valor-destacado text-white"
+      "boton_mosaico": "block h-full w-full p-0",
+      "restantes": "pointer-events-none absolute inset-0 grid place-items-center bg-overlay-14 text-valor-destacado text-white"
     },
+    "mosaico": [
+      {
+        "contenedor": "",
+        "items": [
+          ""
+        ]
+      },
+      {
+        "contenedor": "aspect-square grid-cols-2",
+        "items": [
+          "",
+          ""
+        ]
+      },
+      {
+        "contenedor": "aspect-square grid-cols-2 grid-rows-2",
+        "items": [
+          "row-span-2",
+          "",
+          ""
+        ]
+      },
+      {
+        "contenedor": "aspect-square grid-cols-2 grid-rows-2",
+        "items": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "contenedor": "aspect-square grid-cols-6 grid-rows-6",
+        "items": [
+          "col-span-3 col-start-1 row-span-3 row-start-1",
+          "col-span-3 col-start-1 row-span-3 row-start-4",
+          "col-span-3 col-start-4 row-span-2 row-start-1",
+          "col-span-3 col-start-4 row-span-2 row-start-3",
+          "col-span-3 col-start-4 row-span-2 row-start-5"
+        ]
+      }
+    ],
     "mas": "+:cantidad",
     "etiqueta_visor": "Archivo de la publicación",
-    "maximo_visibles": 4
+    "maximo_visibles": 5
   },
   "modal_crear_publicacion": {
     "titulo": "Crear publicación",
@@ -441,16 +513,29 @@
       }
     ],
     "encuesta": {
-      "titulo": "Opciones de la encuesta",
-      "minimo": "(mínimo 2)",
+      "titulo": "Añadir votación",
       "marcador_opcion": "Opción :numero",
       "etiqueta_opcion": "Opción :numero de la encuesta",
       "quitar_opcion": "Quitar opción :numero",
-      "agregar_opcion": "Agregar opción",
+      "agregar_opcion": "Añadir opción",
       "opciones_iniciales": 2,
       "opciones_minimas": 2,
       "opciones_maximas": 6,
-      "caracteres_maximos": 80
+      "caracteres_maximos": 80,
+      "ajustes": {
+        "etiqueta": "Ajustes de la votación",
+        "varias": "Permitir que las personas elijan varias respuestas",
+        "cualquiera": "Permitir que cualquiera añada opciones"
+      },
+      "clases": {
+        "boton_agregar": "min-w-0 flex-1 justify-center bg-fondo-hover-neutro text-texto hover:bg-fondo-hover-suave",
+        "boton_ajustes": "flex-none gap-1 bg-fondo-hover-neutro text-texto-icono hover:bg-fondo-hover-suave",
+        "panel": "absolute right-0 bottom-full z-50 mb-1 grid w-72 gap-1 rounded-xl border border-borde bg-white p-2 shadow-sombra",
+        "fila_ajuste": "flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-campo-formulario text-texto hover:bg-fondo",
+        "fila_acciones": "flex items-center gap-2",
+        "contenedor_ajustes": "relative flex-none",
+        "leyenda": "mb-2 p-0 text-titulo-subseccion text-texto"
+      }
     },
     "prioridad": {
       "titulo": "Prioridad",
@@ -481,6 +566,13 @@
       "tamano_maximo": 52428800,
       "maximo_archivos": 10,
       "vista_previa": "Vista previa de archivos",
+      "contenedor_vista_previa": "m-0 grid list-none gap-0.5 overflow-hidden rounded-control border border-borde p-0",
+      "elemento_vista_previa": "relative min-h-0 overflow-hidden bg-fondo",
+      "medio_vista_previa": "block h-full w-full object-cover",
+      "medio_unico_vista_previa": "block max-h-105 w-full object-contain",
+      "indicador_video": "pointer-events-none absolute inset-0 grid place-items-center bg-black/20 text-white",
+      "quitar_clase": "absolute right-2 top-2 z-10",
+      "restantes_vista_previa": "pointer-events-none absolute inset-0 grid place-items-center bg-overlay-14 text-valor-destacado text-white",
       "texto_alternativo": "Archivo :numero",
       "quitar": "Quitar archivo :numero"
     },
@@ -1001,5 +1093,20 @@
       "duracion_ms": 5000,
       "clase_duracion": "duration-5000"
     }
+  },
+  "compartida": {
+    "clases": {
+      "origen": "mb-4 overflow-hidden rounded-control border border-borde",
+      "texto": "m-0 whitespace-pre-wrap break-words px-3.5 pb-3 pt-3.5 text-cuerpo leading-texto text-texto",
+      "medios": "bg-fondo",
+      "demo_medio": "block max-h-120 w-full bg-fondo object-contain",
+      "pie": "flex items-center gap-2.5 border-t border-borde bg-fondo px-3.5 py-2.5",
+      "pie_textos": "min-w-0 flex-1",
+      "pie_nombre": "block truncate text-nombre-entidad text-texto",
+      "pie_tiempo": "mt-0.5 block text-fecha-abreviada text-texto-suave",
+      "comentario": "m-0 whitespace-pre-wrap break-words pb-3 text-cuerpo leading-texto text-texto",
+      "pie_enlace": "block truncate text-nombre-entidad text-texto no-underline hover:text-primario hover:underline"
+    },
+    "etiqueta_origen": "Publicación compartida de :nombre"
   }
 }

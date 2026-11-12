@@ -20,7 +20,7 @@ export function ItemCaracteristica({
   const incluida = caracteristica.estado === 'incluido'
   const excluida = caracteristica.estado === 'excluido'
   const clasesExcluida = [textos.clases.excluida, claseAtenuada].join(' ')
-  const claseTexto = [textos.clases.texto, excluida ? clasesExcluida : undefined, caracteristica.enfasis ? textos.clases.enfasis : undefined].join(' ')
+  const claseTexto = [textos.clases.texto, excluida && clasesExcluida, caracteristica.enfasis && textos.clases.enfasis].filter(Boolean).join(' ')
 
   return (
     <li className="flex items-start gap-1.5 text-auxiliar">

@@ -1,3 +1,7 @@
+export interface FiltrosAmigos {
+  estado: string
+}
+
 export interface Amigo {
   nombre: string
   estado: string

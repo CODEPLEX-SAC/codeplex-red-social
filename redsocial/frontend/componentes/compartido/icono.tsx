@@ -17,7 +17,7 @@ export function Icono({ name, className }: IconProps) {
   const destino = (catalogoCompartido.iconos as Record<string, string>)[name] ?? name
   const esSvgPropio = destino.startsWith(PREFIJO_SVG_PROPIO)
   const clave = esSvgPropio ? destino.slice(PREFIJO_SVG_PROPIO.length) : destino
-  const nombreLibreria = esSvgPropio ? undefined : ICONOS_LIBRERIA[clave]
+  const nombreLibreria = !esSvgPropio && ICONOS_LIBRERIA[clave]
   const clases = className ?? ''
 
   if (nombreLibreria) {

@@ -7,10 +7,22 @@ import type { Empresa } from '@/tipos/empresas/modelo_empresas'
 
 export const RUTA_MARKETPLACE_EMPRESAS = catalogoCompartido.navegacion.navPrincipal.find((item) => item.clave === catalogoEmpresas.limite.modulo_destino)?.ruta as string
 
-export function estadoModuloEmpresa(empresa: Empresa, modulo: ModuloEmpresaCatalogo, suscripciones: SuscripcionContratada[]): EstadoModuloEmpresa {
-  const suscripcion = modulo.producto === null ? undefined : suscripciones.find((candidata) => candidata.aplicacion === modulo.producto)
+export function indexarSuscripciones(suscripciones: SuscripcionContratada[]) {
+  return new Map(suscripciones.map((suscripcion) => [suscripcion.aplicacion, suscripcion]))
+}
+
+export function suscripcionDelModulo(modulo: ModuloEmpresaCatalogo, indice: ReadonlyMap<string, SuscripcionContratada>) {
+  if (modulo.producto === null) return undefined
+  return indice.get(modulo.producto)
+}
+
+export function estadoDeModulo(empresa: Empresa, modulo: ModuloEmpresaCatalogo, suscripcion: SuscripcionContratada | undefined): EstadoModuloEmpresa {
   const planNombre = modulo.producto === null ? (empresa.planesModulo?.[modulo.clave] ?? null) : (suscripcion?.planNombre ?? null)
   return { activo: planNombre !== null && empresa.modulos.includes(modulo.clave), contratado: planNombre !== null, planNombre }
+}
+
+export function estadoModuloEmpresa(empresa: Empresa, modulo: ModuloEmpresaCatalogo, suscripciones: SuscripcionContratada[]): EstadoModuloEmpresa {
+  return estadoDeModulo(empresa, modulo, suscripcionDelModulo(modulo, indexarSuscripciones(suscripciones)))
 }
 
 export function modulosActivos(empresa: Empresa, suscripciones: SuscripcionContratada[]) {
@@ -18,7 +30,7 @@ export function modulosActivos(empresa: Empresa, suscripciones: SuscripcionContr
 }
 
 export function opcionesDePlan(suscripciones: SuscripcionContratada[]) {
-  return suscripciones.map((suscripcion) => suscripcion.planNombre).filter((plan, indice, planes) => planes.indexOf(plan) === indice)
+  return [...new Set(suscripciones.map((suscripcion) => suscripcion.planNombre))]
 }
 
 export function limiteDeEmpresas(suscripciones: SuscripcionContratada[]): LimiteEmpresas | null {

@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { NIVELES_AJUSTE_MEDIO, conAjusteMedio, LIMITE_TEXTO_HISTORIA, claseTextoAdaptada, contadorTexto, borradorInicial, conElemento, conEstiloTexto, conFondo, conMedio, conTexto, conTipo, nuevoElemento, puedePublicarHistoria, sinElemento, vistaDeBorrador } from '@/componentes/inicio'
 import catalogoInicio from '@/catalogos/capacidades/redsocial/inicio.json'
 

@@ -17,6 +17,7 @@ export function PaginaEventosCalendario() {
 
   const diaSeleccionado = CELDAS[indiceDiaSeleccionado]
   const eventosDiaSeleccionado = EVENTOS_POR_DIA[diaSeleccionado.numero] ?? []
+  const seleccion = { vista, setVista, indiceDiaSeleccionado, setIndiceDiaSeleccionado, diaSeleccionado, eventosDiaSeleccionado }
 
   return (
     <EstructuraApp paginaActiva={catalogoEventos.claves.modulo}>
@@ -24,18 +25,13 @@ export function PaginaEventosCalendario() {
         principal={
           <SeccionEventosDeHoy
             datos={{
-              vista,
+              ...seleccion,
               RANGO_FECHA_SEMANA,
               FECHA_DIA,
               MES_CALENDARIO_ACTUAL,
-              setVista,
               CELDAS,
-              setIndiceDiaSeleccionado,
-              indiceDiaSeleccionado,
               COLOR_EVENTO_CAL,
-              diaSeleccionado,
               MES_ABREVIADO_ACTUAL,
-              eventosDiaSeleccionado,
               COLOR_EVENTO_DIA,
               DIAS_SEMANA_CAL,
               HORAS_SEMANA,

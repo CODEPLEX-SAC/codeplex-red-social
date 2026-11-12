@@ -1,4 +1,4 @@
-import type { BarraOnda } from '@/tipos/compartido/contrato_audio'
+import type { BarraOnda, GrabacionAudio } from '@/tipos/compartido/contrato_audio'
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 
 const audio = catalogoCompartido.audio
@@ -49,4 +49,8 @@ export function claseDeAltura(pico: number): string {
 
 export function limiteAlcanzado(transcurridos: number, limite: number | null): boolean {
   return limite !== null && transcurridos >= limite
+}
+
+export function liberarGrabacion(grabacion: GrabacionAudio | null) {
+  if (grabacion) URL.revokeObjectURL(grabacion.url)
 }

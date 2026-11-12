@@ -13,6 +13,8 @@ export function SeccionTituloBuscar2({
   ciudadElegida,
   alElegirCiudad,
   ciudades,
+  ciudadesVisibles,
+  estadoCiudades,
   FilaCiudad,
 }: {
   enMapa: boolean
@@ -22,6 +24,8 @@ export function SeccionTituloBuscar2({
   ciudadElegida: string
   alElegirCiudad: (nombre: string) => void
   ciudades: CiudadFiltroEvento[]
+  ciudadesVisibles: readonly CiudadFiltroEvento[]
+  estadoCiudades: React.JSX.Element
   FilaCiudad: ({ nombre, activa, onElegir }: FilaCiudadProps) => React.JSX.Element
 }) {
   return (
@@ -40,9 +44,10 @@ export function SeccionTituloBuscar2({
       </div>
       <h4 className="m-0 mb-1.5 border-t border-borde-suave pt-3 text-nombre-entidad text-texto">{textos.ciudades_principales}</h4>
       <div className="flex flex-col">
-        {ciudades.map((c) => (
+        {ciudadesVisibles.map((c) => (
           <FilaCiudad key={c.nombre} nombre={c.nombre} activa={ciudadElegida === c.nombre} onElegir={() => alElegirCiudad(c.nombre)} />
         ))}
+        {estadoCiudades}
       </div>
       <Boton type="button" variant="enlace" size="enlace" className="mt-1.5 gap-1 border-0 p-0">
         {textos.mas_ubicaciones} <Icono name="flecha-abajo" className="h-3.5 w-3.5" />

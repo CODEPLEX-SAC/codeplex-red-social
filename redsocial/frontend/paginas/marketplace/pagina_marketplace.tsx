@@ -1,14 +1,15 @@
-import { useContext, useState } from 'react'
-import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel } from '../../componentes/compartido'
+import { useContext } from 'react'
+import { Boton, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, usarCarrusel, MensajeEstadoBusqueda, usarBusqueda } from '../../componentes/compartido'
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
-import { DESTACADOS, CATEGORIAS, POPULARES, PAGO_PLANES, CLASES_MODULO, CLASES_INSIGNIA_CATEGORIA, CLASES_CATEGORIA_COLOR } from '../../rutas/marketplace/rutas_marketplace'
-import { ContextoCarritoMarketplace, SeccionTituloPre, SeccionPopularEstaSemana, PanelMisCompras, SeccionMisCompras, usarCarritoCompartido, filtrarDestacados } from '../../componentes/marketplace'
+import { BUSQUEDA_DESTACADOS_MARKETPLACE, CATEGORIAS, IMAGENES_CARRUSEL_MARKETPLACE, POPULARES, PAGO_PLANES, CLASES_MODULO, CLASES_INSIGNIA_CATEGORIA, CLASES_CATEGORIA_COLOR } from '../../rutas/marketplace/rutas_marketplace'
+import { ContextoCarritoMarketplace, SeccionTituloPre, SeccionPopularEstaSemana, PanelMisCompras, SeccionMisCompras, filtrarPorModulo, usarCarritoCompartido, usarPestanaMarketplace } from '../../componentes/marketplace'
 import { ProveedorCarritoMarketplace } from './proveedor_carrito_marketplace'
 
 function ContenidoMarketplace() {
   const carrusel = usarCarrusel()
   const carrito = usarCarritoCompartido()
-  const [busqueda, setBusqueda] = useState('')
+  const modulo = usarPestanaMarketplace()
+  const busqueda = usarBusqueda(BUSQUEDA_DESTACADOS_MARKETPLACE.fuente, { modo: BUSQUEDA_DESTACADOS_MARKETPLACE.modo })
   const comprasVista = carrito.compras.map((c) => ({ nombre: c.nombre, icono: c.icono, color: c.tema, fecha: catalogoMarketplace.carrito.adquirido.replace(':fecha', c.fecha) }))
   const seccionCompras = carrito.comprasAbiertas ? (
     <SeccionMisCompras compras={carrito.compras} servicios={carrito.servicios} vip={PAGO_PLANES.vip} clasesModulo={CLASES_MODULO} desinstalacion={carrito.desinstalacion} alVolver={carrito.cerrarCompras} alMejorar={carrito.abrirPlanes} alContratarVip={carrito.contratarVip} />
@@ -19,11 +20,13 @@ function ContenidoMarketplace() {
         principal={
           <SeccionTituloPre
             carrusel={carrusel}
-            DESTACADOS={filtrarDestacados(DESTACADOS, busqueda)}
+            imagenesCarrusel={IMAGENES_CARRUSEL_MARKETPLACE}
+            DESTACADOS={filtrarPorModulo(busqueda.resultado.elementos, modulo.pestana)}
+            estadoBusqueda={<MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} sinCoincidencias={false} />}
             CLASES_MODULO={CLASES_MODULO}
             CLASES_INSIGNIA_CATEGORIA={CLASES_INSIGNIA_CATEGORIA}
             alVerPlanes={carrito.abrirPlanes}
-            accesos={{ abrirCompras: carrito.alternarCompras, busqueda, alBuscar: setBusqueda }}
+            accesos={{ abrirCompras: carrito.alternarCompras, busqueda: busqueda.texto, alBuscar: busqueda.cambiarTexto, pestana: modulo.pestana, alElegirPestana: modulo.elegir }}
             contenidoCompras={seccionCompras}
             CATEGORIAS={CATEGORIAS}
             CLASES_CATEGORIA_COLOR={CLASES_CATEGORIA_COLOR}

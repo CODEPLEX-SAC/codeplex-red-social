@@ -1,7 +1,7 @@
 import { esMismoDia } from './logica_fecha_mensajeria'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import type { CitaMensaje } from '@/tipos/mensajeria/contrato_conversacion'
-import type { Conversacion, Mensaje, ParticipanteMensajeria, PosicionEnGrupo, RespuestaMensaje } from '@/tipos/mensajeria/contrato_mensajes'
+import type { Conversacion, EntornoCitaMensaje, Mensaje, ParticipanteMensajeria, PosicionEnGrupo, RespuestaMensaje } from '@/tipos/mensajeria/contrato_mensajes'
 
 const textosRespuesta = catalogoMensajeria.conversacion.respuesta
 
@@ -32,7 +32,7 @@ export function nombreDeAutor(conversacion: Conversacion, participantes: readonl
   return participantes.find((participante) => participante.id === autorId)?.nombre ?? conversacion.nombre
 }
 
-export function citaDeRespuesta(respuesta: RespuestaMensaje | undefined, mensajes: readonly Mensaje[], conversacion: Conversacion, participantes: readonly ParticipanteMensajeria[], usuarioId: string): CitaMensaje | undefined {
+export function citaDeRespuesta(respuesta: RespuestaMensaje | undefined, mensajes: readonly Mensaje[], { conversacion, participantes, usuarioId }: EntornoCitaMensaje): CitaMensaje | undefined {
   if (!respuesta) return undefined
   const original = mensajes.find((mensaje) => mensaje.id === respuesta.mensajeId)
   const autor = nombreDeAutor(conversacion, participantes, respuesta.autorId, usuarioId)
@@ -47,10 +47,8 @@ export function sinElemento(lista: readonly string[], id: string): string[] {
   return lista.filter((elemento) => elemento !== id)
 }
 
-export function agruparDestinos(destinos: readonly Conversacion[], busqueda: string): { personas: Conversacion[]; grupos: Conversacion[] } {
-  const termino = busqueda.trim().toLowerCase()
-  const coincidentes = destinos.filter((destino) => destino.nombre.toLowerCase().includes(termino))
-  return { personas: coincidentes.filter((destino) => !destino.esGrupo), grupos: coincidentes.filter((destino) => destino.esGrupo) }
+export function agruparDestinos(destinos: readonly Conversacion[]): { personas: Conversacion[]; grupos: Conversacion[] } {
+  return { personas: destinos.filter((destino) => !destino.esGrupo), grupos: destinos.filter((destino) => destino.esGrupo) }
 }
 
 export function destinosDeReenvio(conversaciones: readonly Conversacion[], origenId: string): Conversacion[] {

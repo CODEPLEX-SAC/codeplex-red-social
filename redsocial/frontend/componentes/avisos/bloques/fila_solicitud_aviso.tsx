@@ -1,13 +1,12 @@
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { Boton } from '../../compartido/interfaz/boton'
+import { AccionesSolicitud } from './acciones_solicitud'
+import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
-import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { FilaSolicitudAvisoProps } from '@/tipos/avisos/contrato_solicitud_aviso'
 
-export function FilaSolicitudAviso({ miniatura: m, titulo, lineaSecundaria, lineaTerciaria, tiempo, accionPrimaria, accionSecundaria }: FilaSolicitudAvisoProps) {
+export function FilaNovedadSolicitud({ miniatura: m, titulo, lineaSecundaria, lineaTerciaria, tiempo, accionPrimaria, accionSecundaria }: FilaSolicitudAvisoProps) {
   return (
     <article className="flex items-center gap-3 border-b border-borde-suave p-3.5 last:border-b-0 hover:bg-fondo max-800:flex-wrap">
       {m.tipo === 'avatar' && <AvatarUsuario tamano="lg" imagen={usuarioImg} />}
@@ -33,16 +32,9 @@ export function FilaSolicitudAviso({ miniatura: m, titulo, lineaSecundaria, line
 
       <span className="flex-none whitespace-nowrap text-fecha-abreviada text-texto-suave max-800:order-1 max-800:ml-15">{tiempo}</span>
 
-      <div className="flex flex-none items-center gap-2 max-800:order-3 max-800:ml-15 max-800:mt-1">
-        <Boton type="button" variant="primario" size="default">
-          {accionPrimaria}
-        </Boton>
-        <Boton type="button" variant="secundario" size="default">
-          {accionSecundaria}
-        </Boton>
+      <div className={catalogoAvisos.clases_solicitud.fila_acciones}>
+        <AccionesSolicitud primaria={accionPrimaria} secundaria={accionSecundaria} />
       </div>
-
-      <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="discreto" size="sm" className="flex-none max-800:order-2" />
     </article>
   )
 }

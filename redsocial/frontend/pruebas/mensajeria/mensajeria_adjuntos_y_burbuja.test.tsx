@@ -1,5 +1,4 @@
 import { fireEvent, render, within } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
 import { pesoLegible } from '@/componentes/mensajeria'
 import { PaginaMensajesTodos } from '@/paginas/mensajeria/pagina_mensajes_todos'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'

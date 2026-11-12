@@ -1,77 +1,50 @@
-import { Icono, EstructuraApp, AvatarImagen, imagenUsuarioPredeterminada as usuarioImg } from '../../componentes/compartido'
-import { useState } from 'react'
-import { resolverReunionEnSala } from '../../rutas/mensajeria/rutas_mensajeria'
+import { EstructuraApp } from '../../componentes/compartido'
+import { elegirCantidadInicial, estadoInicial, SalaVideollamada } from '../../componentes/mensajeria'
+import { ampliarParticipantes, crearSalaNavegador, IMAGEN_PRESENTACION_DEMOSTRACION, PARTICIPANTES, participantesDemostracion, resolverLlamadaDirecta, resolverReunionEnSala, resolverReunionNueva } from '../../rutas/mensajeria/rutas_mensajeria'
+import { contactosInvitables, fotografiaDeParticipante, participantesDesdePerfiles } from '../../rutas/mensajeria/fotografias_participantes'
+import { SESION_ACTUAL } from '../../rutas/compartido/rutas_compartido'
 import { usarParametroDeRuta } from '../../rutas/compartido/navegacion'
 import { PaginaNoEncontrada } from '../compartido/pagina_no_encontrada'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
-import type { ReunionEnSala } from '@/tipos/mensajeria/contrato_reunion'
-import { BloqueEnLlamada, BloqueMicrofono, SeccionParticipantes } from '../../componentes/mensajeria'
 
-function SalaVideollamada({ reunion }: { reunion: ReunionEnSala }) {
-  const { participantes: PARTICIPANTES, conteo: CONTEO_PARTICIPANTES_EN_CURSO } = reunion
-  const [participantesAbiertos, setParticipantesAbiertos] = useState(false)
-  const [micActivo, setMicActivo] = useState(true)
-  const [camaraActivo, setCamaraActivo] = useState(true)
+const PUERTO_SALA = crearSalaNavegador()
+const parametros = catalogoMensajeria.parametros_ruta
+const CONTACTOS = contactosInvitables([SESION_ACTUAL.usuario])
+
+function resolverReunion(id: string | null, contacto: string | null, esNueva: boolean) {
+  if (id === null && contacto) return resolverLlamadaDirecta(contacto)
+  if (id === null && esNueva) return resolverReunionNueva()
+  return resolverReunionEnSala(id)
+}
+
+export function PaginaMensajesVideollamadaEnCurso({ instantanea = false }: { instantanea?: boolean }) {
+  const id = usarParametroDeRuta(catalogoMensajeria.parametros_ruta.reunion)
+  const contacto = usarParametroDeRuta(catalogoMensajeria.parametros_ruta.contacto)
+  const esNueva = instantanea || usarParametroDeRuta(catalogoMensajeria.parametros_ruta.modo) === catalogoMensajeria.videollamada.modo_reunion
+  const reunion = resolverReunion(id, contacto, esNueva)
+  if (!reunion) return <PaginaNoEncontrada />
+
+  const reserva = [...PARTICIPANTES, ...participantesDesdePerfiles([SESION_ACTUAL.usuario, ...PARTICIPANTES.map((participante) => participante.nombre)])]
+  const base = ampliarParticipantes(reunion.participantes, reserva)
+  const esPredeterminada = id === null && !contacto && !esNueva
+  const cantidadInicial = elegirCantidadInicial(esPredeterminada, contacto !== null, base.length)
+  const enlaceReunion = new URL(catalogoMensajeria.rutas.videollamada_en_curso, window.location.origin).toString()
 
   return (
     <EstructuraApp paginaActiva="mensajes">
-      <div className="-mx-6 -mt-6.25 -mb-10.5 flex h-vh-navbar min-w-0 flex-col gap-3.5 px-5 pb-5 pt-5 max-800:-mx-3 max-800:-mt-4.5 max-800:-mb-4.5">
-        <BloqueEnLlamada
-          REUNION_EN_CURSO={reunion}
-          setParticipantesAbiertos={setParticipantesAbiertos}
-          CONTEO_PARTICIPANTES_EN_CURSO={CONTEO_PARTICIPANTES_EN_CURSO}
-        />
-
-        <div className="relative flex min-h-0 flex-1 gap-4">
-          <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-2.5">
-            <div className="grid min-h-0 flex-1 auto-rows-minmax120-1fr grid-cols-repeatauto-fill-minmax170-1fr gap-3 overflow-y-auto rounded-14 bg-fondo-escenario p-4 max-780:grid-cols-repeatauto-fill-minmax130-1fr max-480:grid-cols-repeatauto-fill-minmax105-1fr max-480:gap-2">
-              {PARTICIPANTES.map((p) => (
-                <article key={p.nombre} className="relative min-h-30 overflow-hidden rounded-control degradado-nocturno-profundo">
-                  {p.organizador && (
-                    <span className="absolute left-2 top-2 z-1 rounded-md bg-overlay-4 px-2.25 py-0.75 text-badge text-white">{catalogoMensajeria.leyendas.organizador}</span>
-                  )}
-                  <AvatarImagen src={usuarioImg} className="absolute inset-0 bg-primario-suave opacity-92" />
-                  <div className="absolute inset-x-2 bottom-2 z-1 flex items-center gap-1.5">
-                    <span className="min-w-0 flex-1 truncate rounded-md bg-overlay-4 px-2.25 py-1 text-nombre-entidad text-white">{p.nombre}</span>
-                    <span className={'grid h-6 w-6 flex-none place-items-center rounded-full p-1.25 ' + (p.micActivo ? 'bg-overlay-9 text-white' : 'bg-overlay-4 text-texto-sobre-oscuro-peligro')}>
-                      <Icono name={p.micActivo ? 'microfono' : 'microfono-apagado'} className="h-full w-full" />
-                    </span>
-                    <span className={'grid h-6 w-6 flex-none place-items-center rounded-full p-1.25 ' + (p.videoActivo ? 'bg-overlay-9 text-white' : 'bg-overlay-4 text-texto-sobre-oscuro-peligro')}>
-                      <Icono name={p.videoActivo ? 'video' : 'video-apagado'} className="h-full w-full" />
-                    </span>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <BloqueMicrofono
-              setMicActivo={setMicActivo}
-              micActivo={micActivo}
-              setCamaraActivo={setCamaraActivo}
-              camaraActivo={camaraActivo}
-              setParticipantesAbiertos={setParticipantesAbiertos}
-              CONTEO_PARTICIPANTES_EN_CURSO={CONTEO_PARTICIPANTES_EN_CURSO}
-            />
-          </div>
-
-          {participantesAbiertos && (
-            <div className="fixed inset-0 z-29 bg-overlay-2 max-1100:block hidden" onClick={() => setParticipantesAbiertos(false)} />
-          )}
-
-          <SeccionParticipantes
-            participantesAbiertos={participantesAbiertos}
-            CONTEO_PARTICIPANTES_EN_CURSO={CONTEO_PARTICIPANTES_EN_CURSO}
-            setParticipantesAbiertos={setParticipantesAbiertos}
-            PARTICIPANTES={PARTICIPANTES}
-          />
-        </div>
-      </div>
+      <SalaVideollamada
+        key={id ?? contacto ?? (esNueva ? 'nueva' : 'en-curso')}
+        reunion={reunion}
+        puerto={PUERTO_SALA}
+        generar={(cantidad) => participantesDemostracion(base, cantidad, fotografiaDeParticipante)}
+        contactos={CONTACTOS}
+        enlaceReunion={enlaceReunion}
+        imagenPresentacion={IMAGEN_PRESENTACION_DEMOSTRACION}
+        maximoParticipantes={base.length}
+        cantidadInicial={cantidadInicial}
+        microfonoInicial={estadoInicial(usarParametroDeRuta(parametros.microfono), !instantanea)}
+        camaraInicial={estadoInicial(usarParametroDeRuta(parametros.camara), !instantanea)}
+      />
     </EstructuraApp>
   )
-}
-
-export function PaginaMensajesVideollamadaEnCurso() {
-  const id = usarParametroDeRuta(catalogoMensajeria.parametros_ruta.reunion)
-  const reunion = resolverReunionEnSala(id)
-  return reunion ? <SalaVideollamada key={id ?? 'en-curso'} reunion={reunion} /> : <PaginaNoEncontrada />
 }

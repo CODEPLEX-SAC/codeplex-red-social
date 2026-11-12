@@ -1,12 +1,11 @@
 import { Icono } from '../../compartido/icono'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido/icono'
+import { AccionesSolicitud } from './acciones_solicitud'
 import catalogoAvisos from '../../../catalogos/capacidades/redsocial/avisos.json'
 import type { FilaPanelTopbarProps } from '@/tipos/avisos/contrato_notificaciones_topbar'
 
-void catalogoAvisos
-
-export function FilaPanelTopbar({ aviso: n, claseIcono }: FilaPanelTopbarProps) {
+export function FilaPanelTopbar({ aviso: n, claseIcono, leida = n.leida }: FilaPanelTopbarProps) {
   return (
     <article className="flex items-start gap-2.5 border-b border-borde-suave p-3 last:border-b-0 hover:bg-fondo">
       {n.tipo === 'avatar' ? (
@@ -25,9 +24,10 @@ export function FilaPanelTopbar({ aviso: n, claseIcono }: FilaPanelTopbarProps) 
         </p>
         {n.detalle && <p className="m-0 mt-0.5 truncate text-auxiliar text-texto-suave">{n.detalle}</p>}
         <span className="mt-0.5 block text-fecha-abreviada text-texto-suave">{n.tiempo}</span>
+        {n.solicitud && <AccionesSolicitud primaria="confirmar" secundaria="eliminar" compacta />}
       </div>
 
-      <span className="mt-1.5 h-2 w-2 flex-none rounded-full bg-primario" />
+      <span className={[catalogoAvisos.clases_solicitud.punto, leida ? 'bg-transparent' : 'bg-primario'].join(' ')} />
     </article>
   )
 }

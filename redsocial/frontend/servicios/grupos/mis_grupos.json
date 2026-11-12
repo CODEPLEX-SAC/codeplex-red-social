@@ -1,10 +1,18 @@
 {
   "gruposAdmin": [
     {
+      "nombre": "Desarrollo Web con Python",
+      "icono": "web",
+      "color": "morado",
+      "tipo": "1 miembro",
+      "descripcion": "Comunidad para aprender, compartir y colaborar en proyectos de desarrollo web con Python, Django, Flask y más.",
+      "masAvatares": ""
+    },
+    {
       "nombre": "Equipo Codeplex",
       "icono": "amigos",
       "color": "morado",
-      "tipo": "Grupo privado · 25 miembros",
+      "tipo": "25 miembros",
       "descripcion": "Equipo interno de Codeplex para coordinar proyectos, compartir información y mantenernos alineados.",
       "masAvatares": "+18"
     },
@@ -12,7 +20,7 @@
       "nombre": "Proyecto Alfa",
       "icono": "maletin",
       "color": "naranja",
-      "tipo": "Grupo privado · 12 miembros",
+      "tipo": "12 miembros",
       "descripcion": "Colaboración y seguimiento del proyecto Alfa para su implementación y crecimiento.",
       "masAvatares": "+5"
     }
@@ -22,7 +30,7 @@
       "nombre": "Programación Go",
       "icono": "cuadricula",
       "color": "morado",
-      "tipo": "Grupo privado · 85 miembros",
+      "tipo": "85 miembros",
       "descripcion": "Comunidad para desarrolladores que usan Go en sus proyectos.",
       "masAvatares": "+62"
     },
@@ -30,7 +38,7 @@
       "nombre": "Ideas y Feedback",
       "icono": "sentimiento",
       "color": "azul",
-      "tipo": "Grupo privado · 34 miembros",
+      "tipo": "34 miembros",
       "descripcion": "Comparte tus ideas y mejora nuestros productos.",
       "masAvatares": "+21"
     },
@@ -38,7 +46,7 @@
       "nombre": "Contadores Perú",
       "icono": "estadisticas",
       "color": "morado",
-      "tipo": "Grupo público · 1.2K miembros",
+      "tipo": "1.2K miembros",
       "descripcion": "Comunidad de contadores y asesores de todo el Perú.",
       "masAvatares": "+342"
     },
@@ -46,7 +54,7 @@
       "nombre": "Marketing Digital LATAM",
       "icono": "campana",
       "color": "rosa",
-      "tipo": "Grupo público · 9.5K miembros",
+      "tipo": "9.5K miembros",
       "descripcion": "Estrategias, herramientas y tendencias de marketing digital en LATAM.",
       "masAvatares": "+2.4K"
     },
@@ -54,7 +62,7 @@
       "nombre": "Desarrollo Personal",
       "icono": "me-gusta",
       "color": "verde",
-      "tipo": "Grupo privado · 25 miembros",
+      "tipo": "25 miembros",
       "descripcion": "Crecimiento personal, hábitos y mejores prácticas.",
       "masAvatares": "+8"
     },
@@ -62,9 +70,41 @@
       "nombre": "Viajes y Aventuras",
       "icono": "video",
       "color": "amarillo",
-      "tipo": "Grupo privado · 18 miembros",
+      "tipo": "18 miembros",
       "descripcion": "Comparte experiencias, consejos y destinos increíbles.",
       "masAvatares": "+3"
+    },
+    {
+      "nombre": "Diseño UX Perú",
+      "icono": "paleta",
+      "color": "rosa",
+      "tipo": "45 miembros",
+      "descripcion": "Comunidad de diseñadores de experiencia de usuario del Perú.",
+      "masAvatares": "+10"
+    },
+    {
+      "nombre": "Finanzas Personales",
+      "icono": "moneda",
+      "color": "verde",
+      "tipo": "210 miembros",
+      "descripcion": "Consejos para ordenar tus finanzas y ahorrar.",
+      "masAvatares": "+10"
+    },
+    {
+      "nombre": "Fotografía Lima",
+      "icono": "camara",
+      "color": "azul",
+      "tipo": "96 miembros",
+      "descripcion": "Salidas fotográficas y técnicas para fotógrafos de Lima.",
+      "masAvatares": "+10"
+    },
+    {
+      "nombre": "Viajeros del Perú",
+      "icono": "ubicacion",
+      "color": "amarillo",
+      "tipo": "320 miembros",
+      "descripcion": "Rutas, consejos y experiencias para viajar por el Perú.",
+      "masAvatares": "+10"
     }
   ],
   "actividadMisGrupos": [
@@ -113,22 +153,22 @@
     {
       "nombre": "Emprendedores Perú",
       "color": "morado",
-      "tipo": "Público · 12.4K miembros"
+      "tipo": "12.4K miembros"
     },
     {
       "nombre": "Diseño UI/UX",
       "color": "rosa",
-      "tipo": "Público · 8.7K miembros"
+      "tipo": "8.7K miembros"
     },
     {
       "nombre": "Finanzas Personales",
       "color": "verde",
-      "tipo": "Público · 15.2K miembros"
+      "tipo": "15.2K miembros"
     },
     {
       "nombre": "Inteligencia Artificial",
       "color": "azul",
-      "tipo": "Público · 22.1K miembros"
+      "tipo": "22.1K miembros"
     }
   ]
 }

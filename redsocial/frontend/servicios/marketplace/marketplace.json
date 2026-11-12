@@ -15,7 +15,10 @@
         "Reportes + seguridad completa",
         "Hasta 45 empresas"
       ],
-      "planes": "conta-plex"
+      "planes": "conta-plex",
+      "modulos": [
+        "Contabilidad"
+      ]
     },
     {
       "nombre": "GestiónPlex",
@@ -32,7 +35,11 @@
         "Tesorería",
         "Soporte + Sistema Contable GRATIS"
       ],
-      "planes": "gestionplex-comercial"
+      "planes": "gestionplex-comercial",
+      "modulos": [
+        "Ventas",
+        "Inventario"
+      ]
     },
     {
       "nombre": "Facturación Electrónica",
@@ -49,7 +56,10 @@
         "Web · Android · iOS · Usuarios ilimitados",
         "Sistema Contable Basic GRATIS"
       ],
-      "planes": "facturacion-electronica"
+      "planes": "facturacion-electronica",
+      "modulos": [
+        "Ventas"
+      ]
     },
     {
       "nombre": "GestiónPlex",
@@ -66,7 +76,11 @@
         "Reportes y Balances",
         "Declaraciones tributarias"
       ],
-      "planes": "gestionplex-restaurante"
+      "planes": "gestionplex-restaurante",
+      "modulos": [
+        "Ventas",
+        "Inventario"
+      ]
     },
     {
       "nombre": "Gestión-Plex Transporte",
@@ -83,7 +97,10 @@
         "Compras + Liquidación por chofer",
         "Soporte + Contable GRATIS"
       ],
-      "planes": "gestionplex-transporte"
+      "planes": "gestionplex-transporte",
+      "modulos": [
+        "Productividad"
+      ]
     },
     {
       "nombre": "Gestión-Plex Grifo",
@@ -100,7 +117,10 @@
         "Producción + Procesos",
         "Soporte + Contable GRATIS"
       ],
-      "planes": "gestionplex-grifo"
+      "planes": "gestionplex-grifo",
+      "modulos": [
+        "Inventario"
+      ]
     }
   ],
   "categorias": [

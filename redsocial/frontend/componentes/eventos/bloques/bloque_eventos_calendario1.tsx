@@ -4,6 +4,27 @@ import type { CeldaCal } from '@/tipos/eventos/modelo_eventos_calendario'
 
 const DIAS_SEMANA = catalogoEventos.dias_semana
 
+function claseCelda(indice: number, total: number, otroMes: boolean | undefined) {
+  return [
+    'flex min-h-25 max-768:min-h-11 flex-col gap-1 p-1.5 max-768:items-center',
+    (indice + 1) % 7 !== 0 && 'border-r border-gris-borde',
+    indice < total - 7 && 'border-b border-gris-borde',
+    otroMes && 'bg-fondo',
+  ]
+    .filter(Boolean)
+    .join(' ')
+}
+
+function claseNumeroDia(hoy: boolean | undefined, seleccionado: boolean) {
+  return [
+    'mb-0.5 flex h-6 w-6 items-center justify-center rounded-full text-cuerpo font-control',
+    hoy ? 'bg-primario font-titulo text-white' : 'text-texto disabled:opacity-40',
+    seleccionado && !hoy && 'max-768:ring-2 max-768:ring-primario',
+  ]
+    .filter(Boolean)
+    .join(' ')
+}
+
 export function BloqueEventosCalendario1({
   CELDAS,
   setIndiceDiaSeleccionado,
@@ -26,22 +47,13 @@ export function BloqueEventosCalendario1({
         {CELDAS.map((c, i) => (
           <div
             key={[c.numero, Number(Boolean(c.otroMes))].join('')}
-            className={
-              'flex min-h-25 max-768:min-h-11 flex-col gap-1 p-1.5 max-768:items-center ' +
-              ((i + 1) % 7 !== 0 ? 'border-r border-gris-borde ' : '') +
-              (i < CELDAS.length - 7 ? 'border-b border-gris-borde ' : '') +
-              (c.otroMes ? 'bg-fondo' : '')
-            }
+            className={claseCelda(i, CELDAS.length, c.otroMes)}
           >
             <button
               type="button"
               disabled={c.otroMes}
               onClick={() => setIndiceDiaSeleccionado(i)}
-              className={
-                'mb-0.5 flex h-6 w-6 items-center justify-center rounded-full text-cuerpo font-control ' +
-                (c.hoy ? 'bg-primario font-titulo text-white' : 'text-texto disabled:opacity-40') +
-                (i === indiceDiaSeleccionado && !c.hoy ? ' max-768:ring-2 max-768:ring-primario' : '')
-              }
+              className={claseNumeroDia(c.hoy, i === indiceDiaSeleccionado)}
             >
               {c.numero}
             </button>

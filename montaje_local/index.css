@@ -350,7 +350,7 @@
   --grid-template-columns-repeatauto-fill-minmax130-1fr: repeat(auto-fill,minmax(130px,1fr));
   --grid-template-columns-repeatauto-fill-minmax105-1fr: repeat(auto-fill,minmax(105px,1fr));
   --grid-template-columns-minmax400-720-minmax320-400: minmax(400px,720px) minmax(320px,400px);
-  --grid-template-columns-minmax260-300-minmax420-1fr-minmax280-340: minmax(260px,300px) minmax(420px,1fr) minmax(280px,340px);
+  --grid-template-columns-minmax260-300-minmax420-1fr-minmax280-340: minmax(320px,360px) minmax(420px,1fr) minmax(280px,340px);
 
   --height-barra-superior: 4.5rem;
   --height-vh-navbar: calc(100vh - var(--height-barra-superior));

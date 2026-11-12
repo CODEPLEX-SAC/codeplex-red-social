@@ -5,6 +5,7 @@ import { SeccionListado2 } from './seccion_listado2'
 import { BloqueColaboradores1 } from './bloque_colaboradores1'
 import { BarraHerramientasColaboradores } from './barra_herramientas_colaboradores'
 import { VistaColaboradores } from './vista_colaboradores'
+import { MensajeEstadoBusqueda } from '../../compartido/interfaz/mensaje_estado_busqueda'
 import { usarTablaColaboradores } from './usar_tabla_colaboradores'
 import { crearAccionesExportar } from './exportar_colaboradores'
 import type { DatosListadoColaboradores } from '@/tipos/colaboradores/contrato_listado_colaboradores'
@@ -12,15 +13,15 @@ import type { DatosListadoColaboradores } from '@/tipos/colaboradores/contrato_l
 const clases = catalogoColaboradores.clases.listado
 
 export function SeccionListado({ datos }: { datos: DatosListadoColaboradores }) {
-  const { COLABORADORES, FILTROS_ESTADO_COLABORADORES, alInvitarColaborador, alFalloExportar } = datos
+  const { COLABORADORES, FILTROS_ESTADO_COLABORADORES, fuente, alInvitarColaborador, alFalloExportar } = datos
 
   const {
     pestanaActiva, cambiarPestana, elementosPestana,
-    busqueda, cambiarBusqueda,
+    busqueda, estadoBusqueda, errorBusqueda, cambiarBusqueda,
     rol, cambiarRol, aplicacion, cambiarAplicacion, ordenarPor, cambiarOrdenarPor,
     tabla, filas, resumen, colaboradoresFiltrados, colaboradoresVista, criteriosExportacion, hayCriteriosActivos, filtrosAvanzados, aplicarFiltrosAvanzados,
     filtrosActivos, aplicarBasicos, quitarFiltro,
-  } = usarTablaColaboradores(COLABORADORES, FILTROS_ESTADO_COLABORADORES)
+  } = usarTablaColaboradores(COLABORADORES, FILTROS_ESTADO_COLABORADORES, fuente)
 
   const { pageIndex } = tabla.getState().pagination
 
@@ -44,6 +45,8 @@ export function SeccionListado({ datos }: { datos: DatosListadoColaboradores }) 
       />
 
       <BloqueColaboradores1 datos={{ rol, cambiarRol, aplicacion, cambiarAplicacion, ordenarPor, cambiarOrdenarPor }} />
+
+      <MensajeEstadoBusqueda estado={estadoBusqueda} error={errorBusqueda} sinCoincidencias={false} />
 
       <VistaColaboradores datos={datos} filas={filas} />
 

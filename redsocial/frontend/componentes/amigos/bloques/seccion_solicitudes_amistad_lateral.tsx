@@ -4,6 +4,8 @@ import { PanelLateral } from '../../compartido/bloques/panel_lateral'
 import { AvatarUsuario } from '../../compartido/interfaz/avatar_usuario'
 import { imagenUsuarioPredeterminada as usuarioImg } from '../../compartido'
 import { Boton } from '../../compartido/interfaz/boton'
+import { EnlacePerfilUsuario } from '../../compartido/interfaz/enlace_perfil_usuario'
+import { idPerfilDeNombre } from './logica_amigos'
 
 export function SeccionSolicitudesAmistadLateral({ SOLICITUDES }: { SOLICITUDES: { nombre: string; descripcion: string; }[] }) {
   return (
@@ -11,9 +13,13 @@ export function SeccionSolicitudesAmistadLateral({ SOLICITUDES }: { SOLICITUDES:
       {SOLICITUDES.map((s) => (
         <article key={s.nombre} className="border-b border-borde py-3.5 last:border-b-0">
           <div className="mb-2.5 flex gap-2.5">
-            <AvatarUsuario tamano="lg" imagen={usuarioImg} />
+            <EnlacePerfilUsuario autorId={idPerfilDeNombre(s.nombre)} nombre={s.nombre}>
+              <AvatarUsuario tamano="lg" imagen={usuarioImg} />
+            </EnlacePerfilUsuario>
             <div>
-              <strong className="block text-nombre-fila text-texto">{s.nombre}</strong>
+              <strong className="block text-nombre-fila text-texto">
+                <EnlacePerfilUsuario autorId={idPerfilDeNombre(s.nombre)} nombre={s.nombre}>{s.nombre}</EnlacePerfilUsuario>
+              </strong>
               <p className="m-0 mt-0.5 text-subtitulo leading-texto text-texto-suave">{s.descripcion}</p>
             </div>
           </div>

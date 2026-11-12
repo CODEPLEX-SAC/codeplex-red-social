@@ -57,6 +57,7 @@ Registro único de lo que **no debe normalizarse automáticamente** y de lo que 
 - **Duplicación de tarjetas tipo radio:** `OpcionMetodoPago`, `OpcionModalidadEvento` y `OpcionCostoEvento`; evaluar un único componente.
 - **Línea base visual de las demás pantallas:** solo las seis claves `/empresas` de `roles.json` se revisaron y aprobaron (la clave `1280|/empresas` se actualizó de nuevo el 2026-10-19 por el selector con RUC). Las otras 282 claves conservan su línea base anterior; las diferencias de las Fases 5 y 6 en otras pantallas (VIS-02) siguen sin aprobar ([diferencias_aceptadas_linea_base.md](diferencias_aceptadas_linea_base.md)).
 - **Fase de producto sin definir:** el contenido real de Notificaciones > Sistema.
+- **Buscadores (Fase 3, 2026-11-10):** criterio de EMP-02 (historial) pendiente de confirmación; NAV-01, MSJ-05 y MSJ-06 sin definición funcional; implementaciones de MKT-01 y EMP-03 por alinear con su criterio ya definido; diseño de la paginación remota y de las fuentes asíncronas para cuando exista Backend. Detalle en la sección «Buscadores: estado de la Fase 3 (2026-11-10)», al final de este documento.
 
 ## 4. No verificado
 
@@ -110,3 +111,91 @@ La regla `react/rules-of-hooks` de oxlint 1.81.0 no admite opciones y solo recon
 ## Botones nativos: recuento (2026-10-28)
 El inventario del 2026-10-26 daba 37 y el escaneo del 2026-10-28, 39. Ambos son correctos para su fecha: el último commit tiene 37 `<button>` (Acceso 2, Amigos 1, Compartido 9, Eventos 13, Inicio 1, Marketplace 2, Mensajería 9) y el árbol de trabajo 39, por −1 en `boton_avisos_topbar.tsx` (la campana pasó a `BotonIcono`) y +1 en `seccion_solicitudes.tsx`, `mensajes_flotantes_inicio.tsx` y `modal_reenviar_mensaje.tsx`. Los 39 coinciden archivo por archivo con `registro_componentes_permitidos.ts` (39 en 29 archivos).
 
+## Buscadores: estado de la Fase 3 (2026-11-10)
+
+Registro del estado de la iniciativa de buscadores. Contrastado con el código y con las pruebas el 2026-11-10. **La implementación del lado del frontend está terminada. No afirma que Backend esté integrado:** no existen endpoints y los contratos hacia Backend son propuestas por acordar.
+
+### Regla funcional general
+Cada buscador usa el criterio principal de su módulo, sin convertirse en un buscador avanzado ni incorporar atributos innecesarios. Los filtros adicionales existentes se conservan como controles independientes: nunca forman parte del texto de búsqueda y, cuando una fuente los recibe, viajan como un parámetro distinto (`filtros`). La comparación ignora mayúsculas, minúsculas y tildes con la función compartida `normalizarTexto` (`componentes/compartido/interfaz/buscar_opciones_locales.ts`), y solo afecta a la comparación, no a lo que se muestra. Mensajería nunca busca en el contenido, la vista previa ni el último mensaje; Colaboradores no busca por teléfono.
+
+### Infraestructura compartida
+- **Contrato** (`tipos/compartido/contrato_busqueda.ts`): `ResultadoBusquedaLista<T>`, `FuenteBusqueda<T, F = undefined>` (`(consulta, limite?, filtros?) => resultado | Promise<resultado>`), `OpcionesBusqueda<F>`, estados y errores de búsqueda y `ConfiguracionBusqueda<T, F>` (`{ fuente, modo }`, para páginas cuyos datos llegan desde `rutas`).
+- **Hook** `usarBusqueda(fuente, { limite, modo, filtros })` (`componentes/compartido/interfaz/usar_busqueda.ts`): modo `local` sin espera; modo `remota` con retardo de 300 ms (`compartido.json › busqueda.retardo_remoto_ms`) que agrupa texto y filtros; estados inicial, escribiendo, cargando, con resultados, sin coincidencias y error; descarte de respuestas obsoletas. Sin filtros, la fuente se invoca solo con `(consulta, limite)`, como antes.
+- **Fuente local** `crearFuenteLocal(elementos, coincide, admite?)`, `contieneTexto`, `coincideNombre` (`fuente_busqueda_local.ts`) y `MensajeEstadoBusqueda` (`mensaje_estado_busqueda.tsx`) para sin coincidencias, carga y error.
+- **Selector de empresa** (SEL-01): conserva su contrato propio `FuenteOpcionesBuscables`; no se modificó.
+- **Patrón de inyección.** En los componentes, la prop opcional `fuente` (por defecto, la fuente local construida con sus datos); si se pasa una fuente se usa el modo remoto. En las páginas cuyos datos vienen de `rutas`, la fuente la exporta `rutas/<módulo>/`: `BUSQUEDA_DESTACADOS_MARKETPLACE`, `BUSQUEDA_GRUPOS_GUARDADOS`, `BUSQUEDA_EVENTOS_PARA_TI` y `FUENTES_BUSQUEDA_EMPRESAS`. Cambiar de Mock a una fuente real exige tocar solo `rutas`.
+
+### Etapas
+
+| Etapa | Alcance | Estado |
+|---|---|---|
+| E1 | Infraestructura compartida (contrato, hook, claves `compartido.json › busqueda`, registro del hook en `excepciones_hooks_aprobadas.ts` y `.oxlintrc.json`) | Cerrada |
+| E2 | Migración de los buscadores funcionales a `usarBusqueda`, `crearFuenteLocal` y `contieneTexto`, con los criterios aprobados | Cerrada |
+| E3 | Buscadores decorativos o incompletos con criterio definido (AMI-02, GRD-01, GRP-01, EVT-02 a EVT-05) | Cerrada |
+| E4 | Estados de búsqueda con `MensajeEstadoBusqueda` | Cerrada |
+| E5 | Normalización compartida (`normalizarTexto`) en todos los buscadores | Cerrada |
+| E6 | Fuente inyectable en AMI-03 y EVT-01 y pruebas de sustitución de Mock por fuente asíncrona | Cerrada |
+| T0 a T7 | Contrato con `filtros`; fuente inyectable y criterio definitivo en los 17 buscadores restantes; cierre y pruebas | **Cerradas (implementadas y validadas con pruebas automatizadas)** |
+
+### Inventario de los 23 buscadores
+Rutas visuales según los catálogos; archivos bajo `redsocial/frontend/`. «Punto de inyección» indica dónde se entrega una fuente distinta de la local.
+
+| ID | Ruta visual | Archivo principal | Criterio definitivo | Filtros independientes | Punto de inyección |
+|---|---|---|---|---|---|
+| SEL-01 | barra superior | `componentes/compartido/navegacion/selector_empresa_topbar.tsx` | nombre y RUC | — | contrato propio `FuenteOpcionesBuscables` (sin cambios) |
+| AMI-03 | `/perfil`, pestaña Amigos | `componentes/perfil/bloques/pestana_amigos_perfil.tsx` | nombre | — | prop `fuente` |
+| EVT-01 | `/eventos`, filtro Categoría | `componentes/eventos/bloques/panel_filtro_categoria.tsx` | nombre de la categoría | — | prop `fuente` |
+| MSJ-01 | `/mensajes` | `componentes/mensajeria/bloques/lista_conversaciones.tsx` | nombre de persona o grupo | vista: Todos, No leídos, Favoritos, Grupos | prop `fuente` |
+| MSJ-02 | `/mensajes/videollamadas` | `componentes/mensajeria/bloques/bloque_recientes.tsx` | nombre de persona o grupo | Recientes, Contactos, Grupos | prop `fuente` |
+| MSJ-03 | `/mensajes`, modal «Crear grupo» | `componentes/mensajeria/bloques/modal_crear_grupo.tsx` | nombre de amigo, colaborador o persona | ya elegidos (`excluir`) | prop `fuente` |
+| MSJ-04 | `/mensajes`, modal «Reenviar» | `componentes/mensajeria/bloques/modal_reenviar_mensaje.tsx` | nombre de persona o grupo | — | prop `fuente` |
+| COL-01 | `/colaboradores` | `componentes/colaboradores/bloques/barra_herramientas_colaboradores.tsx`; hook `usar_tabla_colaboradores.ts` | nombre y correo electrónico | pestaña de estado, rol, aplicación y filtros avanzados | `fuente` en `DatosListadoColaboradores` |
+| EMP-01 | `/empresas` | `componentes/empresas/bloques/filtros_empresas.tsx`; hook `usar_listado_empresas.ts` | nombre y RUC | estado, rubro, plan, módulo y fechas | `FUENTES_BUSQUEDA_EMPRESAS.empresas` (rutas → página → `SeccionListadoEmpresas`) |
+| EMP-02 | `/empresas`, detalle, pestaña Historial | `componentes/empresas/bloques/filtros_historial_empresa.tsx` | **usuario** (columna «Usuario»); no busca por acción, detalle, tipo, fecha ni hora | Desde, Hasta y Todos los tipos | `FUENTES_BUSQUEDA_EMPRESAS.historial` (rutas → página → `datosDetalle.fuenteHistorial` → `ContenidoPestanaEmpresa`) |
+| EMP-03 | `/empresas`, detalle, pestaña Usuarios | `componentes/empresas/bloques/filtros_usuarios_empresa.tsx` | nombre y correo; **no busca por rol** | rol y estado | `FUENTES_BUSQUEDA_EMPRESAS.usuarios` (misma ruta que EMP-02, con `datosDetalle.fuenteUsuarios`; también en el modal de edición) |
+| AMI-01 | `/amigos/solicitudes` | `componentes/amigos/bloques/seccion_solicitudes.tsx` | nombre | Recibidas y Enviadas | prop `fuente` |
+| AMI-02 | `/amigos` | `componentes/amigos/bloques/seccion_tus_amigos.tsx` | nombre | estado de conexión | prop `fuente` |
+| MKT-01 | `/marketplace` | `componentes/marketplace/bloques/campo_buscador_marketplace.tsx`; lógica `logica_busqueda_marketplace.ts` | **nombre de aplicaciones y módulos, exclusivamente** (ya no categoría, descripción, publicador ni precio) | — | `BUSQUEDA_DESTACADOS_MARKETPLACE` (`rutas/marketplace/busqueda_destacados.ts`) |
+| GRD-01 | `/guardados` | `paginas/guardados/pagina_guardados.tsx` | nombre del grupo guardado | orden (más recientes, más antiguas) | `BUSQUEDA_GRUPOS_GUARDADOS` (`rutas/guardados/busqueda_guardados.ts`) |
+| GRP-01 | `/grupos/invitaciones` | `componentes/grupos/bloques/seccion_invitaciones.tsx` | nombre del grupo (pendientes y aceptadas con una sola consulta) | orden | prop `fuente` |
+| EVT-02 | `/eventos`, filtro Ubicación | `componentes/eventos/bloques/panel_filtro_ubicacion.tsx` | ciudad | — | prop `fuenteCiudades` |
+| EVT-03 | `/eventos`, panel de ubicación, campo móvil del mapa | `componentes/eventos/bloques/panel_filtro_ubicacion.tsx` | lugar | — | prop `fuenteLugares` |
+| EVT-04 | `/eventos`, «Buscar eventos» | `paginas/eventos/pagina_eventos_para_ti.tsx` | nombre del evento | ubicación (EVT-05), combinable | `BUSQUEDA_EVENTOS_PARA_TI` (`rutas/eventos/busqueda_eventos_para_ti.ts`) |
+| EVT-05 | `/eventos`, campo de ubicación | `paginas/eventos/pagina_eventos_para_ti.tsx` | ciudad o lugar | — | `filtros.ubicacion` de la misma fuente que EVT-04 |
+| NAV-01 | barra superior | `componentes/compartido/navegacion/barra_superior.tsx` | sin definir | — | Sin buscador funcional |
+| MSJ-05 | `/mensajes/videollamadas/en-curso` | `componentes/mensajeria/bloques/seccion_participantes.tsx` | sin definir | — | Sin buscador funcional |
+| MSJ-06 | `/mensajes/videollamadas/iniciar` | `componentes/mensajeria/bloques/seccion_participantes2.tsx` | sin definir | — | Sin buscador funcional |
+
+**Resumen:** 20 buscadores funcionales con criterio definitivo implementado (3 que ya cumplían y 17 adaptados) y 3 identificadores sin buscador funcional (NAV-01, MSJ-05, MSJ-06), que no se implementan.
+
+**Conexión real desde `rutas`.** Empresas (EMP-01 a EMP-03), Marketplace, Guardados y Eventos «Para ti» (EVT-04 y EVT-05) reciben su fuente desde la capa `rutas`. En el resto, la fuente se pasa por la prop del componente y las páginas actuales no la pasan: la búsqueda local es el comportamiento predeterminado. Conectarlos exige una fuente real, es decir, Backend.
+
+### Cambios de criterio ya aplicados
+- MKT-01: antes comparaba nombre, categoría, descripción y publicador; ahora solo el nombre. Placeholder «Buscar aplicación o módulo por nombre...». Se eliminó `filtrarDestacados`.
+- EMP-03: antes comparaba también la etiqueta del rol; ahora nombre y correo. Placeholder «Buscar por nombre o correo…».
+- EMP-02: antes comparaba acción, usuario y detalle; ahora solo el usuario. Placeholder «Buscar por usuario…» y nombre accesible «Buscar por usuario en el historial».
+- MSJ-01: ya no busca en el último mensaje. COL-01: ya no busca por teléfono.
+- AMI-01: ya no busca por descripción.
+- Eventos (EVT-04 y EVT-05): dejaron de ser dos búsquedas encadenadas; son una sola fuente con el nombre como consulta y la ubicación como filtro.
+
+### Validación (2026-11-10)
+- **Suite completa de Vitest** (`npx vitest run`): 186 archivos y 1587 pruebas; 185 archivos y 1586 pruebas pasan y **1 falla**.
+- **Fallo preexistente, ajeno a los buscadores:** `empresas/mejora_plan_cancelacion.test.tsx` («el pago de una mejora no muestra el mes gratis ni «Cobro hoy S/0.00»…»: el botón de activar no está deshabilitado). Fallaba antes de esta iniciativa.
+- `npx tsc -b` sin errores; `npm run build` correcto; oxlint sin errores en los archivos tocados. No se ejecutó `npm run calidad` completo.
+- Pruebas nuevas por área: `pruebas/mensajeria/busqueda_fuentes_mensajeria.test.tsx`, `pruebas/amigos/busqueda_fuentes_amigos.test.tsx`, `pruebas/grupos/busqueda_fuentes_invitaciones.test.tsx`, `pruebas/eventos/busqueda_fuentes_eventos.test.tsx`, `pruebas/marketplace/busqueda_fuente_remota_marketplace.test.tsx`, `pruebas/guardados/busqueda_guardados.test.tsx`, `pruebas/colaboradores/busqueda_fuentes_colaboradores.test.tsx`, `pruebas/empresas/busqueda_fuentes_empresas.test.tsx` y `pruebas/empresas/busqueda_fuentes_conectadas_empresas.test.tsx`, además de las de infraestructura (`pruebas/compartido/usar_busqueda.test.tsx` y las de E2 a E6). Cubren criterio, filtros independientes, carga, vacío, error y descarte de respuestas obsoletas.
+- **Revisión visual y funcional** en el navegador realizada por la persona responsable del proyecto el 2026-11-10: la presentación se mantiene y las búsquedas y los filtros funcionan según los criterios. Las pruebas automatizadas no validan el aspecto.
+
+### Pendiente exclusivamente de Backend
+- Endpoints de búsqueda y de filtros, y sus contratos de respuesta, error y permisos (hoy no existen y no se asumen).
+- Sustituir las fuentes Mock por fuentes reales: en `rutas` donde ya están conectadas y pasando la prop `fuente` desde las páginas en el resto.
+- Paginación remota o híbrida (ver [paginacion.md](paginacion.md), sección 8).
+
+### Otros pendientes registrados (no dependen de Backend)
+- Los chips de categorías de Guardados no filtran la lista (solo cambian de estado).
+- El botón «Buscar» de Eventos no tiene función: el filtrado es en vivo.
+- `coincidePorNombre` (`componentes/mensajeria/bloques/logica_busqueda_mensajeria.ts`) duplica a `coincideNombre`; sigue en uso en cuatro componentes de Mensajería y unificarla es una limpieza opcional.
+- `lista_tarjetas_colaboradores.tsx`, `tarjeta_colaborador.tsx` y `datos_tarjeta_colaborador.tsx` no se usan desde la vista tabular de Colaboradores; no se eliminaron.
+- Definir NAV-01, MSJ-05 y MSJ-06 si se decide que tengan buscador.
+
+### Paginación
+Cerrada en su alcance actual: ver [paginacion.md](paginacion.md), sección 8. La búsqueda ya no vive dentro de los hooks de tabla, pero la paginación sigue siendo local; la paginación remota se diseñará cuando exista integración real con Backend.

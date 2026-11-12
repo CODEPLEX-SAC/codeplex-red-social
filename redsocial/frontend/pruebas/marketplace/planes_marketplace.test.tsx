@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { beforeEach, vi } from 'vitest'
 import { DATOS_TARJETA_VALIDA, sembrarTarjetas, textoAlmacenado } from './ayudas_pago'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import catalogoCompartido from '@/catalogos/capacidades/redsocial/compartido.json'

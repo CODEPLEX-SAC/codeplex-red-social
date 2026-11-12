@@ -115,6 +115,8 @@ export interface MiniaturasMediosComentarioProps {
 export interface DialogoCompartirPublicacionProps {
   nombre: string
   texto: string
+  simple?: boolean
+  titulo?: string
   onCompartir: (comentario: string) => void
   onCerrar: () => void
 }

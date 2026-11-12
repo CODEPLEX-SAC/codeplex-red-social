@@ -317,7 +317,8 @@
       "favoritos": "/mensajes/favoritos",
       "videollamadas": "/mensajes/videollamadas",
       "videollamada_iniciar": "/mensajes/videollamadas/iniciar",
-      "videollamada_en_curso": "/mensajes/videollamadas/en-curso"
+      "videollamada_en_curso": "/mensajes/videollamadas/en-curso",
+      "videollamada_programar": "/mensajes/videollamadas/programar"
     },
     "reportes": {
       "principal": "/reportes"

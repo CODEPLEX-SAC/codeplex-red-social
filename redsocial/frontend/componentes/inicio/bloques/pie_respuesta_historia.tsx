@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
@@ -35,9 +36,9 @@ export function PieRespuestaHistoria({ historia, acciones }: PieRespuestaHistori
   return (
     <div className={clases.pie_visor}>
       {enviadas.length > 0 && (
-        <p role="status" className={clases.estado_respuesta}>
+        <AlertaEstado tipo="estado" className={clases.estado_respuesta}>
           {textos.respuesta_enviada.replace(':nombre', historia.nombre)}
-        </p>
+        </AlertaEstado>
       )}
       <form onSubmit={enviar} className={clases.fila_respuesta}>
         <div className={clases.campo_respuesta}>

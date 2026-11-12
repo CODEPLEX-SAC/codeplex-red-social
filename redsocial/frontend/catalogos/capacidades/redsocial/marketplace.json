@@ -18,7 +18,7 @@
     "confirmar_compra": "Se agregará este cargo a tu próxima facturación."
   },
   "campos": {
-    "buscar": "Buscar aplicaciones, módulos o soluciones"
+    "buscar": "Buscar aplicación o módulo por nombre"
   },
   "errores": {
     "carga_marketplace": "No fue posible cargar el marketplace.",
@@ -53,24 +53,14 @@
   "subtitulos": {
     "principal": "Descubre aplicaciones, módulos y soluciones para potenciar tu negocio."
   },
-  "hero": {
-    "titulo_pre": "Potencia tu empresa con las mejores soluciones del",
-    "titulo_destacado": "marketplace",
-    "beneficio_1_titulo": "Soluciones verificadas",
-    "beneficio_1_detalle": "y confiables",
-    "beneficio_2_titulo": "Instalación rápida",
-    "beneficio_2_detalle": "y segura",
-    "beneficio_3_titulo": "Soporte y actualizaciones",
-    "beneficio_3_detalle": "continuas"
-  },
   "busqueda": {
-    "normalizacion": "NFD",
-    "marcas_diacriticas": "\\p{Diacritic}",
     "sin_resultados_titulo": "Sin resultados",
-    "sin_resultados_detalle": "Ninguna aplicación destacada coincide con tu búsqueda."
+    "sin_resultados_detalle": "Ninguna aplicación destacada coincide con tu búsqueda.",
+    "sin_modulo_titulo": "Sin aplicaciones",
+    "sin_modulo_detalle": "Aún no hay aplicaciones disponibles en este módulo."
   },
   "placeholders": {
-    "buscar": "Buscar aplicaciones, módulos o soluciones..."
+    "buscar": "Buscar aplicación o módulo por nombre..."
   },
   "filtros": {
     "todas": "Todas",
@@ -187,7 +177,10 @@
   },
   "pago": {
     "titulo": "Información de pago",
-    "demostracion": {"metodos": "Demostración: los métodos guardados viven solo en esta sesión y se pierden al recargar la página. Únicamente se conservan la marca, los últimos cuatro dígitos y el vencimiento; el número completo y el CVV nunca se guardan.", "perfiles": "Los datos de facturación guardados solo viven en esta sesión."},
+    "demostracion": {
+      "metodos": "Demostración: los métodos guardados viven solo en esta sesión y se pierden al recargar la página. Únicamente se conservan la marca, los últimos cuatro dígitos y el vencimiento; el número completo y el CVV nunca se guardan.",
+      "perfiles": "Los datos de facturación guardados solo viven en esta sesión."
+    },
     "mejora": {
       "metodo_detalle": "Selecciona cómo deseas pagar tu suscripción.",
       "importe": "Importe de la mejora",
@@ -201,7 +194,22 @@
         "volver": "Cerrar"
       }
     },
-    "metodos": {"detalle": "Selecciona cómo deseas pagar tu suscripción. El primer mes es gratis.", "abiertos_inicialmente": ["tarjeta"], "billeteras": [{"id": "yape", "nombre": "Yape"}, {"id": "plin", "nombre": "Plin"}]},
+    "metodos": {
+      "detalle": "Selecciona cómo deseas pagar tu suscripción. El primer mes es gratis.",
+      "abiertos_inicialmente": [
+        "tarjeta"
+      ],
+      "billeteras": [
+        {
+          "id": "yape",
+          "nombre": "Yape"
+        },
+        {
+          "id": "plin",
+          "nombre": "Plin"
+        }
+      ]
+    },
     "aviso_renovacion": "Tu suscripción se renovará automáticamente el :fecha. Se te cobrará :total + impuestos.",
     "vip": {
       "etiqueta": "Servicio adicional",
@@ -214,22 +222,22 @@
       "mes": "/mes",
       "descuento": "50 % de descuento",
       "cupos": "Cupos limitados",
-    "mostrar": "Mostrar beneficios del Super VIP",
-    "ocultar": "Ocultar beneficios del Super VIP",
-    "clases": {
-      "tarjeta": "overflow-hidden rounded-xl border border-borde bg-white shadow-sombra",
-      "cabecera": "flex items-start justify-between gap-3 bg-fondo-boton-oscuro p-4 text-white max-600:p-3",
-      "cabecera_texto": "grid min-w-0 gap-1",
-      "titulo_fila": "flex flex-wrap items-center gap-2",
-      "lista": "m-0 grid list-none gap-2.5 p-4 pb-3 max-600:p-3 max-600:pb-2",
-      "item": "flex items-start gap-3 text-auxiliar",
-      "numero": "grid h-7 w-9 flex-none place-items-center rounded-control bg-primario-suave text-conteo text-primario",
-      "descripcion": "min-w-0 pt-1.5 leading-texto text-texto",
-      "nota": "mx-4 mb-3 border-t border-borde-suave pt-3 text-auxiliar text-texto-suave max-600:mx-3",
-      "pie": "px-4 py-3 max-600:px-3",
-      "pie_abierto": "border-t border-borde-suave",
-      "precios": "mt-1 flex flex-wrap items-center gap-2 pl-8"
-    }
+      "mostrar": "Mostrar beneficios del Super VIP",
+      "ocultar": "Ocultar beneficios del Super VIP",
+      "clases": {
+        "tarjeta": "overflow-hidden rounded-xl border border-borde bg-white shadow-sombra",
+        "cabecera": "flex items-start justify-between gap-3 bg-fondo-boton-oscuro p-4 text-white max-600:p-3",
+        "cabecera_texto": "grid min-w-0 gap-1",
+        "titulo_fila": "flex flex-wrap items-center gap-2",
+        "lista": "m-0 grid list-none gap-2.5 p-4 pb-3 max-600:p-3 max-600:pb-2",
+        "item": "flex items-start gap-3 text-auxiliar",
+        "numero": "grid h-7 w-9 flex-none place-items-center rounded-control bg-primario-suave text-conteo text-primario",
+        "descripcion": "min-w-0 pt-1.5 leading-texto text-texto",
+        "nota": "mx-4 mb-3 border-t border-borde-suave pt-3 text-auxiliar text-texto-suave max-600:mx-3",
+        "pie": "px-4 py-3 max-600:px-3",
+        "pie_abierto": "border-t border-borde-suave",
+        "precios": "mt-1 flex flex-wrap items-center gap-2 pl-8"
+      }
     },
     "paso3": {
       "titulo": "¿Cuándo se emiten tus facturas?",
@@ -240,9 +248,9 @@
         "valor": "S/0.00 sin cobro"
       },
       "hoy_vip": {
-      "detalle": "Se registra tu tarjeta y el plan empieza su período de prueba. El Super VIP no incluye mes gratis y se cobra hoy"
-    },
-    "primer": {
+        "detalle": "Se registra tu tarjeta y el plan empieza su período de prueba. El Super VIP no incluye mes gratis y se cobra hoy"
+      },
+      "primer": {
         "titulo": ":fecha · primer cobro real",
         "detalle": "Primer cobro al vencer la prueba de 30 días"
       },
@@ -273,8 +281,8 @@
       "seguro": "Pago seguro · Tu tarjeta no se cobra hoy",
       "addon_signo": "+",
       "addon_union": "",
-    "addon_varios": "Super VIP × :n",
-    "seguro_vip": "Pago seguro · Hoy solo se cobra el Super VIP"
+      "addon_varios": "Super VIP × :n",
+      "seguro_vip": "Pago seguro · Hoy solo se cobra el Super VIP"
     },
     "exito": {
       "titulo": "¡Suscripción activada!",
@@ -319,8 +327,14 @@
       }
     ],
     "estados": {
-      "prueba": { "etiqueta": "En prueba", "clase": "bg-fondo-info-suave text-azul-categoria-texto" },
-      "limitado": { "etiqueta": "Modo limitado", "clase": "bg-fondo-categoria-naranja text-naranja-categoria-texto" }
+      "prueba": {
+        "etiqueta": "En prueba",
+        "clase": "bg-fondo-info-suave text-azul-categoria-texto"
+      },
+      "limitado": {
+        "etiqueta": "Modo limitado",
+        "clase": "bg-fondo-categoria-naranja text-naranja-categoria-texto"
+      }
     },
     "estado_activo": "Activo",
     "metas": [
@@ -352,9 +366,24 @@
     "detalles": "Ver detalles",
     "abrir_aria": "Abrir :nombre",
     "menu": [
-      { "accion": "contratarVip", "etiqueta": "Contratar Super VIP", "grupo": 1, "solo_sin_vip": true },
-      { "accion": "abrir", "etiqueta": "Abrir aplicación", "grupo": 2, "requiere_ruta": true },
-      { "accion": "desinstalar", "etiqueta": "Desinstalar", "grupo": 2, "peligro": true }
+      {
+        "accion": "contratarVip",
+        "etiqueta": "Contratar Super VIP",
+        "grupo": 1,
+        "solo_sin_vip": true
+      },
+      {
+        "accion": "abrir",
+        "etiqueta": "Abrir aplicación",
+        "grupo": 2,
+        "requiere_ruta": true
+      },
+      {
+        "accion": "desinstalar",
+        "etiqueta": "Desinstalar",
+        "grupo": 2,
+        "peligro": true
+      }
     ],
     "vacio_titulo": "No tienes aplicaciones activas",
     "vacio_detalle": "Explora el catálogo y adquiere tu primera aplicación",
@@ -382,7 +411,10 @@
     "detalle": {
       "titulo": "Detalles de la suscripción",
       "metas": [
-        { "id": "estado", "etiqueta": "Estado" },
+        {
+          "id": "estado",
+          "etiqueta": "Estado"
+        },
         {
           "id": "plan",
           "etiqueta": "Plan"
@@ -486,6 +518,25 @@
       "promocion": "flex items-start gap-3 rounded-xl bg-fondo-categoria-verde px-3.5 py-3",
       "icono_promocion": "grid h-9 w-9 flex-none place-items-center rounded-lg bg-white text-verde-categoria-texto",
       "seguro": "m-0 flex items-center justify-center gap-1.5 text-auxiliar text-texto-suave"
+    }
+  },
+  "carrusel": {
+    "etiqueta": "Novedades del marketplace",
+    "imagen": "Banner :n de :total del marketplace",
+    "anterior": "Banner anterior",
+    "siguiente": "Banner siguiente",
+    "indicadores": "Elegir banner",
+    "indicador": "Ir al banner :n",
+    "clases": {
+      "contenedor": "relative mb-5 overflow-hidden rounded-14 bg-fondo",
+      "imagen": "block h-auto w-full",
+      "anterior": "absolute left-3 top-1/2 -translate-y-1/2",
+      "siguiente": "absolute right-3 top-1/2 -translate-y-1/2",
+      "indicadores": "absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2",
+      "indicador": "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white/60 p-0",
+      "indicador_activo": "h-2.5 w-6 cursor-pointer rounded-full border-0 bg-primario p-0",
+      "buscador": "mb-4",
+      "campo": "min-w-60 flex-1 max-900:min-w-full"
     }
   }
 }

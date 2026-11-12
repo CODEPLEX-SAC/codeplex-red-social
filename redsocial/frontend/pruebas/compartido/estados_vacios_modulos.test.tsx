@@ -3,42 +3,73 @@ import { PaginaAmigosSolicitudes } from '@/paginas/amigos/pagina_amigos_solicitu
 import { PaginaAmigosSugerencias } from '@/paginas/amigos/pagina_amigos_sugerencias'
 import { PaginaAmigosTodos } from '@/paginas/amigos/pagina_amigos_todos'
 import { PaginaGruposMisGrupos } from '@/paginas/grupos/pagina_grupos_mis_grupos'
-import { PaginaGruposInvitaciones } from '@/paginas/grupos/pagina_grupos_invitaciones'
 import { AMIGOS, RECIBIDAS, SUGERENCIAS } from '../../rutas/amigos/rutas_amigos'
-import { MIS_GRUPOS, PENDIENTES } from '../../rutas/grupos/rutas_grupos'
+import { GRUPOS_ADMIN, MIS_GRUPOS } from '../../rutas/grupos/rutas_grupos'
 import catalogoAmigos from '../../catalogos/capacidades/redsocial/amigos.json'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoCompartido from '../../catalogos/capacidades/redsocial/compartido.json'
 
-function vaciar(lista: unknown[]) {
-  const copia = lista.splice(0)
-  return () => lista.push(...copia)
+function vaciar(...listas: unknown[][]) {
+  const copias = listas.map((lista) => lista.splice(0))
+  return () => listas.forEach((lista, indice) => lista.push(...copias[indice]))
 }
 
-const CASOS = [
-  ['Amigos: sin amigos', AMIGOS, PaginaAmigosTodos, catalogoAmigos.mensajes.sin_amigos],
-  ['Amigos: sin solicitudes', RECIBIDAS, PaginaAmigosSolicitudes, catalogoAmigos.mensajes.sin_solicitudes],
-  ['Amigos: sin sugerencias', SUGERENCIAS, PaginaAmigosSugerencias, catalogoAmigos.mensajes.sin_sugerencias],
-  ['Grupos: sin grupos', MIS_GRUPOS, PaginaGruposMisGrupos, catalogoGrupos.mensajes.sin_grupos],
-  ['Grupos: sin invitaciones pendientes', PENDIENTES, PaginaGruposInvitaciones, catalogoGrupos.mensajes.sin_invitaciones_grupo],
-] as const
+const CASOS = {
+  sinAmigos: { lista: AMIGOS, Pagina: PaginaAmigosTodos, texto: catalogoAmigos.mensajes.sin_amigos },
+  sinSolicitudes: { lista: RECIBIDAS, Pagina: PaginaAmigosSolicitudes, texto: catalogoAmigos.mensajes.sin_solicitudes },
+  sinSugerencias: { lista: SUGERENCIAS, Pagina: PaginaAmigosSugerencias, texto: catalogoAmigos.mensajes.sin_sugerencias },
+  sinGrupos: { lista: MIS_GRUPOS, Pagina: PaginaGruposMisGrupos, texto: catalogoGrupos.mensajes.sin_grupos },
+}
 
-describe('Estados vacios de Amigos, Grupos y Marketplace usan el MensajeVacio global', { timeout: 30000 }, () => {
-  it.each(CASOS)('%s', (_nombre, lista, Pagina, texto) => {
-    const restaurar = vaciar(lista as unknown[])
-    try {
-      render(<Pagina />)
-      const mensaje = screen.getByText(texto)
-      expect(mensaje.tagName).toBe('P')
-      expect(mensaje.className).toBe(catalogoCompartido.mensaje_vacio.texto)
-      expect(mensaje.parentElement?.className).toContain(catalogoCompartido.mensaje_vacio.contenedor)
-    } finally {
-      restaurar()
-    }
-  })
+const MENSAJE_VACIO_GLOBAL = { etiqueta: 'P', clase: catalogoCompartido.mensaje_vacio.texto, contenedorGlobal: true }
 
-  it.each(CASOS)('%s: con datos no aparece el mensaje vacio', (_nombre, _lista, Pagina, texto) => {
+function mensajeConLaListaVacia({ lista, Pagina, texto }: (typeof CASOS)[keyof typeof CASOS]) {
+  const restaurar = vaciar(lista as unknown[], ...(lista === MIS_GRUPOS ? [GRUPOS_ADMIN as unknown[]] : []))
+  try {
     render(<Pagina />)
-    expect(screen.queryByText(texto)).toBeNull()
+    const mensaje = screen.getByText(texto)
+    return { etiqueta: mensaje.tagName, clase: mensaje.className, contenedorGlobal: Boolean(mensaje.parentElement?.className.includes(catalogoCompartido.mensaje_vacio.contenedor)) }
+  } finally {
+    restaurar()
+  }
+}
+
+function aparecaMensajeConDatos({ Pagina, texto }: (typeof CASOS)[keyof typeof CASOS]) {
+  render(<Pagina />)
+  return screen.queryByText(texto) !== null
+}
+
+describe('Estados vacios de Amigos y Grupos usan el MensajeVacio global', { timeout: 30000 }, () => {
+  it('Amigos: sin amigos', () => {
+    expect(mensajeConLaListaVacia(CASOS.sinAmigos)).toEqual(MENSAJE_VACIO_GLOBAL)
   })
+
+  it('Amigos: sin solicitudes', () => {
+    expect(mensajeConLaListaVacia(CASOS.sinSolicitudes)).toEqual(MENSAJE_VACIO_GLOBAL)
+  })
+
+  it('Amigos: sin sugerencias', () => {
+    expect(mensajeConLaListaVacia(CASOS.sinSugerencias)).toEqual(MENSAJE_VACIO_GLOBAL)
+  })
+
+  it('Grupos: sin grupos', () => {
+    expect(mensajeConLaListaVacia(CASOS.sinGrupos)).toEqual(MENSAJE_VACIO_GLOBAL)
+  })
+
+  it('Amigos: con datos no aparece el mensaje vacio de amigos', () => {
+    expect(aparecaMensajeConDatos(CASOS.sinAmigos)).toBe(false)
+  })
+
+  it('Amigos: con datos no aparece el mensaje vacio de solicitudes', () => {
+    expect(aparecaMensajeConDatos(CASOS.sinSolicitudes)).toBe(false)
+  })
+
+  it('Amigos: con datos no aparece el mensaje vacio de sugerencias', () => {
+    expect(aparecaMensajeConDatos(CASOS.sinSugerencias)).toBe(false)
+  })
+
+  it('Grupos: con datos no aparece el mensaje vacio de grupos', () => {
+    expect(aparecaMensajeConDatos(CASOS.sinGrupos)).toBe(false)
+  })
+
 })

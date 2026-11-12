@@ -14,10 +14,10 @@ const UNA = 1
 
 function capacidades(suscripcion: SuscripcionContratada, totalEmpresas: number) {
   const { empresas, sucursales } = suscripcion.capacidad
-  return [
-    empresas === null ? null : rellenarPlantilla(textos.empresas, { limite: empresas, usadas: totalEmpresas }),
-    sucursales === null ? null : rellenarPlantilla(sucursales === UNA ? textos.sucursales_una : textos.sucursales_varias, { n: sucursales }),
-  ].filter((texto): texto is string => texto !== null)
+  const lineas: string[] = []
+  if (empresas !== null) lineas.push(rellenarPlantilla(textos.empresas, { limite: empresas, usadas: totalEmpresas }))
+  if (sucursales !== null) lineas.push(rellenarPlantilla(sucursales === UNA ? textos.sucursales_una : textos.sucursales_varias, { n: sucursales }))
+  return lineas
 }
 
 export function TarjetaPlanAsignado({ modulo, suscripcion, planNombre, totalEmpresas }: TarjetaPlanAsignadoProps) {

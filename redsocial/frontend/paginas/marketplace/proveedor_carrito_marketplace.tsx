@@ -1,16 +1,14 @@
 import catalogoMarketplace from '../../catalogos/capacidades/redsocial/marketplace.json'
 import { useMemo, useState } from 'react'
-import { ContextoAccesoCarrito, ContextoMejoraPlan, ContextoSuscripciones } from '../../componentes/compartido'
-import { usarEmpresaActiva } from '../../componentes/compartido/sesion/usar_empresa_activa'
+import { ContextoAccesoCarrito, ContextoMejoraPlan, ContextoSuscripciones, usarEmpresaActiva } from '../../componentes/compartido'
 import { accesoDelCarrito, accionesDelCarrito, ContextoCarritoMarketplace, ModalCarritoPlanes, ModalPagoPlanes, ModalPlanesAplicacion, suscripcionesDeCompras, usarCarritoMarketplace } from '../../componentes/marketplace'
-import { crearRepositorioPerfiles, idPerfilDeEmpresa, perfilesDesdeEmpresas } from '../../servicios/marketplace/perfiles_facturacion'
-import { CLASES_MODULO, CLASES_PLAN_DESTACADO, CLASES_SELECTOR_PLANES, PAGO_PLANES, PLANES_APLICACIONES, REPOSITORIO_METODOS_PAGO } from '../../rutas/marketplace/rutas_marketplace'
+import { CLASES_MODULO, CLASES_PLAN_DESTACADO, CLASES_SELECTOR_PLANES, crearRepositorioPerfiles, idPerfilDeEmpresa, PAGO_PLANES, perfilesDesdeEmpresas, PLANES_APLICACIONES, REPOSITORIO_METODOS_PAGO } from '../../rutas/marketplace/rutas_marketplace'
 import type { ProveedorCarritoMarketplaceProps } from '@/tipos/marketplace/contrato_proveedor_carrito'
 
 export function ProveedorCarritoMarketplace({ children, suscripcionesIniciales }: ProveedorCarritoMarketplaceProps) {
   const { empresas, empresaActiva } = usarEmpresaActiva()
   const [repositorioPerfiles] = useState(() => crearRepositorioPerfiles(perfilesDesdeEmpresas(empresas, PAGO_PLANES.paises)))
-  const carrito = usarCarritoMarketplace(PLANES_APLICACIONES, REPOSITORIO_METODOS_PAGO, repositorioPerfiles, suscripcionesIniciales)
+  const carrito = usarCarritoMarketplace({ aplicaciones: PLANES_APLICACIONES, repositorioMetodosPago: REPOSITORIO_METODOS_PAGO, repositorioPerfiles, iniciales: suscripcionesIniciales })
   const acceso = accesoDelCarrito(carrito, catalogoMarketplace.carrito.boton)
   const mejora = useMemo(() => ({ configuracion: (aplicacion: string) => PLANES_APLICACIONES[aplicacion], contratar: carrito.contratarMejora }), [carrito.contratarMejora])
   const suscripciones = useMemo(() => suscripcionesDeCompras(carrito.compras, PLANES_APLICACIONES), [carrito.compras])

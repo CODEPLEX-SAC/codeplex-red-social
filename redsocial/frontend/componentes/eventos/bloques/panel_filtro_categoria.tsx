@@ -1,19 +1,14 @@
-import { MarcoPanelFiltro } from '../../compartido/interfaz/filtro_desplegable'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
-import { Casilla } from '../../compartido/interfaz/casilla'
-import { Boton } from '../../compartido/interfaz/boton'
-import { useState } from 'react'
-import { Icono } from '../../compartido/icono'
-import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
-import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
+import { MarcoPanelFiltro, BotonIcono, Casilla, Boton, Icono, SuperficieColor, CampoBusqueda, usarBusqueda, MensajeEstadoBusqueda, contieneTexto, crearFuenteLocal } from '../../compartido'
+import { useMemo } from 'react'
 import catalogoEventos from '../../../catalogos/capacidades/redsocial/eventos.json'
 import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { PanelFiltroCategoriaProps } from '@/tipos/eventos/contrato_filtro_categoria'
 
-export function PanelFiltroCategoria({ id, categorias, seleccionadas, alCambiarSeleccion, onCerrar }: PanelFiltroCategoriaProps) {
-  const [busqueda, setBusqueda] = useState('')
-
-  const categoriasVisibles = categorias.filter((c) => c.nombre.toLowerCase().includes(busqueda.toLowerCase()))
+export function PanelFiltroCategoria({ id, categorias, fuente, seleccionadas, alCambiarSeleccion, onCerrar }: PanelFiltroCategoriaProps) {
+  const fuenteLocal = useMemo(() => crearFuenteLocal(categorias, (categoria, consulta) => contieneTexto(categoria.nombre, consulta)), [categorias])
+  const busqueda = usarBusqueda(fuente ?? fuenteLocal, { modo: fuente ? 'remota' : 'local' })
+  const categoriasVisibles = busqueda.resultado.elementos
+  const elegidas = new Set(seleccionadas)
 
   function alAlternar(nombre: string) {
     alCambiarSeleccion(seleccionadas.includes(nombre) ? seleccionadas.filter((actual) => actual !== nombre) : [...seleccionadas, nombre])
@@ -30,8 +25,8 @@ export function PanelFiltroCategoria({ id, categorias, seleccionadas, alCambiarS
       </div>
 
       <CampoBusqueda
-        value={busqueda}
-        onChange={(evento) => setBusqueda(evento.target.value)}
+        value={busqueda.texto}
+        onChange={(evento) => busqueda.cambiarTexto(evento.target.value)}
         placeholder={catalogoEventos.placeholders.buscar_categorias}
         aria-label={catalogoEventos.placeholders.buscar_categorias}
         className="mb-2.5 w-full flex-none max-600:mx-4 max-600:mt-3 max-600:w-auto"
@@ -40,7 +35,7 @@ export function PanelFiltroCategoria({ id, categorias, seleccionadas, alCambiarS
       <div className="max-h-75 overflow-y-auto max-600:max-h-none max-600:flex-1 max-600:px-4">
         {categoriasVisibles.map((c) => (
           <label key={c.nombre} className="flex cursor-pointer items-center gap-2.5 rounded-lg px-1.5 py-2 hover:bg-fondo">
-            <Casilla seleccionado={seleccionadas.includes(c.nombre)} alCambiar={() => alAlternar(c.nombre)} />
+            <Casilla seleccionado={elegidas.has(c.nombre)} alCambiar={() => alAlternar(c.nombre)} />
             <SuperficieColor variante={c.color} className="grid h-7 w-7 flex-none place-items-center rounded-7 text-white">
               <Icono name={c.icono} className="h-3.5 w-3.5" />
             </SuperficieColor>
@@ -48,6 +43,7 @@ export function PanelFiltroCategoria({ id, categorias, seleccionadas, alCambiarS
             <span className="flex-none text-conteo text-texto-suave">{c.conteo}</span>
           </label>
         ))}
+        <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} />
       </div>
 
       <div className="mt-2 flex items-center justify-between border-t border-borde-suave pt-3 max-600:m-0 max-600:flex-none max-600:bg-white max-600:px-4 max-600:pb-4">

@@ -1,5 +1,4 @@
 import type { Dayjs } from 'dayjs'
-import type { UserOptions } from 'jspdf-autotable'
 import type { Colaborador } from './modelo_colaboradores'
 
 export interface FiltrosAvanzadosColaboradores {
@@ -14,6 +13,13 @@ export interface FiltrosAvanzadosColaboradores {
   cuentaCreada: boolean
   cuentaInvitada: boolean
   metodoInvitacion: string
+}
+
+export interface FiltrosBusquedaColaboradores {
+  estado: Colaborador['estado'] | null
+  rol: string
+  aplicacion: string
+  avanzados: FiltrosAvanzadosColaboradores
 }
 
 export interface BasicosFiltrosColaboradores {
@@ -76,7 +82,7 @@ export interface ReporteColaboradores {
   filas: string[][]
 }
 
-export type OpcionesTablaPdf = Partial<UserOptions>
+export type OpcionesTablaPdf = Partial<import('jspdf-autotable').UserOptions>
 
 export type CondicionCriterio = readonly [boolean, string]
 

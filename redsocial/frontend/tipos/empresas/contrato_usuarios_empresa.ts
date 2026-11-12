@@ -1,8 +1,14 @@
+import type { ErrorBusqueda, EstadoBusqueda, FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
 import type { Empresa } from './modelo_empresas'
 import type { UsuarioBaseEmpresa, UsuarioEmpresa } from './modelo_usuarios_empresa'
 
 export interface CriteriosUsuariosEmpresa {
   busqueda: string
+  rol: string
+  estado: string
+}
+
+export interface FiltrosBusquedaUsuariosEmpresa {
   rol: string
   estado: string
 }
@@ -16,6 +22,8 @@ export interface ListadoUsuariosEmpresa {
   filas: UsuarioEmpresa[]
   total: number
   hayUsuarios: boolean
+  estadoBusqueda: EstadoBusqueda
+  errorBusqueda: ErrorBusqueda | null
   cambiarBusqueda: (evento: { target: { value: unknown } }) => void
   cambiarRol: (evento: { target: { value: unknown } }) => void
   cambiarEstado: (evento: { target: { value: unknown } }) => void
@@ -53,6 +61,7 @@ export interface PestanaUsuariosEmpresaProps {
   usuariosBase: UsuarioBaseEmpresa[]
   usuariosGuardados?: UsuarioEmpresa[]
   edicionUsuarios?: EdicionUsuariosEmpresa
+  fuente?: FuenteBusqueda<UsuarioEmpresa, FiltrosBusquedaUsuariosEmpresa>
 }
 
 export interface ListadoUsuariosProps {

@@ -1,0 +1,41 @@
+{
+  "fechaCreacion": "15 de marzo de 2026",
+  "administradoresDeMiembro": [
+    "Carmen López"
+  ],
+  "administradoresPropios": [
+    "Pedro Lozano"
+  ],
+  "imagenes": {
+    "Desarrollo Web con Python": "python.jpg"
+  },
+  "grupos": {
+    "Desarrollo Web con Python": {
+      "fechaCreacion": "11 de noviembre de 2026",
+      "creado": "Creado hoy, 11 de noviembre de 2026",
+      "publicacion": "Este es un espacio para compartir recursos, resolver dudas, proyectos y experiencias sobre desarrollo web utilizando Python, frameworks como Django o Flask, y tecnologías relacionadas."
+    }
+  },
+  "miembrosPorDefecto": {
+    "administrador": 20,
+    "miembro": 30
+  },
+  "miembrosTotales": {
+    "Programación Go": 85,
+    "Ideas y Feedback": 34,
+    "Contadores Perú": 1200,
+    "Marketing Digital LATAM": 9500,
+    "Diseño UX Perú": 45,
+    "Finanzas Personales": 210,
+    "Fotografía Lima": 96,
+    "Viajeros del Perú": 320
+  },
+  "limiteListado": 30,
+  "externos": [
+    {
+      "nombre": "Ingenieros Unidos",
+      "descripcion": "Comunidad de ingenieros que comparten normas, buenas prácticas y experiencias de obra.",
+      "miembrosTotal": 4200
+    }
+  ]
+}

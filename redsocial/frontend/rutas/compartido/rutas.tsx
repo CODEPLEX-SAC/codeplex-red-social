@@ -1,4 +1,4 @@
-﻿import type { RutaApp } from '@/tipos/enrutamiento/contrato_rutas'
+import type { RutaApp } from '@/tipos/enrutamiento/contrato_rutas'
 import catalogoAcceso from '../../catalogos/capacidades/redsocial/acceso.json'
 import catalogoInicio from '../../catalogos/capacidades/redsocial/inicio.json'
 import catalogoActividad from '../../catalogos/capacidades/redsocial/actividad.json'
@@ -29,7 +29,6 @@ import { PaginaMensajesTodos } from '@/paginas/mensajeria/pagina_mensajes_todos'
 import { PaginaMensajesNoLeidos } from '@/paginas/mensajeria/pagina_mensajes_no_leidos'
 import { PaginaMensajesFavoritos } from '@/paginas/mensajeria/pagina_mensajes_favoritos'
 import { PaginaMensajesVideollamadas } from '@/paginas/mensajeria/pagina_mensajes_videollamadas'
-import { PaginaMensajesVideollamadaIniciar } from '@/paginas/mensajeria/pagina_mensajes_videollamada_iniciar'
 import { PaginaMensajesVideollamadaEnCurso } from '@/paginas/mensajeria/pagina_mensajes_videollamada_en_curso'
 import { PaginaAmigosTodos } from '@/paginas/amigos/pagina_amigos_todos'
 import { PaginaAmigosSolicitudes } from '@/paginas/amigos/pagina_amigos_solicitudes'
@@ -38,6 +37,7 @@ import { PaginaAmigosListas } from '@/paginas/amigos/pagina_amigos_listas'
 import { PaginaGruposMisGrupos } from '@/paginas/grupos/pagina_grupos_mis_grupos'
 import { PaginaGruposDescubrir } from '@/paginas/grupos/pagina_grupos_descubrir'
 import { PaginaGruposInvitaciones } from '@/paginas/grupos/pagina_grupos_invitaciones'
+import { PaginaGruposDetalle } from '@/paginas/grupos/pagina_grupos_detalle'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import { PaginaEventosParaTi } from '@/paginas/eventos/pagina_eventos_para_ti'
 import { PaginaEventosProximos } from '@/paginas/eventos/pagina_eventos_proximos'
@@ -56,12 +56,12 @@ import { PaginaEstadisticasTodosModulos } from '@/paginas/estadisticas/pagina_es
 import { PaginaEstadisticasModulo } from '@/paginas/estadisticas/pagina_estadisticas_modulo'
 import { PaginaReportes } from '@/paginas/reportes/pagina_reportes'
 import { PaginaIndicadoresClave } from '@/paginas/indicadores/pagina_indicadores_clave'
-import { PaginaAvisos } from '@/paginas/avisos/pagina_avisos'
+import { PaginaNovedades } from '@/paginas/avisos/pagina_avisos'
 import { PaginaAvisosNoLeidas } from '@/paginas/avisos/pagina_avisos_no_leidas'
-import { PaginaAvisosMenciones } from '@/paginas/avisos/pagina_avisos_menciones'
-import { PaginaAvisosSolicitudes } from '@/paginas/avisos/pagina_avisos_solicitudes'
-import { PaginaAvisosEventos } from '@/paginas/avisos/pagina_avisos_eventos'
-import { PaginaAvisosSistema } from '@/paginas/avisos/pagina_avisos_sistema'
+import { PaginaNovedadesMenciones } from '@/paginas/avisos/pagina_avisos_menciones'
+import { PaginaNovedadesSolicitudes } from '@/paginas/avisos/pagina_avisos_solicitudes'
+import { PaginaNovedadesEventos } from '@/paginas/avisos/pagina_avisos_eventos'
+import { PaginaNovedadesSistema } from '@/paginas/avisos/pagina_avisos_sistema'
 import { PaginaGuardados } from '@/paginas/guardados/pagina_guardados'
 import { PaginaPerfilUsuario } from '@/paginas/perfil/pagina_perfil_usuario'
 
@@ -72,12 +72,12 @@ export const RUTAS: readonly RutaApp[] = [
 
   { path: catalogoInicio.rutas.principal, render: () => <PaginaInicio /> },
 
-  { path: catalogoAvisos.rutas.todas, render: () => <PaginaAvisos /> },
+  { path: catalogoAvisos.rutas.todas, render: () => <PaginaNovedades /> },
   { path: catalogoAvisos.rutas.no_leidas, render: () => <PaginaAvisosNoLeidas /> },
-  { path: catalogoAvisos.rutas.menciones, render: () => <PaginaAvisosMenciones /> },
-  { path: catalogoAvisos.rutas.solicitudes, render: () => <PaginaAvisosSolicitudes /> },
-  { path: catalogoAvisos.rutas.eventos, render: () => <PaginaAvisosEventos /> },
-  { path: catalogoAvisos.rutas.sistema, render: () => <PaginaAvisosSistema /> },
+  { path: catalogoAvisos.rutas.menciones, render: () => <PaginaNovedadesMenciones /> },
+  { path: catalogoAvisos.rutas.solicitudes, render: () => <PaginaNovedadesSolicitudes /> },
+  { path: catalogoAvisos.rutas.eventos, render: () => <PaginaNovedadesEventos /> },
+  { path: catalogoAvisos.rutas.sistema, render: () => <PaginaNovedadesSistema /> },
 
   { path: catalogoGuardados.rutas.principal, render: () => <PaginaGuardados /> },
 
@@ -95,7 +95,7 @@ export const RUTAS: readonly RutaApp[] = [
   { path: catalogoMensajeria.rutas.no_leidos, render: () => <PaginaMensajesNoLeidos /> },
   { path: catalogoMensajeria.rutas.favoritos, render: () => <PaginaMensajesFavoritos /> },
   { path: catalogoMensajeria.rutas.videollamadas, render: () => <PaginaMensajesVideollamadas /> },
-  { path: catalogoMensajeria.rutas.videollamada_iniciar, render: () => <PaginaMensajesVideollamadaIniciar /> },
+  { path: catalogoMensajeria.rutas.videollamada_iniciar, render: () => <PaginaMensajesVideollamadaEnCurso instantanea /> },
   { path: catalogoMensajeria.rutas.videollamada_en_curso, render: () => <PaginaMensajesVideollamadaEnCurso /> },
 
   { path: catalogoAmigos.rutas.todos, render: () => <PaginaAmigosTodos /> },
@@ -106,6 +106,7 @@ export const RUTAS: readonly RutaApp[] = [
   { path: catalogoGrupos.rutas.mis_grupos, render: () => <PaginaGruposMisGrupos /> },
   { path: catalogoGrupos.rutas.descubrir, render: () => <PaginaGruposDescubrir /> },
   { path: catalogoGrupos.rutas.invitaciones, render: () => <PaginaGruposInvitaciones /> },
+  { path: catalogoGrupos.rutas.detalle, render: () => <PaginaGruposDetalle /> },
 
   { path: catalogoMarketplace.rutas.principal, render: () => <PaginaMarketplace /> },
 

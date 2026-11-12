@@ -24,17 +24,6 @@ function activas(condiciones: CondicionCriterio[]): string[] {
   return condiciones.filter(([activa]) => activa).map(([, texto]) => texto)
 }
 
-export function crearCriteriosExportacion(
-  pestana: string,
-  busqueda: string,
-  rol: string,
-  aplicacion: string,
-  ordenarPor: string,
-  avanzados: FiltrosAvanzadosColaboradores,
-): CriteriosExportacion {
-  return { pestana, busqueda, rol, aplicacion, ordenarPor, avanzados }
-}
-
 export function listarFiltrosAvanzados(filtros: FiltrosAvanzadosColaboradores): FiltroActivo[] {
   const condiciones: [string, boolean, string][] = [
     [CLAVES.vigencia_desde, Boolean(filtros.fechaInicio), valor(plantillas.vigencia_desde, fecha(filtros.fechaInicio))],

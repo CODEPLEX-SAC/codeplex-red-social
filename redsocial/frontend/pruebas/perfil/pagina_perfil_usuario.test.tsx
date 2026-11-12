@@ -101,22 +101,6 @@ describe('PaginaPerfilUsuario: pestanas', () => {
     maria.habilidades.forEach((habilidad) => expect(resumen.getByText(habilidad)).toBeInTheDocument())
     expect(resumen.queryByRole('button', { name: new RegExp(secciones.editar_seccion.replace(':seccion', '')) })).toBeNull()
   })
-
-  it('lista los amigos con enlace a su perfil y los filtra sin distinguir tildes', () => {
-    abrirPerfil('maria-fernandez')
-    fireEvent.click(pestana(catalogoPerfil.pestanas.find((p) => p.clave === 'amigos')?.etiqueta ?? ''))
-    const lista = within(screen.getByRole('list', { name: catalogoPerfil.amigos.etiqueta_lista }))
-    expect(lista.getAllByRole('listitem')).toHaveLength(perfilDe('maria-fernandez').amigos.length)
-    const luis = lista.getByRole('link', { name: new RegExp(perfilDe('luis-rodriguez').nombre) })
-    expect(luis).toHaveAttribute('href', rutaPerfilUsuario('luis-rodriguez'))
-
-    fireEvent.change(screen.getByLabelText(catalogoPerfil.campos.buscar_amigos), { target: { value: 'rodriguez' } })
-    const filtrada = within(screen.getByRole('list', { name: catalogoPerfil.amigos.etiqueta_lista }))
-    expect(filtrada.getAllByRole('listitem')).toHaveLength(1)
-
-    fireEvent.change(screen.getByLabelText(catalogoPerfil.campos.buscar_amigos), { target: { value: 'zzz' } })
-    expect(screen.getByText(catalogoPerfil.mensajes.sin_resultados_amigos)).toBeInTheDocument()
-  })
 })
 
 describe('PaginaPerfilUsuario: perfil inexistente', () => {
@@ -137,7 +121,7 @@ describe('Enlace al perfil', () => {
 describe('PaginaPerfilUsuario: experiencia, documentos y metricas', () => {
   const etiqueta = (clave: string) => catalogoPerfil.pestanas.find((candidata) => candidata.clave === clave)?.etiqueta ?? ''
 
-  it('el perfil ofrece las seis pestanas recuperadas', () => {
+  it('el perfil ofrece las cinco pestanas', () => {
     abrirPerfil()
     expect(within(screen.getAllByRole('tablist')[0]).getAllByRole('tab')).toHaveLength(catalogoPerfil.pestanas.length)
     for (const clave of ['experiencia', 'documentos', 'metricas']) expect(pestana(etiqueta(clave))).toBeInTheDocument()
@@ -178,13 +162,11 @@ const redSocial = catalogoPerfil.red_social
 const ENLACE_LINKEDIN = ['https:', '', 'linkedin.com', 'in', 'pedro'].join('/')
 
 describe('PaginaPerfilUsuario: Red Social y edicion del perfil', () => {
-  const etiqueta = (clave: string) => catalogoPerfil.pestanas.find((candidata) => candidata.clave === clave)?.etiqueta ?? ''
-
-  it('solo ofrece las pestanas Red Social, Resumen, Experiencia, Documentos, Metricas y Amigos', () => {
+  it('solo ofrece las pestanas Red Social, Resumen, Experiencia, Documentos y Metricas', () => {
     abrirPerfil()
     const tabs = within(screen.getAllByRole('tablist')[0]).getAllByRole('tab')
-    expect(tabs).toHaveLength(6)
-    ;['Red Social', 'Resumen', 'Experiencia', 'Documentos', 'Métricas', 'Amigos'].forEach((nombre, indice) => expect(tabs[indice]).toHaveTextContent(nombre))
+    expect(tabs).toHaveLength(5)
+    ;['Red Social', 'Resumen', 'Experiencia', 'Documentos', 'Métricas'].forEach((nombre, indice) => expect(tabs[indice]).toHaveTextContent(nombre))
     expect(within(screen.getAllByRole('tablist')[0]).getByRole('tab', { selected: true })).toHaveTextContent('Red Social')
   })
 
@@ -193,18 +175,16 @@ describe('PaginaPerfilUsuario: Red Social y edicion del perfil', () => {
     const propio = perfilDe(PROPIO.id)
     expect(screen.getByRole('heading', { name: redSocial.datos_personales })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: redSocial.fotos })).toBeInTheDocument()
-    expect(screen.getByText(redSocial.sin_fotos)).toBeInTheDocument()
+    expect(screen.queryByText(redSocial.sin_fotos)).toBeNull()
     expect(screen.getByText(`${propio.amigos.length} ${propio.amigos.length === 1 ? redSocial.amigo_singular : redSocial.amigo_plural}`)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: catalogoInicio.placeholders.que_estas_pensando.replace(':nombre', propio.nombres) })).toBeInTheDocument()
     fireEvent.click(screen.getByRole('tab', { name: redSocial.mis_preguntas }))
     expect(screen.getByText(redSocial.preguntas.vacio_propio)).toBeInTheDocument()
   })
 
-  it('en un perfil ajeno no se ofrece el compositor y Ver todos abre la pestana Amigos', () => {
+  it('en un perfil ajeno no se ofrece el compositor', () => {
     abrirPerfil('maria-fernandez')
     expect(screen.queryByRole('button', { name: new RegExp(catalogoInicio.placeholders.que_estas_pensando.split(',')[0]) })).toBeNull()
-    fireEvent.click(screen.getByRole('button', { name: redSocial.ver_todos }))
-    expect(screen.getByRole('tab', { selected: true })).toHaveTextContent(etiqueta('amigos'))
   })
 
   it('Editar perfil cambia el nombre en la red social y la categoria, tambien en las publicaciones', () => {
@@ -347,7 +327,7 @@ describe('PaginaPerfilUsuario: edicion completa del perfil propio', () => {
     fireEvent.click(dialogo.getByRole('button', { name: catalogoInicio.modal_crear_publicacion.publicar }))
 
     const id = ALMACEN_PUBLICACIONES.leer().feed.find((elemento) => elemento.clase === 'texto' && elemento.texto === 'Como calculo el IGV')?.id ?? ''
-    const externo = nuevoComentario('externo-1', { id: 'maria-fernandez', usuario: 'María Fernández' }, 'Aplica el 18 %', 'Ahora')
+    const externo = nuevoComentario({ id: 'externo-1', autor: { id: 'maria-fernandez', usuario: 'María Fernández' }, texto: 'Aplica el 18 %', tiempo: 'Ahora' })
     act(() => ALMACEN_PUBLICACIONES.modificar((estado) => actualizarComentarios(estado, id, [], (lista) => [...lista, externo])))
 
     const tarjeta = within(screen.getByText('Como calculo el IGV').closest('article') as HTMLElement)

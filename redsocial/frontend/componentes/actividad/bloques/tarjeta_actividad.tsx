@@ -49,9 +49,9 @@ export function TarjetaActividad({
           <div className="mt-0.5 flex items-center justify-between">
             <div className="flex items-center gap-1">
               <div className="flex items-center">
-                <span className="-ml-0 grid h-4.5 w-4.5 place-items-center rounded-full border-1.5 border-white bg-fondo-categoria-azul">👍</span>
-                <span className="-ml-0.75 grid h-4.5 w-4.5 place-items-center rounded-full border-1.5 border-white bg-fondo-categoria-rosa">❤️</span>
-                <span className="-ml-0.75 grid h-4.5 w-4.5 place-items-center rounded-full border-1.5 border-white bg-fondo-categoria-amarillo">😄</span>
+                <span className="-ml-0 grid h-4.5 w-4.5 place-items-center rounded-full border-1.5 border-white bg-fondo-categoria-azul"><Icono name="me-gusta" className="h-3 w-3 text-primario" /></span>
+                <span className="-ml-0.75 grid h-4.5 w-4.5 place-items-center rounded-full border-1.5 border-white bg-fondo-categoria-rosa"><Icono name="fuego" className="h-3 w-3 text-peligro-texto" /></span>
+                <span className="-ml-0.75 grid h-4.5 w-4.5 place-items-center rounded-full border-1.5 border-white bg-fondo-categoria-amarillo"><Icono name="estrella" className="h-3 w-3 text-naranja-categoria-texto" /></span>
               </div>
               <span className="ml-1 text-contador text-texto-suave">{interacciones.reacciones}</span>
             </div>

@@ -3,7 +3,7 @@ import { BannerInformativo } from '../../compartido/interfaz/banner_informativo'
 import { Boton } from '../../compartido/interfaz/boton'
 import { irARuta } from '../../compartido/interfaz/menu'
 import { MensajeVacio } from '../../compartido/interfaz/mensaje_vacio'
-import { estadoModuloEmpresa, modulosActivos, RUTA_MARKETPLACE_EMPRESAS } from './logica_suscripciones_empresas'
+import { estadoModuloEmpresa, indexarSuscripciones, modulosActivos, RUTA_MARKETPLACE_EMPRESAS, suscripcionDelModulo } from './logica_suscripciones_empresas'
 import { TarjetaPlanAsignado } from './tarjeta_plan_asignado'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
@@ -16,6 +16,7 @@ const clases = textos.clases
 export function PestanaPlanesEmpresa({ empresa, totalEmpresas }: PestanaPlanesEmpresaProps) {
   const suscripciones = usarSuscripciones()
   const activos = modulosActivos(empresa, suscripciones)
+  const indice = indexarSuscripciones(suscripciones)
 
   return (
     <div role="tabpanel" aria-label={textos.titulo} className={clases.contenedor}>
@@ -28,7 +29,7 @@ export function PestanaPlanesEmpresa({ empresa, totalEmpresas }: PestanaPlanesEm
             <TarjetaPlanAsignado
               key={modulo.clave}
               modulo={modulo}
-              suscripcion={suscripciones.find((candidata) => candidata.aplicacion === modulo.producto) as SuscripcionContratada}
+              suscripcion={suscripcionDelModulo(modulo, indice) as SuscripcionContratada}
               planNombre={estadoModuloEmpresa(empresa, modulo, suscripciones).planNombre ?? ''}
               totalEmpresas={totalEmpresas}
             />

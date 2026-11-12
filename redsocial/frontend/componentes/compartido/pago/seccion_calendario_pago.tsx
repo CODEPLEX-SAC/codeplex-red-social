@@ -1,6 +1,8 @@
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { EncabezadoPasoPago } from './encabezado_paso_pago'
 import type { FilaCalendarioPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 export function SeccionCalendarioPago({ numero, titulo, detalle, filas }: { numero: number; titulo: string; detalle: string; filas: FilaCalendarioPago[] }) {
   return (

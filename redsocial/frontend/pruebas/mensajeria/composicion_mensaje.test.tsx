@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
 import { ComposicionMensaje } from '@/componentes/mensajeria/bloques/composicion_mensaje'
 import catalogoMensajeria from '../../catalogos/capacidades/redsocial/mensajeria.json'
 import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'

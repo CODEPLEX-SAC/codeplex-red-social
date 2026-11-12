@@ -1,3 +1,4 @@
+import { normalizarTexto } from '../../compartido/interfaz/buscar_opciones_locales'
 import catalogoAmigos from '../../../catalogos/capacidades/redsocial/amigos.json'
 
 export function resumenConPendientes<T extends { icono: string; valor: string }>(resumen: readonly T[], pendientes: number): T[] {
@@ -7,6 +8,10 @@ export function resumenConPendientes<T extends { icono: string; valor: string }>
 export function rutaDeMensajeAmigo(nombre: string, conversaciones: readonly { id: string; nombre: string; esGrupo?: boolean }[], rutaBase: string, parametro: string): string {
   const conversacion = conversaciones.find((candidata) => !candidata.esGrupo && candidata.nombre === nombre)
   return conversacion ? `${rutaBase}?${parametro}=${encodeURIComponent(conversacion.id)}` : rutaBase
+}
+
+export function idPerfilDeNombre(nombre: string): string {
+  return normalizarTexto(nombre).split(/[^a-z0-9]+/).filter(Boolean).join('-')
 }
 
 export function insigniaDePendientes(pendientes: number): number | undefined {

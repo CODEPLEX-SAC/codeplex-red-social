@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useState } from 'react'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { Menu } from '../../compartido/interfaz/menu'
@@ -38,9 +39,9 @@ export function MenuHistoria({ historia, onEliminar }: MenuHistoriaProps) {
   return (
     <>
       {copiado && (
-        <span role="status" className={clases.estado_enlace}>
+        <AlertaEstado tipo="estado" className={clases.estado_enlace}>
           {textos.visor.enlace_copiado}
-        </span>
+        </AlertaEstado>
       )}
       <BotonIcono icono="puntos" type="button" aria-label={textos.visor.opciones} aria-haspopup="menu" aria-expanded={Boolean(ancla)} onClick={(evento) => alternar(evento.currentTarget)} variant="sobre_oscuro" size="default" />
       {ancla && <Menu ancla={ancla} alCerrar={cerrarMenu} elementos={elementos} />}

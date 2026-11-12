@@ -17,7 +17,7 @@
     "confirmar_quitar_guardado": "Vas a quitar este elemento de tus guardados."
   },
   "campos": {
-    "buscar_guardados": "Buscar en grupos guardados"
+    "buscar_guardados": "Buscar grupo guardado"
   },
   "errores": {
     "carga_guardados": "No fue posible cargar tus guardados."
@@ -45,7 +45,7 @@
     "principal": "Todo lo que guardaste en un solo lugar"
   },
   "placeholders": {
-    "buscar_guardados": "Buscar en grupos guardados..."
+    "buscar_guardados": "Buscar grupo guardado..."
   },
   "pestanas": [
     {"clave": "todo", "etiqueta": "Todo", "ruta": "#"},

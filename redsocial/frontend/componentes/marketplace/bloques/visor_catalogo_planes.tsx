@@ -20,7 +20,7 @@ export function VisorCatalogoPlanes({ nombre, url, estilo, alCerrar }: { nombre:
       </span>
       <div className="min-w-0 flex-1">
         <h2 className="m-0 truncate text-titulo-banner text-texto">{nombre}</h2>
-        <a href={url} target="_blank" rel="noreferrer" className={[CLASE_ENLACE_ACCION, 'inline-flex items-center gap-1'].join(' ')}>
+        <a href={url} target="_blank" rel="noopener noreferrer" className={[CLASE_ENLACE_ACCION, 'inline-flex items-center gap-1'].join(' ')}>
           {textos.abrir_nueva} <Icono name="flecha-arriba-derecha" className="h-3 w-3" />
         </a>
       </div>

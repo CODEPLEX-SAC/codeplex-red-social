@@ -20,7 +20,7 @@ export function ElementoFeedInicio({ elemento, acciones }: ElementoFeedInicioPro
           interaccion={interaccionesDe(elemento.id, elemento.reaccionesBase, elemento.comentariosBase, { habilitada: elemento.tipo === 'pregunta' && esPropia(elemento.autorId), comentarioUtil: elemento.comentarioUtil })}
           onEditar={onEditar}
           onEliminar={onEliminar}
-          onCompartir={(comentario) => onCompartir({ id: elemento.id, nombre: elemento.nombre, tiempo: elemento.tiempo, texto: elemento.texto }, comentario)}
+          onCompartir={(comentario) => onCompartir({ id: elemento.id, nombre: elemento.nombre, tiempo: elemento.tiempo, texto: elemento.texto, medios: elemento.medios }, comentario)}
           onVotar={(opcionId) => onVotar(elemento.id, opcionId)}
         />
       ) : (

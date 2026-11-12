@@ -1,51 +1,18 @@
-import { BannerInformativo, BotonIcono, Icono, EstructuraApp, ColumnaPublicidad, EstructuraTresColumnas, Boton, CLASE_ENLACE_ACCION } from '../../componentes/compartido'
+import { EstructuraApp } from '../../componentes/compartido'
 import catalogoGrupos from '../../catalogos/capacidades/redsocial/grupos.json'
-import textosRedSocial from '../../mensajes/capacidades/redsocial/textos.json'
-import { PestanasGrupos, BloqueAdmin, BloqueVerGrupo, SeccionActividadRecienteGrupos } from '../../componentes/grupos'
-import { GRUPOS_ADMIN, MIS_GRUPOS, ACTIVIDAD_MIS_GRUPOS as ACTIVIDAD, GRUPOS_POPULARES, CLASES_ICONO_ADMIN, CLASES_ICONO_MIS, CLASES_ICONO_LATERAL } from '../../rutas/grupos/rutas_grupos'
+import { LateralTusGrupos, PaginaConLateralGrupos, SeccionTusGrupos, usarVersionGrupos } from '../../componentes/grupos'
+import { IMAGEN_VISTA_PREVIA_CREAR_GRUPO, PUERTO_GRUPOS } from '../../rutas/grupos/rutas_grupos'
 
 export function PaginaGruposMisGrupos() {
+  usarVersionGrupos(PUERTO_GRUPOS)
+
+  const grupos = PUERTO_GRUPOS.tusGrupos()
+
   return (
     <EstructuraApp paginaActiva="grupos">
-      <EstructuraTresColumnas
-        principal={
-          <section>
-            <div className="mb-4 flex flex-wrap items-start justify-between gap-x-5 gap-y-3">
-              <h1 className="m-0 text-titulo-pagina text-texto">{catalogoGrupos.titulos.mis_grupos}</h1>
-              <div className="flex flex-none items-center gap-2.5">
-                <Boton variant="primario" size="md">
-                  <Icono name="mas" className="h-4 w-4" /> {catalogoGrupos.botones.crear_grupo}
-                </Boton>
-                <BotonIcono icono="puntos" type="button" aria-label={catalogoGrupos.botones.mas_opciones} variant="discreto" size="sm" className="flex-none" />
-              </div>
-            </div>
-
-            <PestanasGrupos activa="mis_grupos" />
-
-            <BannerInformativo icono="grupo" titulo={catalogoGrupos.banner.titulo} descripcion={catalogoGrupos.banner.descripcion_mis_grupos} etiquetaCerrar={catalogoGrupos.botones.cerrar} className="mb-6" />
-
-            <div className="mb-3.5 flex items-center justify-between">
-              <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.grupos_que_administro} ({GRUPOS_ADMIN.length})</h2>
-              <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
-            </div>
-            <BloqueAdmin GRUPOS_ADMIN={GRUPOS_ADMIN} CLASES_ICONO_ADMIN={CLASES_ICONO_ADMIN} />
-
-            <div className="mb-3.5 flex items-center justify-between">
-              <h2 className="m-0 text-titulo-seccion text-texto">{catalogoGrupos.secciones.mis_grupos_titulo} ({MIS_GRUPOS.length})</h2>
-              <a href="#" className={CLASE_ENLACE_ACCION}>{textosRedSocial.VER_TODOS}</a>
-            </div>
-            <BloqueVerGrupo MIS_GRUPOS={MIS_GRUPOS} CLASES_ICONO_MIS={CLASES_ICONO_MIS} />
-          </section>
-        }
-        publicidad={<ColumnaPublicidad />}
-        lateral={
-          <SeccionActividadRecienteGrupos
-            ACTIVIDAD={ACTIVIDAD}
-            GRUPOS_POPULARES={GRUPOS_POPULARES}
-            CLASES_ICONO_LATERAL={CLASES_ICONO_LATERAL}
-          />
-        }
-      />
+      <PaginaConLateralGrupos cabecera={{ titulo: catalogoGrupos.titulos.mis_grupos, activa: 'mis_grupos' as const, imagenCrear: IMAGEN_VISTA_PREVIA_CREAR_GRUPO, puerto: PUERTO_GRUPOS }} lateral={<LateralTusGrupos grupos={grupos} />}>
+        <SeccionTusGrupos grupos={grupos} puerto={PUERTO_GRUPOS} />
+      </PaginaConLateralGrupos>
     </EstructuraApp>
   )
 }

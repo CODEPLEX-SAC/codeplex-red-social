@@ -2,7 +2,7 @@ import type { FormEvent } from 'react'
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Modal } from '../../compartido/interfaz/modal'
-import { CabeceraModalEmpresa } from './cabecera_modal_empresa'
+import { CabeceraFichaEmpresa } from './cabecera_modal_empresa'
 import { SeccionIdentificacionEmpresa } from './seccion_identificacion_empresa'
 import { SeccionInformacionEmpresa } from './seccion_informacion_empresa'
 import { SeccionLogoEmpresa } from './seccion_logo_empresa'
@@ -26,7 +26,7 @@ export function ModalEmpresa({ totalExistentes, alCerrar, alGuardar }: ModalEmpr
       titulo={textos.titulo}
       etiquetaCerrar={textosRedSocial.CERRAR}
       onCerrar={alCerrar}
-      cabecera={<CabeceraModalEmpresa titulo={textos.titulo} subtitulo={textos.subtitulo} alCerrar={alCerrar} />}
+      cabecera={<CabeceraFichaEmpresa titulo={textos.titulo} subtitulo={textos.subtitulo} alCerrar={alCerrar} />}
       className="max-w-140 rounded-2xl max-600:h-full max-600:rounded-none"
     >
       <form onSubmit={guardar} noValidate className="flex min-h-0 flex-1 flex-col">

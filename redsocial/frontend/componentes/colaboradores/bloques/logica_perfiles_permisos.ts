@@ -1,5 +1,6 @@
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
-import { configuracionDeOperaciones, copiarConfiguracion, existeEtiqueta, normalizarEtiqueta } from './logica_permisos_invitacion'
+import { configuracionDeOperaciones, copiarConfiguracion } from './logica_permisos_invitacion'
+import { existeEtiqueta, normalizarEtiqueta } from './logica_permisos_especificos'
 import type { ClavePerfil, ConfiguracionPermisos, PerfilesDeModulo, RolModulo } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
 
 const PERFILES: { clave: string; etiqueta: string }[] = catalogoColaboradores.perfiles_permisos
@@ -16,8 +17,10 @@ export function rolesBase(definiciones: PerfilesDeModulo): RolModulo[] {
 }
 
 export function rolesDelModulo(definiciones: PerfilesDeModulo, guardados: RolModulo[]): RolModulo[] {
-  const base = rolesBase(definiciones).map((rol) => guardados.find((guardado) => guardado.clave === rol.clave) ?? rol)
-  return [...base, ...guardados.filter((guardado) => !base.some((rol) => rol.clave === guardado.clave))]
+  const guardadosPorClave = new Map(guardados.map((guardado) => [guardado.clave, guardado]))
+  const base = rolesBase(definiciones).map((rol) => guardadosPorClave.get(rol.clave) ?? rol)
+  const clavesBase = new Set(base.map((rol) => rol.clave))
+  return [...base, ...guardados.filter((guardado) => !clavesBase.has(guardado.clave))]
 }
 
 export function configuracionDelRol(roles: RolModulo[], clave: ClavePerfil): ConfiguracionPermisos {

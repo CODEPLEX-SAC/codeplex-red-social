@@ -99,7 +99,7 @@ export function vistaDeBorrador(borrador: BorradorHistoria): VistaLienzoHistoria
     claseTexto: `${claseTextoAdaptada(estiloTextoDe(borrador.estiloTextoId).clases, borrador.texto.length)} ${fondo.texto}`,
     imagenFondo: mostrarMedio ? null : imagenFondo,
     superponer: !mostrarMedio && imagenFondo !== null,
-    medio: mostrarMedio ? borrador.medio : null,
+    medio: (mostrarMedio && borrador.medio) || null,
     texto: borrador.texto,
     elementos: borrador.elementos.map((elemento) => ({ id: elemento.id, contenido: elemento.contenido, clases: `${posicionDe(elemento.posicionId).clase} ${estiloTextoDe(elemento.estiloTextoId).clases} ${fondo.texto}` })),
   }

@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
-import { afterEach, describe, expect, it } from 'vitest'
 import { PaginaMarketplace } from '@/paginas/marketplace/pagina_marketplace'
 import { ProveedorCarritoMarketplace } from '@/paginas/marketplace/proveedor_carrito_marketplace'
 import { BarraSuperior } from '@/componentes/compartido/navegacion/barra_superior'

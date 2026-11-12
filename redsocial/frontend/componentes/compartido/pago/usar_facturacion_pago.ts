@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { datosDePerfil, perfilConDatos, perfilVacio, validarPerfil } from './logica_perfil_pago'
+import { guardarPerfilPago } from './logica_guardado_perfil_pago'
+import { datosDePerfil, perfilConDatos, perfilVacio } from './logica_perfil_pago'
 import { usarTextosPago } from './usar_textos_pago'
 import type { ConfiguracionFlujoPago, ControlPerfilesPago, DatosPerfilPago, ErroresPerfilPago, ModoFacturacionPago, PerfilPago, VarianteAvisoPago } from '@/tipos/compartido/contrato_flujo_pago'
 
@@ -50,23 +51,8 @@ export function usarFacturacionPago(configuracion: ConfiguracionFlujoPago, contr
     setErrores((previos) => ({ ...previos, [campo]: undefined }))
   }
 
-  async function guardar() {
-    const encontrados = validarPerfil(borrador, textos)
-    setErrores(encontrados)
-    if (Object.keys(encontrados).length > 0) return
-    if (modoActual === 'edicion' && perfil) {
-      const actualizado = await control.actualizar(perfil.id, borrador)
-      if (actualizado) {
-        volverAlResumen(actualizado.id)
-        notificar('exito', textos.avisos.perfil_actualizado)
-      } else notificar('error', textos.avisos.perfil_error)
-      return
-    }
-    const registrado = await control.registrar(borrador)
-    if (registrado) {
-      volverAlResumen(registrado.id)
-      notificar('exito', textos.avisos.perfil_agregado)
-    } else notificar('error', textos.avisos.perfil_error)
+  function guardar() {
+    return guardarPerfilPago({ borrador, modo: modoActual, perfil, control, textos, notificar, fijarErrores: setErrores, volverAlResumen })
   }
 
   function asegurar(): PerfilPago | null | Promise<PerfilPago | null> {

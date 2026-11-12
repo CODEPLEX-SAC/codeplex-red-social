@@ -1,8 +1,8 @@
-import { BotonIcono, Boton, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, CampoBusqueda, Selector } from '../../componentes/compartido'
-import { useState } from 'react'
+import { BotonIcono, Boton, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, CampoBusqueda, Selector, MensajeEstadoBusqueda, usarBusqueda } from '../../componentes/compartido'
+import { useMemo, useState } from 'react'
 import catalogoGuardados from '../../catalogos/capacidades/redsocial/guardados.json'
 import { PestanasGuardados, TarjetaGrupoGuardado, PanelLateralGuardados } from '../../componentes/guardados'
-import { GRUPOS_GUARDADOS, COLECCIONES_GUARDADAS, GRUPOS_RECOMENDADOS_GUARDADOS } from '../../rutas/guardados/rutas_guardados'
+import { BUSQUEDA_GRUPOS_GUARDADOS, GRUPOS_GUARDADOS, COLECCIONES_GUARDADAS, GRUPOS_RECOMENDADOS_GUARDADOS } from '../../rutas/guardados/rutas_guardados'
 
 const FILTROS = ['todos', 'mis_grupos', 'tecnologia', 'diseno', 'negocios', 'desarrollo_profesional', 'mas'] as const
 
@@ -10,6 +10,24 @@ export function PaginaGuardados() {
   const [filtroActivo, setFiltroActivo] = useState<(typeof FILTROS)[number]>('todos')
   const [orden, setOrden] = useState('mas_recientes')
   const [vista, setVista] = useState<'cuadricula' | 'listas'>('cuadricula')
+  const busqueda = usarBusqueda(BUSQUEDA_GRUPOS_GUARDADOS.fuente, { modo: BUSQUEDA_GRUPOS_GUARDADOS.modo })
+  const ordenados = useMemo(() => (orden === 'mas_recientes' ? busqueda.resultado.elementos : [...busqueda.resultado.elementos].reverse()), [orden, busqueda.resultado.elementos])
+
+  function alCambiarTexto(evento: { target: { value: string } }) {
+    busqueda.cambiarTexto(evento.target.value)
+  }
+
+  function verCuadricula() {
+    setVista('cuadricula')
+  }
+
+  function verListas() {
+    setVista('listas')
+  }
+
+  function alCambiarOrden(evento: { target: { value: string } }) {
+    setOrden(evento.target.value)
+  }
 
   return (
     <EstructuraApp paginaActiva="guardados">
@@ -24,6 +42,8 @@ export function PaginaGuardados() {
               <CampoBusqueda
                 placeholder={catalogoGuardados.placeholders.buscar_guardados}
                 aria-label={catalogoGuardados.campos.buscar_guardados}
+                value={busqueda.texto}
+                onChange={alCambiarTexto}
                 className="w-70 max-600:w-auto"
               />
             </div>
@@ -41,18 +61,20 @@ export function PaginaGuardados() {
               </div>
               <div className="flex flex-none items-center justify-end gap-2">
                 <div className="flex items-center gap-1 rounded-lg border border-borde bg-white p-0.5">
-                  <BotonIcono icono="cuadricula-oficial" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('cuadricula')} variant={vista === 'cuadricula' ? 'primario' : 'sutil'} size="md" />
-                  <BotonIcono icono="vista-lista" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={() => setVista('listas')} variant={vista === 'listas' ? 'primario' : 'sutil'} size="md" />
+                  <BotonIcono icono="cuadricula-oficial" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={verCuadricula} variant={vista === 'cuadricula' ? 'primario' : 'sutil'} size="md" />
+                  <BotonIcono icono="vista-lista" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={verListas} variant={vista === 'listas' ? 'primario' : 'sutil'} size="md" />
                 </div>
-                <Selector variant="mini" value={orden} onChange={(evento) => setOrden(evento.target.value)} aria-label={catalogoGuardados.botones.mas_recientes}>
+                <Selector variant="mini" value={orden} onChange={alCambiarOrden} aria-label={catalogoGuardados.botones.mas_recientes}>
                   <option value="mas_recientes">{catalogoGuardados.botones.mas_recientes}</option>
                   <option value="mas_antiguas">{catalogoGuardados.botones.mas_antiguas}</option>
                 </Selector>
               </div>
             </div>
 
+            <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} />
+
             <div className={vista === 'cuadricula' ? 'grid grid-cols-2 gap-4 max-1000:grid-cols-1' : 'grid gap-3'}>
-              {(orden === 'mas_recientes' ? GRUPOS_GUARDADOS : [...GRUPOS_GUARDADOS].reverse()).map((g) => (
+              {ordenados.map((g) => (
                 <TarjetaGrupoGuardado key={g.id} grupo={g} />
               ))}
             </div>

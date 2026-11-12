@@ -1,84 +1,96 @@
 {
   "misListas": [
     {
-      "icono": "amigos",
-      "color": "morado",
+      "id": "lista-mejores-amigos",
       "nombre": "Mejores amigos",
-      "cantidad": "24 amigos",
-      "avatares": 4,
-      "masAvatares": "+16",
-      "descripcion": "Personas más cercanas con las que tengo mi confianza y comparto más."
+      "descripcion": "Personas más cercanas con las que tengo mi confianza y comparto más.",
+      "miembros": [
+        "María Fernández",
+        "Luis Rodríguez",
+        "Carmen López",
+        "Diego Mendoza",
+        "Ana García",
+        "Javier Torres",
+        "Elena Sánchez",
+        "Roberto Pérez",
+        "Valentina Cruz",
+        "Sebastián Rojas"
+      ]
     },
     {
-      "icono": "amigos",
-      "color": "naranja",
+      "id": "lista-familia",
       "nombre": "Familia",
-      "cantidad": "16 amigos",
-      "avatares": 3,
-      "masAvatares": "+8",
-      "descripcion": "Mis familiares y personas de mi entorno familiar."
+      "descripcion": "Mis familiares y personas de mi entorno familiar.",
+      "miembros": [
+        "Natalia Vega",
+        "Andrés Gutiérrez",
+        "Paula Ibáñez",
+        "Martín Ortega",
+        "Claudia Salas",
+        "Rodrigo Peña"
+      ]
     },
     {
-      "icono": "maletin",
-      "color": "azul",
+      "id": "lista-trabajo",
       "nombre": "Trabajo",
-      "cantidad": "38 amigos",
-      "avatares": 3,
-      "masAvatares": "+30",
-      "descripcion": "Compañeros de trabajo, colegas y contactos profesionales."
+      "descripcion": "Compañeros de trabajo, colegas y contactos profesionales.",
+      "miembros": [
+        "Diego Mendoza",
+        "Ana García",
+        "Javier Torres",
+        "Elena Sánchez",
+        "Roberto Pérez",
+        "Valentina Cruz",
+        "Sebastián Rojas",
+        "Natalia Vega",
+        "Andrés Gutiérrez",
+        "Paula Ibáñez",
+        "Martín Ortega",
+        "Claudia Salas"
+      ]
     },
     {
-      "icono": "panel",
-      "color": "verde",
+      "id": "lista-universidad",
       "nombre": "Universidad",
-      "cantidad": "22 amigos",
-      "avatares": 4,
-      "masAvatares": "+14",
-      "descripcion": "Personas con las que estudié y compañeros de la universidad."
+      "descripcion": "Personas con las que estudié y compañeros de la universidad.",
+      "miembros": [
+        "Rodrigo Peña",
+        "Fabiola Luna",
+        "Gonzalo Ramos",
+        "Verónica Arce",
+        "Tomás Quiroz",
+        "Alejandra Cano",
+        "Esteban Lara",
+        "Rocío Mendoza"
+      ]
     },
     {
-      "icono": "empresa",
-      "color": "rosa",
+      "id": "lista-clientes-importantes",
       "nombre": "Clientes importantes",
-      "cantidad": "18 amigos",
-      "avatares": 3,
-      "masAvatares": "+10",
-      "descripcion": "Clientes y contactos clave para mi negocio."
+      "descripcion": "Clientes y contactos clave para mi negocio.",
+      "miembros": [
+        "Alejandra Cano",
+        "Esteban Lara",
+        "Rocío Mendoza",
+        "Ignacio Bravo",
+        "Mónica Silva"
+      ]
     },
     {
-      "icono": "calendario",
-      "color": "azul-claro",
+      "id": "lista-eventos-2024",
       "nombre": "Eventos 2024",
-      "cantidad": "31 amigos",
-      "avatares": 3,
-      "masAvatares": "+23",
-      "descripcion": "Contactos que conocí en eventos, conferencias y reuniones."
-    }
-  ],
-  "listasSugeridas": [
-    {
-      "icono": "maletin",
-      "color": "morado",
-      "nombre": "Emprendedores",
-      "cantidad": "12 amigos"
-    },
-    {
-      "icono": "mensaje",
-      "color": "naranja",
-      "nombre": "Marketing Digital",
-      "cantidad": "15 amigos"
-    },
-    {
-      "icono": "actividad",
-      "color": "verde",
-      "nombre": "Deportes",
-      "cantidad": "19 amigos"
-    },
-    {
-      "icono": "compartir",
-      "color": "azul",
-      "nombre": "Viajes",
-      "cantidad": "11 amigos"
+      "descripcion": "Contactos que conocí en eventos, conferencias y reuniones.",
+      "miembros": [
+        "María Fernández",
+        "Luis Rodríguez",
+        "Carmen López",
+        "Diego Mendoza",
+        "Ana García",
+        "Javier Torres",
+        "Elena Sánchez",
+        "Roberto Pérez",
+        "Valentina Cruz"
+      ]
     }
   ]
 }

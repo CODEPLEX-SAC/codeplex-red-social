@@ -1,9 +1,11 @@
+import type { ErrorBusqueda, EstadoBusqueda, FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
 import type { Dayjs } from 'dayjs'
 import type { SolicitudDetalleEmpresa } from './contrato_detalle_empresa'
 import type { ClaveModuloEmpresa, Empresa } from './modelo_empresas'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
 import type { SuscripcionContratada } from '@/tipos/compartido/contrato_suscripciones'
 import type { UsuarioEmpresa } from './modelo_usuarios_empresa'
+import type { usarAccionesEmpresas } from '@/componentes/empresas/bloques/usar_acciones_empresas'
 import type { DatosDetalleEmpresa } from './contrato_detalle_empresa'
 
 export interface CambioSelectorEmpresas {
@@ -65,9 +67,12 @@ export interface FiltrosAvanzadosEmpresas {
   hasta: Dayjs | null
 }
 
-export interface CriteriosEmpresas extends FiltrosAvanzadosEmpresas {
-  busqueda: string
+export interface FiltrosBusquedaEmpresas extends FiltrosAvanzadosEmpresas {
   estado: string
+}
+
+export interface CriteriosEmpresas extends FiltrosBusquedaEmpresas {
+  busqueda: string
 }
 
 export interface ListadoEmpresas {
@@ -85,6 +90,8 @@ export interface ListadoEmpresas {
   totalPaginas: number
   filas: Empresa[]
   resumen: string
+  estadoBusqueda: EstadoBusqueda
+  errorBusqueda: ErrorBusqueda | null
   cambiarBusqueda: ManejadorCambioEmpresas
   cambiarEstado: ManejadorCambioEmpresas
   cambiarPlan: ManejadorCambioEmpresas
@@ -98,6 +105,12 @@ export interface ListadoEmpresas {
 
 export interface SeccionListadoEmpresasProps {
   empresas: Empresa[]
+  fuente?: FuenteBusqueda<Empresa, FiltrosBusquedaEmpresas>
+  datosDetalle: DatosDetalleEmpresa
+}
+
+export interface ModalesListadoEmpresasProps {
+  acciones: ReturnType<typeof usarAccionesEmpresas>
   datosDetalle: DatosDetalleEmpresa
 }
 

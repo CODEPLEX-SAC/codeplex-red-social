@@ -1,15 +1,14 @@
 import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { marcaTarjeta, soloDigitos, tarjetaVencida } from './logica_tarjeta_pago'
-import type { CambiosTarjetaPago, DatosTarjetaPago, ErroresTarjetaPago, TarjetaPorGuardar, TextosFlujoPago } from '@/tipos/compartido/contrato_flujo_pago'
+import type { DatosTarjetaPago, ErroresTarjetaPago, TarjetaPorGuardar, TextosFlujoPago } from '@/tipos/compartido/contrato_flujo_pago'
 
 const reglas = catalogoCompartido.flujo_pago.reglas.tarjeta
 const ESPACIOS = /\s/g
-const FORMATO_VENCIMIENTO = /^\d{2}\/\d{2}$/
 
 function cumpleLuhn(numero: string) {
   let suma = 0
   numero.split('').reverse().forEach((caracter, indice) => {
-    const valor = Number(caracter) * (indice % 2 === 1 ? 2 : 1)
+    const valor = Number(caracter) * (1 + (indice % 2))
     suma += valor > 9 ? valor - 9 : valor
   })
   return suma % 10 === 0
@@ -24,14 +23,6 @@ export function validarTarjetaNueva(datos: DatosTarjetaPago, errores: TextosFluj
   const cvv = soloDigitos(datos.cvv)
   if (cvv.length < reglas.cvv_minimo || cvv.length > reglas.cvv_maximo) resultado.cvv = errores.cvv
   if (!datos.propietario.trim()) resultado.propietario = errores.propietario
-  return resultado
-}
-
-export function validarCambiosTarjeta(cambios: CambiosTarjetaPago, textos: TextosFlujoPago, ahora: Date = new Date()): ErroresTarjetaPago {
-  const resultado: ErroresTarjetaPago = {}
-  if (!FORMATO_VENCIMIENTO.test(cambios.vencimiento)) resultado.vencimiento = textos.tarjetas.vencimiento_invalido
-  else if (tarjetaVencida(cambios.vencimiento, ahora)) resultado.vencimiento = textos.errores.vencida
-  if (!cambios.titular.trim()) resultado.propietario = textos.errores.propietario
   return resultado
 }
 

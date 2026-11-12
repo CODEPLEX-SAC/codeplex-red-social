@@ -1,9 +1,11 @@
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
 import { CLASES_TABLA } from '../../compartido/clases_tabla'
+import { finDelDia, inicioDelDia } from '../../compartido/limites_fecha'
+import { contieneTexto } from '../../compartido/interfaz/fuente_busqueda_local'
 import { estadoModuloEmpresa, modulosActivos } from './logica_suscripciones_empresas'
 import { MODULOS_EMPRESA } from './modulos_empresa'
 import type { SuscripcionContratada } from '@/tipos/compartido/contrato_suscripciones'
-import type { CriteriosEmpresas, DireccionOrdenEmpresas, FiltrosAvanzadosEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
+import type { CriteriosEmpresas, DireccionOrdenEmpresas, FiltrosAvanzadosEmpresas, FiltrosBusquedaEmpresas } from '@/tipos/empresas/contrato_listado_empresas'
 import type { Empresa } from '@/tipos/empresas/modelo_empresas'
 
 export const CLASE_FILA_EMPRESA = CLASES_TABLA.fila
@@ -15,8 +17,8 @@ export const TAMANO_PAGINA = catalogoEmpresas.paginacion.tamano
 const ETIQUETAS_ESTADO: Record<string, string> = catalogoEmpresas.estados
 const SIN_SUSCRIPCIONES: SuscripcionContratada[] = []
 
-function coincideBusqueda(empresa: Empresa, termino: string) {
-  return [empresa.nombre, empresa.ruc, empresa.codigo, empresa.correo].some((campo) => campo.toLowerCase().includes(termino))
+export function coincideEmpresa(empresa: Empresa, consulta: string) {
+  return [empresa.nombre, empresa.ruc].some((campo) => contieneTexto(campo, consulta))
 }
 
 function fechaDeEmpresa(empresa: Empresa) {
@@ -55,20 +57,22 @@ export function siguienteOrden(direccion: DireccionOrdenEmpresas): DireccionOrde
   return direccion === catalogoEmpresas.orden.ascendente ? (catalogoEmpresas.orden.descendente as DireccionOrdenEmpresas) : null
 }
 
+export function admiteEmpresa(empresa: Empresa, criterios: FiltrosBusquedaEmpresas, suscripciones: SuscripcionContratada[] = SIN_SUSCRIPCIONES) {
+  const desde = inicioDelDia(criterios.desde, null)
+  const hasta = finDelDia(criterios.hasta, null)
+  const condiciones = [
+    criterios.estado === TODAS || ETIQUETAS_ESTADO[empresa.estado] === criterios.estado,
+    criterios.rubro === TODOS || empresa.rubro === criterios.rubro,
+    criterios.plan === TODOS || tienePlan(empresa, criterios.plan, suscripciones),
+    criterios.modulo === TODOS || tieneModulo(empresa, criterios.modulo, suscripciones),
+    desde === null || fechaDeEmpresa(empresa) >= desde,
+    hasta === null || fechaDeEmpresa(empresa) <= hasta,
+  ]
+  return condiciones.every(Boolean)
+}
+
 export function filtrarEmpresas(empresas: Empresa[], criterios: CriteriosEmpresas, suscripciones: SuscripcionContratada[] = SIN_SUSCRIPCIONES) {
-  const termino = criterios.busqueda.trim().toLowerCase()
-  const desde = criterios.desde ? criterios.desde.startOf('day').valueOf() : null
-  const hasta = criterios.hasta ? criterios.hasta.endOf('day').valueOf() : null
-  return empresas.filter(
-    (empresa) =>
-      coincideBusqueda(empresa, termino) &&
-      (criterios.estado === TODAS || ETIQUETAS_ESTADO[empresa.estado] === criterios.estado) &&
-      (criterios.rubro === TODOS || empresa.rubro === criterios.rubro) &&
-      (criterios.plan === TODOS || tienePlan(empresa, criterios.plan, suscripciones)) &&
-      (criterios.modulo === TODOS || tieneModulo(empresa, criterios.modulo, suscripciones)) &&
-      (desde === null || fechaDeEmpresa(empresa) >= desde) &&
-      (hasta === null || fechaDeEmpresa(empresa) <= hasta),
-  )
+  return empresas.filter((empresa) => coincideEmpresa(empresa, criterios.busqueda) && admiteEmpresa(empresa, criterios, suscripciones))
 }
 
 export function estaInactiva(empresa: Empresa) {

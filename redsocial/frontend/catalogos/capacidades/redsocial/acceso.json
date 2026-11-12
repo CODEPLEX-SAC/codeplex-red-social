@@ -81,7 +81,9 @@
     "texto": "Acepto los :uso y la :privacidad",
     "uso": "términos de uso",
     "privacidad": "política de privacidad",
-    "marcadores": ":uso|:privacidad"
+    "marcadores": ":uso|:privacidad",
+    "marcador_uso": ":uso",
+    "marcador_privacidad": ":privacidad"
   },
   "etiqueta_modos": "Modo de acceso",
   "modos": [

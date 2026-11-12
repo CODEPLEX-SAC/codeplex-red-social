@@ -5,6 +5,7 @@ export interface PublicacionPerfil {
   id: string
   tiempo: string
   texto: string
+  imagenes?: string[]
   reaccionesPorTipo: ReaccionesPorTipo
   comentarios: ComentarioPublicacion[]
 }
@@ -97,7 +98,7 @@ export interface PerfilUsuario extends DatosEditablesPerfil {
   publicaciones: PublicacionPerfil[]
 }
 
-export type PestanaPerfil = 'red_social' | 'resumen' | 'experiencia' | 'documentos' | 'metricas' | 'amigos'
+export type PestanaPerfil = 'red_social' | 'resumen' | 'experiencia' | 'documentos' | 'metricas'
 
 export type SubpestanaRedSocial = 'actividad' | 'preguntas'
 

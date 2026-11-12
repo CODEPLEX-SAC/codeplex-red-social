@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { adjuntoDeServidor, adjuntoParaServidor, mensajeDeServidor } from '@/componentes/mensajeria'
 import type { MensajeServidor } from '@/tipos/mensajeria/contrato_servidor_mensajeria'
 

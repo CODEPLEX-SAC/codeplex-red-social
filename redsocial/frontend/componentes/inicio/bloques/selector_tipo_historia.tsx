@@ -1,3 +1,4 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
 import catalogoInicio from '../../../catalogos/capacidades/redsocial/inicio.json'
@@ -28,9 +29,9 @@ export function SelectorTipoHistoria({ tipo, error, onElegir, onContinuar, onCan
         ))}
       </div>
       {error && (
-        <p role="alert" className={clases.error_archivo}>
+        <AlertaEstado className={clases.error_archivo}>
           {catalogoInicio.historias.flujo.cargador.error}
-        </p>
+        </AlertaEstado>
       )}
       <div className={clases.acciones}>
         <Boton type="button" variant="secundario" size="md" onClick={onCancelar}>

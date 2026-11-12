@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Boton } from '../../compartido/interfaz/boton'
 import { Modal } from '../../compartido/interfaz/modal'
 import { Pestanas } from '../../compartido/interfaz/pestanas'
-import { CabeceraModalEmpresa } from './cabecera_modal_empresa'
+import { CabeceraFichaEmpresa } from './cabecera_modal_empresa'
 import { CabeceraResumenEmpresa } from './cabecera_resumen_empresa'
 import { ContenidoPestanaEmpresa } from './contenido_pestana_empresa'
 import catalogoEmpresas from '../../../catalogos/capacidades/redsocial/empresas.json'
@@ -27,7 +27,7 @@ export function ModalDetalleEmpresa({ empresa, totalEmpresas, pestanaInicial, da
       titulo={textos.titulo}
       etiquetaCerrar={textosRedSocial.CERRAR}
       onCerrar={alCerrar}
-      cabecera={<CabeceraModalEmpresa titulo={textos.titulo} subtitulo={textos.subtitulo} alCerrar={alCerrar} />}
+      cabecera={<CabeceraFichaEmpresa titulo={textos.titulo} subtitulo={textos.subtitulo} alCerrar={alCerrar} />}
       className="max-w-225 rounded-2xl max-600:h-full max-600:rounded-none"
     >
       <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto pb-4">

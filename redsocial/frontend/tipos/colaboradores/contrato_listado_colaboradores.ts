@@ -1,6 +1,7 @@
 import type { LegacyRow } from '@tanstack/react-table/legacy'
+import type { FuenteBusqueda } from '@/tipos/compartido/contrato_busqueda'
 import type { Colaborador } from './modelo_colaboradores'
-import type { AccionesExportar, FiltroActivo, FiltrosAvanzadosColaboradores } from './contrato_gestion_colaboradores'
+import type { AccionesExportar, FiltroActivo, FiltrosAvanzadosColaboradores, FiltrosBusquedaColaboradores } from './contrato_gestion_colaboradores'
 
 export interface AccionesColaborador {
   alVerColaborador: (colaborador: Colaborador) => void
@@ -11,6 +12,7 @@ export interface AccionesColaborador {
 
 export interface DatosListadoColaboradores extends AccionesColaborador {
   COLABORADORES: Colaborador[]
+  fuente?: FuenteBusqueda<Colaborador, FiltrosBusquedaColaboradores>
   FILTROS_ESTADO_COLABORADORES: readonly { etiqueta: string; total: number; activa?: boolean }[]
   alInvitarColaborador: () => void
   alFalloExportar: () => void

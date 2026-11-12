@@ -1,34 +1,15 @@
+import { AlertaEstado } from '../../compartido/interfaz/alerta_estado'
 import { useState } from 'react'
-import type { ReactNode } from 'react'
 import catalogoColaboradores from '../../../catalogos/capacidades/redsocial/colaboradores.json'
 import { Icono } from '../../compartido/icono'
 import { Casilla } from '../../compartido/interfaz/casilla'
 import { ListaRecursosPermisos } from './lista_recursos_permisos'
 import { estadoDelModulo } from './logica_permisos_invitacion'
 import { ModalAgregarPermiso } from './modal_agregar_permiso'
-import type { ClavePermiso, ConfiguracionPermisos, RecursoPermiso } from '@/tipos/colaboradores/modelo_invitar_colaborador_rol_permisos'
+import type { PanelEdicionPermisosProps } from '@/tipos/colaboradores/contrato_panel_edicion_permisos'
 
 const clases = catalogoColaboradores.clases.invitar_permisos
 const seleccion = catalogoColaboradores.seleccion_jerarquica
-
-export interface PanelEdicionPermisosProps {
-  prefijoId: string
-  claveLista: string
-  titulo: string
-  subtitulo: string
-  acciones?: ReactNode
-  recursos: RecursoPermiso[]
-  configuracion: ConfiguracionPermisos
-  expandidos: string[]
-  soloLectura?: boolean
-  errorPermisos?: string | null
-  alCambiarExpandidos: (ids: string[]) => void
-  alSeleccionarModulo: (activo: boolean) => void
-  alSeleccionarRecurso: (recurso: string, activo: boolean) => void
-  alAlternar: (recurso: string, clave: ClavePermiso, activo: boolean) => void
-  alAlternarEspecifico: (recurso: string, id: string, activo: boolean) => void
-  alAgregar: (recurso: string, etiqueta: string) => string | null
-}
 
 export function PanelEdicionPermisos({ prefijoId, claveLista, titulo, subtitulo, acciones, recursos, configuracion, expandidos, soloLectura = false, errorPermisos = null, alCambiarExpandidos, alSeleccionarModulo, alSeleccionarRecurso, alAlternar, alAlternarEspecifico, alAgregar }: PanelEdicionPermisosProps) {
   const [agregando, setAgregando] = useState<string | null>(null)
@@ -56,7 +37,7 @@ export function PanelEdicionPermisos({ prefijoId, claveLista, titulo, subtitulo,
           />
         </div>
       </div>
-      {errorPermisos && <p role="alert" className={clases.error_seccion}>{errorPermisos}</p>}
+      {errorPermisos && <AlertaEstado className={clases.error_seccion}>{errorPermisos}</AlertaEstado>}
       <ListaRecursosPermisos
         key={claveLista}
         prefijoId={prefijoId}
@@ -65,10 +46,7 @@ export function PanelEdicionPermisos({ prefijoId, claveLista, titulo, subtitulo,
         expandidos={expandidos}
         soloLectura={soloLectura}
         alCambiarExpandidos={alCambiarExpandidos}
-        alSeleccionarRecurso={alSeleccionarRecurso}
-        alAlternar={alAlternar}
-        alAlternarEspecifico={alAlternarEspecifico}
-        alAgregar={setAgregando}
+        manejadores={{ alSeleccionarRecurso, alAlternar, alAlternarEspecifico, alAgregar: setAgregando }}
       />
       {agregando && <ModalAgregarPermiso recurso={agregando} alAgregar={(etiqueta) => alAgregar(agregando, etiqueta)} alCerrar={() => setAgregando(null)} />}
     </>

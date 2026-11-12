@@ -1,0 +1,7 @@
+{
+  "errores": {
+    "cancelado": "NotAllowedError",
+    "sinPermiso": "SecurityError",
+    "noDisponible": "NotFoundError"
+  }
+}

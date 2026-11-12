@@ -45,33 +45,27 @@
       "icono": "amigos",
       "color": "morado",
       "nombre": "Mejores amigos",
-      "miembros": "24 amigos"
+      "miembros": "10 amigos"
     },
     {
       "icono": "amigos",
       "color": "naranja",
       "nombre": "Familia",
-      "miembros": "16 amigos"
+      "miembros": "6 amigos"
     },
     {
       "icono": "colaborador",
       "color": "azul",
       "nombre": "Trabajo",
-      "miembros": "38 amigos"
+      "miembros": "12 amigos"
     },
     {
       "icono": "inicio",
       "color": "verde",
       "nombre": "Universidad",
-      "miembros": "22 amigos"
+      "miembros": "8 amigos"
     }
   ],
-  "solicitudEnviadaEjemplo": {
-    "nombre": "Miguel Ángel Vargas",
-    "estado": "Pendiente",
-    "descripcion": "Desarrollador en Codeplex Tech",
-    "comunes": "2 amigos en común"
-  },
   "actividadRecienteSolicitudes": [
     {
       "nombre": "Valeria Quispe",
@@ -87,6 +81,20 @@
       "nombre": "Paola Martínez",
       "accion": "te envió una solicitud de amistad.",
       "tiempo": "Hace 2 días"
+    }
+  ],
+  "enviadas": [
+    {
+      "nombre": "Miguel Ángel Vargas",
+      "estado": "Pendiente",
+      "descripcion": "Desarrollador en Codeplex Tech",
+      "comunes": "2 amigos en común"
+    },
+    {
+      "nombre": "Rosa Delgado",
+      "estado": "Pendiente",
+      "descripcion": "Directora en Consultora Norte",
+      "comunes": "4 amigos en común"
     }
   ]
 }

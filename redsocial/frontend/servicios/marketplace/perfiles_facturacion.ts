@@ -16,11 +16,12 @@ export class ErrorPerfilesFacturacion extends Error {
 }
 
 export function perfilesDesdeEmpresas(empresas: Empresa[], paises: PaisPago[]): PerfilPago[] {
+  const paisPorPrefijo = new Map(paises.map((pais) => [pais.prefijo, pais]))
   return empresas
     .filter((empresa) => empresa.estado === ESTADO_ACTIVA && RUC_VALIDO.test(empresa.ruc))
     .map((empresa) => {
       const prefijo = empresa.telefono.match(PREFIJO_TELEFONICO)?.[0]
-      const pais = paises.find((candidato) => candidato.prefijo === prefijo) ?? paises[0]
+      const pais = paisPorPrefijo.get(String(prefijo)) ?? paises[0]
       return {
         id: `perfil-${empresa.codigo}`,
         documento: empresa.ruc,
@@ -28,7 +29,7 @@ export function perfilesDesdeEmpresas(empresas: Empresa[], paises: PaisPago[]): 
         pais: pais.id,
         direccion: empresa.direccion,
         correo: empresa.correo,
-        celular: empresa.telefono.replace(PREFIJO_TELEFONICO, '').replace(NO_DIGITO, ''),
+        celular: empresa.telefono.replace(PREFIJO_TELEFONICO, String()).replace(NO_DIGITO, String()),
         whatsapp: false,
         sms: false,
       }
@@ -47,16 +48,20 @@ export function crearRepositorioPerfiles(semilla: PerfilPago[]): RepositorioPerf
     return guardados.map((perfil) => ({ ...perfil }))
   }
 
-  function modificar(cambio: (actual: PerfilPago[]) => PerfilPago[]) {
-    return Promise.resolve().then(() => {
-      guardados = cambio(leer())
-      return leer()
-    })
+  async function modificar(cambio: (actual: PerfilPago[]) => PerfilPago[]) {
+    await Promise.resolve()
+    guardados = cambio(leer())
+    return leer()
+  }
+
+  async function listar() {
+    await Promise.resolve()
+    return leer()
   }
 
   return {
     leerEstadoInicial: () => ({ perfiles: leer(), estado: 'listo' }),
-    listar: () => Promise.resolve().then(leer),
+    listar,
     registrar: (datos: DatosPerfilPago) =>
       modificar((actual) => {
         secuencia += 1

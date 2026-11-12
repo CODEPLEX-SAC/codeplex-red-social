@@ -1,10 +1,12 @@
 import { Boton } from '../interfaz/boton'
 import { BotonIcono } from '../interfaz/boton_icono'
 import { Icono } from '../icono'
-import { CLASES_FLUJO_PAGO as clases } from './clases_flujo_pago'
+import catalogoCompartido from '../../../catalogos/capacidades/redsocial/compartido.json'
 import { canalesDePerfil, nombreDePais, telefonoDePerfil } from './logica_perfil_pago'
 import { usarTextosPago } from './usar_textos_pago'
 import type { PaisPago, PerfilPago } from '@/tipos/compartido/contrato_flujo_pago'
+
+const clases = catalogoCompartido.flujo_pago.clases
 
 function Dato({ titulo, valor, ancho = false }: { titulo: string; valor: string; ancho?: boolean }) {
   return (

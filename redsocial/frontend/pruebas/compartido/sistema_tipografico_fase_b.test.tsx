@@ -39,7 +39,6 @@ const INTERLINEADOS_JUSTIFICADOS = [
 ]
 const PANELES_LATERALES = [
   '/componentes/compartido/bloques/panel_lateral.tsx',
-  '/componentes/mensajeria/bloques/seccion_participantes.tsx',
   '/componentes/avisos/bloques/panel_lateral_solicitudes_aviso.tsx',
   '/componentes/avisos/bloques/panel_detalle_aviso.tsx',
   '/componentes/eventos/bloques/panel_calendario_mini.tsx',
@@ -53,7 +52,7 @@ const PANELES_LATERALES = [
   '/componentes/indicadores/bloques/seccion_estructura_costos.tsx',
 ]
 const CONSUMIDORES_DE_MENSAJE_VACIO = [
-  '/componentes/eventos/bloques/elementos_resultado_filtro.tsx',
+  '/componentes/eventos/bloques/sin_eventos_filtro.tsx',
   '/componentes/eventos/bloques/sin_eventos_ubicacion.tsx',
   '/componentes/eventos/bloques/seccion_eventos_de_hoy2.tsx',
   '/componentes/inicio/bloques/seccion_comentarios_publicacion.tsx',
