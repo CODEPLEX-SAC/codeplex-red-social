@@ -21,7 +21,7 @@ export function PaginaGruposDetalle() {
 
   return (
     <EstructuraApp paginaActiva="grupos">
-      <a href={catalogoGrupos.rutas.mis_grupos} className={[CLASE_ENLACE_ACCION, 'mb-4 inline-flex items-center gap-1.5'].join(' ')}>
+      <a href={catalogoGrupos.rutas.mis_grupos} className={[CLASE_ENLACE_ACCION, catalogoGrupos.clases.detalle.volver_escritorio].join(' ')}>
         <Icono name="flecha-izquierda" className="h-4 w-4" /> {catalogoGrupos.detalle.volver}
       </a>
       <ProveedorDestinosCompartir grupos={destinosDeGrupos()} amigos={DESTINOS_AMIGOS} almacenDeGrupo={PUERTO_GRUPOS.publicaciones} almacenHistorias={ALMACEN_HISTORIAS}>

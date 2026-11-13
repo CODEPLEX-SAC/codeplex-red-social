@@ -1,54 +1,37 @@
-import { GrupoAvatares } from '../../compartido/interfaz/grupo_avatares'
-import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { useState } from 'react'
-import { SuperficieColor } from '../../compartido/interfaz/superficie_color'
+import { BotonIcono } from '../../compartido/interfaz/boton_icono'
+import { clasesBoton } from '../../compartido/interfaz/boton'
+import { Menu } from '../../compartido/interfaz/menu'
+import catalogoGrupos from '../../../catalogos/capacidades/redsocial/grupos.json'
 import catalogoGuardados from '../../../catalogos/capacidades/redsocial/guardados.json'
-import textosRedSocial from '../../../mensajes/capacidades/redsocial/textos.json'
 import type { TarjetaGrupoGuardadoProps } from '@/tipos/guardados/contrato_grupo_guardado'
 
-export function TarjetaGrupoGuardado({ grupo: g }: TarjetaGrupoGuardadoProps) {
-  const claseCategoria = (catalogoGuardados.categorias_clases as Record<string, string>)[g.categoria]
-  const etiquetaCategoria = (catalogoGuardados.categorias as Record<string, string>)[g.categoria]
-  const [guardado, setGuardado] = useState(true)
+const clases = catalogoGuardados.clases
+const categorias: Record<string, string> = catalogoGuardados.categorias
+const clasesCategoria: Record<string, string> = catalogoGuardados.categorias_clases
+
+export function TarjetaGrupoGuardado({ grupo, acciones, alQuitar }: TarjetaGrupoGuardadoProps) {
+  const [ancla, setAncla] = useState<HTMLElement | null>(null)
 
   return (
-    <article className="min-w-0 overflow-hidden rounded-control border border-borde bg-white max-600:flex max-600:items-stretch max-600:gap-3 max-600:rounded-none max-600:border-x-0 max-600:border-t-0 max-600:p-3">
-      <SuperficieColor
-        variante={g.colorPortada}
-        className="relative flex h-32.5 flex-col items-center justify-center gap-1 p-4 text-center text-white max-600:h-19 max-600:w-19 max-600:flex-none max-600:self-center max-600:rounded-2xl max-600:p-0"
-      >
-        {g.tituloPortada && (
-          <div className="max-600:hidden">
-            <strong className="text-titulo-subseccion leading-compacto">{g.tituloPortada}</strong>
-            {g.subtituloPortada && <span className="mt-1 block text-auxiliar text-white">{g.subtituloPortada}</span>}
-          </div>
-        )}
-        <BotonIcono icono="guardado" type="button" aria-pressed={guardado} aria-label={guardado ? catalogoGuardados.botones.quitar_guardado : catalogoGuardados.botones.guardar_grupo} onClick={() => setGuardado((actual) => !actual)} variant="sutil" size="md" className="absolute right-2.5 top-2.5 max-600:hidden" />
-      </SuperficieColor>
-
-      <div className="p-3.5 max-600:flex max-600:min-w-0 max-600:flex-1 max-600:flex-col max-600:justify-between max-600:p-0">
-        <div>
-          <h2 className="m-0 mb-1 truncate text-nombre-entidad text-texto">{g.nombre}</h2>
-          <div className="mb-1.5 flex flex-wrap items-center gap-1.5 max-600:mb-0">
-            <span className="text-auxiliar text-texto-suave">{g.miembros}</span>
-            <span className={'rounded px-1.5 py-px text-badge max-600:hidden ' + claseCategoria}>{etiquetaCategoria}</span>
-          </div>
+    <article className={clases.grupo}>
+      <img src={grupo.imagen} alt={String()} className={clases.grupo_imagen} />
+      <div className={clases.grupo_cuerpo}>
+        <h2 className={clases.grupo_nombre}>{grupo.nombre}</h2>
+        <div className={clases.grupo_meta}>
+          <span className={clases.grupo_miembros}>{grupo.miembros}</span>
+          <span className={[clases.grupo_categoria, clasesCategoria[grupo.categoria]].join(' ')}>{categorias[grupo.categoria]}</span>
         </div>
-        <span className={'hidden self-start rounded px-1.5 py-px text-badge max-600:inline-block ' + claseCategoria}>{etiquetaCategoria}</span>
-        <p className="m-0 mb-2.5 text-cuerpo leading-texto text-texto-suave max-600:hidden">{g.descripcion}</p>
-        <div className="flex items-center gap-1.5 max-600:hidden">
-          <GrupoAvatares avatares={3} tamano="xs" className="flex-none" />
-          <span className="min-w-0 flex-1 truncate text-auxiliar text-texto-suave">
-            {catalogoGuardados.campos_lista.actividad_reciente}: {g.actividadReciente}
-          </span>
-          <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="discreto" size="sm" className="flex-none" />
-        </div>
+        <p className={clases.grupo_descripcion}>{grupo.descripcion}</p>
       </div>
-
-      <div className="hidden flex-none flex-col items-center justify-between max-600:flex">
-        <BotonIcono icono="guardado" type="button" aria-pressed={guardado} aria-label={guardado ? catalogoGuardados.botones.quitar_guardado : catalogoGuardados.botones.guardar_grupo} onClick={() => setGuardado((actual) => !actual)} variant="sutil" size="sm" className="flex-none" />
-        <BotonIcono icono="puntos" type="button" aria-label={textosRedSocial.MAS_OPCIONES} variant="discreto" size="sm" className="flex-none" />
+      <BotonIcono icono="guardado" type="button" aria-pressed aria-label={catalogoGuardados.botones.quitar_guardado} variant="suave" size="md" className={clases.grupo_marcador} onClick={alQuitar} />
+      <div className={clases.grupo_acciones_fila}>
+        <a href={catalogoGrupos.rutas.mis_grupos} className={clasesBoton({ variant: 'secundario', size: 'default' })}>
+          {catalogoGuardados.botones.ir_al_grupo}
+        </a>
+        <BotonIcono icono="puntos" type="button" aria-label={catalogoGuardados.botones.mas_opciones} variant="contorno" size="md" onClick={(evento) => setAncla(evento.currentTarget)} />
       </div>
+      <Menu elementos={acciones} ancla={ancla} alCerrar={() => setAncla(null)} />
     </article>
   )
 }

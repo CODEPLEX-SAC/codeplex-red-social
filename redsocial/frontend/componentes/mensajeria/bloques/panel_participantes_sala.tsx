@@ -3,6 +3,8 @@ import { Acordeon } from '../../compartido/interfaz/acordeon'
 import { Boton } from '../../compartido/interfaz/boton'
 import { BotonIcono } from '../../compartido/interfaz/boton_icono'
 import { CampoBusqueda } from '../../compartido/interfaz/campo_busqueda'
+import { Modal } from '../../compartido/interfaz/modal'
+import { usarVistaMovil } from '../../compartido/interfaz/usar_vista_movil'
 import { BuscadorContactosInvitar } from './buscador_contactos_invitar'
 import { ListaParticipantesSala } from './lista_participantes_sala'
 import { agruparParticipantes, buscarParticipantes } from './logica_sala_llamada'
@@ -13,8 +15,9 @@ const panel = catalogoMensajeria.videollamada.textos.panel
 const clases = catalogoMensajeria.videollamada.clases.sala
 const SECCIONES: SeccionPersonas[] = ['manos', 'colaboradores', 'invitados']
 
-export function PanelParticipantesSala({ participantes, contactos, invitaciones, enlaceReunion, fijadoId, onFijar, onGestionar, onCerrar }: PanelParticipantesSalaProps) {
+export function PanelParticipantesSala({ participantes, contactos, invitaciones, fijadoId, onFijar, onGestionar, onEscribir, onCerrar }: PanelParticipantesSalaProps) {
   const [consulta, setConsulta] = useState(String())
+  const movil = usarVistaMovil()
   const [agregando, setAgregando] = useState(false)
   const [aviso, setAviso] = useState(String())
   const manos = participantes.filter((participante) => participante.manoLevantada).length
@@ -24,7 +27,7 @@ export function PanelParticipantesSala({ participantes, contactos, invitaciones,
   const elementos = secciones.map((seccion) => ({
     id: seccion,
     titulo: `${panel.secciones[seccion]} (${grupos[seccion].length})`,
-    contenido: <ListaParticipantesSala participantes={grupos[seccion]} esOrganizador={esOrganizador} fijadoId={fijadoId} onFijar={onFijar} onGestionar={onGestionar} onAviso={setAviso} />,
+    contenido: <ListaParticipantesSala participantes={grupos[seccion]} esOrganizador={esOrganizador} fijadoId={fijadoId} onFijar={onFijar} onGestionar={onGestionar} onAviso={setAviso} onEscribir={onEscribir} />,
   }))
 
   return (
@@ -40,10 +43,10 @@ export function PanelParticipantesSala({ participantes, contactos, invitaciones,
           {panel.manos.replace(':n', String(manos))}
         </p>
       )}
-      <Boton type="button" variant="primario" size="default" aria-expanded={agregando} onClick={() => setAgregando((actual) => !actual)}>
-        {agregando ? panel.ocultar_agregar : panel.agregar}
+      <Boton type="button" variant="primario" size="default" className={clases.panel_agregar} aria-expanded={agregando} onClick={() => setAgregando(true)}>
+        {panel.agregar}
       </Boton>
-      <CampoBusqueda placeholder={panel.buscar} aria-label={panel.etiqueta_busqueda} value={consulta} onChange={(evento) => setConsulta(evento.target.value)} />
+      <CampoBusqueda placeholder={movil ? panel.buscar_corto : panel.buscar} aria-label={panel.etiqueta_busqueda} value={consulta} onChange={(evento) => setConsulta(evento.target.value)} />
       <div className={clases.panel_secciones}>
         <p className={clases.panel_etiqueta}>{panel.en_la_reunion}</p>
         {elementos.length === 0 && <p className={clases.panel_vacio}>{panel.sin_resultados}</p>}
@@ -53,19 +56,13 @@ export function PanelParticipantesSala({ participantes, contactos, invitaciones,
             {aviso}
           </p>
         )}
-        {agregando && <BuscadorContactosInvitar contactos={contactos} invitaciones={invitaciones} />}
-      </div>
-      <div className={clases.panel_acciones}>
-        <div className={clases.panel_enlace}>
-          <h3 className={clases.panel_enlace_titulo}>{panel.enlace_titulo}</h3>
-          <div className={clases.panel_enlace_fila}>
-            <span className={clases.panel_enlace_texto}>{enlaceReunion}</span>
-            <BotonIcono icono="copiar" type="button" aria-label={panel.copiar_enlace} variant="discreto" size="default" onClick={() => void invitaciones.copiarEnlace(enlaceReunion)} />
-          </div>
-        </div>
-        <p aria-live="polite" className={clases.chat_nota}>
-          {panel.estado_copia[invitaciones.copia]}
-        </p>
+        {agregando && (
+          <Modal titulo={panel.agregar} etiquetaCerrar={panel.cerrar} onCerrar={() => setAgregando(false)} className={clases.agregar_modal}>
+            <div className={clases.agregar_cuerpo}>
+              <BuscadorContactosInvitar contactos={contactos} invitaciones={invitaciones} />
+            </div>
+          </Modal>
+        )}
       </div>
     </aside>
   )

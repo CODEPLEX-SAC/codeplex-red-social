@@ -1,88 +1,31 @@
-import { BotonIcono, Boton, EstructuraApp, EstructuraTresColumnas, ColumnaPublicidad, CampoBusqueda, Selector, MensajeEstadoBusqueda, usarBusqueda } from '../../componentes/compartido'
-import { useMemo, useState } from 'react'
+import { EstructuraApp, MensajeEmergente, MensajeEstadoBusqueda, usarBusqueda } from '../../componentes/compartido'
+import { BannerOrganizaGuardados, BuscadorGuardados, ColumnaAccionesGuardados, ColumnaColeccionesGuardados, EncabezadoGuardados, FiltrosGuardados, ModalesGuardados, PanelCentralGuardados, PestanasGuardados, usarGuardados } from '../../componentes/guardados'
 import catalogoGuardados from '../../catalogos/capacidades/redsocial/guardados.json'
-import { PestanasGuardados, TarjetaGrupoGuardado, PanelLateralGuardados } from '../../componentes/guardados'
-import { BUSQUEDA_GRUPOS_GUARDADOS, GRUPOS_GUARDADOS, COLECCIONES_GUARDADAS, GRUPOS_RECOMENDADOS_GUARDADOS } from '../../rutas/guardados/rutas_guardados'
+import { BUSQUEDA_GRUPOS_GUARDADOS, COLECCIONES_GUARDADAS, GRUPOS_GUARDADOS } from '../../rutas/guardados/rutas_guardados'
 
-const FILTROS = ['todos', 'mis_grupos', 'tecnologia', 'diseno', 'negocios', 'desarrollo_profesional', 'mas'] as const
+const clases = catalogoGuardados.clases
 
 export function PaginaGuardados() {
-  const [filtroActivo, setFiltroActivo] = useState<(typeof FILTROS)[number]>('todos')
-  const [orden, setOrden] = useState('mas_recientes')
-  const [vista, setVista] = useState<'cuadricula' | 'listas'>('cuadricula')
   const busqueda = usarBusqueda(BUSQUEDA_GRUPOS_GUARDADOS.fuente, { modo: BUSQUEDA_GRUPOS_GUARDADOS.modo })
-  const ordenados = useMemo(() => (orden === 'mas_recientes' ? busqueda.resultado.elementos : [...busqueda.resultado.elementos].reverse()), [orden, busqueda.resultado.elementos])
-
-  function alCambiarTexto(evento: { target: { value: string } }) {
-    busqueda.cambiarTexto(evento.target.value)
-  }
-
-  function verCuadricula() {
-    setVista('cuadricula')
-  }
-
-  function verListas() {
-    setVista('listas')
-  }
-
-  function alCambiarOrden(evento: { target: { value: string } }) {
-    setOrden(evento.target.value)
-  }
+  const control = usarGuardados({ coleccionesIniciales: COLECCIONES_GUARDADAS, todosLosGrupos: GRUPOS_GUARDADOS, busqueda })
+  const { navegacion, acciones, movil } = control
+  const crear = () => acciones.abrir({ tipo: 'crear' })
 
   return (
     <EstructuraApp paginaActiva="guardados">
-      <EstructuraTresColumnas
-        principal={
-          <section>
-            <div className="mb-5 flex items-start justify-between gap-5 max-600:flex-col max-600:items-stretch">
-              <div>
-                <h1 className="m-0 mb-1 text-titulo-pagina text-texto">{catalogoGuardados.titulos.principal}</h1>
-                <p className="m-0 text-subtitulo text-texto-suave">{catalogoGuardados.subtitulos.principal}</p>
-              </div>
-              <CampoBusqueda
-                placeholder={catalogoGuardados.placeholders.buscar_guardados}
-                aria-label={catalogoGuardados.campos.buscar_guardados}
-                value={busqueda.texto}
-                onChange={alCambiarTexto}
-                className="w-70 max-600:w-auto"
-              />
-            </div>
-
-            <PestanasGuardados activa="grupos" />
-
-            <div className="mb-4 flex flex-col gap-2.5">
-              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-oculto">
-                {FILTROS.map((f) => (
-                  <Boton key={f} type="button" onClick={() => setFiltroActivo(f)} variant="filtro" size="filtro" activo={f === filtroActivo} className="flex-none">
-                    {catalogoGuardados.filtros[f]}
-                    {f === 'todos' ? ` (${GRUPOS_GUARDADOS.length})` : ''}
-                  </Boton>
-                ))}
-              </div>
-              <div className="flex flex-none items-center justify-end gap-2">
-                <div className="flex items-center gap-1 rounded-lg border border-borde bg-white p-0.5">
-                  <BotonIcono icono="cuadricula-oficial" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={verCuadricula} variant={vista === 'cuadricula' ? 'primario' : 'sutil'} size="md" />
-                  <BotonIcono icono="vista-lista" type="button" aria-label={catalogoGuardados.titulos_pestanas.grupos} onClick={verListas} variant={vista === 'listas' ? 'primario' : 'sutil'} size="md" />
-                </div>
-                <Selector variant="mini" value={orden} onChange={alCambiarOrden} aria-label={catalogoGuardados.botones.mas_recientes}>
-                  <option value="mas_recientes">{catalogoGuardados.botones.mas_recientes}</option>
-                  <option value="mas_antiguas">{catalogoGuardados.botones.mas_antiguas}</option>
-                </Selector>
-              </div>
-            </div>
-
-            <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} />
-
-            <div className={vista === 'cuadricula' ? 'grid grid-cols-2 gap-4 max-1000:grid-cols-1' : 'grid gap-3'}>
-              {ordenados.map((g) => (
-                <TarjetaGrupoGuardado key={g.id} grupo={g} />
-              ))}
-            </div>
-          </section>
-        }
-        publicidad={<ColumnaPublicidad />}
-        lateral={<PanelLateralGuardados colecciones={COLECCIONES_GUARDADAS} recomendados={GRUPOS_RECOMENDADOS_GUARDADOS} />}
-      />
+      <EncabezadoGuardados alCrear={crear} />
+      <PestanasGuardados activa={navegacion.pestana} alCambiar={navegacion.cambiarPestana} />
+      <BuscadorGuardados texto={busqueda.texto} alBuscar={(evento) => busqueda.cambiarTexto(evento.target.value)} />
+      {navegacion.pestana === 'elementos' && <FiltrosGuardados activo={navegacion.filtro} alCambiar={navegacion.cambiarFiltro} />}
+      <MensajeEstadoBusqueda estado={busqueda.estado} error={busqueda.error} />
+      <div className={movil ? clases.centro : clases.rejilla}>
+        {!movil && <ColumnaColeccionesGuardados control={control} />}
+        <PanelCentralGuardados control={control} />
+        {!movil && <ColumnaAccionesGuardados control={control} />}
+      </div>
+      {movil && <BannerOrganizaGuardados horizontal alCrear={crear} />}
+      {acciones.modal && <ModalesGuardados control={control} modal={acciones.modal} />}
+      {acciones.aviso && <MensajeEmergente abierto variante="exito" mensaje={acciones.aviso} alCerrar={acciones.cerrarAviso} />}
     </EstructuraApp>
   )
 }

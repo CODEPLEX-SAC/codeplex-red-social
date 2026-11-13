@@ -34,7 +34,7 @@ const panel = () => within(screen.getByRole('complementary', { name: textos.pane
 const ENCABEZADO_SECCION = new RegExp(`^(${Object.values(textos.panel.secciones).join('|')})`)
 
 function abrirPersonas() {
-  fireEvent.click(barra().getByRole('button', { name: textos.sala.participantes }))
+  fireEvent.click(screen.getByRole('button', { name: textos.sala.participantes_boton }))
   panel()
     .queryAllByRole('button', { expanded: false, name: ENCABEZADO_SECCION })
     .forEach((encabezado) => fireEvent.click(encabezado))
@@ -52,13 +52,13 @@ describe('Barra de controles', () => {
   it('conserva los ocho controles accesibles', () => {
     montar()
     const nombres = barra().getAllByRole('button').map((boton) => boton.getAttribute('aria-label'))
-    expect(nombres).toEqual([textos.sala.microfono_silenciar, textos.sala.camara_apagar, textos.sala.compartir, textos.sala.participantes, textos.sala.chat, textos.sala.reacciones, textos.sala.mas_opciones, textos.sala.finalizar])
+    expect(nombres).toEqual([textos.sala.microfono_silenciar, textos.sala.camara_apagar, textos.sala.compartir, textos.sala.reacciones, textos.sala.levantar_mano, textos.sala.chat, textos.sala.mas_opciones, textos.sala.finalizar])
   })
 
   it('el menu Mas muestra exclusivamente las tres opciones acordadas', () => {
     montar()
     abrirMas()
-    comprobarMenu([textos.sala.levantar_mano, textos.sala.mensajes_llamada, textos.sala.informar_problema])
+    comprobarMenu([textos.sala.pantalla_completa, textos.sala.mensajes_llamada, textos.sala.informar_problema])
     expect(within(screen.getByRole('menu')).queryByRole('menuitem', { name: new RegExp(textos.sala.compartir) })).toBeNull()
   })
 
@@ -76,16 +76,14 @@ describe('Barra de controles', () => {
 describe('Levantar la mano', () => {
   it('levanta y baja la mano, con indicador junto al participante, contador y estado en Personas', () => {
     montar()
-    abrirMas()
-    fireEvent.click(screen.getByRole('menuitem', { name: textos.sala.levantar_mano }))
+    fireEvent.click(barra().getByRole('button', { name: textos.sala.levantar_mano }))
     const local = within(screen.getByRole('article', { name: PARTICIPANTES[0].nombre }))
     expect(local.getByRole('img', { name: textos.sala.mano_levantada })).toBeInTheDocument()
     abrirPersonas()
     expect(panel().getByText(textos.panel.manos.replace(':n', '1'))).toBeInTheDocument()
     expect(panel().getAllByRole('img', { name: textos.sala.mano_levantada })).toHaveLength(1)
-    abrirMas()
-    expect(screen.getByRole('menuitem', { name: textos.sala.bajar_mano })).toBeInTheDocument()
-    fireEvent.click(screen.getByRole('menuitem', { name: textos.sala.bajar_mano }))
+    expect(barra().getByRole('button', { name: textos.sala.bajar_mano })).toBeInTheDocument()
+    fireEvent.click(barra().getByRole('button', { name: textos.sala.bajar_mano }))
     expect(screen.queryByRole('img', { name: textos.sala.mano_levantada })).toBeNull()
     expect(panel().queryByText(textos.panel.manos.replace(':n', '1'))).toBeNull()
   })
@@ -129,12 +127,12 @@ describe('Fijar participantes', () => {
     const segunda = montar()
     const vistaPrimera = within(primera.container)
     const vistaSegunda = within(segunda.container)
-    fireEvent.click(vistaPrimera.getByRole('button', { name: textos.sala.participantes }))
+    fireEvent.click(vistaPrimera.getByRole('button', { name: textos.sala.participantes_boton }))
     fireEvent.click(vistaPrimera.getByRole('button', { name: new RegExp(`^${textos.panel.secciones.colaboradores}`), expanded: false }))
     fireEvent.click(vistaPrimera.getByRole('button', { name: textos.panel.gestion.replace(':nombre', PARTICIPANTES[2].nombre) }))
     fireEvent.click(screen.getByRole('menuitem', { name: textos.panel.fijar }))
     expect(vistaPrimera.getByRole('img', { name: textos.sala.fijado })).toBeInTheDocument()
-    fireEvent.click(vistaSegunda.getByRole('button', { name: textos.sala.participantes }))
+    fireEvent.click(vistaSegunda.getByRole('button', { name: textos.sala.participantes_boton }))
     expect(vistaSegunda.queryByRole('img', { name: textos.sala.fijado })).toBeNull()
   })
 })

@@ -19,9 +19,8 @@ describe('Grupos: publicar y votacion', () => {
 
   it('en un grupo donde soy miembro el compositor dice Escribe algo y solo ofrece Foto/video y Encuesta', () => {
     abrirDetalle(MIS_GRUPOS[0].nombre)
-    expect(screen.getByRole('button', { name: publicar.miembro.placeholder })).toBeInTheDocument()
-    expect(screen.queryByText(publicar.placeholder)).toBeNull()
-    for (const accion of publicar.miembro.acciones) expect(screen.getByRole('button', { name: accion.etiqueta })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: publicar.placeholder })).toBeInTheDocument()
+    for (const accion of publicar.acciones) expect(screen.getByRole('button', { name: accion.etiqueta })).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: /Etiquetar personas/ })).toBeNull()
     expect(screen.queryByRole('button', { name: 'Evento' })).toBeNull()
   })
@@ -50,7 +49,7 @@ describe('Grupos: publicar y votacion', () => {
 
   it('Foto/video y el campo principal abren el mismo modal de publicacion', () => {
     abrirDetalle(MIS_GRUPOS[0].nombre)
-    fireEvent.click(screen.getByRole('button', { name: publicar.miembro.placeholder }))
+    fireEvent.click(screen.getByRole('button', { name: publicar.placeholder }))
     expect(screen.getByRole('dialog', { name: catalogoInicio.modal_crear_publicacion.titulo })).toBeInTheDocument()
   })
 })

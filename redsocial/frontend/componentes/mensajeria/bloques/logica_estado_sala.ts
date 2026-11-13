@@ -51,3 +51,11 @@ export function liberarAlDesmontar(liberar: MutableRefObject<() => void>, puerto
   }
   return limpiar
 }
+
+export function alternarPantallaCompleta() {
+  if (document.fullscreenElement) {
+    void document.exitFullscreen()
+    return
+  }
+  void document.querySelector(catalogoMensajeria.videollamada.selector_sala)?.requestFullscreen?.()
+}

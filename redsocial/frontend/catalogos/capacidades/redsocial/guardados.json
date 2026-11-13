@@ -17,7 +17,8 @@
     "confirmar_quitar_guardado": "Vas a quitar este elemento de tus guardados."
   },
   "campos": {
-    "buscar_guardados": "Buscar grupo guardado"
+    "buscar_guardados": "Buscar grupo guardado",
+    "filtros": "Categorías de guardados"
   },
   "errores": {
     "carga_guardados": "No fue posible cargar tus guardados."
@@ -45,14 +46,17 @@
     "principal": "Todo lo que guardaste en un solo lugar"
   },
   "placeholders": {
-    "buscar_guardados": "Buscar grupo guardado..."
+    "buscar_guardados": "Buscar en Guardados..."
   },
   "pestanas": [
-    {"clave": "todo", "etiqueta": "Todo", "ruta": "#"},
-    {"clave": "publicaciones", "etiqueta": "Publicaciones", "ruta": "#"},
-    {"clave": "eventos", "etiqueta": "Eventos", "ruta": "#"},
-    {"clave": "grupos", "etiqueta": "Grupos", "ruta": "/guardados"},
-    {"clave": "recursos", "etiqueta": "Recursos", "ruta": "#"}
+    {
+      "clave": "elementos",
+      "etiqueta": "Elementos guardados"
+    },
+    {
+      "clave": "colecciones",
+      "etiqueta": "Colecciones"
+    }
   ],
   "titulos_pestanas": {
     "todo": "Todo",
@@ -60,15 +64,6 @@
     "eventos": "Eventos",
     "grupos": "Grupos",
     "recursos": "Recursos"
-  },
-  "filtros": {
-    "todos": "Todos",
-    "mis_grupos": "Mis grupos",
-    "tecnologia": "Tecnología",
-    "diseno": "Diseño",
-    "negocios": "Negocios",
-    "desarrollo_profesional": "Desarrollo profesional",
-    "mas": "Más"
   },
   "categorias": {
     "tecnologia": "Tecnología",
@@ -92,28 +87,217 @@
     "mas_antiguas": "Más antiguas",
     "nueva_coleccion": "Nueva colección",
     "ver_todas": "Ver todas",
-    "ver_todos": "Ver todos",
-    "explorar_grupos": "Explorar grupos",
     "quitar_guardado": "Quitar de guardados",
-    "guardar_grupo": "Guardar grupo"
+    "ir_al_grupo": "Ir al grupo",
+    "crear_coleccion": "Crear colección",
+    "vista_lista": "Ver como lista",
+    "vista_cuadricula": "Ver como cuadrícula",
+    "ver_todos": "Ver todos",
+    "ver_menos": "Ver menos",
+    "volver_colecciones": "Volver a Colecciones",
+    "agregar_a_coleccion": "Agregar a una colección",
+    "compartir": "Compartir",
+    "quitar_de_coleccion": "Quitar de esta colección",
+    "ver_coleccion": "Ver colección",
+    "compartir_coleccion": "Compartir colección",
+    "cambiar_nombre": "Cambiar nombre",
+    "eliminar_coleccion": "Eliminar colección",
+    "cancelar": "Cancelar",
+    "cerrar": "Cerrar",
+    "crear": "Crear",
+    "guardar": "Guardar",
+    "agregar": "Agregar",
+    "eliminar": "Eliminar",
+    "quitar": "Quitar",
+    "opciones_coleccion": "Opciones de la colección"
   },
   "secciones": {
     "mis_colecciones": "Mis colecciones",
-    "grupos_recomendados": "Grupos recomendados"
-  },
-  "campos_lista": {
-    "actividad_reciente": "Actividad reciente"
+    "grupos_guardados": "Grupos guardados (:n)",
+    "acciones_rapidas": "Acciones rápidas",
+    "consejo": "Consejo",
+    "todos_grupos": "Todos los grupos guardados",
+    "organiza_titulo": "Organiza tus guardados",
+    "organiza_texto": "Crea colecciones para clasificar grupos, publicaciones, eventos y más.",
+    "consejo_texto": "Puedes guardar grupos desde su página con el icono de marcador para encontrarlos aquí.",
+    "mis_colecciones_total": "Mis colecciones (:n)"
   },
   "banner_lateral": {
-    "titulo": "Las buenas conexiones siempre suman",
-    "descripcion": "Aquí encuentras los grupos que guardaste para volver cuando quieras, seguir aprendiendo y estar al día."
-  },
-  "banner_cta": {
-    "titulo": "Descubre más comunidades",
-    "descripcion": "Explora grupos, conectate con personas con tus mismos intereses y se parte de conversaciones que importan."
+    "titulo": "Tus grupos guardados",
+    "descripcion": "Aquí encontrarás los grupos que guardaste para volver cuando quieras, seguir aprendiendo y participar."
   },
   "unidades": {
-    "grupo_singular": "grupo",
-    "grupo_plural": "grupos"
+    "elemento_singular": "elemento",
+    "elemento_plural": "elementos"
+  },
+  "acciones_rapidas": [
+    {
+      "clave": "nueva",
+      "etiqueta": "Nueva colección",
+      "descripcion": "Organiza tus guardados.",
+      "icono": "mas"
+    },
+    {
+      "clave": "compartir",
+      "etiqueta": "Compartir colección",
+      "descripcion": "Invita a otros a una colección.",
+      "icono": "compartir"
+    },
+    {
+      "clave": "administrar",
+      "etiqueta": "Administrar colecciones",
+      "descripcion": "Edita, renombra o elimina.",
+      "icono": "configuracion"
+    }
+  ],
+  "clases": {
+    "encabezado": "mb-5 flex items-start justify-between gap-5 max-768:flex-col max-768:items-stretch",
+    "encabezado_titulos": "min-w-0",
+    "titulo": "m-0 mb-1 text-titulo-pagina text-texto",
+    "subtitulo": "m-0 text-subtitulo text-texto-suave",
+    "buscador": "w-full",
+    "rejilla": "grid grid-cols-[17rem_minmax(0,1fr)_17rem] items-start gap-4 max-1250:grid-cols-1",
+    "columna": "grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-4 max-1250:order-1",
+    "centro": "grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-4 max-1250:order-0",
+    "tarjeta": "rounded-xl border border-borde bg-white p-4",
+    "tarjeta_cabecera": "mb-3 flex items-center justify-between gap-2",
+    "tarjeta_titulo": "m-0 text-titulo-banner text-texto",
+    "colecciones_lista": "m-0 mb-3 grid list-none gap-1 p-0",
+    "coleccion": "flex items-center gap-2.5 rounded-lg px-2 py-1.5",
+    "coleccion_activa": "bg-primario-suave",
+    "coleccion_icono": "grid h-8 w-8 flex-none place-items-center rounded-lg text-white",
+    "coleccion_icono_activa": "grid h-8 w-8 flex-none place-items-center rounded-lg bg-primario text-white",
+    "coleccion_icono_img": "h-3.5 w-3.5",
+    "coleccion_textos": "min-w-0 flex-1",
+    "coleccion_nombre": "block text-nombre-fila text-texto",
+    "coleccion_cantidad": "block text-auxiliar text-texto-suave",
+    "organiza": "grid justify-items-center gap-2 rounded-xl border border-borde bg-primario-suave p-4 text-center",
+    "organiza_icono": "grid h-12 w-12 place-items-center rounded-full bg-white text-primario",
+    "organiza_titulo": "m-0 text-titulo-banner text-texto",
+    "organiza_texto": "m-0 text-subtitulo leading-texto text-texto-suave",
+    "boton_ancho": "w-full justify-center",
+    "lista_cabecera": "flex flex-wrap items-center justify-between gap-3",
+    "lista_titulo": "m-0 text-titulo-seccion text-texto",
+    "lista_controles": "flex items-center gap-2 max-768:hidden",
+    "vista": "flex items-center gap-1 rounded-lg border border-borde bg-white p-0.5",
+    "lista": "grid grid-cols-[minmax(0,1fr)] gap-3",
+    "lista_cuadricula": "grid grid-cols-2 gap-3 max-1000:grid-cols-1",
+    "grupo": "grid min-w-0 grid-cols-[4rem_minmax(0,1fr)_auto] items-start gap-x-4 gap-y-3 rounded-xl border border-borde bg-white p-4 max-600:grid-cols-[3.5rem_minmax(0,1fr)_auto] max-600:gap-x-3",
+    "grupo_imagen": "col-start-1 row-start-1 row-span-2 h-16 w-16 rounded-xl object-cover max-600:h-14 max-600:w-14",
+    "grupo_cuerpo": "col-start-2 row-span-2 min-w-0 max-600:row-span-1",
+    "grupo_nombre": "m-0 mb-1 truncate text-nombre-entidad text-texto",
+    "grupo_meta": "mb-1 flex flex-wrap items-center gap-1.5",
+    "grupo_miembros": "text-auxiliar text-texto-suave",
+    "grupo_categoria": "rounded px-1.5 py-px text-badge",
+    "grupo_descripcion": "m-0 text-subtitulo leading-texto text-texto-suave",
+    "banner": "degradado-violeta-suave grid justify-items-center gap-2 rounded-xl p-4 text-center text-white",
+    "banner_icono": "grid h-11 w-11 place-items-center rounded-full bg-white text-primario",
+    "banner_titulo": "m-0 text-titulo-banner",
+    "banner_texto": "m-0 text-subtitulo leading-texto text-white/80",
+    "acciones_lista": "m-0 grid list-none gap-3 p-0",
+    "accion": "flex h-auto w-full items-center justify-start gap-3 whitespace-normal py-1.5 text-left",
+    "accion_icono": "grid h-9 w-9 flex-none place-items-center rounded-lg bg-primario-suave text-primario",
+    "accion_textos": "min-w-0 flex-1",
+    "accion_etiqueta": "block text-nombre-fila text-texto",
+    "accion_descripcion": "block text-auxiliar text-texto-suave",
+    "consejo": "flex items-start gap-3 rounded-xl border border-borde bg-fondo-categoria-amarillo p-4",
+    "consejo_icono": "h-5 w-5 flex-none text-amarillo-categoria",
+    "consejo_textos": "min-w-0",
+    "consejo_titulo": "m-0 mb-1 text-titulo-banner text-texto",
+    "consejo_texto": "m-0 text-subtitulo leading-texto text-texto-suave",
+    "grupo_acciones_fila": "col-start-3 row-start-2 flex items-center gap-2 self-end max-600:col-span-2 max-600:col-start-2 max-600:justify-self-end",
+    "tabs": "mb-4",
+    "filtros": "-mx-1 mb-4 flex gap-2 overflow-x-auto px-1 pb-1",
+    "filtro": "flex-none",
+    "buscador_fila": "mb-4",
+    "lista_ver_todos": "flex-none",
+    "encabezado_crear": "max-768:hidden",
+    "coleccion_boton": "flex w-full items-center gap-2.5 rounded-lg border-0 bg-transparent px-2 py-1.5 text-left",
+    "coleccion_fila": "flex min-w-0 items-center gap-3 rounded-xl border border-borde bg-white p-4",
+    "coleccion_fila_acciones": "flex flex-none items-center gap-2",
+    "cabecera_abierta": "flex flex-wrap items-center gap-3",
+    "cabecera_abierta_textos": "min-w-0 flex-1",
+    "modal": "max-w-110 max-600:max-w-none",
+    "modal_cuerpo": "grid gap-3 p-4",
+    "modal_texto": "m-0 text-subtitulo leading-texto text-texto-suave",
+    "modal_error": "m-0 text-auxiliar text-peligro-texto",
+    "modal_pie": "flex items-center justify-end gap-3 border-t border-borde p-4",
+    "modal_lista": "m-0 grid list-none gap-1 p-0",
+    "banner_organiza": "flex items-center gap-4 rounded-xl border border-borde bg-primario-suave p-4 max-600:flex-wrap",
+    "banner_organiza_textos": "min-w-0 flex-1",
+    "vacio": "rounded-xl border border-borde bg-white p-6",
+    "grupo_marcador": "col-start-3 row-start-1 justify-self-end"
+  },
+  "orden_inicial": "mas_recientes",
+  "limite_inicial": 4,
+  "coleccion_prefijo_id": "coleccion-",
+  "coleccion_nueva": {
+    "icono": "guardados",
+    "color": "morado"
+  },
+  "filtros": [
+    {
+      "clave": "todo",
+      "etiqueta": "Todo"
+    },
+    {
+      "clave": "publicaciones",
+      "etiqueta": "Publicaciones"
+    },
+    {
+      "clave": "eventos",
+      "etiqueta": "Eventos"
+    },
+    {
+      "clave": "grupos",
+      "etiqueta": "Grupos"
+    },
+    {
+      "clave": "recursos",
+      "etiqueta": "Recursos"
+    }
+  ],
+  "modales": {
+    "crear": {
+      "titulo": "Nueva colección",
+      "confirmar": "Crear"
+    },
+    "renombrar": {
+      "titulo": "Cambiar nombre"
+    },
+    "marcador": "Nombre de la colección",
+    "repetido": "Ya existe una colección con ese nombre.",
+    "eliminar": {
+      "titulo": "Eliminar colección",
+      "mensaje": "Se eliminará la colección «:nombre». Los elementos guardados no se borran."
+    },
+    "quitar": {
+      "titulo": "Quitar de guardados",
+      "mensaje": "Vas a quitar este elemento de tus guardados."
+    },
+    "agregar": {
+      "titulo": "Agregar a una colección",
+      "sin_colecciones": "Aún no tienes colecciones. Crea una primero.",
+      "incluido": "Ya incluido"
+    },
+    "compartir": {
+      "grupo": "Compartir grupo",
+      "coleccion": "Compartir colección"
+    }
+  },
+  "vacios": {
+    "publicaciones": "No tienes publicaciones guardadas todavía.",
+    "eventos": "No tienes eventos guardados todavía.",
+    "recursos": "No tienes recursos guardados todavía.",
+    "colecciones": "Aún no tienes colecciones. Crea la primera.",
+    "coleccion": "Esta colección todavía no tiene elementos."
+  },
+  "avisos": {
+    "quitado": "Se quito de tus guardados.",
+    "coleccion_creada": "Colección creada.",
+    "coleccion_renombrada": "Se cambió el nombre de la colección.",
+    "coleccion_eliminada": "Colección eliminada. Tus guardados siguen en su lugar.",
+    "grupo_agregado": "Grupo agregado a la colección.",
+    "grupo_quitado_de_coleccion": "Se quitó de la colección."
   }
 }

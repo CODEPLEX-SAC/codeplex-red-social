@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { alternarEn, alternarValor, arrancarReloj, microfonoDe, panelInicial, programarFinReaccion } from './logica_estado_sala'
 import { paginaDe, segundosDe, totalPaginasDe, formatearDuracion } from './logica_sala_llamada'
+import { usarVistaMovil } from '../../compartido/interfaz/usar_vista_movil'
 import { usarPresentacionSala } from './usar_presentacion_sala'
 import catalogoMensajeria from '../../../catalogos/capacidades/redsocial/mensajeria.json'
 import type { IconName } from '@/tipos/compartido/contrato_icono'
@@ -25,6 +26,8 @@ export function usarSalaLlamada({ generar, cantidadInicial, duracionInicial, pue
   const [informando, setInformando] = useState(false)
   const [aviso, setAviso] = useState<string | null>(null)
   const [saliendo, setSaliendo] = useState(false)
+  const [detallesAbiertos, setDetallesAbiertos] = useState(false)
+  const movil = usarVistaMovil()
 
   useEffect(() => arrancarReloj(setSegundos), [])
   useEffect(() => programarFinReaccion(reaccion, () => setReaccion(null)), [reaccion])
@@ -42,6 +45,11 @@ export function usarSalaLlamada({ generar, cantidadInicial, duracionInicial, pue
   const paginaActual = Math.min(pagina, totalPaginas - 1)
 
   const { presentacion, errorPresentacion, iniciarPresentacion, detenerPresentacion, descartarError } = usarPresentacionSala({ puerto, simulable, local, setPanel })
+
+  function abrirDetalles() {
+    if (movil) setDetallesAbiertos(true)
+    else setPanel((actual) => alternarValor(actual, 'detalles'))
+  }
 
   async function gestionar(accion: AccionGestion, id: string): Promise<ResultadoOperacion> {
     if (!esOrganizador) return SIN_PERMISO
@@ -79,6 +87,7 @@ export function usarSalaLlamada({ generar, cantidadInicial, duracionInicial, pue
     informando,
     aviso,
     saliendo,
+    detallesAbiertos,
     duracion: formatearDuracion(segundos),
     cambiarCantidad: (valor: number) => {
       setCantidad(valor)
@@ -98,6 +107,8 @@ export function usarSalaLlamada({ generar, cantidadInicial, duracionInicial, pue
     gestionar,
     finalizarParaTodos,
     abrirSalida: () => setSaliendo(true),
+    abrirDetalles,
+    cerrarDetalles: () => setDetallesAbiertos(false),
     cerrarSalida: () => setSaliendo(false),
     mostrarAviso: setAviso,
     descartarAviso: () => setAviso(null),

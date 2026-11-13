@@ -51,3 +51,7 @@ export function agruparParticipantes(participantes: readonly ParticipanteSala[])
     invitados: participantes.filter((participante) => !participante.manoLevantada && participante.invitado),
   }
 }
+
+export function minutosDeLlamada(duracion: string): number {
+  return Math.max(1, Math.floor(segundosDe(duracion) / SEGUNDOS_POR_MINUTO))
+}

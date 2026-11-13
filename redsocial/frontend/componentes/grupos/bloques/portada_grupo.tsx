@@ -22,8 +22,7 @@ export function PortadaGrupo({ grupo, acciones, accionesPestanas, alEditarPortad
       </div>
       <div className={clases.portada_cuerpo}>
         <div className={clases.portada_identidad}>
-          <img src={grupo.imagen} alt={detalle.avatar.replace(':nombre', grupo.nombre)} className={clases.avatar} />
-          <div>
+          <div className={clases.portada_textos}>
             <h1 className={clases.titulo}>{grupo.nombre}</h1>
             <p className={clases.subtitulo}>
               <Icono name="grupo" className="h-4 w-4" /> {[detalle.tipo, grupo.miembros].join(' · ')}

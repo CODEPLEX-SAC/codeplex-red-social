@@ -5,86 +5,98 @@
       "nombre": "Dev Community CODEPLEX",
       "miembros": "12.4K miembros",
       "categoria": "tecnologia",
-      "descripcion": "Comunidad para desarrolladores, compartir conocimiento, resolver dudas y crecer juntos.",
-      "actividadReciente": "hace 2 días",
-      "colorPortada": "morado",
-      "tituloPortada": "Dev Community CODEPLEX",
-      "subtituloPortada": "Aprende · Comparte · Crea"
+      "descripcion": "Comunidad para desarrolladores, compartir conocimiento, resolver dudas y crecer juntos."
     },
     {
       "id": "2",
       "nombre": "Diseño UX/UI LATAM",
       "miembros": "8.7K miembros",
       "categoria": "diseno",
-      "descripcion": "Un espacio para compartir ideas, recursos y experiencias sobre diseño de experiencias digitales.",
-      "actividadReciente": "hace 4 días",
-      "colorPortada": "rosa"
+      "descripcion": "Un espacio para compartir ideas, recursos y experiencias sobre diseño de experiencias digitales."
     },
     {
       "id": "3",
       "nombre": "Emprendedores Perú",
       "miembros": "15.2K miembros",
       "categoria": "negocios",
-      "descripcion": "Conecta con emprendedores, comparte experiencias y encuentra oportunidades de negocio.",
-      "actividadReciente": "hace 1 semana",
-      "colorPortada": "azul"
+      "descripcion": "Conecta con emprendedores, comparte experiencias y encuentra oportunidades de negocio."
     },
     {
       "id": "4",
       "nombre": "Gestión de Proyectos",
       "miembros": "9.1K miembros",
       "categoria": "productividad",
-      "descripcion": "Metodologías, herramientas y buenas prácticas para una gestión de proyectos efectiva.",
-      "actividadReciente": "hace 1 semana",
-      "colorPortada": "gris"
+      "descripcion": "Metodologías, herramientas y buenas prácticas para una gestión de proyectos efectiva."
     },
     {
       "id": "5",
       "nombre": "Desarrollo Web",
       "miembros": "18.6K miembros",
       "categoria": "tecnologia",
-      "descripcion": "Todo sobre desarrollo web, frameworks, buenas prácticas y tendencias.",
-      "actividadReciente": "hace 2 semanas",
-      "colorPortada": "gris"
+      "descripcion": "Todo sobre desarrollo web, frameworks, buenas prácticas y tendencias."
     },
     {
       "id": "6",
       "nombre": "Innovación y Sostenibilidad",
       "miembros": "6.3K miembros",
       "categoria": "impacto",
-      "descripcion": "Tecnología e innovación para un futuro más sostenible.",
-      "actividadReciente": "hace 2 semanas",
-      "colorPortada": "verde"
+      "descripcion": "Tecnología e innovación para un futuro más sostenible."
     },
     {
       "id": "7",
       "nombre": "Freelancers LATAM",
       "miembros": "11.8K miembros",
       "categoria": "trabajo_remoto",
-      "descripcion": "Recursos, consejos y oportunidades para freelancers.",
-      "actividadReciente": "hace 3 semanas",
-      "colorPortada": "naranja"
+      "descripcion": "Recursos, consejos y oportunidades para freelancers."
     },
     {
       "id": "8",
       "nombre": "Inteligencia Artificial",
       "miembros": "20.1K miembros",
       "categoria": "tecnologia",
-      "descripcion": "Últimas novedades, herramientas y aplicaciones de IA en diferentes industrias.",
-      "actividadReciente": "hace 3 semanas",
-      "colorPortada": "azul"
+      "descripcion": "Últimas novedades, herramientas y aplicaciones de IA en diferentes industrias."
     }
   ],
   "colecciones": [
-    { "id": "1", "icono": "me-gusta", "color": "rojo", "nombre": "Favoritos", "cantidad": 3 },
-    { "id": "2", "icono": "grupos", "color": "morado", "nombre": "Comunidades de tecnología", "cantidad": 2 },
-    { "id": "3", "icono": "maletin", "color": "naranja", "nombre": "Networking", "cantidad": 2 },
-    { "id": "4", "icono": "idea", "color": "amarillo", "nombre": "Aprendizaje", "cantidad": 1 }
-  ],
-  "recomendados": [
-    { "id": "1", "nombre": "Marketing Digital LATAM", "miembros": "24.5K miembros" },
-    { "id": "2", "nombre": "Startups & Innovación", "miembros": "18.2K miembros" },
-    { "id": "3", "nombre": "Productividad y Hábitos", "miembros": "12.9K miembros" },
-    { "id": "4", "nombre": "Career Growth", "miembros": "9.4K miembros" }
+    {
+      "id": "1",
+      "icono": "me-gusta",
+      "color": "rojo",
+      "nombre": "Favoritos",
+      "grupos": [
+        "1",
+        "3",
+        "8"
+      ]
+    },
+    {
+      "id": "2",
+      "icono": "grupos",
+      "color": "morado",
+      "nombre": "Comunidades de tecnología",
+      "grupos": [
+        "1",
+        "5"
+      ]
+    },
+    {
+      "id": "3",
+      "icono": "maletin",
+      "color": "naranja",
+      "nombre": "Networking",
+      "grupos": [
+        "3",
+        "7"
+      ]
+    },
+    {
+      "id": "4",
+      "icono": "universidad",
+      "color": "amarillo",
+      "nombre": "Aprendizaje",
+      "grupos": [
+        "8"
+      ]
+    }
   ]
 }

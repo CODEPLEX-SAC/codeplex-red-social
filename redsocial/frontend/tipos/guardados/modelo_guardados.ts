@@ -2,9 +2,8 @@ import type { IconName } from '@/tipos/compartido/contrato_icono'
 
 export type CategoriaGrupoGuardado = 'tecnologia' | 'diseno' | 'negocios' | 'productividad' | 'impacto' | 'trabajo_remoto'
 export type PestanaGuardado = 'todo' | 'publicaciones' | 'eventos' | 'grupos' | 'recursos'
-export type FiltroGrupoGuardado = 'todos' | 'mis_grupos' | 'tecnologia' | 'diseno' | 'negocios' | 'desarrollo_profesional'
-export type ColorPortadaGrupoGuardado = 'morado' | 'azul' | 'naranja' | 'verde' | 'rosa' | 'gris'
 export type ColorColeccionGuardada = 'rojo' | 'morado' | 'naranja' | 'amarillo'
+export type VistaGruposGuardados = 'cuadricula' | 'listas'
 
 export interface GrupoGuardado {
   id: string
@@ -12,10 +11,7 @@ export interface GrupoGuardado {
   miembros: string
   categoria: CategoriaGrupoGuardado
   descripcion: string
-  actividadReciente: string
-  colorPortada: ColorPortadaGrupoGuardado
-  tituloPortada?: string
-  subtituloPortada?: string
+  imagen: string
 }
 
 export interface ColeccionGuardada {
@@ -23,11 +19,15 @@ export interface ColeccionGuardada {
   icono: IconName
   color: ColorColeccionGuardada
   nombre: string
-  cantidad: number
+  grupos: string[]
 }
 
-export interface GrupoRecomendadoGuardado {
-  id: string
-  nombre: string
-  miembros: string
-}
+export type PestanaPrincipalGuardados = 'elementos' | 'colecciones'
+
+export type ModalGuardados =
+  | { tipo: 'crear' }
+  | { tipo: 'renombrar'; coleccionId: string }
+  | { tipo: 'eliminar'; coleccionId: string }
+  | { tipo: 'agregar'; grupoId: string }
+  | { tipo: 'quitar'; grupoId: string }
+  | { tipo: 'compartir'; titulo: string; nombre: string; texto: string }

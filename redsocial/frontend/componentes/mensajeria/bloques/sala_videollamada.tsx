@@ -14,7 +14,7 @@ import type { SalaVideollamadaProps } from '@/tipos/mensajeria/contrato_sala_lla
 const catalogo = catalogoMensajeria.videollamada
 const clases = catalogo.clases.sala
 
-export function SalaVideollamada({ reunion, puerto, generar, contactos, enlaceReunion, imagenPresentacion, maximoParticipantes, cantidadInicial, microfonoInicial = true, camaraInicial = true }: SalaVideollamadaProps) {
+export function SalaVideollamada({ reunion, puerto, generar, contactos, enlaceReunion, imagenPresentacion, maximoParticipantes, alEscribir, cantidadInicial, microfonoInicial = true, camaraInicial = true }: SalaVideollamadaProps) {
   const sala = usarSalaLlamada({ generar, cantidadInicial: cantidadInicial ?? reunion.participantes.length, duracionInicial: reunion.duracion, puerto, simulable: catalogo.modo_demostracion, microfonoInicial, camaraInicial })
   const invitaciones = usarInvitaciones(puerto)
   const presentador = sala.todos.find((participante) => participante.id === sala.presentacion?.idParticipante)
@@ -30,27 +30,27 @@ export function SalaVideollamada({ reunion, puerto, generar, contactos, enlaceRe
   const opciones = catalogo.cantidades_demostracion.filter((cantidad) => maximoParticipantes >= cantidad)
 
   return (
-    <div className={clases.pagina}>
+    <div className={clases.pagina} data-sala>
       <BarraSuperiorSala
         reunion={reunion}
         duracion={sala.duracion}
         total={sala.todos.length}
         onParticipantes={() => sala.alternarPanel('participantes')}
-        onChat={() => sala.alternarPanel('chat')}
         onSalir={sala.esOrganizador ? sala.abrirSalida : salirDeLaLlamada}
+        onDetalles={sala.abrirDetalles}
         extra={catalogo.modo_demostracion ? <SelectorDemostracion cantidad={sala.cantidad} opciones={opciones} onCambiar={sala.cambiarCantidad} /> : undefined}
       />
 
       <div className={clases.cuerpo}>
         <div className={clases.escenario}>
           <LienzoSala sala={sala} puerto={puerto} imagenPresentacion={imagenPresentacion} presentador={presentador} fijado={fijado} />
-          <PieSala sala={sala} reunion={reunion} enlaceReunion={enlaceReunion} />
+          <PieSala sala={sala} />
         </div>
 
-        <PanelesSala sala={sala} contactos={contactos} invitaciones={invitaciones} enlaceReunion={enlaceReunion} />
+        <PanelesSala sala={sala} reunion={reunion} contactos={contactos} invitaciones={invitaciones} enlaceReunion={enlaceReunion} alEscribir={alEscribir} alAbandonar={salirDeLaLlamada} />
       </div>
 
-      {sala.saliendo && <ModalSalirLlamada onAbandonar={salirDeLaLlamada} onFinalizar={() => void finalizarParaTodos()} onCerrar={sala.cerrarSalida} />}
+      {sala.saliendo && sala.todos.length !== 1 && <ModalSalirLlamada onAbandonar={salirDeLaLlamada} onFinalizar={() => void finalizarParaTodos()} onCerrar={sala.cerrarSalida} />}
       {sala.informando && <ModalInformarProblema onEnviar={sala.informarProblema} onCerrar={sala.cerrarInforme} />}
     </div>
   )

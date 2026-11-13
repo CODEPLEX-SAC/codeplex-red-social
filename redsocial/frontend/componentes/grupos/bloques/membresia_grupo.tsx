@@ -21,7 +21,7 @@ export function MembresiaGrupo({ grupo, enlace, puerto }: MenuGrupoProps) {
 
   return (
     <>
-      <Boton type="button" variant="secundario" size="md" aria-haspopup="menu" aria-expanded={Boolean(menu.ancla)} onClick={menu.abrir}>
+      <Boton type="button" variant="secundario" size="md" className={catalogoGrupos.clases.detalle.membresia_movil} aria-haspopup="menu" aria-expanded={Boolean(menu.ancla)} onClick={menu.abrir}>
         {textos.etiqueta} <Icono name="flecha-abajo" className="h-3.5 w-3.5" />
       </Boton>
       {menu.ancla && <Menu ancla={menu.ancla} alCerrar={menu.cerrar} elementos={elementosMembresia(grupo, menu.ejecutar)} />}

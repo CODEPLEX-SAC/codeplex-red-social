@@ -297,7 +297,6 @@
     "volver": "Volver a Tus grupos",
     "portada": "Portada de :nombre",
     "editar_portada": "Editar portada",
-    "avatar": "Imagen de :nombre",
     "configuracion": {
       "titulo": "Termina de configurar tu grupo",
       "ayuda": "Sigue añadiendo detalles importantes y empieza a interactuar con la comunidad.",
@@ -338,44 +337,19 @@
       "administrador": "Administrador: :nombre"
     },
     "publicar": {
-      "placeholder": "¿Qué quieres compartir con el grupo?",
+      "placeholder": "Escribe algo...",
       "acciones": [
         {
           "clave": "foto",
           "etiqueta": "Foto/video",
-          "icono": "adjuntar"
-        },
-        {
-          "clave": "etiquetar",
-          "etiqueta": "Etiquetar personas",
-          "icono": "amigos"
+          "icono": "imagen"
         },
         {
           "clave": "encuesta",
           "etiqueta": "Encuesta",
           "icono": "encuesta"
-        },
-        {
-          "clave": "evento",
-          "etiqueta": "Evento",
-          "icono": "calendario"
         }
-      ],
-      "miembro": {
-        "placeholder": "Escribe algo...",
-        "acciones": [
-          {
-            "clave": "foto",
-            "etiqueta": "Foto/video",
-            "icono": "adjuntar"
-          },
-          {
-            "clave": "encuesta",
-            "etiqueta": "Encuesta",
-            "icono": "encuesta"
-          }
-        ]
-      }
+      ]
     },
     "publicacion": {
       "administrador": "Administrador",
@@ -590,7 +564,8 @@
     },
     "avatares_maximo": 12,
     "separador_miles": ".",
-    "minimo_miembros": 30
+    "minimo_miembros": 30,
+    "administrar": "Administrar"
   },
   "clases": {
     "crear": {
@@ -620,20 +595,19 @@
       "enlace": "no-underline hover:underline"
     },
     "detalle": {
-      "pagina": "grid gap-4",
-      "portada": "rounded-xl border border-borde bg-white",
-      "portada_imagen": "relative mx-auto h-64 max-w-250 overflow-hidden rounded-xl bg-fondo max-600:h-40",
+      "pagina": "grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4",
+      "portada": "rounded-xl border border-borde bg-white max-600:flex max-600:flex-col",
+      "portada_imagen": "relative mx-auto h-64 max-w-250 overflow-hidden rounded-b-xl rounded-t-none bg-fondo max-600:aspect-video max-600:h-auto max-600:w-full",
       "portada_foto": "h-full w-full object-cover object-center",
-      "portada_cuerpo": "flex flex-wrap items-center justify-between gap-4 p-5 max-600:p-4",
+      "portada_cuerpo": "flex flex-wrap items-center justify-between gap-4 p-5 max-600:flex-col max-600:items-stretch max-600:p-4",
       "portada_identidad": "flex min-w-0 items-center gap-4",
-      "avatar": "h-16 w-16 flex-none rounded-xl object-cover",
-      "titulo": "m-0 text-titulo-pagina text-texto",
+      "titulo": "m-0 break-words text-titulo-seccion text-texto",
       "subtitulo": "m-0 flex items-center gap-1.5 text-subtitulo text-texto-suave",
-      "acciones": "flex flex-wrap items-center gap-2",
-      "pestanas": "flex min-w-0 flex-1 overflow-x-auto",
+      "acciones": "flex flex-wrap items-center gap-2 max-600:grid max-600:grid-cols-2",
+      "pestanas": "flex min-w-0 flex-1 overflow-x-auto max-600:order-2 max-600:flex-none max-600:border-t max-600:border-borde max-600:px-2",
       "rejilla": "grid grid-cols-[minmax(0,1fr)_minmax(0,22rem)] items-start gap-4 max-1100:grid-cols-1",
-      "columna": "grid min-w-0 gap-4",
-      "tarjeta": "grid gap-3 rounded-xl border border-borde bg-white p-5 max-600:p-4",
+      "columna": "grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4",
+      "tarjeta": "grid min-w-0 grid-cols-[minmax(0,1fr)] gap-3 rounded-xl border border-borde bg-white p-5 max-600:p-4",
       "tarjeta_cabecera": "flex items-start justify-between gap-3",
       "titulo_tarjeta": "m-0 text-nombre-entidad text-texto",
       "ayuda": "m-0 text-auxiliar text-texto-suave",
@@ -646,17 +620,17 @@
       "dato": "flex items-center gap-3 text-subtitulo text-texto",
       "dato_icono": "h-4.5 w-4.5 flex-none text-texto-suave",
       "descripcion": "m-0 text-subtitulo leading-texto text-texto",
-      "publicador": "grid gap-3",
+      "publicador": "grid min-w-0 grid-cols-[minmax(0,1fr)] gap-3",
       "publicador_fila": "flex items-center gap-3",
-      "publicador_campo": "min-w-0 flex-1 justify-start rounded-full bg-fondo text-texto-suave",
+      "publicador_campo": "min-w-0 flex-1 justify-start overflow-hidden rounded-full bg-fondo text-texto-suave",
       "publicador_acciones": "grid grid-cols-4 gap-1 border-t border-borde pt-2 max-600:grid-cols-2",
       "publicador_accion": "justify-center gap-2",
       "insignia": "rounded-md bg-primario-suave px-2 py-px text-badge text-primario",
       "vacio": "py-10",
       "aviso": "m-0 rounded-lg bg-fondo-info-suave px-3 py-2 text-auxiliar text-azul-categoria-texto",
-      "portada_marco": "px-4 pt-4 max-600:px-2 max-600:pt-2",
-      "pestanas_fila": "flex items-center justify-between gap-2 border-t border-borde px-5 max-600:px-2",
-      "pestanas_acciones": "flex flex-none items-center gap-2",
+      "portada_marco": "px-4 pt-0 max-600:px-2",
+      "pestanas_fila": "flex items-center justify-between gap-2 border-t border-borde px-5 max-600:contents",
+      "pestanas_acciones": "flex flex-none items-center gap-2 max-600:order-first max-600:w-full max-600:px-2 max-600:py-2 max-600:pt-[max(0.5rem,env(safe-area-inset-top))]",
       "multimedia_cabecera": "flex flex-wrap items-center justify-between gap-3",
       "multimedia_acciones": "flex flex-wrap items-center gap-3",
       "miembros_seccion": "grid gap-3 border-t border-borde pt-4",
@@ -672,12 +646,12 @@
       "archivo_tamano": "text-auxiliar text-texto-suave",
       "portada_editar": "absolute bottom-3 right-3",
       "busqueda": "min-w-0",
-      "avatares_miembros": "flex items-center -space-x-1.5 pt-1",
+      "avatares_miembros": "flex max-w-full flex-wrap items-center -space-x-1.5 pt-1 max-600:hidden",
       "recientes": "grid grid-cols-2 gap-2",
       "reciente_imagen": "aspect-square w-full rounded-lg object-cover",
-      "reciente_boton": "h-auto w-full overflow-hidden rounded-lg border-transparent p-0",
-      "fotos_rejilla": "grid grid-cols-6 gap-2 max-1100:grid-cols-4 max-600:grid-cols-3",
-      "foto_boton": "aspect-square h-auto w-full overflow-hidden rounded-md border-transparent p-0",
+      "reciente_boton": "h-auto w-full overflow-hidden rounded-lg border-transparent p-0! px-0!",
+      "fotos_rejilla": "grid grid-cols-6 gap-1.5 max-1100:grid-cols-4 max-600:grid-cols-3",
+      "foto_boton": "aspect-square h-auto w-full overflow-hidden rounded-none border-0! p-0! px-0!",
       "foto_imagen": "h-full w-full object-cover",
       "video_rejilla": "grid grid-cols-3 gap-2 max-600:grid-cols-2",
       "video_medio": "aspect-video w-full rounded-md bg-fondo object-cover",
@@ -686,7 +660,14 @@
       "album_portada": "aspect-square w-full rounded-lg border border-borde bg-fondo object-cover",
       "album_nombre": "truncate text-nombre-fila text-texto",
       "reciente_ver_todo": "w-full justify-center",
-      "modal_album_campo": "grid gap-3 p-5"
+      "modal_album_campo": "grid gap-3 p-5",
+      "volver_movil": "mr-auto hidden min-w-0 items-center gap-1.5 max-600:inline-flex",
+      "volver_escritorio": "mb-4 inline-flex items-center gap-1.5 max-600:hidden",
+      "portada_textos": "min-w-0 flex-1",
+      "administrar_movil": "min-[601px]:hidden",
+      "invitar_administrador": "max-600:border-gris-borde max-600:bg-white max-600:text-texto-boton-secundario max-600:hover:bg-fondo-hover-suave",
+      "compartir_oculto_movil": "max-600:hidden",
+      "membresia_movil": "max-600:order-first"
     },
     "tus_grupos": {
       "pagina": "grid gap-4",
@@ -764,7 +745,7 @@
       "fila": "flex items-start gap-4 max-900:flex-col max-900:items-stretch",
       "aside_abierto": "w-80 flex-none max-1250:w-64 max-900:w-full max-900:block",
       "aside_cerrado": "w-80 flex-none max-1250:w-64 max-900:hidden",
-      "boton_movil_contenedor": "hidden max-900:block",
+      "boton_movil_contenedor": "hidden max-900:block max-600:hidden",
       "boton_movil": "w-full justify-center gap-2",
       "contenido": "min-w-0 flex-1",
       "panel": "grid min-w-0 grid-cols-1 content-start gap-0.5 rounded-xl border border-borde bg-white p-4 text-left",

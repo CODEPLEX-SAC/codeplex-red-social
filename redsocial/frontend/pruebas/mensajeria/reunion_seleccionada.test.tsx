@@ -51,7 +51,7 @@ describe('Unirse conserva la identidad de la reunion seleccionada', () => {
     const cabecera = cabeceraDeSala(reunion.titulo)
     expect(within(cabecera).getByText(reunion.titulo)).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: catalogoMensajeria.videollamada.textos.sala.detalles }))
-    expect(within(screen.getByRole('region', { name: catalogoMensajeria.videollamada.textos.sala.detalles })).getByText(reunion.hora)).toBeInTheDocument()
+    expect(within(screen.getByRole('complementary', { name: catalogoMensajeria.videollamada.textos.sala.detalles })).getByText(reunion.hora)).toBeInTheDocument()
   })
 
   it('dos reuniones distintas no se resuelven como una sola sala fija', () => {

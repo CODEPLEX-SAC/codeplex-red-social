@@ -1,0 +1,374 @@
+{
+  "cambios": [
+    {
+      "elemento": "clases.detalle.avatar",
+      "archivo": "frontend/catalogos/capacidades/redsocial/grupos.json",
+      "motivo": "Rediseño de Grupos: se retiró el avatar junto al título y el publicador del miembro, que ahora usa solo la acción de publicar."
+    },
+    {
+      "elemento": "detalle.avatar",
+      "archivo": "frontend/catalogos/capacidades/redsocial/grupos.json",
+      "motivo": "Rediseño de Grupos: se retiró el avatar junto al título y el publicador del miembro, que ahora usa solo la acción de publicar."
+    },
+    {
+      "elemento": "detalle.publicar.miembro.acciones",
+      "archivo": "frontend/catalogos/capacidades/redsocial/grupos.json",
+      "motivo": "Rediseño de Grupos: se retiró el avatar junto al título y el publicador del miembro, que ahora usa solo la acción de publicar."
+    },
+    {
+      "elemento": "detalle.publicar.miembro.placeholder",
+      "archivo": "frontend/catalogos/capacidades/redsocial/grupos.json",
+      "motivo": "Rediseño de Grupos: se retiró el avatar junto al título y el publicador del miembro, que ahora usa solo la acción de publicar."
+    },
+    {
+      "elemento": "banner_cta.descripcion",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "banner_cta.titulo",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "botones.explorar_grupos",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "botones.guardar_grupo",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "campos_lista.actividad_reciente",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.desarrollo_profesional",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.diseno",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.mas",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.mis_grupos",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.negocios",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.tecnologia",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "filtros.todos",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "secciones.grupos_recomendados",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "unidades.grupo_plural",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "unidades.grupo_singular",
+      "archivo": "frontend/catalogos/capacidades/redsocial/guardados.json",
+      "motivo": "Rediseño de Guardados: se retiró la columna de publicidad, los grupos recomendados, la actividad reciente y los filtros por tema; las categorías y pestañas nuevas viven en filtros y pestanas."
+    },
+    {
+      "elemento": "videollamada.clases.sala.detalles",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.detalles_dato",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.detalles_titulo",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.estado_pastilla",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.estado_pastilla_alerta",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.panel_acciones",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.panel_enlace",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.panel_enlace_fila",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.panel_enlace_texto",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.panel_enlace_titulo",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.pantalla_completa",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.pie_detalles",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.pie_equilibrio",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.solitaria_aviso_video",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.solitaria_estados",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.clases.sala.solitaria_mensaje",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.panel.copiar_enlace",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.panel.enlace_titulo",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.panel.estado_copia.copiado",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.panel.estado_copia.error",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.panel.estado_copia.ninguna",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.panel.ocultar_agregar",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.sala.detalles_enlace",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.sala.detalles_participantes",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "videollamada.textos.sala.solo",
+      "archivo": "frontend/catalogos/capacidades/redsocial/mensajeria.json",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión pasaron a una columna lateral o ventana propia, y se retiró el bloque de enlace, el pie de detalles y la tarjeta de estado."
+    },
+    {
+      "elemento": "PanelLateralGuardados",
+      "archivo": "frontend/componentes/guardados/bloques/panel_lateral_guardados.tsx",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "DetallesReunionSala",
+      "archivo": "frontend/componentes/mensajeria/bloques/detalles_reunion_sala.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "GRUPOS_RECOMENDADOS_GUARDADOS",
+      "archivo": "frontend/servicios/guardados/guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "PanelLateralGuardadosProps",
+      "archivo": "frontend/tipos/guardados/contrato_lateral_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "ColorPortadaGrupoGuardado",
+      "archivo": "frontend/tipos/guardados/modelo_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "FiltroGrupoGuardado",
+      "archivo": "frontend/tipos/guardados/modelo_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "GrupoRecomendadoGuardado",
+      "archivo": "frontend/tipos/guardados/modelo_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "DetallesReunionSalaProps",
+      "archivo": "frontend/tipos/mensajeria/contrato_sala_llamada.ts",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "Menu",
+      "archivo": "frontend/componentes/compartido/interfaz/menu.tsx",
+      "motivo": "El menú de tres puntos admite abrirse hacia arriba en la sala de videollamada."
+    },
+    {
+      "elemento": "PublicadorGrupo",
+      "archivo": "frontend/componentes/grupos/bloques/publicador_grupo.tsx",
+      "motivo": "Rediseño de Grupos: el publicador ya no recibe el rol; la página decide qué acciones mostrar."
+    },
+    {
+      "elemento": "PestanasGuardados",
+      "archivo": "frontend/componentes/guardados/bloques/pestanas_guardados.tsx",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "TarjetaGrupoGuardado",
+      "archivo": "frontend/componentes/guardados/bloques/tarjeta_grupo_guardado.tsx",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "BarraSuperiorSala",
+      "archivo": "frontend/componentes/mensajeria/bloques/barra_superior_sala.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "FilaParticipanteLlamada",
+      "archivo": "frontend/componentes/mensajeria/bloques/fila_participante_llamada.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "ListaParticipantesSala",
+      "archivo": "frontend/componentes/mensajeria/bloques/lista_participantes_sala.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "PanelParticipantesSala",
+      "archivo": "frontend/componentes/mensajeria/bloques/panel_participantes_sala.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "PanelesSala",
+      "archivo": "frontend/componentes/mensajeria/bloques/paneles_sala.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "PieSala",
+      "archivo": "frontend/componentes/mensajeria/bloques/pie_sala.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "SalaVideollamada",
+      "archivo": "frontend/componentes/mensajeria/bloques/sala_videollamada.tsx",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "GRUPOS_GUARDADOS",
+      "archivo": "frontend/servicios/guardados/guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "MenuProps",
+      "archivo": "frontend/tipos/compartido/contrato_menu.ts",
+      "motivo": "El menú de tres puntos admite abrirse hacia arriba en la sala de videollamada."
+    },
+    {
+      "elemento": "TarjetaGrupoGuardadoProps",
+      "archivo": "frontend/tipos/guardados/contrato_grupo_guardado.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "PestanasGuardadosProps",
+      "archivo": "frontend/tipos/guardados/contrato_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "ColeccionGuardada",
+      "archivo": "frontend/tipos/guardados/modelo_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "GrupoGuardado",
+      "archivo": "frontend/tipos/guardados/modelo_guardados.ts",
+      "motivo": "Rediseño de Guardados: la tarjeta, las pestañas y las colecciones reciben sus acciones y datos por propiedades nuevas, con colecciones que guardan los grupos que contienen."
+    },
+    {
+      "elemento": "BarraSuperiorSalaProps",
+      "archivo": "frontend/tipos/mensajeria/contrato_sala_llamada.ts",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "ListaParticipantesSalaProps",
+      "archivo": "frontend/tipos/mensajeria/contrato_sala_llamada.ts",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "PanelParticipantesSalaProps",
+      "archivo": "frontend/tipos/mensajeria/contrato_sala_llamada.ts",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "PanelSala",
+      "archivo": "frontend/tipos/mensajeria/contrato_sala_llamada.ts",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    },
+    {
+      "elemento": "SalaVideollamadaProps",
+      "archivo": "frontend/tipos/mensajeria/contrato_sala_llamada.ts",
+      "motivo": "Rediseño de la sala de videollamada: los detalles de la reunión y la escritura a un participante se resuelven con las propiedades nuevas."
+    }
+  ]
+}

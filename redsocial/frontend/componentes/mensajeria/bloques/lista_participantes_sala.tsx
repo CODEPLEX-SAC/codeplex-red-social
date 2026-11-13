@@ -14,7 +14,16 @@ function BotonOpciones({ participante, onAbrir }: { participante: ParticipanteSa
   return <BotonIcono icono="puntos" type="button" aria-haspopup="menu" aria-label={panel.gestion.replace(':nombre', participante.nombre)} variant="discreto" size="default" onClick={(evento) => onAbrir(evento.currentTarget)} />
 }
 
-export function ListaParticipantesSala({ participantes, esOrganizador, fijadoId, onFijar, onGestionar, onAviso }: ListaParticipantesSalaProps) {
+function BotonMensaje({ participante, onEscribir }: { participante: ParticipanteSala; onEscribir: (nombre: string) => void }) {
+  return <BotonIcono icono="comentario" type="button" aria-label={panel.mensaje_a.replace(':nombre', participante.nombre)} variant="discreto" size="default" onClick={() => onEscribir(participante.nombre)} />
+}
+
+function accionDe(participante: ParticipanteSala, onEscribir: ((nombre: string) => void) | undefined, abrir: (ancla: HTMLElement) => void) {
+  if (participante.invitado && onEscribir) return <BotonMensaje participante={participante} onEscribir={onEscribir} />
+  return <BotonOpciones participante={participante} onAbrir={abrir} />
+}
+
+export function ListaParticipantesSala({ participantes, esOrganizador, fijadoId, onFijar, onGestionar, onAviso, onEscribir }: ListaParticipantesSalaProps) {
   const [abierto, setAbierto] = useState<{ participante: ParticipanteSala; ancla: HTMLElement } | null>(null)
 
   async function gestionar(accion: AccionGestion, participante: ParticipanteSala) {
@@ -31,7 +40,8 @@ export function ListaParticipantesSala({ participantes, esOrganizador, fijadoId,
           key={participante.id}
           participante={participante}
           fijado={fijadoId === participante.id}
-          accion={<BotonOpciones participante={participante} onAbrir={(ancla) => setAbierto({ participante, ancla })} />}
+          soloMensaje={participante.invitado && Boolean(onEscribir)}
+          accion={accionDe(participante, onEscribir, (ancla) => setAbierto({ participante, ancla }))}
         />
       ))}
       {abierto && <Menu ancla={abierto.ancla} alCerrar={() => setAbierto(null)} elementos={elementos} />}

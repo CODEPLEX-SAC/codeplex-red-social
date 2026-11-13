@@ -11,9 +11,8 @@ const publicar = catalogoGrupos.detalle.publicar
 const clases = catalogoGrupos.clases.detalle
 const TIPOS: Record<string, TipoPublicacion> = { foto: 'publicacion', encuesta: 'encuesta' }
 
-export function PublicadorGrupo({ rol, alAccion, alAbrirPublicacion }: PublicadorGrupoProps) {
-  const esMiembro = rol === 'miembro'
-  const textos = esMiembro ? publicar.miembro : publicar
+export function PublicadorGrupo({ alAccion, alAbrirPublicacion }: PublicadorGrupoProps) {
+  const textos = publicar
   const abrir = (clave: string, etiqueta: string) => {
     if (TIPOS[clave]) alAbrirPublicacion(TIPOS[clave])
     else alAccion(etiqueta)

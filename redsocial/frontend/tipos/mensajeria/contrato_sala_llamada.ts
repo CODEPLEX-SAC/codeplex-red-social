@@ -4,7 +4,7 @@ import type { AccionGestion, ContactoInvitable, InvitacionesLlamada, Participant
 import type { ReunionEnSala } from './contrato_reunion'
 import type { PromesaOperacion } from './modelo_promesas_llamada'
 
-export type PanelSala = 'participantes' | 'chat'
+export type PanelSala = 'participantes' | 'chat' | 'detalles'
 export type SeccionPersonas = 'manos' | 'colaboradores' | 'invitados'
 
 export type GruposParticipantes = Record<SeccionPersonas, ParticipanteSala[]>
@@ -56,8 +56,8 @@ export interface BarraSuperiorSalaProps {
   duracion: string
   total: number
   onParticipantes: () => void
-  onChat: () => void
   onSalir: () => void
+  onDetalles: () => void
   extra?: ReactNode
 }
 
@@ -71,10 +71,10 @@ export interface PanelParticipantesSalaProps {
   participantes: ParticipanteSala[]
   contactos: readonly ContactoInvitable[]
   invitaciones: InvitacionesLlamada
-  enlaceReunion: string
   fijadoId: string | null
   onFijar: (id: string) => void
   onGestionar: (accion: AccionGestion, id: string) => PromesaOperacion
+  onEscribir?: (nombre: string) => void
   onCerrar: () => void
 }
 
@@ -90,6 +90,7 @@ export interface SalaVideollamadaProps {
   enlaceReunion: string
   imagenPresentacion: string | undefined
   maximoParticipantes: number
+  alEscribir?: (nombre: string) => void
   cantidadInicial?: number
   microfonoInicial?: boolean
   camaraInicial?: boolean
@@ -102,6 +103,7 @@ export interface ListaParticipantesSalaProps {
   onFijar: (id: string) => void
   onGestionar: (accion: AccionGestion, id: string) => PromesaOperacion
   onAviso: (mensaje: string) => void
+  onEscribir?: (nombre: string) => void
 }
 
 export interface ModalInformarProblemaProps {
@@ -129,13 +131,30 @@ export interface ModalSalirLlamadaProps {
   onCerrar: () => void
 }
 
+export interface ModalSalirSolaProps {
+  minutos: number
+  onAbandonar: () => void
+  onPermanecer: () => void
+}
+
 export interface TarjetaSolitariaProps {
   participante: ParticipanteSala
   flujo: MediaStream | null
 }
 
-export interface DetallesReunionSalaProps {
+export interface ModalDetallesReunionProps {
   reunion: ReunionEnSala
-  total: number
   enlaceReunion: string
+  onCerrar: () => void
+}
+
+export interface ContenidoDetallesReunionProps {
+  reunion: ReunionEnSala
+  enlaceReunion: string
+}
+
+export interface PanelDetallesSalaProps {
+  reunion: ReunionEnSala
+  enlaceReunion: string
+  onCerrar: () => void
 }

@@ -59,7 +59,7 @@ describe('Grupos: pagina de la comunidad en modo demostracion', () => {
     expect(screen.getByText(contenido.vacio)).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: contenido.ver_en_grupo })).toBeNull()
     fireEvent.click(screen.getByRole('button', { name: detalle.volver_grupo }))
-    fireEvent.click(screen.getByRole('button', { name: detalle.publicar.miembro.placeholder }))
+    fireEvent.click(screen.getByRole('button', { name: detalle.publicar.placeholder }))
     publicarTexto('Aporte de un miembro')
     fireEvent.click(screen.getByRole('button', { name: catalogoGrupos.menu.opciones.replace(':nombre', 'Programación Go') }))
     fireEvent.click(screen.getByRole('menuitem', { name: 'Tu contenido' }))

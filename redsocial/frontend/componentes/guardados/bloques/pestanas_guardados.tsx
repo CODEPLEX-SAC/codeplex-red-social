@@ -4,6 +4,6 @@ import type { PestanasGuardadosProps } from '@/tipos/guardados/contrato_guardado
 
 const TABS = catalogoGuardados.pestanas
 
-export function PestanasGuardados({ activa }: PestanasGuardadosProps) {
-  return <Pestanas elementos={TABS} activa={activa} className="mb-5" />
+export function PestanasGuardados({ activa, alCambiar }: PestanasGuardadosProps) {
+  return <Pestanas elementos={TABS} activa={activa} alCambiar={alCambiar} className={catalogoGuardados.clases.tabs} />
 }

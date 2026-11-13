@@ -110,7 +110,7 @@ describe('Videollamadas: listas completas, filtros y reuniones', { timeout: 3000
       window.history.pushState({}, '', `${catalogoMensajeria.rutas.videollamada_en_curso}?${catalogoMensajeria.parametros_ruta.contacto}=${encodeURIComponent('María Fernández')}`)
       render(<PaginaMensajesVideollamadaEnCurso />)
       expect(screen.getByText('Videollamada con María Fernández')).toBeInTheDocument()
-      expect(screen.getByText(catalogoMensajeria.videollamada.textos.sala.solo)).toBeInTheDocument()
+      expect(screen.queryByText(/Estás solo en la reunión/)).toBeNull()
       expect(screen.queryAllByRole('article')).toHaveLength(0)
     })
   })

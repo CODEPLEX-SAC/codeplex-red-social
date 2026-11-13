@@ -1,5 +1,6 @@
 import { Icono } from '../../compartido/icono'
 import { Boton } from '../../compartido/interfaz/boton'
+import { ContextoAdministracionGrupo } from './contexto_administracion_grupo'
 import { ModalCrearGrupoComunidad } from './modal_crear_grupo_comunidad'
 import { ModalGestionGrupo } from './modal_gestion_grupo'
 import { NavegacionAdministracionGrupo } from './navegacion_administracion_grupo'
@@ -18,6 +19,7 @@ export function AdministracionGrupo({ grupo, puerto, children }: AdministracionG
   const enInicio = administracion.seccion === 'inicio'
 
   return (
+    <ContextoAdministracionGrupo.Provider value={administracion.alternarPanel}>
     <div className={clases.fila}>
       <div className={clases.boton_movil_contenedor}>
         <Boton type="button" variant="secundario" size="md" aria-expanded={administracion.panelAbierto} className={clases.boton_movil} onClick={administracion.alternarPanel}>
@@ -34,5 +36,6 @@ export function AdministracionGrupo({ grupo, puerto, children }: AdministracionG
       {(administracion.modal === 'solicitudes' || administracion.modal === 'estado') && <ModalGestionGrupo tipo={administracion.modal} grupo={referenciaDeMenu(grupo, String())} puerto={puerto} onConfirmar={administracion.cerrarModal} onCerrar={administracion.cerrarModal} />}
       {administracion.modal === 'editar' && <ModalCrearGrupoComunidad imagen={String()} puerto={puerto} grupo={{ id: grupo.id, nombre: grupo.nombre, descripcion: grupo.descripcion }} onCerrar={administracion.cerrarModal} />}
     </div>
+    </ContextoAdministracionGrupo.Provider>
   )
 }

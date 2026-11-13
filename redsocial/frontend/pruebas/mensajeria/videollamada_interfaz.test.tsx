@@ -100,7 +100,7 @@ describe('Sala de videollamada activa', () => {
 
   it('el panel Personas muestra secciones plegables como Meet y se cierra', () => {
     render(<PaginaMensajesVideollamadaEnCurso />)
-    fireEvent.click(barra().getByRole('button', { name: textos.sala.participantes }))
+    fireEvent.click(screen.getByRole('button', { name: textos.sala.participantes_boton }))
     const panel = within(screen.getByRole('complementary', { name: textos.panel.titulo }))
     expect(panel.getByRole('heading', { level: 2 })).toHaveTextContent(`${textos.panel.titulo} (${catalogo.cantidad_predeterminada})`)
     expect(panel.getByText(textos.panel.en_la_reunion)).toBeInTheDocument()
@@ -119,7 +119,7 @@ describe('Sala de videollamada activa', () => {
     await compartir()
     expect(screen.getByText(textos.sala.compartiendo_tu_pantalla)).toBeInTheDocument()
     expect(barra().getByRole('button', { name: textos.sala.dejar_de_compartir })).toHaveAttribute('aria-pressed', 'true')
-    if (!screen.queryByRole('complementary', { name: textos.panel.titulo })) fireEvent.click(barra().getByRole('button', { name: textos.sala.participantes }))
+    if (!screen.queryByRole('complementary', { name: textos.panel.titulo })) fireEvent.click(screen.getByRole('button', { name: textos.sala.participantes_boton }))
     expect(screen.getByRole('complementary', { name: textos.panel.titulo })).toBeInTheDocument()
     expect(screen.getByText(textos.sala.compartiendo_tu_pantalla)).toBeInTheDocument()
     await act(async () => fireEvent.click(screen.getAllByRole('button', { name: textos.sala.dejar_de_compartir })[0]))

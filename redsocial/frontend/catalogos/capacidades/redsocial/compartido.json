@@ -1512,11 +1512,38 @@
         "vertical": "top",
         "horizontal": "right"
       },
-      "disableScrollLock": true
+      "disableScrollLock": true,
+      "slotProps": {
+        "list": {
+          "disablePadding": true
+        }
+      }
     },
     "clase_icono": "h-3.5 w-3.5",
     "peligro": {
       "color": "error.main"
+    },
+    "item_tactil": {
+      "@media (pointer: coarse)": {
+        "minHeight": 48
+      }
+    },
+    "contenedor_arriba": {
+      "anchorOrigin": {
+        "vertical": "top",
+        "horizontal": "center"
+      },
+      "transformOrigin": {
+        "vertical": "bottom",
+        "horizontal": "center"
+      }
+    },
+    "separacion_arriba": {
+      "paper": {
+        "sx": {
+          "marginTop": "-12px"
+        }
+      }
     }
   },
   "reporte_pdf": {

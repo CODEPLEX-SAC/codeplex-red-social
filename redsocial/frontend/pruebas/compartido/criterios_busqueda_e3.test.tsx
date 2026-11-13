@@ -43,7 +43,7 @@ describe('AMI-02: Tus amigos', { timeout: 30000 }, () => {
 describe('GRD-01: grupos guardados', { timeout: 30000 }, () => {
   it('filtra por el nombre del grupo guardado sin distinguir tildes y mayúsculas', () => {
     render(<PaginaGuardados />)
-    expect(catalogoGuardados.placeholders.buscar_guardados).toBe('Buscar grupo guardado...')
+    expect(catalogoGuardados.placeholders.buscar_guardados).toBe('Buscar en Guardados...')
     const buscador = screen.getByPlaceholderText(catalogoGuardados.placeholders.buscar_guardados)
     expect(buscador).toHaveAccessibleName(catalogoGuardados.campos.buscar_guardados)
 

@@ -782,10 +782,16 @@
         "fijado": "Fijado en tu pantalla",
         "detalles": "Detalles de la reunión",
         "informacion": "Información de la reunión",
-        "solo": "Estás solo en la reunión. Invita a otras personas para empezar.",
         "pantalla_completa": "Pantalla completa",
-        "detalles_participantes": "Participantes: :n",
-        "detalles_enlace": "Enlace de la reunión"
+        "mas_participantes": ":n más",
+        "detalles_panel": {
+          "cerrar": "Cerrar",
+          "informacion_unirse": "Información para unirse",
+          "copiar": "Copiar información para unirse",
+          "copiado": "Información copiada.",
+          "error_copia": "No se pudo copiar la información.",
+          "separador_copia": "\n"
+        }
       },
       "panel": {
         "titulo": "Personas",
@@ -797,13 +803,7 @@
         "silenciar": "Silenciar participante",
         "quitar": "Quitar de la llamada",
         "aviso_gestion": "Esta acción requiere el servicio de la sala, aún no conectado.",
-        "estado_copia": {
-          "ninguna": "",
-          "copiado": "Enlace copiado",
-          "error": "No se pudo copiar el enlace."
-        },
         "agregar": "Agregar personas",
-        "ocultar_agregar": "Ocultar contactos",
         "fijar": "Fijar en mi pantalla",
         "quitar_fijacion": "Dejar de fijar",
         "silenciado": "Participante silenciado.",
@@ -816,8 +816,8 @@
           "colaboradores": "Colaboradores",
           "invitados": "También invitados"
         },
-        "enlace_titulo": "Enlace de la reunión",
-        "copiar_enlace": "Copiar enlace de la reunión"
+        "buscar_corto": "Buscar contactos",
+        "mensaje_a": "Enviar mensaje a :nombre"
       },
       "chat": {
         "titulo": "Chat de la llamada",
@@ -866,7 +866,14 @@
         "descripcion": "Si no quieres finalizar la llamada para todos los participantes, puedes solo abandonarla.",
         "abandonar": "Solo abandonar la llamada",
         "finalizar_todos": "Finalizar la llamada para todos",
-        "cerrar": "Cerrar"
+        "cerrar": "Cerrar",
+        "sola": {
+          "titulo": "¿Sigues allí?",
+          "mensaje_uno": "Eres la única persona en la llamada, por lo que terminará en menos de 1 minuto. ¿Quieres permanecer en ella?",
+          "mensaje_otros": "Eres la única persona en la llamada, por lo que terminará en menos de :n minutos. ¿Quieres permanecer en ella?",
+          "abandonar": "Abandonar reunión ahora",
+          "permanecer": "Permanecer en la llamada"
+        }
       },
       "mas_tarde": {
         "boton": "Crear reunión para más tarde",
@@ -965,16 +972,15 @@
         "barra_superior": "flex flex-wrap items-center gap-4 rounded-xl border border-white/10 bg-overlay-5 px-4 py-3 text-white",
         "barra_titulo": "flex min-w-0 items-center gap-2",
         "barra_nombre": "block text-nombre-entidad text-white",
-        "barra_acciones": "flex max-w-full flex-none flex-wrap items-center gap-2 max-600:w-full",
-        "barra_salir": "flex-none",
-        "controles": "relative z-40 flex max-w-full flex-none items-center gap-2 self-center rounded-14 bg-overlay-5 px-3 py-2 max-600:w-full max-600:justify-between max-600:gap-1 max-600:px-2 max-480:gap-0.5",
+        "barra_acciones": "flex max-w-full flex-none flex-wrap items-center gap-2 max-600:w-full max-768:flex-nowrap max-768:justify-between",
+        "barra_salir": "flex-none max-768:hidden",
+        "controles": "relative z-40 flex max-w-full flex-none items-center gap-2 self-center rounded-14 bg-overlay-5 px-3 py-2 max-600:w-full max-768:justify-center max-768:gap-3  max-600:px-2 max-480:gap-0.5",
         "control_separador": "ml-2 inline-flex max-600:ml-0",
         "fondo_panel": "fixed inset-x-0 top-0 bottom-24 z-29 hidden bg-overlay-2 max-1100:block",
         "panel": "z-30 flex w-80 flex-none flex-col gap-3 overflow-hidden rounded-xl border border-borde bg-white p-4 max-1100:fixed max-1100:bottom-24 max-1100:right-2 max-1100:top-20 max-1100:w-[min(24rem,calc(100%-1rem))]",
         "panel_cabecera": "flex items-center justify-between gap-2",
         "panel_titulo": "m-0 text-titulo-banner text-texto",
         "panel_aviso": "m-0 rounded-lg bg-fondo px-3 py-2 text-auxiliar text-texto-suave",
-        "panel_acciones": "flex flex-col gap-2",
         "panel_vacio": "py-3 text-subtitulo text-texto-suave",
         "chat_mensajes": "m-0 flex min-h-0 flex-1 list-none flex-col gap-2 overflow-y-auto p-0",
         "chat_mensaje": "flex flex-col gap-0.5 rounded-lg bg-fondo px-3 py-2",
@@ -1013,33 +1019,40 @@
         "salida_texto": "m-0 px-6 pb-5 pt-2 text-subtitulo text-texto-suave",
         "salida_pie": "flex flex-col gap-2 px-6 pb-6",
         "barra_temporizador": "rounded-full bg-overlay-4 px-2.5 py-0.5 text-auxiliar tabular-nums text-white",
-        "barra_info": "inline-flex text-white/70",
         "solitaria": "relative grid min-h-0 flex-1 place-items-center overflow-hidden rounded-control degradado-nocturno-profundo",
-        "solitaria_contenido": "relative z-1 flex flex-col items-center gap-3 px-6 text-center max-600:pb-24",
+        "solitaria_contenido": "relative z-1 flex flex-col items-center gap-3 px-6 text-center",
         "solitaria_foto": "h-44 w-44 rounded-full border-4 border-white/25 object-cover shadow-t13 max-600:h-28 max-600:w-28",
         "solitaria_nombre": "m-0 text-titulo-banner text-white",
-        "solitaria_mensaje": "m-0 max-w-120 text-subtitulo text-white/80",
-        "solitaria_estados": "absolute bottom-3 left-3 z-1 flex flex-wrap gap-2",
-        "estado_pastilla": "inline-flex items-center gap-1.5 rounded-full bg-overlay-4 px-3 py-1.5 text-auxiliar text-white",
-        "estado_pastilla_alerta": "inline-flex items-center gap-1.5 rounded-full bg-overlay-4 px-3 py-1.5 text-auxiliar text-texto-sobre-oscuro-peligro",
-        "pantalla_completa": "absolute right-3 top-3 z-1",
-        "panel_enlace": "flex flex-col gap-1.5 rounded-lg bg-fondo p-3",
-        "panel_enlace_titulo": "m-0 text-etiqueta text-texto",
-        "panel_enlace_fila": "flex items-center gap-2",
-        "panel_enlace_texto": "min-w-0 flex-1 truncate text-auxiliar text-texto-suave",
         "pie_sala": "relative flex flex-none items-center justify-center gap-3 max-900:flex-col max-900:items-stretch",
-        "pie_detalles": "relative flex flex-1 justify-start max-900:flex-none max-900:justify-center",
-        "pie_equilibrio": "flex-1 max-900:hidden",
-        "detalles": "absolute bottom-full left-0 z-40 mb-2 flex w-[min(22rem,100%)] flex-col gap-2 rounded-xl border border-borde bg-white p-4 text-texto",
-        "detalles_titulo": "m-0 text-nombre-entidad text-texto",
-        "detalles_dato": "m-0 text-auxiliar text-texto-suave",
         "solitaria_rol": "rounded-full bg-primario px-3 py-0.75 text-badge text-white",
-        "solitaria_aviso_video": "absolute inset-x-3 top-3 z-1 m-0 mx-auto w-fit max-w-120 rounded-lg bg-overlay-4 px-3 py-1.5 text-center text-auxiliar text-white",
         "control_contenedor": "relative inline-flex",
         "control_insignia": "pointer-events-none absolute -right-1 -top-1 grid h-4.5 min-w-4.5 place-items-center rounded-full bg-primario px-1 text-badge text-white",
         "salida_cabecera": "flex items-start justify-between gap-3 px-6 pt-5",
         "salida_titulo": "m-0 text-titulo-banner text-texto",
-        "salida_boton": "w-full"
+        "salida_boton": "w-full",
+        "movil_principal": "relative aspect-video w-full flex-none overflow-hidden rounded-control",
+        "movil_franja": "grid h-28 flex-none grid-cols-2 gap-2",
+        "movil_mas": "relative grid min-w-0 place-content-center justify-items-center gap-2 overflow-hidden rounded-control p-2 text-white degradado-nocturno-profundo w-full cursor-pointer border-0",
+        "movil_mas_avatares": "flex items-center -space-x-2",
+        "movil_mas_avatar": "h-10 w-10 rounded-full border-2 border-white/25 object-cover",
+        "movil_mas_texto": "text-nombre-entidad text-white",
+        "movil_ficha": "relative min-w-0",
+        "movil_presentacion": "flex-none max-600:[&_section]:h-40 max-600:[&_section]:flex-none",
+        "oculto_movil": "max-768:hidden",
+        "detalles_cuerpo": "grid gap-4 p-5 text-texto",
+        "detalles_reunion_titulo": "m-0 text-titulo-seccion text-texto",
+        "detalles_horario": "m-0 flex items-center gap-3 text-subtitulo text-texto-suave",
+        "detalles_separador": "border-0 border-t border-borde",
+        "detalles_unirse": "grid gap-2",
+        "detalles_unirse_titulo": "m-0 text-nombre-entidad text-texto",
+        "detalles_enlace_texto": "m-0 break-all text-subtitulo text-texto-suave",
+        "detalles_aviso": "m-0 text-auxiliar text-texto-suave",
+        "panel_agregar": "max-768:hidden",
+        "salida_pie_sola": "flex flex-wrap items-center justify-end gap-2 px-6 pb-6",
+        "barra_info": "inline-flex",
+        "detalles_modal": "max-w-120 rounded-2xl max-600:max-w-full",
+        "agregar_modal": "max-w-120 rounded-2xl max-600:max-w-full",
+        "agregar_cuerpo": "p-5"
       },
       "mas_tarde": {
         "dialogo": "max-w-120 rounded-2xl max-600:max-w-full max-600:rounded-none",
@@ -1222,6 +1235,7 @@
         "fecha": "YYYY-MM-DD",
         "hora": "HH:mm"
       }
-    }
+    },
+    "selector_sala": "[data-sala]"
   }
 }

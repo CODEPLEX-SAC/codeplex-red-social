@@ -1,6 +1,10 @@
-import type { GrupoGuardado, ColeccionGuardada, GrupoRecomendadoGuardado } from '@/tipos/guardados/modelo_guardados'
+import { imagenesGaleria } from '../grupos/imagenes_grupos'
+import type { GrupoGuardado, ColeccionGuardada } from '@/tipos/guardados/modelo_guardados'
 import datos from './guardados.json'
 
-export const GRUPOS_GUARDADOS = datos.grupos as GrupoGuardado[]
-export const COLECCIONES_GUARDADAS = datos.colecciones as ColeccionGuardada[]
-export const GRUPOS_RECOMENDADOS_GUARDADOS = datos.recomendados as GrupoRecomendadoGuardado[]
+const IMAGENES = imagenesGaleria()
+const GRUPOS = datos.grupos
+const COLECCIONES = datos.colecciones
+
+export const GRUPOS_GUARDADOS: GrupoGuardado[] = GRUPOS.map((grupo, indice) => ({ ...(grupo as Omit<GrupoGuardado, 'imagen'>), imagen: IMAGENES[indice % IMAGENES.length] }))
+export const COLECCIONES_GUARDADAS = COLECCIONES as ColeccionGuardada[]

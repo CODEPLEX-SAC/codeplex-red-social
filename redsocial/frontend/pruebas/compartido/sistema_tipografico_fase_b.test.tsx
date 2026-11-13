@@ -45,7 +45,6 @@ const PANELES_LATERALES = [
   '/componentes/eventos/bloques/seccion_proximos2.tsx',
   '/componentes/eventos/bloques/seccion_calendario13.tsx',
   '/componentes/grupos/bloques/seccion_actividad_reciente_grupos.tsx',
-  '/componentes/guardados/bloques/panel_lateral_guardados.tsx',
   '/componentes/marketplace/bloques/seccion_popular_esta_semana.tsx',
   '/componentes/dashboard/bloques/seccion_ratios_financieros.tsx',
   '/componentes/estadisticas/bloques/seccion_top_clientes.tsx',

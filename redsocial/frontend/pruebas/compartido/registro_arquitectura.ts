@@ -26,5 +26,4 @@ export const CLAVES_SIN_CONSUMO_ESTATICO: Record<string, { clasificacion: string
 export const TEXTO_TRANSLUCIDO_NO_DETERMINADO: Record<string, string> = {
   '/componentes/acceso/bloques/panel_visual_acceso.tsx': 'contador blanco al 80 % sobre imagen del carrusel',
   '/componentes/avisos/bloques/panel_lateral_solicitudes_aviso.tsx': 'texto blanco al 85 % sobre degradado violeta',
-  '/componentes/guardados/bloques/panel_lateral_guardados.tsx': 'texto blanco al 80 % sobre degradado',
 }
